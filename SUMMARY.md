@@ -38,7 +38,8 @@
 - Under explicit user override, created `.venv`, installed `transformers`/`safetensors`, downloaded `gpt2-medium`, and ran `LLM-GPT2-001`.
 - GPT-2 Medium result: direct residual steering at `transformer.h.12.resid_post` changed logits with mean absolute delta `0.0797`; tiny intervention-JEPA MSE `0.00220` beat no-change `0.0114`.
 - Clean provenance commits: `WM-T0-002` ran on `e5db93866cf35efb2a6757728890e29eae0dee4d`; `LLM-GPT2-001` ran on `59795a4280b1c8cb372eea000f30de584476dde6`.
+- Committed and pushed GPT-2 metrics/docs as `a7ea6da`.
 
 ### Next Ideas
 
-- Commit and push GPT-2 Medium metrics/docs.
+- Scale the GPT-2 experiment on GPU or a quieter CPU box: more prompts, more layers, Jacobian baselines, and held-out intervention sites.
