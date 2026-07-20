@@ -19,7 +19,9 @@ from causal_workspace_jepa.common.resources import require_free_disk
 from causal_workspace_jepa.data.splits import deterministic_split_ids
 from causal_workspace_jepa.data.synthetic.base import load_dataset
 from causal_workspace_jepa.data.synthetic.generate import generate_tier0
+from causal_workspace_jepa.hooks.interventions import apply_intervention
 from causal_workspace_jepa.interpretability.probing import RidgeProbe
+from causal_workspace_jepa.common.types import InterventionSpec
 from causal_workspace_jepa.models.tiny_jepa import TinyActionConditionedJEPA
 from causal_workspace_jepa.planning.cem import random_shooting_plan
 from causal_workspace_jepa.planning.closed_loop import pointmass_rollout_cost
@@ -72,7 +74,9 @@ def run_tier0_mechanistic_study(config_path: str | Path) -> dict[str, Any]:
         "evidence_level": "Specificity",
         "claims": [
             {
-                "claim": "Action identity is more decodable from latent displacement than endpoints.",
+                "claim": (
+                    "Action identity is more decodable from latent displacement than endpoints."
+                ),
                 "evidence_level": "Availability",
                 "supported": bool(
                     probe_metrics["displacement_action_r2"]
@@ -80,9 +84,18 @@ def run_tier0_mechanistic_study(config_path: str | Path) -> dict[str, Any]:
                 ),
             },
             {
-                "claim": "Patching action coordinates causally and selectively changes future latent predictions.",
+                "claim": (
+                    "Replaying explicit action-input coordinates causally changes future latent "
+                    "predictions."
+                ),
                 "evidence_level": "Specificity",
-                "supported": bool(patch_metrics["action_patch_recovery"] > patch_metrics["latent_control_recovery"]),
+                "supported": bool(
+                    patch_metrics["action_patch_recovery"]
+                    > patch_metrics["latent_control_recovery"]
+                    and patch_metrics["action_patch_recovery"]
+                    > patch_metrics["random_action_control_recovery"]
+                    and patch_metrics["patch_replay_max_abs_error"] < 1e-6
+                ),
             },
             {
                 "claim": "A J-space-like compact workspace candidate was found.",
@@ -95,7 +108,9 @@ def run_tier0_mechanistic_study(config_path: str | Path) -> dict[str, Any]:
         "planner_metrics": planner_metrics,
         "workspace_metrics": workspace_metrics,
     }
-    output_path = Path(str(config.get("output_metrics", "artifacts/metrics/tier0_mechanistic_study.json")))
+    output_path = Path(
+        str(config.get("output_metrics", "artifacts/metrics/tier0_mechanistic_study.json"))
+    )
     provenance = collect_provenance(
         command=f"python scripts/run_experiment.py --config {config_path}",
         resource_profile=resource_profile,
@@ -125,7 +140,9 @@ def _action_probe_metrics(
     train_features = {
         "z_t": train_z[:, :-1, :].reshape(-1, model.config.latent_dim),
         "z_next": train_z[:, 1:, :].reshape(-1, model.config.latent_dim),
-        "displacement": (train_z[:, 1:, :] - train_z[:, :-1, :]).reshape(-1, model.config.latent_dim),
+        "displacement": (train_z[:, 1:, :] - train_z[:, :-1, :]).reshape(
+            -1, model.config.latent_dim
+        ),
     }
     test_features = {
         "z_t": test_z[:, :-1, :].reshape(-1, model.config.latent_dim),
@@ -159,30 +176,47 @@ def _action_patch_specificity(
     z = model.encode(test_obs[:, :-1, :]).tensor.reshape(-1, model.config.latent_dim)
     actions = test_actions.reshape(-1, model.config.action_dim)
     count = min(int(config.get("patch_pairs", 64)), len(actions))
-    recipient_ids = rng.choice(len(actions), size=count, replace=True)
-    donor_ids = rng.choice(len(actions), size=count, replace=True)
     latent_control_recoveries = []
     action_recoveries = []
     random_action_recoveries = []
-    latent_dims = np.arange(model.config.latent_dim)
-    for recipient, donor in zip(recipient_ids, donor_ids):
+    replay_errors = []
+    sampled_pairs = 0
+    attempts = 0
+    while sampled_pairs < count and attempts < count * 100:
+        attempts += 1
+        recipient = int(rng.integers(len(actions)))
+        donor = int(rng.integers(len(actions)))
         recipient_z = z[recipient : recipient + 1]
         action = actions[recipient : recipient + 1]
         donor_action = actions[donor : donor + 1]
+        action_delta = donor_action - action
+        delta_norm = float(np.linalg.norm(action_delta))
+        if delta_norm <= 1e-6:
+            continue
         clean = _predict_one(model, recipient_z, action)
         target = _predict_one(model, recipient_z, donor_action)
-        action_patch = target
-        control_dims = rng.choice(latent_dims, size=model.config.action_dim, replace=False)
-        control_z = recipient_z.copy()
-        control_z[:, control_dims] = z[donor : donor + 1, control_dims]
+        action_patch, patched_input = _patch_action_coordinates(
+            model,
+            recipient_z,
+            action,
+            donor_action,
+        )
+
+        latent_direction = rng.normal(size=recipient_z.shape).astype(np.float32)
+        latent_direction /= max(float(np.linalg.norm(latent_direction)), 1e-12)
+        control_z = recipient_z + latent_direction * delta_norm
         latent_control = _predict_one(model, control_z, action)
-        random_action = rng.normal(size=donor_action.shape).astype(np.float32)
-        random_action = random_action / max(float(np.linalg.norm(random_action)), 1e-12)
-        random_action = random_action * max(float(np.linalg.norm(donor_action)), 1e-12)
+        random_direction = rng.normal(size=action.shape).astype(np.float32)
+        random_direction /= max(float(np.linalg.norm(random_direction)), 1e-12)
+        random_action = action + random_direction * delta_norm
         random_control = _predict_one(model, recipient_z, random_action)
         action_recoveries.append(_recovery(clean, target, action_patch))
         latent_control_recoveries.append(_recovery(clean, target, latent_control))
         random_action_recoveries.append(_recovery(clean, target, random_control))
+        replay_errors.append(float(np.max(np.abs(patched_input @ model.predictor - target))))
+        sampled_pairs += 1
+    if sampled_pairs < count:
+        raise RuntimeError(f"could only sample {sampled_pairs} nonzero action donor pairs")
     return {
         "action_patch_recovery": float(np.mean(action_recoveries)),
         "latent_control_recovery": float(np.mean(latent_control_recoveries)),
@@ -193,6 +227,8 @@ def _action_patch_specificity(
         "specificity_margin_vs_random_action": float(
             np.mean(action_recoveries) - np.mean(random_action_recoveries)
         ),
+        "patch_replay_max_abs_error": float(np.max(replay_errors)),
+        "control_matching": "input_delta_l2_norm",
         "pairs": float(count),
     }
 
@@ -207,12 +243,24 @@ def _planner_ablation_metrics(
     candidates = int(config.get("planner_candidates", 128))
     goal = np.array([0.75, 0.75], dtype=np.float32)
     start = test_obs[0, 0]
-    clean = random_shooting_plan(model, start, goal, horizon=horizon, candidates=candidates, seed=seed)
+    clean = random_shooting_plan(
+        model, start, goal, horizon=horizon, candidates=candidates, seed=seed
+    )
     clean_cost = pointmass_rollout_cost(start, clean["actions"], goal)  # type: ignore[arg-type]
-    zero_action_cost = pointmass_rollout_cost(start, np.zeros((horizon, model.config.action_dim), dtype=np.float32), goal)
+    zero_action_cost = pointmass_rollout_cost(
+        start,
+        np.zeros((horizon, model.config.action_dim), dtype=np.float32),
+        goal,
+    )
     rng = np.random.default_rng(seed + 123)
-    random_actions = rng.uniform(-1.0, 1.0, size=(candidates, horizon, model.config.action_dim)).astype(np.float32)
-    random_cost = float(np.mean([pointmass_rollout_cost(start, actions, goal) for actions in random_actions]))
+    random_actions = rng.uniform(
+        -1.0,
+        1.0,
+        size=(candidates, horizon, model.config.action_dim),
+    ).astype(np.float32)
+    random_cost = float(
+        np.mean([pointmass_rollout_cost(start, actions, goal) for actions in random_actions])
+    )
     return {
         "clean_planner_cost": float(clean_cost),
         "zero_action_cost": float(zero_action_cost),
@@ -224,6 +272,38 @@ def _planner_ablation_metrics(
 def _predict_one(model: TinyActionConditionedJEPA, z: np.ndarray, action: np.ndarray) -> np.ndarray:
     features = np.concatenate([z, action, np.ones((z.shape[0], 1), dtype=z.dtype)], axis=-1)
     return features @ model.predictor
+
+
+def _patch_action_coordinates(
+    model: TinyActionConditionedJEPA,
+    latent: np.ndarray,
+    recipient_action: np.ndarray,
+    donor_action: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Replay donor action coordinates at the named predictor-input site."""
+
+    recipient_input = np.concatenate(
+        [latent, recipient_action, np.ones((latent.shape[0], 1), dtype=latent.dtype)],
+        axis=-1,
+    )
+    donor_input = np.concatenate(
+        [latent, donor_action, np.ones((latent.shape[0], 1), dtype=latent.dtype)],
+        axis=-1,
+    )
+    action_features = tuple(
+        range(model.config.latent_dim, model.config.latent_dim + model.config.action_dim)
+    )
+    spec = InterventionSpec(
+        site="predictor.input",
+        operation="patch",
+        positions=None,
+        feature_ids=action_features,
+        magnitude=1.0,
+        donor_example_id="action-donor",
+        seed=model.config.seed,
+    )
+    patched_input = apply_intervention(recipient_input, spec, donor=donor_input)
+    return patched_input @ model.predictor, patched_input
 
 
 def _recovery(clean: np.ndarray, target: np.ndarray, patched: np.ndarray) -> float:

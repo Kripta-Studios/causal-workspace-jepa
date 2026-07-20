@@ -10,7 +10,7 @@ Initial implementation order:
 4. named activations: implemented for tiny JEPA;
 5. interventions and matched controls: implemented;
 6. planning smoke loop: implemented;
-7. workspace criteria with null-result-safe controls: pending Milestone 3.
+7. workspace criteria with null-result-safe controls: implemented; clean `WM-T0-003` run pending.
 
 Published world-model adapters are `BLOCKED_RESOURCE` on the CPU VPS.
 
@@ -19,4 +19,11 @@ Validated CPU smoke:
 - `WM-T0-001` ran on PointMass2D with code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
 - Conditioned latent MSE: `1.09e-09`; mean baseline: `0.249`; no-action: `0.135`; shuffled-action: `0.153`.
 - `WM-T0-002` found action displacement decodability and action-coordinate causal specificity, but no workspace/J-space-like candidate.
-- This validates deterministic execution, action-conditioning plumbing, and one explicit action-effect mechanism in a tiny model. It does not establish a learned workspace.
+- Adversarial review retained the displacement result but withdrew the original action-patch
+  specificity claim because the donor target had been assigned directly. The corrected runner now
+  performs a replayable `predictor.input` intervention with norm-matched controls.
+- A multi-consumer audit now fits frozen readouts for dynamics prediction, value, risk, an OOD
+  uncertainty proxy, and action selection. Known shared/disjoint systems validate the detector;
+  random and PCA controls test whether a JEPA candidate is privileged beyond generic state variance.
+- This validates deterministic execution and action-conditioning plumbing. It does not establish a
+  learned workspace.

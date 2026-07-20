@@ -35,6 +35,11 @@ Status: `SMOKE_VALIDATED`.
 
 ## Milestone 3+: Scientific Runs
 
-Status: `BLOCKED_RESOURCE` for GPU-dependent work.
+Status: `ACTIVE` for CPU-safe causal audit; `BLOCKED_RESOURCE` for GPU-dependent work.
+
+- Repair the original action-patch methodology and rerun from committed code.
+- Validate shared-subspace discovery with known positive and negative controls.
+- Run `WM-T0-003` with five frozen downstream consumers and matched random/PCA controls.
+- Strengthen GPT-2 Medium with prompt/intervention holdouts and required baselines.
 
 Use `configs/resource/gpu_12gb.yaml` for selected Qwen and published JEPA continuation. Use `gpu_cluster` for Qwen3-30B-A3B and broad Jacobian/activation studies.

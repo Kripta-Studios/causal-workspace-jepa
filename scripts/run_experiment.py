@@ -18,6 +18,9 @@ from causal_workspace_jepa.experiments.world_model.tier0_mechanistic_study impor
     run_tier0_mechanistic_study,
 )
 from causal_workspace_jepa.experiments.world_model.tiny_jepa_smoke import run_tiny_jepa_smoke
+from causal_workspace_jepa.experiments.world_model.workspace_discovery_study import (
+    run_workspace_discovery_study,
+)
 
 
 def main() -> int:
@@ -32,6 +35,10 @@ def main() -> int:
         return 0
     if experiment_id == "WM-T0-002":
         metrics = run_tier0_mechanistic_study(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "WM-T0-003":
+        metrics = run_workspace_discovery_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     if experiment_id == "LLM-MOCK-001":

@@ -11,3 +11,8 @@ Status: `SCAFFOLDED`.
 - `ACTIVE`: `uv` is not installed on this VPS. `scripts/bootstrap_cpu.sh` reports the install command and exits with `SKIPPED_RESOURCE` rather than modifying the toolchain automatically.
 - `ACTIVE`: `/root/.cache/pip` is about 4.4 GB but was not modified because it may predate this task. Free disk remains above the 4 GB guard.
 - `ACTIVE`: GPT-2 Medium CPU runs are slow; the committed smoke uses 4 prompts, 2 residual coordinates, and 16 direct interventions.
+- `ACTIVE`: adversarial review found that the original `WM-T0-002` action patch assigned the donor
+  target directly. Its artifact is preserved, but the Specificity interpretation is withdrawn until
+  the repaired intervention run is executed from committed code.
+- `ACTIVE`: a five-consumer subspace in the tiny model may simply recover its four-dimensional
+  physical-state manifold. High-variance PCA is therefore a mandatory matched control.

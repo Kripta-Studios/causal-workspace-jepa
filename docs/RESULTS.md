@@ -9,7 +9,7 @@ The current results are CPU-scale smoke validation plus one tiny JEPA specificit
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | pending | `SMOKE_VALIDATED` |
 | WM-T0-001 | Tiny action-conditioned JEPA predicts PointMass2D latent transitions better than mean, no-action, and shuffled-action controls in the CPU smoke setting. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | `artifacts/metrics/tiny_jepa_smoke.json` | `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4` | `SMOKE_VALIDATED` |
 | LLM-MOCK-001 | Mock intervention-JEPA predicts held-out direct intervention effects better than no-change, mean-effect, and linear-context baselines in a deterministic mock transformer. | Availability | `configs/experiments/mock_qwen_intervention_jepa_smoke.yaml` | `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` | `85c1dbfbe9c824bcca415af13f4a6f34acc95267` | `SMOKE_VALIDATED` |
-| WM-T0-002 | Tiny JEPA latent displacement decodes action better than endpoints, and patching explicit action coordinates selectively changes future latent predictions; no workspace candidate was found. | Specificity | `configs/experiments/tier0_mechanistic_study.yaml` | `artifacts/metrics/tier0_mechanistic_study.json` | `e5db93866cf35efb2a6757728890e29eae0dee4d` | `SMOKE_VALIDATED` |
+| WM-T0-002 | Tiny JEPA latent displacement decodes action better than endpoints. The original action-patch claim is under audit because the implementation assigned the donor prediction directly instead of executing an intervention. | Availability | `configs/experiments/tier0_mechanistic_study.yaml` | `artifacts/metrics/tier0_mechanistic_study.json` | `e5db93866cf35efb2a6757728890e29eae0dee4d` | `IMPLEMENTED_UNVALIDATED` |
 | LLM-GPT2-001 | GPT-2 Medium residual-stream steering at layer 12 causes measurable downstream hidden/logit changes, and a tiny intervention-JEPA predicts held-out effects better than no-change in this smoke setting. | Causal mediation | `configs/experiments/gpt2_medium_intervention_smoke.yaml` | `artifacts/metrics/gpt2_medium_intervention_smoke.json` | `59795a4280b1c8cb372eea000f30de584476dde6` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
@@ -52,7 +52,11 @@ This result is mock-only and must not be reported as Qwen evidence.
 - random-action-control recovery: `-0.3082856750115752`;
 - workspace found: `false`.
 
-Interpretation: the tiny model has a compact action-effect input subspace with specificity evidence. It is not a learned J-space-like workspace.
+Audit correction: the committed `0.984` recovery came from setting `action_patch = target`, not from
+the intervention engine. Preserve it as historical output, but do not use it as specificity evidence.
+The repaired runner replays donor coordinates at `predictor.input`, excludes zero-effect pairs, and
+uses L2 norm-matched controls. A clean rerun is pending. The action coordinates are explicit inputs,
+not a discovered learned J-space-like workspace.
 
 `LLM-GPT2-001` key metrics:
 

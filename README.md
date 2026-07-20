@@ -6,7 +6,11 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
 - `SMOKE_VALIDATED`: NumPy intervention operators, activation cache, ridge probes, sparse dictionary, finite-difference lenses, circuit graph I/O, mock transformer, and mock intervention-JEPA smoke runner.
-- `SMOKE_VALIDATED`: Milestone 3 tiny-JEPA mechanistic study and GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
+- `ACTIVE`: adversarial Milestone 3 re-audit. The displacement result remains valid, but the original
+  action-patch specificity interpretation was withdrawn because no intervention operator was used.
+- `IMPLEMENTED_UNVALIDATED`: repaired action-input replay and multi-consumer workspace discovery with
+  known positive/negative controls; clean committed runs are pending.
+- `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
@@ -60,6 +64,9 @@ python scripts/run_experiment.py \
 
 python scripts/run_experiment.py \
   --config configs/experiments/tier0_mechanistic_study.yaml
+
+python scripts/run_experiment.py \
+  --config configs/experiments/workspace_discovery_study.yaml
 
 python scripts/run_experiment.py \
   --config configs/experiments/gpt2_medium_intervention_smoke.yaml
@@ -137,7 +144,10 @@ Validated CPU smoke results:
 - Mock intervention-JEPA smoke (`LLM-MOCK-001`) ran from clean code commit `85c1dbfbe9c824bcca415af13f4a6f34acc95267`.
 - Mock intervention-JEPA MSE: `1.32e-07`; no-change: `0.002113`; mean-effect: `0.002113`; linear-context: `0.002113`; effect correlation: `0.99997`.
 - `LLM-MOCK-001` evidence level: Availability. It validates the mock pipeline only and is not evidence about Qwen.
-- Milestone 3 JEPA study (`WM-T0-002`) found action-effect evidence but no J-space-like workspace: displacement action R2 `~1.0`, endpoint R2 values `-0.111` and `0.083`, action patch recovery `0.984`, random-action control recovery `-0.308`, workspace found `false`.
+- Milestone 3 JEPA study (`WM-T0-002`) found displacement action R2 `~1.0` versus endpoint R2 values
+  `-0.111` and `0.083`. Adversarial review invalidated the original patch-specificity interpretation:
+  the runner assigned the donor target directly. The artifact remains for provenance; a repaired
+  replayable intervention is pending.
 - GPT-2 Medium smoke (`LLM-GPT2-001`) directly intervened at `transformer.h.12.resid_post`; mean absolute logit delta was `0.0797`, intervention-JEPA MSE was `0.00220` vs no-change `0.0114`, effect correlation `0.976`. This is a small causal-mediation smoke, not a J-space/workspace discovery.
 
 ## Limitations

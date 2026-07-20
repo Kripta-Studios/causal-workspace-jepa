@@ -45,3 +45,11 @@
 - [x] Run GPT-2 Medium hidden-state intervention smoke under user override.
 - [x] Commit and push Tier 0 mechanistic metrics.
 - [x] Commit and push GPT-2 metrics/docs.
+- [x] Audit the original action-patch implementation and withdraw the unsupported specificity claim.
+- [x] Implement a replayable action-input patch with norm-matched controls.
+- [x] Implement shared-subspace discovery with positive and negative controls.
+- [x] Preregister `WM-T0-003` thresholds and splits.
+- [ ] Commit and push repaired code before execution.
+- [ ] Rerun corrected `WM-T0-002` from committed code.
+- [ ] Run `WM-T0-003` from committed code.
+- [ ] Commit and push corrected/new metrics.

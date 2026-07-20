@@ -37,3 +37,19 @@ A null result is acceptable and must be reported.
 - Result: `workspace_found = false`.
 
 Conclusion: no JEPA analogue of Anthropic J-space has been discovered.
+
+## Operational Detector
+
+`WM-T0-003` first validates discovery against two known systems:
+
+- positive: five consumers share a planted three-dimensional causal subspace;
+- negative: five consumers use disjoint private subspaces.
+
+For a JEPA candidate, every consumer Jacobian is converted to a trace-normalized sensitivity Gram
+matrix. The candidate is the smallest eigensubspace that captures the preregistered fraction for
+every consumer, not merely the average consumer. Direct projection-out effects are then compared
+with 32 equal-dimensional random subspaces and high-variance PCA.
+
+Passing this detector establishes only a compact shared causal-sensitivity candidate. The full
+workspace decision still requires controllability, flexible reuse, selective necessity,
+depth/horizon evolution, and held-out generalization.

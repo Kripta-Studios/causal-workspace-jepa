@@ -43,3 +43,18 @@
 ### Next Ideas
 
 - Scale the GPT-2 experiment on GPU or a quieter CPU box: more prompts, more layers, Jacobian baselines, and held-out intervention sites.
+
+### Adversarial Milestone 3 Re-audit
+
+- Re-read `AGENTS.md` and `VPS_RUNBOOK.md` completely and reran the baseline suite: 25 tests passed;
+  doctor, reproducibility audit, and bytecode compilation passed.
+- Found a material flaw in `WM-T0-002`: `action_patch` was assigned to the donor target rather than
+  produced by an internal intervention. The `0.984` recovery is preserved but no longer interpreted
+  as Specificity evidence.
+- Implemented actual replay through `InterventionSpec` at `predictor.input`, nonzero donor sampling,
+  and L2 norm-matched latent/action controls.
+- Implemented a normalized multi-consumer Jacobian detector, compactness criterion, direct projection
+  ablations, random and PCA controls, and known shared/disjoint detector controls.
+- Added a preregistered `WM-T0-003` five-consumer study. It can identify a shared causal state
+  subspace candidate, but it cannot declare a full workspace because key functional criteria remain
+  untested.
