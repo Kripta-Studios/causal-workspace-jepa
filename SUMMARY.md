@@ -30,8 +30,11 @@
 - Implemented mock intervention-JEPA smoke runner and tests. Exploratory dirty-run metrics passed, then were removed before the code commit.
 - Committed and pushed Milestone 2 code as `85c1dbfbe9c824bcca415af13f4a6f34acc95267`.
 - Reran `LLM-MOCK-001` from clean committed code. Provenance reports `git_dirty: false`.
-- Prepared committed summaries: `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` and `artifacts/metrics/mock_qwen_intervention_jepa_smoke.provenance.json`.
+- Committed and pushed mock result summaries as `948347c`: `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` and `artifacts/metrics/mock_qwen_intervention_jepa_smoke.provenance.json`.
+- Added `scripts/bootstrap_cpu.sh`, config `.gitkeep` files, and reporting stubs to complete the requested architecture.
+- `uv` is not installed on the VPS. The bootstrap script checks resources and reports the exact install command instead of auto-installing tools.
+- `/root/.cache/pip` is about 4.4 GB and was not modified because it may predate this task; free disk remains above the 4 GB guard.
 
 ### Next Ideas
 
-- Commit and push the Milestone 2 result artifacts and docs.
+- Commit and push the final architecture/audit docs.

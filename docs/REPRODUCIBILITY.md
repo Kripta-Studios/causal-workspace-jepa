@@ -22,4 +22,12 @@ python -m causal_workspace_jepa.cli doctor --resource-profile configs/resource/c
 python -m unittest discover -s tests -p 'test_*.py'
 ```
 
+Validated smoke commands:
+
+```bash
+PYTHONPATH=src python scripts/generate_tier0.py --config configs/data/tier0_smoke.yaml
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/tiny_jepa_smoke.yaml
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/mock_qwen_intervention_jepa_smoke.yaml
+```
+
 No reported result may depend on uncommitted code.
