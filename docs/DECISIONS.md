@@ -25,3 +25,6 @@
 - Do not call a shared Jacobian eigensubspace J-space. Anthropic defines J-space as a sparse
   nonnegative token-aligned frame and validates report, modulation, reasoning, reuse, and selectivity;
   the JEPA detector currently tests only a narrower functional analogue.
+- Preserve the `WM-T0-004` null without threshold tuning. Conditional donor controls are retained as
+  a useful method; the observed architecture is rejected as a workspace-discovery target because
+  action dependence and uncertainty consumers fail before the workspace decision.

@@ -67,6 +67,13 @@ scientific runner is invoked.
   and selective-necessity criterion above. `workspace_found` remains false regardless because this
   run lacks goal/instruction controllability, cross-task flexible reuse, and reportability analogue.
 
+Measured result from clean commit `6785fb1`: all registered candidate decisions failed. The action
+MSE ratio was `0.684`; OOD uncertainty AUC was `0.574`; uncertainty-head R2 was `-1.327`/`0.232`;
+minimum five-consumer capture was `0.635`/`0.701`; and direct plus rollout candidate damage was below
+matched-control p95 at both hidden sites. Test interval coverage (`0.887`) and error correlation
+(`0.698`) passed their individual gates, but partial passes do not rescue the joint uncertainty or
+workspace hypotheses. Restricted H-WM-05, H-WM-06, and H-WM-08 are false for this run.
+
 ## WM-T0-003 Preregistration
 
 Registered before execution on 2026-07-20.

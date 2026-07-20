@@ -23,9 +23,11 @@ Status: `ACTIVE`.
 - `REJECTED`: arbitrary random latent projection as a multistep control on the current linear model.
   Some controls cause extreme off-manifold rollout divergence. Future controls must match activation
   density or use in-manifold donor/resampling interventions.
-- `ACTIVE`: conditional donor resampling can still create hybrid activations outside the empirical
-  manifold. `WM-T0-004` therefore preregisters nearest-bank diagnostics and rejects unmatched
-  controls instead of assuming the method is valid.
+- `RESOLVED`: conditional donor candidate/random patches in `WM-T0-004` stayed near the empirical
+  activation bank and yielded 63/64 and 64/64 matched controls. PCA patches were correctly rejected
+  as unmatched because their perturbations were much larger.
+- `ACTIVE`: `WM-T0-004` is one seed on simple PointMass physics. Its null blocks claims for this run;
+  it does not prove that stronger goal-conditioned or multi-task JEPAs lack workspace-like structure.
 - `ACTIVE`: `LLM-GPT2-002` is larger than the original smoke but still has one seed, eight local
   prompts, coordinate interventions, and selected outputs. Its local Jacobian uses extra direct
   small-magnitude executions and must be compared on fidelity, not runtime.

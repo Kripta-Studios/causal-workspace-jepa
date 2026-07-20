@@ -2,8 +2,8 @@
 
 Status: `SMOKE_VALIDATED`.
 
-The current results are CPU-scale smoke validation, corrected tiny-JEPA causal tests, and two GPT-2
-Medium direct-intervention studies. No workspace/J-space-like mechanism has been discovered.
+The current results are CPU-scale smoke validation, corrected tiny/deep-JEPA causal tests, and two
+GPT-2 Medium direct-intervention studies. No workspace/J-space-like mechanism has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -14,6 +14,7 @@ Medium direct-intervention studies. No workspace/J-space-like mechanism has been
 | LLM-GPT2-001 | GPT-2 Medium residual-stream steering at layer 12 causes measurable downstream hidden/logit changes, and a tiny intervention-JEPA predicts held-out effects better than no-change in this smoke setting. | Causal mediation | `configs/experiments/gpt2_medium_intervention_smoke.yaml` | `artifacts/metrics/gpt2_medium_intervention_smoke.json` | `59795a4280b1c8cb372eea000f30de584476dde6` | `SMOKE_VALIDATED` |
 | WM-T0-003 | The workspace detector passes planted shared/disjoint controls, but the tiny JEPA five-consumer candidate fails consumer validity, PCA specificity, and rollout-control validity; no workspace was found. | Specificity | `configs/experiments/workspace_discovery_study.yaml` | `artifacts/metrics/workspace_discovery_study.json` | `5223a54ea96fbb6b0481120301c78547e8aabff4` | `SMOKE_VALIDATED` |
 | LLM-GPT2-002 | GPT-2 Medium intervention effects are almost exactly local-linear in this coordinate/magnitude regime; bilinear meta-model compression beats weak regressions on held-out prompts but not a local Jacobian and does not transfer to a held-out layer. | Causal mediation | `configs/experiments/gpt2_medium_mechanistic_study.yaml` | `artifacts/metrics/gpt2_medium_mechanistic_study.json` | `8fbab8c0a791cca8b34ba8e1e49664f16e79674d` | `SMOKE_VALIDATED` |
+| WM-T0-004 | Conditional donor controls repair the prior off-manifold confound, but neither learned hidden site has a valid shared sensitivity subspace or specificity over matched controls; no workspace is found. | Specificity | `configs/experiments/manifold_workspace_study.yaml` | `artifacts/metrics/manifold_workspace_study.json` | `6785fb1684a04ff1639d6aad326ed6e11df0bf6a` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -110,3 +111,23 @@ prompt-general effect structure, but the local direct Jacobian is approximately 
 MSE and cross-layer transfer fails. This is evidence against using a JEPA meta-model for this easy
 linear regime, not evidence against nonlinear meta-models for larger, semantic, combined, or
 off-manifold interventions. No behavior change or GPT-2 workspace was found.
+
+`WM-T0-004` key metrics:
+
+- runtime: `31.22` seconds from clean commit `6785fb1`;
+- primary/shuffled-action MSE: `0.003416` / `0.004994`; ratio `0.684`, failing the registered `0.25`;
+- validation/test 90 percent interval coverage: `0.8999` / `0.8870`;
+- OOD uncertainty AUC: `0.5738`, below `0.65`; uncertainty/error Spearman: `0.6977`;
+- hidden-1/hidden-2 uncertainty-head R2: `-1.327` / `0.232`, below `0.50`;
+- hidden-1/hidden-2 minimum consumer sensitivity capture: `0.635` / `0.701`, below `0.75`;
+- conditional-patch median density ratios: `1.029` / `1.018`; matched random controls: `63/64` and
+  `64/64`, showing that the previous off-manifold random-control failure was repaired;
+- candidate direct damage: `3.652` / `1.239`; matched-control p95: `9.252` / `4.369`;
+- candidate multistep damage: `0.520` / `0.289`; matched-control p95: `0.644` / `0.568`;
+- shared causal candidate sites: none; workspace found: `false`.
+
+Interpretation: the ensemble produces useful in-distribution intervals and its score correlates with
+error, but it does not rank the preregistered physical OOD shift well enough and the primary model's
+hidden states do not make ensemble uncertainty reliably decodable. Conditional resampling keeps
+candidate and random-control patches near the empirical activation bank. Under those valid controls,
+the candidate directions are not privileged. Multistep amplification exists but is nonspecific.

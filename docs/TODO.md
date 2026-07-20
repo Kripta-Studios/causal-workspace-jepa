@@ -61,9 +61,10 @@
 - [x] Implement conditional donor resampling with activation-density and perturbation matching.
 - [x] Implement a deeper learned predictor with genuine internal sites and independently trained consumers.
 - [x] Preregister `WM-T0-004` splits, thresholds, OOD shift, and rejection rules before execution.
-- [ ] Commit and push the `WM-T0-004` implementation.
-- [ ] Execute `WM-T0-004` from the clean committed code without changing thresholds.
-- [ ] Record the result, rerun the full audit, commit, and push.
+- [x] Commit and push the `WM-T0-004` implementation (`6785fb1`).
+- [x] Execute `WM-T0-004` from the clean committed code without changing thresholds.
+- [x] Record the null result and rerun the full audit.
+- [x] Commit and push the `WM-T0-004` result milestone.
 
 ## GPT-2 Medium Follow-up
 

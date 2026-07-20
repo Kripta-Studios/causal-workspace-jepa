@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/manifold_workspace_study.yaml",
+  "git_commit": "6785fb1684a04ff1639d6aad326ed6e11df0bf6a",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/manifold_workspace_study.json",
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 17,
+  "time_utc": "2026-07-20T19:53:18.950262+00:00",
+  "workspace_found": false
+}

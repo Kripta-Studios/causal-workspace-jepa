@@ -72,9 +72,8 @@
   and proposed a `3/16` sensitivity subspace, but the preregistered candidate decision failed:
   uncertainty R2 was `-3.639`, PCA damage exceeded candidate damage, and random rollout controls were
   badly off-manifold. No workspace was found.
-- Best next JEPA experiment: a deeper learned predictor with calibrated ensemble/heteroscedastic
-  uncertainty and in-manifold donor or activation-density-matched controls. Do not tune the current
-  failed proxy after observing its result; register a new experiment.
+- This led to the separately preregistered `WM-T0-004` deeper predictor, calibrated ensemble, and
+  in-manifold donor study recorded below.
 
 ### Current Handoff
 
@@ -117,7 +116,7 @@
 - Final handoff target: full suite, doctor, checksum/provenance audit, and `git diff --check` must
   pass; branch `main` must be clean and synchronized with `origin/main`.
 
-### WM-T0-004 Implementation In Progress
+### WM-T0-004 Implementation And Result
 
 - Re-audited every Markdown handoff/registry and the committed metrics/provenance logs. Corrected the
   stale test count and the stale instruction to run the already-completed `LLM-GPT2-002`.
@@ -138,6 +137,33 @@
   about 37 GB of PM2 restart-loop logs. Per user instruction, the systemd service is now inactive and
   masked, its PM2 entry and saved startup record are removed, port 3001 is closed, and 40+ GB is free.
   The source/database remain as a recoverable archive outside this repository.
-- Current boundary: all 37 tests, doctor, reproducibility audit, compile check, and `git diff --check`
-  pass with 40+ GB free. Do not execute `WM-T0-004` until this implementation is committed and
-  pushed; do not change its registered thresholds after observing results.
+- Committed and pushed the preregistered implementation as `6785fb1`, then executed once from that
+  clean commit without changing thresholds. Runtime was `31.22` seconds and provenance is clean.
+- The action-conditioning gate failed: primary MSE was `0.003416` versus shuffled-action `0.004994`,
+  ratio `0.684` against the registered maximum `0.25`. Shuffling hurts, but not enough for the strong
+  causal-use claim.
+- In-distribution uncertainty calibration worked: test coverage was `0.887` for a 90 percent target,
+  and uncertainty/error Spearman was `0.698`. The joint uncertainty claim failed because OOD AUC was
+  only `0.574` versus `0.65` and hidden uncertainty-head R2 was `-1.327`/`0.232` versus `0.50`.
+- Neither hidden site produced the registered compact sensitivity candidate: minimum five-consumer
+  capture was `0.635` and `0.701`, below `0.75`.
+- The old off-manifold confound is repaired. Candidate density ratios were `1.029`/`1.018`, and
+  `63/64` plus `64/64` random controls matched density and magnitude. Candidate direct damage was
+  below random-control p95 at both sites (`3.652 < 9.252`; `1.239 < 4.369`).
+- Multistep amplification ratios (`6.03`, `1.95`) looked large in isolation but candidate rollout
+  damage also remained below matched-control p95. This is nonspecific accumulation, not selective
+  necessity. PCA controls were too large to be matched and correctly did not decide the claim.
+- Scientific result: no shared causal subspace and no JEPA workspace. Restricted H-WM-05, H-WM-06,
+  and H-WM-08 are false for this run. The reusable output is the conditional donor control method.
+- ELI5 novelty boundary: this repository now has a fairer way to ask whether many JEPA outputs share
+  a special internal whiteboard without smashing the model's activations into nonsense. The answer
+  for this tiny model is no. This is methodologically useful and falsification-first, but it is not
+  state-of-the-art performance, a published discovery, or evidence that larger JEPAs lack such a
+  mechanism.
+- Best next JEPA direction: preregister a goal-conditioned multi-task model where action and task
+  variables are indispensable, use local-tangent PCA controls, and replicate across seeds. Do not
+  tune `WM-T0-004` after seeing its null.
+- Final pre-commit validation: 37 tests pass; seven metric/provenance pairs and six local checksums
+  audit without errors; compilation and `git diff --check` pass; the CPU guard reports 40.1 GB free.
+- Exact clean-code reproduction command:
+  `PYTHONPATH=src ./.venv/bin/python scripts/run_experiment.py --config configs/experiments/manifold_workspace_study.yaml`.

@@ -10,8 +10,9 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
   superseded by a clean replayable action-input intervention with L2 norm-matched controls.
 - `SMOKE_VALIDATED`: multi-consumer workspace detector with planted shared/disjoint controls. The
   tiny JEPA result is null after uncertainty, PCA, and off-manifold rollout-control failures.
-- `NOT_STARTED`: preregistered `WM-T0-004` deep NumPy JEPA ensemble with calibrated uncertainty and
-  conditional donor-resampling controls. Its implementation must be committed before execution.
+- `SMOKE_VALIDATED`: `WM-T0-004` deep NumPy JEPA ensemble and conditional donor controls. The old
+  off-manifold confound is repaired, but action, OOD uncertainty, consumer, and specificity gates
+  fail; no shared causal subspace or workspace is accepted.
 - `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
 - `SMOKE_VALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions. The local
   Jacobian dominates learned meta-models; bilinear compression helps on unseen prompts but fails on
@@ -85,10 +86,8 @@ python scripts/run_experiment.py \
 python scripts/audit_reproducibility.py
 ```
 
-The Tier 0, tiny JEPA, mock-Qwen, first two Milestone 3 JEPA studies, and both GPT-2 Medium commands
-are smoke validated. `WM-T0-004` is implemented and preregistered but deliberately not executed
-until its code is committed. The mock-Qwen command uses a deterministic local mock model, not Qwen
-weights.
+The Tier 0, tiny JEPA, mock-Qwen, all three Milestone 3 JEPA studies, and both GPT-2 Medium commands
+are smoke validated. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 
@@ -166,6 +165,10 @@ Validated CPU smoke results:
   shared control and rejected disjoint consumers, but the JEPA uncertainty head failed (`R2=-3.639`),
   PCA was more damaging than the candidate, and random rollout controls went off-manifold. No shared
   causal subspace candidate or workspace was accepted.
+- Deep manifold-controlled study (`WM-T0-004`) ran from clean commit `6785fb1` in `31.22` seconds.
+  Test interval coverage was `0.887`, but OOD uncertainty AUC was only `0.574`; hidden uncertainty
+  R2 was `-1.327`/`0.232`. Candidate direct damage (`3.652`/`1.239`) was below matched random-control
+  p95 (`9.252`/`4.369`) at both hidden sites. No shared candidate or workspace was found.
 - GPT-2 Medium smoke (`LLM-GPT2-001`) directly intervened at `transformer.h.12.resid_post`; mean absolute logit delta was `0.0797`, intervention-JEPA MSE was `0.00220` vs no-change `0.0114`, effect correlation `0.976`. This is a small causal-mediation smoke, not a J-space/workspace discovery.
 - Strengthened GPT-2 study (`LLM-GPT2-002`) generated 288 direct outcomes from clean commit
   `8fbab8c`. On unseen prompts and magnitude, local-Jacobian MSE was `7.79e-7`, bilinear
@@ -175,4 +178,8 @@ Validated CPU smoke results:
 
 ## Limitations
 
-This VPS has no GPU and limited free disk. Real Qwen instrumentation through Hugging Face, published JEPA checkpoints, Tier 1/Tier 2 datasets, and scientifically meaningful Jacobian/SAE work remain blocked until a larger resource profile is active. GPT-2 Medium weights are cached locally under `.cache/` and ignored by Git. `LLM-GPT2-002` took `647.85` seconds, exceeding the 10-minute CPU expectation by `47.85` seconds.
+This VPS has no GPU. Real Qwen instrumentation through Hugging Face, published JEPA checkpoints,
+Tier 1/Tier 2 datasets, and scientifically meaningful Jacobian/SAE work remain blocked until a
+larger resource profile is active. GPT-2 Medium weights are cached locally under `.cache/` and
+ignored by Git. `LLM-GPT2-002` took `647.85` seconds, exceeding the 10-minute CPU expectation by
+`47.85` seconds.

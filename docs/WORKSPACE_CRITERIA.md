@@ -84,3 +84,21 @@ specificity decision.
 This repair still cannot establish J-space equivalence. Anthropic's J-space is a sparse nonnegative
 token-aligned frame with report, directed modulation, reasoning, flexible reuse, and selective
 necessity tests. `WM-T0-004` is only a narrower test for a shared causal hidden subspace.
+
+## WM-T0-004 Result
+
+The repair worked methodologically but returned a null scientific result:
+
+- candidate patch density ratios were `1.029` and `1.018`, and `63/64` plus `64/64` random controls
+  met the registered density/magnitude match;
+- five-dimensional candidates captured only `0.635` and `0.701` minimum consumer sensitivity,
+  below `0.75`;
+- uncertainty-head R2 was `-1.327` and `0.232`, below `0.50`;
+- candidate direct damage (`3.652`, `1.239`) was below random-control p95 (`9.252`, `4.369`);
+- multistep/one-step ratios were high (`6.03`, `1.95`), but multistep damage still remained below
+  matched-control p95, so the accumulation was not specific;
+- PCA controls had much larger perturbation RMS and were correctly rejected as unmatched.
+
+Result: no shared causal candidate and no workspace. The strongest positive finding is that
+conditional donor resampling supplies usable empirical-manifold controls; it does not reveal a
+privileged subspace in this model.
