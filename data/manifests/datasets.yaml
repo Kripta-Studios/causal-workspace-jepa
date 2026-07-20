@@ -16,7 +16,8 @@ datasets:
     resource_modes_allowed: [cpu_vps, gpu_12gb, gpu_cluster]
     purpose: tiny action-conditioned dynamics
     leakage_risks: trajectory_seed_overlap
-    status: NOT_STARTED
+    status: SMOKE_VALIDATED
+    smoke_manifest: data/manifests/tier0_smoke_manifest.json
   qwen_real:
     canonical_name: Qwen hidden-state interventions
     source: Hugging Face Qwen

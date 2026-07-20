@@ -4,8 +4,7 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 
 ## Current Status
 
-- `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, and standard-library tests.
-- `IMPLEMENTED_UNVALIDATED`: Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and smoke experiment runner. The clean committed run is pending.
+- `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: intervention experiments and mock Qwen experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, GPT-2/GPT-style real model smoke tests, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
@@ -116,14 +115,17 @@ Tier 0 data is generated locally from explicit seeds and must stay below 512 MB 
 
 ## Latest Validated Results
 
-Milestone 0 validates only the control plane:
+Validated CPU smoke results:
 
 - CPU resource profile loads through the local config parser.
 - `doctor` checks disk, CPU count, and GPU-profile blocking.
 - core intervention and model protocol dataclasses serialize correctly.
 - no heavy download occurs.
-
-The tiny JEPA smoke experiment has an exploratory dirty-run pass, but the committed metrics are intentionally pending until the code is committed and rerun cleanly.
+- Tier 0 smoke generation created five deterministic local datasets totaling 79,217 bytes.
+- Tiny JEPA smoke (`WM-T0-001`) ran from clean code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
+- `WM-T0-001` evidence level: Availability. It validates plumbing and controls, not a causal mechanism.
+- Tiny JEPA conditioned latent MSE: `1.09e-09`; mean baseline: `0.249`; no-action: `0.135`; shuffled-action: `0.153`.
+- Planner true cost: `1.479`; random rollout mean cost: `1.939`.
 
 ## Limitations
 

@@ -13,6 +13,9 @@
 - Implemented a tiny NumPy action-conditioned JEPA with fixed encoder, ridge-fitted predictor, save/load, named activation points, and no-action/shuffled-action controls.
 - Implemented a random-shooting planner and PointMass closed-loop cost check.
 - Added Milestone 1 tests. Current full test command passes 14 tests.
+- Committed and pushed Milestone 1 code as `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
+- Reran Tier 0 generation and `WM-T0-001` tiny JEPA smoke from clean committed code.
+- Prepared committed summaries: `data/manifests/tier0_smoke_manifest.json`, `artifacts/metrics/tiny_jepa_smoke.json`, and `artifacts/metrics/tiny_jepa_smoke.provenance.json`.
 
 ### Discovered
 
@@ -20,8 +23,10 @@
 - `pytest` is not installed, but NumPy is available system-wide.
 - The runbook contains a GPT-2/GPT2-medium note that conflicts with the user instruction not to download weights or install Transformers. For this run it is treated as `BLOCKED_RESOURCE`.
 - A first dirty-run tiny JEPA smoke pass succeeded; generated summaries were removed before the code commit so the final reported metrics can be rerun from committed code.
+- Final smoke provenance reports `git_dirty: false` and code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
+- `WM-T0-001` beat the mean, no-action, and shuffled-action baselines on latent prediction, and the planner beat average random rollout cost. This is evidence level Availability only.
 
 ### Next Ideas
 
-- Commit and push the Milestone 1 code, then rerun Tier 0 generation and tiny JEPA smoke from clean committed code.
+- Commit and push the Milestone 1 result artifacts and docs.
 - Milestone 2 should add intervention/probe/circuit primitives and the mock Qwen pipeline.

@@ -8,7 +8,7 @@
 - [x] Add typed interfaces.
 - [x] Run tests.
 - [x] Run `git diff --check`.
-- [ ] Commit and push.
+- [x] Commit and push.
 
 ## Milestone 1
 
@@ -19,8 +19,9 @@
 - [x] Add tests.
 - [x] Run tests.
 - [x] Run `git diff --check`.
-- [ ] Commit and push.
-- [ ] Rerun smoke from committed code and commit metrics.
+- [x] Commit and push code.
+- [x] Rerun smoke from committed code.
+- [ ] Commit and push metrics/docs.
 
 ## Milestone 2
 

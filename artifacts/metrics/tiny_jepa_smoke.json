@@ -1,0 +1,34 @@
+{
+  "all_passed": true,
+  "checkpoint": "artifacts/checkpoints/tiny_jepa_smoke.npz",
+  "conditioned_latent_mse": 1.093934498541671e-09,
+  "dataset": "data/processed/tier0_smoke/pointmass2d.npz",
+  "evidence_level": "Availability",
+  "experiment_id": "WM-T0-001",
+  "first_step_position": [
+    -0.6063575744628906,
+    0.8625014424324036
+  ],
+  "latent_dim": 16,
+  "mean_baseline_latent_mse": 0.24916456639766693,
+  "no_action_latent_mse": 0.13531547784805298,
+  "passes": {
+    "beats_mean_baseline": true,
+    "beats_no_action": true,
+    "beats_shuffled_action": true,
+    "planner_beats_random": true,
+    "reload_matches": true
+  },
+  "planner_first_action": [
+    -0.0019813841208815575,
+    -0.6023483872413635
+  ],
+  "planner_predicted_cost": 1.4791712760925293,
+  "planner_true_cost": 1.4791598320007324,
+  "random_rollout_mean_cost": 1.938533022068441,
+  "reload_latent_mse": 1.093934498541671e-09,
+  "seed": 0,
+  "shuffled_action_latent_mse": 0.15291918814182281,
+  "status": "SMOKE_VALIDATED",
+  "test_trajectories": 3
+}

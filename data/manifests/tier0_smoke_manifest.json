@@ -1,0 +1,234 @@
+{
+  "config": "configs/data/tier0_smoke.yaml",
+  "datasets": [
+    {
+      "actions_shape": [
+        16,
+        31,
+        2
+      ],
+      "bytes": 20019,
+      "metadata": {
+        "action_names": [
+          "ax",
+          "ay"
+        ],
+        "drag": 0.05,
+        "env": "PointMass2D",
+        "force_scale": 1.0,
+        "mass": 1.0,
+        "observation_noise": 0.0,
+        "seed": 0,
+        "state_names": [
+          "x",
+          "y",
+          "vx",
+          "vy"
+        ]
+      },
+      "name": "pointmass2d",
+      "observations_shape": [
+        16,
+        32,
+        4
+      ],
+      "path": "data/processed/tier0_smoke/pointmass2d.npz",
+      "sha256": "23f0d8534f5de9dc22008214dfed40d87b534d7fb83b815cec0b0e750a2d94b1",
+      "states_shape": [
+        16,
+        32,
+        4
+      ],
+      "transitions": 496
+    },
+    {
+      "actions_shape": [
+        16,
+        31,
+        1
+      ],
+      "bytes": 14891,
+      "metadata": {
+        "action_names": [
+          "horizontal_accel"
+        ],
+        "env": "BouncingBall2D",
+        "gravity": -9.8,
+        "restitution": 0.85,
+        "seed": 1,
+        "state_names": [
+          "x",
+          "y",
+          "vx",
+          "vy"
+        ]
+      },
+      "name": "bouncing_ball2d",
+      "observations_shape": [
+        16,
+        32,
+        4
+      ],
+      "path": "data/processed/tier0_smoke/bouncing_ball2d.npz",
+      "sha256": "daa92433c30a0c67bca72e5dedaab8e57a5ffbf2edb585ed95df6a2a328455c4",
+      "states_shape": [
+        16,
+        32,
+        4
+      ],
+      "transitions": 496
+    },
+    {
+      "actions_shape": [
+        16,
+        31,
+        2
+      ],
+      "bytes": 29813,
+      "metadata": {
+        "action_names": [
+          "force1_x",
+          "force1_y"
+        ],
+        "env": "TwoBodyCollision",
+        "radius": 0.08,
+        "restitution": 0.9,
+        "seed": 2,
+        "state_names": [
+          "x1",
+          "y1",
+          "vx1",
+          "vy1",
+          "mass1",
+          "x2",
+          "y2",
+          "vx2",
+          "vy2",
+          "mass2",
+          "contact"
+        ]
+      },
+      "name": "two_body_collision",
+      "observations_shape": [
+        16,
+        32,
+        11
+      ],
+      "path": "data/processed/tier0_smoke/two_body_collision.npz",
+      "sha256": "382d69a2f1c84a12a2c4318648fb660d1825d7bb8b7588054e61631811076739",
+      "states_shape": [
+        16,
+        32,
+        11
+      ],
+      "transitions": 496
+    },
+    {
+      "actions_shape": [
+        16,
+        31,
+        1
+      ],
+      "bytes": 2821,
+      "metadata": {
+        "action_names": [
+          "up",
+          "down",
+          "left",
+          "right"
+        ],
+        "env": "TinyMaze",
+        "goal": [
+          4,
+          4
+        ],
+        "grid_size": 5,
+        "seed": 3,
+        "state_names": [
+          "x",
+          "y",
+          "goal_x",
+          "goal_y",
+          "manhattan_distance"
+        ],
+        "walls": [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "name": "tiny_maze",
+      "observations_shape": [
+        16,
+        32,
+        5
+      ],
+      "path": "data/processed/tier0_smoke/tiny_maze.npz",
+      "sha256": "c5464de695412733784c4441c32c29cfdba39e843025e87ce0a19b4f2c195040",
+      "states_shape": [
+        16,
+        32,
+        5
+      ],
+      "transitions": 496
+    },
+    {
+      "actions_shape": [
+        16,
+        31,
+        2
+      ],
+      "bytes": 11673,
+      "metadata": {
+        "action_names": [
+          "dx",
+          "dy"
+        ],
+        "env": "MiniPush",
+        "mask_names": [
+          "goal",
+          "object",
+          "agent"
+        ],
+        "resolution": 32,
+        "seed": 4,
+        "state_names": [
+          "agent_x",
+          "agent_y",
+          "object_x",
+          "object_y",
+          "goal_x",
+          "goal_y"
+        ]
+      },
+      "name": "minipush",
+      "observations_shape": [
+        16,
+        32,
+        32,
+        32
+      ],
+      "path": "data/processed/tier0_smoke/minipush.npz",
+      "sha256": "0e8dcdae5333ef76dc041aba95e94bf0201c71b35130a74c7a5137884bddbebd",
+      "states_shape": [
+        16,
+        32,
+        6
+      ],
+      "transitions": 496
+    }
+  ],
+  "output_dir": "data/processed/tier0_smoke",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 0,
+  "total_bytes": 79217
+}

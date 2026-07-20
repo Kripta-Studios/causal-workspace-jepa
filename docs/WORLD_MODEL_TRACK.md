@@ -1,6 +1,6 @@
 # World Model Track
 
-Status: `IMPLEMENTED_UNVALIDATED`.
+Status: `SMOKE_VALIDATED`.
 
 Initial implementation order:
 
@@ -13,3 +13,9 @@ Initial implementation order:
 7. workspace criteria with null-result-safe controls: pending Milestone 3.
 
 Published world-model adapters are `BLOCKED_RESOURCE` on the CPU VPS.
+
+Validated CPU smoke:
+
+- `WM-T0-001` ran on PointMass2D with code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
+- Conditioned latent MSE: `1.09e-09`; mean baseline: `0.249`; no-action: `0.135`; shuffled-action: `0.153`.
+- This validates deterministic execution and action-conditioning plumbing only. It is not causal mediation evidence.
