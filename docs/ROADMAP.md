@@ -40,9 +40,13 @@ Status: `ACTIVE` for CPU-safe causal audit; `BLOCKED_RESOURCE` for GPU-dependent
 - [done] Repair the original action-patch methodology and rerun from committed code.
 - [done] Validate shared-subspace discovery with known positive and negative controls.
 - [done] Run `WM-T0-003` with five frozen downstream consumers and matched random/PCA controls.
-- Strengthen GPT-2 Medium with prompt/intervention holdouts and required baselines.
+- [done] Strengthen GPT-2 Medium with prompt/intervention holdouts and required baselines.
 
 `WM-T0-003` completed with a null result. Its follow-up must use a valid uncertainty consumer and
 manifold-matched rollout controls before any shared-subspace claim is reconsidered.
+
+`LLM-GPT2-002` completed with a negative nonlinear-advantage result. Continue on GPU with semantic,
+combined, resampling, and larger-magnitude interventions; preserve prompt-local Jacobians as the
+primary strong baseline.
 
 Use `configs/resource/gpu_12gb.yaml` for selected Qwen and published JEPA continuation. Use `gpu_cluster` for Qwen3-30B-A3B and broad Jacobian/activation studies.

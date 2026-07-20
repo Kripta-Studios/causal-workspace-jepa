@@ -1,0 +1,223 @@
+{
+  "activation_budget_bytes": 67108864,
+  "activation_storage_estimate_bytes": 1393459,
+  "best_heldout_prompt_model": "local_finite_difference_jacobian",
+  "dataset_bytes": 87378,
+  "dataset_sha256": "06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf",
+  "direct_selected_logit_mean_abs_delta": 0.04862202165855302,
+  "direct_top_token_change_rate": 0.0,
+  "directions": 2,
+  "evidence_level": "Causal mediation",
+  "examples": 288,
+  "experiment_id": "LLM-GPT2-002",
+  "free_disk_gb_before_model_run": 6.18,
+  "heldout_layer": 18,
+  "heldout_layer_examples": 8,
+  "heldout_prompt_examples": 16,
+  "hypotheses": [
+    {
+      "claim": "A nonlinear intervention predictor beats a prompt-local Jacobian.",
+      "evidence_level": "Causal mediation",
+      "id": "H-LLM-01",
+      "supported": false
+    },
+    {
+      "claim": "The bilinear meta-state beats no-change and linear regression.",
+      "evidence_level": "Causal mediation",
+      "id": "H-LLM-02",
+      "supported": true
+    },
+    {
+      "claim": "The best predicted effects correlate with direct execution above 0.5.",
+      "evidence_level": "Causal mediation",
+      "id": "H-LLM-06",
+      "supported": true
+    }
+  ],
+  "limitations": [
+    "GPT-2 Medium is not Qwen.",
+    "Coordinate steering is not a discovered semantic feature or J-space direction.",
+    "The study has one seed, eight local prompts, selected positions, and selected outputs."
+  ],
+  "magnitudes": [
+    -1.0,
+    -0.5,
+    -0.25,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "max_sequence_length": 24,
+  "model": "gpt2-medium",
+  "prompts": 8,
+  "runtime_seconds": 647.846525312998,
+  "seed": 0,
+  "selected_layers": [
+    6,
+    12,
+    18
+  ],
+  "splits": {
+    "heldout_layer_prompt_and_magnitude": {
+      "examples": 8,
+      "models": {
+        "bilinear_intervention_jepa": {
+          "effect_correlation": 0.3865535059824766,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 5.78403560211882e-05,
+          "logit_mse": 0.020116271451115608,
+          "mse": 0.010087056085467339,
+          "sign_accuracy": 0.64453125
+        },
+        "corpus_averaged_jacobian": {
+          "effect_correlation": 0.7614630760060753,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 2.663548912096303e-05,
+          "logit_mse": 0.0055375914089381695,
+          "mse": 0.0027821133844554424,
+          "sign_accuracy": 0.67578125
+        },
+        "linear_regression": {
+          "effect_correlation": 0.45312808824588297,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 5.264321589493193e-05,
+          "logit_mse": 0.011975932866334915,
+          "mse": 0.006014288403093815,
+          "sign_accuracy": 0.640625
+        },
+        "local_finite_difference_jacobian": {
+          "effect_correlation": 0.9999981509218536,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 6.25289819922159e-11,
+          "logit_mse": 7.420493375320802e-08,
+          "mse": 3.7133730756977457e-08,
+          "sign_accuracy": 0.99609375
+        },
+        "mean_effect": {
+          "effect_correlation": 0.001409826241918683,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 8.041610999498516e-05,
+          "logit_mse": 0.01237483974546194,
+          "mse": 0.0062276278622448444,
+          "sign_accuracy": 0.5
+        },
+        "mlp": {
+          "effect_correlation": 0.07199648061200999,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 6.478246359620243e-05,
+          "logit_mse": 0.013426017947494984,
+          "mse": 0.006745399907231331,
+          "sign_accuracy": 0.4921875
+        },
+        "nearest_neighbor": {
+          "effect_correlation": 0.7937666448449581,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 4.907117545371875e-05,
+          "logit_mse": 0.004667186643928289,
+          "mse": 0.002358128782361746,
+          "sign_accuracy": 0.63671875
+        },
+        "no_change": {
+          "effect_correlation": 0.0,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 8.041610999498516e-05,
+          "logit_mse": 0.012374849990010262,
+          "mse": 0.006227633450180292,
+          "sign_accuracy": 0.0
+        },
+        "sparse_context_linear": {
+          "effect_correlation": 0.4502947905829642,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 5.264323772280477e-05,
+          "logit_mse": 0.011976492591202259,
+          "mse": 0.006014567334204912,
+          "sign_accuracy": 0.642578125
+        }
+      }
+    },
+    "heldout_prompt_and_magnitude": {
+      "examples": 16,
+      "models": {
+        "bilinear_intervention_jepa": {
+          "effect_correlation": 0.6972646562345983,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 1.0864830073842313e-05,
+          "logit_mse": 0.006986655294895172,
+          "mse": 0.003498760052025318,
+          "sign_accuracy": 0.5302734375
+        },
+        "corpus_averaged_jacobian": {
+          "effect_correlation": 0.3445515030704324,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 4.564104528981261e-06,
+          "logit_mse": 0.012698807753622532,
+          "mse": 0.006351686082780361,
+          "sign_accuracy": 0.5166015625
+        },
+        "linear_regression": {
+          "effect_correlation": 0.2213556872917187,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 9.916013368638232e-06,
+          "logit_mse": 0.012709406204521656,
+          "mse": 0.0063596609979867935,
+          "sign_accuracy": 0.5283203125
+        },
+        "local_finite_difference_jacobian": {
+          "effect_correlation": 0.999944100724101,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 3.7464897850725265e-10,
+          "logit_mse": 1.558015924274514e-06,
+          "mse": 7.791952612024033e-07,
+          "sign_accuracy": 0.9990234375
+        },
+        "mean_effect": {
+          "effect_correlation": 0.0028553398264763784,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 1.5159408576437272e-05,
+          "logit_mse": 0.012906514108181,
+          "mse": 0.006460837088525295,
+          "sign_accuracy": 0.4990234375
+        },
+        "mlp": {
+          "effect_correlation": 0.061322329850649324,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 8.17172258393839e-06,
+          "logit_mse": 0.01471373625099659,
+          "mse": 0.00736095430329442,
+          "sign_accuracy": 0.5419921875
+        },
+        "nearest_neighbor": {
+          "effect_correlation": 0.3618041515346007,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 5.9414032875793055e-06,
+          "logit_mse": 0.011241177096962929,
+          "mse": 0.005623559467494488,
+          "sign_accuracy": 0.6162109375
+        },
+        "no_change": {
+          "effect_correlation": 0.0,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 1.5159408576437272e-05,
+          "logit_mse": 0.01290653645992279,
+          "mse": 0.006460848264396191,
+          "sign_accuracy": 0.0
+        },
+        "sparse_context_linear": {
+          "effect_correlation": 0.22131627469501466,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 9.916003364196513e-06,
+          "logit_mse": 0.012709523551166058,
+          "mse": 0.006359719671308994,
+          "sign_accuracy": 0.5283203125
+        }
+      }
+    }
+  },
+  "status": "SMOKE_VALIDATED",
+  "train_examples": 96,
+  "train_layers": [
+    6,
+    12
+  ],
+  "train_prompts": 6
+}

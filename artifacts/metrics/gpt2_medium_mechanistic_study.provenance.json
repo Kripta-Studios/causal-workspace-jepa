@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/gpt2_medium_mechanistic_study.yaml",
+  "dataset_sha256": "06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf",
+  "git_commit": "8fbab8c0a791cca8b34ba8e1e49664f16e79674d",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/gpt2_medium_mechanistic_study.json",
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 0,
+  "time_utc": "2026-07-20T15:02:05.266169+00:00"
+}

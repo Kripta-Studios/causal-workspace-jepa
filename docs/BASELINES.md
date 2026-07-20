@@ -1,6 +1,6 @@
 # Baselines
 
-Status: `IMPLEMENTED_UNVALIDATED` for CPU methods; published/GPU baselines remain blocked.
+Status: `SMOKE_VALIDATED` for implemented CPU methods; published/GPU baselines remain blocked.
 
 ## World Model
 
@@ -41,3 +41,8 @@ Success must not be declared from beating only a trivial baseline.
 and a learned SAE transport. Its `sparse_context_linear` baseline uses top-k compressed context and
 must not be described as an SAE. The prompt-local finite-difference Jacobian is the primary strong
 baseline.
+
+Measured `LLM-GPT2-002` result: the prompt-local Jacobian won by a large margin on both held-out
+splits. Bilinear Intervention-JEPA ranked second on unseen prompts/magnitude but last on the held-out
+layer. The MLP did not outperform linear/no-change. Keep the local Jacobian as a mandatory baseline;
+nonlinear models are not justified for unit coordinate steering in this tested range.

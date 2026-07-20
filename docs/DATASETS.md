@@ -24,5 +24,7 @@ LeWorldModel, JEPA-WMs, C-JEPA, V-JEPA, DROID, RoboCasa, ManiSkill, and SkyJEPA 
 
 `LLM-GPT2-002` is configured to generate 288 local GPT-2 Medium residual-intervention outcomes from
 eight checked-in prompt strings, three selected layers, two coordinates, and six magnitudes. The
-float16 activation shard is ignored; `data/manifests/gpt2_medium_interventions.json` will record its
-checksum, split, selected sites, and size after a clean run. Status: `IMPLEMENTED_UNVALIDATED`.
+float16 activation shard is ignored; `data/manifests/gpt2_medium_interventions.json` records its
+checksum, split, selected sites, and size. The clean run produced an 87,378-byte shard with SHA-256
+`06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf`. Status:
+`SMOKE_VALIDATED`.

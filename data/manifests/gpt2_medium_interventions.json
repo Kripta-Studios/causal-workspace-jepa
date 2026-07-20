@@ -1,0 +1,52 @@
+{
+  "bytes": 87378,
+  "canonical_name": "gpt2-medium-residual-interventions-v2",
+  "compressed_bytes": 87378,
+  "config": "configs/experiments/gpt2_medium_mechanistic_study.yaml",
+  "download_command": "none; local_files_only=true",
+  "dtype": "float16",
+  "examples": 288,
+  "generation_command": "python scripts/run_experiment.py --config configs/experiments/gpt2_medium_mechanistic_study.yaml",
+  "leakage_controls": [
+    "prompt",
+    "magnitude",
+    "layer"
+  ],
+  "license": "MIT model license; repository-authored prompts",
+  "modalities": [
+    "residual_state",
+    "intervention",
+    "hidden_delta",
+    "logit_delta"
+  ],
+  "path": "data/activations/gpt2_medium_v2.npz",
+  "prompt_split": {
+    "test": 2,
+    "train": 6
+  },
+  "purpose": "held-out prediction of direct GPT-2 residual intervention effects",
+  "resource_modes_allowed": [
+    "cpu_vps_explicit_override",
+    "gpu_12gb"
+  ],
+  "selected_layers": [
+    6,
+    12,
+    18
+  ],
+  "selected_positions": "last_non_padding_token",
+  "sha256": "06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf",
+  "shapes": {
+    "context": [
+      288,
+      1024
+    ],
+    "target": [
+      288,
+      64
+    ]
+  },
+  "source": "locally cached Hugging Face gpt2-medium",
+  "status": "GENERATED_LOCAL",
+  "version": "LLM-GPT2-002 seed 0"
+}

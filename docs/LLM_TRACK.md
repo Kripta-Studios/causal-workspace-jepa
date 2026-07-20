@@ -28,7 +28,7 @@ Validated GPT-2 Medium smoke:
 
 Strengthened GPT-2 Medium study:
 
-- `LLM-GPT2-002` is preregistered and implemented, but not yet executed.
+- `LLM-GPT2-002` ran from clean commit `8fbab8c` and generated a checksummed 288-outcome dataset.
 - It batches 288 direct residual interventions across eight prompts, layers `6/12/18`, two
   coordinates, and six magnitudes while storing only selected positions and outputs.
 - Prompt, magnitude, and layer holdouts are explicit; training uses six prompts, layers `6/12`, and
@@ -36,4 +36,10 @@ Strengthened GPT-2 Medium study:
   layer-18 stress split.
 - Required baselines include a prompt-local finite-difference Jacobian, corpus-averaged Jacobian,
   linear and bilinear regressions, trained MLP, nearest neighbor, and sparse-context transport.
-- The model is loaded from the existing local cache only. This remains GPT-2 evidence, not Qwen.
+- On held-out prompts/magnitude, local-Jacobian MSE was `7.79e-7`, bilinear Intervention-JEPA
+  `0.003499`, and no-change `0.006461`. The bilinear model captured some context-dependent effect but
+  did not beat the strong local baseline.
+- On held-out layer 18, bilinear MSE `0.01009` was worse than no-change `0.006228`; cross-layer
+  transfer failed. The MLP also failed and no intervention changed the top token.
+- The model loaded from the existing local cache only. This remains selected-output GPT-2 causal
+  smoke evidence, not Qwen, behavior-level, feature-semantic, or workspace evidence.

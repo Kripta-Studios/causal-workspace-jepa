@@ -24,3 +24,6 @@ Status: `ACTIVE`.
 - `ACTIVE`: `LLM-GPT2-002` is larger than the original smoke but still has one seed, eight local
   prompts, coordinate interventions, and selected outputs. Its local Jacobian uses extra direct
   small-magnitude executions and must be compared on fidelity, not runtime.
+- `ACTIVE`: `LLM-GPT2-002` took `647.85` seconds, exceeding the CPU profile's 10-minute expectation
+  by `47.85` seconds. The result is retained, but this configuration must not be described as
+  within the runtime guard.

@@ -69,6 +69,6 @@
 - [x] Implement linear, bilinear, trained MLP, nearest-neighbor, sparse-context, local Jacobian, and
   corpus-averaged Jacobian baselines.
 - [x] Add offline split, predictor, and resource-limit tests.
-- [ ] Commit and push `LLM-GPT2-002` code before execution.
-- [ ] Run `LLM-GPT2-002` from clean committed code.
+- [x] Commit and push `LLM-GPT2-002` code before execution.
+- [x] Run `LLM-GPT2-002` from clean committed code.
 - [ ] Commit and push its manifest, metrics, provenance, and synchronized docs.

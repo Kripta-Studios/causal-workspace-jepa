@@ -80,3 +80,10 @@ Registered before execution on 2026-07-20.
 - Storage: 288 prompt-layer-direction-magnitude outcomes, float16 ignored activation shard, selected
   layers/positions only, and a hard 64 MB estimate budget. A checksum manifest is committed.
 - Resources: local cached `gpt2-medium` only; sequence length `24`; no downloads and no GPU claim.
+
+Measured result: H-LLM-01 failed because local-Jacobian MSE was `7.79e-7` versus `0.003499`
+for bilinear Intervention-JEPA and `0.007361` for the MLP. The restricted H-LLM-02 test passed
+because bilinear MSE beat no-change and linear regression on unseen prompts/magnitude, but it failed
+to transfer to held-out layer 18. The restricted H-LLM-06 correlation threshold passed only because
+the prompt-local Jacobian uses direct small-magnitude probes; this is not the full circuit-ranking
+hypothesis from `AGENTS.md`.

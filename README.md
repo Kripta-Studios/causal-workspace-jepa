@@ -11,8 +11,9 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 - `SMOKE_VALIDATED`: multi-consumer workspace detector with planted shared/disjoint controls. The
   tiny JEPA result is null after uncertainty, PCA, and off-manifold rollout-control failures.
 - `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
-- `IMPLEMENTED_UNVALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions,
-  prompt/magnitude/layer holdouts, a trained MLP, and local/corpus Jacobian baselines.
+- `SMOKE_VALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions. The local
+  Jacobian dominates learned meta-models; bilinear compression helps on unseen prompts but fails on
+  the held-out layer.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
@@ -79,9 +80,8 @@ python scripts/run_experiment.py \
 python scripts/audit_reproducibility.py
 ```
 
-The Tier 0, tiny JEPA, mock-Qwen, Milestone 3 JEPA, and both GPT-2 Medium commands are
-implemented. `LLM-GPT2-002` is not validated until it runs from committed code. The mock-Qwen
-command uses a deterministic local mock model, not Qwen weights.
+The Tier 0, tiny JEPA, mock-Qwen, Milestone 3 JEPA, and both GPT-2 Medium commands are implemented
+and smoke validated. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 
@@ -160,7 +160,12 @@ Validated CPU smoke results:
   PCA was more damaging than the candidate, and random rollout controls went off-manifold. No shared
   causal subspace candidate or workspace was accepted.
 - GPT-2 Medium smoke (`LLM-GPT2-001`) directly intervened at `transformer.h.12.resid_post`; mean absolute logit delta was `0.0797`, intervention-JEPA MSE was `0.00220` vs no-change `0.0114`, effect correlation `0.976`. This is a small causal-mediation smoke, not a J-space/workspace discovery.
+- Strengthened GPT-2 study (`LLM-GPT2-002`) generated 288 direct outcomes from clean commit
+  `8fbab8c`. On unseen prompts and magnitude, local-Jacobian MSE was `7.79e-7`, bilinear
+  Intervention-JEPA `0.00350`, linear regression `0.00636`, and no-change `0.00646`. Bilinear
+  compression therefore beat weak regressions but did not beat the strong Jacobian. On held-out
+  layer 18 it was worse than no-change. No intervention changed the top token.
 
 ## Limitations
 
-This VPS has no GPU and limited free disk. Real Qwen instrumentation through Hugging Face, published JEPA checkpoints, Tier 1/Tier 2 datasets, and scientifically meaningful Jacobian/SAE work remain blocked until a larger resource profile is active. GPT-2 Medium weights are cached locally under `.cache/` and ignored by Git.
+This VPS has no GPU and limited free disk. Real Qwen instrumentation through Hugging Face, published JEPA checkpoints, Tier 1/Tier 2 datasets, and scientifically meaningful Jacobian/SAE work remain blocked until a larger resource profile is active. GPT-2 Medium weights are cached locally under `.cache/` and ignored by Git. `LLM-GPT2-002` took `647.85` seconds, exceeding the 10-minute CPU expectation by `47.85` seconds.

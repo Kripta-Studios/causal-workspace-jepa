@@ -77,12 +77,31 @@
 
 - Worktree was clean at pushed commit `93431c3` before starting the next code milestone.
 - Audited every repository Markdown file and all committed provenance logs. Corrected stale
-  statements in the pending GPT-2 code milestone: the original action patch is superseded,
+  statements during the GPT-2 code milestone: the original action patch is superseded,
   `WM-T0-003` is no longer pending, and cached GPT-2 is allowed while Qwen remains blocked.
 - Implemented `LLM-GPT2-002`: 288 batched direct interventions, local-only model loading, storage
   budget/checksum manifest, prompt/magnitude/layer holdouts, linear and bilinear predictors, trained
   MLP, nearest-neighbor and sparse-context baselines, and prompt-local/corpus Jacobians.
 - Preregistered all splits and thresholds before execution. Do not change them after seeing results.
-- Current offline suite: 34 tests pass. Next exact steps are full audit, commit/push code, run
-  `configs/experiments/gpt2_medium_mechanistic_study.yaml` from the clean commit, then document and
-  push the measured result.
+- At the preregistration checkpoint, 34 tests passed before code commit/push and clean execution.
+  The measured result is recorded below.
+
+### LLM-GPT2-002 Result
+
+- Ran from clean commit `8fbab8c`; provenance reports `git_dirty: false` and no model download.
+- Generated 288 direct residual-intervention outcomes and an ignored 87,378-byte float16 shard.
+  Committed manifest checksum:
+  `06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf`.
+- Primary unseen-prompt/magnitude result: local Jacobian MSE `7.79e-7`, bilinear
+  Intervention-JEPA `0.003499`, linear `0.006360`, no-change `0.006461`, MLP `0.007361`.
+- H-LLM-01 nonlinear advantage failed. The narrow H-LLM-02 compression test passed because
+  bilinear beat linear/no-change, but local direct linearization was about 4,490 times lower MSE.
+- Held-out layer 18: bilinear MSE `0.01009` was worse than no-change `0.006228`; cross-layer transfer
+  failed. Local Jacobian remained nearly exact (`3.71e-8`).
+- No intervention changed the top token. This is hidden/logit causal mediation only, not behavior,
+  semantic feature, J-space, workspace, Qwen, or consciousness evidence.
+- Runtime was `647.85` seconds, exceeding the 10-minute CPU expectation by `47.85` seconds; record
+  this as a resource-limit miss.
+- Best next LLM experiment: on `gpu_12gb`, use semantic directions, activation patch/resampling,
+  combined interventions, larger magnitudes, and enough prompts/seeds to expose genuine nonlinearity.
+  Keep prompt-local Jacobians as the baseline to beat.

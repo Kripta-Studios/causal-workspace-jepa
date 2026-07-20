@@ -2,16 +2,18 @@
 
 Status: `SMOKE_VALIDATED`.
 
-The current results are CPU-scale smoke validation plus one tiny JEPA specificity result and one GPT-2 Medium direct-intervention smoke. No workspace/J-space-like mechanism has been discovered.
+The current results are CPU-scale smoke validation, corrected tiny-JEPA causal tests, and two GPT-2
+Medium direct-intervention studies. No workspace/J-space-like mechanism has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | pending | `SMOKE_VALIDATED` |
+| CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | `12fce84` | `SMOKE_VALIDATED` |
 | WM-T0-001 | Tiny action-conditioned JEPA predicts PointMass2D latent transitions better than mean, no-action, and shuffled-action controls in the CPU smoke setting. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | `artifacts/metrics/tiny_jepa_smoke.json` | `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4` | `SMOKE_VALIDATED` |
 | LLM-MOCK-001 | Mock intervention-JEPA predicts held-out direct intervention effects better than no-change, mean-effect, and linear-context baselines in a deterministic mock transformer. | Availability | `configs/experiments/mock_qwen_intervention_jepa_smoke.yaml` | `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` | `85c1dbfbe9c824bcca415af13f4a6f34acc95267` | `SMOKE_VALIDATED` |
 | WM-T0-002 | Tiny JEPA latent displacement decodes action better than endpoints; replaying explicit action-input coordinates exactly mediates the donor action effect against norm-matched controls. | Specificity | `configs/experiments/tier0_mechanistic_study.yaml` | `artifacts/metrics/tier0_mechanistic_study.json` | `315d8cfa3e9640808e316176f45b84c31410c0f8` | `SMOKE_VALIDATED` |
 | LLM-GPT2-001 | GPT-2 Medium residual-stream steering at layer 12 causes measurable downstream hidden/logit changes, and a tiny intervention-JEPA predicts held-out effects better than no-change in this smoke setting. | Causal mediation | `configs/experiments/gpt2_medium_intervention_smoke.yaml` | `artifacts/metrics/gpt2_medium_intervention_smoke.json` | `59795a4280b1c8cb372eea000f30de584476dde6` | `SMOKE_VALIDATED` |
 | WM-T0-003 | The workspace detector passes planted shared/disjoint controls, but the tiny JEPA five-consumer candidate fails consumer validity, PCA specificity, and rollout-control validity; no workspace was found. | Specificity | `configs/experiments/workspace_discovery_study.yaml` | `artifacts/metrics/workspace_discovery_study.json` | `5223a54ea96fbb6b0481120301c78547e8aabff4` | `SMOKE_VALIDATED` |
+| LLM-GPT2-002 | GPT-2 Medium intervention effects are almost exactly local-linear in this coordinate/magnitude regime; bilinear meta-model compression beats weak regressions on held-out prompts but not a local Jacobian and does not transfer to a held-out layer. | Causal mediation | `configs/experiments/gpt2_medium_mechanistic_study.yaml` | `artifacts/metrics/gpt2_medium_mechanistic_study.json` | `8fbab8c0a791cca8b34ba8e1e49664f16e79674d` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -88,3 +90,23 @@ Interpretation: the detector can recognize a planted shared subspace, but this t
 not survive adversarial controls. The three-dimensional direction set mostly tracks the ordinary
 physical-state manifold; the uncertainty readout is invalid and arbitrary random projection is not
 a valid rollout control because it drives the linear model far off its training manifold.
+
+`LLM-GPT2-002` key metrics:
+
+- direct outcomes: `288`; train examples: `96`; primary held-out examples: `16`;
+- selected-logit mean absolute direct effect: `0.04862`; top-token change rate: `0.0`;
+- primary local-Jacobian MSE/correlation: `7.79e-7` / `0.99994`;
+- primary bilinear Intervention-JEPA MSE/correlation: `0.003499` / `0.6973`;
+- primary linear/no-change MSE: `0.006360` / `0.006461`;
+- primary trained-MLP MSE/correlation: `0.007361` / `0.0613`;
+- held-out-layer bilinear MSE: `0.01009`, worse than no-change `0.006228`;
+- held-out-layer local-Jacobian MSE/correlation: `3.71e-8` / `0.999998`;
+- H-LLM-01 nonlinear advantage: `false`; restricted H-LLM-02 causal compression: `true`;
+- runtime: `647.85` seconds, exceeding the CPU profile expectation by `47.85` seconds.
+
+Interpretation: unit coordinate interventions up to magnitude one are effectively local-linear at
+the selected GPT-2 sites and outputs. A context-conditioned bilinear predictor captures some
+prompt-general effect structure, but the local direct Jacobian is approximately 4,490 times lower
+MSE and cross-layer transfer fails. This is evidence against using a JEPA meta-model for this easy
+linear regime, not evidence against nonlinear meta-models for larger, semantic, combined, or
+off-manifold interventions. No behavior change or GPT-2 workspace was found.
