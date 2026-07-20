@@ -21,7 +21,7 @@
 - [x] Run `git diff --check`.
 - [x] Commit and push code.
 - [x] Rerun smoke from committed code.
-- [ ] Commit and push metrics/docs.
+- [x] Commit and push metrics/docs.
 
 ## Milestone 2
 

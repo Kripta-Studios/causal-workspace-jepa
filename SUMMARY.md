@@ -15,7 +15,7 @@
 - Added Milestone 1 tests. Current full test command passes 14 tests.
 - Committed and pushed Milestone 1 code as `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
 - Reran Tier 0 generation and `WM-T0-001` tiny JEPA smoke from clean committed code.
-- Prepared committed summaries: `data/manifests/tier0_smoke_manifest.json`, `artifacts/metrics/tiny_jepa_smoke.json`, and `artifacts/metrics/tiny_jepa_smoke.provenance.json`.
+- Committed and pushed result summaries as `b0b7796`: `data/manifests/tier0_smoke_manifest.json`, `artifacts/metrics/tiny_jepa_smoke.json`, and `artifacts/metrics/tiny_jepa_smoke.provenance.json`.
 
 ### Discovered
 
@@ -28,5 +28,4 @@
 
 ### Next Ideas
 
-- Commit and push the Milestone 1 result artifacts and docs.
 - Milestone 2 should add intervention/probe/circuit primitives and the mock Qwen pipeline.
