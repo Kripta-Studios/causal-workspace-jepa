@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "command": "python scripts/run_experiment.py --config configs/experiments/gpt2_medium_intervention_smoke.yaml",
+  "git_commit": "59795a4280b1c8cb372eea000f30de584476dde6",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/gpt2_medium_intervention_smoke.json",
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 0,
+  "time_utc": "2026-07-20T13:21:24.816255+00:00"
+}

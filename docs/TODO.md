@@ -43,4 +43,5 @@
 - [x] Test action-coordinate patch specificity against controls.
 - [x] Evaluate workspace criteria and record null result.
 - [x] Run GPT-2 Medium hidden-state intervention smoke under user override.
-- [ ] Commit and push metrics/docs.
+- [x] Commit and push Tier 0 mechanistic metrics.
+- [ ] Commit and push GPT-2 metrics/docs.

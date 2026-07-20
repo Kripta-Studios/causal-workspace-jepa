@@ -37,7 +37,8 @@
 - Ran `WM-T0-002` Milestone 3 tiny-JEPA mechanistic study. Displacement action R2 is nearly 1.0; endpoint action R2 values are much weaker. Action-coordinate patching has recovery `0.984` versus negative matched controls. Workspace result is null: no J-space-like candidate found.
 - Under explicit user override, created `.venv`, installed `transformers`/`safetensors`, downloaded `gpt2-medium`, and ran `LLM-GPT2-001`.
 - GPT-2 Medium result: direct residual steering at `transformer.h.12.resid_post` changed logits with mean absolute delta `0.0797`; tiny intervention-JEPA MSE `0.00220` beat no-change `0.0114`.
+- Clean provenance commits: `WM-T0-002` ran on `e5db93866cf35efb2a6757728890e29eae0dee4d`; `LLM-GPT2-001` ran on `59795a4280b1c8cb372eea000f30de584476dde6`.
 
 ### Next Ideas
 
-- Commit and push Milestone 3 and GPT-2 Medium code, metrics, and docs.
+- Commit and push GPT-2 Medium metrics/docs.
