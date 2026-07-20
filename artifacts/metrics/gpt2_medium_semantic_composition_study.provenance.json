@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/gpt2_medium_semantic_composition_study.yaml",
+  "dataset_sha256": "adb4751bd3c9ca3c26139c47dac0423fd82b43515ccf9c56b5b706a78782f631",
+  "git_commit": "1e57e30218295a6e6802c2db16cf81c353d8d77d",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/gpt2_medium_semantic_composition_study.json",
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 11,
+  "time_utc": "2026-07-20T20:45:48.285467+00:00"
+}

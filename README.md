@@ -20,8 +20,9 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 - `SMOKE_VALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions. The local
   Jacobian dominates learned meta-models; bilinear compression helps on unseen prompts but fails on
   the held-out layer.
-- `PREREGISTERED`: `LLM-GPT2-003` uses two disjoint-calibration contrast directions, 72 bounded
-  direct outcomes, singles-only training, and held-out prompt compositions. It has not been run.
+- `SMOKE_VALIDATED`: `LLM-GPT2-003` contrast-direction composition study. Effects remained almost
+  additive; prompt-local Jacobians generalized to compositions, while all singles-only learned
+  predictors failed on held-out prompts. All three registered hypotheses failed.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
@@ -97,9 +98,8 @@ python scripts/run_experiment.py \
 python scripts/audit_reproducibility.py
 ```
 
-The Tier 0, tiny JEPA, mock-Qwen, four Milestone 3 JEPA studies, and first two GPT-2 Medium commands
-are smoke validated. `LLM-GPT2-003` is preregistered but not yet run. The mock-Qwen command uses a
-deterministic local mock model, not Qwen weights.
+The Tier 0, tiny JEPA, mock-Qwen, four Milestone 3 JEPA studies, and all three GPT-2 Medium commands
+are smoke validated. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 
@@ -192,6 +192,11 @@ Validated CPU smoke results:
   Intervention-JEPA `0.00350`, linear regression `0.00636`, and no-change `0.00646`. Bilinear
   compression therefore beat weak regressions but did not beat the strong Jacobian. On held-out
   layer 18 it was worse than no-change. No intervention changed the top token.
+- Semantic-composition study (`LLM-GPT2-003`) generated 72 outcomes from clean commit `1e57e30` in
+  `392.85` seconds. Held-out composition interaction was only `0.043%` of effect power. Prompt-local
+  Jacobian MSE was `0.000990`, versus MLP `0.725`, bilinear `1.346`, and no-change `0.418`. The
+  bilinear model fit seen-prompt compositions but failed on unseen prompts. Two of 72 interventions
+  changed the top token. No semantic feature, J-space, workspace, or Qwen result is claimed.
 
 ## Limitations
 

@@ -31,7 +31,7 @@ checksum, split, selected sites, and size. The clean run produced an 87,378-byte
 `06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf`. Status:
 `SMOKE_VALIDATED`.
 
-`LLM-GPT2-003` is preregistered to generate 72 local contrast-direction outcomes. Its ignored
-float16 shard will store six prompt contexts, two constructed directions, single/composed
-coefficients, and selected hidden/logit deltas under a 16 MB estimate cap. A checksum manifest will
-be committed only after clean execution. Status: `PREREGISTERED`.
+`LLM-GPT2-003` generated 72 local contrast-direction outcomes in an ignored 24,933-byte float16
+shard. `data/manifests/gpt2_medium_semantic_v3.json` records SHA-256
+`adb4751bd3c9ca3c26139c47dac0423fd82b43515ccf9c56b5b706a78782f631`, prompt splits, shapes,
+and leakage controls. Status: `SMOKE_VALIDATED`.

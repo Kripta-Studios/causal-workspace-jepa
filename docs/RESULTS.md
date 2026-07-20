@@ -2,7 +2,7 @@
 
 Status: `SMOKE_VALIDATED`.
 
-The current results are CPU-scale smoke validation, corrected tiny/deep-JEPA causal tests, and two
+The current results are CPU-scale smoke validation, corrected tiny/deep-JEPA causal tests, and three
 GPT-2 Medium direct-intervention studies. No workspace/J-space-like mechanism has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
@@ -16,6 +16,7 @@ GPT-2 Medium direct-intervention studies. No workspace/J-space-like mechanism ha
 | LLM-GPT2-002 | GPT-2 Medium intervention effects are almost exactly local-linear in this coordinate/magnitude regime; bilinear meta-model compression beats weak regressions on held-out prompts but not a local Jacobian and does not transfer to a held-out layer. | Causal mediation | `configs/experiments/gpt2_medium_mechanistic_study.yaml` | `artifacts/metrics/gpt2_medium_mechanistic_study.json` | `8fbab8c0a791cca8b34ba8e1e49664f16e79674d` | `SMOKE_VALIDATED` |
 | WM-T0-004 | Conditional donor controls repair the prior off-manifold confound, but neither learned hidden site has a valid shared sensitivity subspace or specificity over matched controls; no workspace is found. | Specificity | `configs/experiments/manifold_workspace_study.yaml` | `artifacts/metrics/manifold_workspace_study.json` | `6785fb1684a04ff1639d6aad326ed6e11df0bf6a` | `SMOKE_VALIDATED` |
 | WM-T0-005 | A multi-task three-seed JEPA fails held-out action, consumer-transfer, shared-sensitivity, and task-counterfactual gates; no shared task-workspace candidate or workspace is found. | Generalization | `configs/experiments/multitask_workspace_study.yaml` | `artifacts/metrics/multitask_workspace_study.json` | `7a9e510e84e7166ce862ca7f52fd598630e8f06a` | `SMOKE_VALIDATED` |
+| LLM-GPT2-003 | Magnitude-6 contrast-direction compositions are almost additive; prompt-local Jacobians predict them, but learned/corpus transports fail on unseen prompts despite excellent seen-prompt scores. | Generalization | `configs/experiments/gpt2_medium_semantic_composition_study.yaml` | `artifacts/metrics/gpt2_medium_semantic_composition_study.json` | `1e57e30218295a6e6802c2db16cf81c353d8d77d` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -153,3 +154,23 @@ coordinate swaps did not move their outputs toward the donor task. Relative wins
 random controls can occur even with the wrong absolute effect; the recovery floor and tangent
 controls prevented that false positive. This is evidence against this architecture, not against
 workspace-like mechanisms in larger or jointly trained JEPAs.
+
+`LLM-GPT2-003` key metrics:
+
+- runtime: `392.85` seconds from clean commit `1e57e30`; outcomes: `72`; shard: 24,933 bytes;
+- held-out composition effect power: `0.4177`; direct interaction MSE: `0.000179`; interaction
+  fraction: `0.000429`, below the preregistered `0.05` nonlinear-regime floor;
+- held-out prompt-local large-additive MSE/correlation: `0.000179` / `0.99979`;
+- held-out prompt-local Jacobian MSE/correlation: `0.000990` / `0.99892`;
+- held-out no-change/MLP/linear/bilinear MSE: `0.4177` / `0.7252` / `0.7746` / `1.3460`;
+- held-out learned-model correlations were negative; H-LLM-01/02/03 all failed;
+- seen-prompt bilinear MSE/correlation: `0.001096` / `0.99851`, demonstrating prompt memorization;
+- selected-logit mean absolute delta: `0.3992`; top-token changes: `2/72` overall and `1/24`
+  composed outcomes;
+- no Qwen, semantic feature, J-space, workspace, or reusable circuit claim is supported.
+
+Interpretation: these constructed contrast edits causally affect GPT-2 output, but their downstream
+effects compose almost linearly even at magnitude six. A few same-prompt finite-difference probes
+provide an accurate local transport; averaging across prompts or fitting four prompt contexts does
+not. The sharp seen/held-out gap is the most useful result: a meta-model can appear to learn
+composition while only memorizing prompt-specific Jacobians.

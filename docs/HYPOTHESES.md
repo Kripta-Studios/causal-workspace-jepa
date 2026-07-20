@@ -212,3 +212,10 @@ rule may change after direct outcomes are inspected.
   held-out prompt compositions.
 - Resources: cached `gpt2-medium`, `local_files_only=true`, sequence length `24`, 12 intervention
   batches, 16 MB activation estimate cap, 600-second runtime guard, no downloads, and no GPU claim.
+
+Measured result from clean commit `1e57e30`: all three hypotheses failed. On held-out prompt
+compositions, direct interaction was only `0.000429` of effect power, below `0.05`; MLP MSE was
+`0.725` versus prompt-local Jacobian `0.000990`. Bilinear MSE was `1.346`, worse than no-change
+`0.418` and linear regression `0.775`. The best learned predictor had negative effect correlation.
+On seen prompts, bilinear MSE was `0.00110` with correlation `0.9985`, so the held-out split exposed
+severe prompt memorization. Restricted H-LLM-01, H-LLM-02, and H-LLM-03 are false for this run.

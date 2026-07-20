@@ -48,8 +48,8 @@
 
 ### Next Ideas
 
-- On `gpu_12gb`, test GPT-2/Qwen semantic, composed, resampling, and larger interventions while
-  retaining prompt-local Jacobians as the baseline to beat.
+- On `gpu_12gb`, test GPT-2/Qwen activation replacement, resampling, patching, or sparse-feature
+  clamps while retaining prompt-local Jacobians and held-out prompts as controls.
 
 ### Adversarial Milestone 3 Re-audit
 
@@ -108,8 +108,28 @@
 - Predictors train only on 32 singles from four prompts. The primary test is eight compositions from
   two unseen prompts. Required controls are prompt-local and corpus additive Jacobians plus direct
   addition of the matching large single effects. Direction labels describe construction, not proven
-  semantics. The full pre-commit suite passes 43 tests; doctor, reproducibility audit, compilation,
-  and `git diff --check` pass. Commit/push this preregistration before executing it once.
+  semantics. The full pre-commit suite passed 43 tests; doctor, reproducibility audit, compilation,
+  and `git diff --check` passed. The implementation was committed and pushed as `1e57e30`.
+- Executed `LLM-GPT2-003` once from clean commit `1e57e30`; provenance is clean, runtime was
+  `392.85` seconds, estimated storage was 350,156 bytes under a 16 MB cap, and the ignored shard is
+  24,933 bytes with SHA-256
+  `adb4751bd3c9ca3c26139c47dac0423fd82b43515ccf9c56b5b706a78782f631`.
+- Held-out compositions were almost exactly additive: direct interaction was `0.000429` of effect
+  power. Prompt-local large-single addition MSE was `0.000179`; prompt-local finite-difference MSE
+  was `0.000990`, correlation `0.9989`.
+- Every learned held-out-prompt predictor failed: MLP MSE `0.725`, linear `0.775`, bilinear `1.346`,
+  versus no-change `0.418`; learned correlations were negative. All registered H-LLM-01/02/03
+  decisions are false.
+- Bilinear prediction looked excellent on seen-prompt compositions (`0.00110` MSE, `0.9985`
+  correlation), proving that a non-held-out evaluation would have yielded a false positive. Two of
+  72 direct edits changed the top token, including one of 24 compositions, but direction semantics
+  and mechanism reuse remain unvalidated.
+- Practical conclusion: on this GPT-2 site, local Jacobians are useful but corpus/learned transport
+  is not reusable across prompts. The next discriminating intervention should replace/resample
+  activations or clamp learned sparse features, not add more steering directions to this grid.
+- Post-run audit: 43 tests pass; nine metric/provenance pairs and seven local checksums validate;
+  doctor reports 39.2 GB free; compilation and `git diff --check` pass. Commit and push the result
+  milestone, then verify `main` is clean and synchronized with `origin/main`.
 - Audited every repository Markdown file and all committed provenance logs. Corrected stale
   statements during the GPT-2 code milestone: the original action patch is superseded,
   `WM-T0-003` is no longer pending, and cached GPT-2 is allowed while Qwen remains blocked.
@@ -138,9 +158,9 @@
   this as a resource-limit miss.
 - Metrics, clean provenance, checksum manifest, and synchronized result docs were committed and
   pushed as `fdf6506`.
-- Best next LLM experiment: on `gpu_12gb`, use semantic directions, activation patch/resampling,
-  combined interventions, larger magnitudes, and enough prompts/seeds to expose genuine nonlinearity.
-  Keep prompt-local Jacobians as the baseline to beat.
+- The earlier next step was semantic/composed steering; `LLM-GPT2-003` has now tested and rejected
+  that additive regime. On `gpu_12gb`, use activation replacement/resampling, sparse-feature clamps,
+  and enough prompts/seeds to expose genuine nonlinearity. Keep prompt-local Jacobians as baseline.
 - Strengthened `scripts/audit_reproducibility.py`: it now validates every metrics/provenance pair,
   clean commit metadata, JSON structure, and all available local dataset checksums instead of only
   checking that seven control-plane paths exist.

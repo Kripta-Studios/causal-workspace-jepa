@@ -94,6 +94,6 @@
 - [x] Implement 72 direct outcomes with singles-only predictor training.
 - [x] Add prompt-local, corpus, and direct-additive composition controls.
 - [x] Add offline grid, split, linearity, and interaction tests.
-- [ ] Commit and push the `LLM-GPT2-003` implementation.
-- [ ] Execute once from the clean implementation commit within 600 seconds.
-- [ ] Commit the checksummed manifest, metrics, provenance, and synchronized result docs.
+- [x] Commit and push the `LLM-GPT2-003` implementation (`1e57e30`).
+- [x] Execute once from the clean implementation commit within 600 seconds.
+- [x] Commit the checksummed manifest, metrics, provenance, and synchronized result docs.

@@ -1,5 +1,5 @@
 id: LLM-GPT2-003
-status: NOT_STARTED
+status: SMOKE_VALIDATED
 resource_profile: configs/resource/cpu_vps.yaml
 model: gpt2-medium
 seed: 11

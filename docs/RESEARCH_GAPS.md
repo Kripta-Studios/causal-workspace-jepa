@@ -17,6 +17,7 @@ Status: `ACTIVE`.
 - `WM-T0-005` showed that simply appending goal/mass context does not resolve those gaps: actions
   remained weak and post-hoc value/risk/uncertainty/action heads failed the held-out composition.
   The next architecture must train task-relevant consumers jointly or couple them to planning.
-- GPT-2 bilinear/MLP meta-models do not survive the prompt-local Jacobian, and bilinear transfer to an
-  unseen layer fails. Need larger, semantic, combined, resampling, or feature-space interventions
-  where nonlinear context dependence is plausible.
+- GPT-2 bilinear/MLP meta-models do not survive the prompt-local Jacobian. Coordinate and
+  contrast-direction steering remain additive, while transport across prompts/layers fails. The
+  useful next intervention classes are activation replacement/resampling, patching, and feature
+  clamps; more additive steering on this grid is not discriminating.

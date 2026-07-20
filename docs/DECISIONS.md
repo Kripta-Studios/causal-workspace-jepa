@@ -39,3 +39,6 @@
   train predictors on singles only, and reserve all composed targets for evaluation. Require direct
   large-single addition and prompt-local finite differences so a learned model cannot win against
   weak baselines alone.
+- Preserve the `LLM-GPT2-003` null. Seen-prompt bilinear success is memorization evidence, not
+  composition generalization. Do not add prompts or tune this observed grid; a continuation must
+  change intervention class to replacement, resampling, patching, or feature clamping.

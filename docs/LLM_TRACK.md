@@ -44,7 +44,7 @@ Strengthened GPT-2 Medium study:
 - The model loaded from the existing local cache only. This remains selected-output GPT-2 causal
   smoke evidence, not Qwen, behavior-level, feature-semantic, or workspace evidence.
 
-Preregistered semantic-composition follow-up:
+Semantic-composition follow-up:
 
 - `LLM-GPT2-003` constructs two orthogonal residual contrast directions from eight calibration
   prompts that never appear in train or test evaluation.
@@ -53,5 +53,10 @@ Preregistered semantic-composition follow-up:
   compositions from two unseen prompts.
 - Prompt-local finite difference, corpus transport, and direct addition of large single effects are
   mandatory baselines. Construction labels are not treated as validated feature semantics.
-- The run is bounded to 12 intervention batches, 16 MB estimated activation storage, cached weights,
-  and 600 seconds. Status: `PREREGISTERED`, not yet executed.
+- The clean run finished in `392.85` seconds with a 24,933-byte checksummed shard. Composition
+  interaction was only `0.043%` of effect power on held-out prompts. Prompt-local Jacobian MSE was
+  `0.000990`, but MLP/bilinear MSE was `0.725`/`1.346`, both worse than no-change `0.418`.
+- Bilinear prediction appeared excellent on seen-prompt compositions (`0.00110` MSE, `0.9985`
+  correlation) and then failed with negative correlation on unseen prompts. All registered
+  hypotheses failed. Two of 72 interventions changed the top token; this is sparse output mediation,
+  not evidence that the constructed directions have the proposed semantics.

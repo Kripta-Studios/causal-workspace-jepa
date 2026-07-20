@@ -46,3 +46,8 @@ Measured `LLM-GPT2-002` result: the prompt-local Jacobian won by a large margin 
 splits. Bilinear Intervention-JEPA ranked second on unseen prompts/magnitude but last on the held-out
 layer. The MLP did not outperform linear/no-change. Keep the local Jacobian as a mandatory baseline;
 nonlinear models are not justified for unit coordinate steering in this tested range.
+
+`LLM-GPT2-003` adds direct composition of matching magnitude-6 single effects. This is stronger
+than a finite-difference Jacobian because it isolates only the interaction residual at the tested
+magnitude. Held-out interaction was `0.043%` of effect power; prompt-local direct addition and
+finite differences dominated all learned models. Seen-prompt bilinear success did not transfer.

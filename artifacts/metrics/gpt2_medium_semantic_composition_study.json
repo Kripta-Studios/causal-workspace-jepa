@@ -1,0 +1,219 @@
+{
+  "activation_budget_bytes": 16777216,
+  "activation_storage_estimate_bytes": 350156,
+  "best_heldout_composition_learned_model": "mlp",
+  "calibration_prompt_sha256": "8961b1a0bc567a19bbf2b20dea8fa1bd91e3939d171287ed85aef4fcd229ead4",
+  "calibration_prompts": 8,
+  "composition_top_token_change_rate": 0.041666666666666664,
+  "dataset_bytes": 24933,
+  "dataset_sha256": "adb4751bd3c9ca3c26139c47dac0423fd82b43515ccf9c56b5b706a78782f631",
+  "direct_selected_logit_mean_abs_delta": 0.3991548827196109,
+  "direct_top_token_change_rate": 0.027777777777777776,
+  "direction_construction": {
+    "directions": [
+      "sentiment_contrast",
+      "geography_vs_biology_contrast"
+    ],
+    "domain_raw_norm": 92.658203125,
+    "labels_are_construction_only": true,
+    "orthogonalized_cosine": -2.7939677238464355e-09,
+    "raw_cosine": -0.027270540595054626,
+    "sentiment_raw_norm": 68.14299774169922
+  },
+  "evaluation_prompt_sha256": "a6172d4887d9e2f39107dfe8881effb700a649639344d7009b3fef9d8df35554",
+  "evidence_level": "Generalization",
+  "examples": 72,
+  "experiment_id": "LLM-GPT2-003",
+  "free_disk_gb_before_model_run": 39.386,
+  "heldout_prompt_composition_examples": 8,
+  "hypotheses": [
+    {
+      "claim": "The MLP predictor beats a prompt-local additive Jacobian.",
+      "evidence_level": "Generalization",
+      "id": "H-LLM-01",
+      "supported": false
+    },
+    {
+      "claim": "Bilinear causal compression beats no-change and linear regression.",
+      "evidence_level": "Generalization",
+      "id": "H-LLM-02",
+      "supported": false
+    },
+    {
+      "claim": "A singles-only predictor generalizes to held-out prompt compositions.",
+      "evidence_level": "Generalization",
+      "id": "H-LLM-03",
+      "supported": false
+    }
+  ],
+  "intervention_layer": 12,
+  "intervention_site": "transformer.h.12.resid_post",
+  "jacobian_epsilon": 0.5,
+  "large_magnitude": 6.0,
+  "limitations": [
+    "GPT-2 Medium is not Qwen.",
+    "Construction labels for contrast directions are not validated feature semantics.",
+    "The study uses one layer, six prompts, two directions, selected outputs, and one seed.",
+    "No result establishes J-space, a workspace, or behavior-level mechanism reuse."
+  ],
+  "model": "gpt2-medium",
+  "prompts": 6,
+  "runtime_seconds": 392.8472643030036,
+  "seed": 11,
+  "seen_prompt_composition_examples": 16,
+  "splits": {
+    "heldout_prompt_compositions": {
+      "composition_nonlinearity": {
+        "effect_power": 0.41773566603660583,
+        "interaction_fraction_of_effect": 0.0004292074692288043,
+        "interaction_mse": 0.00017929526802618057,
+        "interaction_rms": 0.013390118297691793
+      },
+      "examples": 8,
+      "models": {
+        "bilinear_intervention_jepa": {
+          "effect_correlation": -0.264002128024448,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.0003383037110324949,
+          "logit_mse": 2.691718339920044,
+          "mse": 1.3460283279418945,
+          "sign_accuracy": 0.5
+        },
+        "corpus_averaged_additive_jacobian": {
+          "effect_correlation": -0.27866359363289833,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.00020958308596163988,
+          "logit_mse": 1.5504640340805054,
+          "mse": 0.775336742401123,
+          "sign_accuracy": 0.5
+        },
+        "linear_regression": {
+          "effect_correlation": -0.2782853878148104,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.00020925099670421332,
+          "logit_mse": 1.5490641593933105,
+          "mse": 0.7746367454528809,
+          "sign_accuracy": 0.5
+        },
+        "mean_effect": {
+          "effect_correlation": 0.014324462670149096,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.0003591801505535841,
+          "logit_mse": 0.8348774313926697,
+          "mse": 0.4176183044910431,
+          "sign_accuracy": 0.5
+        },
+        "mlp": {
+          "effect_correlation": -0.1812634900962717,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.0003314069763291627,
+          "logit_mse": 1.4500216245651245,
+          "mse": 0.7251765131950378,
+          "sign_accuracy": 0.5390625
+        },
+        "no_change": {
+          "effect_correlation": 0.0,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.00035923835821449757,
+          "logit_mse": 0.8351120352745056,
+          "mse": 0.41773566603660583,
+          "sign_accuracy": 0.0
+        },
+        "prompt_local_additive_jacobian": {
+          "effect_correlation": 0.9989230835015774,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 9.935203024724615e-07,
+          "logit_mse": 0.001979931490495801,
+          "mse": 0.000990462489426136,
+          "sign_accuracy": 0.9947916666666666
+        },
+        "prompt_local_large_additive": {
+          "effect_correlation": 0.9997854080462708,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 3.4146441407756356e-07,
+          "logit_mse": 0.0003582490608096123,
+          "mse": 0.00017929526802618057,
+          "sign_accuracy": 0.9973958333333334
+        }
+      }
+    },
+    "seen_prompt_compositions": {
+      "composition_nonlinearity": {
+        "effect_power": 0.3217165768146515,
+        "interaction_fraction_of_effect": 0.000571178746392317,
+        "interaction_mse": 0.00018375767103862017,
+        "interaction_rms": 0.01355572465929506
+      },
+      "examples": 16,
+      "models": {
+        "bilinear_intervention_jepa": {
+          "effect_correlation": 0.9985117482948683,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 7.230647156575287e-07,
+          "logit_mse": 0.0021917272824794054,
+          "mse": 0.0010962252272292972,
+          "sign_accuracy": 0.9921875
+        },
+        "corpus_averaged_additive_jacobian": {
+          "effect_correlation": 0.7838267609270162,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 8.306231029564515e-05,
+          "logit_mse": 0.24834205210208893,
+          "mse": 0.12421256303787231,
+          "sign_accuracy": 0.8619791666666666
+        },
+        "linear_regression": {
+          "effect_correlation": 0.7850364262004059,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 8.269932732218876e-05,
+          "logit_mse": 0.24690403044223785,
+          "mse": 0.12349336594343185,
+          "sign_accuracy": 0.8619791666666666
+        },
+        "mean_effect": {
+          "effect_correlation": 0.02787125380644868,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.00044800457544624805,
+          "logit_mse": 0.6425456404685974,
+          "mse": 0.32149678468704224,
+          "sign_accuracy": 0.5026041666666666
+        },
+        "mlp": {
+          "effect_correlation": 0.9966431299512883,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 1.0309798199159559e-05,
+          "logit_mse": 0.017348505556583405,
+          "mse": 0.008679407648742199,
+          "sign_accuracy": 0.9817708333333334
+        },
+        "no_change": {
+          "effect_correlation": 0.0,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 0.00044808481470681727,
+          "logit_mse": 0.6429851055145264,
+          "mse": 0.3217165768146515,
+          "sign_accuracy": 0.0
+        },
+        "prompt_local_additive_jacobian": {
+          "effect_correlation": 0.9975565778616514,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 1.0887760026889737e-06,
+          "logit_mse": 0.0036401133984327316,
+          "mse": 0.0018206009408459067,
+          "sign_accuracy": 0.9895833333333334
+        },
+        "prompt_local_large_additive": {
+          "effect_correlation": 0.9997143006335774,
+          "evidence_level": "Causal mediation",
+          "hidden_mse": 2.6322257440369867e-07,
+          "logit_mse": 0.00036725206882692873,
+          "mse": 0.00018375767103862017,
+          "sign_accuracy": 0.99609375
+        }
+      }
+    }
+  },
+  "status": "SMOKE_VALIDATED",
+  "train_prompts": 4,
+  "train_single_examples": 32
+}
