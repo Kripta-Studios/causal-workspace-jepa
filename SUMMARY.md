@@ -110,3 +110,6 @@
 - Strengthened `scripts/audit_reproducibility.py`: it now validates every metrics/provenance pair,
   clean commit metadata, JSON structure, and all available local dataset checksums instead of only
   checking that seven control-plane paths exist.
+- The strengthened reproducibility audit and tests were committed and pushed as `3eedcb5`.
+- Final handoff target: full suite, doctor, checksum/provenance audit, and `git diff --check` must
+  pass; branch `main` must be clean and synchronized with `origin/main`.
