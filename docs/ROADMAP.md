@@ -23,7 +23,7 @@ Status: `SMOKE_VALIDATED`.
 
 ## Milestone 2: Interpretability Foundation
 
-Status: `IMPLEMENTED_UNVALIDATED`.
+Status: `SMOKE_VALIDATED`.
 
 - Activation naming and cache: implemented.
 - Intervention engine: implemented.
@@ -31,7 +31,7 @@ Status: `IMPLEMENTED_UNVALIDATED`.
 - Sparse dictionary placeholder suitable for CPU smoke: implemented.
 - Jacobian finite-difference checks: implemented.
 - Circuit graph schema and matched controls: implemented.
-- Mock transformer and intervention-JEPA smoke runner: implemented; clean metrics pending.
+- Mock transformer and intervention-JEPA smoke runner: validated in `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json`.
 
 ## Milestone 3+: Scientific Runs
 

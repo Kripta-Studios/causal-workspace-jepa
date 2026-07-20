@@ -1,0 +1,25 @@
+{
+  "all_passed": true,
+  "effect_correlation": 0.9999688241988822,
+  "evidence_level": "Availability",
+  "experiment_id": "LLM-MOCK-001",
+  "ijepa_mse": 1.317838069780919e-07,
+  "intervention_site": "blocks.1.mlp_out",
+  "linear_context_mse": 0.0021134584676474333,
+  "mean_effect_mse": 0.002113459398970008,
+  "model": "mock_transformer_not_qwen",
+  "no_change_mse": 0.0021134756971150637,
+  "passes": {
+    "beats_linear_context": true,
+    "beats_mean_effect": true,
+    "beats_no_change": true,
+    "positive_effect_correlation": true
+  },
+  "prompts": 64,
+  "seed": 0,
+  "source_site": "blocks.0.resid_post",
+  "status": "SMOKE_VALIDATED",
+  "target_site": "blocks.2.resid_post",
+  "test_examples": 128,
+  "train_examples": 384
+}

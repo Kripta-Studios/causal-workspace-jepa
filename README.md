@@ -5,7 +5,7 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 ## Current Status
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
-- `IMPLEMENTED_UNVALIDATED`: NumPy intervention operators, activation cache, ridge probes, sparse dictionary, finite-difference lenses, circuit graph I/O, mock transformer, and mock intervention-JEPA smoke runner. Clean committed mock metrics are pending.
+- `SMOKE_VALIDATED`: NumPy intervention operators, activation cache, ridge probes, sparse dictionary, finite-difference lenses, circuit graph I/O, mock transformer, and mock intervention-JEPA smoke runner.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, GPT-2/GPT-style real model smoke tests, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
@@ -127,6 +127,9 @@ Validated CPU smoke results:
 - `WM-T0-001` evidence level: Availability. It validates plumbing and controls, not a causal mechanism.
 - Tiny JEPA conditioned latent MSE: `1.09e-09`; mean baseline: `0.249`; no-action: `0.135`; shuffled-action: `0.153`.
 - Planner true cost: `1.479`; random rollout mean cost: `1.939`.
+- Mock intervention-JEPA smoke (`LLM-MOCK-001`) ran from clean code commit `85c1dbfbe9c824bcca415af13f4a6f34acc95267`.
+- Mock intervention-JEPA MSE: `1.32e-07`; no-change: `0.002113`; mean-effect: `0.002113`; linear-context: `0.002113`; effect correlation: `0.99997`.
+- `LLM-MOCK-001` evidence level: Availability. It validates the mock pipeline only and is not evidence about Qwen.
 
 ## Limitations
 

@@ -28,7 +28,10 @@
 - Implemented intervention operators: zero, mean, resample, patch, replace_feature, steer, project_out, scale, and suppress_module.
 - Implemented activation cache, stable site naming, finite-difference Jacobian, normalized patch recovery, ridge probes, random-label control, sparse dictionary, circuit graph JSON/GraphML, and mock transformer adapter.
 - Implemented mock intervention-JEPA smoke runner and tests. Exploratory dirty-run metrics passed, then were removed before the code commit.
+- Committed and pushed Milestone 2 code as `85c1dbfbe9c824bcca415af13f4a6f34acc95267`.
+- Reran `LLM-MOCK-001` from clean committed code. Provenance reports `git_dirty: false`.
+- Prepared committed summaries: `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` and `artifacts/metrics/mock_qwen_intervention_jepa_smoke.provenance.json`.
 
 ### Next Ideas
 
-- Commit and push Milestone 2 code, then rerun mock intervention-JEPA smoke from clean committed code.
+- Commit and push the Milestone 2 result artifacts and docs.

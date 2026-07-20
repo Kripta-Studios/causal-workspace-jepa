@@ -32,5 +32,6 @@
 - [x] Add tests.
 - [x] Run tests.
 - [x] Run `git diff --check`.
-- [ ] Commit and push code.
-- [ ] Rerun mock smoke from committed code and commit metrics/docs.
+- [x] Commit and push code.
+- [x] Rerun mock smoke from committed code.
+- [x] Commit and push metrics/docs.
