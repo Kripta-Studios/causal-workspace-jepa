@@ -1,0 +1,14 @@
+id: LLM-GPT2-001
+status: NOT_STARTED
+resource_profile: configs/resource/cpu_vps.yaml
+model: gpt2-medium
+seed: 0
+max_sequence_length: 24
+selected_layers: [0, 6, 12, 18, 23]
+prompts: 4
+output_metrics: artifacts/metrics/gpt2_medium_intervention_smoke.json
+cache_dir: .cache/huggingface
+torch_dtype: float32
+intervention_layer: 12
+intervention_magnitude: 1.0
+intervention_features: 2

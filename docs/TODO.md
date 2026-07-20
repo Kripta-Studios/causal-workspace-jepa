@@ -35,3 +35,12 @@
 - [x] Commit and push code.
 - [x] Rerun mock smoke from committed code.
 - [x] Commit and push metrics/docs.
+
+## Milestone 3
+
+- [x] Register and run Tier 0 mechanistic study.
+- [x] Test action displacement decodability.
+- [x] Test action-coordinate patch specificity against controls.
+- [x] Evaluate workspace criteria and record null result.
+- [x] Run GPT-2 Medium hidden-state intervention smoke under user override.
+- [ ] Commit and push metrics/docs.

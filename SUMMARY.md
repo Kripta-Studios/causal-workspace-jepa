@@ -34,7 +34,10 @@
 - Added `scripts/bootstrap_cpu.sh`, config `.gitkeep` files, and reporting stubs to complete the requested architecture.
 - `uv` is not installed on the VPS. The bootstrap script checks resources and reports the exact install command instead of auto-installing tools.
 - `/root/.cache/pip` is about 4.4 GB and was not modified because it may predate this task; free disk remains above the 4 GB guard.
+- Ran `WM-T0-002` Milestone 3 tiny-JEPA mechanistic study. Displacement action R2 is nearly 1.0; endpoint action R2 values are much weaker. Action-coordinate patching has recovery `0.984` versus negative matched controls. Workspace result is null: no J-space-like candidate found.
+- Under explicit user override, created `.venv`, installed `transformers`/`safetensors`, downloaded `gpt2-medium`, and ran `LLM-GPT2-001`.
+- GPT-2 Medium result: direct residual steering at `transformer.h.12.resid_post` changed logits with mean absolute delta `0.0797`; tiny intervention-JEPA MSE `0.00220` beat no-change `0.0114`.
 
 ### Next Ideas
 
-- Commit and push the final architecture/audit docs.
+- Commit and push Milestone 3 and GPT-2 Medium code, metrics, and docs.

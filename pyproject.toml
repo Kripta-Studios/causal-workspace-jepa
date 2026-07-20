@@ -21,6 +21,10 @@ dev = [
   "mypy>=1.10",
 ]
 cpu = []
+gpt2 = [
+  "transformers>=5.14",
+  "safetensors>=0.8",
+]
 gpu = [
   "torch>=2.4",
   "transformers>=4.45",

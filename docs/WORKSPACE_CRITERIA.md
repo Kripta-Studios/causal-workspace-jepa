@@ -1,6 +1,6 @@
 # Workspace Criteria
 
-Status: `SCAFFOLDED`.
+Status: `SMOKE_VALIDATED_NULL`.
 
 A workspace candidate is an experimental hypothesis, not an assumption.
 
@@ -26,3 +26,14 @@ Controls:
 - equal-dimensional ablations outside the candidate subspace.
 
 A null result is acceptable and must be reported.
+
+## Current Tier 0 Result
+
+`WM-T0-002` evaluated the tiny JEPA action-coordinate candidate.
+
+- Candidate: `predictor.input` action coordinates.
+- Positive evidence: action coordinates causally and selectively affect future latent prediction and planner cost.
+- Negative evidence: the model has only dynamics and planner-cost consumers; it has no value, risk, uncertainty, or reportability consumers.
+- Result: `workspace_found = false`.
+
+Conclusion: no JEPA analogue of Anthropic J-space has been discovered.

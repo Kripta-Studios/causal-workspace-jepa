@@ -1,0 +1,12 @@
+id: WM-T0-002
+status: NOT_STARTED
+resource_profile: configs/resource/cpu_vps.yaml
+seed: 0
+dataset: data/processed/tier0_smoke
+output_metrics: artifacts/metrics/tier0_mechanistic_study.json
+latent_dim: 16
+probe_ridge: 0.0001
+patch_pairs: 64
+control_seed: 17
+planner_horizon: 8
+planner_candidates: 128

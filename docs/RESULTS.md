@@ -2,13 +2,15 @@
 
 Status: `SMOKE_VALIDATED`.
 
-No causal scientific mechanism result has been produced yet. The current results are CPU smoke validation only.
+The current results are CPU-scale smoke validation plus one tiny JEPA specificity result and one GPT-2 Medium direct-intervention smoke. No workspace/J-space-like mechanism has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | pending | `SMOKE_VALIDATED` |
 | WM-T0-001 | Tiny action-conditioned JEPA predicts PointMass2D latent transitions better than mean, no-action, and shuffled-action controls in the CPU smoke setting. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | `artifacts/metrics/tiny_jepa_smoke.json` | `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4` | `SMOKE_VALIDATED` |
 | LLM-MOCK-001 | Mock intervention-JEPA predicts held-out direct intervention effects better than no-change, mean-effect, and linear-context baselines in a deterministic mock transformer. | Availability | `configs/experiments/mock_qwen_intervention_jepa_smoke.yaml` | `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` | `85c1dbfbe9c824bcca415af13f4a6f34acc95267` | `SMOKE_VALIDATED` |
+| WM-T0-002 | Tiny JEPA latent displacement decodes action better than endpoints, and patching explicit action coordinates selectively changes future latent predictions; no workspace candidate was found. | Specificity | `configs/experiments/tier0_mechanistic_study.yaml` | `artifacts/metrics/tier0_mechanistic_study.json` | pending | `SMOKE_VALIDATED` |
+| LLM-GPT2-001 | GPT-2 Medium residual-stream steering at layer 12 causes measurable downstream hidden/logit changes, and a tiny intervention-JEPA predicts held-out effects better than no-change in this smoke setting. | Causal mediation | `configs/experiments/gpt2_medium_intervention_smoke.yaml` | `artifacts/metrics/gpt2_medium_intervention_smoke.json` | pending | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -39,3 +41,29 @@ All future result tables must include `evidence_level`.
 - effect correlation: `0.9999688241988822`.
 
 This result is mock-only and must not be reported as Qwen evidence.
+
+`WM-T0-002` key metrics:
+
+- displacement action R2: `0.999999995077069`;
+- z[t] action R2: `-0.11095967931965078`;
+- z[t+1] action R2: `0.08287789864620154`;
+- action patch recovery: `0.984375`;
+- latent-control recovery: `-10.814138968475163`;
+- random-action-control recovery: `-0.3082856750115752`;
+- workspace found: `false`.
+
+Interpretation: the tiny model has a compact action-effect input subspace with specificity evidence. It is not a learned J-space-like workspace.
+
+`LLM-GPT2-001` key metrics:
+
+- model: `gpt2-medium`;
+- site: `transformer.h.12.resid_post`;
+- prompts: `4`;
+- direct intervention mean absolute logit delta: `0.07971649616956711`;
+- intervention-JEPA MSE: `0.0021958956494927406`;
+- no-change MSE: `0.01140519231557846`;
+- mean-effect MSE: `0.011404994875192642`;
+- linear-context MSE: `0.011405046097934246`;
+- effect correlation: `0.9760097933956744`.
+
+Interpretation: real GPT-2 Medium residual interventions affect downstream computation and can be meta-predicted in a tiny smoke setting. This does not establish a J-space or workspace.
