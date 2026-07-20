@@ -7,6 +7,7 @@ No scientific result has been produced yet.
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | pending | `SMOKE_VALIDATED` |
+| WM-T0-001 | Tiny JEPA smoke command is implemented and exploratory dirty-run checks passed. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | pending committed metrics | pending | `IMPLEMENTED_UNVALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 

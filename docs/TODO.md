@@ -12,11 +12,15 @@
 
 ## Milestone 1
 
-- [ ] Implement Tier 0 generators.
-- [ ] Add Tier 0 smoke config and manifest update.
-- [ ] Implement tiny NumPy JEPA.
-- [ ] Add planner and smoke experiment.
+- [x] Implement Tier 0 generators.
+- [x] Add Tier 0 smoke config and manifest update.
+- [x] Implement tiny NumPy JEPA.
+- [x] Add planner and smoke experiment.
+- [x] Add tests.
+- [x] Run tests.
+- [x] Run `git diff --check`.
 - [ ] Commit and push.
+- [ ] Rerun smoke from committed code and commit metrics.
 
 ## Milestone 2
 

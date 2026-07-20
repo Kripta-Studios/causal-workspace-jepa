@@ -1,22 +1,22 @@
 #!/usr/bin/env python
-"""Generate deterministic Tier 0 datasets.
-
-Implemented in Milestone 1. This placeholder is intentionally explicit so the
-CPU control plane can audit missing work without pretending data exists.
-"""
+"""Generate deterministic Tier 0 datasets."""
 
 from __future__ import annotations
 
 import argparse
+import json
 import sys
+
+from causal_workspace_jepa.data.synthetic.generate import generate_tier0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
-    parser.parse_args()
-    print("NOT_STARTED: Tier 0 generation is scheduled for Milestone 1", file=sys.stderr)
-    return 2
+    args = parser.parse_args()
+    manifest = generate_tier0(args.config)
+    print(json.dumps(manifest, indent=2, sort_keys=True))
+    return 0
 
 
 if __name__ == "__main__":

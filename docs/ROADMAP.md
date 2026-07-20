@@ -13,12 +13,13 @@ Status: `SMOKE_VALIDATED` once tests, diff check, commit, and push complete.
 
 ## Milestone 1: Tier 0 Environments And Tiny JEPA
 
-Status: `NOT_STARTED`.
+Status: `IMPLEMENTED_UNVALIDATED`.
 
 - Deterministic PointMass2D, BouncingBall2D, TwoBodyCollision, TinyMaze, and MiniPush smoke generator.
 - Tiny NumPy action-conditioned JEPA.
 - No-action and shuffled-action controls.
 - Simple planner and smoke metrics.
+- Clean committed smoke metrics pending.
 
 ## Milestone 2: Interpretability Foundation
 
