@@ -118,16 +118,17 @@ def run_tiny_jepa_smoke(config_path: str | Path) -> dict[str, Any]:
         },
     }
     metrics["all_passed"] = bool(all(metrics["passes"].values()))
+    provenance = collect_provenance(
+        command=f"python scripts/run_experiment.py --config {config_path}",
+        resource_profile=resource_profile,
+        seed=seed,
+    )
     output_path = Path(str(config.get("output_metrics", "artifacts/metrics/tiny_jepa_smoke.json")))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     write_provenance(
         "artifacts/metrics/tiny_jepa_smoke.provenance.json",
-        collect_provenance(
-            command=f"python scripts/run_experiment.py --config {config_path}",
-            resource_profile=resource_profile,
-            seed=seed,
-        ),
+        provenance,
         extra={"metrics": str(output_path), "all_passed": metrics["all_passed"]},
     )
     if not metrics["all_passed"]:
