@@ -30,3 +30,8 @@ float16 activation shard is ignored; `data/manifests/gpt2_medium_interventions.j
 checksum, split, selected sites, and size. The clean run produced an 87,378-byte shard with SHA-256
 `06a3a75c91076422d73fd62a85694c8366c4db854b2c303e203256adffe73abf`. Status:
 `SMOKE_VALIDATED`.
+
+`LLM-GPT2-003` is preregistered to generate 72 local contrast-direction outcomes. Its ignored
+float16 shard will store six prompt contexts, two constructed directions, single/composed
+coefficients, and selected hidden/logit deltas under a 16 MB estimate cap. A checksum manifest will
+be committed only after clean execution. Status: `PREREGISTERED`.

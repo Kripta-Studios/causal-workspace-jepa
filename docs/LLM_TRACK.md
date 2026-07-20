@@ -43,3 +43,15 @@ Strengthened GPT-2 Medium study:
   transfer failed. The MLP also failed and no intervention changed the top token.
 - The model loaded from the existing local cache only. This remains selected-output GPT-2 causal
   smoke evidence, not Qwen, behavior-level, feature-semantic, or workspace evidence.
+
+Preregistered semantic-composition follow-up:
+
+- `LLM-GPT2-003` constructs two orthogonal residual contrast directions from eight calibration
+  prompts that never appear in train or test evaluation.
+- It executes 72 outcomes at block 12: eight single-direction settings and four signed compositions
+  for each of six prompts. Predictors train on singles from four prompts and are tested on
+  compositions from two unseen prompts.
+- Prompt-local finite difference, corpus transport, and direct addition of large single effects are
+  mandatory baselines. Construction labels are not treated as validated feature semantics.
+- The run is bounded to 12 intervention batches, 16 MB estimated activation storage, cached weights,
+  and 600 seconds. Status: `PREREGISTERED`, not yet executed.

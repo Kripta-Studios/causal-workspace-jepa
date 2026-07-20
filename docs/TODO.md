@@ -87,3 +87,13 @@
 - [x] Commit and push the `WM-T0-005` implementation (`7a9e510`).
 - [x] Execute it once from the clean implementation commit.
 - [x] Record metrics, provenance, null-safe interpretation, and synchronized docs.
+
+## GPT-2 Semantic Composition Follow-up
+
+- [x] Preregister `LLM-GPT2-003` prompts, directions, magnitudes, splits, and thresholds.
+- [x] Implement 72 direct outcomes with singles-only predictor training.
+- [x] Add prompt-local, corpus, and direct-additive composition controls.
+- [x] Add offline grid, split, linearity, and interaction tests.
+- [ ] Commit and push the `LLM-GPT2-003` implementation.
+- [ ] Execute once from the clean implementation commit within 600 seconds.
+- [ ] Commit the checksummed manifest, metrics, provenance, and synchronized result docs.

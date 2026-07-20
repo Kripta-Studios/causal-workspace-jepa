@@ -20,6 +20,8 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 - `SMOKE_VALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions. The local
   Jacobian dominates learned meta-models; bilinear compression helps on unseen prompts but fails on
   the held-out layer.
+- `PREREGISTERED`: `LLM-GPT2-003` uses two disjoint-calibration contrast directions, 72 bounded
+  direct outcomes, singles-only training, and held-out prompt compositions. It has not been run.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
@@ -89,11 +91,15 @@ python scripts/run_experiment.py \
 python scripts/run_experiment.py \
   --config configs/experiments/gpt2_medium_mechanistic_study.yaml
 
+python scripts/run_experiment.py \
+  --config configs/experiments/gpt2_medium_semantic_composition_study.yaml
+
 python scripts/audit_reproducibility.py
 ```
 
-The Tier 0, tiny JEPA, mock-Qwen, four Milestone 3 JEPA studies, and both GPT-2 Medium commands are
-smoke validated. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
+The Tier 0, tiny JEPA, mock-Qwen, four Milestone 3 JEPA studies, and first two GPT-2 Medium commands
+are smoke validated. `LLM-GPT2-003` is preregistered but not yet run. The mock-Qwen command uses a
+deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 

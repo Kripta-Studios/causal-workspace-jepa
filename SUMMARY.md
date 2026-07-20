@@ -102,6 +102,14 @@
 - Practical conclusion: appending task context and fitting consumers afterward is not enough. A
   new JEPA architecture should train value/risk/action consumers or a planner jointly; do not tune
   the observed `WM-T0-005` seeds or thresholds.
+- Implemented and preregistered `LLM-GPT2-003` without running it: two orthogonalized residual
+  contrast directions from eight disjoint calibration prompts, six evaluation prompts, magnitude
+  `0.5` finite differences, magnitude `6.0` singles/compositions, and exactly 72 direct outcomes.
+- Predictors train only on 32 singles from four prompts. The primary test is eight compositions from
+  two unseen prompts. Required controls are prompt-local and corpus additive Jacobians plus direct
+  addition of the matching large single effects. Direction labels describe construction, not proven
+  semantics. The full pre-commit suite passes 43 tests; doctor, reproducibility audit, compilation,
+  and `git diff --check` pass. Commit/push this preregistration before executing it once.
 - Audited every repository Markdown file and all committed provenance logs. Corrected stale
   statements during the GPT-2 code milestone: the original action patch is superseded,
   `WM-T0-003` is no longer pending, and cached GPT-2 is allowed while Qwen remains blocked.

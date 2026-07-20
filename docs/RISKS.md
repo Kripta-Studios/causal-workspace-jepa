@@ -37,3 +37,6 @@ Status: `ACTIVE`.
 - `ACTIVE`: `LLM-GPT2-002` took `647.85` seconds, exceeding the CPU profile's 10-minute expectation
   by `47.85` seconds. The result is retained, but this configuration must not be described as
   within the runtime guard.
+- `ACTIVE`: `LLM-GPT2-003` calls its directions semantic only by contrast construction. Lexical,
+  syntax, and final-token differences remain confounds, so labels cannot support feature claims.
+  The run is limited to 12 batched interventions and must abort at the 600-second CPU guard.

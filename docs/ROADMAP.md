@@ -59,4 +59,8 @@ counterfactual gates jointly. Stop tuning this observed configuration.
 combined, resampling, and larger-magnitude interventions; preserve prompt-local Jacobians as the
 primary strong baseline.
 
+`LLM-GPT2-003` is preregistered on the CPU override path to test the semantic/composed subset of
+that continuation with only 72 outcomes and 12 forward batches. It must be committed before one
+clean execution; no observed-result tuning is allowed.
+
 Use `configs/resource/gpu_12gb.yaml` for selected Qwen and published JEPA continuation. Use `gpu_cluster` for Qwen3-30B-A3B and broad Jacobian/activation studies.

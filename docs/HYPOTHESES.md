@@ -177,3 +177,38 @@ because bilinear MSE beat no-change and linear regression on unseen prompts/magn
 to transfer to held-out layer 18. The restricted H-LLM-06 correlation threshold passed only because
 the prompt-local Jacobian uses direct small-magnitude probes; this is not the full circuit-ranking
 hypothesis from `AGENTS.md`.
+
+## LLM-GPT2-003 Preregistration
+
+Registered before execution on 2026-07-20. No magnitude, split, threshold, or direction-construction
+rule may change after direct outcomes are inspected.
+
+- Scope: restricted H-LLM-01, H-LLM-02, and H-LLM-03 on cached GPT-2 Medium. This is not Qwen,
+  J-space discovery, semantic-feature validation, or a workspace test.
+- Directions: at block `12` residual output and the final non-padding token, construct one contrast
+  from two positive versus two negative calibration prompts and one from two geography versus two
+  biology prompts. The eight calibration prompts are disjoint from all evaluation prompts. Normalize
+  the first direction and Gram-Schmidt orthogonalize the second. Labels describe construction only.
+- Evaluation data: six fixed neutral prompts; IDs `0-3` train and `4-5` are held out. Per prompt,
+  execute each direction singly at `+/-0.5` and `+/-6.0`, plus all four signed two-direction
+  compositions at magnitude `6.0`: exactly `72` direct outcomes in 12 intervention batches.
+- Split: linear, bilinear Intervention-JEPA, and MLP predictors train only on the 32 single-direction
+  outcomes from prompts `0-3`. The primary split is eight composed outcomes from held-out prompts.
+  The 16 composed outcomes on train prompts are descriptive. No composition target enters training.
+- Context/target: seed-11 fixed random projection of the clean source residual to 24 dimensions;
+  targets are 24 evenly spaced final-residual coordinates and 24 logit coordinates chosen using
+  clean train prompts only. The post-intervention target never enters context.
+- Baselines: no-change, train mean, linear regression, bilinear Intervention-JEPA, trained MLP,
+  prompt-local additive finite difference from `+/-0.5`, corpus-averaged additive finite difference,
+  and direct addition of the two same-prompt magnitude-6 single effects.
+- Nonlinearity: direct composition interaction is the MSE between the observed composed effect and
+  direct addition of its two large single effects, divided by observed effect power. H-LLM-01 can
+  pass only if this fraction is at least `0.05` and the MLP predictor beats the
+  prompt-local additive Jacobian on the primary split.
+- Causal compression: restricted H-LLM-02 passes only if bilinear Intervention-JEPA beats both
+  no-change and linear regression on primary raw effect MSE.
+- Composition: restricted H-LLM-03 passes only if the better bilinear-or-MLP predictor beats both
+  no-change and corpus-averaged Jacobian and has direct-effect correlation at least `0.50` on the
+  held-out prompt compositions.
+- Resources: cached `gpt2-medium`, `local_files_only=true`, sequence length `24`, 12 intervention
+  batches, 16 MB activation estimate cap, 600-second runtime guard, no downloads, and no GPU claim.

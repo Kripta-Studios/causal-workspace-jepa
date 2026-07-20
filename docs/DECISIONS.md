@@ -35,3 +35,7 @@
 - Preserve the `WM-T0-005` null without threshold or seed tuning. A future CPU JEPA study must change
   the architecture materially by jointly training task consumers or a planner; adding more post-hoc
   probes to the same representation is not a meaningful continuation.
+- For `LLM-GPT2-003`, derive directions only from disjoint calibration prompts, orthogonalize them,
+  train predictors on singles only, and reserve all composed targets for evaluation. Require direct
+  large-single addition and prompt-local finite differences so a learned model cannot win against
+  weak baselines alone.
