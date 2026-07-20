@@ -19,3 +19,10 @@ Smoke manifest: `data/manifests/tier0_smoke_manifest.json`; total compressed gen
 ## Tier 1 And Tier 2
 
 LeWorldModel, JEPA-WMs, C-JEPA, V-JEPA, DROID, RoboCasa, ManiSkill, and SkyJEPA assets are `BLOCKED_RESOURCE` or `BLOCKED_EXTERNAL` on this VPS.
+
+## LLM Intervention Data
+
+`LLM-GPT2-002` is configured to generate 288 local GPT-2 Medium residual-intervention outcomes from
+eight checked-in prompt strings, three selected layers, two coordinates, and six magnitudes. The
+float16 activation shard is ignored; `data/manifests/gpt2_medium_interventions.json` will record its
+checksum, split, selected sites, and size after a clean run. Status: `IMPLEMENTED_UNVALIDATED`.

@@ -49,3 +49,34 @@ Registered before execution on 2026-07-20.
   private subspaces under the same discovery rule.
 - Workspace decision: remains false in this study because goal/instruction controllability,
   depth/horizon evolution, and held-out task generalization are not tested.
+
+## LLM-GPT2-002 Preregistration
+
+Registered before execution on 2026-07-20.
+
+- Scope: CPU GPT-2 Medium causal meta-model study; not Qwen and not a J-space/workspace test.
+- Prompts: eight fixed local prompts; prompt IDs `0-5` train and `6-7` test.
+- Sites: residual output of GPT-2 blocks `6`, `12`, and `18`; layers `6/12` train and layer `18`
+  is held out. Only the final non-padding token is intervened on and captured.
+- Interventions: two fixed residual coordinates and magnitudes
+  `[-1.0, -0.5, -0.25, 0.25, 0.5, 1.0]`. Train magnitudes have absolute value at most `0.5`;
+  evaluation uses `+/-1.0`.
+- Context: the clean residual at the intervention site compressed by a seed-fixed 32-dimensional
+  random projection. The real post-intervention target is never an input.
+- Target: 32 evenly spaced final-residual coordinates and 32 logit coordinates selected using clean
+  training prompts only.
+- Primary split: held-out prompts and held-out `+/-1.0` magnitude at seen layers, 16 examples.
+- Stress split: held-out prompts, magnitude, and layer `18`, 8 examples. It is descriptive and does
+  not determine the primary hypothesis decisions.
+- H-LLM-01 passes only if the better of the bilinear Intervention-JEPA and trained MLP has lower raw
+  effect MSE than the prompt-local finite-difference Jacobian.
+- H-LLM-02 passes only if bilinear Intervention-JEPA MSE is lower than both no-change and linear
+  intervention regression.
+- H-LLM-06 smoke passes only if the best primary-split predictor has effect correlation greater than
+  `0.5` against direct executions.
+- Baselines: no-change, train mean, linear regression, bilinear Intervention-JEPA, trained MLP,
+  nearest neighbor, top-k sparse-context linear transport, prompt-local finite difference, and
+  corpus-averaged Jacobian.
+- Storage: 288 prompt-layer-direction-magnitude outcomes, float16 ignored activation shard, selected
+  layers/positions only, and a hard 64 MB estimate budget. A checksum manifest is committed.
+- Resources: local cached `gpt2-medium` only; sequence length `24`; no downloads and no GPU claim.

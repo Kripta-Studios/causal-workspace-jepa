@@ -1,0 +1,30 @@
+id: LLM-GPT2-002
+status: NOT_STARTED
+resource_profile: configs/resource/cpu_vps.yaml
+model: gpt2-medium
+seed: 0
+cache_dir: .cache/huggingface
+local_files_only: true
+max_sequence_length: 24
+prompts: 8
+train_prompts: 6
+selected_layers: [6, 12, 18]
+train_layers: [6, 12]
+heldout_layer: 18
+intervention_directions: 2
+magnitudes: [-1.0, -0.5, -0.25, 0.25, 0.5, 1.0]
+jacobian_epsilon: 0.25
+max_train_magnitude: 0.5
+test_magnitude: 1.0
+context_projection_dim: 32
+hidden_outputs: 32
+logit_outputs: 32
+sparse_context_features: 8
+ridge: 0.001
+mlp_hidden_dim: 64
+mlp_steps: 400
+mlp_learning_rate: 0.01
+activation_budget_mb: 64
+dataset_output: data/activations/gpt2_medium_v2.npz
+output_manifest: data/manifests/gpt2_medium_interventions.json
+output_metrics: artifacts/metrics/gpt2_medium_mechanistic_study.json

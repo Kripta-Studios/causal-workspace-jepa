@@ -12,7 +12,8 @@
 - Implemented deterministic Tier 0 generators: PointMass2D, BouncingBall2D, TwoBodyCollision, TinyMaze, and MiniPush.
 - Implemented a tiny NumPy action-conditioned JEPA with fixed encoder, ridge-fitted predictor, save/load, named activation points, and no-action/shuffled-action controls.
 - Implemented a random-shooting planner and PointMass closed-loop cost check.
-- Added Milestone 1 tests. Current full test command passes 14 tests.
+- Added Milestone 1 tests. At that milestone the full command passed 14 tests; the current suite has
+  32 tests.
 - Committed and pushed Milestone 1 code as `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
 - Reran Tier 0 generation and `WM-T0-001` tiny JEPA smoke from clean committed code.
 - Committed and pushed result summaries as `b0b7796`: `data/manifests/tier0_smoke_manifest.json`, `artifacts/metrics/tiny_jepa_smoke.json`, and `artifacts/metrics/tiny_jepa_smoke.provenance.json`.
@@ -21,7 +22,8 @@
 
 - `README.md` initially only contained the project title.
 - `pytest` is not installed, but NumPy is available system-wide.
-- The runbook contains a GPT-2/GPT2-medium note that conflicts with the user instruction not to download weights or install Transformers. For this run it is treated as `BLOCKED_RESOURCE`.
+- Historical decision: GPT-2 Medium was initially treated as `BLOCKED_RESOURCE`. A later explicit
+  user override and the final `AGENTS.md` CPU guard permitted the cached model under strict limits.
 - A first dirty-run tiny JEPA smoke pass succeeded; generated summaries were removed before the code commit so the final reported metrics can be rerun from committed code.
 - Final smoke provenance reports `git_dirty: false` and code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
 - `WM-T0-001` beat the mean, no-action, and shuffled-action baselines on latent prediction, and the planner beat average random rollout cost. This is evidence level Availability only.
@@ -34,15 +36,17 @@
 - Added `scripts/bootstrap_cpu.sh`, config `.gitkeep` files, and reporting stubs to complete the requested architecture.
 - `uv` is not installed on the VPS. The bootstrap script checks resources and reports the exact install command instead of auto-installing tools.
 - `/root/.cache/pip` is about 4.4 GB and was not modified because it may predate this task; free disk remains above the 4 GB guard.
-- Ran `WM-T0-002` Milestone 3 tiny-JEPA mechanistic study. Displacement action R2 is nearly 1.0; endpoint action R2 values are much weaker. Action-coordinate patching has recovery `0.984` versus negative matched controls. Workspace result is null: no J-space-like candidate found.
+- Historical `WM-T0-002` run reported action recovery `0.984`; adversarial review later found that
+  result tautological and superseded it with the clean replay result documented below.
 - Under explicit user override, created `.venv`, installed `transformers`/`safetensors`, downloaded `gpt2-medium`, and ran `LLM-GPT2-001`.
 - GPT-2 Medium result: direct residual steering at `transformer.h.12.resid_post` changed logits with mean absolute delta `0.0797`; tiny intervention-JEPA MSE `0.00220` beat no-change `0.0114`.
-- Clean provenance commits: `WM-T0-002` ran on `e5db93866cf35efb2a6757728890e29eae0dee4d`; `LLM-GPT2-001` ran on `59795a4280b1c8cb372eea000f30de584476dde6`.
+- Historical provenance: the superseded `WM-T0-002` ran on `e5db938`; `LLM-GPT2-001` remains valid
+  on `59795a4`.
 - Committed and pushed GPT-2 metrics/docs as `a7ea6da`.
 
 ### Next Ideas
 
-- Scale the GPT-2 experiment on GPU or a quieter CPU box: more prompts, more layers, Jacobian baselines, and held-out intervention sites.
+- Execute the committed CPU-safe `LLM-GPT2-002` before scaling to GPU.
 
 ### Adversarial Milestone 3 Re-audit
 
@@ -68,3 +72,17 @@
 - Best next JEPA experiment: a deeper learned predictor with calibrated ensemble/heteroscedastic
   uncertainty and in-manifold donor or activation-density-matched controls. Do not tune the current
   failed proxy after observing its result; register a new experiment.
+
+### Current Handoff
+
+- Worktree was clean at pushed commit `93431c3` before starting the next code milestone.
+- Audited every repository Markdown file and all committed provenance logs. Corrected stale
+  statements in the pending GPT-2 code milestone: the original action patch is superseded,
+  `WM-T0-003` is no longer pending, and cached GPT-2 is allowed while Qwen remains blocked.
+- Implemented `LLM-GPT2-002`: 288 batched direct interventions, local-only model loading, storage
+  budget/checksum manifest, prompt/magnitude/layer holdouts, linear and bilinear predictors, trained
+  MLP, nearest-neighbor and sparse-context baselines, and prompt-local/corpus Jacobians.
+- Preregistered all splits and thresholds before execution. Do not change them after seeing results.
+- Current offline suite: 34 tests pass. Next exact steps are full audit, commit/push code, run
+  `configs/experiments/gpt2_medium_mechanistic_study.yaml` from the clean commit, then document and
+  push the measured result.

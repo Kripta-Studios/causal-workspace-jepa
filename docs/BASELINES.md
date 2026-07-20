@@ -36,3 +36,8 @@ subspace positive control, and disjoint-consumer negative control. Published mod
 - sparse-feature linear transport.
 
 Success must not be declared from beating only a trivial baseline.
+
+`LLM-GPT2-002` implements all listed CPU-feasible baselines except an autoregressive layer predictor
+and a learned SAE transport. Its `sparse_context_linear` baseline uses top-k compressed context and
+must not be described as an SAE. The prompt-local finite-difference Jacobian is the primary strong
+baseline.

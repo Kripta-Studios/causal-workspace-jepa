@@ -52,7 +52,7 @@
 - [x] Commit and push repaired code before execution.
 - [x] Rerun corrected `WM-T0-002` from committed code.
 - [x] Run `WM-T0-003` from committed code.
-- [ ] Commit and push `WM-T0-003` null metrics.
+- [x] Commit and push `WM-T0-003` null metrics.
 
 ## Milestone 3 Follow-up
 
@@ -60,3 +60,15 @@
 - [ ] Replace the failed OOD proxy with calibrated ensemble or heteroscedastic uncertainty.
 - [ ] Replace arbitrary projection controls with activation-density-matched or in-manifold controls.
 - [ ] Test a deeper learned predictor with genuine internal sites and independently trained consumers.
+
+## GPT-2 Medium Follow-up
+
+- [x] Audit `LLM-GPT2-001` leakage, split, site, and baseline limitations.
+- [x] Preregister `LLM-GPT2-002` before execution.
+- [x] Implement batched direct intervention data and storage/checksum guard.
+- [x] Implement linear, bilinear, trained MLP, nearest-neighbor, sparse-context, local Jacobian, and
+  corpus-averaged Jacobian baselines.
+- [x] Add offline split, predictor, and resource-limit tests.
+- [ ] Commit and push `LLM-GPT2-002` code before execution.
+- [ ] Run `LLM-GPT2-002` from clean committed code.
+- [ ] Commit and push its manifest, metrics, provenance, and synchronized docs.

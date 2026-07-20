@@ -25,3 +25,15 @@ Validated GPT-2 Medium smoke:
 - Direct residual steering at `transformer.h.12.resid_post` changed downstream logits with mean absolute logit delta `0.0797`.
 - Tiny intervention-JEPA MSE was `0.00220` vs no-change `0.0114` on a 4-example held-out smoke split.
 - This is causal-mediation smoke evidence for a directly edited residual coordinate, not a J-space or workspace discovery.
+
+Strengthened GPT-2 Medium study:
+
+- `LLM-GPT2-002` is preregistered and implemented, but not yet executed.
+- It batches 288 direct residual interventions across eight prompts, layers `6/12/18`, two
+  coordinates, and six magnitudes while storing only selected positions and outputs.
+- Prompt, magnitude, and layer holdouts are explicit; training uses six prompts, layers `6/12`, and
+  magnitudes through `0.5`, while evaluation uses two unseen prompts, magnitude `1.0`, and a separate
+  layer-18 stress split.
+- Required baselines include a prompt-local finite-difference Jacobian, corpus-averaged Jacobian,
+  linear and bilinear regressions, trained MLP, nearest neighbor, and sparse-context transport.
+- The model is loaded from the existing local cache only. This remains GPT-2 evidence, not Qwen.

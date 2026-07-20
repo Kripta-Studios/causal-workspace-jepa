@@ -1,6 +1,6 @@
 # Reproducibility
 
-Status: `SCAFFOLDED`.
+Status: `SMOKE_VALIDATED` for current CPU experiments.
 
 Every experiment must record:
 
@@ -30,6 +30,11 @@ PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/tin
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/mock_qwen_intervention_jepa_smoke.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/tier0_mechanistic_study.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/workspace_discovery_study.yaml
+PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/gpt2_medium_mechanistic_study.yaml
 ```
+
+GPT-2 Medium uses `local_files_only: true`; the command must fail instead of downloading a missing
+model. Its generated float16 shard is ignored, while the checksum manifest and summarized metrics
+are committed.
 
 No reported result may depend on uncommitted code.

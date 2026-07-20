@@ -37,9 +37,9 @@ Status: `SMOKE_VALIDATED`.
 
 Status: `ACTIVE` for CPU-safe causal audit; `BLOCKED_RESOURCE` for GPU-dependent work.
 
-- Repair the original action-patch methodology and rerun from committed code.
-- Validate shared-subspace discovery with known positive and negative controls.
-- Run `WM-T0-003` with five frozen downstream consumers and matched random/PCA controls.
+- [done] Repair the original action-patch methodology and rerun from committed code.
+- [done] Validate shared-subspace discovery with known positive and negative controls.
+- [done] Run `WM-T0-003` with five frozen downstream consumers and matched random/PCA controls.
 - Strengthen GPT-2 Medium with prompt/intervention holdouts and required baselines.
 
 `WM-T0-003` completed with a null result. Its follow-up must use a valid uncertainty consumer and

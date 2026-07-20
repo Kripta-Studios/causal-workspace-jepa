@@ -11,6 +11,9 @@ from causal_workspace_jepa.common.config import load_config
 from causal_workspace_jepa.experiments.llm.gpt2_medium_intervention_smoke import (
     run_gpt2_medium_intervention_smoke,
 )
+from causal_workspace_jepa.experiments.llm.gpt2_medium_mechanistic_study import (
+    run_gpt2_medium_mechanistic_study,
+)
 from causal_workspace_jepa.experiments.llm.mock_qwen_intervention_jepa_smoke import (
     run_mock_qwen_intervention_jepa_smoke,
 )
@@ -47,6 +50,10 @@ def main() -> int:
         return 0
     if experiment_id == "LLM-GPT2-001":
         metrics = run_gpt2_medium_intervention_smoke(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "LLM-GPT2-002":
+        metrics = run_gpt2_medium_mechanistic_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     print(f"NOT_STARTED: no experiment runner is registered for {args.config}", file=sys.stderr)
