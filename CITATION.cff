@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: Causal Workspace JEPA
+message: Cite this repository when using its code, experiments, or reports.
+type: software
+authors:
+  - name: Causal Workspace JEPA contributors
+repository-code: https://github.com/Kripta-Studios/causal-workspace-jepa
+license: MIT
+date-released: "2026-07-20"

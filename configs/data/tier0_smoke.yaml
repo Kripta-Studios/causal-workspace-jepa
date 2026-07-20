@@ -1,0 +1,13 @@
+name: tier0_smoke
+resource_profile: configs/resource/cpu_vps.yaml
+seed: 0
+output_dir: data/processed/tier0_smoke
+max_total_mb: 100
+trajectories_per_env: 16
+steps_per_trajectory: 32
+environments:
+  pointmass2d: true
+  bouncing_ball2d: true
+  two_body_collision: true
+  tiny_maze: true
+  minipush: true

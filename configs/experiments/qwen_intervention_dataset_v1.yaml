@@ -1,0 +1,5 @@
+id: LLM-INTDATA-001
+status: BLOCKED_RESOURCE
+resource_profile: configs/resource/gpu_12gb.yaml
+model: Qwen/Qwen3-4B
+output_dir: data/activations/qwen_intervention_dataset_v1

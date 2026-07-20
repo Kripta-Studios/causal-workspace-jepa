@@ -1,0 +1,37 @@
+datasets:
+  pointmass2d:
+    canonical_name: PointMass2D
+    source: local deterministic generator
+    version: v0
+    license: generated
+    checksum: pending
+    compressed_size: generated below cpu_vps cap
+    modalities: [state, action]
+    observation_shape: [4]
+    action_shape: [2]
+    split: trajectory_seed
+    ood_splits: [mass, drag, force_scale, observation_noise]
+    download_command: none
+    preprocessing_command: python scripts/generate_tier0.py --config configs/data/tier0_smoke.yaml
+    resource_modes_allowed: [cpu_vps, gpu_12gb, gpu_cluster]
+    purpose: tiny action-conditioned dynamics
+    leakage_risks: trajectory_seed_overlap
+    status: NOT_STARTED
+  qwen_real:
+    canonical_name: Qwen hidden-state interventions
+    source: Hugging Face Qwen
+    version: pending
+    license: model license applies
+    checksum: pending
+    compressed_size: blocked on CPU VPS
+    modalities: [tokens, activations, logits]
+    observation_shape: selected_layers_positions
+    action_shape: intervention_schema
+    split: prompt_entity_site_magnitude
+    ood_splits: [prompt_family, entity, layer, site, magnitude]
+    download_command: BLOCKED_RESOURCE
+    preprocessing_command: python scripts/capture_qwen_activations.py --config configs/llm/qwen3_4b_selected_layers.yaml
+    resource_modes_allowed: [gpu_12gb, gpu_cluster]
+    purpose: real LLM intervention meta-modeling
+    leakage_risks: prompt_entity_donor_overlap
+    status: BLOCKED_RESOURCE

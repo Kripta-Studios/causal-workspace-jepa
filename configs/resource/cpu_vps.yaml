@@ -1,0 +1,24 @@
+name: cpu_vps
+status: active
+hardware:
+  cpu_cores: 4
+  ram_gb: 8
+  gpu_required: false
+storage:
+  min_free_gb: 4
+  project_cache_gb: 2
+  tier0_data_gb: 0.5
+  max_single_file_mb: 200
+network:
+  allow_external_datasets: false
+  allow_model_weight_downloads: false
+dependencies:
+  allow_cuda: false
+  allow_docker: false
+  allow_conda: false
+  allow_transformers: false
+  allow_large_simulation_suites: false
+experiments:
+  allow_gpu_tests: false
+  allow_slow_jobs: false
+  max_smoke_runtime_minutes: 10

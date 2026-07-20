@@ -1,0 +1,9 @@
+id: qwen3_4b_selected_layers
+status: BLOCKED_RESOURCE
+resource_profile: configs/resource/gpu_12gb.yaml
+model: Qwen/Qwen3-4B
+max_sequence_length: 128
+selected_layers: [0, 8, 16, 24, 31]
+selected_positions: [last, filler, answer]
+dtype: bfloat16
+output_dir: data/activations/qwen3_4b_selected_layers

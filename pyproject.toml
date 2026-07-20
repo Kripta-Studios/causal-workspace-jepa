@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "causal-workspace-jepa"
+version = "0.1.0"
+description = "CPU-first reproducible research codebase for action-conditioned JEPA interpretability and intervention-conditioned LLM meta-models."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Causal Workspace JEPA contributors" }]
+dependencies = [
+  "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.5",
+  "mypy>=1.10",
+]
+cpu = []
+gpu = [
+  "torch>=2.4",
+  "transformers>=4.45",
+  "accelerate>=0.34",
+  "safetensors>=0.4",
+]
+
+[project.scripts]
+cwj = "causal_workspace_jepa.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "gpu: requires GPU hardware or GPU-only dependencies",
+  "slow: longer scientific or scaling test",
+]

@@ -1,0 +1,25 @@
+name: gpu_cluster
+status: continuation
+hardware:
+  cpu_cores: 32
+  ram_gb: 256
+  gpu_required: true
+  min_vram_gb: 48
+storage:
+  min_free_gb: 500
+  project_cache_gb: 1000
+  tier0_data_gb: 0.5
+  max_single_file_mb: 65536
+network:
+  allow_external_datasets: true
+  allow_model_weight_downloads: true
+dependencies:
+  allow_cuda: true
+  allow_docker: true
+  allow_conda: false
+  allow_transformers: true
+  allow_large_simulation_suites: true
+experiments:
+  allow_gpu_tests: true
+  allow_slow_jobs: true
+  max_smoke_runtime_minutes: 240

@@ -1,0 +1,5 @@
+id: LLM-IJEPA-001
+status: BLOCKED_RESOURCE
+resource_profile: configs/resource/gpu_12gb.yaml
+dataset: data/activations/qwen_intervention_dataset_v1
+output_metrics: artifacts/metrics/intervention_jepa_v1.json

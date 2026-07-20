@@ -1,0 +1,12 @@
+prompt_suites:
+  mock_cpu_smoke:
+    source: local generated strings
+    license: generated
+    split: prompt_template_and_token_pattern
+    max_prompts_cpu_vps: 200
+    status: NOT_STARTED
+  qwen_gpu_research:
+    source: Hugging Face and public prompt suites
+    license: dataset_specific
+    split: prompt_template_entity_answer_site_magnitude
+    status: BLOCKED_RESOURCE
