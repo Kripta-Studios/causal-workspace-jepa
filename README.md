@@ -6,8 +6,8 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
 - `SMOKE_VALIDATED`: NumPy intervention operators, activation cache, ridge probes, sparse dictionary, finite-difference lenses, circuit graph I/O, mock transformer, and mock intervention-JEPA smoke runner.
-- `ACTIVE`: adversarial Milestone 3 re-audit. The displacement result remains valid, but the original
-  action-patch specificity interpretation was withdrawn because no intervention operator was used.
+- `SMOKE_VALIDATED`: adversarial Milestone 3 re-audit. The flawed original patch metric was
+  superseded by a clean replayable action-input intervention with L2 norm-matched controls.
 - `IMPLEMENTED_UNVALIDATED`: repaired action-input replay and multi-consumer workspace discovery with
   known positive/negative controls; clean committed runs are pending.
 - `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
@@ -144,10 +144,10 @@ Validated CPU smoke results:
 - Mock intervention-JEPA smoke (`LLM-MOCK-001`) ran from clean code commit `85c1dbfbe9c824bcca415af13f4a6f34acc95267`.
 - Mock intervention-JEPA MSE: `1.32e-07`; no-change: `0.002113`; mean-effect: `0.002113`; linear-context: `0.002113`; effect correlation: `0.99997`.
 - `LLM-MOCK-001` evidence level: Availability. It validates the mock pipeline only and is not evidence about Qwen.
-- Milestone 3 JEPA study (`WM-T0-002`) found displacement action R2 `~1.0` versus endpoint R2 values
-  `-0.111` and `0.083`. Adversarial review invalidated the original patch-specificity interpretation:
-  the runner assigned the donor target directly. The artifact remains for provenance; a repaired
-  replayable intervention is pending.
+- Corrected Milestone 3 JEPA study (`WM-T0-002`) ran from clean commit `315d8cf`: displacement action
+  R2 `~1.0` versus endpoint R2 values `-0.111` and `0.083`; actual action-input replay recovery `1.0`,
+  max replay error `0.0`, L2 norm-matched latent control `-12.784`, random-action control `-0.316`.
+  This is a trivial explicit-input circuit, not a learned workspace.
 - GPT-2 Medium smoke (`LLM-GPT2-001`) directly intervened at `transformer.h.12.resid_post`; mean absolute logit delta was `0.0797`, intervention-JEPA MSE was `0.00220` vs no-change `0.0114`, effect correlation `0.976`. This is a small causal-mediation smoke, not a J-space/workspace discovery.
 
 ## Limitations

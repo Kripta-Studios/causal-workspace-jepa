@@ -38,6 +38,10 @@ A null result is acceptable and must be reported.
 
 Conclusion: no JEPA analogue of Anthropic J-space has been discovered.
 
+The corrected action-input result was rerun from clean commit `315d8cf`. It establishes the explicit
+action-input pathway only; exact recovery is expected for this one-layer linear predictor and does
+not promote the pathway to a workspace candidate.
+
 ## Operational Detector
 
 `WM-T0-003` first validates discovery against two known systems:

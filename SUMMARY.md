@@ -58,3 +58,6 @@
 - Added a preregistered `WM-T0-003` five-consumer study. It can identify a shared causal state
   subspace candidate, but it cannot declare a full workspace because key functional criteria remain
   untested.
+- Reran corrected `WM-T0-002` from clean commit `315d8cf`. Actual `InterventionSpec` replay recovered
+  the donor effect exactly (`1.0`, max error `0.0`) while L2 norm-matched controls did not. This is
+  narrow Specificity evidence for the explicit action-input pathway, not a learned workspace.

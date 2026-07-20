@@ -49,7 +49,7 @@
 - [x] Implement a replayable action-input patch with norm-matched controls.
 - [x] Implement shared-subspace discovery with positive and negative controls.
 - [x] Preregister `WM-T0-003` thresholds and splits.
-- [ ] Commit and push repaired code before execution.
-- [ ] Rerun corrected `WM-T0-002` from committed code.
+- [x] Commit and push repaired code before execution.
+- [x] Rerun corrected `WM-T0-002` from committed code.
 - [ ] Run `WM-T0-003` from committed code.
 - [ ] Commit and push corrected/new metrics.

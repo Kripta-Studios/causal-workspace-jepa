@@ -6,7 +6,7 @@
       "supported": true
     },
     {
-      "claim": "Patching action coordinates causally and selectively changes future latent predictions.",
+      "claim": "Replaying explicit action-input coordinates causally changes future latent predictions.",
       "evidence_level": "Specificity",
       "supported": true
     },
@@ -21,12 +21,14 @@
   "experiment_id": "WM-T0-002",
   "model": "tiny_action_conditioned_jepa",
   "patch_metrics": {
-    "action_patch_recovery": 0.984375,
-    "latent_control_recovery": -10.814138968475163,
+    "action_patch_recovery": 1.0,
+    "control_matching": "input_delta_l2_norm",
+    "latent_control_recovery": -12.783885946497321,
     "pairs": 64.0,
-    "random_action_control_recovery": -0.3082856750115752,
-    "specificity_margin_vs_latent_control": 11.798513968475163,
-    "specificity_margin_vs_random_action": 1.2926606750115752
+    "patch_replay_max_abs_error": 0.0,
+    "random_action_control_recovery": -0.3163457727059722,
+    "specificity_margin_vs_latent_control": 13.783885946497321,
+    "specificity_margin_vs_random_action": 1.3163457727059722
   },
   "planner_metrics": {
     "action_ablation_damage": 0.46189022064208984,
