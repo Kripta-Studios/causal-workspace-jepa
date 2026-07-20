@@ -30,6 +30,43 @@ scientific validation.
 
 Metrics, splits, thresholds, layers, and magnitudes must be registered before each associated experiment.
 
+## WM-T0-005 Preregistration
+
+Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds
+must not be changed after inspecting outcomes.
+
+- Scope: test restricted H-WM-05, H-WM-06, and H-WM-08 using a goal- and dynamics-conditioned
+  PointMass JEPA. This can establish at most a shared task-workspace candidate, never equivalence to
+  Anthropic J-space or a full workspace.
+- Data: deterministic `MultiTaskPointMass2D` with four goals and masses `0.4/1.6`, `192`
+  trajectories, `20` steps, and seeds `23`, `29`, and `37`. Goal 3 plus mass mode 1 is entirely held
+  out. The seven seen combinations are split 70/15/15 percent for predictor training, calibration,
+  and frozen-consumer fitting. The physical OOD set uses masses `0.25/2.4` and a disjoint seed.
+- Predictor: fixed non-collapsing 12-dimensional encoder, hidden widths `32/24`, and three
+  bootstrap members trained for `900` Adam steps. Held-out physical-state MSE must be no more than
+  `0.50` times shuffled-action MSE.
+- Uncertainty: fit the ensemble interval scale on calibration only. Held-out-composition coverage
+  must be in `[0.75, 0.99]`, OOD rank AUC at least `0.65`, and ID+OOD uncertainty/error Spearman at
+  least `0.30`.
+- Consumers: freeze the predictor, then fit separate quadratic heads for physical dynamics, value,
+  risk, calibrated uncertainty, and action selection. Every held-out-composition R2 must be at
+  least `0.40`.
+- Candidate: discover only at `predictor.hidden2`; at most `6/24` dimensions, at least `0.70`
+  normalized Jacobian capture for every consumer, and compactness at most `0.30`.
+- Controls: use 32 seed-fixed random bases and 32 local tangent bases estimated from 16 nearest
+  consumer-training activations. Candidate and controls use the same conditional-donor or direct
+  coordinate-swap operation. At least eight controls must match within a factor of two in density
+  distance and perturbation RMS, with candidate density ratio at most `3.0`.
+- Counterfactual controllability: keep physical state and action fixed while swapping from the
+  held-out task context to goal 0 plus mass mode 0. Candidate coordinates must recover at least
+  `0.50` of mean donor-consumer change and exceed the 95th percentile of both matched random and
+  local-tangent controls.
+- Selective necessity: eight-step conditional-resampling damage must exceed both matched-control
+  95th percentiles and have a multistep/one-step ratio of at least `1.25` for both control families.
+- Replication decision: a shared task-workspace candidate requires every gate above on at least two
+  of three seeds. `workspace_found` remains false because reportability analogue and published-model
+  replication are absent. Partial passes and compelling plots do not rescue the joint decision.
+
 ## WM-T0-004 Preregistration
 
 Registered before execution on 2026-07-20. The implementation and config are committed before the

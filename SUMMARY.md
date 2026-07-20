@@ -78,6 +78,18 @@
 ### Current Handoff
 
 - Worktree was clean at pushed commit `93431c3` before starting the next code milestone.
+- After the `WM-T0-004` null, implemented and preregistered `WM-T0-005`: four goals crossed with
+  two mass modes, one held-out composition, three seeds, a three-model calibrated ensemble, five
+  frozen consumers, random and local-tangent controls, direct task-context counterfactual swaps,
+  and multistep selective-necessity tests.
+- The joint candidate gate requires valid action dependence, calibrated OOD uncertainty, all five
+  held-out consumer heads, compact shared sensitivity, at least 50 percent donor recovery,
+  specificity over both matched control families, and multistep selectivity on two of three seeds.
+  The full workspace decision remains false by construction because reportability and published
+  model replication are absent.
+- This implementation is preregistered but has not been executed. The full suite passes 40 tests;
+  doctor, checksum/provenance audit, bytecode compilation, and `git diff --check` also pass. Commit
+  and push, then run only from clean committed code.
 - Audited every repository Markdown file and all committed provenance logs. Corrected stale
   statements during the GPT-2 code milestone: the original action patch is superseded,
   `WM-T0-003` is no longer pending, and cached GPT-2 is allowed while Qwen remains blocked.

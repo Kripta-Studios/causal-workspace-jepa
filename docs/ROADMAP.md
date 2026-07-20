@@ -50,6 +50,10 @@ stayed near-manifold and matched almost every random basis, repairing the old co
 action gate, OOD AUC, uncertainty heads, shared-sensitivity thresholds, and direct/rollout
 specificity all failed. Do not tune this observed configuration.
 
+`WM-T0-005` is preregistered and implemented but not yet executed. It adds goal/dynamics task
+composition, a fully held-out combination, local-tangent controls, explicit task counterfactuals,
+three seeds, and minimum recovery/selectivity effect sizes.
+
 `LLM-GPT2-002` completed with a negative nonlinear-advantage result. Continue on GPU with semantic,
 combined, resampling, and larger-magnitude interventions; preserve prompt-local Jacobians as the
 primary strong baseline.

@@ -28,3 +28,7 @@
 - Preserve the `WM-T0-004` null without threshold tuning. Conditional donor controls are retained as
   a useful method; the observed architecture is rejected as a workspace-discovery target because
   action dependence and uncertainty consumers fail before the workspace decision.
+- For `WM-T0-005`, cross goals with dynamics modes and hold out one full composition. Require two of
+  three seeds, random and local-tangent specificity, at least 50 percent task-counterfactual
+  recovery, and a selective-necessity ratio of at least 1.25. Keep `workspace_found` false even if
+  the narrower candidate passes.

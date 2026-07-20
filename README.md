@@ -13,6 +13,9 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 - `SMOKE_VALIDATED`: `WM-T0-004` deep NumPy JEPA ensemble and conditional donor controls. The old
   off-manifold confound is repaired, but action, OOD uncertainty, consumer, and specificity gates
   fail; no shared causal subspace or workspace is accepted.
+- `PREREGISTERED`: `WM-T0-005` multi-seed goal/dynamics JEPA study with a held-out task
+  composition, random plus local-tangent controls, counterfactual task swaps, and strict effect-size
+  gates. It has not yet been executed.
 - `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
 - `SMOKE_VALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions. The local
   Jacobian dominates learned meta-models; bilinear compression helps on unseen prompts but fails on
@@ -78,6 +81,9 @@ python scripts/run_experiment.py \
   --config configs/experiments/manifold_workspace_study.yaml
 
 python scripts/run_experiment.py \
+  --config configs/experiments/multitask_workspace_study.yaml
+
+python scripts/run_experiment.py \
   --config configs/experiments/gpt2_medium_intervention_smoke.yaml
 
 python scripts/run_experiment.py \
@@ -86,8 +92,9 @@ python scripts/run_experiment.py \
 python scripts/audit_reproducibility.py
 ```
 
-The Tier 0, tiny JEPA, mock-Qwen, all three Milestone 3 JEPA studies, and both GPT-2 Medium commands
-are smoke validated. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
+The existing Tier 0, tiny JEPA, mock-Qwen, first three Milestone 3 JEPA studies, and both GPT-2
+Medium commands are smoke validated. `WM-T0-005` is preregistered but not yet run. The mock-Qwen
+command uses a deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 

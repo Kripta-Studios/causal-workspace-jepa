@@ -8,6 +8,8 @@ from causal_workspace_jepa.data.synthetic.pointmass import generate_pointmass2d
 from causal_workspace_jepa.interpretability.workspace_tests import (
     activation_manifold_diagnostics,
     conditional_resample_subspace,
+    counterfactual_subspace_audit,
+    local_tangent_subspaces,
 )
 from causal_workspace_jepa.models.deep_jepa import DeepActionConditionedJEPA
 from causal_workspace_jepa.models.uncertainty import IntervalCalibrator, rank_auc
@@ -61,6 +63,36 @@ class DeepJepaTests(unittest.TestCase):
         report = calibrator.evaluate(predictions, targets)
         self.assertGreaterEqual(report["coverage"], 0.75)
         self.assertAlmostEqual(rank_auc(np.array([0.0, 0.1]), np.array([0.9, 1.0])), 1.0)
+
+    def test_tangent_controls_and_counterfactual_swap(self) -> None:
+        rng = np.random.default_rng(12)
+        bank = rng.normal(size=(80, 6)).astype(np.float32)
+        controls = local_tangent_subspaces(
+            bank,
+            2,
+            count=8,
+            neighbors=10,
+            seed=12,
+        )
+        self.assertEqual(len(controls), 8)
+        for basis in controls:
+            np.testing.assert_allclose(basis.T @ basis, np.eye(2), atol=1e-5)
+        recipients = bank[:16]
+        donors = recipients.copy()
+        donors[:, :2] += 0.25
+        candidate = np.eye(6, dtype=np.float32)[:, :2]
+        consumers = {"readout": lambda value: value[:, :2]}
+        audit = counterfactual_subspace_audit(
+            recipients,
+            donors,
+            bank,
+            consumers,
+            candidate,
+            controls,
+            min_matched_controls=1,
+            match_factor=10.0,
+        )
+        self.assertAlmostEqual(audit["candidate"]["mean_recovery"], 1.0, places=5)
 
 
 if __name__ == "__main__":

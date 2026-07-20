@@ -18,6 +18,24 @@ datasets:
     leakage_risks: trajectory_seed_overlap
     status: SMOKE_VALIDATED
     smoke_manifest: data/manifests/tier0_smoke_manifest.json
+  multitask_pointmass2d:
+    canonical_name: MultiTaskPointMass2D
+    source: local deterministic generator
+    version: v0
+    license: generated
+    checksum: in_memory_seed_reproducible
+    compressed_size: generated in memory below cpu_vps cap
+    modalities: [state, task_context, action]
+    observation_shape: [8]
+    action_shape: [2]
+    split: trajectory_and_goal_mass_composition
+    ood_splits: [heldout_goal_mass_composition, external_mass]
+    download_command: none
+    preprocessing_command: python scripts/run_experiment.py --config configs/experiments/multitask_workspace_study.yaml
+    resource_modes_allowed: [cpu_vps, gpu_12gb, gpu_cluster]
+    purpose: multi_task_workspace_candidate_audit
+    leakage_risks: trajectory_or_task_composition_overlap
+    status: PREREGISTERED
   qwen_real:
     canonical_name: Qwen hidden-state interventions
     source: Hugging Face Qwen

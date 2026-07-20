@@ -133,6 +133,39 @@ def random_subspace(representation_dim: int, dimension: int, seed: int) -> np.nd
     return basis[:, :dimension].astype(np.float32)
 
 
+def local_tangent_subspaces(
+    activations: np.ndarray,
+    dimension: int,
+    *,
+    count: int,
+    neighbors: int,
+    seed: int,
+) -> list[np.ndarray]:
+    """Estimate deterministic local tangent controls from activation neighbors."""
+
+    bank = np.asarray(activations, dtype=np.float64)
+    if bank.ndim != 2:
+        raise ValueError("activations must be a rank-two array")
+    if not 1 <= dimension <= bank.shape[1]:
+        raise ValueError("dimension must fit the representation")
+    if not dimension <= neighbors < len(bank):
+        raise ValueError("neighbors must be at least dimension and below the bank size")
+    if count < 1:
+        raise ValueError("count must be positive")
+    rng = np.random.default_rng(seed)
+    anchors = rng.choice(len(bank), size=count, replace=count > len(bank))
+    controls = []
+    for anchor_id in anchors:
+        differences = bank - bank[int(anchor_id)]
+        distances = np.sum(differences**2, axis=1)
+        nearest = np.argpartition(distances, neighbors)[: neighbors + 1]
+        nearest = nearest[nearest != int(anchor_id)][:neighbors]
+        local = differences[nearest]
+        _, _, right = np.linalg.svd(local, full_matrices=False)
+        controls.append(right[:dimension].T.astype(np.float32))
+    return controls
+
+
 def project_out_subspace(
     activations: np.ndarray,
     basis: np.ndarray,
@@ -376,6 +409,93 @@ def conditional_resample_causal_audit(
     }
 
 
+def counterfactual_subspace_audit(
+    recipient_activations: np.ndarray,
+    donor_activations: np.ndarray,
+    activation_bank: np.ndarray,
+    consumers: Mapping[str, Callable[[np.ndarray], np.ndarray]],
+    candidate_basis: np.ndarray,
+    control_bases: Sequence[np.ndarray],
+    *,
+    max_density_ratio: float = 3.0,
+    match_factor: float = 2.0,
+    min_matched_controls: int = 8,
+) -> dict[str, object]:
+    """Test whether a subspace swap recovers matched donor counterfactuals."""
+
+    recipients = np.asarray(recipient_activations, dtype=np.float32)
+    donors = np.asarray(donor_activations, dtype=np.float32)
+    if recipients.shape != donors.shape or recipients.ndim != 2:
+        raise ValueError("recipient and donor activations must share a rank-two shape")
+    recipient_outputs = {name: np.asarray(fn(recipients)) for name, fn in consumers.items()}
+    donor_outputs = {name: np.asarray(fn(donors)) for name, fn in consumers.items()}
+
+    def evaluate(basis: np.ndarray) -> dict[str, object]:
+        patched = _swap_subspace_coordinates(recipients, donors, basis)
+        recoveries = {}
+        for name, consumer in consumers.items():
+            baseline = float(np.mean((recipient_outputs[name] - donor_outputs[name]) ** 2))
+            residual = float(np.mean((consumer(patched) - donor_outputs[name]) ** 2))
+            recoveries[name] = float(1.0 - residual / max(baseline, 1e-12))
+        return {
+            "recovery_by_consumer": recoveries,
+            "mean_recovery": float(np.mean(list(recoveries.values()))),
+            "manifold": activation_manifold_diagnostics(recipients, patched, activation_bank),
+        }
+
+    candidate = evaluate(candidate_basis)
+    controls = [evaluate(basis) for basis in control_bases]
+    candidate_manifold = candidate["manifold"]
+    assert isinstance(candidate_manifold, dict)
+    candidate_density = float(candidate_manifold["median_density_distance_ratio"])
+    candidate_perturbation = float(candidate_manifold["perturbation_rms"])
+    matched_indices = []
+    for index, control in enumerate(controls):
+        manifold = control["manifold"]
+        assert isinstance(manifold, dict)
+        density = float(manifold["median_density_distance_ratio"])
+        perturbation = float(manifold["perturbation_rms"])
+        if (
+            density <= max_density_ratio
+            and candidate_density / match_factor <= density <= candidate_density * match_factor
+            and candidate_perturbation / match_factor
+            <= perturbation
+            <= candidate_perturbation * match_factor
+        ):
+            matched_indices.append(index)
+    matched_recovery = np.asarray(
+        [float(controls[index]["mean_recovery"]) for index in matched_indices],
+        dtype=np.float64,
+    )
+    enough_controls = len(matched_indices) >= min_matched_controls
+    control_p95 = (
+        float(np.quantile(matched_recovery, 0.95)) if matched_recovery.size else None
+    )
+    candidate_recovery = float(candidate["mean_recovery"])
+    return {
+        "candidate": candidate,
+        "controls": controls,
+        "matched_control_indices": matched_indices,
+        "matched_control_count": len(matched_indices),
+        "matched_control_mean_recovery": (
+            float(matched_recovery.mean()) if matched_recovery.size else None
+        ),
+        "matched_control_p95_recovery": control_p95,
+        "candidate_density_valid": bool(candidate_density <= max_density_ratio),
+        "enough_matched_controls": enough_controls,
+        "candidate_exceeds_matched_control_p95": bool(
+            enough_controls
+            and control_p95 is not None
+            and candidate_recovery > control_p95
+        ),
+        "thresholds": {
+            "max_density_ratio": max_density_ratio,
+            "match_factor": match_factor,
+            "min_matched_controls": min_matched_controls,
+        },
+    }
+
+
 def selective_necessity_ratio(
     multistep_damage: float,
     one_step_damage: float,
@@ -390,3 +510,15 @@ def _nearest_distances(samples: np.ndarray, bank: np.ndarray) -> np.ndarray:
         differences = bank - sample
         distances[index] = np.sqrt(float(np.min(np.sum(differences**2, axis=1))))
     return distances
+
+
+def _swap_subspace_coordinates(
+    recipients: np.ndarray,
+    donors: np.ndarray,
+    basis: np.ndarray,
+) -> np.ndarray:
+    basis_array = np.asarray(basis, dtype=np.float32)
+    difference = np.asarray(donors, dtype=np.float32) - np.asarray(recipients, dtype=np.float32)
+    return np.asarray(recipients, dtype=np.float32) + (
+        (difference @ basis_array) @ basis_array.T
+    )

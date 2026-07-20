@@ -102,3 +102,14 @@ The repair worked methodologically but returned a null scientific result:
 Result: no shared causal candidate and no workspace. The strongest positive finding is that
 conditional donor resampling supplies usable empirical-manifold controls; it does not reveal a
 privileged subspace in this model.
+
+## WM-T0-005 Registered Follow-Up
+
+The preregistered follow-up adds the missing pressure for flexible reuse: four goals crossed with
+two dynamics modes, one held-out goal/dynamics composition, and three independent seeds. It tests a
+single hidden-2 candidate against both isotropic random bases and locally estimated tangent bases.
+In addition to conditional resampling and multistep necessity, it performs a task counterfactual:
+state and action stay fixed while candidate coordinates are swapped toward a donor goal/dynamics
+context. A candidate must recover donor consumer outputs by at least 50 percent and beat matched
+controls. Passing on two seeds would establish only a shared task-workspace candidate. The full
+workspace decision is fixed to false for this CPU study.

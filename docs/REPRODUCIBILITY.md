@@ -33,6 +33,12 @@ PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/wor
 PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/gpt2_medium_mechanistic_study.yaml
 ```
 
+Preregistered, not yet validated:
+
+```bash
+PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/multitask_workspace_study.yaml
+```
+
 GPT-2 Medium uses `local_files_only: true`; the command must fail instead of downloading a missing
 model. Its generated float16 shard is ignored, while the checksum manifest and summarized metrics
 are committed.
