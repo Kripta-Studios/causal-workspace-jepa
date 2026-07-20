@@ -1,0 +1,63 @@
+{
+  "claims": [
+    {
+      "claim": "Action identity is more decodable from latent displacement than endpoints.",
+      "evidence_level": "Availability",
+      "supported": true
+    },
+    {
+      "claim": "Patching action coordinates causally and selectively changes future latent predictions.",
+      "evidence_level": "Specificity",
+      "supported": true
+    },
+    {
+      "claim": "A J-space-like compact workspace candidate was found.",
+      "evidence_level": "Specificity",
+      "supported": false
+    }
+  ],
+  "dataset": "data/processed/tier0_smoke/pointmass2d.npz",
+  "evidence_level": "Specificity",
+  "experiment_id": "WM-T0-002",
+  "model": "tiny_action_conditioned_jepa",
+  "patch_metrics": {
+    "action_patch_recovery": 0.984375,
+    "latent_control_recovery": -10.814138968475163,
+    "pairs": 64.0,
+    "random_action_control_recovery": -0.3082856750115752,
+    "specificity_margin_vs_latent_control": 11.798513968475163,
+    "specificity_margin_vs_random_action": 1.2926606750115752
+  },
+  "planner_metrics": {
+    "action_ablation_damage": 0.46189022064208984,
+    "clean_planner_cost": 1.4791598320007324,
+    "random_action_mean_cost": 1.979806107468903,
+    "zero_action_cost": 1.9410500526428223
+  },
+  "probe_metrics": {
+    "displacement_action_mse": 1.6418787440741767e-09,
+    "displacement_action_r2": 0.999999995077069,
+    "z_next_action_mse": 0.30587536096572876,
+    "z_next_action_r2": 0.08287789864620154,
+    "z_t_action_mse": 0.3705233931541443,
+    "z_t_action_r2": -0.11095967931965078
+  },
+  "seed": 0,
+  "status": "SMOKE_VALIDATED",
+  "workspace_metrics": {
+    "available_consumers": [
+      "dynamics_prediction",
+      "planner_cost"
+    ],
+    "candidate": "predictor.input action coordinates",
+    "evidence_level": "Specificity",
+    "missing_consumers": [
+      "value",
+      "risk",
+      "uncertainty",
+      "language_reportability"
+    ],
+    "reason": "The compact action coordinates are causally used by dynamics/planning, but the tiny model has no value, risk, or uncertainty consumers and does not test broadcast reuse.",
+    "workspace_found": false
+  }
+}

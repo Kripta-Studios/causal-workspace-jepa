@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/tier0_mechanistic_study.yaml",
+  "git_commit": "e5db93866cf35efb2a6757728890e29eae0dee4d",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/tier0_mechanistic_study.json",
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 0,
+  "time_utc": "2026-07-20T13:16:00.371177+00:00",
+  "workspace_found": false
+}
