@@ -102,6 +102,11 @@
   semantic feature, J-space, workspace, Qwen, or consciousness evidence.
 - Runtime was `647.85` seconds, exceeding the 10-minute CPU expectation by `47.85` seconds; record
   this as a resource-limit miss.
+- Metrics, clean provenance, checksum manifest, and synchronized result docs were committed and
+  pushed as `fdf6506`.
 - Best next LLM experiment: on `gpu_12gb`, use semantic directions, activation patch/resampling,
   combined interventions, larger magnitudes, and enough prompts/seeds to expose genuine nonlinearity.
   Keep prompt-local Jacobians as the baseline to beat.
+- Strengthened `scripts/audit_reproducibility.py`: it now validates every metrics/provenance pair,
+  clean commit metadata, JSON structure, and all available local dataset checksums instead of only
+  checking that seven control-plane paths exist.

@@ -71,4 +71,5 @@
 - [x] Add offline split, predictor, and resource-limit tests.
 - [x] Commit and push `LLM-GPT2-002` code before execution.
 - [x] Run `LLM-GPT2-002` from clean committed code.
-- [ ] Commit and push its manifest, metrics, provenance, and synchronized docs.
+- [x] Commit and push its manifest, metrics, provenance, and synchronized docs (`fdf6506`).
+- [x] Strengthen reproducibility audit for metric/provenance pairs and local checksums.

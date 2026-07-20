@@ -17,6 +17,9 @@ class ReproducibilityAuditTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
         self.assertEqual(payload["status"], "SMOKE_VALIDATED")
+        self.assertEqual(payload["errors"], [])
+        self.assertGreaterEqual(payload["metric_artifacts"], 6)
+        self.assertGreaterEqual(payload["checksums_verified"], 6)
 
 
 if __name__ == "__main__":

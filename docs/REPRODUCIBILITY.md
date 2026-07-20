@@ -38,3 +38,8 @@ model. Its generated float16 shard is ignored, while the checksum manifest and s
 are committed.
 
 No reported result may depend on uncommitted code.
+
+`scripts/audit_reproducibility.py` checks required control-plane files, every summarized metrics and
+provenance pair, `git_dirty: false`, recorded commit/path fields, JSON validity, and every available
+local dataset checksum. Missing ignored datasets are reported as skipped so a fresh clone can audit
+metadata before regeneration; checksum mismatches fail the audit.
