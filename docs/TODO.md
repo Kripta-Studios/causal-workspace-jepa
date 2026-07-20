@@ -84,6 +84,6 @@
 - [x] Preregister `WM-T0-005` task split, seeds, controls, and decision thresholds.
 - [x] Implement deterministic goal/dynamics PointMass tasks and local-tangent controls.
 - [x] Implement held-out task counterfactual and three-seed joint decision logic.
-- [ ] Commit and push the `WM-T0-005` implementation.
-- [ ] Execute it once from the clean implementation commit.
-- [ ] Record metrics, provenance, null-safe interpretation, and synchronized docs.
+- [x] Commit and push the `WM-T0-005` implementation (`7a9e510`).
+- [x] Execute it once from the clean implementation commit.
+- [x] Record metrics, provenance, null-safe interpretation, and synchronized docs.

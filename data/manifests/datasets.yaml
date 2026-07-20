@@ -35,7 +35,7 @@ datasets:
     resource_modes_allowed: [cpu_vps, gpu_12gb, gpu_cluster]
     purpose: multi_task_workspace_candidate_audit
     leakage_risks: trajectory_or_task_composition_overlap
-    status: PREREGISTERED
+    status: SMOKE_VALIDATED
   qwen_real:
     canonical_name: Qwen hidden-state interventions
     source: Hugging Face Qwen

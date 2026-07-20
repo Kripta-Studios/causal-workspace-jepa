@@ -32,3 +32,6 @@
   three seeds, random and local-tangent specificity, at least 50 percent task-counterfactual
   recovery, and a selective-necessity ratio of at least 1.25. Keep `workspace_found` false even if
   the narrower candidate passes.
+- Preserve the `WM-T0-005` null without threshold or seed tuning. A future CPU JEPA study must change
+  the architecture materially by jointly training task consumers or a planner; adding more post-hoc
+  probes to the same representation is not a meaningful continuation.

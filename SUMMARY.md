@@ -87,9 +87,21 @@
   specificity over both matched control families, and multistep selectivity on two of three seeds.
   The full workspace decision remains false by construction because reportability and published
   model replication are absent.
-- This implementation is preregistered but has not been executed. The full suite passes 40 tests;
-  doctor, checksum/provenance audit, bytecode compilation, and `git diff --check` also pass. Commit
-  and push, then run only from clean committed code.
+- The preregistered implementation was committed and pushed as `7a9e510`, then executed once from
+  that clean commit. Provenance reports `git_dirty: false`; runtime was `57.51` seconds and disk
+  remained near 40 GB free.
+- `WM-T0-005` is a replicated null: zero of three seeds passed. Action MSE ratios were `0.712`,
+  `1.012`, and `1.003` versus the registered maximum `0.50`. OOD uncertainty passed jointly only on
+  seed 29. Every seed failed held-out transfer for the five-consumer set.
+- Candidate dimensions saturated at `6/24`, while minimum consumer sensitivity capture was only
+  `0.583`, `0.561`, and `0.574` versus `0.70`. Mean goal/dynamics counterfactual recovery was
+  `-10.18`, `-17.38`, and `-3.11` versus the required `+0.50`.
+- Seed 37 exceeded random-control p95 for counterfactual and rollout effects despite moving away
+  from the donor. The absolute recovery gate and local-tangent controls correctly rejected this
+  misleading relative win. No shared task-workspace candidate and no workspace were found.
+- Practical conclusion: appending task context and fitting consumers afterward is not enough. A
+  new JEPA architecture should train value/risk/action consumers or a planner jointly; do not tune
+  the observed `WM-T0-005` seeds or thresholds.
 - Audited every repository Markdown file and all committed provenance logs. Corrected stale
   statements during the GPT-2 code milestone: the original action patch is superseded,
   `WM-T0-003` is no longer pending, and cached GPT-2 is allowed while Qwen remains blocked.

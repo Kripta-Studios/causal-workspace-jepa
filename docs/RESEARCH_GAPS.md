@@ -14,8 +14,9 @@ Status: `ACTIVE`.
 - The deep predictor's shuffled-action MSE ratio was `0.684`, much weaker than registered. A future
   workspace search needs an architecture/objective where actions are indispensable before auditing
   shared action-planning mechanisms.
-- `WM-T0-005` directly tests whether task conditioning, held-out goal/dynamics composition, and
-  local-tangent controls resolve those two gaps. Until it runs, this is a method, not evidence.
+- `WM-T0-005` showed that simply appending goal/mass context does not resolve those gaps: actions
+  remained weak and post-hoc value/risk/uncertainty/action heads failed the held-out composition.
+  The next architecture must train task-relevant consumers jointly or couple them to planning.
 - GPT-2 bilinear/MLP meta-models do not survive the prompt-local Jacobian, and bilinear transfer to an
   unseen layer fails. Need larger, semantic, combined, resampling, or feature-space interventions
   where nonlinear context dependence is plausible.

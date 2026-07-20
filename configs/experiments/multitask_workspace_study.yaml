@@ -1,5 +1,5 @@
 id: WM-T0-005
-status: NOT_STARTED
+status: SMOKE_VALIDATED
 resource_profile: configs/resource/cpu_vps.yaml
 seeds: [23, 29, 37]
 required_passing_seeds: 2

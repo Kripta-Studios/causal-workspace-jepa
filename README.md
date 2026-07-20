@@ -13,9 +13,9 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 - `SMOKE_VALIDATED`: `WM-T0-004` deep NumPy JEPA ensemble and conditional donor controls. The old
   off-manifold confound is repaired, but action, OOD uncertainty, consumer, and specificity gates
   fail; no shared causal subspace or workspace is accepted.
-- `PREREGISTERED`: `WM-T0-005` multi-seed goal/dynamics JEPA study with a held-out task
-  composition, random plus local-tangent controls, counterfactual task swaps, and strict effect-size
-  gates. It has not yet been executed.
+- `SMOKE_VALIDATED`: `WM-T0-005` multi-seed goal/dynamics JEPA study. Zero of three seeds passed:
+  action dependence, held-out consumers, compact sensitivity, counterfactual recovery, and
+  random/local-tangent specificity rejected the candidate. No workspace is accepted.
 - `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
 - `SMOKE_VALIDATED`: strengthened GPT-2 Medium study with 288 batched direct interventions. The local
   Jacobian dominates learned meta-models; bilinear compression helps on unseen prompts but fails on
@@ -92,9 +92,8 @@ python scripts/run_experiment.py \
 python scripts/audit_reproducibility.py
 ```
 
-The existing Tier 0, tiny JEPA, mock-Qwen, first three Milestone 3 JEPA studies, and both GPT-2
-Medium commands are smoke validated. `WM-T0-005` is preregistered but not yet run. The mock-Qwen
-command uses a deterministic local mock model, not Qwen weights.
+The Tier 0, tiny JEPA, mock-Qwen, four Milestone 3 JEPA studies, and both GPT-2 Medium commands are
+smoke validated. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 
@@ -176,6 +175,11 @@ Validated CPU smoke results:
   Test interval coverage was `0.887`, but OOD uncertainty AUC was only `0.574`; hidden uncertainty
   R2 was `-1.327`/`0.232`. Candidate direct damage (`3.652`/`1.239`) was below matched random-control
   p95 (`9.252`/`4.369`) at both hidden sites. No shared candidate or workspace was found.
+- Multi-task study (`WM-T0-005`) ran from clean commit `7a9e510` in `57.51` seconds. Zero of three
+  seeds passed. Held-out action MSE ratios were `0.712`, `1.012`, and `1.003` versus the registered
+  `0.50`; minimum five-consumer sensitivity capture was `0.583`, `0.561`, and `0.574` versus
+  `0.70`; task-counterfactual mean recovery was negative on every seed. No shared task-workspace
+  candidate or workspace was found.
 - GPT-2 Medium smoke (`LLM-GPT2-001`) directly intervened at `transformer.h.12.resid_post`; mean absolute logit delta was `0.0797`, intervention-JEPA MSE was `0.00220` vs no-change `0.0114`, effect correlation `0.976`. This is a small causal-mediation smoke, not a J-space/workspace discovery.
 - Strengthened GPT-2 study (`LLM-GPT2-002`) generated 288 direct outcomes from clean commit
   `8fbab8c`. On unseen prompts and magnitude, local-Jacobian MSE was `7.79e-7`, bilinear

@@ -113,3 +113,13 @@ state and action stay fixed while candidate coordinates are swapped toward a don
 context. A candidate must recover donor consumer outputs by at least 50 percent and beat matched
 controls. Passing on two seeds would establish only a shared task-workspace candidate. The full
 workspace decision is fixed to false for this CPU study.
+
+## WM-T0-005 Result
+
+Zero of three seeds passed. The predictor did not make actions indispensable on the held-out task,
+the fitted value/risk/uncertainty/action heads did not generalize compositionally, and no six-of-24
+candidate captured the required 70 percent sensitivity from every consumer. Candidate task swaps
+moved consumer outputs farther from the donor on average on all seeds. Seed 37 looked selective
+against random controls in isolation, but recovery was still negative and local-tangent controls
+were stronger. This is not controllability or selective necessity. Result: no shared task-workspace
+candidate and no workspace.

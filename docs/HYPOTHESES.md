@@ -67,6 +67,15 @@ must not be changed after inspecting outcomes.
   of three seeds. `workspace_found` remains false because reportability analogue and published-model
   replication are absent. Partial passes and compelling plots do not rescue the joint decision.
 
+Measured result from clean commit `7a9e510`: zero of three seeds passed. Action-conditioning ratios
+were `0.712`, `1.012`, and `1.003`, all above `0.50`. OOD uncertainty passed jointly only on seed
+`29`. Every seed failed the all-consumer gate; non-dynamics held-out R2 values were predominantly
+negative. Minimum candidate sensitivity capture was `0.583`, `0.561`, and `0.574`, below `0.70`.
+Mean task-counterfactual recovery was `-10.18`, `-17.38`, and `-3.11`, below `+0.50`. Seed `37`
+exceeded one random-control p95 despite negative recovery, demonstrating why the absolute effect
+gate was required; it still failed the tangent control. Restricted H-WM-05, H-WM-06, and H-WM-08
+are false for this architecture and split.
+
 ## WM-T0-004 Preregistration
 
 Registered before execution on 2026-07-20. The implementation and config are committed before the

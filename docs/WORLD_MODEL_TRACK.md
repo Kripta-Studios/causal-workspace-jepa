@@ -33,8 +33,8 @@ Validated CPU smoke:
 - `WM-T0-004` ran from clean commit `6785fb1`. Conditional donor resampling repaired the old
   off-manifold control failure, but the action gate, OOD AUC, uncertainty consumers, sensitivity
   candidates, and specificity over matched controls failed. No shared candidate was accepted.
-- `WM-T0-005` is preregistered but not yet run. Its multi-task environment crosses four goals with
-  two mass modes, holds out one composition, and adds three-seed replication, local-tangent
-  controls, counterfactual task swaps, and strict minimum effect sizes.
+- `WM-T0-005` ran from clean commit `7a9e510` in `57.51` seconds. Zero of three seeds passed. Weak
+  action dependence, failed held-out consumer transfer, insufficient shared sensitivity, negative
+  task-counterfactual recovery, and local-tangent controls reject the candidate.
 - This validates deterministic execution and action-conditioning plumbing. It does not establish a
   learned workspace.

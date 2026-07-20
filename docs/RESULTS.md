@@ -15,6 +15,7 @@ GPT-2 Medium direct-intervention studies. No workspace/J-space-like mechanism ha
 | WM-T0-003 | The workspace detector passes planted shared/disjoint controls, but the tiny JEPA five-consumer candidate fails consumer validity, PCA specificity, and rollout-control validity; no workspace was found. | Specificity | `configs/experiments/workspace_discovery_study.yaml` | `artifacts/metrics/workspace_discovery_study.json` | `5223a54ea96fbb6b0481120301c78547e8aabff4` | `SMOKE_VALIDATED` |
 | LLM-GPT2-002 | GPT-2 Medium intervention effects are almost exactly local-linear in this coordinate/magnitude regime; bilinear meta-model compression beats weak regressions on held-out prompts but not a local Jacobian and does not transfer to a held-out layer. | Causal mediation | `configs/experiments/gpt2_medium_mechanistic_study.yaml` | `artifacts/metrics/gpt2_medium_mechanistic_study.json` | `8fbab8c0a791cca8b34ba8e1e49664f16e79674d` | `SMOKE_VALIDATED` |
 | WM-T0-004 | Conditional donor controls repair the prior off-manifold confound, but neither learned hidden site has a valid shared sensitivity subspace or specificity over matched controls; no workspace is found. | Specificity | `configs/experiments/manifold_workspace_study.yaml` | `artifacts/metrics/manifold_workspace_study.json` | `6785fb1684a04ff1639d6aad326ed6e11df0bf6a` | `SMOKE_VALIDATED` |
+| WM-T0-005 | A multi-task three-seed JEPA fails held-out action, consumer-transfer, shared-sensitivity, and task-counterfactual gates; no shared task-workspace candidate or workspace is found. | Generalization | `configs/experiments/multitask_workspace_study.yaml` | `artifacts/metrics/multitask_workspace_study.json` | `7a9e510e84e7166ce862ca7f52fd598630e8f06a` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -131,3 +132,24 @@ error, but it does not rank the preregistered physical OOD shift well enough and
 hidden states do not make ensemble uncertainty reliably decodable. Conditional resampling keeps
 candidate and random-control patches near the empirical activation bank. Under those valid controls,
 the candidate directions are not privileged. Multistep amplification exists but is nonspecific.
+
+`WM-T0-005` key metrics:
+
+- runtime: `57.51` seconds from clean commit `7a9e510`; passing seeds: `0/3`;
+- action-conditioning MSE ratios: `0.712`, `1.012`, `1.003`, all above the `0.50` maximum;
+- held-out coverage: `0.946`, `0.986`, `0.855`; OOD AUC: `0.604`, `0.652`, `0.560`; only seed
+  `29` passed the joint uncertainty gate;
+- all-consumer held-out validity: false on every seed; dynamics R2 was `-2.872`, `0.398`, `0.726`,
+  while value, risk, uncertainty, and action-selection transfer was predominantly negative;
+- six-of-24 candidate minimum sensitivity capture: `0.583`, `0.561`, `0.574`, below `0.70`;
+- task-counterfactual mean donor recovery: `-10.18`, `-17.38`, `-3.11`, below `+0.50`;
+- seed `37` random-control rollout damage appeared selective, but only four local-tangent controls
+  matched and their p95 exceeded candidate damage; its counterfactual recovery was still negative;
+- shared task-workspace candidate: `false`; workspace found: `false`.
+
+Interpretation: adding task context did not make the learned latent computation compositionally
+reusable. The post-hoc consumers mostly failed on the unseen goal/dynamics pairing, and candidate
+coordinate swaps did not move their outputs toward the donor task. Relative wins against weak
+random controls can occur even with the wrong absolute effect; the recovery floor and tangent
+controls prevented that false positive. This is evidence against this architecture, not against
+workspace-like mechanisms in larger or jointly trained JEPAs.

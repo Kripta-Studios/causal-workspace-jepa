@@ -28,10 +28,9 @@ Status: `ACTIVE`.
   as unmatched because their perturbations were much larger.
 - `ACTIVE`: `WM-T0-004` is one seed on simple PointMass physics. Its null blocks claims for this run;
   it does not prove that stronger goal-conditioned or multi-task JEPAs lack workspace-like structure.
-- `ACTIVE`: `WM-T0-005` uses richer synthetic task context and three seeds, but its downstream
-  consumers are still fitted after the world model and may mostly recover a shared state/task
-  manifold. Counterfactual recovery and local-tangent controls reduce, but cannot eliminate, that
-  interpretation.
+- `RESOLVED_NULL`: `WM-T0-005` tested richer synthetic task context on three seeds. Its post-hoc
+  consumers did not generalize to the held-out composition and task-counterfactual recovery was
+  negative, so no shared state/task manifold is promoted to a workspace candidate.
 - `ACTIVE`: `LLM-GPT2-002` is larger than the original smoke but still has one seed, eight local
   prompts, coordinate interventions, and selected outputs. Its local Jacobian uses extra direct
   small-magnitude executions and must be compared on fidelity, not runtime.
