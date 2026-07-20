@@ -5,8 +5,9 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 ## Current Status
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
+- `IMPLEMENTED_UNVALIDATED`: NumPy intervention operators, activation cache, ridge probes, sparse dictionary, finite-difference lenses, circuit graph I/O, mock transformer, and mock intervention-JEPA smoke runner. Clean committed mock metrics are pending.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
-- `NOT_STARTED`: intervention experiments and mock Qwen experiments.
+- `NOT_STARTED`: real Qwen experiments and published world-model experiments.
 - `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, GPT-2/GPT-style real model smoke tests, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
@@ -59,7 +60,7 @@ python scripts/run_experiment.py \
 python scripts/audit_reproducibility.py
 ```
 
-The Tier 0 and tiny JEPA commands are implemented; mock Qwen remains scheduled for Milestone 2.
+The Tier 0, tiny JEPA, and mock-Qwen smoke commands are implemented. The mock-Qwen command uses a deterministic local mock model, not Qwen weights.
 
 ## GPU Continuation
 

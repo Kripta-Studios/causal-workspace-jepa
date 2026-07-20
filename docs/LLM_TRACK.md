@@ -1,7 +1,13 @@
 # LLM Track
 
-Status: `SCAFFOLDED`.
+Status: `IMPLEMENTED_UNVALIDATED`.
 
 CPU VPS implementation uses a mock transformer with known activation dependencies. It is valid for interface, leakage, and intervention-pipeline tests only.
 
 Real Hugging Face Qwen instrumentation is `BLOCKED_RESOURCE` on this VPS because it requires model weights, Transformers, selected-layer activation storage, and suitable GPU memory. Ollama is not a hidden-state or autograd source.
+
+Current mock implementation:
+
+- exposes `resid_pre`, `attn_out`, `mlp_out`, `resid_post`, and `logits`;
+- supports direct replayable interventions through the shared `InterventionSpec`;
+- trains a small intervention-conditioned JEPA-style ridge predictor against no-change, mean-effect, and linear-context baselines.

@@ -8,6 +8,7 @@ No causal scientific mechanism result has been produced yet. The current results
 | --- | --- | --- | --- | --- | --- | --- |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | pending | `SMOKE_VALIDATED` |
 | WM-T0-001 | Tiny action-conditioned JEPA predicts PointMass2D latent transitions better than mean, no-action, and shuffled-action controls in the CPU smoke setting. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | `artifacts/metrics/tiny_jepa_smoke.json` | `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4` | `SMOKE_VALIDATED` |
+| LLM-MOCK-001 | Mock intervention-JEPA smoke runner is implemented and an exploratory dirty-run passed. | Availability | `configs/experiments/mock_qwen_intervention_jepa_smoke.yaml` | pending committed metrics | pending | `IMPLEMENTED_UNVALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 

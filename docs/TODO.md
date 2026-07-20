@@ -25,8 +25,12 @@
 
 ## Milestone 2
 
-- [ ] Implement intervention operators.
-- [ ] Implement probes and finite differences.
-- [ ] Implement circuit graph schema.
-- [ ] Implement mock Qwen adapter and Intervention-JEPA smoke.
-- [ ] Commit and push.
+- [x] Implement intervention operators.
+- [x] Implement probes and finite differences.
+- [x] Implement circuit graph schema.
+- [x] Implement mock Qwen adapter and Intervention-JEPA smoke.
+- [x] Add tests.
+- [x] Run tests.
+- [x] Run `git diff --check`.
+- [ ] Commit and push code.
+- [ ] Rerun mock smoke from committed code and commit metrics/docs.
