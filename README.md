@@ -8,8 +8,8 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
 - `SMOKE_VALIDATED`: NumPy intervention operators, activation cache, ridge probes, sparse dictionary, finite-difference lenses, circuit graph I/O, mock transformer, and mock intervention-JEPA smoke runner.
 - `SMOKE_VALIDATED`: adversarial Milestone 3 re-audit. The flawed original patch metric was
   superseded by a clean replayable action-input intervention with L2 norm-matched controls.
-- `IMPLEMENTED_UNVALIDATED`: repaired action-input replay and multi-consumer workspace discovery with
-  known positive/negative controls; clean committed runs are pending.
+- `SMOKE_VALIDATED`: multi-consumer workspace detector with planted shared/disjoint controls. The
+  tiny JEPA result is null after uncertainty, PCA, and off-manifold rollout-control failures.
 - `SMOKE_VALIDATED`: GPT-2 Medium hidden-state intervention smoke under the user's explicit override.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments.
@@ -148,6 +148,10 @@ Validated CPU smoke results:
   R2 `~1.0` versus endpoint R2 values `-0.111` and `0.083`; actual action-input replay recovery `1.0`,
   max replay error `0.0`, L2 norm-matched latent control `-12.784`, random-action control `-0.316`.
   This is a trivial explicit-input circuit, not a learned workspace.
+- Workspace study (`WM-T0-003`) ran from clean commit `5223a54`: the detector found its planted
+  shared control and rejected disjoint consumers, but the JEPA uncertainty head failed (`R2=-3.639`),
+  PCA was more damaging than the candidate, and random rollout controls went off-manifold. No shared
+  causal subspace candidate or workspace was accepted.
 - GPT-2 Medium smoke (`LLM-GPT2-001`) directly intervened at `transformer.h.12.resid_post`; mean absolute logit delta was `0.0797`, intervention-JEPA MSE was `0.00220` vs no-change `0.0114`, effect correlation `0.976`. This is a small causal-mediation smoke, not a J-space/workspace discovery.
 
 ## Limitations

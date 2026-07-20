@@ -51,5 +51,12 @@
 - [x] Preregister `WM-T0-003` thresholds and splits.
 - [x] Commit and push repaired code before execution.
 - [x] Rerun corrected `WM-T0-002` from committed code.
-- [ ] Run `WM-T0-003` from committed code.
-- [ ] Commit and push corrected/new metrics.
+- [x] Run `WM-T0-003` from committed code.
+- [ ] Commit and push `WM-T0-003` null metrics.
+
+## Milestone 3 Follow-up
+
+- [x] Run `WM-T0-003` from committed code and preserve its null result.
+- [ ] Replace the failed OOD proxy with calibrated ensemble or heteroscedastic uncertainty.
+- [ ] Replace arbitrary projection controls with activation-density-matched or in-manifold controls.
+- [ ] Test a deeper learned predictor with genuine internal sites and independently trained consumers.

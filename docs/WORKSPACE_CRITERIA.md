@@ -57,3 +57,17 @@ with 32 equal-dimensional random subspaces and high-variance PCA.
 Passing this detector establishes only a compact shared causal-sensitivity candidate. The full
 workspace decision still requires controllability, flexible reuse, selective necessity,
 depth/horizon evolution, and held-out generalization.
+
+## WM-T0-003 Result
+
+The detector found its planted shared control and rejected the disjoint negative control. On the
+tiny JEPA it proposed three of sixteen dimensions, capturing at least `0.886` of every fitted
+consumer Jacobian's normalized sensitivity. The result nevertheless failed:
+
+- uncertainty readout held-out R2 was `-3.639`, below the preregistered `0.8` validity floor;
+- PCA caused more direct-readout damage (`1.527`) than the candidate (`1.306`);
+- random rollout controls became severely off-manifold and produced unusably large damage.
+
+Result: `shared_causal_subspace_candidate_found = false`, `workspace_found = false`. The most likely
+explanation is an ordinary physical-state manifold reused by hand-added consumers, not a privileged
+workspace.

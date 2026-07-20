@@ -16,3 +16,8 @@ Status: `SCAFFOLDED`.
   the repaired intervention run is executed from committed code.
 - `ACTIVE`: a five-consumer subspace in the tiny model may simply recover its four-dimensional
   physical-state manifold. High-variance PCA is therefore a mandatory matched control.
+- `ACTIVE`: `WM-T0-003` confirmed this concern: PCA ablation was more damaging than the proposed
+  subspace. The current OOD-uncertainty readout also failed held-out prediction.
+- `REJECTED`: arbitrary random latent projection as a multistep control on the current linear model.
+  Some controls cause extreme off-manifold rollout divergence. Future controls must match activation
+  density or use in-manifold donor/resampling interventions.

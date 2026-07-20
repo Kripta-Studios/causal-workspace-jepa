@@ -1,0 +1,120 @@
+{
+  "candidate": {
+    "compactness_ratio": 0.1875,
+    "consumer_capture": {
+      "action_selection": 0.9750782220502131,
+      "dynamics_prediction": 0.8860677560501686,
+      "risk": 0.9863047587507117,
+      "uncertainty": 0.9351058613028048,
+      "value": 0.9857212922263451
+    },
+    "dimension": 3,
+    "mean_capture": 0.9536555780760485,
+    "min_capture": 0.8860677560501686,
+    "representation_dim": 16,
+    "sensitivity_candidate_found": true
+  },
+  "causal_ablation": {
+    "candidate_damage_by_consumer": {
+      "action_selection": 1.5090096579745582,
+      "dynamics_prediction": 1.7507802834736803,
+      "risk": 1.4925161142069872,
+      "uncertainty": 0.6428759147909613,
+      "value": 1.13658937963313
+    },
+    "candidate_mean_damage": 1.3063542700158632,
+    "control_count": 32,
+    "pca_control_mean_damage": 1.5274875245430484,
+    "random_control_max_damage": 0.8826727977234065,
+    "random_control_mean_damage": 0.3367774066870515,
+    "random_control_std_damage": 0.21702990809551173,
+    "specificity_exceeds_all_random_controls": true,
+    "specificity_margin_vs_pca": -0.22113325452718513,
+    "specificity_margin_vs_random_mean": 0.9695768633288118
+  },
+  "claims": [
+    {
+      "claim": "The detector recovers a known shared subspace and rejects disjoint consumers.",
+      "evidence_level": "Availability",
+      "supported": true
+    },
+    {
+      "claim": "A compact subspace is jointly used by five frozen JEPA consumers.",
+      "evidence_level": "Specificity",
+      "supported": false
+    },
+    {
+      "claim": "The candidate is more causally privileged than a high-variance PCA subspace.",
+      "evidence_level": "Specificity",
+      "supported": false
+    },
+    {
+      "claim": "A JEPA workspace satisfying the preregistered criteria was found.",
+      "evidence_level": "Specificity",
+      "supported": false
+    }
+  ],
+  "dataset": "data/processed/tier0_smoke/pointmass2d.npz",
+  "detector_controls": {
+    "negative_control": {
+      "compactness_ratio": 0.25,
+      "consumer_capture": {
+        "action_selection": 0.852225706688886,
+        "dynamics_prediction": 0.0,
+        "risk": 0.9489503571433366,
+        "uncertainty": 0.9992496313405946,
+        "value": 0.9643707759574311
+      },
+      "dimension": 4,
+      "mean_capture": 0.7529592942260497,
+      "min_capture": 0.0,
+      "representation_dim": 16,
+      "sensitivity_candidate_found": false
+    },
+    "negative_control_found": false,
+    "positive_control": {
+      "compactness_ratio": 0.125,
+      "consumer_capture": {
+        "action_selection": 0.956868863479128,
+        "dynamics_prediction": 0.8189694729483247,
+        "risk": 0.9455686744300656,
+        "uncertainty": 0.8963523530717972,
+        "value": 0.8551189901072593
+      },
+      "dimension": 2,
+      "mean_capture": 0.8945756708073149,
+      "min_capture": 0.8189694729483247,
+      "representation_dim": 16,
+      "sensitivity_candidate_found": true
+    },
+    "positive_control_found": true
+  },
+  "evidence_level": "Specificity",
+  "experiment_id": "WM-T0-003",
+  "head_test_r2": {
+    "action_selection": 0.9999999999881765,
+    "dynamics_prediction": 0.9999999999851995,
+    "risk": 0.9999999999949408,
+    "uncertainty": -3.6390390673427175,
+    "value": 0.9999999999702702
+  },
+  "missing_workspace_criteria": [
+    "goal_or_instruction_controllability",
+    "depth_and_horizon_evolution",
+    "held_out_task_generalization",
+    "specificity_over_high_variance_pca"
+  ],
+  "model": "tiny_action_conditioned_jepa_with_frozen_multiconsumer_heads",
+  "seed": 0,
+  "selective_necessity": {
+    "multistep_damage": 4.7524495124816895,
+    "one_step_damage": 2.282883644104004,
+    "random_control_multistep_max_damage": 1421119.75,
+    "random_control_multistep_mean_damage": 53050.31944140792,
+    "selective_necessity_ratio": 2.0817747434275695,
+    "specificity_margin_vs_random_mean": -53045.56699189544
+  },
+  "shared_causal_subspace_candidate_found": false,
+  "status": "SMOKE_VALIDATED",
+  "workspace_found": false
+}

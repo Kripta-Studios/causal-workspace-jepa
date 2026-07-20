@@ -61,3 +61,10 @@
 - Reran corrected `WM-T0-002` from clean commit `315d8cf`. Actual `InterventionSpec` replay recovered
   the donor effect exactly (`1.0`, max error `0.0`) while L2 norm-matched controls did not. This is
   narrow Specificity evidence for the explicit action-input pathway, not a learned workspace.
+- Ran `WM-T0-003` from clean commit `5223a54`. The detector passed planted shared/disjoint controls
+  and proposed a `3/16` sensitivity subspace, but the preregistered candidate decision failed:
+  uncertainty R2 was `-3.639`, PCA damage exceeded candidate damage, and random rollout controls were
+  badly off-manifold. No workspace was found.
+- Best next JEPA experiment: a deeper learned predictor with calibrated ensemble/heteroscedastic
+  uncertainty and in-manifold donor or activation-density-matched controls. Do not tune the current
+  failed proxy after observing its result; register a new experiment.

@@ -26,5 +26,8 @@ Validated CPU smoke:
 - A multi-consumer audit now fits frozen readouts for dynamics prediction, value, risk, an OOD
   uncertainty proxy, and action selection. Known shared/disjoint systems validate the detector;
   random and PCA controls test whether a JEPA candidate is privileged beyond generic state variance.
+- `WM-T0-003` returned a null: the detector controls pass, but uncertainty R2 is negative, PCA is
+  more damaging than the candidate, and random rollout projections are off-manifold. The candidate
+  is not promoted.
 - This validates deterministic execution and action-conditioning plumbing. It does not establish a
   learned workspace.

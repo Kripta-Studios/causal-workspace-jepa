@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/workspace_discovery_study.yaml",
+  "git_commit": "5223a54ea96fbb6b0481120301c78547e8aabff4",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/workspace_discovery_study.json",
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 0,
+  "time_utc": "2026-07-20T14:11:31.683301+00:00",
+  "workspace_found": false
+}

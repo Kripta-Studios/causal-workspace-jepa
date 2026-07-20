@@ -11,6 +11,7 @@ The current results are CPU-scale smoke validation plus one tiny JEPA specificit
 | LLM-MOCK-001 | Mock intervention-JEPA predicts held-out direct intervention effects better than no-change, mean-effect, and linear-context baselines in a deterministic mock transformer. | Availability | `configs/experiments/mock_qwen_intervention_jepa_smoke.yaml` | `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` | `85c1dbfbe9c824bcca415af13f4a6f34acc95267` | `SMOKE_VALIDATED` |
 | WM-T0-002 | Tiny JEPA latent displacement decodes action better than endpoints; replaying explicit action-input coordinates exactly mediates the donor action effect against norm-matched controls. | Specificity | `configs/experiments/tier0_mechanistic_study.yaml` | `artifacts/metrics/tier0_mechanistic_study.json` | `315d8cfa3e9640808e316176f45b84c31410c0f8` | `SMOKE_VALIDATED` |
 | LLM-GPT2-001 | GPT-2 Medium residual-stream steering at layer 12 causes measurable downstream hidden/logit changes, and a tiny intervention-JEPA predicts held-out effects better than no-change in this smoke setting. | Causal mediation | `configs/experiments/gpt2_medium_intervention_smoke.yaml` | `artifacts/metrics/gpt2_medium_intervention_smoke.json` | `59795a4280b1c8cb372eea000f30de584476dde6` | `SMOKE_VALIDATED` |
+| WM-T0-003 | The workspace detector passes planted shared/disjoint controls, but the tiny JEPA five-consumer candidate fails consumer validity, PCA specificity, and rollout-control validity; no workspace was found. | Specificity | `configs/experiments/workspace_discovery_study.yaml` | `artifacts/metrics/workspace_discovery_study.json` | `5223a54ea96fbb6b0481120301c78547e8aabff4` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -72,3 +73,18 @@ circuit; it is not a discovered learned J-space-like workspace.
 - effect correlation: `0.9760097933956744`.
 
 Interpretation: real GPT-2 Medium residual interventions affect downstream computation and can be meta-predicted in a tiny smoke setting. This does not establish a J-space or workspace.
+
+`WM-T0-003` key metrics:
+
+- planted shared control found: `true`; disjoint-consumer control found: `false`;
+- proposed dimension: `3/16`; minimum normalized consumer sensitivity capture: `0.886`;
+- candidate mean direct-readout damage: `1.306`; random-control maximum: `0.883`;
+- PCA control damage: `1.527`, greater than the proposed candidate;
+- uncertainty-head held-out R2: `-3.639`, failing the preregistered `0.8` floor;
+- random rollout-control mean damage: `53050.3`, showing severe off-manifold instability;
+- shared causal subspace candidate found: `false`; workspace found: `false`.
+
+Interpretation: the detector can recognize a planted shared subspace, but this tiny JEPA result does
+not survive adversarial controls. The three-dimensional direction set mostly tracks the ordinary
+physical-state manifold; the uncertainty readout is invalid and arbitrary random projection is not
+a valid rollout control because it drives the linear model far off its training manifold.

@@ -42,4 +42,7 @@ Status: `ACTIVE` for CPU-safe causal audit; `BLOCKED_RESOURCE` for GPU-dependent
 - Run `WM-T0-003` with five frozen downstream consumers and matched random/PCA controls.
 - Strengthen GPT-2 Medium with prompt/intervention holdouts and required baselines.
 
+`WM-T0-003` completed with a null result. Its follow-up must use a valid uncertainty consumer and
+manifold-matched rollout controls before any shared-subspace claim is reconsidered.
+
 Use `configs/resource/gpu_12gb.yaml` for selected Qwen and published JEPA continuation. Use `gpu_cluster` for Qwen3-30B-A3B and broad Jacobian/activation studies.
