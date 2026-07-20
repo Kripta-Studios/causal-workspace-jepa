@@ -12,8 +12,8 @@
 - Implemented deterministic Tier 0 generators: PointMass2D, BouncingBall2D, TwoBodyCollision, TinyMaze, and MiniPush.
 - Implemented a tiny NumPy action-conditioned JEPA with fixed encoder, ridge-fitted predictor, save/load, named activation points, and no-action/shuffled-action controls.
 - Implemented a random-shooting planner and PointMass closed-loop cost check.
-- Added Milestone 1 tests. At that milestone the full command passed 14 tests; the current suite has
-  32 tests.
+- Added Milestone 1 tests. At that milestone the full command passed 14 tests; before the current
+  `WM-T0-004` code milestone the full suite had 34 tests.
 - Committed and pushed Milestone 1 code as `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.
 - Reran Tier 0 generation and `WM-T0-001` tiny JEPA smoke from clean committed code.
 - Committed and pushed result summaries as `b0b7796`: `data/manifests/tier0_smoke_manifest.json`, `artifacts/metrics/tiny_jepa_smoke.json`, and `artifacts/metrics/tiny_jepa_smoke.provenance.json`.
@@ -35,7 +35,9 @@
 - Committed and pushed mock result summaries as `948347c`: `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json` and `artifacts/metrics/mock_qwen_intervention_jepa_smoke.provenance.json`.
 - Added `scripts/bootstrap_cpu.sh`, config `.gitkeep` files, and reporting stubs to complete the requested architecture.
 - `uv` is not installed on the VPS. The bootstrap script checks resources and reports the exact install command instead of auto-installing tools.
-- `/root/.cache/pip` is about 4.4 GB and was not modified because it may predate this task; free disk remains above the 4 GB guard.
+- Historical audit reported `/root/.cache/pip` at about 4.4 GB and left it untouched. The later
+  resource re-audit measured all of `/root/.cache` at about 233 MB, so that old size is no longer
+  current.
 - Historical `WM-T0-002` run reported action recovery `0.984`; adversarial review later found that
   result tautological and superseded it with the clean replay result documented below.
 - Under explicit user override, created `.venv`, installed `transformers`/`safetensors`, downloaded `gpt2-medium`, and ran `LLM-GPT2-001`.
@@ -46,7 +48,8 @@
 
 ### Next Ideas
 
-- Execute the committed CPU-safe `LLM-GPT2-002` before scaling to GPU.
+- On `gpu_12gb`, test GPT-2/Qwen semantic, composed, resampling, and larger interventions while
+  retaining prompt-local Jacobians as the baseline to beat.
 
 ### Adversarial Milestone 3 Re-audit
 
@@ -113,3 +116,28 @@
 - The strengthened reproducibility audit and tests were committed and pushed as `3eedcb5`.
 - Final handoff target: full suite, doctor, checksum/provenance audit, and `git diff --check` must
   pass; branch `main` must be clean and synchronized with `origin/main`.
+
+### WM-T0-004 Implementation In Progress
+
+- Re-audited every Markdown handoff/registry and the committed metrics/provenance logs. Corrected the
+  stale test count and the stale instruction to run the already-completed `LLM-GPT2-002`.
+- Primary-source verification confirms that Anthropic's J-space is a sparse nonnegative token-aligned
+  frame tested for report, directed modulation, internal reasoning, flexible reuse, and selectivity.
+  A JEPA Jacobian eigensubspace is therefore only an analogue candidate, never equivalent by name.
+- Added a NumPy-only two-hidden-layer action-conditioned JEPA whose hidden weights are learned and
+  exposed at `predictor.hidden1` and `predictor.hidden2`; its fixed encoder prevents JEPA collapse.
+- Added a five-member bootstrap ensemble, split interval calibration, held-out coverage/NLL, OOD rank
+  AUC, and uncertainty/error correlation. No uncertainty claim is accepted unless all registered
+  thresholds pass.
+- Added conditional donor resampling: candidate coordinates come from validation activations matched
+  in the orthogonal complement. Random/PCA controls must match candidate density distance and
+  perturbation magnitude before they count.
+- Preregistered `WM-T0-004` before execution. It fits all five consumers after freezing the predictor,
+  discovers candidates separately at two depths, and requires direct plus multistep specificity.
+- Resource incident: free disk fell to 3.8 GB because broken external `AppTurnos` launchers produced
+  about 37 GB of PM2 restart-loop logs. Per user instruction, the systemd service is now inactive and
+  masked, its PM2 entry and saved startup record are removed, port 3001 is closed, and 40+ GB is free.
+  The source/database remain as a recoverable archive outside this repository.
+- Current boundary: all 37 tests, doctor, reproducibility audit, compile check, and `git diff --check`
+  pass with 40+ GB free. Do not execute `WM-T0-004` until this implementation is committed and
+  pushed; do not change its registered thresholds after observing results.

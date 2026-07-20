@@ -45,6 +45,10 @@ Status: `ACTIVE` for CPU-safe causal audit; `BLOCKED_RESOURCE` for GPU-dependent
 `WM-T0-003` completed with a null result. Its follow-up must use a valid uncertainty consumer and
 manifold-matched rollout controls before any shared-subspace claim is reconsidered.
 
+`WM-T0-004` is preregistered and implemented but not yet run. It uses a learned two-hidden-layer
+predictor, five-member calibrated ensemble, independently fitted consumers, and conditional donor
+resampling with explicit density/magnitude matching. Execute only after the implementation commit.
+
 `LLM-GPT2-002` completed with a negative nonlinear-advantage result. Continue on GPU with semantic,
 combined, resampling, and larger-magnitude interventions; preserve prompt-local Jacobians as the
 primary strong baseline.

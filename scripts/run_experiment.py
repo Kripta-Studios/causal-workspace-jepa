@@ -17,6 +17,9 @@ from causal_workspace_jepa.experiments.llm.gpt2_medium_mechanistic_study import 
 from causal_workspace_jepa.experiments.llm.mock_qwen_intervention_jepa_smoke import (
     run_mock_qwen_intervention_jepa_smoke,
 )
+from causal_workspace_jepa.experiments.world_model.manifold_workspace_study import (
+    run_manifold_workspace_study,
+)
 from causal_workspace_jepa.experiments.world_model.tier0_mechanistic_study import (
     run_tier0_mechanistic_study,
 )
@@ -42,6 +45,10 @@ def main() -> int:
         return 0
     if experiment_id == "WM-T0-003":
         metrics = run_workspace_discovery_study(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "WM-T0-004":
+        metrics = run_manifold_workspace_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     if experiment_id == "LLM-MOCK-001":

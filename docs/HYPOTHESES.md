@@ -30,6 +30,43 @@ scientific validation.
 
 Metrics, splits, thresholds, layers, and magnitudes must be registered before each associated experiment.
 
+## WM-T0-004 Preregistration
+
+Registered before execution on 2026-07-20. The implementation and config are committed before the
+scientific runner is invoked.
+
+- Scope: test H-WM-05, H-WM-06, and a restricted H-WM-08 on a two-hidden-layer learned NumPy JEPA;
+  this is not a J-space reproduction and cannot establish a full workspace.
+- Data: locally generated PointMass2D only, `128` trajectories of `24` steps with seed `17`.
+  Deterministic trajectory splits are approximately 70/15/15 percent. Predictor training uses only
+  train trajectories; uncertainty calibration and frozen-consumer fitting use validation; all
+  reported head and intervention decisions use test. OOD uses `32` new trajectories with mass
+  `0.55`, drag `0.2`, and seed `10017`.
+- Predictor: fixed non-collapsing 8-dimensional encoder; learned hidden widths `24` and `16`; five
+  bootstrap members, `1,200` Adam steps each. Held-out one-step MSE must be at most `0.25` times the
+  MSE obtained after shuffling held-out actions.
+- Uncertainty: calibrate one scalar ensemble-variance scale on validation for 90 percent marginal
+  coverage. It is valid only if test coverage is in `[0.80, 0.98]`, Gaussian NLL is no more than
+  `0.05` above the validation-fitted homoscedastic baseline, OOD rank AUC is at least `0.65`, and
+  uncertainty/error Spearman correlation across ID+OOD examples is at least `0.30`.
+- Consumers: independently fit frozen quadratic heads for next-latent dynamics, value, risk,
+  calibrated uncertainty, and action selection. Every test R2 must be at least `0.50`.
+- Candidate: discover separately at `predictor.hidden1` and `predictor.hidden2`; at most five
+  dimensions, at least `0.75` normalized Jacobian capture for every consumer, and compactness ratio
+  at most `0.35`.
+- In-manifold intervention: replace candidate coordinates from a validation donor selected among the
+  16 nearest examples in the orthogonal complement. The test recipient complement remains fixed.
+- Controls: 64 seed-fixed equal-dimensional random bases plus PCA, all using the same conditional
+  donor rule. A control is matched only when its median nearest-manifold distance and perturbation
+  RMS are each within a factor of two of the candidate and its density-distance ratio is at most
+  `3.0`. At least 16 random controls and PCA must be matched.
+- Specificity: candidate direct damage must exceed the 95th percentile of matched random controls
+  and matched PCA. Its eight-step rollout damage must exceed the 95th percentile of up to 16 matched
+  controls, with multistep/one-step damage ratio at least `1.25`.
+- Decision: a shared causal subspace requires every predictor, uncertainty, consumer, specificity,
+  and selective-necessity criterion above. `workspace_found` remains false regardless because this
+  run lacks goal/instruction controllability, cross-task flexible reuse, and reportability analogue.
+
 ## WM-T0-003 Preregistration
 
 Registered before execution on 2026-07-20.

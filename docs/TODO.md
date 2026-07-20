@@ -57,9 +57,13 @@
 ## Milestone 3 Follow-up
 
 - [x] Run `WM-T0-003` from committed code and preserve its null result.
-- [ ] Replace the failed OOD proxy with calibrated ensemble or heteroscedastic uncertainty.
-- [ ] Replace arbitrary projection controls with activation-density-matched or in-manifold controls.
-- [ ] Test a deeper learned predictor with genuine internal sites and independently trained consumers.
+- [x] Implement a split-calibrated deep ensemble uncertainty pipeline for `WM-T0-004`.
+- [x] Implement conditional donor resampling with activation-density and perturbation matching.
+- [x] Implement a deeper learned predictor with genuine internal sites and independently trained consumers.
+- [x] Preregister `WM-T0-004` splits, thresholds, OOD shift, and rejection rules before execution.
+- [ ] Commit and push the `WM-T0-004` implementation.
+- [ ] Execute `WM-T0-004` from the clean committed code without changing thresholds.
+- [ ] Record the result, rerun the full audit, commit, and push.
 
 ## GPT-2 Medium Follow-up
 

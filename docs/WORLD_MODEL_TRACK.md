@@ -30,5 +30,8 @@ Validated CPU smoke:
 - `WM-T0-003` returned a null: the detector controls pass, but uncertainty R2 is negative, PCA is
   more damaging than the candidate, and random rollout projections are off-manifold. The candidate
   is not promoted.
+- `WM-T0-004` is preregistered and implemented but not run. It tests learned hidden sites with a
+  five-model ensemble, split calibration, OOD ranking, frozen independent consumers, and
+  conditional donor resampling whose manifold distance is measured and matched across controls.
 - This validates deterministic execution and action-conditioning plumbing. It does not establish a
   learned workspace.

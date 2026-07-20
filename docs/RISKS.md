@@ -7,9 +7,11 @@ Status: `ACTIVE`.
 - `BLOCKED_RESOURCE`: Do not download Qwen weights in this run.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: The repository currently depends on system NumPy for local no-install smoke code; an editable install will install NumPy in a venv when allowed.
-- `ACTIVE`: All literature entries are prompt-derived until source verification occurs.
+- `ACTIVE`: Four central literature entries have now been checked against their primary web/arXiv
+  sources; the remaining registry entries are still prompt-derived.
 - `ACTIVE`: `uv` is not installed on this VPS. `scripts/bootstrap_cpu.sh` reports the install command and exits with `SKIPPED_RESOURCE` rather than modifying the toolchain automatically.
-- `ACTIVE`: `/root/.cache/pip` is about 4.4 GB but was not modified because it may predate this task. Free disk remains above the 4 GB guard.
+- `RESOLVED`: an earlier handoff reported `/root/.cache/pip` at about 4.4 GB. The 2026-07-20
+  resource re-audit measured all of `/root/.cache` at about 233 MB; no cache deletion was needed.
 - `ACTIVE`: GPT-2 Medium CPU runs are slow; the committed smoke uses 4 prompts, 2 residual coordinates, and 16 direct interventions.
 - `RESOLVED`: adversarial review found that the original `WM-T0-002` action patch assigned the donor
   target directly. The corrected intervention was executed from clean commit `315d8cf`; the original
@@ -21,6 +23,9 @@ Status: `ACTIVE`.
 - `REJECTED`: arbitrary random latent projection as a multistep control on the current linear model.
   Some controls cause extreme off-manifold rollout divergence. Future controls must match activation
   density or use in-manifold donor/resampling interventions.
+- `ACTIVE`: conditional donor resampling can still create hybrid activations outside the empirical
+  manifold. `WM-T0-004` therefore preregisters nearest-bank diagnostics and rejects unmatched
+  controls instead of assuming the method is valid.
 - `ACTIVE`: `LLM-GPT2-002` is larger than the original smoke but still has one seed, eight local
   prompts, coordinate interventions, and selected outputs. Its local Jacobian uses extra direct
   small-magnitude executions and must be compared on fidelity, not runtime.

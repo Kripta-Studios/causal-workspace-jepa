@@ -19,3 +19,9 @@
   generalization.
 - For `LLM-GPT2-002`, use direct held-out outcomes and compare against a prompt-local Jacobian. Do
   not infer a nonlinear advantage from beating only no-change or mean-effect.
+- For `WM-T0-004`, freeze the deep predictor before fitting consumers, calibrate ensemble uncertainty
+  on validation only, and replace projection-out controls with conditional donor resampling that
+  explicitly measures activation-manifold distance.
+- Do not call a shared Jacobian eigensubspace J-space. Anthropic defines J-space as a sparse
+  nonnegative token-aligned frame and validates report, modulation, reasoning, reuse, and selectivity;
+  the JEPA detector currently tests only a narrower functional analogue.

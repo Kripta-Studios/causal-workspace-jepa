@@ -71,3 +71,16 @@ consumer Jacobian's normalized sensitivity. The result nevertheless failed:
 Result: `shared_causal_subspace_candidate_found = false`, `workspace_found = false`. The most likely
 explanation is an ordinary physical-state manifold reused by hand-added consumers, not a privileged
 workspace.
+
+## WM-T0-004 Registered Repair
+
+The follow-up no longer projects arbitrary directions out of a recurrent rollout. It trains a
+two-hidden-layer predictor, freezes it, calibrates a five-member ensemble on validation data, and
+fits each downstream consumer independently. Candidate coordinates are interchanged from donors
+that are nearby in the orthogonal complement. Every candidate and control patch reports its nearest
+training-manifold distance and perturbation RMS; unmatched random or PCA controls cannot support a
+specificity decision.
+
+This repair still cannot establish J-space equivalence. Anthropic's J-space is a sparse nonnegative
+token-aligned frame with report, directed modulation, reasoning, flexible reuse, and selective
+necessity tests. `WM-T0-004` is only a narrower test for a shared causal hidden subspace.
