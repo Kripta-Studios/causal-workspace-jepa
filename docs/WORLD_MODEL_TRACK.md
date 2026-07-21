@@ -16,6 +16,12 @@ The former LeWorldModel placeholder is replaced by a typed, source-traceable sma
 adapter. `WM-LEWM-001` ran unchanged from clean commit `4dbc388` against official revision
 `8edfeb3...`. Other published adapters remain placeholders.
 
+Primary-source review now prioritizes official EB-JEPA over further small-model extrapolation. Its
+action-conditioned Two Rooms example is Apache-2.0, designed for a single GPU, includes recurrent
+prediction plus CEM/MPPI, and reports `97 +/- 2%` planning success. The next boundary is to reproduce
+that competence locally, then instrument action, recurrent gates, hidden state, latent prediction,
+planning cost, action choice, and closed-loop success. Publication performance is not local evidence.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,

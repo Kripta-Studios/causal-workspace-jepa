@@ -121,10 +121,10 @@ def run_lewm_reproduction_study(config_path: str | Path) -> dict[str, Any]:
         "all_passed": all_passed,
         "evidence_level": "Generalization" if all_passed else "Causal mediation",
         "published_integration": {
-            "name": "LeWorldModel faithful small reproduction",
+            "name": "LeWorldModel source-informed small variant",
             "official_repository": OFFICIAL_REPOSITORY,
             "official_revision": OFFICIAL_REVISION,
-            "faithful_elements": [
+            "source_informed_elements": [
                 "end_to_end_pixel_encoder",
                 "action_embedder",
                 "autoregressive_AdaLN_zero_predictor",
@@ -164,7 +164,7 @@ def run_lewm_reproduction_study(config_path: str | Path) -> dict[str, Any]:
         "runtime_seconds": float(time.monotonic() - started),
         "claims": [
             {
-                "claim": "A faithful small LeWorldModel reproduction learns action-conditioned pixel dynamics.",
+                "claim": "A source-informed small LeWorldModel variant learns action-conditioned pixel dynamics.",
                 "evidence_level": "Generalization",
                 "supported": reproduction_passes >= required,
             },

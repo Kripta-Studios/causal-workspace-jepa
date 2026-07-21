@@ -5,6 +5,11 @@ Status: `ACTIVE`.
 - Need causal evidence beyond decodability for all world-model representations.
 - Need matched generic-corruption controls for every intervention claim.
 - Need train/eval split audits preventing trajectory, donor, entity, and intervention leakage.
+- The bounded primary-source search found generative activation meta-models, verbalizers, sparse
+  replacement models, Jacobian/HVP transports, and direct circuit-localization methods, but no
+  intervention-conditioned JEPA that predicts Qwen hidden/logit/behavior effects and then survives
+  direct mediator validation. This is an open comparison, not proof of novelty. The one repository
+  target-encoder variant failed all three seeds.
 - Bounded direct Qwen intervention verification is implemented. Broader prompt families, semantic
   features, layer/site holdouts, behavioral endpoints, and a candidate that survives direct ranking
   controls remain open; the first meta-ranked coordinate candidate was rejected.
@@ -23,6 +28,10 @@ Status: `ACTIVE`.
   planning succeeds on only `1/12` cases per seed, and hidden donor-patch decoding/circuit evidence
   replicates on only one seed. A future route needs a stronger planner objective and a subspace whose
   decoded counterfactual is stable across initialization; the observed thresholds must not be tuned.
+- Official EB-JEPA now supplies a competent single-GPU Two Rooms planner and recurrent
+  action-conditioned target. The missing experiment is not another probe: it is a direct audit of
+  action/GRU routes against future latent, planning cost, selected action, and closed-loop success,
+  with necessity, sufficiency, matched controls, and replication.
 - Ensemble variance falls under the action-subspace intervention even as control worsens. Future
   uncertainty work needs intervention-aware calibration or epistemic/OOD objectives, not raw member
   disagreement alone.

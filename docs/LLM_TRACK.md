@@ -10,6 +10,16 @@ the RTX 5070 Ti host. Tests cover stable selected sites, deterministic capture, 
 donor/statistic registration, and autograd. Bounded selected-site Qwen3-4B capture also passes.
 Ollama is not a hidden-state or autograd source.
 
+The July-2026 source refresh adds Qwen-Scope as the official sparse-feature comparator. Its
+Qwen3-1.7B SAEs are feasible on this GPU, but the collection does not cover the exact 0.6B/4B
+targets and steering alone is not a circuit. Circuit Tracing, AtP*, HVP, EAP-IG faithfulness, path
+patching, and direct activation patching are mandatory comparators for future localization.
+
+The next module-mediation study is not yet preregistered. Adversarial review requires a precisely
+replayed upstream value-swap treatment, ordered multi-site patch/restore, episode-level inference,
+and controls separating binding from generic copying. It will create an eligible causal dataset for
+a later Intervention-JEPA; a positive localizer result would not itself be evidence for JEPA.
+
 The primary-scale capture script is now implemented for `Qwen/Qwen3-4B` at immutable revision
 `1cfa9a7...`. Its repository estimate is 8,060,926,626 bytes; it captures five residual sites and
 three selected positions over 12 fixed prompts into resumable checksummed HDF5 under a 64 MB output

@@ -50,7 +50,7 @@ def evaluate_completion(root: str | Path = ".") -> dict[str, dict[str, Any]]:
             world.get("published_integration", {}).get("official_revision")
             == "8edfeb336732b5f3ce7b8b210d0ba370a09e2cac"
             and world.get("reproduction_passing_seeds") == 3,
-            "Source-traceable faithful small LeWorldModel reproduction passed its modeling gate on 3/3 seeds.",
+            "Source-informed small LeWorldModel variant passed its modeling gate on 3/3 seeds.",
         ),
         "world_selective_intervention": _criterion(
             world.get("planning_passing_seeds", 0) >= 2

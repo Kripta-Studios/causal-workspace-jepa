@@ -192,7 +192,7 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
             else "COMPLETED_NEGATIVE"
         ),
         "evidence_level": "Availability" if split_name == "validation" else "Generalization",
-        "model": "faithful small LeWorldModel reproduction",
+        "model": "source-informed small LeWorldModel variant",
         "model_seeds": list(seeds),
         "analysis_split": split_name,
         "goal_ids": list(evaluation_goal_ids),

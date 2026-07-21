@@ -51,7 +51,7 @@ datasets:
     download_command: none
     preprocessing_command: python scripts/run_experiment.py --config configs/experiments/lewm_small_reproduction_v1.yaml
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
-    purpose: faithful small LeWorldModel reproduction and causal planner audit
+    purpose: source-informed small LeWorldModel variant and causal planner audit
     leakage_risks: trajectory_seed_or_goal_overlap
     status: SMOKE_VALIDATED
   qwen_real:

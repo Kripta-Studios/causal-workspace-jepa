@@ -2,6 +2,16 @@
 
 ## 2026-07-21
 
+- Prioritize official EB-JEPA Two Rooms over further interpretive extrapolation from the weak small
+  LeWorldModel planner. First reproduce competent planning, then instrument recurrent action/gate
+  routes and audit trajectory, cost, action, and closed-loop mediation across three seeds.
+- Treat Qwen-Scope, Circuit Tracing, AtP*, HVP/multi-step HVP, EAP-IG/faithfulness, and direct
+  activation/path patching as required comparators for new Qwen localization claims.
+- Do not preregister the initial population-mediation draft. Define an upstream value-swap
+  treatment, add ordered multi-site patch/restore execution, keep v1 module-only, freeze the
+  smallest `k <= 4` on train, and cluster held-out inference by independent binding episode. A
+  passing module set is a specific mediator set; circuit, workspace, JEPA, and SOTA remain unclaimed.
+
 - Maintain `papers/causal_workspace_jepa.tex` as the source-of-truth scientific manuscript. Every
   result table must name its evidence level, and every empirical statement must trace to a committed
   metric/provenance artifact. Generated PDF/auxiliary products remain ignored.

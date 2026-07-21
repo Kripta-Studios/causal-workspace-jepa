@@ -124,12 +124,16 @@ JEPAs learn predictive relations in representation space rather than directly
 reconstructing observations.  Our world-model implementation follows the
 small-model design principles of LeWorldModel \cite{maes2026leworldmodel} and
 is informed by action-conditioned JEPA planning results
-\cite{terver2025jepawms}, latent-difference objectives
+\cite{terver2025jepawms}, the official single-GPU EB-JEPA reference
+\cite{terver2026ebjepa}, latent-difference objectives
 \cite{zhang2026deltajepa}, and object-level causal interventions
 \cite{nam2026causaljepa}.  Temporal straightening and local-linear steering of
 world action models are already established adjacent ideas
 \cite{wang2026straightening,hong2026wamsteering}; we therefore do not claim
 novelty for linearization, curvature correction, or path integration itself.
+Probe-derived physics steering is also established in VideoMAE
+\cite{alam2026physicssteering}; our stronger target is a planning circuit with
+direct necessity, sufficiency, specificity, and closed-loop validation.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
@@ -140,6 +144,19 @@ Attribution patching \cite{kramar2024atpstar}, distributed alignment search
 \cite{arora2024causalgym} provide important causal-localization comparators.
 Patching can also create interpretability illusions by activating dormant
 pathways \cite{makelov2023patchingillusion}.
+
+Cross-layer-transcoder replacement models and attribution graphs provide a
+strong sparse circuit-tracing baseline \cite{ameisen2025circuittracing}, while
+Qwen-Scope supplies official Qwen sparse features \cite{deng2026qwenscope}.
+Natural-language autoencoders can verbalize and directionally reconstruct
+activations \cite{frasertaliente2026nla}, but neither readable reconstructions
+nor sparse steering alone establishes downstream causal fidelity.
+Circuit claims additionally require faithfulness rather than graph overlap
+\cite{hanna2024faithfulness} and explicit path hypotheses
+\cite{goldowskydill2023pathpatching}.  In-context key/value lookup also has
+direct match-and-copy induction-head precedent
+\cite{olsson2022induction,singh2024induction}; a binding benchmark is therefore
+a causal-localization test bed, not a novel behavioral mechanism.
 
 Population Jacobian averaging is prior art in the Jacobian Lens literature,
 and second-order/Hessian corrections to attribution patching are also prior art
@@ -806,9 +823,10 @@ schema does not establish shared semantics or shared mechanism.
   selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.
   \item The first JEPA population-transport study is numerically rejected.  The
-  action-path study remains validation-only calibration; its cancellation/error
-  association also has a shared-denominator confound that must be resolved
-  before any protected test.
+  action-path study remains validation-only calibration.  Its cancellation/error
+  association has a shared-denominator confound, and the parent artifact omits
+  the diagnostics and sampling support needed for a retrospective repair; that
+  route is closed without protected-test access.
   \item No positive circuit reaches evidence level 5, and no result reaches a
   broad multi-model level-6 mechanism claim.
 \end{itemize}
@@ -882,11 +900,15 @@ behavior dataset; population Jacobians improve some finite effects but do not
 obey the registered control--predictivity rules across the studied factual
 families and four-layer grids; and one target-encoder JEPA variant fails its
 registered held-out gates.  In the physical track, predictive gates pass while
-circuit and workspace acceptance gates fail, and
-decoded recurrent action-path cancellation remains a falsifiable candidate
-rather than a result.  Future work should prioritize direct held-out behavior,
-competent planners, cross-model replication, and controls that distinguish a
-causal mechanism from flexible prediction or coordinate-dependent geometry.
+circuit and workspace acceptance gates fail.  Decoded recurrent action-path
+cancellation is closed as a scientific route in the current small model because
+the acquired artifact cannot identify the proposed geometry.  The next
+discriminating studies should use a precisely replayed Qwen treatment to compare
+module mediator rankings and reproduce the competent official EB-JEPA planner
+before auditing recurrent action routes.  Only an eligible causal dataset from
+the former can support a new trajectory Intervention-JEPA test.  Direct held-out
+behavior, grouped uncertainty, cross-model replication, and controls separating
+native mechanism from flexible prediction remain mandatory.
 
 \bibliographystyle{plain}
 \bibliography{references}

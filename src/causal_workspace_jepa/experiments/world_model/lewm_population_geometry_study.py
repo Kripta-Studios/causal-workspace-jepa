@@ -232,7 +232,7 @@ def run_lewm_population_geometry_study(config_path: str | Path) -> dict[str, Any
         "experiment_id": str(config.get("id", "WM-POPULATION-JACOBIAN-001")),
         "status": status,
         "evidence_level": "Generalization",
-        "model": "faithful small LeWorldModel reproduction",
+        "model": "source-informed small LeWorldModel variant",
         "model_seeds": seeds,
         "required_passing_seeds": required,
         "goal_split": {

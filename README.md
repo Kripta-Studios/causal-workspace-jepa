@@ -10,7 +10,13 @@ falsification boundary: exact/second-order/population transports rank differentl
 the registered threshold-and-four-layer-grid onset rules fail across the studied factual relations,
 one EMA/stop-gradient target-encoder Intervention-JEPA variant fails its registered gates, and no
 tested JEPA workspace proxy or circuit meets its acceptance rule. Decoded recurrent action-path
-cancellation remains validation-only calibration with a shared-denominator confound.
+cancellation is closed as a scientific route after numerical and shared-denominator design
+failures; its active high-resolution run will be archived as vector calibration only.
+
+The 2026-07-21 primary-source refresh adds official EB-JEPA as the next published world-model
+target and Qwen-Scope/Circuit Tracing/AtP*/HVP as required Qwen comparators. No primary source was
+found that already performs the repository's exact intervention-conditioned JEPA causal-simulator
+program, but the current learned JEPA result is negative; the gap is not claimed as solved or SOTA.
 
 ## Current Status
 

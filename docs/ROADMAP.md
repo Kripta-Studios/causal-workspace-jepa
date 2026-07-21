@@ -1,5 +1,19 @@
 # Roadmap
 
+## July 2026 research pivot
+
+- Archive `WM-ACTION-PATH-CALIBRATION-002` as numerical/vector calibration only; the downstream
+  small-model action-path route is closed by design before protected-test access.
+- Integrate the official single-GPU EB-JEPA action-conditioned Two Rooms example, reproduce
+  competent three-seed planning, and expose recurrent action/gate/hidden-state sites before a
+  frozen necessity/sufficiency audit.
+- Implement ordered multi-site Qwen interventions and treatment/restoration replay tests. Then
+  preregister a module-only binding mediator benchmark comparing population/local Jacobians, HVP,
+  AtP*, probes, magnitude, random controls, and direct patching. Do not call it a JEPA experiment.
+- Only after a causally eligible component-outcome dataset exists, train a new trajectory
+  Intervention-JEPA and evaluate composed/held-out interventions against every strong derivative
+  and learned baseline.
+
 ## Milestone 0: Audit And Safe Bootstrap
 
 Status: `SMOKE_VALIDATED` once tests, diff check, commit, and push complete.

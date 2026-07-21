@@ -1,4 +1,4 @@
-"""Typed NumPy-facing adapter for the small LeWorldModel reproduction."""
+"""Typed NumPy-facing adapter for the source-informed small world model."""
 
 from __future__ import annotations
 
@@ -14,11 +14,11 @@ from causal_workspace_jepa.common.types import (
 )
 from causal_workspace_jepa.models.lewm import SmallLeWorldModel
 
-STATUS = "FAITHFUL_SMALL_REPRODUCTION"
+STATUS = "SOURCE_INFORMED_SMALL_MODEL"
 
 
 class LeWorldModelAdapter:
-    """Expose a trained small LeWM through the repository world-model protocol."""
+    """Expose the source-informed small model through the world-model protocol."""
 
     def __init__(self, model: SmallLeWorldModel, *, device: str = "cpu") -> None:
         self.model = model.to(device).eval()

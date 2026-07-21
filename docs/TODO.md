@@ -2,6 +2,16 @@
 
 ## GPU Transition (2026-07-21)
 
+- [x] Refresh the July-2026 primary-source frontier and register EB-JEPA, Qwen-Scope, Circuit
+  Tracing, NLA, causal physics steering, faithfulness/path patching, and induction-head prior art.
+- [x] Adversarially reject the first Qwen population-mediation draft before preregistration.
+- [ ] Implement and test ordered multi-site Qwen patch/restore with exact treatment replay; keep the
+  first causal localization study module-only until pre-`o_proj` head hooks reconstruct attention.
+- [ ] Preregister the corrected binding mediator study with independent episode units, train-only
+  `k <= 4`, grouped intervals, full-vocabulary behavior, and direct necessity/sufficiency controls.
+- [ ] Integrate/pin official EB-JEPA and reproduce the competent Two Rooms planner across three
+  seeds before registering its recurrent action-circuit audit.
+
 - [x] Adversarially audit the Qwen Jacobian baseline, model naming, behavior changes, and novelty.
 - [x] Mark H-LLM-01 `UNDER_REAUDIT`; preserve the old result without continuing to claim it.
 - [x] Implement, unit-test, and preregister `LLM-QWEN-JVP-AUDIT-001` with exact FP32 JVP and central

@@ -1,5 +1,29 @@
 # SUMMARY
 
+## 2026-07-21 — Primary-source SOTA refresh and next experimental boundary
+
+- Verified the July-2026 causal-interpretability frontier against primary papers and official
+  repositories: Jacobian Lens/J-space, AtP*, HVP correction, Circuit Tracing, Qwen-Scope, Natural
+  Language Autoencoders, MIB, path patching, faithfulness, Physics Emergence/steering, EB-JEPA,
+  Delta-JEPA, C-JEPA, LeWorldModel, JEPA-WMs, Temporal Straightening, AdaJEPA, and WAM steering.
+- The bounded search found no published system that trains an intervention-conditioned JEPA to
+  predict hidden/logit/behavior changes in Qwen and then validates a compact mediator with direct
+  necessity, sufficiency, specificity, and held-out generalization. This is a research gap, not a
+  novelty or SOTA claim; the repository's current target-encoder Intervention-JEPA failed 0/3.
+- Added EB-JEPA as the highest-priority published world-model target: its official single-GPU
+  action-conditioned Two Rooms example reports `97 +/- 2%` planning success and exposes recurrent
+  action dynamics suitable for gate/hidden-state mediation. Corrected official-code status for
+  LeJEPA, V-JEPA 2.1, Temporal Straightening, and AdaJEPA.
+- Added Qwen-Scope as the official sparse-feature comparator and Qwen3-1.7B as a feasible
+  intermediate target. Circuit Tracing/NLA are explicit comparators, not evidence that sparse or
+  verbalizable features are native causal circuits.
+- Adversarial review rejected the first Qwen population-mediation draft. It lacked a defined
+  upstream treatment, multi-site intervention support, clustered units, and separation of binding
+  from answer copying. The corrected design is module-only, defines sufficiency from clean plus
+  treated mediator states and necessity by restoring clean mediators in the treated run, freezes
+  `k <= 4` on train, clusters uncertainty by episode/key/value, and calls a positive result a
+  mediator set rather than a circuit or JEPA result.
+
 ## 2026-07-21 — Resumable long-run action-path execution
 
 - Added atomic per-horizon progress checkpoints to the recurrent JEPA action-path runner. Progress
