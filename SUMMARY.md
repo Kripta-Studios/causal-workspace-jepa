@@ -1,5 +1,24 @@
 # SUMMARY
 
+## 2026-07-21 — GPU continuation begins
+
+- Confirmed a clean, synchronized starting point at `99854eb` on `main`/`origin/main`.
+- Detected an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, CUDA-enabled PyTorch 2.10, Transformers
+  5.3, 32 logical CPU cores, and roughly 370 GB free. The `gpu_12gb` doctor passes.
+- The inherited full suite exposed a Windows portability failure: provenance paths recorded with
+  `/` were compared to Windows `Path` strings with `\\`. The audit now compares normalized relative
+  paths.
+- Fresh clones intentionally lack ignored activation shards. The integration test now requires at
+  least six manifest records to be either verified locally or explicitly reported missing; it does
+  not mislabel missing bytes as verified.
+- After the repair and GPU-doctor coverage, all 44 tests pass and the reproducibility audit reports nine metric/provenance
+  pairs, zero errors, and seven skipped missing local shards.
+- Regenerated the inherited 41-byte `uv.lock` and corrected the GPT-2 dependency group to include
+  PyTorch and a bounded Transformers major version.
+- Independent Qwen, world-model, and adversarial audits confirm that real Qwen and published-JEPA
+  integrations are placeholders despite the newly available hardware. Those are the next milestones;
+  no GPU scientific claim has yet been made.
+
 ## 2026-07-20
 
 ### Done

@@ -5,7 +5,9 @@ Status: `ACTIVE`.
 - Need causal evidence beyond decodability for all world-model representations.
 - Need matched generic-corruption controls for every intervention claim.
 - Need train/eval split audits preventing trajectory, donor, entity, and intervention leakage.
-- Need direct Qwen intervention verification on Hugging Face models, blocked on CPU VPS.
+- Need direct Qwen intervention verification on Hugging Face models. Hardware is now available, but
+  the adapter, bounded store, real dataset, baseline runner, and independent candidate verification
+  remain unimplemented.
 - Conditional donor resampling repaired the random-control manifold failure in `WM-T0-004`, but the
   PCA intervention was too large to be matched. Need a preregistered local-PCA/tangent control.
 - Deep-ensemble intervals calibrate in distribution, but OOD rank AUC and hidden uncertainty-head R2

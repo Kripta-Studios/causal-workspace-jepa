@@ -1,6 +1,7 @@
 # Baselines
 
-Status: `SMOKE_VALIDATED` for implemented CPU methods; published/GPU baselines remain blocked.
+Status: `SMOKE_VALIDATED` for implemented CPU methods; published/GPU baselines are now `ACTIVE` but
+not yet implemented or executed.
 
 ## World Model
 
@@ -19,8 +20,8 @@ Status: `SMOKE_VALIDATED` for implemented CPU methods; published/GPU baselines r
 - matched random-subspace intervention.
 
 `WM-T0-003` implements equal-dimensional random subspaces, high-variance PCA, a planted shared
-subspace positive control, and disjoint-consumer negative control. Published model baselines remain
-`BLOCKED_RESOURCE`.
+subspace positive control, and disjoint-consumer negative control. The local hardware blocker for
+published baselines is removed; integration evidence remains `NOT_STARTED`.
 
 ## LLM Meta-Model
 

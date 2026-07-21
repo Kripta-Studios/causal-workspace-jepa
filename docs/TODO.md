@@ -1,5 +1,18 @@
 # TODO
 
+## GPU Transition (2026-07-21)
+
+- [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
+- [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.
+- [x] Run the full pre-change test and reproducibility baseline.
+- [x] Repair Windows provenance-path comparison and fresh-clone checksum expectations.
+- [ ] Implement and test the Hugging Face Qwen adapter and bounded activation store.
+- [ ] Preregister, commit, and run a real Qwen3-0.6B intervention dataset.
+- [ ] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
+- [ ] Directly execute and verify ranked meta-model circuit candidates.
+- [ ] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.
+- [ ] Run the final multi-seed scientific/software audit.
+
 ## Milestone 0
 
 - [x] Read local instructions.

@@ -1,5 +1,9 @@
 # VPS_RUNBOOK.md — What Codex Can Do Now
 
+> Historical runbook note (2026-07-21): the CPU-VPS phase described below is complete. The current
+> host is the RTX 5070 Ti/32 GB RAM machine and must follow the `gpu_12gb` continuation rules. This
+> document is retained to preserve the original resource boundary and handoff commands.
+
 ## Decision
 
 Do **not** wait to give Codex the project prompt.

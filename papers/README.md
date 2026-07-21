@@ -1,6 +1,7 @@
 # Papers
 
-This directory stores source registries and BibTeX metadata. Papers, datasets, checkpoints, and cloned repositories are not downloaded on the CPU VPS.
+This directory stores source registries and BibTeX metadata. Selected official code/data may now be
+inspected under `gpu_12gb`, but external repositories, papers, datasets, and weights are not committed.
 
 The Anthropic workspace publication and companion code, Delta-JEPA arXiv record, and physics-video
 interpretability arXiv record were checked against primary sources on 2026-07-20. Other entries

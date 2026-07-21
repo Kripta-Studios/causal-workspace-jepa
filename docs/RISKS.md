@@ -2,14 +2,22 @@
 
 Status: `ACTIVE`.
 
-- `BLOCKED_RESOURCE`: CPU VPS has no GPU and limited free disk; real Qwen and published JEPA experiments must wait.
+- `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
+  370 GB free; the historical CPU-VPS blocker no longer applies.
 - `ACTIVE`: GPT-2 Medium was downloaded and run after explicit user override; weights are under `.cache/` and ignored by Git.
-- `BLOCKED_RESOURCE`: Do not download Qwen weights in this run.
+- `ACTIVE`: bounded Qwen3-0.6B/4B downloads are permitted by `gpu_12gb`, but storage and VRAM must be
+  estimated first and all-layer/all-token capture remains prohibited.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
-- `ACTIVE`: The repository currently depends on system NumPy for local no-install smoke code; an editable install will install NumPy in a venv when allowed.
+- `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
+  A project-local reproducible environment/lock must be repaired before this host is a clean install target.
 - `ACTIVE`: Four central literature entries have now been checked against their primary web/arXiv
   sources; the remaining registry entries are still prompt-derived.
-- `ACTIVE`: `uv` is not installed on this VPS. `scripts/bootstrap_cpu.sh` reports the install command and exits with `SKIPPED_RESOURCE` rather than modifying the toolchain automatically.
+- `RESOLVED`: `uv` is installed and the previously empty `uv.lock` has been regenerated from the
+  declared dependency groups. Actual experiment provenance must still record the running versions.
+- `RESOLVED`: the reproducibility audit compared POSIX provenance strings to Windows-rendered paths;
+  normalized relative paths now pass on both platforms.
+- `ACTIVE`: ignored GPT-2 data shards from the Linux host are absent on this machine. Their manifest
+  records are audited as skipped, not verified; this is not a checksum pass for the missing bytes.
 - `RESOLVED`: an earlier handoff reported `/root/.cache/pip` at about 4.4 GB. The 2026-07-20
   resource re-audit measured all of `/root/.cache` at about 233 MB; no cache deletion was needed.
 - `ACTIVE`: GPT-2 Medium CPU runs are slow; the committed smoke uses 4 prompts, 2 residual coordinates, and 16 direct interventions.

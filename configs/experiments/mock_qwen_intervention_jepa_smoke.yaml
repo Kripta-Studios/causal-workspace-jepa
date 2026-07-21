@@ -1,5 +1,5 @@
 id: LLM-MOCK-001
-status: NOT_STARTED
+status: SMOKE_VALIDATED
 resource_profile: configs/resource/cpu_vps.yaml
 seed: 0
 output_metrics: artifacts/metrics/mock_qwen_intervention_jepa_smoke.json

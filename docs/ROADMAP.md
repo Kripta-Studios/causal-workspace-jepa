@@ -33,9 +33,20 @@ Status: `SMOKE_VALIDATED`.
 - Circuit graph schema and matched controls: implemented.
 - Mock transformer and intervention-JEPA smoke runner: validated in `artifacts/metrics/mock_qwen_intervention_jepa_smoke.json`.
 
+## GPU Transition Audit (2026-07-21)
+
+Status: `SMOKE_VALIDATED` for hardware/control-plane detection; scientific GPU runs remain `NOT_STARTED`.
+
+- RTX 5070 Ti Laptop GPU detected with 12,227 MiB VRAM and CUDA-enabled PyTorch.
+- `gpu_12gb` doctor passes with about 370 GB free.
+- Windows provenance-path comparison and fresh-clone checksum audit were repaired and tested.
+- Next: implement Qwen3-0.6B instrumentation before scaling to Qwen3-4B, and implement one faithful
+  published action-conditioned JEPA reproduction before mechanistic claims.
+
 ## Milestone 3+: Scientific Runs
 
-Status: `ACTIVE` for CPU-safe causal audit; `BLOCKED_RESOURCE` for GPU-dependent work.
+Status: `ACTIVE`; the local GPU resource blocker is removed, but the GPU-dependent code and evidence
+remain incomplete.
 
 - [done] Repair the original action-patch methodology and rerun from committed code.
 - [done] Validate shared-subspace discovery with known positive and negative controls.

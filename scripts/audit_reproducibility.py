@@ -29,6 +29,10 @@ def main() -> int:
         errors.extend(f"missing required path: {path}" for path in missing)
     payload = {
         "status": "SMOKE_VALIDATED" if not errors else "BLOCKED",
+        "local_data_complete": skipped_checksums == 0,
+        "checksum_status": (
+            "BLOCKED" if errors else "SMOKE_VALIDATED" if skipped_checksums == 0 else "SKIPPED_RESOURCE"
+        ),
         "missing": missing,
         "errors": errors,
         "metric_artifacts": metric_count,
@@ -60,7 +64,10 @@ def _audit_metrics(errors: list[str]) -> int:
         commit = provenance.get("git_commit")
         if not isinstance(commit, str) or len(commit) < 7:
             errors.append(f"{provenance_path}: invalid git_commit")
-        if provenance.get("metrics") != str(metrics_path):
+        recorded_metrics = provenance.get("metrics")
+        if not isinstance(recorded_metrics, str) or (
+            Path(recorded_metrics).as_posix() != metrics_path.as_posix()
+        ):
             errors.append(f"{provenance_path}: metrics path does not match {metrics_path}")
     return count
 

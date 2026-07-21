@@ -24,6 +24,17 @@ class ConfigResourceTests(unittest.TestCase):
         report = inspect_resources("configs/resource/gpu_12gb.yaml")
         if not report.ok:
             self.assertTrue(any("BLOCKED_RESOURCE" in message for message in report.messages))
+        else:
+            self.assertIsNotNone(report.gpu_name)
+            self.assertIsNotNone(report.gpu_vram_gb)
+            self.assertTrue(report.torch_cuda_available)
+            self.assertGreaterEqual(report.gpu_vram_gb or 0.0, 12.0)
+
+    def test_resource_report_serializes_runtime_fields(self) -> None:
+        payload = inspect_resources("configs/resource/cpu_vps.yaml").as_dict()
+        self.assertIn("ram_gb", payload)
+        self.assertIn("gpu_name", payload)
+        self.assertIn("torch_cuda_available", payload)
 
     def test_reject_odd_indentation(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

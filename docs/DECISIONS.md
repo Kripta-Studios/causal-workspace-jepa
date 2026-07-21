@@ -1,5 +1,17 @@
 # Decisions
 
+## 2026-07-21
+
+- Activate `gpu_12gb` after detecting an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, CUDA-enabled
+  PyTorch, approximately 370 GB free, and a passing GPU doctor check.
+- Treat the old VPS resource blocks as historical. Qwen and published-JEPA work is now `ACTIVE`, but
+  remains unvalidated until real direct runs produce committed metrics from clean code.
+- Begin Qwen with Qwen3-0.6B to validate hooks, storage, interventions, and Windows portability before
+  Qwen3-4B. Keep Qwen3-30B-A3B restricted to `gpu_cluster`.
+- Normalize recorded relative metric paths in the reproducibility audit so Linux provenance can be
+  checked on Windows. A fresh clone may skip ignored shard checksums, but any available shard must
+  still match exactly.
+
 ## 2026-07-20
 
 - Use only the `cpu_vps` resource path for this run.

@@ -1,5 +1,5 @@
 id: qwen3_4b_selected_layers
-status: BLOCKED_RESOURCE
+status: NOT_STARTED
 resource_profile: configs/resource/gpu_12gb.yaml
 model: Qwen/Qwen3-4B
 max_sequence_length: 128

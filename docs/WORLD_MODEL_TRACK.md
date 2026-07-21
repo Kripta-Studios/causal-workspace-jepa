@@ -12,7 +12,9 @@ Initial implementation order:
 6. planning smoke loop: implemented;
 7. workspace criteria with null-result-safe controls: implemented and run with a documented null.
 
-Published world-model adapters are `BLOCKED_RESOURCE` on the CPU VPS.
+Published world-model adapters are placeholder-only. The RTX 5070 Ti removes the local hardware
+blocker, so a pinned faithful small reproduction is now `ACTIVE`; no published-model result is yet
+claimed.
 
 Validated CPU smoke:
 

@@ -1,5 +1,5 @@
 id: WM-LEWM-002
-status: BLOCKED_RESOURCE
+status: NOT_STARTED
 resource_profile: configs/resource/gpu_12gb.yaml
 dataset: lewm_pusht
 output_metrics: artifacts/metrics/lewm_pusht_causal_patch.json

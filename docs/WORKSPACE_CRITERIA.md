@@ -32,7 +32,9 @@ A null result is acceptable and must be reported.
 `WM-T0-002` evaluated the tiny JEPA action-coordinate candidate.
 
 - Candidate: `predictor.input` action coordinates.
-- Positive evidence: action coordinates causally and selectively affect future latent prediction and planner cost.
+- Positive evidence: explicit action-input coordinates causally mediate future latent prediction and
+  thereby alter a computed rollout cost. This is not evidence that an internal learned representation
+  changes replanning, selected actions, or closed-loop behavior.
 - Negative evidence: the model has only dynamics and planner-cost consumers; it has no value, risk, uncertainty, or reportability consumers.
 - Result: `workspace_found = false`.
 

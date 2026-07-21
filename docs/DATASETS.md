@@ -2,7 +2,9 @@
 
 Status: `SMOKE_VALIDATED`.
 
-Tier 0 datasets are generated locally from explicit seeds and must remain below 512 MB by default. Tier 1/Tier 2 datasets and model weights are not downloaded on the CPU VPS.
+Tier 0 datasets are generated locally from explicit seeds and must remain below 512 MB by default.
+Selected Tier 1 assets and bounded Qwen weights are permitted under `gpu_12gb` only after size,
+license, split, and checksum review; none has yet been integrated by this continuation.
 
 ## Tier 0 Mandatory
 
@@ -20,7 +22,9 @@ Smoke manifest: `data/manifests/tier0_smoke_manifest.json`; total compressed gen
 
 ## Tier 1 And Tier 2
 
-LeWorldModel, JEPA-WMs, C-JEPA, V-JEPA, DROID, RoboCasa, ManiSkill, and SkyJEPA assets are `BLOCKED_RESOURCE` or `BLOCKED_EXTERNAL` on this VPS.
+LeWorldModel, JEPA-WMs, and selected C-JEPA assets are `ACTIVE` candidates for the current GPU host.
+Large V-JEPA, DROID, RoboCasa, and ManiSkill studies remain deferred by scope/compute. SkyJEPA stays
+`BLOCKED_EXTERNAL` until official assets are verified.
 
 ## LLM Intervention Data
 

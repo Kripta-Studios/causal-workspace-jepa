@@ -1,5 +1,5 @@
 id: WM-T0-004
-status: NOT_STARTED
+status: SMOKE_VALIDATED
 resource_profile: configs/resource/cpu_vps.yaml
 seed: 17
 output_metrics: artifacts/metrics/manifold_workspace_study.json

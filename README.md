@@ -1,6 +1,6 @@
 # Causal Workspace JEPA
 
-CPU-first research codebase for action-conditioned JEPA world-model interpretability and intervention-conditioned LLM meta-modeling.
+Reproducible research codebase for action-conditioned JEPA world-model interpretability and intervention-conditioned LLM meta-modeling.
 
 ## Current Status
 
@@ -24,11 +24,11 @@ CPU-first research codebase for action-conditioned JEPA world-model interpretabi
   additive; prompt-local Jacobians generalized to compositions, while all singles-only learned
   predictors failed on held-out prompts. All three registered hypotheses failed.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
-- `NOT_STARTED`: real Qwen experiments and published world-model experiments.
-- `BLOCKED_RESOURCE`: real Qwen hidden-state instrumentation, published JEPA checkpoints, Tier 1/Tier 2 datasets, GPU Jacobian/SAE work.
+- `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
+- `NOT_STARTED`: real Qwen experiments and published world-model experiments; their former local resource blocker has been removed, but no result is claimed yet.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
-No GPU experiment has been run or claimed on this VPS.
+No GPU scientific experiment has yet been run or claimed. The GPU profile and CUDA runtime have only passed control-plane checks.
 
 ## Objective
 
@@ -103,7 +103,18 @@ are smoke validated. The mock-Qwen command uses a deterministic local mock model
 
 ## GPU Continuation
 
-Run only on a suitable GPU machine after pulling the pushed branch:
+This repository is now on the suitable GPU machine. On PowerShell, use:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m causal_workspace_jepa.cli doctor `
+  --resource-profile configs/resource/gpu_12gb.yaml
+python -m unittest discover -s tests -p "test_*.py"
+python scripts/audit_reproducibility.py
+```
+
+The following Unix-style commands remain the intended clean-environment workflow; the Qwen and
+published-model commands are still implementation targets rather than validated commands:
 
 ```bash
 source .venv/bin/activate
@@ -200,8 +211,9 @@ Validated CPU smoke results:
 
 ## Limitations
 
-This VPS has no GPU. Real Qwen instrumentation through Hugging Face, published JEPA checkpoints,
-Tier 1/Tier 2 datasets, and scientifically meaningful Jacobian/SAE work remain blocked until a
-larger resource profile is active. GPT-2 Medium weights are cached locally under `.cache/` and
-ignored by Git. `LLM-GPT2-002` took `647.85` seconds, exceeding the 10-minute CPU expectation by
-`47.85` seconds.
+This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. Qwen and published-JEPA
+code is still placeholder-only at the start of the GPU continuation, so hardware availability must
+not be confused with completed evidence. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
+training remain `gpu_cluster` work. The pre-existing GPT-2 artifacts came from a different Linux CPU
+host; their ignored activation shards are absent here and the audit reports their checksums as
+skipped until regenerated.
