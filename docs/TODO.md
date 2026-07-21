@@ -36,6 +36,8 @@
   preserve the original official implementation as the reproduction baseline.
 - [x] Commit/push and run `WM-EBJEPA-TRAIN-RESOURCE-001` unchanged from clean `fed920e`: batch 384
   peaks at 5.82 GB reserved; the default compile wrapper captures zero frames/graphs on `unroll`.
+- [ ] Commit/push and launch `WM-EBJEPA-TRAIN-001` for official seeds 1/1000/10000; retain all 12
+  epoch checkpoints and evaluate frozen epochs 9/10/11 under separately labeled planner arms.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
 

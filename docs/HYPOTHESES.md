@@ -186,6 +186,46 @@ bytes. Batch 384 is the recommendation under the frozen 10-GB ceiling. The batch
 creates an `OptimizedModule` and trains, but records zero Dynamo frames and zero unique graphs on
 the `unroll` entrypoint. No numbered scientific hypothesis is decided.
 
+## WM-EBJEPA-TRAIN-001 Training and Competence Preregistration
+
+Registered on 2026-07-21 before starting any full official training seed or inspecting trained
+checkpoints.
+
+### Frozen training portfolio
+
+- Source/model: clean EB-JEPA `966e61e...`; official Impala encoder, one-layer 512-dimensional GRU,
+  identity action encoder, VC/IDM/time coefficients 8/16/12/1, no projector.
+- Data/optimization: generated random-wall Two Rooms, size 100,000 per epoch, trajectory length 17,
+  horizon eight, batch 384, 16 persistent workers, BF16/GradScaler, AdamW `lr=1e-3`, weight decay
+  `1e-5`, encoder/predictor clipping 2.0, cosine warmup, 12 epochs.
+- Seeds: the official sweep seeds 1, 1000, and 10000. Save every epoch and retain hashes for all
+  `e-0` through `e-11` checkpoints plus `latest`.
+- Declared workflow/runtime deviations: Python 3.12/Torch 2.10+cu128 replaces the GPU-incompatible
+  Torch 2.6+cu126 pin; W&B is disabled; inline planning/unroll evaluation is disabled and deferred to
+  frozen checkpoints. `compile=true` remains, but the clean profile shows zero graphs on `unroll`.
+- Safe resume uses upstream `load_checkpoint`, which strips `_orig_mod.` and resumes at saved epoch
+  plus one. A status/manifest file records start commit, source revision, resume state, runtime,
+  checkpoint sizes, and SHA-256 hashes. Checkpoints remain ignored and are not committed.
+- Training completion alone is Availability evidence and decides no mechanism hypothesis.
+
+### Frozen competence evaluation
+
+- Checkpoints: epochs 9, 10, and 11 from every completed seed; no checkpoint selection by outcome.
+- Tasks: the same 20 deterministic random-wall episode sequence per checkpoint/planner, horizon 90,
+  20 iterations, 200 samples, 20 elites, one executed action per replanning step, maximum 200 steps,
+  summed representation-distance objective, and success distance below 4.5.
+- Required arms: `official_mppi_as_executed` uses actual proposal scale 2.0 and no effective norm
+  bound; `bound_corrected_mppi_as_executed` changes only candidate/return projection to 2.45 and
+  retains scale 2.0. An optional `bound_and_keyword_corrected_mppi` uses scale 1.5 and may not replace
+  either required arm.
+- Common random seeds are reset for paired planner arms. Report per episode/checkpoint/seed success,
+  final distance, runtime, executed-action norms, and aggregate by seed before any pooled summary.
+- Competence eligibility requires each required arm to reach mean success at least 0.80 over the
+  nine checkpoint runs and at least 0.70 within each training seed. These thresholds do not assert
+  equivalence to the reported `0.97 +/- 0.02`.
+- Planner differences are descriptive unless a seed-clustered interval excludes zero. Mechanistic
+  auditing is permitted only for a required bounded arm that passes competence eligibility.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

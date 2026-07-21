@@ -219,6 +219,16 @@ translation yields MPPI scale $1.5$.  The official as-executed $2.0$ arm,
 bound-corrected $2.0$ arm, and any intention-corrected $1.5$ arm must remain
 separately labeled.  This is not model-mechanism evidence.
 
+We preregister full training before inspecting any learned checkpoint: official
+seeds 1, 1000, and 10000; batch 384; 100,000 online trajectories per epoch;
+12 epochs; and hashes for every checkpoint.  Epochs 9--11 are fixed for paired
+competence evaluation.  The required planner arms are official as-executed
+MPPI (proposal scale 2.0, no effective norm bound) and a bound-only correction
+that retains scale 2.0 while projecting candidates and returned actions to
+2.45.  Each must average at least 0.80 success overall and 0.70 within every
+training seed before a bounded trained model is eligible for mechanistic audit.
+Training completion or loss alone is availability evidence.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests

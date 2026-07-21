@@ -79,6 +79,9 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   the official 384 completed; batch 384 peaked at 5,821,693,952 reserved bytes. The official
   `torch.compile(jepa)` wrapper completed two `unroll` updates but Dynamo captured zero frames and
   zero graphs, so compilation is ineffective on the executed training entrypoint.
+- `PREREGISTERED_NOT_STARTED`: `WM-EBJEPA-TRAIN-001` freezes official seeds 1/1000/10000, batch
+  384, 12 epochs, all checkpoint hashes, and evaluation of epochs 9/10/11 under official-unbounded
+  and bound-corrected MPPI at the actual proposal scale 2.0.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

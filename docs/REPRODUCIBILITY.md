@@ -205,6 +205,13 @@ YAML contains `var_scale=1.5`, but the constructor expects `max_std` and execute
 CEM consumes `1.5`. Reproductions must record instantiated planner attributes, not only copied YAML,
 and the bound-only correction retains `2.0` to isolate one change.
 
+The long Two Rooms portfolio is `WM-EBJEPA-TRAIN-001`. Run it through the isolated Python 3.12
+interpreter; its driver validates the complete frozen upstream config before importing training,
+requires a clean repository/source checkout, resumes only through upstream checkpoint loading, and
+writes atomic ignored status files. It hashes all 13 checkpoint files per seed. The tracked config
+freezes seeds 1/1000/10000 and epochs 9/10/11 for later evaluation; generated data/checkpoints/logs
+must not be committed.
+
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the

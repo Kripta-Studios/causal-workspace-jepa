@@ -1,0 +1,12 @@
+id: WM-EBJEPA-TRAIN-001
+status: preregistered_training
+resource_profile: configs/resource/gpu_12gb.yaml
+source_root: .cache/upstream/eb_jepa
+revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
+upstream_training_config: examples/ac_video_jepa/cfgs/train.yaml
+output_root: artifacts/checkpoints/eb_jepa_two_rooms_official_v1
+seeds: [1, 1000, 10000]
+epochs: 12
+checkpoint_epochs_for_evaluation: [9, 10, 11]
+output_metrics: artifacts/metrics/eb_jepa_two_rooms_training.json

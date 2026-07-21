@@ -49,6 +49,9 @@
   unknown key through `**kwargs`, and retains default `2.0`; CEM consumes `1.5`. Explicitly mapping
   the key yields MPPI `1.5`. The published CEM/MPPI configs are therefore not proposal-scale matched
   as executed, independently of the action-bound defect.
+- Preregistered the full official training portfolio before opening trained checkpoints: seeds
+  1/1000/10000, batch 384, 12 epochs, every checkpoint hashed, with epochs 9/10/11 fixed for paired
+  official-unbounded versus bound-corrected scale-2.0 planning. Training is not yet started.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 
