@@ -59,7 +59,7 @@
   underresolution and weak-but-consistent stratified association as calibration only.
 - [x] Implement separately recorded `WM-ACTION-PATH-CALIBRATION-002` with the same validation chords
   and 512/1024-node refinement; retain the hard split lock and empty decisions.
-- [ ] Finish calibration v2 and retain it as numerical calibration only; do not touch protected
+- [x] Finish calibration v2 and retain it as numerical calibration only; do not touch protected
   test goals even if it converges because cancellation/local error share a denominator.
 - [x] Before reading v2, adversarially reject and remove the proposed denominator audit: it lacks
   scalar path-length refinement, raw norms, dense within-pair support, and a valid joint conditional
@@ -71,7 +71,7 @@
   falsifications, novelty boundary, limitations, and exact artifact/commit references.
 - [x] Compile the draft against the repository-local `papers/references.bib` and ignore generated
   PDF/auxiliary products.
-- [ ] Replace the manuscript's provisional calibration-v2 row with the final clean-run metrics,
+- [x] Replace the manuscript's provisional calibration-v2 row with the final clean-run metrics,
   complete adversarial/doc consistency review, then commit and push the paper milestone.
 - [x] Add atomic action-path checkpoints per completed seed/horizon, bound to exact config bytes and
   source commit, with fail-closed resume tests and explicit final provenance.

@@ -78,7 +78,15 @@ Calibration v1 ran from clean `eb943a5` in `72.59` seconds. Horizon one converge
 horizon four remained underresolved for seeds 101/103 even at 256 nodes. Cancellation/local-error
 Spearman exceeded the within-action-pair null p95 in all three horizon-four samples only narrowly,
 and median recurrence amplification occurred strongly in just seed 103. No evidence is accepted;
-v2 will be archived as numerical calibration and no protected-test run follows from this family.
+v2 is archived as numerical calibration and no protected-test run follows from this family.
+
+Calibration v2 completed from clean `288f663` in `19,176.20` seconds at 512/1024 nodes. Horizon-four
+maximum integration/refinement errors were `.01291/.02605`, `.03394/.03141`, and
+`.001393/.000250` for seeds 101/103/107; only seed 107 is small at both resolutions. The corresponding
+Spearman-minus-null-p95 margins were `.0454/.0283/.0165`, and horizon-four/horizon-one median
+cancellation ratios were `1.054/2.818/.983`. The artifact records no decisions and no protected-test
+access. It narrows numerical behavior but cannot identify action-path geometry under the frozen
+design confound.
 
 Validated CPU smoke:
 

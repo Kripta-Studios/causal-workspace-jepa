@@ -1,5 +1,22 @@
 # SUMMARY
 
+## 2026-07-21 — High-resolution action-path calibration completed and closed
+
+- `WM-ACTION-PATH-CALIBRATION-002` completed from clean `288f663` in `19,176.20` seconds. It used
+  only exposed validation goals, records `protected_test_goals_touched=false`, and has empty
+  hypothesis decisions.
+- At horizon four, seeds 101/103/107 had maximum integration errors
+  `.01291/.03394/.001393` and maximum 512-to-1024-node changes `.02605/.03141/.000250`.
+  Thus the refinement materially improves v1 but remains underresolved for seeds 101 and 103.
+- Horizon-four cancellation/local-error Spearman values `.4148/.4783/.8574` exceed their
+  within-action-pair null p95 values `.3693/.4500/.8409` by only `.0454/.0283/.0165`.
+  Median horizon-four/horizon-one cancellation ratios remain `1.054/2.818/.983`, so recurrent
+  amplification is not replicated across seeds.
+- These values do not repair the preregistered design boundary: both normalized endpoints share a
+  direct-effect denominator, and the artifact lacks scalar path length at both resolutions,
+  unclamped norms, dense within-pair support, and a joint conditional null. The route remains
+  `CLOSED_DESIGN`; no protected-test run or mechanism claim is authorized.
+
 ## 2026-07-21 — EB-JEPA exact-pin GPU incompatibility isolated
 
 - Built two ignored Python 3.12.13 environments that differ at the Torch/CUDA boundary. The exact
@@ -79,8 +96,8 @@
 - A seed is resumably complete only with an explicit `seed_complete` marker, both horizon blocks,
   and the horizon-4/horizon-1 amplification summary. This closes the crash window between the last
   expensive block and the derived seed summary.
-- This hardening applies to future launches. The already running clean v2 process imported commit
-  `288f663` before the change and therefore still writes only at completion.
+- This hardening applies to future launches. The then-running clean v2 process had imported commit
+  `288f663` before the change and therefore wrote only at completion.
 - Before the v2 metrics existed, adversarial review rejected a proposed derived denominator audit
   before commit. V2 checks convergence of an integrated vector, not convergence of the scalar path
   length used by cancellation; it stores no 512-node path length and clamps the recorded direct
@@ -135,7 +152,7 @@
   exceeding action-pair-stratified null p95 by only `.045/.027/.022`. Median horizon-four versus
   horizon-one cancellation ratios were `1.05/2.82/.983`; recurrence amplification is not replicated.
   These are calibration diagnostics, not evidence. A 512/1024-node validation-only refinement on
-  the same chords is warranted before any protected-test preregistration.
+  the same chords was warranted solely to resolve numerical behavior, not to authorize test access.
 - `WM-ACTION-PATH-CALIBRATION-002` is implemented as a separate validation-only artifact using the
   identical profile seed/chords and 8-point rules over 64/128 panels (512/1024 nodes). The runner's
   split lock now names both calibration IDs. V2 still emits empty decisions and cannot authorize a
@@ -148,6 +165,8 @@
   next retry streams 64 outer samples at a time, projects exact Jacobians into the registered
   decoded coordinates, detaches them to CPU, and releases each graph immediately. This is a
   tensor-lifetime repair, not a mathematical or scientific change.
+- The streamed run from clean `288f663` subsequently completed in `19,176.20` seconds. Its final
+  numerical values and the closed scientific boundary are recorded in the newest summary entry.
 
 ## 2026-07-21 — Independent country-code bounded-lag preregistration
 

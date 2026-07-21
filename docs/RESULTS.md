@@ -49,12 +49,13 @@ and YAML files remain authoritative for every threshold and hyperparameter.
    passed matched controls. The raw flag is not accepted as evidence-level-5 circuit
    reconstruction, and even a positive post-hoc proxy would not itself establish a workspace.
 9. **Decoded recurrent action-path cancellation is closed as a current scientific route.** The
-   first validation calibration found large cancellation in some seed/horizon pairs, but
-   high-resolution quadrature is required for seeds 101/103. Cancellation and normalized local
-   error share the direct-effect denominator. Pre-result adversarial review further established
-   that v2 lacks scalar path-length refinement, raw direct norms, dense within-pair sampling, and a
-   joint conditional null. It can provide numerical/vector calibration only; the proposed derived
-   audit was rejected before commit and protected test goals remain untouched.
+   512/1024-node V2 completed from clean `288f663` in `19,176.20` seconds. Horizon-four maximum
+   integration/refinement errors were `.0129/.0260`, `.0339/.0314`, and `.00139/.000250` for
+   seeds 101/103/107, so two seeds remain underresolved. Correlation exceeded stratified-null p95
+   by only `.0454/.0283/.0165`. Cancellation and normalized local error share the direct-effect
+   denominator, while V2 lacks scalar path-length refinement, unclamped direct norms, dense
+   within-pair sampling, and a joint conditional null. It is numerical/vector calibration only;
+   the proposed derived audit was rejected before commit and protected test goals remain untouched.
 10. **The official EB-JEPA recurrence is now instrumentable, not yet interpreted.** A clean run
     against pinned official source `966e61e...` reconstructs its one-layer 512-dimensional native
     GRU within `4.768e-7`. Zeroing one update-gate coordinate at one step leaves other coordinates
@@ -71,6 +72,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | WM-EBJEPA-CONTRACT-001 | The pinned official Impala/one-layer-GRU contract supports exact gate decomposition and localized gate edits under the current runtime; no learned mechanism is tested. | Availability | `configs/experiments/eb_jepa_official_contract_smoke.yaml` | `artifacts/metrics/eb_jepa_contract_smoke.json` | `979c2d6` | `SMOKE_VALIDATED` |
+| WM-ACTION-PATH-CALIBRATION-002 | High-resolution validation-only refinement improves vector integration but remains underresolved in two seeds and cannot repair the shared-denominator/design confound; no protected test was touched. | Availability | `configs/experiments/lewm_action_path_calibration_v2.yaml` | `artifacts/metrics/lewm_action_path_calibration_v2.json` | clean `288f663` | `CALIBRATION_ONLY` |
 | WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and a shared-denominator-confounded cancellation/error association; it makes no scientific claim. | Availability | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |
 | LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is answer-row specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Specificity | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | `12fce84` | `SMOKE_VALIDATED` |

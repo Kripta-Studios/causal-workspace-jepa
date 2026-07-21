@@ -109,8 +109,8 @@ Our contribution is primarily an audit and a set of falsifications:
   their registered acceptance gates.
   \item We define a decoded action-path cancellation diagnostic for recurrent
   JEPA transitions.  The current measurements are explicitly restricted to
-  calibration data until numerical convergence and protected-test gates are
-  satisfied.
+  calibration data and the route is closed before protected-test access by
+  numerical and shared-denominator design failures.
 \end{enumerate}
 
 No experiment reported here supports consciousness, sentience, or literal
@@ -736,7 +736,7 @@ of its favorable method rankings is scientific evidence.  In particular, the
 within-context vertex-mean MSE result is also confounded by scalar shrinkage
 and is not promoted.
 
-\subsection{Action-path cancellation is a calibration-stage candidate}
+\subsection{Action-path cancellation remains calibration only}
 
 The first validation-only action-path calibration profiles 24 chords per seed
 and horizon.  Horizon-one maximum direct-reconstruction/refinement errors are
@@ -744,11 +744,15 @@ below $0.00077/0.00169$ across seeds.  Horizon four converges at the original
 resolution for seed 107 ($0.00197/0.00093$) but not seeds 101
 ($0.0680/0.1369$) or 103 ($0.478/2.059$).
 
-Median horizon-four cancellation ratios are $2.589$, $5.272$, and $1.174$ for
+At 512/1024 nodes, V2 reduces horizon-four maximum
+integration/refinement errors to $0.01291/0.02605$, $0.03394/0.03141$, and
+$0.001393/0.000250$ for seeds 101, 103, and 107.  The first two seeds therefore
+remain underresolved.  Median horizon-four cancellation ratios are $2.589$,
+$5.261$, and $1.174$ for
 seeds 101, 103, and 107, while local relative-error medians are $2.023$,
 $1.389$, and $0.972$.  Cancellation/error Spearman correlations are
-$0.415/0.483/0.863$, exceeding within-action-pair null p95 by only
-$0.045/0.027/0.022$.  Horizon-four versus horizon-one cancellation
+$0.415/0.478/0.857$, exceeding within-action-pair null p95 by only
+$0.0454/0.0283/0.0165$.  Horizon-four versus horizon-one cancellation
 amplification is $1.05/2.82/0.983$, so recurrence amplification is not
 replicated.  Table~\ref{tab:path} retains these measurements as availability
 and numerical-calibration evidence only.
@@ -775,27 +779,27 @@ within-pair sampling, row-level split guards, and a preregistered joint null.
 \begin{table*}[t]
 \centering
 \small
+\setlength{\tabcolsep}{3pt}
 \caption{Decoded recurrent action-path calibration.  V2 uses the identical
 validation chords with streamed exact Jacobians at 512/1024 nodes.}
 \label{tab:path}
-\begin{tabularx}{\textwidth}{@{}p{1.1cm}p{1.1cm}p{1.55cm}p{1.55cm}p{1.45cm}p{1.55cm}p{1.6cm}Y@{}}
+\begin{tabular}{@{}p{0.8cm}p{0.8cm}p{1.55cm}p{1.55cm}p{1.45cm}p{1.55cm}p{1.75cm}p{1.7cm}@{}}
 \toprule
-Seed & $h$ & Median $\kappa$ & Median local error & Spearman & Null p95 & Numerical status & Evidence level \\
+Seed & $h$ & Median $\kappa$ & Median local error & Spearman & Null p95 & \shortstack{Max integ./\\refine error} & Evidence level \\
 \midrule
-101 & 4 & 2.589 & 2.023 & 0.415 & 0.369 & No (v1) & \level{Availability} \\
-103 & 4 & 5.272 & 1.389 & 0.483 & 0.456 & No (v1) & \level{Availability} \\
-107 & 4 & 1.174 & 0.972 & 0.863 & 0.840 & Yes (v1) & \level{Availability} \\
-all & 1/4 & --- & --- & --- & --- & V2 pending & \level{Availability} \\
+101 & 4 & 2.589 & 2.023 & 0.415 & 0.369 & \shortstack{0.0129/\\0.0261} & \level{Availability} \\
+103 & 4 & 5.261 & 1.389 & 0.478 & 0.450 & \shortstack{0.0339/\\0.0314} & \level{Availability} \\
+107 & 4 & 1.174 & 0.972 & 0.857 & 0.841 & {\scriptsize\shortstack{0.00139/\\0.000250}} & \level{Availability} \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table*}
 
-The provisional interpretation is narrow: finite action effects may follow a
-curved, cancelling decoded path for some model/context pairs, making a single
-local vector insufficient.  This becomes a testable scientific claim only if
-high-resolution quadrature converges, a prospective rule is frozen, and the
-rule succeeds on the five untouched test goals.  At the time of this draft,
-protected test goals have not been touched.
+The retained interpretation is narrower than a geometry claim.  Some acquired
+model/context pairs have large decoded derivative arc length relative to their
+net effect, but two seeds remain underresolved and the shared denominator can
+mechanically couple cancellation to local error.  The artifact therefore does
+not show that a single local vector is causally insufficient.  Protected test
+goals were not touched.
 
 \section{Cross-track synthesis}
 
@@ -898,7 +902,8 @@ configuration and hypothesis registration.  The principal artifacts are:
   (\code{eb943a5});
   \item \code{artifacts/metrics/eb\_jepa\_contract\_smoke.json}
   (\code{979c2d6});
-  \item the high-resolution v2 calibration launched from \code{288f663}.
+  \item \code{artifacts/metrics/lewm\_action\_path\_calibration\_v2.json}
+  (clean \code{288f663}; 19,176.20 seconds).
 \end{itemize}
 
 Each experiment is replayed with

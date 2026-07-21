@@ -2,7 +2,7 @@
 
 ## July 2026 research pivot
 
-- Archive `WM-ACTION-PATH-CALIBRATION-002` as numerical/vector calibration only; the downstream
+- `WM-ACTION-PATH-CALIBRATION-002` is archived as numerical/vector calibration only; the downstream
   small-model action-path route is closed by design before protected-test access.
 - Retain the two-runtime EB-JEPA CUDA diagnostic: the exact Torch 2.6/cu126 pin is GPU-incompatible
   with SM120, while the declared Torch 2.10/cu128 deviation passes matched kernels. Install the

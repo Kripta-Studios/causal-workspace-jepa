@@ -682,7 +682,8 @@ errors were `.0680/.1369`, `.478/2.059`, and `.00197/.00093`; 256 nodes do not r
 Horizon-four cancellation/local-error Spearman exceeded its stratified null p95 in all seeds, but
 only by `.045/.027/.022`, while median recurrence amplification was `1.05/2.82/.983`. No test
 hypothesis is registered from these diagnostics. A higher-resolution validation-only calibration
-must establish numerical stability before the protected split can be considered.
+was required to characterize numerical stability, but could not itself authorize the protected
+split.
 
 Calibration v2 is separately registered before execution as `WM-ACTION-PATH-CALIBRATION-002`. It
 uses the identical validation goals, profile seed, 24 chords per seed/horizon, decoder, checkpoints,
@@ -714,6 +715,13 @@ V2 therefore remains numerical/vector calibration regardless of its outcome. No 
 hypothesis follows, and this small-model family is closed. A materially new prospective study would
 need raw norms, path lengths at both resolutions, substantially more chords per pair, row-level
 split/seed guards, and a preregistered joint conditional null.
+
+Final v2 calibration result from clean `288f663`: `CALIBRATION_ONLY`, `19,176.20` seconds,
+`protected_test_goals_touched=false`, and no hypothesis decisions. Horizon-four maximum
+integration/refinement errors were `.01291/.02605`, `.03394/.03141`, and `.001393/.000250` for
+seeds 101/103/107. Cancellation/local-error Spearman exceeded stratified-null p95 by only
+`.0454/.0283/.0165`. The refinement therefore leaves two seeds underresolved and does not alter the
+pre-result design closure.
 
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 

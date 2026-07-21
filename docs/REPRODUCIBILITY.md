@@ -108,13 +108,13 @@ unchanged clean retry wrote metrics/provenance and a 30,887,576-byte ignored sha
 seed/horizon, and both 128/256-node estimates. Its numerical underresolution is retained; later
 calibration must use a new ID rather than overwrite this artifact.
 
-`WM-ACTION-PATH-CALIBRATION-002` was launched from clean `288f663` after two documented OOM attempts
+`WM-ACTION-PATH-CALIBRATION-002` completed from clean `288f663` after two documented OOM attempts
 that emitted no metrics. The retained implementation streams batches of 64 exact action Jacobians,
 immediately contracts them with the action chord and registered decoder, detaches the three decoded
 coordinates to CPU, and releases each graph. The orchestration wrapper stopped waiting after its
-20-minute default, but the child process continued; monitor the configured JSON path and original
-PID before relaunching. The start-time provenance object already records commit `288f663` and
-`git_dirty: false`, so later documentation edits cannot change the code/config identity of that run.
+20-minute default, but the child process continued and completed after `19,176.20` seconds. The
+retained provenance records commit `288f663`, `git_dirty: false`, seed 647, and the configured metric
+path. The artifact records `protected_test_goals_touched=false` and empty decisions.
 Before its result was available, adversarial review identified the shared decoded-direct-effect
 denominator in cancellation and normalized local error. This is a scientific-design issue rather
 than an implementation change. A proposed derived audit was rejected before commit because v2
@@ -127,8 +127,8 @@ seed/horizon. The write uses a temporary sibling followed by atomic replacement.
 only when the stored experiment ID and SHA-256 fingerprint of the exact YAML bytes plus Git commit
 match; duplicate or unexpected seeds fail closed. Final metrics/provenance record whether resume was
 used and the number of loaded horizon blocks, then remove the progress file. This mechanism was
-implemented after the active `288f663` process imported its code, so it cannot retroactively provide
-partial recovery for that run.
+implemented after the `288f663` process imported its code, so it did not provide resume state for
+that completed run.
 
 Official EB-JEPA source is fetched only into ignored `.cache/upstream/eb_jepa` and validated at
 commit `966e61e9285b3a876f49b9774e9720d9a99a7925`. The contract smoke imports the real official

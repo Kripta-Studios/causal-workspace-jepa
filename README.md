@@ -11,7 +11,7 @@ the registered threshold-and-four-layer-grid onset rules fail across the studied
 one EMA/stop-gradient target-encoder Intervention-JEPA variant fails its registered gates, and no
 tested JEPA workspace proxy or circuit meets its acceptance rule. Decoded recurrent action-path
 cancellation is closed as a scientific route after numerical and shared-denominator design
-failures; its active high-resolution run will be archived as vector calibration only.
+failures; the completed high-resolution run is retained as vector calibration only.
 
 The 2026-07-21 primary-source refresh adds official EB-JEPA as the next published world-model
 target and Qwen-Scope/Circuit Tracing/AtP*/HVP as required Qwen comparators. No primary source was
@@ -138,13 +138,13 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   underresolved for seeds 101/103. Cancellation/local-error association cleared stratified null p95
   by only `0.045/0.027/0.022`, and both normalized quantities share the direct-effect denominator;
   no scientific claim or protected-test launch is authorized.
-- `RUNNING_CALIBRATION`: `WM-ACTION-PATH-CALIBRATION-002` repeats the identical exposed validation
-  chords at 512/1024 nodes to test numerical stability from clean `288f663`. It remains
-  decision-free and split-locked. Adversarial design review found that it does not store path
-  length at both resolutions or the unclamped direct-effect norm, and its two chords per action
-  pair cannot support a joint action-pair/effect-size conditional null. The proposed derived
-  denominator audit was rejected before commit. V2 will be retained as numerical/vector
-  calibration only; this small-model action-path route is closed without accessing test goals.
+- `CALIBRATION_ONLY`: `WM-ACTION-PATH-CALIBRATION-002` completed from clean `288f663` in
+  `19,176.20` seconds on the identical exposed validation chords at 512/1024 nodes. It wrote no
+  decisions and touched no protected test goals. Horizon-four integration/refinement maxima fell
+  to `.0129/.0260`, `.0339/.0314`, and `.00139/.000250` for seeds 101/103/107; the first two remain
+  underresolved. Spearman exceeded its stratified null p95 by only `.0454/.0283/.0165`. Because the
+  shared-denominator confound and missing joint-conditional design remain, V2 is numerical/vector
+  calibration only and the route is closed.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.
