@@ -79,3 +79,10 @@ V2 passed every numerical gate and established the corrected ranking on the fixe
 quadratic Taylor MSE `0.07870`, exact JVP `0.6143`, conditional bottleneck `3.1899`, nearest neighbor
 `4.9026`, and no-change `6.8654`. The historical BF16 secant scored `120.8994`. Exact and quadratic
 transport are mandatory strong baselines for all future Qwen meta-model claims.
+
+`LLM-TARGET-IJEPA-001` implements the genuine target-encoder comparison on behavior-changing
+capital patches. It retains no-change, mean, raw linear, PCA-bilinear, supervised MLP, legacy
+conditional bottleneck, PCA nearest-neighbor, corpus-average source-delta transport, sparse-
+dictionary linear transport, exact JVP, and quadratic Taylor. It reports hidden-space and logit-
+space normalized MSE separately because the frozen dataset showed that full-vector MSE and answer
+behavior can rank exact JVP and quadratic Taylor differently.

@@ -25,7 +25,11 @@ Status: `ACTIVE`.
   behavior fidelity; a favorable aggregate MSE cannot substitute for the behavior endpoint.
 - `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
   a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
-  it; a genuine JEPA must be implemented and compared separately.
+  it. The separately named `TargetEncoderInterventionJEPA` implements those missing mechanisms and
+  is preregistered for a clean comparison; it has not yet produced a real-data result.
+- `ACTIVE_DECODER_SUPERVISION`: the genuine JEPA predicts a target embedding without direct-effect
+  labels, but its post-hoc linear decoder is supervised on train-entity effects. Any pass is evidence
+  for predictive latent compression plus a linear readout, not a fully label-free causal simulator.
 - `ACTIVE_NOVELTY`: controllability/observability balancing and CoBRAS are established prior art.
   Pooling reachability and observability across different contexts can create false shared modes
   even when no context has a jointly active direction. Future geometry must include within-context,

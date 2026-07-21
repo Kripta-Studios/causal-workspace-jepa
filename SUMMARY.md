@@ -58,6 +58,13 @@
   had `0.6391` full-vector normalized MSE but 74.3% candidate agreement. This is evidence that
   behavior fidelity and activation-space MSE can rank local approximations differently; it enables,
   but does not itself validate, the genuine target-encoder Intervention-JEPA study.
+- Implemented and prospectively registered `LLM-TARGET-IJEPA-001`. A shared online residual encoder
+  and intervention encoder predict a 32-dimensional EMA/stop-gradient embedding of the directly
+  observed final residual. Variance/covariance losses and effective-rank gates test collapse; only
+  afterward does a train-only ridge decoder map predicted plus clean target embeddings to hidden/
+  logit effects. Three seeds face raw linear, PCA-bilinear, supervised MLP, legacy bottleneck,
+  nearest-neighbor, corpus-average, sparse transport, exact-JVP, and quadratic controls. No real
+  model fit may run until this code and its gates are committed/pushed.
 
 ## 2026-07-21 — GPU continuation begins
 

@@ -124,3 +124,7 @@
   and entity split for the learned study. Because exact-JVP full-vector MSE and candidate agreement
   rank controls differently, require both activation-space fidelity and behavior fidelity; do not
   optimize or report only the more favorable endpoint.
+- The genuine target-encoder study uses the name `TargetEncoderInterventionJEPA`; the legacy class
+  remains unchanged for historical checkpoint replay. Direct-effect labels are isolated to a
+  train-only post-hoc linear decoder, and both oracle target-embedding decode and predicted decode
+  are reported so representation failure cannot be hidden inside predictor error.

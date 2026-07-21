@@ -276,6 +276,50 @@ answer-candidate agreement; quadratic Taylor achieved `0.6391` and `0.743`, resp
 dataset is eligible for the prospectively registered learned-model experiment. The disagreement
 between vector MSE and answer behavior is descriptive only until tested on a separate model or task.
 
+## LLM-TARGET-IJEPA-001 Genuine Target-Encoder Preregistration
+
+Registered on 2026-07-21 after freezing `LLM-CAPITAL-PATCH-001`, but before fitting any model to its
+outcomes. This is a new restricted test `H-LLM-01B`; it does not retroactively reopen or rename the
+withdrawn coordinate-grid H-LLM-01 result.
+
+- Split: immutable entity-disjoint 552/30/30 train/validation/test outcomes from the capital dataset.
+  Test entities, capital tokens, recipients, and donors are absent from training. Hyperparameters
+  are fixed in `configs/experiments/qwen_target_encoder_ijepa_v1.yaml`; no test selection is allowed.
+- Architecture: a shared online residual encoder processes recipient source, donor source, and clean
+  final residuals; a separate intervention encoder processes the complete donor delta. Their
+  embeddings, recipient/donor difference, and one multiplicative interaction enter the predictor.
+  The 32-dimensional target is produced by an exponential-moving-average encoder from the directly
+  executed intervened final residual and is stop-gradient. The target encoder is not a target-effect
+  regression head.
+- Objective: target-embedding alignment plus online/target consistency, per-stream variance floors,
+  and covariance penalties. Report target and predicted mean per-dimension standard deviation and
+  covariance effective rank. A run is noncollapsed only when both mean standard deviations are at
+  least `0.10` and both effective ranks are at least `8/32`.
+- Outcome decoder: after JEPA fitting, a fixed-ridge linear decoder is trained on train entities from
+  `[intervened target embedding, clean target embedding]` to the 1060-dimensional direct effect.
+  At evaluation the first term is replaced by the predicted embedding. The oracle target-embedding
+  decode is reported separately. The direct effect never enters the JEPA predictor objective.
+- Baselines: no change, train-mean effect, raw linear ridge, 24-dimensional PCA-bilinear ridge,
+  supervised MLP, the legacy supervised conditional bottleneck, PCA nearest neighbor,
+  corpus-average source-delta transport, 32-component sparse-dictionary linear transport, exact
+  per-example autograd JVP, and directional quadratic Taylor.
+- Metrics: full/hidden/logit normalized MSE, effect correlation, and agreement with the directly
+  executed winner among the 36 preregistered answer tokens. The last metric is explicitly an
+  answer-set candidate metric, not full-vocabulary top-token accuracy. All 30 test targets are
+  prior direct Qwen executions.
+- `H-LLM-01B` passes per seed only if answer-candidate agreement exceeds the better of exact JVP and
+  quadratic Taylor by at least `0.05` and logit normalized MSE is at most `0.95` times the better
+  local baseline. `H-LLM-02` passes only if the representation is noncollapsed, oracle normalized
+  MSE is at most `0.75`, predicted normalized MSE beats train mean, and correlation is at least
+  `0.50`. Restricted `H-LLM-04` passes only if candidate agreement is at least `0.50` and exceeds
+  nearest neighbor by `0.05`.
+- Replication: a claim requires at least two of seeds `311/313/317`. Ensemble scores are descriptive
+  and cannot rescue a failed seed gate. A failed outcome is retained without tuning the observed
+  entity roster, dimensionality, thresholds, or hyperparameters.
+- Evidence boundary: even a pass establishes bounded held-out-entity causal-fidelity prediction for
+  one prompt family. It is not a feature label, circuit reconstruction, cross-task result, or
+  workspace. Circuit claims require a separate prospectively registered direct intervention study.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering
