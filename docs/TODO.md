@@ -14,7 +14,8 @@
 - [x] Revise and rerun the executable completion audit from clean `98a9e62`; all 14 criteria pass.
 - [x] Implement and preregister a genuine target-encoder/stop-gradient Intervention-JEPA with
   anti-collapse tests and strong behavior/local baselines.
-- [ ] Commit/push and execute `LLM-TARGET-IJEPA-001` unchanged; retain all three seed outcomes.
+- [x] Commit/push and execute `LLM-TARGET-IJEPA-001` unchanged from `3086cd4`; retain the 0/3
+  negative, rank-diversity failure, oracle-decoder failure, and divergent baseline rankings.
 - [x] Implement/preregister a split-safe semantic donor-answer dataset with aggregate behavior gates.
 - [x] Commit/push and execute `LLM-CAPITAL-PATCH-001` unchanged from `95018cb`; all gates pass.
 - [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.

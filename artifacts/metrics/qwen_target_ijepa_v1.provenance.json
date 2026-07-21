@@ -1,0 +1,17 @@
+{
+  "all_test_outcomes_directly_executed_on_qwen": true,
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_target_encoder_ijepa_v1.yaml",
+  "git_commit": "3086cd484fb819c3a11525ee9886542049780955",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_target_ijepa_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "replicated_decisions": {
+    "h_llm_01b_behavior_nonlinear_advantage": false,
+    "h_llm_02_causal_compression": false,
+    "h_llm_04_entity_generalization": false
+  },
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 311,
+  "time_utc": "2026-07-21T12:17:37.925330+00:00"
+}

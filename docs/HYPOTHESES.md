@@ -320,6 +320,18 @@ withdrawn coordinate-grid H-LLM-01 result.
   one prompt family. It is not a feature label, circuit reconstruction, cross-task result, or
   workspace. Circuit claims require a separate prospectively registered direct intervention study.
 
+Outcome (clean commit `3086cd4`, 2026-07-21): `COMPLETED_NEGATIVE`; zero of three seeds passed any
+registered hypothesis. Predicted latent effective ranks were `8.64/8.65/9.75`, but target ranks
+were `7.28/6.81/6.98`, so every seed failed the rank-diversity gate despite healthy mean coordinate
+standard deviations. Oracle target-embedding decoders had test normalized MSE `1.255/1.753/1.065`,
+showing that the learned target geometry itself was not linearly reusable across entity splits. The
+JEPA ensemble achieved normalized MSE `0.930`, correlation `0.483`, and answer-candidate agreement
+`0.200`. Exact JVP was best on full-vector normalized MSE (`0.599`), raw linear ridge on logit
+normalized MSE (`0.329`), and quadratic Taylor on answer-candidate agreement (`0.700`). Thus
+H-LLM-01B, H-LLM-02, and the restricted H-LLM-04 are rejected for this frozen architecture/task.
+The endpoint-dependent ranking is a new observation within this repository, not a literature-level
+novelty claim without replication on another task/model.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

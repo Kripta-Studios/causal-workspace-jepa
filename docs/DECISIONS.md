@@ -128,3 +128,7 @@
   remains unchanged for historical checkpoint replay. Direct-effect labels are isolated to a
   train-only post-hoc linear decoder, and both oracle target-embedding decode and predicted decode
   are reported so representation failure cannot be hidden inside predictor error.
+- Freeze the `LLM-TARGET-IJEPA-001` negative. Its oracle decoder shows that simply increasing
+  predictor capacity cannot repair the observed held-out-entity failure. The next route must model
+  context-conditioned causal geometry and keep activation, logit, and behavior endpoints separate;
+  do not tune the same target encoder on the observed six test entities.

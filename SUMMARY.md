@@ -65,6 +65,17 @@
   logit effects. Three seeds face raw linear, PCA-bilinear, supervised MLP, legacy bottleneck,
   nearest-neighbor, corpus-average, sparse transport, exact-JVP, and quadratic controls. No real
   model fit may run until this code and its gates are committed/pushed.
+- The unchanged study ran from clean `3086cd4` in `28.66` seconds. Zero of three seeds passed
+  H-LLM-01B, H-LLM-02, or H-LLM-04. Predicted latent effective rank was `8.64–9.75`, but every EMA
+  target latent was below the registered `8` floor (`6.81–7.28`). More decisively, oracle decoders
+  given the true target embedding still had held-out normalized MSE `1.065–1.753`, localizing failure
+  to entity-specific target geometry rather than only the predictor. The ensemble scored `0.930`
+  normalized MSE, `0.483` correlation, and `0.20` answer-candidate agreement.
+- Comparator rankings split by endpoint: exact JVP was best on full-vector fidelity (`0.599`
+  normalized MSE), raw linear ridge was best on logit fidelity (`0.329`), and quadratic Taylor was
+  best on direct answer-set behavior (`0.700` agreement). PCA-bilinear extrapolated catastrophically
+  (`2.04e11` normalized MSE). This motivates context-conditioned, endpoint-explicit causal geometry;
+  it does not support an Intervention-JEPA advantage or a circuit/workspace claim.
 
 ## 2026-07-21 — GPU continuation begins
 

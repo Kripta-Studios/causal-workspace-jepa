@@ -86,3 +86,9 @@ conditional bottleneck, PCA nearest-neighbor, corpus-average source-delta transp
 dictionary linear transport, exact JVP, and quadratic Taylor. It reports hidden-space and logit-
 space normalized MSE separately because the frozen dataset showed that full-vector MSE and answer
 behavior can rank exact JVP and quadratic Taylor differently.
+
+Measured result: no genuine-JEPA seed passed. Exact JVP minimized full-vector normalized MSE
+(`0.599`), raw linear ridge minimized logit normalized MSE (`0.329`), and quadratic Taylor maximized
+answer-candidate agreement (`0.700`). The target-JEPA ensemble scored `0.930`, `0.587`, and `0.200`
+on those endpoints. The PCA-bilinear control reached `2.04e11` normalized MSE under entity shift;
+this is retained as a failed extrapolative baseline, not clipped or omitted.

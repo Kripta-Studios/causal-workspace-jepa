@@ -82,12 +82,16 @@ Behavior-changing continuation:
   93.6% top-token change and 50% test donor-answer transfer. Exact-JVP/quadratic candidate agreement
   was 35.1%/74.3%. The next study may therefore fit a genuine target-encoder JEPA, but this dataset
   result alone is only direct causal mediation.
-- `LLM-TARGET-IJEPA-001` is implemented and preregistered but unexecuted. Its shared online encoder,
+- `LLM-TARGET-IJEPA-001` executed from clean `3086cd4`. Its shared online encoder,
   EMA stop-gradient target, and intervention-conditioned predictor optimize only latent alignment
   with variance/covariance anti-collapse controls. A train-only linear decoder maps predicted plus
   clean target embeddings to the direct hidden/logit effect. Three seeds are judged on unseen
   entities against exact JVP, quadratic Taylor, and nine learned/retrieval baselines using both
-  activation fidelity and 36-answer candidate behavior.
+  activation fidelity and 36-answer candidate behavior. All three hypotheses failed on all seeds.
+  Target effective rank missed the fixed floor, and oracle target-embedding decoding was worse than
+  no change on unseen entities. Exact JVP, raw linear ridge, and quadratic Taylor respectively won
+  full-vector MSE, logit MSE, and answer behavior. The result is a representation/generalization
+  failure, not merely a predictor optimization failure.
 
 Current mock implementation:
 

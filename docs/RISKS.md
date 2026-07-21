@@ -28,8 +28,15 @@ Status: `ACTIVE`.
   it. The separately named `TargetEncoderInterventionJEPA` implements those missing mechanisms and
   is preregistered for a clean comparison; it has not yet produced a real-data result.
 - `ACTIVE_DECODER_SUPERVISION`: the genuine JEPA predicts a target embedding without direct-effect
-  labels, but its post-hoc linear decoder is supervised on train-entity effects. Any pass is evidence
-  for predictive latent compression plus a linear readout, not a fully label-free causal simulator.
+  labels, but its post-hoc linear decoder is supervised on train-entity effects. The registered run
+  failed; even its oracle target-embedding decode did not transfer, so decoder supervision did not
+  create a false positive.
+- `RESOLVED_NEGATIVE_GEOMETRY`: every `LLM-TARGET-IJEPA-001` seed missed the target effective-rank
+  floor and its oracle decode failed on unseen entities. Do not tune this observed architecture.
+  A continuation must test an explicit context-conditioned/gauge-aware geometry with null controls.
+- `ACTIVE_BASELINE_INSTABILITY`: PCA-bilinear ridge extrapolated to `2.04e11` normalized MSE across
+  entity splits. It is retained transparently, but cannot serve as a meaningful strong baseline;
+  regularized or bounded bilinear methods require a new prospective protocol.
 - `ACTIVE_NOVELTY`: controllability/observability balancing and CoBRAS are established prior art.
   Pooling reachability and observability across different contexts can create false shared modes
   even when no context has a jointly active direction. Future geometry must include within-context,

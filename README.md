@@ -52,11 +52,12 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   93.6% of patches changed the top token and 50% transferred the donor capital on the test split.
   Exact-JVP candidate agreement was 35.1%, versus 74.3% for quadratic Taylor; this is a direct
   causal dataset, not yet learned-meta-model or circuit evidence.
-- `IMPLEMENTED_UNVALIDATED`: `LLM-TARGET-IJEPA-001` is a genuine 32-dimensional EMA/
-  stop-gradient target-encoder JEPA with variance/covariance anti-collapse losses. Its frozen
-  three-seed study uses only train entities for representation and outcome-decoder fitting and
-  compares held-out entities against nine learned/retrieval transports plus exact JVP and quadratic
-  Taylor. It must be committed before first execution.
+- `COMPLETED_NEGATIVE`: `LLM-TARGET-IJEPA-001` is a genuine 32-dimensional EMA/stop-gradient
+  target-encoder JEPA with variance/covariance anti-collapse losses, executed from clean commit
+  `3086cd4`. All three hypotheses failed on unseen entities. Every target latent missed the fixed
+  effective-rank floor, and even oracle target-embedding decodes had normalized MSE above `1.0`.
+  Exact JVP won full-vector fidelity, linear ridge won logit MSE, and quadratic Taylor won answer
+  behavior; no single metric supports a nonlinear-JEPA advantage.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

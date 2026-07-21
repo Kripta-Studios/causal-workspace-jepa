@@ -1,0 +1,309 @@
+{
+  "baselines_test": {
+    "corpus_average_transport": {
+      "answer_candidate_agreement": 0.2,
+      "correlation": 0.5296582246252256,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.7674949169158936,
+      "logit_normalized_mse": 0.3337782919406891,
+      "mse": 42.363670349121094,
+      "normalized_mse": 0.7637984752655029,
+      "predicted_donor_candidate_rate": 0.0
+    },
+    "exact_jvp": {
+      "answer_candidate_agreement": 0.3,
+      "correlation": 0.7295565524030311,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.5994985699653625,
+      "logit_normalized_mse": 0.5397473573684692,
+      "mse": 33.22262191772461,
+      "normalized_mse": 0.5989893674850464,
+      "predicted_donor_candidate_rate": 0.13333333333333333
+    },
+    "legacy_conditional_bottleneck": {
+      "answer_candidate_agreement": 0.16666666666666666,
+      "correlation": 0.5174574055880851,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.8032786846160889,
+      "logit_normalized_mse": 0.3767242431640625,
+      "mse": 44.351783752441406,
+      "normalized_mse": 0.7996432781219482,
+      "predicted_donor_candidate_rate": 0.0
+    },
+    "linear": {
+      "answer_candidate_agreement": 0.16666666666666666,
+      "correlation": 0.5546284851435423,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.7213008403778076,
+      "logit_normalized_mse": 0.32896706461906433,
+      "mse": 39.821102142333984,
+      "normalized_mse": 0.717957079410553,
+      "predicted_donor_candidate_rate": 0.0
+    },
+    "mean_effect": {
+      "answer_candidate_agreement": 0.16666666666666666,
+      "correlation": 0.10485333888191296,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.990321695804596,
+      "logit_normalized_mse": 0.8306038975715637,
+      "mse": 54.85215377807617,
+      "normalized_mse": 0.988960325717926,
+      "predicted_donor_candidate_rate": 0.0
+    },
+    "nearest_neighbor": {
+      "answer_candidate_agreement": 0.16666666666666666,
+      "correlation": 0.43123571299540303,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 1.1647452116012573,
+      "logit_normalized_mse": 0.7392416000366211,
+      "mse": 64.40081787109375,
+      "normalized_mse": 1.1611186265945435,
+      "predicted_donor_candidate_rate": 0.03333333333333333
+    },
+    "no_change": {
+      "answer_candidate_agreement": 0.16666666666666666,
+      "correlation": 0.0,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 1.0,
+      "logit_normalized_mse": 1.0,
+      "mse": 55.46446228027344,
+      "normalized_mse": 1.0,
+      "predicted_donor_candidate_rate": 0.0
+    },
+    "pca_bilinear": {
+      "answer_candidate_agreement": 0.2,
+      "correlation": -0.026103424280085247,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 204465913856.0,
+      "logit_normalized_mse": 129898536960.0,
+      "mse": 11305342730240.0,
+      "normalized_mse": 203830378496.0,
+      "predicted_donor_candidate_rate": 0.2
+    },
+    "quadratic_taylor": {
+      "answer_candidate_agreement": 0.7,
+      "correlation": 0.8316728328319445,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.6707937121391296,
+      "logit_normalized_mse": 0.6903687119483948,
+      "mse": 37.21445846557617,
+      "normalized_mse": 0.6709604263305664,
+      "predicted_donor_candidate_rate": 0.6333333333333333
+    },
+    "sparse_feature_linear": {
+      "answer_candidate_agreement": 0.26666666666666666,
+      "correlation": 0.48308179976814275,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.933445930480957,
+      "logit_normalized_mse": 0.3954751491546631,
+      "mse": 51.51877212524414,
+      "normalized_mse": 0.9288609027862549,
+      "predicted_donor_candidate_rate": 0.1
+    },
+    "supervised_mlp": {
+      "answer_candidate_agreement": 0.16666666666666666,
+      "correlation": 0.40289226679441625,
+      "direct_donor_candidate_rate": 0.8,
+      "hidden_normalized_mse": 0.8996675610542297,
+      "logit_normalized_mse": 0.5176958441734314,
+      "mse": 49.719017028808594,
+      "normalized_mse": 0.8964121341705322,
+      "predicted_donor_candidate_rate": 0.0
+    }
+  },
+  "compression_ratio": 0.03125,
+  "dataset_examples": 612,
+  "dataset_id": "LLM-CAPITAL-PATCH-001",
+  "direct_verification": {
+    "all_test_outcomes_directly_executed_on_qwen": true,
+    "claim_boundary": "Predicted outcomes are scored against frozen direct Qwen executions. No circuit candidate or predicted source intervention is introduced by this study.",
+    "direct_examples": 30,
+    "intervention_site": "blocks.21.resid_post",
+    "target_site": "blocks.27.resid_post"
+  },
+  "ensemble_test": {
+    "answer_candidate_agreement": 0.2,
+    "correlation": 0.4831882673397191,
+    "direct_donor_candidate_rate": 0.8,
+    "hidden_normalized_mse": 0.9333971738815308,
+    "logit_normalized_mse": 0.5868204832077026,
+    "mse": 51.606544494628906,
+    "normalized_mse": 0.9304434061050415,
+    "predicted_donor_candidate_rate": 0.03333333333333333
+  },
+  "evidence_level": "Generalization",
+  "experiment_id": "LLM-TARGET-IJEPA-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 359.969,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "meta_dim": 32,
+  "replicated_decisions": {
+    "h_llm_01b_behavior_nonlinear_advantage": false,
+    "h_llm_02_causal_compression": false,
+    "h_llm_04_entity_generalization": false
+  },
+  "runtime_seconds": 28.65977739999653,
+  "scientific_boundary": "The predictor is a genuine EMA target-encoder JEPA, but its linear outcome decoder uses predicted and clean target embeddings and is supervised on train entities. A passing result is bounded entity generalization for one factual prompt family, not a Qwen circuit, semantic feature, or workspace.",
+  "seed_decisions": [
+    {
+      "h_llm_01b_behavior_nonlinear_advantage": false,
+      "h_llm_02_causal_compression": false,
+      "h_llm_04_entity_generalization": false,
+      "seed": 311
+    },
+    {
+      "h_llm_01b_behavior_nonlinear_advantage": false,
+      "h_llm_02_causal_compression": false,
+      "h_llm_04_entity_generalization": false,
+      "seed": 313
+    },
+    {
+      "h_llm_01b_behavior_nonlinear_advantage": false,
+      "h_llm_02_causal_compression": false,
+      "h_llm_04_entity_generalization": false,
+      "seed": 317
+    }
+  ],
+  "seed_results": [
+    {
+      "collapse": {
+        "predicted_effective_rank": 8.651136527900395,
+        "predicted_mean_dimension_std": 0.7759951949119568,
+        "target_effective_rank": 7.281126592722744,
+        "target_mean_dimension_std": 0.7025667428970337
+      },
+      "noncollapsed": false,
+      "oracle_target_decoder": {
+        "correlation": 0.42746449626935934,
+        "hidden_normalized_mse": 1.257529854774475,
+        "logit_normalized_mse": 0.9153425097465515,
+        "mse": 69.58646392822266,
+        "normalized_mse": 1.2546135187149048
+      },
+      "seed": 311,
+      "test": {
+        "answer_candidate_agreement": 0.1,
+        "correlation": 0.38515882805945395,
+        "direct_donor_candidate_rate": 0.8,
+        "hidden_normalized_mse": 1.4052517414093018,
+        "logit_normalized_mse": 0.8283900022506714,
+        "mse": 77.66883850097656,
+        "normalized_mse": 1.4003351926803589,
+        "predicted_donor_candidate_rate": 0.0
+      },
+      "training": {
+        "alignment_loss": 0.00034187379060313106,
+        "best_step": 1200,
+        "best_validation_alignment": 0.4794626533985138,
+        "covariance_loss": 0.16698741912841797,
+        "steps_completed": 1200,
+        "target_consistency_loss": 0.0001900584320537746,
+        "total_loss": 0.0020592627115547657,
+        "variance_loss": 0.0
+      }
+    },
+    {
+      "collapse": {
+        "predicted_effective_rank": 8.643659546929536,
+        "predicted_mean_dimension_std": 0.8249391317367554,
+        "target_effective_rank": 6.811032220714845,
+        "target_mean_dimension_std": 0.799462616443634
+      },
+      "noncollapsed": false,
+      "oracle_target_decoder": {
+        "correlation": 0.36829258666960085,
+        "hidden_normalized_mse": 1.7610961198806763,
+        "logit_normalized_mse": 0.8413336873054504,
+        "mse": 97.24346923828125,
+        "normalized_mse": 1.7532572746276855
+      },
+      "seed": 313,
+      "test": {
+        "answer_candidate_agreement": 0.2,
+        "correlation": 0.3275894246139757,
+        "direct_donor_candidate_rate": 0.8,
+        "hidden_normalized_mse": 1.8394672870635986,
+        "logit_normalized_mse": 0.8942590951919556,
+        "mse": 101.57825469970703,
+        "normalized_mse": 1.8314114809036255,
+        "predicted_donor_candidate_rate": 0.06666666666666667
+      },
+      "training": {
+        "alignment_loss": 0.0019857287406921387,
+        "best_step": 360,
+        "best_validation_alignment": 0.48655810952186584,
+        "covariance_loss": 0.29586154222488403,
+        "steps_completed": 560,
+        "target_consistency_loss": 0.0003038092399947345,
+        "total_loss": 0.005020296201109886,
+        "variance_loss": 0.0
+      }
+    },
+    {
+      "collapse": {
+        "predicted_effective_rank": 9.746827096159924,
+        "predicted_mean_dimension_std": 0.7629737854003906,
+        "target_effective_rank": 6.975649342547386,
+        "target_mean_dimension_std": 0.6775275468826294
+      },
+      "noncollapsed": false,
+      "oracle_target_decoder": {
+        "correlation": 0.43287751647838196,
+        "hidden_normalized_mse": 1.0692371129989624,
+        "logit_normalized_mse": 0.6035314798355103,
+        "mse": 59.08452224731445,
+        "normalized_mse": 1.0652680397033691
+      },
+      "seed": 317,
+      "test": {
+        "answer_candidate_agreement": 0.16666666666666666,
+        "correlation": 0.40765103265493685,
+        "direct_donor_candidate_rate": 0.8,
+        "hidden_normalized_mse": 1.2533396482467651,
+        "logit_normalized_mse": 0.7676258087158203,
+        "mse": 69.28620147705078,
+        "normalized_mse": 1.2491998672485352,
+        "predicted_donor_candidate_rate": 0.03333333333333333
+      },
+      "training": {
+        "alignment_loss": 0.00047947769053280354,
+        "best_step": 1200,
+        "best_validation_alignment": 0.5204806923866272,
+        "covariance_loss": 0.18737462162971497,
+        "steps_completed": 1200,
+        "target_consistency_loss": 0.0004079440259374678,
+        "total_loss": 0.0024552098475396633,
+        "variance_loss": 0.0
+      }
+    }
+  ],
+  "seeds": [
+    311,
+    313,
+    317
+  ],
+  "source_dim": 1024,
+  "split_counts": {
+    "test": 30,
+    "train": 552,
+    "validation": 30
+  },
+  "status": "COMPLETED_NEGATIVE"
+}
