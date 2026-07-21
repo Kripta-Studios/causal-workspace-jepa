@@ -54,3 +54,10 @@ five layers and three semantic position selectors. The ignored HDF5 shard is 574
 SHA-256 `cd1ef5e3a871740bfbd06e45c1a024257ba2ed9c1f0b1f6ac0bc2db1a11240cf`;
 `data/manifests/qwen3_4b_selected_activation_capture.json` records its fixed 8/2/2 prompt split,
 array shapes, model revision, and 64 MB budget. Status: `SMOKE_VALIDATED` Availability capture.
+
+`LLM-QWEN-JVP-AUDIT-001` re-executed the frozen 432 Qwen3-0.6B intervention records in float32 and
+stored direct effects, exact JVPs, six central differences, quadratic predictions, and top tokens
+in an ignored 952,102-byte HDF5 shard. The committed manifest records SHA-256
+`5bc539c184fb134958be56cd2a23e932a5cce6df399505ecef76a52606b0d362`. Status:
+`REJECTED` on a numerical gate; the data are retained for diagnostic/reproducibility use, not accepted as a
+completed H-LLM-01 audit.

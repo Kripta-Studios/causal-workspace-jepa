@@ -58,6 +58,11 @@ Exact-derivative corrective milestone:
 - The old H-LLM-01 result is retained only if the numerical audit passes and at least two of three
   refitted conditional-bottleneck seeds beat exact JVP and quadratic controls under the frozen raw
   and semantic-deduplicated gates. A negative result will withdraw the old claim.
+- V1 executed from clean commit `686368e` and is `REJECTED` on a numerical gate: all JVP/central convergence
+  gates passed, but semantic downstream endpoint max error was `1.335e-4` versus `1e-5`. Its
+  preliminary exact-JVP MSE `0.6143` beat the conditional bottleneck `3.1899`; quadratic Taylor was
+  `0.07870`, and zero learned seeds beat exact JVP. H-LLM-01 remains unresolved until a separately
+  registered source-semantic check passes.
 
 Current mock implementation:
 

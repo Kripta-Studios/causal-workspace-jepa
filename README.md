@@ -38,6 +38,10 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   bottleneck rather than a genuine target-encoder JEPA. `LLM-QWEN-JVP-AUDIT-001` is preregistered
   to re-execute FP32 effects and compare exact autograd JVP, converged central differences, and a
   quadratic baseline. The directly ranked candidate graph remains `REJECTED`.
+- `REJECTED` (numerical gate): the first exact-JVP audit passed five of six numerical gates and showed
+  strong JVP/central agreement, but missed its absolute semantic-endpoint gate (`1.335e-4` versus
+  `1e-5`). Its preliminary exact-JVP MSE (`0.6143`) beat the legacy conditional bottleneck
+  (`3.1899`), but v1 cannot decide H-LLM-01; a source-semantic v2 must be preregistered.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -269,6 +273,11 @@ Validated CPU smoke results:
   MSE but nearest-neighbor was slightly better at `2.095`. Direct execution on 16 edits over four
   new prompts yielded effect correlation `0.673`, but predicted coordinate 128 was not the observed
   winner (coordinate 0); precision@1 was `0`, so H-LLM-06 failed and the graph is rejected.
+- Corrective JVP audit v1 ran from clean commit `686368e` in `167.99` seconds. Exact JVP and central
+  differences agreed (median relative error `2.49e-4`), and exact JVP/quadratic MSE were
+  `0.6143`/`0.07870` versus legacy conditional-bottleneck `3.1899` and old BF16 secant `120.8994`.
+  The audit nevertheless failed its downstream semantic-endpoint absolute gate, so these are
+  preliminary audit measurements and H-LLM-01 remains under reaudit.
 - Faithful small LeWorldModel (`WM-LEWM-001`) ran unchanged from clean commit `4dbc388` with seeds
   101/103/107 in `54.50` seconds. All three reproduction gates passed: test embedding MSE was
   `0.134`-`0.292`, clean/shuffled ratios `0.155`-`0.643`, latent standard deviation

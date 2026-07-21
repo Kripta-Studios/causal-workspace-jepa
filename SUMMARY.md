@@ -20,6 +20,14 @@
   invalid OAuth token. The adapter now resolves the pinned local snapshot path before loading either
   model or tokenizer, avoiding the network-only compatibility branch. This is an execution fix;
   scientific thresholds and the frozen grid are unchanged.
+- The clean rerun from `686368e` completed in `167.99` seconds but was correctly rejected: five of
+  six numerical gates passed, while downstream semantic-endpoint max error `1.335e-4` exceeded the
+  fixed `1e-5` limit. Exact JVP/central agreement itself was strong (median `2.49e-4`, p95
+  `0.00381`). Preliminary raw MSE reversed the old result: quadratic `0.07870`, exact JVP `0.6143`,
+  conditional bottleneck `3.1899`, and BF16 secant `120.8994`; zero learned seeds beat exact JVP.
+- A no-write diagnostic localized the failed endpoint comparison to float32 cancellation of at most
+  `4.768e-7` at replacement-source coordinates. This justifies a separately preregistered direct
+  source-semantic validation, but cannot change v1's `REJECTED` numerical-gate result or decide H-LLM-01.
 - Literature review found that generic reachability/observability balancing is established prior
   art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct

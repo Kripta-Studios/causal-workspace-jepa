@@ -65,6 +65,11 @@ rerun from `0d6a37b` is retained.
 commit `a54f2ed6a2491fb905978cb3c10af655a36c7b42`. Its three seeds, thresholds, holdouts, and direct
 verification prompts were fixed before execution. Ignored checkpoints are replay-checked by the run.
 
+`LLM-QWEN-JVP-AUDIT-001` was preregistered at `236e5d9` and executed from clean commit
+`686368e792598aaeb3d0aff7349d34f8f70a3c36`. It wrote complete metrics/provenance and a checksummed
+ignored HDF5 shard before intentionally exiting nonzero because one numerical gate failed. The
+result is retained as `REJECTED` on a numerical gate; it does not decide H-LLM-01.
+
 `WM-LEWM-001` ran unchanged from clean commit `4dbc38856b2f1aa6e42754ade72941f0399d3b93`.
 The prior clean computation at `9c3239a` was discarded because a hardware dataclass prevented JSON
 serialization before metrics/provenance were written. Only the post-fix run is retained. The runner

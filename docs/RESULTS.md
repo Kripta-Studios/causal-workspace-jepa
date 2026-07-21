@@ -1,6 +1,6 @@
 # Results
 
-Status: `SMOKE_VALIDATED`.
+Status: `ACTIVE_REAUDIT`.
 
 The scientific results include CPU-scale JEPA studies, three GPT-2 Medium studies, and bounded real
 Qwen3-0.6B instrumentation/data/meta-model runs. No workspace/J-space-like mechanism or validated
@@ -21,7 +21,8 @@ Qwen circuit has been discovered.
 | LLM-GPT2-003 | Magnitude-6 contrast-direction compositions are almost additive; prompt-local Jacobians predict them, but learned/corpus transports fail on unseen prompts despite excellent seen-prompt scores. | Generalization | `configs/experiments/gpt2_medium_semantic_composition_study.yaml` | `artifacts/metrics/gpt2_medium_semantic_composition_study.json` | `1e57e30218295a6e6802c2db16cf81c353d8d77d` | `SMOKE_VALIDATED` |
 | LLM-QWEN-001 | Pinned Qwen3-0.6B selected-site hooks are deterministic and preserve autograd; five direct residual interventions change downstream hidden states and logits. | Causal mediation | `configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml` | `artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json` | `0d6a37b2f27a862b5d272f254e451fb41b7837e4` | `SMOKE_VALIDATED` |
 | LLM-INTDATA-001 | A split-controlled real Qwen3-0.6B intervention dataset contains 432 nonzero directly executed effects with a checksum-verified HDF5 shard. | Causal mediation | `configs/experiments/qwen_intervention_dataset_v1.yaml` | `artifacts/metrics/qwen3_0_6b_intervention_dataset.json` | `0aa80acc9a6fb17d3fc90dba5b2a5bc358326fb2` | `SMOKE_VALIDATED` |
-| LLM-IJEPA-001 | A nonlinear Intervention-JEPA generalizes across fixed prompt, coordinate, and operation holdouts better than the registered parametric/Jacobian baselines across three seeds, but its top-ranked coordinate fails direct causal ranking verification. | Generalization | `configs/experiments/intervention_jepa_v1.yaml` | `artifacts/metrics/qwen_intervention_jepa_v1.json` | `a54f2ed6a2491fb905978cb3c10af655a36c7b42` | `SMOKE_VALIDATED`; candidate `REJECTED` |
+| LLM-IJEPA-001 | The legacy conditional bottleneck beat the originally registered comparators, but the BF16 secant was not an exact Jacobian and its nonlinear-advantage claim is under corrective audit; its ranked coordinate also failed direct verification. | Generalization | `configs/experiments/intervention_jepa_v1.yaml` | `artifacts/metrics/qwen_intervention_jepa_v1.json` | `a54f2ed6a2491fb905978cb3c10af655a36c7b42` | `UNDER_REAUDIT`; candidate `REJECTED` |
+| LLM-QWEN-JVP-AUDIT-001 | FP32 exact JVP agrees with central differences and preliminarily dominates the learned bottleneck, but the audit failed its absolute semantic-endpoint gate and therefore cannot decide H-LLM-01. | Specificity | `configs/experiments/qwen_jvp_audit_v1.yaml` | `artifacts/metrics/qwen_jvp_audit_v1.json` | `686368e792598aaeb3d0aff7349d34f8f70a3c36` | `REJECTED` numerical gate |
 | WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001C | Donor decoded recovery and the full restricted action-to-planner circuit pass only one seed; the replicated gate and every workspace candidate fail. | Circuit reconstruction | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json`; rejected graph | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `COMPLETED_NEGATIVE`; graph `REJECTED` |
@@ -236,10 +237,29 @@ H-LLM-01 or causal compression.
 - the learned dictionary density was `0.974`, so it is not evidence for sparse or monosemantic
   features.
 
-Interpretation: the fixed H-LLM-01/02/03 gates passed on all three seeds, supporting bounded causal
-compression/generalization for this selected target. H-LLM-06 failed, the coordinate graph is
+Historical interpretation: the fixed H-LLM-01/02/03 gates passed on all three seeds against the
+then-registered comparators. H-LLM-01 is now `UNDER_REAUDIT` because the BF16 secant was not an
+exact Jacobian, and the model is a supervised conditional bottleneck rather than a genuine JEPA.
+H-LLM-06 failed, the coordinate graph is
 `REJECTED`, and neither a circuit, semantic feature, behavior mechanism, J-space, nor workspace is
 supported.
+
+`LLM-QWEN-JVP-AUDIT-001` key metrics:
+
+- numerical gates: five of six pass; JVP/central median relative error `0.000249`, p95 `0.00381`;
+- failed gate: dense-versus-semantic downstream endpoint maximum absolute error `1.335e-4` versus
+  preregistered `1e-5`;
+- preliminary raw MSE: exact JVP `0.6143`, quadratic Taylor `0.07870`, conditional bottleneck
+  `3.1899`, no-change `6.8654`, and historical BF16 secant `120.8994`;
+- exact-JVP normalized MSE was `0.08948` raw and `0.09069` after semantic deduplication, below the
+  registered `0.10` nonlinearity floor; zero of three learned seeds beat exact JVP;
+- FP32 direct execution produced 18/432 top-token changes; BF16/FP32 direct effects had correlation
+  `0.9746` but mean row-relative error `0.5146`.
+
+Interpretation: v1 is rejected and cannot withdraw or retain H-LLM-01. A post-result diagnostic found
+that replacement paths incur up to `4.768e-7` source rounding when reconstructing `h+(donor-h)`,
+which can propagate above an absolute downstream tolerance. A new audit may validate source
+semantics directly, but v1's gate and rejected status are immutable.
 
 `WM-LEWM-001` key metrics:
 

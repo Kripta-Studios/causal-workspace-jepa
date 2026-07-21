@@ -8,6 +8,9 @@ Status: `ACTIVE`.
 - `ACTIVE_CORRECTION`: the `LLM-IJEPA-001` local baseline is a BF16 one-sided 5-percent secant, not
   an exact Jacobian. Its very large error may be numerical. H-LLM-01 is `UNDER_REAUDIT` until the
   preregistered FP32 exact-JVP/central-convergence run completes.
+- `RESOLVED_REPORTING_REQUIRED`: JVP audit v1 mechanically emitted `WITHDRAWN` even though its own
+  preregistration says numerical failure leaves H-LLM-01 unresolved. Documentation follows the
+  preregistered rule; the prospective runner must emit `UNRESOLVED_NUMERICAL_REJECT` on that path.
 - `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
   a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
   it; a genuine JEPA must be implemented and compared separately.

@@ -181,6 +181,18 @@ a circuit, behavior mechanism, or workspace.
   attain raw effect correlation at least `0.60`. Otherwise the original restricted H-LLM-01 result
   is `WITHDRAWN`; failure is a valid negative result and thresholds will not be retuned.
 
+Measured v1 result from clean commit `686368e`: the audit is `REJECTED` on a numerical gate, so it does not
+decide H-LLM-01. Five of six derivative gates passed. Exact JVP agreed strongly with symmetric
+central differences (median relative error `0.000249`, p95 `0.00381`), but the dense `alpha=1`
+downstream endpoint differed from the semantic intervention by maximum absolute `1.335e-4`, above
+the preregistered `1e-5` gate. Post-result diagnosis localized this to at most `4.768e-7` float32
+source-endpoint cancellation for replacement edits; that diagnosis cannot retroactively pass v1.
+The preliminary scores strongly reverse the old ranking—exact-JVP MSE `0.6143`, quadratic MSE
+`0.07870`, and conditional-bottleneck MSE `3.1899` raw—but remain audit evidence pending a separately
+preregistered source-semantic validation. The v1 JSON's mechanically emitted `WITHDRAWN` disposition
+is superseded by the preregistered rule that a numerical-gate failure rejects the audit; the runner
+will be corrected prospectively. H-LLM-01 stays `UNDER_REAUDIT`.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering
