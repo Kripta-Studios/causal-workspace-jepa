@@ -1,7 +1,7 @@
 # LLM Track
 
-Status: `ACTIVE_REAUDIT`; instrumentation/data remain validated, while the original Qwen nonlinear-
-advantage claim is under an exact-FP32-JVP audit.
+Status: `COMPLETED_NEGATIVE` for the corrected Qwen nonlinear-advantage audit; the broader research
+track remains active.
 
 The inherited CPU implementation uses a mock transformer with known activation dependencies. It is valid for interface, leakage, and intervention-pipeline tests only.
 
@@ -41,7 +41,7 @@ Meta-model continuation:
   directly re-executes all 16 coordinate predictions on four new prompts before writing a candidate
   graph.
 - Original status was `SMOKE_VALIDATED` from clean commit `a54f2ed`. The registered gates passed
-  against the then-specified comparators, but H-LLM-01 is now `UNDER_REAUDIT`: the so-called local
+  against the then-specified comparators, but H-LLM-01 is now `WITHDRAWN`: the so-called local
   Jacobian was a BF16 one-sided secant and can be a numerical-noise floor. The nearest-neighbor
   baseline narrowly wins resample-holdout MSE, and direct
   precision@1 is zero; H-LLM-06 fails and the candidate graph is `REJECTED`.
@@ -66,6 +66,11 @@ Exact-derivative corrective milestone:
 - V2 is implemented/preregistered as a post-diagnostic confirmation. It adds source captures and
   replaces only v1's invalid downstream absolute identity test with exact direct-source equality
   plus a two-rounding float32 bound. All scientific score and disposition gates are unchanged.
+- V2 completed from clean commit `a779ff6`: every numerical gate passed, finite-amplitude
+  nonlinearity failed the registered floor, and zero of three learned seeds beat exact JVP or
+  quadratic Taylor. Exact JVP/quadratic/bottleneck raw MSE was `0.6143`/`0.07870`/`3.1899`.
+  Restricted H-LLM-01 is withdrawn. The next dataset must target actual semantic behavior changes,
+  and the next learned model must implement a genuine target-encoder JEPA objective.
 
 Current mock implementation:
 

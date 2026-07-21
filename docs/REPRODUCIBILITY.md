@@ -70,6 +70,11 @@ verification prompts were fixed before execution. Ignored checkpoints are replay
 ignored HDF5 shard before intentionally exiting nonzero because one numerical gate failed. The
 result is retained as `REJECTED` on a numerical gate; it does not decide H-LLM-01.
 
+Post-diagnostic v2 was preregistered and executed from clean synchronized commit
+`a779ff6ea617f77e2b0c252c79b5a1a1fa66cfdc`. Its 432-row shard checksum verifies, every numerical
+gate passes, and the emitted disposition is `WITHDRAWN`. The source-level semantic repair and its
+post-v1 status are explicit in `docs/HYPOTHESES.md`.
+
 `WM-LEWM-001` ran unchanged from clean commit `4dbc38856b2f1aa6e42754ade72941f0399d3b93`.
 The prior clean computation at `9c3239a` was discarded because a hardware dataclass prevented JSON
 serialization before metrics/provenance were written. Only the post-fix run is retained. The runner

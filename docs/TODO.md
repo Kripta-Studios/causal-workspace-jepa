@@ -9,8 +9,9 @@
 - [x] Commit/push the audit preregistration and execute v1 unchanged from clean commit `686368e`.
 - [x] Retain v1 as `REJECTED` on its numerical endpoint gate; do not relax that threshold.
 - [x] Preregister v2 source-semantic gates after disclosing the v1 result and cancellation diagnosis.
-- [ ] Commit/push v2, then execute it once unchanged from a clean worktree.
-- [ ] Revise every affected result, completion audit, and claim from the measured audit outcome.
+- [x] Commit/push v2 and execute it unchanged from clean commit `a779ff6`; all numerical gates pass.
+- [x] Withdraw restricted H-LLM-01 after 0/3 seeds beat exact JVP/quadratic Taylor.
+- [ ] Revise and rerun the executable completion audit with the exact-JVP correction included.
 - [ ] Implement a genuine target-encoder/stop-gradient Intervention-JEPA with anti-collapse tests.
 - [ ] Generate a split-safe semantic donor-answer dataset with aggregate behavior-changing edits.
 - [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.

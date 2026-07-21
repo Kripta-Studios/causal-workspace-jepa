@@ -4,7 +4,7 @@
 
 - Independent adversarial review found that the `LLM-IJEPA-001` “local Jacobian” is a one-sided
   5-percent secant executed in bfloat16. Its predicted effects are implausibly larger than the true
-  effects on the frozen data, so H-LLM-01 is now `UNDER_REAUDIT`; the old numbers are preserved but
+  effects on the frozen data, so H-LLM-01 was placed `UNDER_REAUDIT`; the old numbers are preserved but
   are not reliable nonlinear-advantage evidence.
 - The class named `NeuralInterventionJEPA` is a supervised two-branch bottleneck MLP. It has no
   target encoder, stop-gradient/EMA target, or anti-collapse JEPA objective. New reporting calls it
@@ -31,6 +31,14 @@
 - Implemented/preregistered v2 after disclosing v1. It captures the actual edited source, requires
   exact adapter semantics, and bounds the algebraic direction endpoint by two scale-aware float32
   roundings. All JVP, nonlinearity, predictor, seed, split, and disposition thresholds remain v1's.
+- V2 ran unchanged from clean commit `a779ff6` in `170.77` seconds. All numerical gates passed:
+  exact direct-source error `0.0`, zero float32 endpoint-bound violations, and JVP/central relative
+  error median/p95 `0.000249`/`0.00381`. The scientific result is negative: exact JVP MSE `0.6143`
+  and quadratic `0.07870` beat the conditional bottleneck `3.1899`; zero of three seeds passed, and
+  the registered finite-nonlinearity gate also failed. Restricted H-LLM-01 is `WITHDRAWN`.
+- The corrected conclusion is that these selected Qwen3-0.6B residual edits are mostly local, with
+  second-order transport explaining nearly all selected-target effect power. The old BF16 secant's
+  MSE `120.8994` was a precision artifact, not evidence of a nonlinear JEPA advantage.
 - Literature review found that generic reachability/observability balancing is established prior
   art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct

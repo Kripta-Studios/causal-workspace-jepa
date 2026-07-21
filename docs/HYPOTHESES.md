@@ -1,10 +1,10 @@
 # Preregistered Hypotheses
 
 Status: `ACTIVE` research program; bounded required suite `SMOKE_VALIDATED`. Registered studies
-tested restricted forms of H-WM-01/02/03/05/06/08 and H-LLM-01/02/03/06. The earlier Qwen
-H-LLM-01 result is `UNDER_REAUDIT` because its registered BF16 one-sided finite difference is not
-an adequate exact-Jacobian baseline; its bounded H-LLM-02/03 gates remain descriptive pending the
-same FP32 target re-execution. H-LLM-06 fails, the LeWorldModel circuit gate fails
+tested restricted forms of H-WM-01/02/03/05/06/08 and H-LLM-01/02/03/06. The corrected Qwen
+H-LLM-01 result is `WITHDRAWN`: an exact FP32 JVP and quadratic Taylor model decisively beat the
+legacy conditional bottleneck. Its original bounded H-LLM-02/03 gates remain descriptive and do
+not imply advantage over exact local transport. H-LLM-06 fails, the LeWorldModel circuit gate fails
 replication, and all workspace decisions remain false. These do not constitute broad scientific
 validation.
 
@@ -222,6 +222,17 @@ threshold and rejection remain immutable.
 - Evidence boundary: v2 can correct one restricted H-LLM-01 result on the selected projected targets.
   It cannot validate H-LLM-02/03 broadly, a genuine JEPA architecture, behavior prediction, a Qwen
   circuit, or a workspace.
+
+Measured v2 result from clean commit `a779ff6`: all seven numerical gates passed. Direct source
+semantics were exact (`0.0` max error); source direction endpoint error was at most `4.768e-7` with
+zero tolerance violations; exact-JVP/central median and p95 relative errors were `0.000249` and
+`0.00381`. The unchanged finite-amplitude nonlinearity gate failed: JVP normalized MSE was `0.08948`
+raw and `0.09069` deduplicated, quadratic normalized MSE was `0.01146`, and zero operation classes
+met the required joint rule. Zero of three learned seeds beat exact JVP or quadratic Taylor. Raw MSE
+was exact JVP `0.6143`, quadratic `0.07870`, conditional bottleneck `3.1899`, and historical BF16
+secant `120.8994`. Therefore the prior restricted H-LLM-01 result is `WITHDRAWN`. This is a negative
+Specificity result: the tested finite edits are largely local and captured even better at second
+order; it is not evidence against nonlinear meta-models on other tasks or behavior-changing edits.
 
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 

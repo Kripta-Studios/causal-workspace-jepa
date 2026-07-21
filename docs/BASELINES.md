@@ -1,7 +1,7 @@
 # Baselines
 
-Status: `ACTIVE_REAUDIT` for the Qwen exact-derivative comparison; other implemented CPU/Qwen
-methods and the completed published-model small reproduction retain their recorded statuses.
+Status: `SMOKE_VALIDATED` for the corrected Qwen exact-derivative comparison; its nonlinear-
+advantage result is negative. Other methods retain their recorded statuses.
 
 ## World Model
 
@@ -74,3 +74,8 @@ checked against float32 direct effects and exact autograd JVPs. `LLM-QWEN-JVP-AU
 that audit with central-difference convergence, quadratic Taylor, raw/deduplicated scoring, and
 BF16/FP32 drift reporting. The learned model in the old run is a supervised conditional bottleneck,
 not a target-encoder/stop-gradient JEPA; a genuine JEPA objective is a separate milestone.
+
+V2 passed every numerical gate and established the corrected ranking on the fixed primary split:
+quadratic Taylor MSE `0.07870`, exact JVP `0.6143`, conditional bottleneck `3.1899`, nearest neighbor
+`4.9026`, and no-change `6.8654`. The historical BF16 secant scored `120.8994`. Exact and quadratic
+transport are mandatory strong baselines for all future Qwen meta-model claims.

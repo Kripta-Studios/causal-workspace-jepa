@@ -35,8 +35,8 @@ Status: `SMOKE_VALIDATED`.
 
 ## GPU Transition Audit (2026-07-21)
 
-Status: `ACTIVE_REAUDIT` for the Qwen nonlinear-advantage claim; hardware, instrumentation, storage,
-and direct-data gates remain validated.
+Status: `COMPLETED_NEGATIVE` for the corrected Qwen nonlinear-advantage claim; hardware,
+instrumentation, storage, and direct-data gates remain validated.
 
 - RTX 5070 Ti Laptop GPU detected with 12,227 MiB VRAM and CUDA-enabled PyTorch.
 - `gpu_12gb` doctor passes with about 370 GB free.
@@ -47,11 +47,14 @@ and direct-data gates remain validated.
   is inferred from the instrumentation pass.
 - The 432-outcome split-controlled HDF5 dataset is `SMOKE_VALIDATED` from clean commit `0aa80ac` and
   remains frozen for the completed meta-model comparison.
-- `LLM-IJEPA-001` ran from clean commit `a54f2ed`, but H-LLM-01 is now `UNDER_REAUDIT` because the
-  registered BF16 one-sided secant is not an exact Jacobian. H-LLM-06 failed direct precision@1 and
-  the candidate graph remains rejected.
+- `LLM-IJEPA-001` ran from clean commit `a54f2ed`; corrected v2 withdrew H-LLM-01 because exact and
+  quadratic transport beat every learned seed. H-LLM-06 failed direct precision@1 and the candidate
+  graph remains rejected.
 - `LLM-QWEN-JVP-AUDIT-001` is implemented/preregistered to re-execute all targets in FP32 and compare
   exact autograd JVPs, central convergence, quadratic Taylor, and refitted predictors.
+- V1 was rejected on an invalid downstream endpoint gate. Post-diagnostic v2 passed its source-level
+  semantic/convergence audit and withdrew H-LLM-01: exact and quadratic transport beat all learned
+  seeds on the frozen selected-target grid.
 - Official LeWorldModel revision `8edfeb3...` is verified. A faithful small reproduction and
   intervention/planning/circuit audit completed as `WM-LEWM-001`. Reproduction passes 3/3 and
   planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
@@ -65,8 +68,8 @@ and direct-data gates remain validated.
 Status: `SMOKE_VALIDATED` for the required bounded suite; larger scaling and rejected-mechanism
 follow-ups remain open research.
 
-Immediate order: finish the exact-JVP correction; build a genuine target-encoder Intervention-JEPA
-and a donor-answer task with real top-token changes; then preregister within-context causal geometry
+Immediate order: build a genuine target-encoder Intervention-JEPA and a donor-answer task with real
+top-token changes; then preregister within-context causal geometry
 with pooling/permutation nulls. Generic controllability/observability balancing is prior art, not the
 novelty claim.
 

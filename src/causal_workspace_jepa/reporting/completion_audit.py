@@ -21,6 +21,7 @@ def evaluate_completion(root: str | Path = ".") -> dict[str, dict[str, Any]]:
     qwen = _read_json(root / "artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json")
     qwen_data = _read_json(root / "artifacts/metrics/qwen3_0_6b_intervention_dataset.json")
     qwen_meta = _read_json(root / "artifacts/metrics/qwen_intervention_jepa_v1.json")
+    qwen_jvp = _read_json(root / "artifacts/metrics/qwen_jvp_audit_v2.json")
     graph_path = root / "artifacts/tables/lewm_small_circuit.json"
     graph = _read_json(graph_path)
     direct = qwen_meta.get("direct_verification", {})
@@ -112,8 +113,15 @@ def evaluate_completion(root: str | Path = ".") -> dict[str, dict[str, Any]]:
         "qwen_meta_model_baselines": _criterion(
             qwen_meta.get("all_passed") is True
             and required_baselines.issubset(primary_scores)
-            and len(qwen_meta.get("seeds", [])) == 3,
-            "Intervention-JEPA and all required baselines were evaluated on fixed held-out prompt/feature/operation splits across three seeds.",
+            and len(qwen_meta.get("seeds", [])) == 3
+            and qwen_jvp.get("audit_passed") is True
+            and qwen_jvp.get("prior_h_llm_01_disposition") == "WITHDRAWN"
+            and {
+                "conditional_bottleneck",
+                "exact_jvp",
+                "quadratic_taylor",
+            }.issubset(qwen_jvp.get("scores", {}).get("raw", {})),
+            "The legacy conditional bottleneck and all required baselines were evaluated on fixed held-out splits across three seeds; the FP32 exact-JVP audit passed and withdrew the old nonlinear-advantage claim.",
             "Generalization",
         ),
         "direct_qwen_verification": _criterion(

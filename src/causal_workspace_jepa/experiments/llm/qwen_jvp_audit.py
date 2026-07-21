@@ -112,7 +112,9 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
     ]
     replay = adapter.forward_with_cache(clean_runs[0].token_batch, capture_sites)
     replay_target = _target_vector(replay, target_site, projection_tensor, logit_tensor)
-    clean_replay_max_abs = float((replay_target - clean_targets[0]).abs().max().cpu())
+    clean_replay_max_abs = float(
+        (replay_target - clean_targets[0]).abs().max().detach().cpu()
+    )
 
     epsilons = tuple(float(value) for value in config.get("epsilons", DEFAULT_EPSILONS))
     validation_epsilon = float(config.get("validation_epsilon", 0.125))

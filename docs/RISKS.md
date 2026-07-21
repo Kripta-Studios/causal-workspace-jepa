@@ -5,9 +5,9 @@ Status: `ACTIVE`.
 - `MITIGATED`: the bounded required suite passes `AUDIT-COMPLETE-001`, but a completion audit is not
   scientific validation. Both reconstructed circuit candidates remain rejected and the workspace
   hypothesis remains null in the tested systems.
-- `ACTIVE_CORRECTION`: the `LLM-IJEPA-001` local baseline is a BF16 one-sided 5-percent secant, not
-  an exact Jacobian. Its very large error may be numerical. H-LLM-01 is `UNDER_REAUDIT` until the
-  preregistered FP32 exact-JVP/central-convergence run completes.
+- `RESOLVED_NEGATIVE`: the `LLM-IJEPA-001` local baseline was a BF16 one-sided secant. Corrected v2
+  passed FP32 exact-JVP/central/source-semantic gates and withdrew H-LLM-01; zero of three learned
+  seeds beat exact or quadratic transport.
 - `RESOLVED_REPORTING_REQUIRED`: JVP audit v1 mechanically emitted `WITHDRAWN` even though its own
   preregistration says numerical failure leaves H-LLM-01 unresolved. Documentation follows the
   preregistered rule; the prospective runner must emit `UNRESOLVED_NUMERICAL_REJECT` on that path.

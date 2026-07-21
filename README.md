@@ -33,19 +33,20 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
   resumable/checksummed sharded HDF5 storage and per-example local-linear direct probes.
-- `UNDER_REAUDIT`: `LLM-IJEPA-001` beat its originally registered comparators, but the so-called
+- `WITHDRAWN`: `LLM-IJEPA-001` beat its originally registered comparators, but the so-called
   local Jacobian was a BF16 one-sided secant and the learned model is a supervised conditional
   bottleneck rather than a genuine target-encoder JEPA. `LLM-QWEN-JVP-AUDIT-001` is preregistered
   to re-execute FP32 effects and compare exact autograd JVP, converged central differences, and a
-  quadratic baseline. The directly ranked candidate graph remains `REJECTED`.
+  quadratic baseline. The corrected v2 audit passed and exact JVP/quadratic transport decisively
+  beat the legacy conditional bottleneck on all three seeds. The ranked graph remains `REJECTED`.
 - `REJECTED` (numerical gate): the first exact-JVP audit passed five of six numerical gates and showed
   strong JVP/central agreement, but missed its absolute semantic-endpoint gate (`1.335e-4` versus
   `1e-5`). Its preliminary exact-JVP MSE (`0.6143`) beat the legacy conditional bottleneck
-  (`3.1899`), but v1 cannot decide H-LLM-01; a source-semantic v2 must be preregistered.
-- `IMPLEMENTED_UNVALIDATED`: v2 is now preregistered as a disclosed post-diagnostic confirmation.
-  It replaces only the invalid downstream absolute identity gate with exact direct-source semantics
-  and a per-record float32 roundoff bound; all scientific comparisons and hypothesis thresholds are
-  frozen from v1.
+  (`3.1899`), but v1 could not decide H-LLM-01; this prompted the source-semantic v2 below.
+- `COMPLETED_NEGATIVE`: v2 passed exact direct-source semantics, float32 endpoint, clean replay,
+  and JVP/central-convergence gates. Exact JVP/quadratic MSE were `0.6143`/`0.07870`, versus
+  conditional bottleneck `3.1899`; zero of three learned seeds passed. Restricted H-LLM-01 is
+  withdrawn, not supported.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -281,7 +282,10 @@ Validated CPU smoke results:
   differences agreed (median relative error `2.49e-4`), and exact JVP/quadratic MSE were
   `0.6143`/`0.07870` versus legacy conditional-bottleneck `3.1899` and old BF16 secant `120.8994`.
   The audit nevertheless failed its downstream semantic-endpoint absolute gate, so these are
-  preliminary audit measurements and H-LLM-01 remains under reaudit.
+  preliminary audit measurements; v2 subsequently resolved H-LLM-01 as withdrawn.
+- Corrective v2 (`LLM-QWEN-JVP-AUDIT-002`) ran from clean commit `a779ff6` in `170.77` seconds.
+  Direct source semantics were exact, all derivative gates passed, and zero of three learned seeds
+  beat exact JVP/quadratic Taylor. The old nonlinear-advantage claim is withdrawn.
 - Faithful small LeWorldModel (`WM-LEWM-001`) ran unchanged from clean commit `4dbc388` with seeds
   101/103/107 in `54.50` seconds. All three reproduction gates passed: test embedding MSE was
   `0.134`-`0.292`, clean/shuffled ratios `0.155`-`0.643`, latent standard deviation

@@ -21,6 +21,9 @@
 - Preserve JVP audit v1 as rejected. V2 may replace only the invalid semantic identity test with
   source-level checks: exact direct edit and a two-rounding float32 endpoint bound. Every scientific
   split, baseline, nonlinearity threshold, and learned-predictor threshold stays frozen from v1.
+- Accept v2 as a valid negative Specificity result from clean commit `a779ff6`. Withdraw restricted
+  H-LLM-01: exact JVP and especially quadratic Taylor explain the selected finite-edit effects much
+  better than the legacy bottleneck. Do not reinterpret this as a universal linearity claim.
 
 - Activate `gpu_12gb` after detecting an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, CUDA-enabled
   PyTorch, approximately 370 GB free, and a passing GPU doctor check.
@@ -45,9 +48,9 @@
   replication for numbered hypothesis decisions.
 - Treat the direct-verification graph as a ranked-coordinate candidate, not a circuit, unless later
   necessity/sufficiency/faithfulness/minimality tests pass.
-- Preserve the unchanged `LLM-IJEPA-001` recorded values and original preregistered decisions, but
-  mark H-LLM-01 `UNDER_REAUDIT`; reject the graph because H-LLM-06 precision@1 fails. Do not revise
-  either the old or corrective gates after observing outcomes.
+- Preserve the unchanged `LLM-IJEPA-001` recorded values and original preregistered decisions as
+  history, but apply the v2 corrected disposition: H-LLM-01 `WITHDRAWN`; graph `REJECTED`. Neither
+  the old nor corrective gates were revised after their scientific outcomes.
 - Integrate LeWorldModel first as a faithful small reproduction at official revision `8edfeb3...`
   instead of claiming benchmark equivalence without installing the larger external framework and
   datasets. Preserve its two-loss recipe and record every deliberate scaling difference.

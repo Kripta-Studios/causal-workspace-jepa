@@ -61,3 +61,9 @@ in an ignored 952,102-byte HDF5 shard. The committed manifest records SHA-256
 `5bc539c184fb134958be56cd2a23e932a5cce6df399505ecef76a52606b0d362`. Status:
 `REJECTED` on a numerical gate; the data are retained for diagnostic/reproducibility use, not accepted as a
 completed H-LLM-01 audit.
+
+`LLM-QWEN-JVP-AUDIT-002` adds exact direct-source semantic errors and float32 endpoint bounds to the
+same 432-record FP32 audit. The ignored HDF5 shard is 962,334 bytes with SHA-256
+`171a5521a7c37eb30b590c4e12b6c1e7f93f050bfacf44c6c1b80d781dd451f5`. The committed manifest
+records all shapes and the 64 MB budget. Status: `SMOKE_VALIDATED` audit data; H-LLM-01 result
+`WITHDRAWN`.
