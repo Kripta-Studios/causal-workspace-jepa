@@ -125,6 +125,15 @@ Registered on 2026-07-21 after freezing `LLM-INTDATA-001` and before fitting any
 - Acceptance of the run itself requires finite held-out metrics, exact checkpoint replay, and direct
   execution of all 16 verification predictions. Hypotheses may validly fail.
 
+Measured result, without threshold changes: all seeds `61/67/71` passed the registered H-LLM-01,
+H-LLM-02, and H-LLM-03 gates. Primary Intervention-JEPA MSE/correlation were `3.9227`/`0.6770`,
+compared with local-Jacobian MSE `116.1557` and no-change MSE `7.2429`. Feature-holdout
+MSE/correlation were `8.4928`/`0.5349`. Resample-holdout MSE/correlation were `2.1405`/`0.6802`;
+nearest-neighbor was slightly better on MSE (`2.0946`) even though it was not part of the registered
+H-LLM-03 gate. H-LLM-06 failed: predicted top coordinate 128 did not match observed coordinate 0,
+precision@1 was `0`, and the predicted candidate's observed effect did not exceed the deterministic
+random control. The candidate graph is `REJECTED`; no circuit or workspace is inferred.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

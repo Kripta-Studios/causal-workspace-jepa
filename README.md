@@ -32,13 +32,16 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
   resumable/checksummed sharded HDF5 storage and per-example local-linear direct probes.
-- `IMPLEMENTED_UNVALIDATED`: nonlinear layer-transition and trajectory Intervention-JEPA models,
-  full registered baseline suite, three-seed held-out evaluation, sparse meta-feature audit, and
-  independent direct Qwen verification of ranked coordinate candidates.
-- `NOT_STARTED`: real Qwen experiments and published world-model experiments; their former local resource blocker has been removed, but no result is claimed yet.
+- `SMOKE_VALIDATED`: `LLM-IJEPA-001` evaluated nonlinear layer-transition Intervention-JEPA across
+  three seeds and three fixed holdouts. It beat the registered parametric and Jacobian baselines,
+  but nearest-neighbor slightly won resampling-holdout MSE and the top-ranked coordinate failed
+  direct causal verification; the candidate graph is therefore `REJECTED`.
+- `NOT_STARTED`: published world-model integration and its joint intervention/planning/circuit audit;
+  the former local resource blocker has been removed.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
-No GPU scientific experiment has yet been run or claimed. The GPU profile and CUDA runtime have only passed control-plane checks.
+Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
+on this GPU from clean commits. These are bounded Qwen results, not workspace or circuit evidence.
 
 ## Objective
 
@@ -127,10 +130,13 @@ python scripts/run_experiment.py `
 
 python scripts/generate_qwen_interventions.py `
   --config configs/experiments/qwen_intervention_dataset_v1.yaml
+
+python scripts/run_experiment.py `
+  --config configs/experiments/intervention_jepa_v1.yaml
 ```
 
-The following Unix-style commands remain the intended clean-environment workflow; the Qwen and
-published-model commands are still implementation targets rather than validated commands:
+The following Unix-style commands remain the intended clean-environment workflow; the published
+world-model commands are still implementation targets:
 
 ```bash
 source .venv/bin/activate
@@ -232,12 +238,18 @@ Validated CPU smoke results:
   12 split prompts and three layers in `33.85` seconds; 17 edits changed the top token. The 412 KB
   HDF5 shard checksum is committed in the manifest. Local-linear MSE was `139.83`, which motivates
   but does not prove a nonlinear meta-model advantage.
+- Qwen Intervention-JEPA (`LLM-IJEPA-001`) ran from clean commit `a54f2ed` on the frozen 432-effect
+  dataset with seeds 61/67/71. Primary held-out MSE/correlation were `3.923`/`0.677`, versus
+  no-change `7.243`, mean `7.119`, linear `27.169`, MLP `9.642`, local Jacobian `116.156`, and
+  nearest-neighbor `5.720`. On the unseen resampling operation, Intervention-JEPA reached `2.141`
+  MSE but nearest-neighbor was slightly better at `2.095`. Direct execution on 16 edits over four
+  new prompts yielded effect correlation `0.673`, but predicted coordinate 128 was not the observed
+  winner (coordinate 0); precision@1 was `0`, so H-LLM-06 failed and the graph is rejected.
 
 ## Limitations
 
-This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. Qwen and published-JEPA
-code is still placeholder-only at the start of the GPU continuation, so hardware availability must
-not be confused with completed evidence. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
+This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. The bounded Qwen3-0.6B
+pipeline is validated; published-JEPA integration remains incomplete. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
 training remain `gpu_cluster` work. The pre-existing GPT-2 artifacts came from a different Linux CPU
 host; their ignored activation shards are absent here and the audit reports their checksums as
 skipped until regenerated.

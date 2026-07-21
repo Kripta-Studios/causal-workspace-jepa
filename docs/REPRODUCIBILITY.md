@@ -44,6 +44,7 @@ PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/exper
 PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/gpt2_medium_semantic_composition_study.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml
 PYTHONPATH=src python scripts/generate_qwen_interventions.py --config configs/experiments/qwen_intervention_dataset_v1.yaml
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/intervention_jepa_v1.yaml
 ```
 
 GPT-2 Medium uses `local_files_only: true`; the command must fail instead of downloading a missing
@@ -55,6 +56,10 @@ No reported result may depend on uncommitted code.
 `LLM-QWEN-001` pins both model revision and clean code commit. The initial execution was rejected
 because provenance was collected after its untracked output was created; only the corrected clean
 rerun from `0d6a37b` is retained.
+
+`LLM-IJEPA-001` consumed the immutable checksum-verified `LLM-INTDATA-001` shard and ran from clean
+commit `a54f2ed6a2491fb905978cb3c10af655a36c7b42`. Its three seeds, thresholds, holdouts, and direct
+verification prompts were fixed before execution. Ignored checkpoints are replay-checked by the run.
 
 `scripts/audit_reproducibility.py` checks required control-plane files, every summarized metrics and
 provenance pair, `git_dirty: false`, recorded commit/path fields, JSON validity, and every available

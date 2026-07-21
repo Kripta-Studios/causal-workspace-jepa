@@ -2,10 +2,9 @@
 
 Status: `SMOKE_VALIDATED`.
 
-The scientific results remain CPU-scale smoke validation, corrected tiny/deep-JEPA causal tests,
-and three GPT-2 Medium direct-intervention studies. A 2026-07-21 hardware/control-plane audit has
-activated the GPU continuation, but it is not scientific evidence. No workspace/J-space-like
-mechanism has been discovered.
+The scientific results include CPU-scale JEPA studies, three GPT-2 Medium studies, and bounded real
+Qwen3-0.6B instrumentation/data/meta-model runs. No workspace/J-space-like mechanism or validated
+Qwen circuit has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -22,6 +21,7 @@ mechanism has been discovered.
 | LLM-GPT2-003 | Magnitude-6 contrast-direction compositions are almost additive; prompt-local Jacobians predict them, but learned/corpus transports fail on unseen prompts despite excellent seen-prompt scores. | Generalization | `configs/experiments/gpt2_medium_semantic_composition_study.yaml` | `artifacts/metrics/gpt2_medium_semantic_composition_study.json` | `1e57e30218295a6e6802c2db16cf81c353d8d77d` | `SMOKE_VALIDATED` |
 | LLM-QWEN-001 | Pinned Qwen3-0.6B selected-site hooks are deterministic and preserve autograd; five direct residual interventions change downstream hidden states and logits. | Causal mediation | `configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml` | `artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json` | `0d6a37b2f27a862b5d272f254e451fb41b7837e4` | `SMOKE_VALIDATED` |
 | LLM-INTDATA-001 | A split-controlled real Qwen3-0.6B intervention dataset contains 432 nonzero directly executed effects with a checksum-verified HDF5 shard. | Causal mediation | `configs/experiments/qwen_intervention_dataset_v1.yaml` | `artifacts/metrics/qwen3_0_6b_intervention_dataset.json` | `0aa80acc9a6fb17d3fc90dba5b2a5bc358326fb2` | `SMOKE_VALIDATED` |
+| LLM-IJEPA-001 | A nonlinear Intervention-JEPA generalizes across fixed prompt, coordinate, and operation holdouts better than the registered parametric/Jacobian baselines across three seeds, but its top-ranked coordinate fails direct causal ranking verification. | Generalization | `configs/experiments/intervention_jepa_v1.yaml` | `artifacts/metrics/qwen_intervention_jepa_v1.json` | `a54f2ed6a2491fb905978cb3c10af655a36c7b42` | `SMOKE_VALIDATED`; candidate `REJECTED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -211,4 +211,23 @@ does not support a feature, circuit, meta-model, behavior, J-space, or workspace
 
 Interpretation: the real intervention data is generated and leakage/storage gates pass. The large
 local-linear error makes the mixed edit regime discriminating, but no learned predictor has yet
-been evaluated. Dataset existence and nonlinearity do not establish H-LLM-01 or causal compression.
+been evaluated at this dataset-only stage. Dataset existence and nonlinearity alone do not establish
+H-LLM-01 or causal compression.
+
+`LLM-IJEPA-001` key metrics:
+
+- primary MSE/correlation: Intervention-JEPA `3.9227`/`0.6770`, no-change `7.2429`, mean `7.1189`,
+  linear `27.1688`, bilinear `357.3145`, MLP `9.6423`, nearest-neighbor `5.7200`, local Jacobian
+  `116.1557`, corpus Jacobian `26.5092`, sparse-linear `12.0765`;
+- unseen coordinate MSE/correlation: `8.4928`/`0.5349`; unseen resampling operation:
+  `2.1405`/`0.6802`;
+- nearest-neighbor narrowly won unseen-resampling MSE at `2.0946`, limiting the nonlinear advantage;
+- the 16 direct verification edits had predicted/observed effect correlation `0.6725`, but
+  precision@1 was `0`, meta/random effect ratio `0.9975`, and no top token changed;
+- the learned dictionary density was `0.974`, so it is not evidence for sparse or monosemantic
+  features.
+
+Interpretation: the fixed H-LLM-01/02/03 gates passed on all three seeds, supporting bounded causal
+compression/generalization for this selected target. H-LLM-06 failed, the coordinate graph is
+`REJECTED`, and neither a circuit, semantic feature, behavior mechanism, J-space, nor workspace is
+supported.

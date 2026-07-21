@@ -10,13 +10,13 @@
 - [x] Implement and test the bounded resumable sharded HDF5 activation store.
 - [x] Execute the preregistered Qwen3-0.6B instrumentation smoke from clean commit `0d6a37b`.
 - [x] Preregister the 432-outcome Qwen dataset grid, splits, donors, local probes, and storage guard.
-- [ ] Commit the dataset generator, then execute it once from clean code.
+- [x] Commit the dataset generator, then execute it once from clean code.
 - [x] Commit and execute `LLM-INTDATA-001` from clean commit `0aa80ac`; validate its shard checksum.
-- [ ] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
-- [ ] Directly execute and verify ranked meta-model circuit candidates.
+- [x] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
+- [x] Directly execute ranked meta-model circuit candidates; reject the failed precision@1 candidate.
 - [x] Implement and preregister three-seed neural Intervention-JEPA, trajectory variant, baselines,
   sparse transport, checkpoint replay, and independent direct-verification logic.
-- [ ] Commit `LLM-IJEPA-001`, then execute once without changing thresholds.
+- [x] Commit `LLM-IJEPA-001`, then execute once without changing thresholds.
 - [ ] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.
 - [ ] Run the final multi-seed scientific/software audit.
 

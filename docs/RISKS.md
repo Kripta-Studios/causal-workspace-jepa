@@ -25,7 +25,13 @@ Status: `ACTIVE`.
 - `ACTIVE`: bilinear regression has more features than training examples; its implementation uses a
   dual ridge solve. Comparisons are predictive held-out scores, not parameter-identification claims.
 - `ACTIVE`: direct verification ranks only four residual coordinates at one layer on four new
-  prompts. Even a precision@1 pass is restricted H-LLM-06 evidence, not a full Qwen circuit.
+  prompts. It failed precision@1; the meta-ranked effect was also slightly below the random control,
+  so the graph is rejected rather than promoted to a Qwen circuit.
+- `ACTIVE`: the Intervention-JEPA passes its registered operation-holdout gate, but nearest-neighbor
+  has slightly lower resampling MSE (`2.0946` versus `2.1405`). Claims must be limited to the fixed
+  comparator set and must not imply universal nonlinear-model dominance.
+- `ACTIVE`: the fitted 16-component dictionary has density `0.974`; it is a predictive baseline,
+  not evidence for sparse or monosemantic Qwen features.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.

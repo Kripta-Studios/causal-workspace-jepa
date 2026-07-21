@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "command": "python scripts/run_experiment.py --config configs/experiments/intervention_jepa_v1.yaml",
+  "git_commit": "a54f2ed6a2491fb905978cb3c10af655a36c7b42",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_intervention_jepa_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 61,
+  "time_utc": "2026-07-21T10:08:40.407714+00:00"
+}

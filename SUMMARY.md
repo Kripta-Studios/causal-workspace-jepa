@@ -37,7 +37,16 @@
   linear MSE was `139.83`; this is a difficult regime, not yet a meta-model result.
 - Implemented/preregistered `LLM-IJEPA-001`: three neural seeds, layer-transition and trajectory
   interfaces, exact checkpoint replay, nine baselines, prompt/feature/operation holdouts, and direct
-  execution of every coordinate prediction on four new prompts. Do not run before committing.
+  execution of every coordinate prediction on four new prompts.
+- Ran `LLM-IJEPA-001` unchanged from clean commit `a54f2ed` in `8.23` seconds. All three seeds passed
+  the registered H-LLM-01/02/03 decisions. Primary MSE/correlation were `3.923`/`0.677`; the model
+  beat no-change, mean, linear, bilinear, MLP, local/corpus Jacobian, sparse-linear, and nearest-neighbor
+  baselines on the primary holdout. Nearest-neighbor slightly beat it on resampling-holdout MSE
+  (`2.095` versus `2.141`), an important boundary outside the registered gate.
+- Directly re-executed all 16 ranked-coordinate edits on four unused prompts. Effect-size correlation
+  was `0.673`, but the predicted winner (coordinate 128) was not the observed winner (coordinate 0),
+  precision@1 was zero, and the effect was slightly below the random coordinate control. H-LLM-06
+  failed and `qwen_meta_circuit` is recorded as `REJECTED`; no Qwen circuit or workspace is claimed.
 
 ## 2026-07-20
 

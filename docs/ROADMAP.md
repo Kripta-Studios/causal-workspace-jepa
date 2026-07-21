@@ -35,19 +35,19 @@ Status: `SMOKE_VALIDATED`.
 
 ## GPU Transition Audit (2026-07-21)
 
-Status: `SMOKE_VALIDATED` for hardware/control-plane detection; scientific GPU runs remain `NOT_STARTED`.
+Status: `SMOKE_VALIDATED` for hardware/control-plane detection and bounded Qwen3-0.6B experiments.
 
 - RTX 5070 Ti Laptop GPU detected with 12,227 MiB VRAM and CUDA-enabled PyTorch.
 - `gpu_12gb` doctor passes with about 370 GB free.
 - Windows provenance-path comparison and fresh-clone checksum audit were repaired and tested.
-- Next: implement Qwen3-0.6B instrumentation before scaling to Qwen3-4B, and implement one faithful
-  published action-conditioned JEPA reproduction before mechanistic claims.
+- Qwen3-0.6B instrumentation, a 432-effect dataset, and three-seed Intervention-JEPA evaluation are
+  validated. Implement one faithful published action-conditioned JEPA reproduction next.
 - Qwen3-0.6B adapter and smoke runner are `SMOKE_VALIDATED` from clean commit `0d6a37b`. Next build
   the bounded intervention dataset; do not infer a circuit from the instrumentation pass.
 - The 432-outcome split-controlled HDF5 dataset is `SMOKE_VALIDATED` from clean commit `0aa80ac`.
   Next preregister and train the meta-model/baselines without changing this observed dataset.
-- `LLM-IJEPA-001` is preregistered and `IMPLEMENTED_UNVALIDATED`; commit before fitting models or
-  executing the independent verification prompts.
+- `LLM-IJEPA-001` is `SMOKE_VALIDATED` from clean commit `a54f2ed`. H-LLM-01/02/03 passed the fixed
+  gates, while H-LLM-06 failed direct precision@1 and the candidate graph is rejected.
 
 ## Milestone 3+: Scientific Runs
 

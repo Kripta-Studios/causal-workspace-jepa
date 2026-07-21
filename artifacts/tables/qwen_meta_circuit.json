@@ -1,0 +1,62 @@
+{
+  "edges": [
+    {
+      "effect": 21.05308723449707,
+      "faithfulness": 1.0,
+      "source": "blocks.14.resid_post.feature_0",
+      "target": "target.final"
+    },
+    {
+      "effect": 12.897086143493652,
+      "faithfulness": 1.0,
+      "source": "blocks.14.resid_post.feature_64",
+      "target": "target.final"
+    },
+    {
+      "effect": 20.055492401123047,
+      "faithfulness": 1.0,
+      "source": "blocks.14.resid_post.feature_128",
+      "target": "target.final"
+    },
+    {
+      "effect": 20.10478973388672,
+      "faithfulness": 1.0,
+      "source": "blocks.14.resid_post.feature_256",
+      "target": "target.final"
+    }
+  ],
+  "graph_id": "qwen-meta-ranked-coordinate-candidates",
+  "nodes": [
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "target.final",
+      "score": 1.0,
+      "site": "target"
+    },
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "blocks.14.resid_post.feature_0",
+      "score": 21.05308723449707,
+      "site": "residual_coordinate"
+    },
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "blocks.14.resid_post.feature_64",
+      "score": 12.897086143493652,
+      "site": "residual_coordinate"
+    },
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "blocks.14.resid_post.feature_128",
+      "score": 20.055492401123047,
+      "site": "residual_coordinate"
+    },
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "blocks.14.resid_post.feature_256",
+      "score": 20.10478973388672,
+      "site": "residual_coordinate"
+    }
+  ],
+  "status": "REJECTED"
+}

@@ -25,6 +25,9 @@
   replication for numbered hypothesis decisions.
 - Treat the direct-verification graph as a ranked-coordinate candidate, not a circuit, unless later
   necessity/sufficiency/faithfulness/minimality tests pass.
+- Retain the unchanged `LLM-IJEPA-001` preregistered decisions: H-LLM-01/02/03 pass all three seeds,
+  but reject the graph because H-LLM-06 precision@1 fails. Do not revise the gate after seeing that
+  nearest-neighbor narrowly beats the model on resampling-holdout MSE.
 
 ## 2026-07-20
 

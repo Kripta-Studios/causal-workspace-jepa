@@ -4,11 +4,10 @@ Status: `SMOKE_VALIDATED`.
 
 The inherited CPU implementation uses a mock transformer with known activation dependencies. It is valid for interface, leakage, and intervention-pipeline tests only.
 
-Real Hugging Face Qwen instrumentation is `ACTIVE` on the RTX 5070 Ti host, but the current adapter
-is now `IMPLEMENTED_UNVALIDATED` and no real-Qwen result exists. Offline tests cover stable selected
-sites, deterministic capture, Torch interventions, donor/statistic registration, and autograd on a
-tiny random Qwen3. Qwen3-0.6B revision `c1899de...` is the first bounded direct target; Qwen3-4B
-follows after storage/hook validation. Ollama is not a hidden-state or autograd source.
+Real Hugging Face Qwen instrumentation and bounded Qwen3-0.6B experiments are `SMOKE_VALIDATED` on
+the RTX 5070 Ti host. Tests cover stable selected sites, deterministic capture, Torch interventions,
+donor/statistic registration, and autograd. Qwen3-4B remains a broader follow-up. Ollama is not a
+hidden-state or autograd source.
 
 Validated Qwen instrumentation smoke:
 
@@ -33,7 +32,10 @@ Meta-model continuation:
   Intervention-JEPA seeds against nine baselines.
 - The runner saves/reloads checkpoints, fits a sparse dictionary on training context only, and
   directly re-executes all 16 coordinate predictions on four new prompts before writing a candidate
-  graph. Status: `IMPLEMENTED_UNVALIDATED` until the clean-code run.
+  graph.
+- Status is `SMOKE_VALIDATED` from clean commit `a54f2ed`. The registered H-LLM-01/02/03 gates pass
+  on all three seeds. The nearest-neighbor baseline narrowly wins resample-holdout MSE, and direct
+  precision@1 is zero; H-LLM-06 fails and the candidate graph is `REJECTED`.
 
 Current mock implementation:
 
