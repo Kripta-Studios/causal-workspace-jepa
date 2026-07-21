@@ -1,4 +1,4 @@
-id: WM-EBJEPA-INTEGRATION-001
+id: WM-EBJEPA-INTEGRATION-002
 status: engineering_smoke
 resource_profile: configs/resource/gpu_12gb.yaml
 source_root: .cache/upstream/eb_jepa
@@ -7,4 +7,4 @@ interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
 dependency_lock: configs/resource/eb_jepa_two_rooms_py312_sm120.lock.txt
 probe_script: scripts/probe_eb_jepa_two_rooms.py
 seed: 29
-output_metrics: artifacts/metrics/eb_jepa_two_rooms_integration.json
+output_metrics: artifacts/metrics/eb_jepa_two_rooms_integration_v2.json

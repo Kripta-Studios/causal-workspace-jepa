@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "command": "python scripts/run_experiment.py --config configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml",
+  "git_commit": "f0e7a3e644612f774bfde45930a880f4eb972303",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/eb_jepa_two_rooms_integration.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 29,
+  "time_utc": "2026-07-21T21:09:27.508485+00:00"
+}

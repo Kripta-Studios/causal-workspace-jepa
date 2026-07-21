@@ -57,8 +57,12 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
 - `SMOKE_VALIDATED`: `WM-EBJEPA-RUNTIME-001` ran from clean `15d88ce` and passed all eight frozen
   runtime gates. The exact Python 3.12/Torch 2.6+cu126 wheel omits `sm_120` and fails all three
   kernels; Python 3.12/Torch 2.10+cu128 includes `sm_120` and passes all three with finite outputs.
-- `IMPLEMENTED_NOT_RUN`: a pinned Two Rooms dependency closure and integration smoke cover the
+- `SUPERSEDED_NONDETERMINISTIC`: clean `WM-EBJEPA-INTEGRATION-001` passed its original dataset,
+  train, checkpoint, planner, and memory gates, but omitted Python RNG seeding and independent
+  replay. Its artifact is preserved and no result is accepted from it.
+- `IMPLEMENTED_NOT_RUN`: corrected `WM-EBJEPA-INTEGRATION-002` covers the same pinned Two Rooms
   official dataset, Impala/GRU forward/backward, checkpoint restoration, MPPI call, and peak memory.
+  It adds deterministic Python/NumPy/Torch/CUDA settings and exact two-process fingerprint replay.
   Upstream omits scipy, pandas, and PyYAML from the dependencies required by this path.
 - `IMPLEMENTED_NOT_RUN`: post-discovery planner confirmation freezes a 32-seed matched CEM/MPPI
   control. Exploratory execution found CEM `0/32` versus MPPI `32/32` action-norm violations under

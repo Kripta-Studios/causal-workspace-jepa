@@ -41,6 +41,8 @@ python scripts/run_experiment.py --config configs/experiments/eb_jepa_planner_co
 Do not use upstream `uv sync` in this environment. The committed lock supplies the undeclared
 scipy/pandas/PyYAML imports and exact resolved transitive versions while deliberately excluding
 Torch. The integration and planner-constraint artifacts are engineering evidence only.
+The current integration config is V2 and runs two independent deterministic probes; do not restore
+the historical V1 output path or treat its incomplete RNG gates as a pass.
 
 ## Decision
 

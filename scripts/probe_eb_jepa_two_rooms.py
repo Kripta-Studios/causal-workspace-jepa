@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.metadata
 import json
 import logging
 from pathlib import Path
 import platform
+import random
 import subprocess
 import tempfile
 import time
@@ -49,9 +51,13 @@ def main() -> int:
     if resolved_revision != args.revision or not source_clean:
         raise RuntimeError("source checkout does not match the clean pinned revision")
 
+    random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
     np.random.seed(args.seed)
+    torch.use_deterministic_algorithms(True)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
     device = torch.device("cuda")
     torch.cuda.reset_peak_memory_stats(device)
     started = time.perf_counter()
@@ -71,6 +77,12 @@ def main() -> int:
     )
     batch = next(iter(loader))
     data_seconds = time.perf_counter() - data_started
+    batch_digest = hashlib.sha256()
+    for value in batch:
+        cpu_value = value.detach().cpu().contiguous()
+        batch_digest.update(str(cpu_value.dtype).encode("ascii"))
+        batch_digest.update(str(tuple(cpu_value.shape)).encode("ascii"))
+        batch_digest.update(cpu_value.numpy().tobytes())
     observations, actions = batch[0].to(device), batch[1].to(device)
 
     encoder = ImpalaEncoder(
@@ -129,6 +141,12 @@ def main() -> int:
     scaler.step(optimizer)
     scaler.update()
     parameter_delta = float((first_parameter.detach() - parameter_before).abs().max().item())
+    state_digest = hashlib.sha256()
+    for name, value in sorted(model.state_dict().items()):
+        cpu_value = value.detach().cpu().contiguous()
+        state_digest.update(name.encode("utf-8"))
+        state_digest.update(str(cpu_value.dtype).encode("ascii"))
+        state_digest.update(cpu_value.numpy().tobytes())
 
     with tempfile.TemporaryDirectory(prefix="eb-jepa-smoke-") as temporary_directory:
         checkpoint = Path(temporary_directory) / "state.pt"
@@ -197,6 +215,18 @@ def main() -> int:
         "scikit-learn",
         "wandb",
     )
+    fingerprint_fields = {
+        "seed": args.seed,
+        "batch_sha256": batch_digest.hexdigest(),
+        "model_state_sha256": state_digest.hexdigest(),
+        "loss": float(loss.detach().item()),
+        "parameter_delta": parameter_delta,
+        "planned_action": planned_action.detach().cpu().tolist(),
+        "planner_losses": agent._prev_losses.tolist(),
+    }
+    fingerprint_sha256 = hashlib.sha256(
+        json.dumps(fingerprint_fields, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
     payload = {
         "source": {
             "revision": resolved_revision,
@@ -249,6 +279,14 @@ def main() -> int:
         "memory": {
             "peak_allocated_bytes": torch.cuda.max_memory_allocated(device),
             "peak_reserved_bytes": torch.cuda.max_memory_reserved(device),
+        },
+        "determinism": {
+            "python_random_seed": args.seed,
+            "numpy_seed": args.seed,
+            "torch_seed": args.seed,
+            "deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
+            "fingerprint_fields": fingerprint_fields,
+            "fingerprint_sha256": fingerprint_sha256,
         },
         "runtime_seconds": time.perf_counter() - started,
     }

@@ -161,9 +161,16 @@ use upstream `uv sync` on this host. The official path imports `scipy`, `pandas`
 its `pyproject.toml` declares neither scipy, pandas, nor PyYAML; `ruamel.yaml` is not an import-level
 substitute for PyYAML.
 
-`WM-EBJEPA-INTEGRATION-001` freezes a tiny generated dataset, exact model dimensions, one BF16
+`WM-EBJEPA-INTEGRATION-001` froze a tiny generated dataset, exact model dimensions, one BF16
 forward/backward/AdamW step, exact checkpoint restoration, an integrated random-weight MPPI call,
-and peak GPU memory. `WM-EBJEPA-PLANNER-CONSTRAINT-001` is separately registered as post-discovery:
+and peak GPU memory. Its clean `f0e7a3e` artifact is preserved but superseded because the probe did
+not seed Python's `random` or require an independent replay. The corrected
+`WM-EBJEPA-INTEGRATION-002` additionally sets Python/NumPy/Torch seeds, deterministic algorithms,
+CUDNN determinism, and the CUBLAS workspace contract. Two fresh subprocesses must exactly match a
+SHA-256 fingerprint over batch bytes, post-update model state, loss, parameter delta, action, and
+planner losses. V2 writes a new path and never overwrites v1.
+
+`WM-EBJEPA-PLANNER-CONSTRAINT-001` is separately registered as post-discovery:
 it compares official CEM and MPPI over seeds 0--31 under an identical deterministic objective. No
 retained result may be described until both run from a clean pushed implementation commit.
 

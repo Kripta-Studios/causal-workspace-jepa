@@ -1,0 +1,168 @@
+{
+  "all_passed": true,
+  "claim": "The pinned official Two Rooms dataset, Impala/GRU JEPA training step, exact checkpoint restore, and integrated MPPI call execute on the declared SM120-compatible runtime. Upstream omits pandas, scipy, and PyYAML from the dependency declarations needed by this path. This is an engineering integration result, not planning competence.",
+  "dependency_lock": "configs/resource/eb_jepa_two_rooms_py312_sm120.lock.txt",
+  "evidence_level": "Availability",
+  "experiment_id": "WM-EBJEPA-INTEGRATION-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 349.74,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "orchestration_wall_seconds": 4.878305000020191,
+  "passes": {
+    "bounded_peak_memory": true,
+    "checkpoint_exact_restore": true,
+    "compatible_python_torch_cuda": true,
+    "integrated_mppi_plan_finite": true,
+    "official_dataset_shapes": true,
+    "official_parameter_counts": true,
+    "official_prediction_shape": true,
+    "sm120_binary_and_device": true,
+    "source_checkout_clean": true,
+    "source_revision_matches_pin": true,
+    "training_forward_backward_finite": true
+  },
+  "probe": {
+    "checkpoint": {
+      "bytes": 10204426,
+      "max_restore_error": 0.0
+    },
+    "dataset": {
+      "batch_shapes": [
+        [
+          2,
+          2,
+          9,
+          65,
+          65
+        ],
+        [
+          2,
+          2,
+          9
+        ],
+        [
+          2,
+          2,
+          9
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "generation_seconds": 0.03778260000399314,
+      "image_size": 65,
+      "train_batches": 4,
+      "validation_batches": 2
+    },
+    "memory": {
+      "peak_allocated_bytes": 74214912,
+      "peak_reserved_bytes": 100663296
+    },
+    "planner": {
+      "action": [
+        [
+          0.747224748134613,
+          -0.043340325355529785
+        ]
+      ],
+      "action_shape": [
+        1,
+        2
+      ],
+      "configured_max_norm": 2.45,
+      "finite": true,
+      "losses": [
+        [
+          4.373605728149414
+        ],
+        [
+          4.370566368103027
+        ]
+      ],
+      "max_action_norm": 0.7484806180000305,
+      "name": "MPPIPlanner",
+      "within_configured_max_norm": true
+    },
+    "runtime": {
+      "arch_list": [
+        "sm_70",
+        "sm_75",
+        "sm_80",
+        "sm_86",
+        "sm_90",
+        "sm_100",
+        "sm_120"
+      ],
+      "capability": [
+        12,
+        0
+      ],
+      "cuda_runtime": "12.8",
+      "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "packages": {
+        "PyYAML": "6.0.3",
+        "einops": "0.8.2",
+        "gymnasium": "1.3.0",
+        "numpy": "2.5.1",
+        "omegaconf": "2.3.1",
+        "pandas": "3.0.3",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.0",
+        "wandb": "0.28.1"
+      },
+      "python": "3.12.13",
+      "torch": "2.10.0+cu128"
+    },
+    "runtime_seconds": 1.5476538999937475,
+    "source": {
+      "clean": true,
+      "revision": "966e61e9285b3a876f49b9774e9720d9a99a7925"
+    },
+    "training": {
+      "encoder_parameters": 1426096,
+      "gradients_finite": true,
+      "loss": 11.58718490600586,
+      "loss_finite": true,
+      "parameter_delta": 0.0010000020265579224,
+      "prediction_shape": [
+        2,
+        512,
+        5,
+        1,
+        1
+      ],
+      "predictor_parameters": 793600
+    }
+  },
+  "probe_stderr": "",
+  "scientific_boundary": "One tiny batch and a random-weight planner do not establish learned dynamics, planning success, a circuit, or a workspace. Planner constraint semantics are audited separately.",
+  "seed": 29,
+  "status": "SMOKE_VALIDATED",
+  "undeclared_two_rooms_runtime_imports": [
+    "pandas",
+    "pyyaml",
+    "scipy"
+  ]
+}

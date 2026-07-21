@@ -60,6 +60,10 @@ def evaluate_two_rooms_smoke(payload: Mapping[str, Any], revision: str) -> dict[
         "integrated_mppi_plan_finite": planner.get("name") == "MPPIPlanner"
         and planner.get("action_shape") == [1, 2]
         and bool(planner.get("finite", False)),
+        "independent_replay_is_exact": bool(
+            payload.get("determinism", {}).get("replay_matches", False)
+        )
+        and bool(payload.get("determinism", {}).get("deterministic_algorithms", False)),
         "bounded_peak_memory": 0 < int(memory.get("peak_reserved_bytes", 0)) < 12_000_000_000,
     }
 
@@ -69,6 +73,7 @@ def _probe(interpreter: Path, script: Path, source_root: Path, revision: str, se
     environment["PYTHONPATH"] = str(source_root)
     environment["PYTHONUTF8"] = "1"
     environment["PYTHONIOENCODING"] = "utf-8"
+    environment["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
     started = time.perf_counter()
     result = subprocess.run(
         [
@@ -98,17 +103,30 @@ def run_eb_jepa_two_rooms_integration(config_path: str | Path) -> dict[str, Any]
     source_root = Path(str(config["source_root"])).resolve()
     revision = str(config["revision"])
     seed = int(config.get("seed", 29))
-    payload, stderr, wall_seconds = _probe(
+    payload, stderr, first_wall_seconds = _probe(
         Path(str(config["interpreter"])).resolve(),
         Path(str(config["probe_script"])).resolve(),
         source_root,
         revision,
         seed,
     )
+    replay, replay_stderr, replay_wall_seconds = _probe(
+        Path(str(config["interpreter"])).resolve(),
+        Path(str(config["probe_script"])).resolve(),
+        source_root,
+        revision,
+        seed,
+    )
+    first_fingerprint = payload.get("determinism", {}).get("fingerprint_sha256")
+    replay_fingerprint = replay.get("determinism", {}).get("fingerprint_sha256")
+    payload.setdefault("determinism", {})["replay_fingerprint_sha256"] = replay_fingerprint
+    payload["determinism"]["replay_matches"] = bool(
+        first_fingerprint and first_fingerprint == replay_fingerprint
+    )
     passes = evaluate_two_rooms_smoke(payload, revision)
     missing_declarations = undeclared_two_rooms_imports(source_root)
     metrics: dict[str, Any] = {
-        "experiment_id": str(config.get("id", "WM-EBJEPA-INTEGRATION-001")),
+        "experiment_id": str(config.get("id", "WM-EBJEPA-INTEGRATION-002")),
         "status": "SMOKE_VALIDATED" if all(passes.values()) else "FAILED_REGISTERED_GATES",
         "evidence_level": "Availability",
         "seed": seed,
@@ -116,7 +134,12 @@ def run_eb_jepa_two_rooms_integration(config_path: str | Path) -> dict[str, Any]
         "all_passed": bool(all(passes.values())),
         "probe": payload,
         "probe_stderr": stderr,
-        "orchestration_wall_seconds": wall_seconds,
+        "orchestration_wall_seconds": first_wall_seconds + replay_wall_seconds,
+        "independent_replay": {
+            "fingerprint_sha256": replay_fingerprint,
+            "probe_stderr": replay_stderr,
+            "wall_seconds": replay_wall_seconds,
+        },
         "undeclared_two_rooms_runtime_imports": missing_declarations,
         "dependency_lock": str(config["dependency_lock"]),
         "hardware": resources.as_dict(),

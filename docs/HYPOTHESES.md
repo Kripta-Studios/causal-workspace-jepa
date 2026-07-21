@@ -67,6 +67,19 @@ exploration, not the retained result. This experiment tests no numbered world-mo
   availability. They do not establish learned dynamics, planning competence, a circuit, or a
   workspace.
 
+First clean outcome from `f0e7a3e`: the recorded gates passed, but the run is
+`SUPERSEDED_NONDETERMINISTIC`. The probe seeded NumPy and Torch but not Python's `random`, which is
+used by the official generator, and it lacked an independent-process replay gate. This was detected
+by comparing the clean loss `11.5872` with the earlier same-seed exploratory loss `10.0157`. The
+artifact and clean provenance are preserved, but no availability conclusion is accepted from it.
+
+`WM-EBJEPA-INTEGRATION-002` is amended and registered before rerun. It keeps every source, dataset,
+model, optimizer, planner, and memory setting above, adds `random.seed(29)`, deterministic Torch and
+CUDNN settings plus `CUBLAS_WORKSPACE_CONFIG=:4096:8`, and executes the standalone probe twice in
+independent Python processes. The retained gate requires an exact SHA-256 match over the generated
+batch, post-update model state, loss, parameter delta, planned action, and planner losses. Its output
+is `artifacts/metrics/eb_jepa_two_rooms_integration_v2.json`; v1 is never overwritten.
+
 ## WM-EBJEPA-PLANNER-CONSTRAINT-001 Post-discovery Confirmation
 
 Registered on 2026-07-21 after a manual random-weight official-model smoke returned an MPPI action

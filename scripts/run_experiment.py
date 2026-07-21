@@ -110,7 +110,7 @@ def main() -> int:
         metrics = run_eb_jepa_runtime_compatibility(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
-    if experiment_id == "WM-EBJEPA-INTEGRATION-001":
+    if experiment_id in {"WM-EBJEPA-INTEGRATION-001", "WM-EBJEPA-INTEGRATION-002"}:
         from causal_workspace_jepa.experiments.world_model.eb_jepa_two_rooms_integration import (
             run_eb_jepa_two_rooms_integration,
         )

@@ -171,7 +171,10 @@ separate non-Torch lock and install the source with \code{--no-deps}.  In an
 exploratory random-weight plan, MPPI returned an action of norm approximately
 $3.69$ despite configured \code{max\_norms=[2.45]}.  Source inspection shows
 that CEM applies the bound, MPPI does not, and \code{DotWall.step} performs no
-independent action-space check.  A clean integration smoke and a frozen
+independent action-space check.  The first clean integration smoke passed its
+original gates but is superseded because it omitted Python-RNG seeding and an
+independent replay.  Corrected V2 freezes deterministic Python/NumPy/Torch/CUDA
+settings and an exact two-process data/model/loss/action fingerprint.  V2 and a
 32-seed post-discovery CEM/MPPI confirmation are preregistered but not yet
 reported as retained results.  Planning competence and later circuit tests
 must compare original and constraint-corrected MPPI.
@@ -875,8 +878,9 @@ schema does not establish shared semantics or shared mechanism.
   Consequently a later model run can reproduce source/config semantics but not
   claim bitwise dependency equivalence.
   The Two Rooms dependency declaration omits three imported packages, and an
-  exploratory MPPI action exceeded its configured norm; both clean diagnostics
-  are pending at the time of this draft.
+  exploratory MPPI action exceeded its configured norm.  Integration V1 is
+  superseded for incomplete RNG control; corrected integration and planner
+  diagnostics are pending at the time of this draft.
   \item The first JEPA population-transport study is numerically rejected.  The
   action-path study remains validation-only calibration.  Its cancellation/error
   association has a shared-denominator confound, and the parent artifact omits

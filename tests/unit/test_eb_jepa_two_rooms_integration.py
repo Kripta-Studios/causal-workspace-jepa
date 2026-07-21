@@ -43,6 +43,7 @@ class EBJEPATwoRoomsIntegrationTests(unittest.TestCase):
             },
             "checkpoint": {"max_restore_error": 0.0, "bytes": 10},
             "planner": {"name": "MPPIPlanner", "action_shape": [1, 2], "finite": True},
+            "determinism": {"replay_matches": True, "deterministic_algorithms": True},
             "memory": {"peak_reserved_bytes": 1_000_000},
         }
         self.assertTrue(all(evaluate_two_rooms_smoke(payload, REVISION).values()))

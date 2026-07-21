@@ -20,7 +20,10 @@
 - [x] Retain `WM-EBJEPA-RUNTIME-001` from clean `15d88ce`; all eight frozen two-runtime gates pass.
 - [x] Freeze/install the Two Rooms dependency closure without replacing compatible Torch; record
   that upstream omits scipy, pandas, and PyYAML from the required path.
-- [ ] Retain `WM-EBJEPA-INTEGRATION-001` from a clean commit.
+- [x] Retain and supersede clean `WM-EBJEPA-INTEGRATION-001`: its original gates passed, but missing
+  Python RNG seeding and an independent replay make it nondeterministic/ineligible.
+- [ ] Commit/push and retain deterministic `WM-EBJEPA-INTEGRATION-002` with exact cross-process
+  batch/model/loss/action fingerprint replay.
 - [ ] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation; do not silently patch
   the upstream planner before comparing original and corrected planning.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent

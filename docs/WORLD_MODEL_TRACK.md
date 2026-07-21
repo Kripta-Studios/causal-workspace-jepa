@@ -48,6 +48,11 @@ post-discovery confirmation and a clean integration smoke are preregistered; nei
 evidence. Planning reproduction must preserve original MPPI and add a separately labeled corrected
 condition before mechanistic interpretation.
 
+The first clean integration run from `f0e7a3e` passed its original gates but is superseded: NumPy
+and Torch were seeded while Python `random`, used by the generator, was not, and no independent
+replay was required. Corrected `WM-EBJEPA-INTEGRATION-002` retains the exact same model/data/planner
+settings and requires exact cross-process hashes under deterministic CUDA settings.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,

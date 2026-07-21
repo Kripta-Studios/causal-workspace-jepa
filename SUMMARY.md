@@ -16,6 +16,10 @@
 - A matched deterministic control found exploratory MPPI violations in `32/32` seeds (median
   maximum norm `6.45`, maximum `8.30`) versus CEM `0/32` (maximum `2.35`). These numbers are not yet
   retained evidence: exact gates and the post-discovery status are preregistered for clean runs.
+- The first clean integration artifact from `f0e7a3e` is superseded despite passing its original
+  gates: it omitted `random.seed`, and the official generator uses Python randomness. The same-seed
+  clean/exploratory losses differed (`11.5872` versus `10.0157`). Corrected v2 preserves all model
+  settings and adds exact independent-process hashes over data, updated weights, loss, and planner.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 
