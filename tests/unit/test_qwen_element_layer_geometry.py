@@ -16,6 +16,7 @@ from causal_workspace_jepa.experiments.llm.qwen_element_layer_geometry_study imp
     _boundary_alignment_details,
     _boundary_sign_equality_decision,
     _control_population_association_decision,
+    _frozen_behavior_eligible,
     _inversion_decision,
     _monotone_terminal_transition_decision,
     _scores,
@@ -210,6 +211,23 @@ class QwenElementLayerGeometryTests(unittest.TestCase):
         self.assertTrue(_monotone_terminal_transition_decision({}, behavior))
         behavior["24"]["test"]["full_vocab_donor_token_transfer"] = 0.10
         self.assertFalse(_monotone_terminal_transition_decision({}, behavior))
+
+    def test_frozen_behavior_eligibility_supports_legacy_artifact(self) -> None:
+        legacy = {
+            "clean_full_vocab_accuracy_by_split": {
+                "train": 0.5,
+                "validation": 1.0,
+                "test": 0.9,
+            }
+        }
+        self.assertTrue(
+            _frozen_behavior_eligible({"clean_behavior_accuracy_min": 0.9}, legacy)
+        )
+        legacy["clean_full_vocab_accuracy_by_split"]["test"] = 0.8
+        self.assertFalse(
+            _frozen_behavior_eligible({"clean_behavior_accuracy_min": 0.9}, legacy)
+        )
+        self.assertFalse(_frozen_behavior_eligible({}, {"behavior_eligible": False}))
 
 
 if __name__ == "__main__":

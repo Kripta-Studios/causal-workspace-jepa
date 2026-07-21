@@ -2,6 +2,11 @@
 
 ## 2026-07-21 — Independent country-code bounded-lag preregistration
 
+- The first clean execution from `ab07627` completed target model computation but failed before
+  analysis or storage because the older element artifact lacks the later `behavior_eligible` key.
+  It wrote no metrics, manifest, shard, or displayed country outcome. A mechanical fallback now
+  derives frozen-artifact eligibility from its committed validation/test accuracy; all country
+  prompts, splits, thresholds, computations, and decisions remain unchanged for the clean retry.
 - Tokenization-only seed 601 selected 36 unique single-token ISO codes whose answers are disjoint
   from all state-abbreviation answers; seed 607 froze 24/6/6 target splits. No target prompt has
   been forwarded.

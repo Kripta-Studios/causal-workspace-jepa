@@ -635,6 +635,12 @@ split, or prompt selection.
   a circuit or feature, validate an Intervention-JEPA, transfer across models, establish SOTA, or
   support a workspace/J-space claim.
 
+Execution audit: the first launch from clean `ab07627` failed after model computation but before
+analysis/storage because the frozen element artifact did not yet contain the later-added
+`behavior_eligible` field. No target metrics, manifest, shard, or outcome was emitted. The retry
+adds only a compatibility fallback that recomputes frozen eligibility from the already committed
+validation/test clean accuracies and the unchanged `0.90` floor; no scientific setting changed.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

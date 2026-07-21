@@ -833,7 +833,7 @@ def _analyze(
             )
             frozen_boundaries = _boundary_alignment_details(config, frozen_details)
             frozen_relation_pass = bool(
-                frozen_analysis["behavior_eligible"]
+                _frozen_behavior_eligible(config, frozen_analysis)
                 and _monotone_terminal_transition_decision(
                     config, frozen_analysis["behavior_by_layer"]
                 )
@@ -1060,6 +1060,16 @@ def _monotone_terminal_transition_decision(
         ):
             return False
     return True
+
+
+def _frozen_behavior_eligible(
+    config: dict[str, Any], analysis: dict[str, Any]
+) -> bool:
+    if "behavior_eligible" in analysis:
+        return bool(analysis["behavior_eligible"])
+    accuracy = analysis["clean_full_vocab_accuracy_by_split"]
+    floor = float(config.get("clean_behavior_accuracy_min", 0.0))
+    return bool(accuracy["validation"] >= floor and accuracy["test"] >= floor)
 
 
 def _inversion_decision(config: dict[str, Any], scores: dict[str, Any]) -> bool:
@@ -1413,6 +1423,7 @@ __all__ = [
     "_boundary_semantic_decision",
     "_control_population_association_decision",
     "_inversion_decision",
+    "_frozen_behavior_eligible",
     "_monotone_terminal_transition_decision",
     "_population_boundary_semantic_decision",
     "_population_advantage_details",
