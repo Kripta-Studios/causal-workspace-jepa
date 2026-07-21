@@ -81,6 +81,12 @@ instrumentation, storage, and direct-data gates remain validated.
   semantic specificity pass, but exact boundary equality fails on validation (control 24,
   population 26), and the early-control ceiling fails on test. H-CROSS-05 is false. Any weaker lag
   hypothesis requires a new independent relation, not threshold adjustment on the state data.
+- `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` is the independent prospective test. Its 36 ISO answers are
+  disjoint from state answers and its 24/6/6 targets were never forwarded during selection. The
+  selected prompt scored only `5/7` on excluded calibration countries, so the frozen `0.90`
+  validation/test competence gate may reject it. If eligible, it tests only whether population
+  advantage begins zero or one registered layer after direct control; the rule is post-state and
+  must not be represented as independent discovery on all three relations.
 
 ## Milestone 3+: Scientific Runs
 

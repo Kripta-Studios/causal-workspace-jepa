@@ -130,6 +130,11 @@ Behavior-changing continuation:
   24 while population advantage first became positive at 26. H-LLM-12 also failed because test
   donor transfer reached `0.233` at layer 21. H-CROSS-05 is false; do not weaken these gates on the
   observed state data.
+- `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` is preregistered on 36 untouched ISO-code targets with
+  answer semantics disjoint from the state roster. It prospectively tests a post-state zero-or-one
+  grid-step lag between direct donor-control onset and population-over-local/HVP advantage, plus
+  semantic row-null specificity. The seven-country prompt calibration scored only `5/7`; target
+  validation/test accuracy must reach `0.90`. Even a pass remains one-model relational evidence.
 
 Current mock implementation:
 

@@ -139,6 +139,7 @@ def main() -> int:
         "LLM-ELEMENT-LAYER-GEOMETRY-001",
         "LLM-STATE-LAYER-GEOMETRY-001",
         "LLM-STATE-ONESHOT-LAYER-GEOMETRY-001",
+        "LLM-COUNTRY-CODE-LAYER-GEOMETRY-001",
     }:
         metrics = run_qwen_element_layer_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))

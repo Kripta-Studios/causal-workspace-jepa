@@ -5,15 +5,19 @@ import unittest
 import numpy as np
 
 from causal_workspace_jepa.experiments.llm.qwen_element_layer_geometry_study import (
+    COUNTRY_CODE_PAIRS,
+    COUNTRY_CODE_SPLIT_IDS,
     ELEMENT_PAIRS,
     ELEMENT_SPLIT_IDS,
     STATE_PAIRS,
     STATE_SPLIT_IDS,
+    _bounded_lag_decision,
     _boundary_alignment_decision,
     _boundary_alignment_details,
     _boundary_sign_equality_decision,
     _control_population_association_decision,
     _inversion_decision,
+    _monotone_terminal_transition_decision,
     _scores,
     _terminal_transition_decision,
     _transition_decision,
@@ -36,6 +40,22 @@ class QwenElementLayerGeometryTests(unittest.TestCase):
         self.assertEqual(len(state_pairs), 612)
         self.assertTrue(
             all(STATE_SPLIT_IDS[a] == STATE_SPLIT_IDS[b] for a, b in state_pairs)
+        )
+        self.assertEqual(len(COUNTRY_CODE_PAIRS), 36)
+        self.assertEqual(len(set(COUNTRY_CODE_PAIRS)), 36)
+        self.assertEqual(np.bincount(COUNTRY_CODE_SPLIT_IDS).tolist(), [24, 6, 6])
+        country_pairs = _within_split_pairs(COUNTRY_CODE_SPLIT_IDS)
+        self.assertEqual(len(country_pairs), 612)
+        self.assertTrue(
+            all(
+                COUNTRY_CODE_SPLIT_IDS[a] == COUNTRY_CODE_SPLIT_IDS[b]
+                for a, b in country_pairs
+            )
+        )
+        self.assertTrue(
+            set(answer for _entity, answer in COUNTRY_CODE_PAIRS).isdisjoint(
+                answer for _entity, answer in STATE_PAIRS
+            )
         )
 
     def test_scores_separate_vector_candidate_and_donor_endpoints(self) -> None:
@@ -154,6 +174,42 @@ class QwenElementLayerGeometryTests(unittest.TestCase):
             for layer, value in ((18, 0.0), (21, 0.0), (24, 0.2), (26, 0.7))
         }
         self.assertTrue(_terminal_transition_decision({}, behavior))
+
+    def test_bounded_lag_accepts_zero_or_one_later_grid_step(self) -> None:
+        details = {
+            split: {
+                "by_layer": {
+                    "18": {"population_advantage": -0.5},
+                    "21": {"population_advantage": -0.2},
+                    "24": {"population_advantage": -0.01},
+                    "26": {"population_advantage": 0.08},
+                },
+                "donor_control_advantage_spearman": 0.9,
+            }
+            for split in ("validation", "test")
+        }
+        boundaries = {
+            split: {
+                "control_boundary_layer": 24,
+                "population_advantage_boundary_layer": 26,
+            }
+            for split in ("validation", "test")
+        }
+        self.assertTrue(_bounded_lag_decision({}, details, boundaries))
+        boundaries["test"]["population_advantage_boundary_layer"] = 21
+        self.assertFalse(_bounded_lag_decision({}, details, boundaries))
+
+    def test_monotone_terminal_transition_allows_layer_21_control(self) -> None:
+        behavior = {
+            str(layer): {
+                split: {"full_vocab_donor_token_transfer": value}
+                for split in ("validation", "test")
+            }
+            for layer, value in ((18, 0.0), (21, 0.23), (24, 0.95), (26, 1.0))
+        }
+        self.assertTrue(_monotone_terminal_transition_decision({}, behavior))
+        behavior["24"]["test"]["full_vocab_donor_token_transfer"] = 0.10
+        self.assertFalse(_monotone_terminal_transition_decision({}, behavior))
 
 
 if __name__ == "__main__":

@@ -80,6 +80,11 @@ quadratic Taylor MSE `0.07870`, exact JVP `0.6143`, conditional bottleneck `3.18
 `4.9026`, and no-change `6.8654`. The historical BF16 secant scored `120.8994`. Exact and quadratic
 transport are mandatory strong baselines for all future Qwen meta-model claims.
 
+The country-code bounded-lag study retains both exact local Jacobians and directional quadratic
+Taylor/HVP-style correction, then defines population advantage against the better of the two. It
+also retains no-change, mean-effect, averaging-size, full-vocabulary donor behavior, and answer-row
+permutation controls; population transport cannot pass by beating only first-order local transport.
+
 `LLM-TARGET-IJEPA-001` implements the genuine target-encoder comparison on behavior-changing
 capital patches. It retains no-change, mean, raw linear, PCA-bilinear, supervised MLP, legacy
 conditional bottleneck, PCA nearest-neighbor, corpus-average source-delta transport, sparse-

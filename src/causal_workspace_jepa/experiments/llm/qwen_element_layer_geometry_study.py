@@ -185,6 +185,47 @@ STATE_SPLIT_IDS = np.asarray(
     dtype=np.int64,
 )
 
+COUNTRY_CODE_PAIRS: tuple[tuple[str, str], ...] = (
+    ("India", "IN"),
+    ("Brazil", "BR"),
+    ("Russia", "RU"),
+    ("France", "FR"),
+    ("China", "CN"),
+    ("Peru", "PE"),
+    ("Iraq", "IQ"),
+    ("Italy", "IT"),
+    ("Denmark", "DK"),
+    ("Sweden", "SE"),
+    ("Philippines", "PH"),
+    ("South Korea", "KR"),
+    ("Portugal", "PT"),
+    ("Switzerland", "CH"),
+    ("Chile", "CL"),
+    ("Kenya", "KE"),
+    ("Australia", "AU"),
+    ("Egypt", "EG"),
+    ("Thailand", "TH"),
+    ("Finland", "FI"),
+    ("Pakistan", "PK"),
+    ("Spain", "ES"),
+    ("Iran", "IR"),
+    ("Turkey", "TR"),
+    ("Netherlands", "NL"),
+    ("Cuba", "CU"),
+    ("Mexico", "MX"),
+    ("Norway", "NO"),
+    ("Ukraine", "UA"),
+    ("Belgium", "BE"),
+    ("United States", "US"),
+    ("Ireland", "IE"),
+    ("Colombia", "CO"),
+    ("Greece", "GR"),
+    ("Japan", "JP"),
+    ("New Zealand", "NZ"),
+)
+
+COUNTRY_CODE_SPLIT_IDS = np.asarray([0] * 24 + [1] * 6 + [2] * 6, dtype=np.int64)
+
 
 def _relation_spec(config: dict[str, Any]) -> dict[str, Any]:
     relation = str(config.get("relation", "element_symbol"))
@@ -249,6 +290,42 @@ def _relation_spec(config: dict[str, Any]) -> dict[str, Any]:
                 "This new prompt prospectively tests whether the empirical onset of direct donor "
                 "control aligns with the onset of population-over-local/HVP advantage. It does "
                 "not identify a feature, circuit, J-space, or workspace."
+            ),
+        }
+    if relation == "iso_country_code_one_shot":
+        return {
+            "name": relation,
+            "pairs": COUNTRY_CODE_PAIRS,
+            "split_ids": COUNTRY_CODE_SPLIT_IDS,
+            "prompt_template": (
+                "Example: The two-letter ISO country code for Canada is CA. "
+                "The two-letter ISO country code for {entity} is"
+            ),
+            "donor_prefix": "country_code_one_shot",
+            "calibration_boundary": {
+                "selection_seed": 601,
+                "split_seed": 607,
+                "prompt_candidates": 5,
+                "prompt_calibration_entities": [
+                    "Vietnam",
+                    "Singapore",
+                    "Austria",
+                    "Bulgaria",
+                    "Poland",
+                    "North Korea",
+                    "United Kingdom",
+                ],
+                "prompt_calibration_scores": [0.0, 5 / 7, 2 / 7, 5 / 7, 0.0],
+                "selection_rule": "maximum accuracy then earliest candidate",
+                "target_prompt_forwards_before_preregistration": 0,
+                "layer_grid_inherited_from": "LLM-ELEMENT-LAYER-GEOMETRY-001",
+            },
+            "scientific_boundary": (
+                "This prospective relation tests a one-grid-step upper bound between direct "
+                "causal-control onset and population-transport advantage. The bounded-lag rule "
+                "was formulated after the state result, while all country targets remained "
+                "untouched. Population Jacobians, late crystallization, and HVP corrections are "
+                "prior art. This does not identify a feature, circuit, J-space, or workspace."
             ),
         }
     raise ValueError(f"unsupported factual relation: {relation}")
@@ -714,7 +791,80 @@ def _analyze(
     frozen_confirmation: dict[str, Any]
     population_advantage = _population_advantage_details(layer_scores, behavior)
     boundary_alignment = _boundary_alignment_details(config, population_advantage)
-    if decision_family == "boundary_conditioned_population":
+    if decision_family == "bounded_lag_population":
+        bounded_lag_pass = bool(
+            behavior_eligible
+            and _bounded_lag_decision(config, population_advantage, boundary_alignment)
+        )
+        transition_pass = bool(
+            behavior_eligible
+            and _monotone_terminal_transition_decision(config, behavior)
+        )
+        semantic_pass = bool(
+            behavior_eligible
+            and _population_boundary_semantic_decision(
+                config, layer_scores, boundary_alignment
+            )
+        )
+        element = json.loads(
+            Path(str(config["element_confirmation_metrics"])).read_text("utf-8")
+        )
+        state = json.loads(
+            Path(str(config["state_confirmation_metrics"])).read_text("utf-8")
+        )
+        frozen_relations = {}
+        frozen_passes = []
+        for name, artifact, semantic_key in (
+            (
+                "element",
+                element,
+                "h_geo_09_late_population_semantic_specificity",
+            ),
+            (
+                "state_one_shot",
+                state,
+                "h_geo_13_boundary_population_semantic_specificity",
+            ),
+        ):
+            frozen_analysis = artifact["analysis"]
+            frozen_details = _population_advantage_details(
+                frozen_analysis["layer_scores"],
+                frozen_analysis["behavior_by_layer"],
+            )
+            frozen_boundaries = _boundary_alignment_details(config, frozen_details)
+            frozen_relation_pass = bool(
+                frozen_analysis["behavior_eligible"]
+                and _monotone_terminal_transition_decision(
+                    config, frozen_analysis["behavior_by_layer"]
+                )
+                and _bounded_lag_decision(
+                    config, frozen_details, frozen_boundaries
+                )
+                and frozen_analysis["hypothesis_decisions"][semantic_key]
+            )
+            frozen_passes.append(frozen_relation_pass)
+            frozen_relations[name] = {
+                "passed_bounded_lag_rule": frozen_relation_pass,
+                "boundaries": frozen_boundaries,
+            }
+        decisions = {
+            "h_llm_14_country_monotone_causal_control": transition_pass,
+            "h_geo_14_bounded_control_population_lag": bounded_lag_pass,
+            "h_geo_15_country_population_semantic_specificity": semantic_pass,
+            "h_cross_06_bounded_lag_cross_relation": bool(
+                all(frozen_passes)
+                and transition_pass
+                and bounded_lag_pass
+                and semantic_pass
+            ),
+        }
+        frozen_confirmation = {
+            "element_metrics": str(config["element_confirmation_metrics"]),
+            "state_metrics": str(config["state_confirmation_metrics"]),
+            "relations": frozen_relations,
+            "rule_was_formulated_after_frozen_relations": True,
+        }
+    elif decision_family == "boundary_conditioned_population":
         alignment_pass = bool(
             behavior_eligible
             and _boundary_alignment_decision(config, population_advantage, boundary_alignment)
@@ -887,6 +1037,31 @@ def _terminal_transition_decision(config: dict[str, Any], behavior: dict[str, An
     return True
 
 
+def _monotone_terminal_transition_decision(
+    config: dict[str, Any], behavior: dict[str, Any]
+) -> bool:
+    early_max = float(config.get("early_donor_transfer_max", 0.10))
+    terminal_min = float(config.get("terminal_donor_transfer_min", 0.60))
+    increase = float(config.get("donor_transfer_increase_min", 0.50))
+    drop_tolerance = float(config.get("donor_transfer_monotonic_drop_tolerance", 0.05))
+    for split in ("validation", "test"):
+        values = [
+            behavior[str(layer)][split]["full_vocab_donor_token_transfer"]
+            for layer in (18, 21, 24, 26)
+        ]
+        if not (
+            values[0] <= early_max
+            and values[-1] >= terminal_min
+            and values[-1] - values[0] >= increase
+            and all(
+                current + drop_tolerance >= previous
+                for previous, current in zip(values[:-1], values[1:], strict=True)
+            )
+        ):
+            return False
+    return True
+
+
 def _inversion_decision(config: dict[str, Any], scores: dict[str, Any]) -> bool:
     early_ratio = float(config.get("early_local_to_population_ratio_max", 0.25))
     late_ratio = float(config.get("late_population_to_local_ratio_max", 0.60))
@@ -981,6 +1156,7 @@ def _control_population_association_decision(
 def _boundary_alignment_details(
     config: dict[str, Any], details: dict[str, Any]
 ) -> dict[str, Any]:
+    layer_index = {layer: index for index, layer in enumerate((18, 21, 24, 26))}
     control_threshold = float(config.get("control_boundary_transfer_min", 0.50))
     advantage_threshold = float(config.get("advantage_boundary_min", 0.0))
     result = {}
@@ -1008,6 +1184,11 @@ def _boundary_alignment_details(
             "boundaries_equal": bool(
                 control_layer is not None and control_layer == advantage_layer
             ),
+            "population_lag_grid_steps": (
+                None
+                if control_layer is None or advantage_layer is None
+                else layer_index[advantage_layer] - layer_index[control_layer]
+            ),
         }
     return result
 
@@ -1022,6 +1203,36 @@ def _boundary_alignment_decision(
         return False
     for split in ("validation", "test"):
         if details[split]["donor_control_advantage_spearman"] < correlation_min:
+            return False
+    return True
+
+
+def _bounded_lag_decision(
+    config: dict[str, Any],
+    details: dict[str, Any],
+    boundaries: dict[str, Any],
+) -> bool:
+    layers = (18, 21, 24, 26)
+    layer_index = {layer: index for index, layer in enumerate(layers)}
+    early_margin = float(config.get("early_best_transport_margin_min", 0.05))
+    terminal_margin = float(config.get("terminal_population_advantage_min", 0.05))
+    correlation_min = float(config.get("control_advantage_spearman_min", 0.70))
+    maximum_lag = int(config.get("population_boundary_max_grid_lag", 1))
+    for split in ("validation", "test"):
+        control = boundaries[split]["control_boundary_layer"]
+        population = boundaries[split]["population_advantage_boundary_layer"]
+        if control is None or population is None:
+            return False
+        lag = layer_index[population] - layer_index[control]
+        if not (
+            0 <= lag <= maximum_lag
+            and details[split]["by_layer"]["21"]["population_advantage"]
+            <= -early_margin
+            and details[split]["by_layer"]["26"]["population_advantage"]
+            >= terminal_margin
+            and details[split]["donor_control_advantage_spearman"]
+            >= correlation_min
+        ):
             return False
     return True
 
@@ -1051,6 +1262,29 @@ def _boundary_semantic_decision(
     boundaries: dict[str, Any],
 ) -> bool:
     boundary = boundaries["test"]["control_boundary_layer"]
+    if boundary is None:
+        return False
+    for layer in {str(boundary), "26"}:
+        real = scores[layer]["splits"]["test"]["train_population_jacobian"]
+        null = scores[layer]["row_permutation_null_test"]
+        if not (
+            real["contrast_normalized_mse"]
+            <= null["p05_contrast_normalized_mse"]
+            * float(config.get("row_null_mse_ratio_max", 0.80))
+            and real["answer_candidate_agreement"]
+            >= null["p95_answer_candidate_agreement"]
+            + float(config.get("row_null_candidate_margin_min", 0.05))
+        ):
+            return False
+    return True
+
+
+def _population_boundary_semantic_decision(
+    config: dict[str, Any],
+    scores: dict[str, Any],
+    boundaries: dict[str, Any],
+) -> bool:
+    boundary = boundaries["test"]["population_advantage_boundary_layer"]
     if boundary is None:
         return False
     for layer in {str(boundary), "26"}:
@@ -1166,16 +1400,21 @@ def _config_digest(config: dict[str, Any]) -> str:
 
 
 __all__ = [
+    "COUNTRY_CODE_PAIRS",
+    "COUNTRY_CODE_SPLIT_IDS",
     "ELEMENT_PAIRS",
     "ELEMENT_SPLIT_IDS",
     "STATE_PAIRS",
     "STATE_SPLIT_IDS",
+    "_bounded_lag_decision",
     "_boundary_alignment_decision",
     "_boundary_alignment_details",
     "_boundary_sign_equality_decision",
     "_boundary_semantic_decision",
     "_control_population_association_decision",
     "_inversion_decision",
+    "_monotone_terminal_transition_decision",
+    "_population_boundary_semantic_decision",
     "_population_advantage_details",
     "_relation_spec",
     "_scores",

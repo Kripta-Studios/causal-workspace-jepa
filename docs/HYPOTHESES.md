@@ -589,6 +589,52 @@ and Spearman gates passed. H-LLM-12 failed because test layer-21 donor transfer 
 `0.10`, despite layer-26 transfer `1.0`. H-CROSS-05 therefore failed. Exact boundary identity is
 false for this run; semantic late population fidelity survives.
 
+## LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 Preregistration
+
+Registered on 2026-07-21 after freezing the failed exact-equality state result and before any model
+forward on the 36 target country prompts. Tokenization-only seed 601 selected a 36-country roster
+from 43 candidates whose single-token ISO answers do not overlap the state-abbreviation answers;
+seed 607 fixed 24/6/6 target splits. Seven excluded countries were reserved for prompt calibration.
+Five templates scored `0/7`, `5/7`, `2/7`, `5/7`, and `0/7`; the first tied winner was selected by
+the frozen maximum-accuracy/earliest-candidate rule. This modest `5/7` calibration makes the target
+`0.90` competence gate especially important. No target-country prompt was forwarded during roster,
+split, or prompt selection.
+
+- Exact prompt: `Example: The two-letter ISO country code for Canada is CA. The two-letter ISO
+  country code for {country} is`. Model, precision, intervention, derivatives, layers
+  18/21/24/26, 612 within-split donor patches per layer, row nulls, and numerical thresholds are
+  inherited unchanged from the one-shot state study.
+- Prior-art and posthoc boundary: corpus-averaged Jacobians (LIT-003), late factual crystallization
+  (LIT-040), and HVP/second-order attribution correction (LIT-041) are prior art. The zero-or-one
+  grid-step rule was designed after observing element and state results. Those frozen relations are
+  motivating data, not independent prospective confirmations; only country is untouched here.
+- Behavior eligibility: clean full-vocabulary validation and test accuracy must each be at least
+  `0.90`. Failure rejects every scientific decision without changing the roster or prompt.
+- `H-LLM-14 — Country monotone causal control`: on validation and test, layer-18 donor-token
+  transfer is at most `0.10`, layer-26 transfer is at least `0.60`, the increase is at least `0.50`,
+  and transfer does not decrease by more than `0.05` at any adjacent registered layer. This rule
+  deliberately replaces the state study's falsified layer-21 ceiling and is prospective only here.
+- Define `A_l = min(NMSE_local, NMSE_quadratic) - NMSE_population`, the direct-control boundary as
+  the first registered layer with donor transfer at least `0.50`, and the population boundary as
+  the first with `A_l >= 0`.
+- `H-GEO-14 — Bounded control/population lag`: on validation and test, both boundaries exist, the
+  population boundary is no earlier than direct control and at most one registered grid step later,
+  `A_21 <= -0.05`, `A_26 >= 0.05`, and four-layer Spearman between donor control and `A_l` is at
+  least `0.70`. The lower correlation threshold was fixed from the already-known element test value
+  `0.738`; it cannot be interpreted as a blind threshold choice for the frozen relations.
+- `H-GEO-15 — Country population semantic specificity`: on test, population transport at the
+  detected population boundary and layer 26 must achieve MSE at most `0.80x` answer-row-null p05
+  and candidate agreement at least `0.05` above row-null p95.
+- `H-CROSS-06 — Bounded lag across factual relations`: requires all three country hypotheses plus
+  behavior eligibility, the same new monotone/bounded-lag rule, and the already registered semantic
+  specificity pass in both frozen element and one-shot-state artifacts. Because the rule was built
+  from those artifacts, a pass is a prospective country replication of a posthoc cross-relation
+  pattern in one small model—not three independent confirmations.
+- Evidence boundary: even a complete pass establishes only a bounded four-layer association for
+  three factual relations in Qwen3-0.6B. It does not explain the lag, localize components, identify
+  a circuit or feature, validate an Intervention-JEPA, transfer across models, establish SOTA, or
+  support a workspace/J-space claim.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

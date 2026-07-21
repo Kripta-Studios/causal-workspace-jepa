@@ -68,6 +68,10 @@ Status: `ACTIVE`.
 - `COMPLETED_MIXED_V2`: one-shot competence and numerics pass, but exact boundary equality fails on
   validation and early donor control fails on test. The observed zero-or-one-step lag is posthoc;
   reporting it as confirmed would be threshold laundering. A new relation is mandatory.
+- `ACTIVE_POSTHOC_LAG`: the country study is prospective, but its zero-or-one-step lag rule and
+  Spearman `0.70` threshold were designed from frozen element/state results. Those two relations are
+  not independent confirmations under the new rule. The country prompt also scored only `5/7` on
+  excluded calibration facts; failure of the `0.90` target gate must be retained without rescue.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

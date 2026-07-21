@@ -47,8 +47,12 @@
 - [x] Implement and preregister the boundary-relative `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001`.
 - [x] Commit/push and execute the one-shot study unchanged from `c1daa46`; retain H-GEO-13 and the
   failed early-control, validation-boundary-equality, and cross-relation gates.
-- [ ] Before weakening exact equality to a one-grid-step lag, preregister and execute an independent
-  relation with new entities/answer semantics and strong competence controls.
+- [x] Select a state-answer-disjoint ISO-country roster and calibrate five prompts on seven excluded
+  countries without forwarding any of the 36 targets.
+- [x] Implement and preregister the independent zero-or-one-grid-step country-code lag study with a
+  `0.90` held-out competence gate and frozen element/state audits.
+- [ ] Commit/push `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001`, execute it once unchanged from the clean
+  preregistration commit, and freeze any behavior-gate rejection or scientific outcome.
 - [x] Use four permanently excluded element-symbol facts to calibrate a fixed four-layer grid and
   audit late-crystallization/AtP prior art without touching the registered 36-entity roster.
 - [x] Implement and preregister `LLM-ELEMENT-LAYER-GEOMETRY-001` with direct behavior, full selected-

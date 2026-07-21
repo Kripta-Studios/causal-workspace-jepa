@@ -1,5 +1,26 @@
 # SUMMARY
 
+## 2026-07-21 — Independent country-code bounded-lag preregistration
+
+- Tokenization-only seed 601 selected 36 unique single-token ISO codes whose answers are disjoint
+  from all state-abbreviation answers; seed 607 froze 24/6/6 target splits. No target prompt has
+  been forwarded.
+- Five prompt templates were evaluated only on seven excluded calibration countries and scored
+  `0/7`, `5/7`, `2/7`, `5/7`, and `0/7`. The deterministic earliest tied winner is the Canada
+  one-shot template. Its weak calibration performance is disclosed; target validation/test clean
+  accuracy must each reach `0.90`, with no rescue or entity filtering.
+- `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` implements the post-state bounded-lag question while keeping
+  the same Qwen revision, FP32/eager path, layers 18/21/24/26, direct patches, exact Jacobians,
+  quadratic/HVP-style corrections, population transport, averaging curves, and answer-row nulls.
+- H-GEO-14 requires the population-advantage first crossing to occur at or one registered layer
+  after the direct-control first crossing on both held-out splits, with `A_21 <= -0.05`,
+  `A_26 >= 0.05`, and Spearman at least `0.70`. H-LLM-14 requires monotone early-to-terminal donor
+  control; H-GEO-15 requires semantic row-null specificity. H-CROSS-06 also audits frozen element
+  and one-shot-state artifacts under the new rule.
+- The zero-or-one-step rule was designed after those two frozen relations. Therefore a country pass
+  would be one prospective replication of a posthoc pattern in one small model—not a new method,
+  circuit, JEPA result, workspace, cross-model result, or SOTA claim.
+
 ## 2026-07-21 — Behavior-competent boundary-relative confirmation result
 
 - Calibrated five prompt formats on only the 13 states excluded by seed 521. Accuracy was

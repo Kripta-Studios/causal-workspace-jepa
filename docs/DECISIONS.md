@@ -185,3 +185,7 @@
   fail. Do not reinterpret a one-grid-step validation lag as equality or relax layer-21 transfer.
   A weaker bounded-lag hypothesis may be tested only on an independent relation with new target
   entities/answer semantics and a preregistered competence gate.
+- Use a state-answer-disjoint ISO country-code relation for that test. Choose its prompt only on
+  seven excluded countries, retain the weak `5/7` calibration score, and reject below `0.90` target
+  held-out accuracy. Freeze a one-grid-step maximum population lag, not equality; disclose that
+  the lag and `0.70` correlation gate were selected after inspecting element/state artifacts.
