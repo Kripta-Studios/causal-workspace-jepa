@@ -140,4 +140,4 @@ prompt_suites:
     derivative: complete 36-answer by 1024-source Jacobian per context and layer
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
     budget_mb: 96
-    status: PREREGISTERED
+    status: COMPLETED_MIXED

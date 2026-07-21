@@ -1,5 +1,5 @@
 id: LLM-COUNTRY-CODE-LAYER-GEOMETRY-001
-status: PREREGISTERED
+status: COMPLETED_MIXED
 relation: iso_country_code_one_shot
 decision_family: bounded_lag_population
 resource_profile: configs/resource/gpu_12gb.yaml

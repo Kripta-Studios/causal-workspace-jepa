@@ -51,8 +51,8 @@
   countries without forwarding any of the 36 targets.
 - [x] Implement and preregister the independent zero-or-one-grid-step country-code lag study with a
   `0.90` held-out competence gate and frozen element/state audits.
-- [ ] Commit/push `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001`, execute it once unchanged from the clean
-  preregistration commit, and freeze any behavior-gate rejection or scientific outcome.
+- [x] Commit/push and execute `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001`; retain the documented
+  compatibility retry, positive H-LLM-14/H-GEO-15, and failed H-GEO-14/H-CROSS-06 without rescue.
 - [x] Use four permanently excluded element-symbol facts to calibrate a fixed four-layer grid and
   audit late-crystallization/AtP prior art without touching the registered 36-entity roster.
 - [x] Implement and preregister `LLM-ELEMENT-LAYER-GEOMETRY-001` with direct behavior, full selected-

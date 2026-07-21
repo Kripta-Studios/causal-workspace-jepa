@@ -25,6 +25,18 @@
 - The zero-or-one-step rule was designed after those two frozen relations. Therefore a country pass
   would be one prospective replication of a posthoc pattern in one small model—not a new method,
   circuit, JEPA result, workspace, cross-model result, or SOTA claim.
+- The clean retry from `48226c6` completed in `283.77` seconds. Validation/test accuracy was
+  `1.0/1.0`; every numerical gate passed (maximum layer p95 derivative error `0.0635`). H-LLM-14
+  passed with donor transfer `0/.367/.867/1.0` on validation and `0/.667/.967/1.0` on test.
+- H-GEO-15 passed: test population NMSE/agreement at layers 21/26 was `.2949/.5667` and
+  `.01470/.9667`, versus row-null p05 MSE `1.350/1.679` and p95 agreement `.233/.100`.
+- H-GEO-14 failed rather than merely missing a margin. Validation population advantage became
+  positive at layer 21 (`A_21=.1956`) before the direct-control boundary at 24; test crossed both at
+  21 with `A_21=.2289`. The preregistered direction required population to be no earlier and
+  `A_21<=-.05`. H-CROSS-06 therefore failed. Across these relations, population usefulness is not
+  ordered after a 50% donor-takeover threshold; partial causal control can already suffice.
+- The ignored 30,887,576-byte shard has SHA-256
+  `13f3792ab221f2a795d9529010cfef4da6e622cf21ecc70e08e46e0570224235`.
 
 ## 2026-07-21 — Behavior-competent boundary-relative confirmation result
 

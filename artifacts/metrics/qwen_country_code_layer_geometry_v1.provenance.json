@@ -1,0 +1,18 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_country_code_layer_geometry_v1.yaml",
+  "git_commit": "48226c6481ea757dc0c8ffd104b6129371984f9e",
+  "git_dirty": false,
+  "hypothesis_decisions": {
+    "h_cross_06_bounded_lag_cross_relation": false,
+    "h_geo_14_bounded_control_population_lag": false,
+    "h_geo_15_country_population_semantic_specificity": true,
+    "h_llm_14_country_monotone_causal_control": true
+  },
+  "metrics": "artifacts/metrics/qwen_country_code_layer_geometry_v1.json",
+  "numerical_audit_passed": true,
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 613,
+  "time_utc": "2026-07-21T14:29:01.373449+00:00"
+}

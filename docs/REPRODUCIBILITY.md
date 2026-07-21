@@ -90,6 +90,12 @@ metadata before regeneration; checksum mismatches fail the audit.
 Recorded relative paths are normalized to POSIX separators before comparison, allowing provenance
 created on Linux to be audited on Windows without weakening the target-path check.
 
+`LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` was preregistered at `ab07627`. Its first clean launch
+completed model computation but emitted no artifact because the frozen element metrics predated a
+cached eligibility field. The compatibility-only fallback was tested/pushed at `48226c6`; the
+unchanged clean retry wrote metrics/provenance and a 30,887,576-byte ignored shard with SHA-256
+`13f3792ab221f2a795d9529010cfef4da6e622cf21ecc70e08e46e0570224235`.
+
 Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`; all 14 criteria and all
 software checks passed, including 68 tests and the corrected exact-JVP disposition. Its own
 metrics/provenance pair is committed, so later runs can audit the audit.

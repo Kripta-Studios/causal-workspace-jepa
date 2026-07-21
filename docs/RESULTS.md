@@ -8,7 +8,7 @@ Qwen circuit has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Preregistered untouched ISO-code test of a post-state zero-or-one-grid-step population lag; no target result exists yet. | Preregistered | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | pending | pending clean preregistration commit | `PREREGISTERED` |
+| LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is semantically specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Generalization | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | `12fce84` | `SMOKE_VALIDATED` |
 | CTRL-GPU-001 | GPU resource guard and CUDA runtime detect the RTX 5070 Ti host; the cross-platform reproducibility audit accepts missing ignored shards only as skipped. | Availability | `configs/resource/gpu_12gb.yaml` | stdout only | `99854eb` plus portability fix | `SMOKE_VALIDATED` |
 | WM-T0-001 | Tiny action-conditioned JEPA predicts PointMass2D latent transitions better than mean, no-action, and shuffled-action controls in the CPU smoke setting. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | `artifacts/metrics/tiny_jepa_smoke.json` | `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4` | `SMOKE_VALIDATED` |
@@ -388,3 +388,23 @@ onset need not coincide with the onset of majority donor control on each entity 
 one-grid-step validation lag is descriptive and cannot replace the registered equality claim. This
 is a discriminating negative for exact coupling, not a circuit, workspace, JEPA-meta-model, or SOTA
 result.
+
+`LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` key metrics:
+
+- clean retry commit/runtime: `48226c6`, `283.77` seconds; clean validation/test accuracy `1.0/1.0`;
+  all numerical gates passed with maximum layer p95 derivative error `0.0635`;
+- validation donor transfer at layers 18/21/24/26: `0/.367/.867/1.0`; test:
+  `0/.667/.967/1.0`; H-LLM-14 passed;
+- validation population advantage: `-.574/+.196/+.392/+.301`, Spearman `.800`; test:
+  `-.529/+.229/+.268/+.284`, Spearman `1.0`;
+- validation control/population boundaries were `24/21` (lag `-1`); test boundaries were `21/21`;
+  the registered direction and negative `A_21` margin failed, so H-GEO-14/H-CROSS-06 failed;
+- layer-21/26 test population NMSE/agreement was `.2949/.5667` and `.01470/.9667`, versus row-null
+  p05 MSE `1.350/1.679` and p95 agreement `.233/.100`; H-GEO-15 passed;
+- ignored shard: 30,887,576 bytes, SHA-256
+  `13f3792ab221f2a795d9529010cfef4da6e622cf21ecc70e08e46e0570224235`.
+
+Interpretation: direct donor-answer control and semantically aligned population transport generalize
+to a third factual relation, but population advantage is not universally ordered after majority
+donor control. This rejects the preregistered bounded-direction account. It does not establish what
+causes either transition, a component circuit, a JEPA meta-model, workspace geometry, or SOTA.

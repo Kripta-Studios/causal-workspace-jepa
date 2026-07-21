@@ -135,6 +135,10 @@ Behavior-changing continuation:
   grid-step lag between direct donor-control onset and population-over-local/HVP advantage, plus
   semantic row-null specificity. The seven-country prompt calibration scored only `5/7`; target
   validation/test accuracy must reach `0.90`. Even a pass remains one-model relational evidence.
+- The clean retry from `48226c6` passed competence/numerics, monotone direct control, and semantic
+  population specificity. It rejected bounded directional lag: validation population advantage
+  crossed at 21 before the 50% direct-control boundary at 24; test crossed both at 21. Freeze
+  H-GEO-14/H-CROSS-06 as false and do not rethreshold this relation.
 
 Current mock implementation:
 

@@ -72,6 +72,10 @@ Status: `ACTIVE`.
   Spearman `0.70` threshold were designed from frozen element/state results. Those two relations are
   not independent confirmations under the new rule. The country prompt also scored only `5/7` on
   excluded calibration facts; failure of the `0.90` target gate must be retained without rescue.
+- `RESOLVED_NEGATIVE_LAG`: country competence passed, but H-GEO-14/H-CROSS-06 failed because the
+  validation population boundary preceded the registered 50% control boundary. The surviving
+  monotone-control and row-null-specificity results do not establish temporal/causal ordering,
+  component localization, or a new population-Jacobian algorithm.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

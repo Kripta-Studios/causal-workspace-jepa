@@ -86,11 +86,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   boundary alignment failed because validation donor control crossed at layer 24 while population
   advantage crossed at 26; test aligned at 24. The early-control gate also failed on test (`0.233`
   at layer 21 versus `0.10`). H-GEO-12, H-LLM-12, and H-CROSS-05 are false as registered.
-- `PREREGISTERED`: `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` freezes a new 36-country ISO-code
-  relation, state-answer-disjoint 24/6/6 splits, exact/quadratic/population transports, and a
-  zero-or-one-grid-step population-lag hypothesis. The rule was formulated after element/state;
-  only the country targets are prospective. Its selected prompt scored just `5/7` on seven excluded
-  calibration countries, so target validation/test accuracy below `0.90` rejects the study.
+- `COMPLETED_MIXED`: `LLM-COUNTRY-CODE-LAYER-GEOMETRY-001` passed competence, numerics, monotone
+  donor control, and semantic row-null specificity. The directional bounded-lag claim failed:
+  validation population advantage crossed at layer 21 while 50% donor control crossed at 24; test
+  crossed both at 21. H-GEO-14/H-CROSS-06 are false. This is a third-relation causal profile, not a
+  new method, circuit, JEPA result, workspace, or SOTA claim.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

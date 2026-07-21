@@ -189,3 +189,8 @@
   seven excluded countries, retain the weak `5/7` calibration score, and reject below `0.90` target
   held-out accuracy. Freeze a one-grid-step maximum population lag, not equality; disclose that
   the lag and `0.70` correlation gate were selected after inspecting element/state artifacts.
+- Freeze the country result as mixed: direct causal takeover and semantic population specificity
+  generalize, but a population-after-control ordering does not. Validation population advantage
+  precedes the 50% donor boundary by one grid step. Do not rescue H-GEO-14 with an absolute lag,
+  lower control threshold, or removed `A_21` margin on these data; pivot to the independently
+  protected recurrent-JEPA test goals.

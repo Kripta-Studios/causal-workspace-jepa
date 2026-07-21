@@ -641,6 +641,17 @@ analysis/storage because the frozen element artifact did not yet contain the lat
 adds only a compatibility fallback that recomputes frozen eligibility from the already committed
 validation/test clean accuracies and the unchanged `0.90` floor; no scientific setting changed.
 
+Measured result from clean retry commit `48226c6`: status `COMPLETED_MIXED`, runtime `283.77`
+seconds. Clean validation/test accuracy was `1.0/1.0`; all numerical gates passed, including maximum
+layer p95 exact-Jacobian/central error `0.0635`. H-LLM-14 passed: validation donor transfer was
+`0/.367/.867/1.0`, and test was `0/.667/.967/1.0`. H-GEO-15 passed: test population NMSE/agreement
+was `.2949/.5667` at layer 21 and `.01470/.9667` at layer 26, against row-null p05 MSE
+`1.350/1.679` and p95 agreement `.233/.100`. H-GEO-14 failed because validation population advantage
+crossed at layer 21 (`A_21=.1956`) before direct control crossed at 24; test crossed both at 21 but
+also had positive `A_21=.2289`, violating the registered negative early margin. H-CROSS-06 failed.
+The data reject a universal population-after-control ordering at this threshold; they do not prove
+that population transport causes control or identify why relation boundaries differ.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

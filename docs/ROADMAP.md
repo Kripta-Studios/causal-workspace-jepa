@@ -87,6 +87,11 @@ instrumentation, storage, and direct-data gates remain validated.
   validation/test competence gate may reject it. If eligible, it tests only whether population
   advantage begins zero or one registered layer after direct control; the rule is post-state and
   must not be represented as independent discovery on all three relations.
+- The clean country retry from `48226c6` is mixed. Competence, numerics, H-LLM-14, and H-GEO-15
+  pass, but H-GEO-14/H-CROSS-06 fail because validation population advantage begins at layer 21
+  before the 50% control boundary at 24. Freeze the directional lag null; do not replace it with an
+  unsigned or partial-control threshold on these observed data. Resume the protected JEPA test-goal
+  geometry audit with adaptive integration as the next independent family.
 
 ## Milestone 3+: Scientific Runs
 
