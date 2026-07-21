@@ -1,5 +1,5 @@
 id: WM-LEWM-001
-status: IMPLEMENTED_UNVALIDATED
+status: COMPLETED_NEGATIVE
 resource_profile: configs/resource/gpu_12gb.yaml
 device: cuda
 seeds: [101, 103, 107]

@@ -36,6 +36,9 @@
 - Reconstruct only the restricted action-embedding to final-predictor-site to planner graph. Since
   AdaLN action conditioning enters every predictor block, earlier blocks are alternatives rather
   than falsely asserted serial nodes.
+- Retain `WM-LEWM-001` as a failed replicated mechanism result without threshold changes. Separate
+  the 3/3 faithful-reproduction result and 2/3 selective planner-intervention result from the 1/3
+  full hidden-patch/circuit result; reject the aggregate graph.
 
 ## 2026-07-20
 

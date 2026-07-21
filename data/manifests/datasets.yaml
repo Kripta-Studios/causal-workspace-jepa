@@ -53,7 +53,7 @@ datasets:
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
     purpose: faithful small LeWorldModel reproduction and causal planner audit
     leakage_risks: trajectory_seed_or_goal_overlap
-    status: IMPLEMENTED_UNVALIDATED
+    status: SMOKE_VALIDATED
   qwen_real:
     canonical_name: Qwen hidden-state interventions
     source: Hugging Face Qwen

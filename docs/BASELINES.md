@@ -23,10 +23,11 @@ Status: `SMOKE_VALIDATED` for implemented CPU/Qwen methods; a published-model sm
 subspace positive control, and disjoint-consumer negative control. The local hardware blocker for
 published baselines is removed.
 
-`WM-LEWM-001` adds the official LeWorldModel two-loss recipe at small scale. Its strong controls are
+`WM-LEWM-001` evaluated the official LeWorldModel two-loss recipe at small scale. Its strong controls are
 shuffled/no-action prediction, paired donor action swaps, equal-dimensional perturbation-norm-matched
 random subspaces, action-module suppression, layerwise linear/nonlinear probes, and clean versus
-intervened latent planning/closed-loop execution. It is not validated until the clean run finishes.
+intervened latent planning/closed-loop execution. Reproduction passes all seeds; planner specificity
+passes two; the full circuit passes only one and is rejected at the replicated level.
 
 ## LLM Meta-Model
 

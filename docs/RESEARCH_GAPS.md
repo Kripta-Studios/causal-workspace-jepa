@@ -19,6 +19,13 @@ Status: `ACTIVE`.
 - `WM-T0-005` showed that simply appending goal/mass context does not resolve those gaps: actions
   remained weak and post-hoc value/risk/uncertainty/action heads failed the held-out composition.
   The next architecture must train task-relevant consumers jointly or couple them to planning.
+- `WM-LEWM-001` validates the published small-reproduction path but exposes two new gaps. Latent
+  planning succeeds on only `1/12` cases per seed, and hidden donor-patch decoding/circuit evidence
+  replicates on only one seed. A future route needs a stronger planner objective and a subspace whose
+  decoded counterfactual is stable across initialization; the observed thresholds must not be tuned.
+- Ensemble variance falls under the action-subspace intervention even as control worsens. Future
+  uncertainty work needs intervention-aware calibration or epistemic/OOD objectives, not raw member
+  disagreement alone.
 - GPT-2 bilinear/MLP meta-models do not survive the prompt-local Jacobian. Coordinate and
   contrast-direction steering remain additive, while transport across prompts/layers fails. The
   useful next intervention classes are activation replacement/resampling, patching, and feature

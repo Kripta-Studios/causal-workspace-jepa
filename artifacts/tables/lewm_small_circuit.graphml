@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <graph id="lewm-small-action-to-planner" edgedefault="directed">
+    <node id="action.embedding" />
+    <node id="predictor.block1" />
+    <node id="predictor.latent" />
+    <node id="planner.cost" />
+    <node id="planner.action" />
+    <edge id="e0" source="action.embedding" target="predictor.block1" />
+    <edge id="e1" source="predictor.block1" target="predictor.latent" />
+    <edge id="e2" source="predictor.latent" target="planner.cost" />
+    <edge id="e3" source="planner.cost" target="planner.action" />
+  </graph>
+</graphml>

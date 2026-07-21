@@ -1,0 +1,62 @@
+{
+  "edges": [
+    {
+      "effect": 0.7694891455288898,
+      "faithfulness": 0.7694891455288898,
+      "source": "action.embedding",
+      "target": "predictor.block1"
+    },
+    {
+      "effect": 0.7694891455288898,
+      "faithfulness": 0.7694891455288898,
+      "source": "predictor.block1",
+      "target": "predictor.latent"
+    },
+    {
+      "effect": 0.75,
+      "faithfulness": 0.75,
+      "source": "predictor.latent",
+      "target": "planner.cost"
+    },
+    {
+      "effect": 0.75,
+      "faithfulness": 1.0,
+      "source": "planner.cost",
+      "target": "planner.action"
+    }
+  ],
+  "graph_id": "lewm-small-action-to-planner",
+  "nodes": [
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "action.embedding",
+      "score": 1.0,
+      "site": "action.embedding"
+    },
+    {
+      "evidence_level": "Specificity",
+      "node_id": "predictor.block1",
+      "score": 0.7694891455288898,
+      "site": "predictor.block1"
+    },
+    {
+      "evidence_level": "Causal mediation",
+      "node_id": "predictor.latent",
+      "score": 1.0,
+      "site": "predictor.latent"
+    },
+    {
+      "evidence_level": "Specificity",
+      "node_id": "planner.cost",
+      "score": 0.75,
+      "site": "planner.cost"
+    },
+    {
+      "evidence_level": "Specificity",
+      "node_id": "planner.action",
+      "score": 0.75,
+      "site": "planner.action"
+    }
+  ],
+  "status": "REJECTED"
+}

@@ -173,6 +173,18 @@ retained as evidence and did not use this fixed three-seed configuration.
 - No threshold, seed, split, site, basis dimension, or candidate set may be changed after the full
   run begins. A failed gate is a retained negative result.
 
+Measured result, unchanged from the preregistration: the clean run from commit `4dbc388` passed the
+restricted reproduction gate on all three seeds. Test embedding MSE was `0.250/0.134/0.292`,
+clean-to-shuffled ratios were `0.354/0.155/0.643`, latent standard deviations were
+`0.802/0.862/0.762`, and nonlinear state-probe R2 was `0.746/0.814/0.879`. The planner gate passed
+seeds 103 and 107: projection removal changed selected first actions on `0.667/0.750` of cases and
+changed mean candidate costs by `0.371/0.453`, just/clearly above matched-control p95
+`0.368/0.376`. It failed seed 101 because cost change `0.413` was below control p95 `0.443` and
+action-change rate did not exceed its control. H-WM-03's complete donor latent-plus-decoded gate
+passed only seed 107; seeds 101/103 had negative decoded recovery. The restricted circuit likewise
+passed only seed 107, below the required two. Five-consumer workspace candidates failed all seeds.
+The registered overall result is `FAILED_REGISTERED_GATES`; the aggregate graph is `REJECTED`.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

@@ -36,9 +36,10 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   three seeds and three fixed holdouts. It beat the registered parametric and Jacobian baselines,
   but nearest-neighbor slightly won resampling-holdout MSE and the top-ranked coordinate failed
   direct causal verification; the candidate graph is therefore `REJECTED`.
-- `IMPLEMENTED_UNVALIDATED`: official-revision-pinned faithful small LeWorldModel pixel reproduction,
-  typed adapter, three-seed training, probes, intervention/planning controls, and restricted circuit
-  audit. It must be committed before the registered run.
+- `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
+  three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
+  but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
+  is `REJECTED` and no workspace is found.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
@@ -251,12 +252,20 @@ Validated CPU smoke results:
   MSE but nearest-neighbor was slightly better at `2.095`. Direct execution on 16 edits over four
   new prompts yielded effect correlation `0.673`, but predicted coordinate 128 was not the observed
   winner (coordinate 0); precision@1 was `0`, so H-LLM-06 failed and the graph is rejected.
+- Faithful small LeWorldModel (`WM-LEWM-001`) ran unchanged from clean commit `4dbc388` with seeds
+  101/103/107 in `54.50` seconds. All three reproduction gates passed: test embedding MSE was
+  `0.134`-`0.292`, clean/shuffled ratios `0.155`-`0.643`, latent standard deviation
+  `0.762`-`0.862`, and nonlinear state-probe R2 `0.746`-`0.879`. The hidden action-subspace planner
+  intervention selectively changed future trajectories, candidate costs, and selected actions on
+  two seeds. Donor-patch specificity and the full restricted circuit passed only seed 107, so the
+  replicated claims failed and the aggregate graph is rejected. Five-consumer workspace tests were
+  null on every seed.
 
 ## Limitations
 
 This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. The bounded Qwen3-0.6B
-pipeline is validated; the faithful small LeWorldModel path is implemented but not yet scientifically
-executed. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
+pipeline is validated; the faithful small LeWorldModel run is retained as a mixed/negative result.
+Qwen3-30B-A3B, broad all-layer Jacobians, and large video
 training remain `gpu_cluster` work. The pre-existing GPT-2 artifacts came from a different Linux CPU
 host; their ignored activation shards are absent here and the audit reports their checksums as
 skipped until regenerated.

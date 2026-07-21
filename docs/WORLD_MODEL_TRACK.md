@@ -13,9 +13,8 @@ Initial implementation order:
 7. workspace criteria with null-result-safe controls: implemented and run with a documented null.
 
 The former LeWorldModel placeholder is replaced by a typed, source-traceable small reproduction and
-adapter. `WM-LEWM-001` is preregistered against official revision `8edfeb3...`; it is
-`IMPLEMENTED_UNVALIDATED` until run from clean committed code. Other published adapters remain
-placeholders.
+adapter. `WM-LEWM-001` ran unchanged from clean commit `4dbc388` against official revision
+`8edfeb3...`. Other published adapters remain placeholders.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
@@ -24,6 +23,13 @@ paired-action subspace replacement, norm-matched random controls, action-module 
 latent planning, closed-loop execution, ensemble uncertainty, five frozen consumers, and a
 restricted necessity/sufficiency/faithfulness graph. It is not equivalent to a released benchmark
 checkpoint.
+
+`WM-LEWM-001` is a mixed/negative result. All seeds pass the reproduction gate, and the internal
+subspace intervention selectively changes latent trajectories, planning costs, and selected actions
+on two seeds. However, decoded donor recovery and the complete restricted circuit gate pass only
+seed 107; the aggregate graph is rejected. Clean planning succeeds on just one of 12 cases per seed,
+so this is not a successful control benchmark. All workspace candidates fail despite valid planted
+controls and valid five-consumer readouts.
 
 Validated CPU smoke:
 

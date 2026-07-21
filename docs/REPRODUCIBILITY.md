@@ -62,6 +62,12 @@ rerun from `0d6a37b` is retained.
 commit `a54f2ed6a2491fb905978cb3c10af655a36c7b42`. Its three seeds, thresholds, holdouts, and direct
 verification prompts were fixed before execution. Ignored checkpoints are replay-checked by the run.
 
+`WM-LEWM-001` ran unchanged from clean commit `4dbc38856b2f1aa6e42754ade72941f0399d3b93`.
+The prior clean computation at `9c3239a` was discarded because a hardware dataclass prevented JSON
+serialization before metrics/provenance were written. Only the post-fix run is retained. The runner
+intentionally exits nonzero after writing a complete `FAILED_REGISTERED_GATES` artifact; this is a
+valid negative scientific outcome, not a missing run.
+
 `scripts/audit_reproducibility.py` checks required control-plane files, every summarized metrics and
 provenance pair, `git_dirty: false`, recorded commit/path fields, JSON validity, and every available
 local dataset checksum. Missing ignored datasets are reported as skipped so a fresh clone can audit

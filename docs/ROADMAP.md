@@ -49,13 +49,13 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection and bounded Qwen3
 - `LLM-IJEPA-001` is `SMOKE_VALIDATED` from clean commit `a54f2ed`. H-LLM-01/02/03 passed the fixed
   gates, while H-LLM-06 failed direct precision@1 and the candidate graph is rejected.
 - Official LeWorldModel revision `8edfeb3...` is verified. A faithful small reproduction and
-  intervention/planning/circuit audit are preregistered as `WM-LEWM-001`; execute only after the
-  implementation milestone is committed.
+  intervention/planning/circuit audit completed as `WM-LEWM-001`. Reproduction passes 3/3 and
+  planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
 
 ## Milestone 3+: Scientific Runs
 
-Status: `ACTIVE`; the local GPU resource blocker is removed, but the GPU-dependent code and evidence
-remain incomplete.
+Status: `ACTIVE`; the required bounded Qwen and faithful small published-JEPA paths have executed,
+while larger scaling and rejected-mechanism follow-ups remain open research.
 
 - [done] Repair the original action-patch methodology and rerun from committed code.
 - [done] Validate shared-subspace discovery with known positive and negative controls.

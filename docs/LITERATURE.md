@@ -8,7 +8,7 @@ Last primary-source check: 2026-07-21. Unchecked entries remain `UNVERIFIED_FROM
 | LIT-002 | Verbalizable Representations Form a Global Workspace in Language Models | https://transformer-circuits.pub/2026/workspace/index.html | Web publication, published 2026-07-06 | Defines a sparse nonnegative token-aligned J-space and tests report, modulation, reasoning, reuse, selectivity, depth, capacity, and broadcast. | `PRIMARY_VERIFIED_2026-07-20` |
 | LIT-003 | Anthropic Jacobian Lens implementation | https://github.com/anthropics/jacobian-lens | Official companion code; not cloned | Baseline corpus-averaged Jacobian transport and sparse J-space decomposition. | `PRIMARY_VERIFIED_2026-07-20` |
 | LIT-004 | LeJEPA | https://arxiv.org/abs/2511.08544 | Not verified | JEPA theory and scalable objective assumptions. | `UNVERIFIED_FROM_PROMPT` |
-| LIT-005 | LeWorldModel | https://arxiv.org/abs/2603.19312 | https://github.com/lucas-maes/le-wm; MIT; revision `8edfeb3...`; HF checkpoints linked by official README | Defines the published action-conditioned pixel JEPA recipe reproduced at small scale in `WM-LEWM-001`. | `PRIMARY_VERIFIED_2026-07-21`; reproduction preregistered |
+| LIT-005 | LeWorldModel | https://arxiv.org/abs/2603.19312 | https://github.com/lucas-maes/le-wm; MIT; revision `8edfeb3...`; HF checkpoints linked by official README | Defines the published action-conditioned pixel JEPA recipe reproduced at small scale in `WM-LEWM-001`. | `PRIMARY_VERIFIED_2026-07-21`; small reproduction completed negative |
 | LIT-006 | What Drives Success in Physical Planning with JEPA WMs? | https://arxiv.org/abs/2512.24497 | https://github.com/facebookresearch/jepa-wms | Planning baselines and checkpoints for GPU continuation. | `BLOCKED_RESOURCE` |
 | LIT-007 | Delta-JEPA | https://arxiv.org/abs/2606.31232 | arXiv primary record | Introduces latent-difference action decoding; directly motivates H-WM-02 but not a workspace claim. | `PRIMARY_VERIFIED_2026-07-20` |
 | LIT-008 | Causal-JEPA | https://arxiv.org/abs/2602.11389 | https://github.com/galilai-group/cjepa | Object-level latent intervention comparison. | `BLOCKED_RESOURCE` |
@@ -42,4 +42,5 @@ Last primary-source check: 2026-07-21. Unchecked entries remain `UNVERIFIED_FROM
   `stable-worldmodel`/`stable-pretraining`; probe availability is not causal use; the repository's
   reduced PixelTinyMaze reproduction is not checkpoint or benchmark equivalence.
 - Reproduction status: official source cloned only into ignored `.cache/`, revision and MIT license
-  verified; source-traceable small reproduction implemented and preregistered, full run pending.
+  verified; source-traceable small reproduction passed its modeling gate on all three seeds, while
+  the replicated causal circuit gate failed and its graph was rejected.

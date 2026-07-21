@@ -27,11 +27,16 @@ Controls:
 
 A null result is acceptable and must be reported.
 
-`WM-LEWM-001` preregisters another controlled evaluation on the faithful small published-model
+`WM-LEWM-001` evaluates another controlled case on the faithful small published-model
 reproduction. It fits five frozen consumers and repeats planted shared/disjoint detector controls,
 but fixes `workspace_found = false` because reportability, voluntary control, selective multistep
 necessity, and task/OOD generalization are outside that experiment. A compact shared sensitivity
 result, if any, is therefore only a workspace candidate.
+
+Measured result: planted shared/disjoint controls pass on every seed and all five frozen consumers
+clear the registered validity floor, but the six-dimensional candidate captures only
+`0.495`-`0.651` minimum sensitivity versus `0.70` required. Candidate ablation damage is below
+random controls on every seed. `workspace_found = false`.
 
 ## Current Tier 0 Result
 

@@ -1,0 +1,694 @@
+{
+  "all_passed": false,
+  "causal_mediation_passing_seeds": 1,
+  "circuit_graph": {
+    "path": "artifacts\\tables\\lewm_small_circuit.json",
+    "status": "REJECTED"
+  },
+  "circuit_passing_seeds": 1,
+  "claims": [
+    {
+      "claim": "A faithful small LeWorldModel reproduction learns action-conditioned pixel dynamics.",
+      "evidence_level": "Generalization",
+      "supported": true
+    },
+    {
+      "claim": "A learned hidden action subspace selectively mediates donor counterfactuals.",
+      "evidence_level": "Specificity",
+      "supported": false
+    },
+    {
+      "claim": "A restricted action-to-planner circuit passes necessity, sufficiency, and faithfulness tests.",
+      "evidence_level": "Circuit reconstruction",
+      "supported": false
+    },
+    {
+      "claim": "A JEPA workspace was found.",
+      "evidence_level": "Generalization",
+      "supported": false
+    }
+  ],
+  "dataset": {
+    "name": "PixelTinyMaze",
+    "split_seeds": [
+      83,
+      89,
+      97
+    ],
+    "test_trajectories": 192,
+    "train_trajectories": 768,
+    "validation_trajectories": 160
+  },
+  "ensemble_uncertainty": {
+    "clean_mean_variance": 0.5059472322463989,
+    "evidence_level": "Causal mediation",
+    "intervened_mean_variance": 0.2499910295009613,
+    "members": 3,
+    "variance_change": -0.2559562027454376
+  },
+  "evidence_level": "Causal mediation",
+  "experiment_id": "WM-LEWM-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 368.726,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "planning_passing_seeds": 2,
+  "published_integration": {
+    "faithful_elements": [
+      "end_to_end_pixel_encoder",
+      "action_embedder",
+      "autoregressive_AdaLN_zero_predictor",
+      "next_embedding_MSE",
+      "SIGReg_Gaussian_regularizer",
+      "no_EMA_no_pretraining_no_auxiliary_supervision"
+    ],
+    "name": "LeWorldModel faithful small reproduction",
+    "official_repository": "https://github.com/lucas-maes/le-wm",
+    "official_revision": "8edfeb336732b5f3ce7b8b210d0ba370a09e2cac",
+    "scaled_differences": [
+      "20x20 PixelTinyMaze instead of released benchmark data",
+      "32-dimensional two-block networks instead of 192-dimensional six-block networks",
+      "64 SIGReg projections instead of 1024"
+    ]
+  },
+  "reproduction_passing_seeds": 3,
+  "required_passing_seeds": 2,
+  "runtime_seconds": 54.496724800002994,
+  "seed_results": [
+    {
+      "action_subspace": {
+        "dimension": 4,
+        "representation_dimension": 32,
+        "site": "predictor.block1"
+      },
+      "action_suppression": {
+        "clean_mse": 0.2502683699131012,
+        "error_ratio": 2.971287674247432,
+        "evidence_level": "Causal mediation",
+        "operation": "suppress_module",
+        "site": "action.embedding",
+        "suppressed_mse": 0.7436193227767944
+      },
+      "causal_mediation_pass": false,
+      "checkpoint": "artifacts\\checkpoints\\lewm_small_v1\\seed_101.pt",
+      "checkpoint_replay_max_abs_error": 0.0,
+      "circuit_audit": {
+        "action_embedding_patch_recovery": 1.0,
+        "evidence_level": "Specificity",
+        "hidden_site_patch_recovery": {
+          "predictor.block0": 0.1371212800433923,
+          "predictor.block1": 0.8392862229262262
+        },
+        "last_hidden_to_full_action_faithfulness": 0.8392862229262262,
+        "minimality_pass": true,
+        "necessity_pass": true,
+        "pass": false,
+        "planner_edge_pass": false,
+        "specificity_pass": true,
+        "sufficiency_pass": true
+      },
+      "counterfactual_patch": {
+        "candidate_mean_perturbation_l2": 8.295406341552734,
+        "decoded_recovery": -0.03990430136837153,
+        "evidence_level": "Specificity",
+        "latent_recovery": 0.862588824742492,
+        "operation": "subspace_feature_replacement",
+        "pairs": 528,
+        "random_control_count": 16,
+        "random_control_mean_decoded_recovery": -3.7470409184988234,
+        "random_control_mean_recovery": 0.4186908939686428,
+        "random_control_p95_recovery": 0.5220844227532309,
+        "site": "predictor.block1"
+      },
+      "layerwise_probes": {
+        "encoder.block0": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.5210969848938902,
+          "nonlinear_r2": 0.8922745132236759
+        },
+        "encoder.block1": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.49475496299920496,
+          "nonlinear_r2": 0.8737583672719783
+        },
+        "encoder.cls": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.4760615986789799,
+          "nonlinear_r2": 0.8702907214174187
+        },
+        "encoder.patch_tokens": {
+          "evidence_level": "Availability",
+          "linear_r2": -0.0022024830285609642,
+          "nonlinear_r2": -0.0022024755043157374
+        },
+        "projector.latent": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.4197897620940615,
+          "nonlinear_r2": 0.745699517878591
+        }
+      },
+      "planning": {
+        "cases": 12,
+        "clean_closed_loop": {
+          "first_actions": [
+            1,
+            2,
+            3,
+            0,
+            3,
+            3,
+            2,
+            0,
+            2,
+            3,
+            2,
+            3
+          ],
+          "mean_final_manhattan_distance": 2.9166666666666665,
+          "success_rate": 0.08333333333333333
+        },
+        "closed_loop_success_change": -0.08333333333333333,
+        "decoded_state_trajectory_mse": 2032.9093627929688,
+        "evidence_level": "Specificity",
+        "future_latent_trajectory_mse": 0.37193913757801056,
+        "horizon": 4,
+        "intervened_closed_loop": {
+          "first_actions": [
+            2,
+            0,
+            2,
+            0,
+            3,
+            2,
+            3,
+            3,
+            1,
+            0,
+            3,
+            0
+          ],
+          "mean_final_manhattan_distance": 2.8333333333333335,
+          "success_rate": 0.0
+        },
+        "intervention_changes_planning": false,
+        "mean_absolute_candidate_cost_change": 0.4130029007792473,
+        "operation": "project_out",
+        "random_control_action_change_p95": 0.8875,
+        "random_control_cost_change_p95": 0.44317805171012875,
+        "random_control_count": 8,
+        "selected_first_action_change_rate": 0.8333333333333334,
+        "site": "predictor.block1"
+      },
+      "prediction": {
+        "clean_to_no_action_ratio": 0.3926327609208883,
+        "clean_to_shuffled_ratio": 0.35437146930920627,
+        "latent_mean_std": 0.8021760582923889,
+        "no_action_mse": 0.6374108195304871,
+        "shuffled_action_mse": 0.7062317132949829,
+        "test_embedding_mse": 0.2502683699131012
+      },
+      "reproduction_pass": true,
+      "seed": 101,
+      "training": {
+        "best_validation_embedding_mse": 0.0001205514301545918,
+        "final_validation_embedding_mse": 0.2208142250776291,
+        "last_prediction_loss": 0.21887323260307312,
+        "last_sigreg_loss": 11.266866683959961,
+        "last_total_loss": 1.232891321182251,
+        "training_steps": 1200
+      },
+      "workspace": {
+        "candidate": {
+          "compactness_ratio": 0.1875,
+          "consumer_capture": {
+            "action_selection": 0.5694885634823509,
+            "physical": 0.5566801040454554,
+            "risk": 0.6290137206006182,
+            "uncertainty": 0.8347242893971183,
+            "value": 0.8254439365698432
+          },
+          "dimension": 6,
+          "mean_capture": 0.6830701228190772,
+          "min_capture": 0.5566801040454554,
+          "representation_dim": 32,
+          "sensitivity_candidate_found": false
+        },
+        "candidate_pass": false,
+        "causal_ablation": {
+          "candidate_damage_by_consumer": {
+            "action_selection": 7080.3279602029315,
+            "physical": 3124.06672293744,
+            "risk": 214.76954967848886,
+            "uncertainty": 16187.641732364034,
+            "value": 15601.084752832872
+          },
+          "candidate_mean_damage": 8441.578143603152,
+          "control_count": 16,
+          "random_control_max_damage": 27170.361954869866,
+          "random_control_mean_damage": 13035.716688763918,
+          "random_control_std_damage": 5398.123560180483,
+          "specificity_exceeds_all_random_controls": false,
+          "specificity_margin_vs_random_mean": -4594.138545160766
+        },
+        "consumer_r2": {
+          "action_selection": 0.5820338421355582,
+          "physical": 0.7565231762012601,
+          "risk": 0.9530235625858402,
+          "uncertainty": 0.4903203447865826,
+          "value": 0.4438527463066666
+        },
+        "consumers_valid": true,
+        "detector_controls": {
+          "negative_control_found": false,
+          "positive_control_found": true
+        },
+        "evidence_level": "Specificity",
+        "missing_workspace_criteria": [
+          "reportability_analogue",
+          "voluntary_control_analogue",
+          "selective_multistep_necessity_over_one_step_prediction",
+          "task_and_distribution_generalization"
+        ],
+        "workspace_found": false
+      }
+    },
+    {
+      "action_subspace": {
+        "dimension": 4,
+        "representation_dimension": 32,
+        "site": "predictor.block1"
+      },
+      "action_suppression": {
+        "clean_mse": 0.13448387384414673,
+        "error_ratio": 6.660724693243036,
+        "evidence_level": "Causal mediation",
+        "operation": "suppress_module",
+        "site": "action.embedding",
+        "suppressed_mse": 0.8957600593566895
+      },
+      "causal_mediation_pass": false,
+      "checkpoint": "artifacts\\checkpoints\\lewm_small_v1\\seed_103.pt",
+      "checkpoint_replay_max_abs_error": 0.0,
+      "circuit_audit": {
+        "action_embedding_patch_recovery": 1.0,
+        "evidence_level": "Specificity",
+        "hidden_site_patch_recovery": {
+          "predictor.block0": 0.3252679404040223,
+          "predictor.block1": 0.4903100879675093
+        },
+        "last_hidden_to_full_action_faithfulness": 0.4903100879675093,
+        "minimality_pass": false,
+        "necessity_pass": true,
+        "pass": false,
+        "planner_edge_pass": true,
+        "specificity_pass": true,
+        "sufficiency_pass": false
+      },
+      "counterfactual_patch": {
+        "candidate_mean_perturbation_l2": 8.443930625915527,
+        "decoded_recovery": -0.2250469480832038,
+        "evidence_level": "Specificity",
+        "latent_recovery": 0.5460635511091,
+        "operation": "subspace_feature_replacement",
+        "pairs": 528,
+        "random_control_count": 16,
+        "random_control_mean_decoded_recovery": -1.4799235781680826,
+        "random_control_mean_recovery": 0.3119646794377229,
+        "random_control_p95_recovery": 0.3829992476182815,
+        "site": "predictor.block1"
+      },
+      "layerwise_probes": {
+        "encoder.block0": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.4936108127943245,
+          "nonlinear_r2": 0.9167918766657718
+        },
+        "encoder.block1": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.4956564858418445,
+          "nonlinear_r2": 0.9463230451504849
+        },
+        "encoder.cls": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.4852014922634701,
+          "nonlinear_r2": 0.9390423051193152
+        },
+        "encoder.patch_tokens": {
+          "evidence_level": "Availability",
+          "linear_r2": -0.0022024830285609642,
+          "nonlinear_r2": -0.0022024755043157374
+        },
+        "projector.latent": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.4424012720934499,
+          "nonlinear_r2": 0.8135485019121772
+        }
+      },
+      "planning": {
+        "cases": 12,
+        "clean_closed_loop": {
+          "first_actions": [
+            1,
+            1,
+            3,
+            2,
+            0,
+            3,
+            1,
+            0,
+            2,
+            3,
+            0,
+            0
+          ],
+          "mean_final_manhattan_distance": 3.75,
+          "success_rate": 0.08333333333333333
+        },
+        "closed_loop_success_change": -0.08333333333333333,
+        "decoded_state_trajectory_mse": 131.33798376719156,
+        "evidence_level": "Specificity",
+        "future_latent_trajectory_mse": 0.5984759976466497,
+        "horizon": 4,
+        "intervened_closed_loop": {
+          "first_actions": [
+            1,
+            1,
+            2,
+            2,
+            0,
+            2,
+            0,
+            2,
+            1,
+            1,
+            2,
+            2
+          ],
+          "mean_final_manhattan_distance": 3.9166666666666665,
+          "success_rate": 0.0
+        },
+        "intervention_changes_planning": true,
+        "mean_absolute_candidate_cost_change": 0.3706473285953204,
+        "operation": "project_out",
+        "random_control_action_change_p95": 0.8875,
+        "random_control_cost_change_p95": 0.3681696951389313,
+        "random_control_count": 8,
+        "selected_first_action_change_rate": 0.6666666666666666,
+        "site": "predictor.block1"
+      },
+      "prediction": {
+        "clean_to_no_action_ratio": 0.16051636089259094,
+        "clean_to_shuffled_ratio": 0.15526435744483602,
+        "latent_mean_std": 0.8615615963935852,
+        "no_action_mse": 0.8378203511238098,
+        "shuffled_action_mse": 0.8661606311798096,
+        "test_embedding_mse": 0.13448387384414673
+      },
+      "reproduction_pass": true,
+      "seed": 103,
+      "training": {
+        "best_validation_embedding_mse": 0.00011362262885086238,
+        "final_validation_embedding_mse": 0.11384885907173156,
+        "last_prediction_loss": 0.11710810661315918,
+        "last_sigreg_loss": 7.196956634521484,
+        "last_total_loss": 0.7648342251777649,
+        "training_steps": 1200
+      },
+      "workspace": {
+        "candidate": {
+          "compactness_ratio": 0.1875,
+          "consumer_capture": {
+            "action_selection": 0.49587452319484465,
+            "physical": 0.5754132417241788,
+            "risk": 0.6304164048695997,
+            "uncertainty": 0.8323550842054938,
+            "value": 0.8346957678316214
+          },
+          "dimension": 6,
+          "mean_capture": 0.6737510043651477,
+          "min_capture": 0.49587452319484465,
+          "representation_dim": 32,
+          "sensitivity_candidate_found": false
+        },
+        "candidate_pass": false,
+        "causal_ablation": {
+          "candidate_damage_by_consumer": {
+            "action_selection": 3045.83887871943,
+            "physical": 2066.9754579990536,
+            "risk": 135.25993713743557,
+            "uncertainty": 6473.850508326282,
+            "value": 5849.101321818648
+          },
+          "candidate_mean_damage": 3514.2052208001696,
+          "control_count": 16,
+          "random_control_max_damage": 19624.346374733832,
+          "random_control_mean_damage": 9861.599215980445,
+          "random_control_std_damage": 4355.756538687862,
+          "specificity_exceeds_all_random_controls": false,
+          "specificity_margin_vs_random_mean": -6347.393995180275
+        },
+        "consumer_r2": {
+          "action_selection": 0.6139335253156479,
+          "physical": 0.767517537643414,
+          "risk": 0.9714644256064743,
+          "uncertainty": 0.552744525378762,
+          "value": 0.5504980349693551
+        },
+        "consumers_valid": true,
+        "detector_controls": {
+          "negative_control_found": false,
+          "positive_control_found": true
+        },
+        "evidence_level": "Specificity",
+        "missing_workspace_criteria": [
+          "reportability_analogue",
+          "voluntary_control_analogue",
+          "selective_multistep_necessity_over_one_step_prediction",
+          "task_and_distribution_generalization"
+        ],
+        "workspace_found": false
+      }
+    },
+    {
+      "action_subspace": {
+        "dimension": 4,
+        "representation_dimension": 32,
+        "site": "predictor.block1"
+      },
+      "action_suppression": {
+        "clean_mse": 0.29153209924697876,
+        "error_ratio": 1.5929794481687851,
+        "evidence_level": "Causal mediation",
+        "operation": "suppress_module",
+        "site": "action.embedding",
+        "suppressed_mse": 0.4644046425819397
+      },
+      "causal_mediation_pass": true,
+      "checkpoint": "artifacts\\checkpoints\\lewm_small_v1\\seed_107.pt",
+      "checkpoint_replay_max_abs_error": 0.0,
+      "circuit_audit": {
+        "action_embedding_patch_recovery": 1.0,
+        "evidence_level": "Circuit reconstruction",
+        "hidden_site_patch_recovery": {
+          "predictor.block0": 0.3843613354562315,
+          "predictor.block1": 0.9788711256929338
+        },
+        "last_hidden_to_full_action_faithfulness": 0.9788711256929338,
+        "minimality_pass": true,
+        "necessity_pass": true,
+        "pass": true,
+        "planner_edge_pass": true,
+        "specificity_pass": true,
+        "sufficiency_pass": true
+      },
+      "counterfactual_patch": {
+        "candidate_mean_perturbation_l2": 3.2876994609832764,
+        "decoded_recovery": 0.656730064815233,
+        "evidence_level": "Specificity",
+        "latent_recovery": 0.9760109015903414,
+        "operation": "subspace_feature_replacement",
+        "pairs": 528,
+        "random_control_count": 16,
+        "random_control_mean_decoded_recovery": -2.518720592478121,
+        "random_control_mean_recovery": 0.41911003045116446,
+        "random_control_p95_recovery": 0.4810864631282838,
+        "site": "predictor.block1"
+      },
+      "layerwise_probes": {
+        "encoder.block0": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.5413841844535503,
+          "nonlinear_r2": 0.9486112312316621
+        },
+        "encoder.block1": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.5229186716408782,
+          "nonlinear_r2": 0.9500893311019863
+        },
+        "encoder.cls": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.5069110880068497,
+          "nonlinear_r2": 0.9523914970968904
+        },
+        "encoder.patch_tokens": {
+          "evidence_level": "Availability",
+          "linear_r2": -0.0022024830285609642,
+          "nonlinear_r2": -0.0022024755043157374
+        },
+        "projector.latent": {
+          "evidence_level": "Availability",
+          "linear_r2": 0.46331595621062927,
+          "nonlinear_r2": 0.8787033211009248
+        }
+      },
+      "planning": {
+        "cases": 12,
+        "clean_closed_loop": {
+          "first_actions": [
+            0,
+            1,
+            1,
+            3,
+            1,
+            2,
+            1,
+            1,
+            2,
+            2,
+            2,
+            1
+          ],
+          "mean_final_manhattan_distance": 4.166666666666667,
+          "success_rate": 0.08333333333333333
+        },
+        "closed_loop_success_change": -0.08333333333333333,
+        "decoded_state_trajectory_mse": 199.9091453552246,
+        "evidence_level": "Specificity",
+        "future_latent_trajectory_mse": 0.466980444577833,
+        "horizon": 4,
+        "intervened_closed_loop": {
+          "first_actions": [
+            0,
+            0,
+            1,
+            0,
+            3,
+            3,
+            3,
+            3,
+            2,
+            1,
+            1,
+            3
+          ],
+          "mean_final_manhattan_distance": 3.1666666666666665,
+          "success_rate": 0.0
+        },
+        "intervention_changes_planning": true,
+        "mean_absolute_candidate_cost_change": 0.4527440369129181,
+        "operation": "project_out",
+        "random_control_action_change_p95": 0.9166666666666666,
+        "random_control_cost_change_p95": 0.37572063505649567,
+        "random_control_count": 8,
+        "selected_first_action_change_rate": 0.75,
+        "site": "predictor.block1"
+      },
+      "prediction": {
+        "clean_to_no_action_ratio": 0.6725421927907997,
+        "clean_to_shuffled_ratio": 0.6426063798478971,
+        "latent_mean_std": 0.7620192170143127,
+        "no_action_mse": 0.4334777394930522,
+        "shuffled_action_mse": 0.45367129643758136,
+        "test_embedding_mse": 0.29153206944465637
+      },
+      "reproduction_pass": true,
+      "seed": 107,
+      "training": {
+        "best_validation_embedding_mse": 6.509206141345203e-05,
+        "final_validation_embedding_mse": 0.22884370982646943,
+        "last_prediction_loss": 0.31237855553627014,
+        "last_sigreg_loss": 13.920207977294922,
+        "last_total_loss": 1.5651973485946655,
+        "training_steps": 1200
+      },
+      "workspace": {
+        "candidate": {
+          "compactness_ratio": 0.1875,
+          "consumer_capture": {
+            "action_selection": 0.6508993043654236,
+            "physical": 0.6800648307750355,
+            "risk": 0.8005287451263551,
+            "uncertainty": 0.9102464342501776,
+            "value": 0.8923459586057791
+          },
+          "dimension": 6,
+          "mean_capture": 0.7868170546245542,
+          "min_capture": 0.6508993043654236,
+          "representation_dim": 32,
+          "sensitivity_candidate_found": false
+        },
+        "candidate_pass": false,
+        "causal_ablation": {
+          "candidate_damage_by_consumer": {
+            "action_selection": 3196.26560753771,
+            "physical": 1374.4158933796368,
+            "risk": 1886.8327761452197,
+            "uncertainty": 543.4684652256971,
+            "value": 906.4300159385992
+          },
+          "candidate_mean_damage": 1581.4825516453725,
+          "control_count": 16,
+          "random_control_max_damage": 10750.131542788411,
+          "random_control_mean_damage": 7703.982513326473,
+          "random_control_std_damage": 1969.3064134994133,
+          "specificity_exceeds_all_random_controls": false,
+          "specificity_margin_vs_random_mean": -6122.4999616811
+        },
+        "consumer_r2": {
+          "action_selection": 0.5814735539822441,
+          "physical": 0.8271017632216306,
+          "risk": 0.8378919895328341,
+          "uncertainty": 0.6559319940123423,
+          "value": 0.6474391489613387
+        },
+        "consumers_valid": true,
+        "detector_controls": {
+          "negative_control_found": false,
+          "positive_control_found": true
+        },
+        "evidence_level": "Specificity",
+        "missing_workspace_criteria": [
+          "reportability_analogue",
+          "voluntary_control_analogue",
+          "selective_multistep_necessity_over_one_step_prediction",
+          "task_and_distribution_generalization"
+        ],
+        "workspace_found": false
+      }
+    }
+  ],
+  "seeds": [
+    101,
+    103,
+    107
+  ],
+  "status": "FAILED_REGISTERED_GATES",
+  "workspace_candidate_passing_seeds": 0,
+  "workspace_found": false
+}

@@ -56,6 +56,15 @@
   next-embedding error alone preferred a collapsed encoder despite SIGReg. The registered runner now
   uses the fixed final training step, as the official training recipe does. These checks are not
   scientific evidence. `WM-LEWM-001` is preregistered and must be committed before its full run.
+- The first clean full attempt from `9c3239a` completed computation but failed before emitting
+  metrics because `ResourceReport` was not JSON-serialized. Regenerable graphs were discarded; the
+  one-line serialization repair was pushed as `4dbc388`, then the unchanged experiment was rerun.
+- `WM-LEWM-001` completed from clean `4dbc388` in `54.50` seconds and failed its replicated causal
+  gates. All three models passed the faithful-reproduction gates. Planner intervention gates passed
+  seeds 103/107, but the full donor-decoding specificity/circuit gate passed only seed 107. The
+  aggregate action-to-planner graph is `REJECTED`, not a circuit claim. All workspace candidates
+  failed, while planted shared/disjoint controls behaved correctly. The intervention reduced rather
+  than raised ensemble variance (`0.506` to `0.250`), a possible overconfidence failure mode.
 
 ## 2026-07-20
 

@@ -38,6 +38,13 @@ Status: `ACTIVE`.
 - `RESOLVED_METHODOLOGY`: reduced engineering checks showed that selecting LeWM checkpoints by
   prediction MSE alone selects collapsed embeddings. The registered runner uses the fixed final
   optimization step and explicitly gates latent variance and state decodability.
+- `RESOLVED_NEGATIVE`: `WM-LEWM-001` passes faithful reproduction on all seeds but only one of three
+  full hidden-patch/circuit gates. The graph is rejected; do not describe the seed-107 circuit as a
+  general mechanism.
+- `ACTIVE`: the latent planner has only `1/12` clean closed-loop successes per seed. Its intervention
+  changes are real model-mediated trajectory/cost/action effects, but not evidence of strong control.
+- `ACTIVE`: intervention reduces ensemble variance from `0.506` to `0.250` despite weaker outcomes,
+  exposing a possible overconfidence failure rather than a useful uncertainty response.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.
 - `ACTIVE`: Four central literature entries have now been checked against their primary web/arXiv

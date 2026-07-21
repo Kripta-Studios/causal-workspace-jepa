@@ -22,6 +22,9 @@ Qwen circuit has been discovered.
 | LLM-QWEN-001 | Pinned Qwen3-0.6B selected-site hooks are deterministic and preserve autograd; five direct residual interventions change downstream hidden states and logits. | Causal mediation | `configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml` | `artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json` | `0d6a37b2f27a862b5d272f254e451fb41b7837e4` | `SMOKE_VALIDATED` |
 | LLM-INTDATA-001 | A split-controlled real Qwen3-0.6B intervention dataset contains 432 nonzero directly executed effects with a checksum-verified HDF5 shard. | Causal mediation | `configs/experiments/qwen_intervention_dataset_v1.yaml` | `artifacts/metrics/qwen3_0_6b_intervention_dataset.json` | `0aa80acc9a6fb17d3fc90dba5b2a5bc358326fb2` | `SMOKE_VALIDATED` |
 | LLM-IJEPA-001 | A nonlinear Intervention-JEPA generalizes across fixed prompt, coordinate, and operation holdouts better than the registered parametric/Jacobian baselines across three seeds, but its top-ranked coordinate fails direct causal ranking verification. | Generalization | `configs/experiments/intervention_jepa_v1.yaml` | `artifacts/metrics/qwen_intervention_jepa_v1.json` | `a54f2ed6a2491fb905978cb3c10af655a36c7b42` | `SMOKE_VALIDATED`; candidate `REJECTED` |
+| WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
+| WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
+| WM-LEWM-001C | Donor decoded recovery and the full restricted action-to-planner circuit pass only one seed; the replicated gate and every workspace candidate fail. | Circuit reconstruction | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json`; rejected graph | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `COMPLETED_NEGATIVE`; graph `REJECTED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -231,3 +234,23 @@ Interpretation: the fixed H-LLM-01/02/03 gates passed on all three seeds, suppor
 compression/generalization for this selected target. H-LLM-06 failed, the coordinate graph is
 `REJECTED`, and neither a circuit, semantic feature, behavior mechanism, J-space, nor workspace is
 supported.
+
+`WM-LEWM-001` key metrics:
+
+- official source revision `8edfeb3...`; clean repository commit `4dbc388`; runtime `54.50` seconds;
+- three/three faithful-reproduction seeds passed, including noncollapsed latents and nonlinear
+  physical-state probe R2 `0.746`-`0.879`;
+- action-embedding suppression raised prediction error `1.59x`-`6.66x`; full action-embedding donor
+  patches recovered `1.0` of the donor latent effect on every seed;
+- planner subspace removal changed `0.667`-`0.833` of first actions and latent trajectories by
+  `0.372`-`0.598` MSE; registered matched-control planning specificity passed two seeds;
+- complete hidden donor-patch specificity and restricted circuit gates passed only seed 107, so the
+  two-of-three replicated claims failed and the aggregate graph is `REJECTED`;
+- clean/intervened closed-loop success averaged `0.083/0.0`; the planner is weak and no successful
+  control result is claimed;
+- five-consumer shared-sensitivity candidates failed all seeds; ensemble variance decreased from
+  `0.506` to `0.250` under intervention, suggesting overconfidence rather than useful uncertainty.
+
+Interpretation: the published recipe is reproduced at small scale, and a targeted internal
+intervention has selective trajectory/cost/action effects on two seeds. The proposed hidden circuit
+does not generalize across seeds, decoded donor recovery is unstable, and there is no workspace.
