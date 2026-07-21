@@ -15,16 +15,33 @@ Qwen3-1.7B SAEs are feasible on this GPU, but the collection does not cover the 
 targets and steering alone is not a circuit. Circuit Tracing, AtP*, HVP, EAP-IG faithfulness, path
 patching, and direct activation patching are mandatory comparators for future localization.
 
-The next module-mediation study is not yet preregistered. Adversarial review requires a precisely
-replayed upstream value-swap treatment, ordered multi-site patch/restore, episode-level inference,
-and controls separating binding from generic copying. It will create an eligible causal dataset for
-a later Intervention-JEPA; a positive localizer result would not itself be evidence for JEPA.
+`LLM-QWEN-BINDING-MEDIATION-001` is now preregistered but has no model outcomes. Its 560 deterministic
+episodes use calibration plus disjoint 24/6/6 key/value pools. Recipient and donor retain the same
+token multiset; the donor performs exactly one two-value transposition and the queried answer must
+change. A token audit must prove exactly two changed positions before Qwen is executed. The study
+compares population/local AtP, directional HVP, AtP*, leave-value-out probes, activation magnitude,
+and random rankings over 56 module outputs. It freezes the smallest train-only prefix of at most
+four nodes and tests it by clean-to-treated sufficiency and treated-to-clean restoration with
+episode-clustered intervals and matched nulls. A positive result would be a specific mediator set,
+not evidence for JEPA or a reconstructed circuit.
 
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the
 clean layer-0 `resid_post` after that treatment recovers clean logits to `1e-6`. Repeated same-site
 operations are applied in caller order. These are instrumentation identities, not scientific
 mediation results on the pinned Qwen checkpoint.
+
+The registered token pools and templates live in
+`configs/experiments/qwen_binding_mediation_v1.yaml`. Run the tokenizer-only audit from a clean
+commit before generating protected activation outcomes:
+
+```powershell
+$env:PYTHONPATH = "src"
+python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v1.yaml
+```
+
+The later trajectory Intervention-JEPA remains unregistered until the treatment and task-competence
+gates pass; this prevents architecture selection from adapting to protected mediation outcomes.
 
 The primary-scale capture script is now implemented for `Qwen/Qwen3-4B` at immutable revision
 `1cfa9a7...`. Its repository estimate is 8,060,926,626 bytes; it captures five residual sites and

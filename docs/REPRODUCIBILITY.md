@@ -223,6 +223,22 @@ order, while repeated specifications at one site execute in list order. Offline 
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the
 clean recipient within `1e-6`. Multi-site scientific runs must log the complete ordered list; a set
 of sites is insufficient provenance.
+
+The Qwen binding-mediation preregistration freezes all token pools, seeds, templates, split counts,
+candidate modules, ranking baselines, matched controls, and decision gates in
+`configs/experiments/qwen_binding_mediation_v1.yaml`. Before model execution, run from a clean
+commit:
+
+```powershell
+$env:PYTHONPATH = "src"
+python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v1.yaml
+```
+
+The committed audit may establish only deterministic token identity: equal recipient/donor token
+multisets, exactly two changed token positions, one-token answers, bounded sequence length, and
+balanced query positions. It cannot decide task competence, mediation, circuit, JEPA, or workspace
+hypotheses.
+
 Seed completion additionally requires an explicit marker, both horizon blocks, and the derived
 horizon-amplification summary; the presence of horizon 4 alone cannot skip final aggregation.
 

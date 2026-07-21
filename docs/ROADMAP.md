@@ -15,9 +15,10 @@
 - The isolated official-training profile is retained from clean `fed920e`: batch 384 uses 5.82 GB
   reserved under the 10-GB ceiling, while the configured compile wrapper captures zero graphs on
   `unroll`. Freeze batch 384 and report this ineffective-compile boundary in three-seed training.
-- Implement ordered multi-site Qwen interventions and treatment/restoration replay tests. Then
-  preregister a module-only binding mediator benchmark comparing population/local Jacobians, HVP,
-  AtP*, probes, magnitude, random controls, and direct patching. Do not call it a JEPA experiment.
+- Ordered multi-site Qwen interventions and treatment/restoration replay tests are implemented.
+  `LLM-QWEN-BINDING-MEDIATION-001` now preregisters a module-only comparison of population/local
+  attribution, HVP, AtP*, probes, magnitude, random controls, and direct patch/restore. Run the
+  token audit and protected capture unchanged; do not call this a JEPA experiment.
 - Only after a causally eligible component-outcome dataset exists, train a new trajectory
   Intervention-JEPA and evaluate composed/held-out interventions against every strong derivative
   and learned baseline.

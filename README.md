@@ -79,13 +79,20 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   the official 384 completed; batch 384 peaked at 5,821,693,952 reserved bytes. The official
   `torch.compile(jepa)` wrapper completed two `unroll` updates but Dynamo captured zero frames and
   zero graphs, so compilation is ineffective on the executed training entrypoint.
-- `PREREGISTERED_NOT_STARTED`: `WM-EBJEPA-TRAIN-001` freezes official seeds 1/1000/10000, batch
-  384, 12 epochs, all checkpoint hashes, and evaluation of epochs 9/10/11 under official-unbounded
-  and bound-corrected MPPI at the actual proposal scale 2.0.
+- `RUNNING`: `WM-EBJEPA-TRAIN-001` launched from clean commit `5065108` at
+  `2026-07-21T21:53:46Z`. It freezes official seeds 1/1000/10000, batch 384, 12 epochs, all
+  checkpoint hashes, and evaluation of epochs 9/10/11 under official-unbounded and
+  bound-corrected MPPI at the actual proposal scale 2.0. Seed 1 is active; epoch 0 completed in
+  `901.5` seconds and wrote a 33,793,861-byte checkpoint. No competence result exists yet.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
   offline tests; and a preregistered Qwen3-0.6B smoke runner.
+- `PREREGISTERED`: `LLM-QWEN-BINDING-MEDIATION-001` fixes a token-balanced four-binding treatment,
+  24/6/6 disjoint key/value pools, 56 module candidates, a train-only prefix of at most four nodes,
+  episode-clustered intervals, direct sufficiency/restoration, and matched nulls. This first study
+  tests a mediator set, not a JEPA, circuit, J-space, or workspace; a trajectory Intervention-JEPA
+  is conditional on producing an eligible causal dataset.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with

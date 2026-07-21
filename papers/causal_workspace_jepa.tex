@@ -227,7 +227,11 @@ MPPI (proposal scale 2.0, no effective norm bound) and a bound-only correction
 that retains scale 2.0 while projecting candidates and returned actions to
 2.45.  Each must average at least 0.80 success overall and 0.70 within every
 training seed before a bounded trained model is eligible for mechanistic audit.
-Training completion or loss alone is availability evidence.
+Training completion or loss alone is availability evidence.  The portfolio was
+launched from clean commit \code{5065108} at
+\code{2026-07-21T21:53:46Z}; at the present manuscript state seed 1 is active
+and epoch 0 completed in 901.5 seconds with a 33,793,861-byte checkpoint.
+This is operational availability, not competence or mechanism evidence.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
@@ -251,6 +255,31 @@ Circuit claims additionally require faithfulness rather than graph overlap
 direct match-and-copy induction-head precedent
 \cite{olsson2022induction,singh2024induction}; a binding benchmark is therefore
 a causal-localization test bed, not a novel behavioral mechanism.
+
+We prospectively register such a module-only benchmark before model execution.
+Each recipient/donor pair contains the same four keys and value multiset; the
+donor transposes exactly two values and changes the queried answer.  Patching
+the two changed positions at the first residual input defines treatment $T$.
+For score
+\[
+  s(x)=\operatorname{logit}_{x}(v_D)-\operatorname{logit}_{x}(v_R),
+  \qquad \Delta_T=s(T)-s(C),
+\]
+a frozen mediator set $S$ is tested by ratio-of-sums sufficiency and necessity,
+\[
+ Q(S)=\frac{\sum_e[s(C\oplus a^S_T)-s(C)]}{\sum_e\Delta_{T,e}},
+ \qquad
+ N(S)=\frac{\sum_e[s(T)-s(T\oplus a^S_C)]}{\sum_e\Delta_{T,e}}.
+\]
+The 56 candidates are attention and MLP module outputs at the final query
+position across all 28 blocks.  Population/local attribution, HVP, AtP*, probe,
+magnitude, and random rankings are frozen on train; the smallest qualifying
+prefix has at most four nodes.  Validation, token-held-out test, and paraphrase
+splits use direct patch and restoration, episode-clustered intervals, matched
+random sets, donor shuffles, norm/covariance controls, irrelevant positions,
+unqueried swaps, and answer-row permutations.  Passing this experiment would
+support a specific mediator set only.  It would neither validate a JEPA nor
+reconstruct a circuit without directed-edge and faithfulness tests.
 
 Population Jacobian averaging is prior art in the Jacobian Lens literature,
 and second-order/Hessian corrections to attribution patching are also prior art

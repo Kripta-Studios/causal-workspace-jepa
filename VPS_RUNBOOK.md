@@ -402,6 +402,19 @@ resolution and stores a floored direct norm. A proposed retrospective audit was 
 commit; there are also only two chords per action pair, insufficient for a joint conditional null.
 Retain v2 as numerical/vector calibration and do not launch a downstream analysis from it.
 
+The preregistered Qwen binding-mediation study first runs a tokenizer-only audit; it does not load
+Qwen weights or compete with EB-JEPA training for VRAM:
+
+```powershell
+$env:PYTHONPATH = "src"
+python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v1.yaml
+```
+
+Run it only from the clean pushed preregistration commit. Do not modify pools, templates, split
+counts, rankings, controls, or gates afterward. The protected Qwen capture must wait for a committed
+runner and for the active EB-JEPA process to release the GPU. Never launch a duplicate portfolio
+while `.cache/runs/eb_jepa_training_portfolio_status.json` says `RUNNING` and its process is alive.
+
 The working scientific paper is built locally with:
 
 ```powershell

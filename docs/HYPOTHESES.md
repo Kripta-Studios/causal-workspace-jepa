@@ -1218,3 +1218,107 @@ compositions, direct interaction was only `0.000429` of effect power, below `0.0
 `0.418` and linear regression `0.775`. The best learned predictor had negative effect correlation.
 On seen prompts, bilinear MSE was `0.00110` with correlation `0.9985`, so the held-out split exposed
 severe prompt memorization. Restricted H-LLM-01, H-LLM-02, and H-LLM-03 are false for this run.
+
+## LLM-QWEN-BINDING-MEDIATION-001 Preregistration
+
+Registered on 2026-07-22 before executing any prompt in this study through the pinned model. The
+tokenizer may be audited before model execution because token identity, length, and split membership
+are design invariants rather than scientific outcomes. No direct activation, logit, ranking, or
+mediation outcome may be inspected until the implementation, configuration, tests, documentation,
+commit, and push are complete.
+
+This is a module-mediation benchmark that may create an eligible dataset for a later trajectory
+Intervention-JEPA. It does not test a JEPA hypothesis itself. Match-and-copy and induction-head prior
+art precludes claiming the behavioral task as a new mechanism. Even a positive result is called a
+compact mediator set, not a circuit, J-space, workspace, or SOTA result.
+
+### Frozen data and treatment
+
+- Model: `Qwen/Qwen3-0.6B` at revision
+  `c1899de289a04d12100db370d81485cdf75e47ca`, FP32, eager attention, evaluation mode.
+- Each episode contains exactly four distinct key/value pairs. Recipient and donor have identical
+  keys, key order, prompt template, length, and value multiset. The donor is exactly one
+  transposition of two values; the queried key is one of the two affected bindings.
+- Token pools are literal and frozen in `configs/experiments/qwen_binding_mediation_v1.yaml`:
+  four calibration keys/values, 24 train, six validation, and six test. No key or value crosses
+  these pools. The paraphrase split reuses only the protected test token pool with a distinct fixed
+  template; it is not an independent token split and must be reported as a template shift.
+- Episode counts/seeds are calibration `16/421`, train `256/431`, validation `96/433`, test
+  `96/439`, and paraphrase `96/443`. Query positions cycle evenly; the swap partner cycles among
+  the other three positions. Rows are analyzed as episodes, never as independent node observations.
+- The token audit must prove for all 560 episodes: recipient/donor token-ID multisets match; lengths
+  match and are at most 96; exactly two positions differ; both next-token answers have length one;
+  and the queried answer changes. Failure stops the study before model outcomes.
+- Treatment `T`: at `blocks.0.resid_pre`, patch both changed token positions from the donor into the
+  recipient. In FP32 this full treatment must reproduce the donor final logits with maximum absolute
+  error at most `1e-6`; otherwise the mediation estimand is undefined and the study stops.
+
+### Eligibility and candidate nodes
+
+- A 16-episode excluded calibration run is used only to catch implementation failure. It cannot
+  tune layers, sites, prompts, pools, thresholds, or rankings.
+- Before localization, clean next-token accuracy and full-treatment donor-answer transfer must each
+  be at least `0.90` and `0.75`, respectively, on train, validation, test, and paraphrase. A failed
+  split is `INELIGIBLE_TASK`; ranking results remain descriptive and cannot decide H-LLM-15/16.
+- The candidates are fixed at 56 nodes: `attn_out` and `mlp_out` for every one of the 28 decoder
+  blocks, only at the final query position. Head-level analysis is excluded because post-`o_proj`
+  attention outputs cannot be reshaped into native heads. A later head study requires an exact
+  pre-`o_proj` reconstruction test and a new preregistration.
+- For episode `e` and candidate `c`, store the clean activation `a_C`, treated activation `a_T`, and
+  delta `a_T-a_C`. The behavioral score is
+  `s(x) = logit_x(donor_answer) - logit_x(recipient_answer)`. The treatment effect is
+  `Delta_T = s(T) - s(C)`. Full-vocabulary donor transfer and top-token identity are secondary
+  behavioral endpoints; candidate-only logits cannot establish specificity.
+
+### Train-only ranking and frozen mediator prefix
+
+- Rank all 56 nodes on train only using: a train-population gradient dotted with each episode delta,
+  exact episode-local attribution patching, a directional HVP/second-order correction, AtP*, a
+  leave-answer-value-out probe, activation-delta norm, and random order. These are localizers, not
+  causal conclusions.
+- For the population ranking, the mean gradient is estimated only from train episodes. No validation
+  or test outcome may choose gradient averaging, sign, score, layer band, site family, `k`, or tie
+  break. Ties use ascending layer and `attn_out` before `mlp_out`.
+- Directly execute train prefixes `k=1..4`. Choose the smallest population-ranked prefix whose
+  ratio-of-sums sufficiency and necessity are both at least `0.60`. If none passes, freeze the top
+  four as descriptive and mark `INELIGIBLE_MEDIATION`; no alternative subset search is allowed.
+
+For a frozen set `S`, aggregate before dividing:
+
+```text
+Q(S) = sum_e [s(C with treated states at S) - s(C)] / sum_e Delta_T
+N(S) = sum_e [s(T) - s(T with clean states restored at S)] / sum_e Delta_T
+```
+
+Bootstrap intervals resample whole episodes with 10,000 draws and seed 449. Sensitivity analyses
+leave out each query key and each answer value; they do not replace the primary episode bootstrap.
+
+### Controls and decisions
+
+- Execute 128 random sets of the same size, preserving module family and layer quartile; use the
+  finite-sample corrected Monte Carlo p-value `(1 + exceedances)/(129)`.
+- Execute donor shuffle matched by treatment-delta norm decile, a train-resampled/re-scaled delta,
+  the same delta at an irrelevant position, a swap of two unqueried values, and 256 answer-row
+  permutations for ranking. Report any control that cannot be matched rather than dropping it.
+- Execute every frozen population/local/HVP/AtP*/probe/magnitude set directly on validation, test,
+  and paraphrase. Ranking overlap alone is not an endpoint.
+
+**H-LLM-15 — Population ranking advantage.** Passes only if all eligibility gates hold and, on both
+the token-held-out test and template-shift paraphrase split, the population set exceeds the best
+local/HVP/AtP*/probe/magnitude set in `min(Q,N)` by at least `0.10`; the episode-bootstrap 95% lower
+bound of that paired difference is above zero; and it exceeds the p99 of the 128 matched random sets
+with Monte Carlo `p <= 0.01`. Validation is reported but cannot rescue a failed protected split.
+
+**H-LLM-16 — Specific compact mediation.** Independently passes only if all eligibility gates hold
+and, on both protected splits, `Q >= 0.50`, `N >= 0.50`, and both episode-bootstrap 95% lower bounds
+are at least `0.35`; sufficiency reproduces full-treatment donor transfer within `0.15`; restoration
+reduces donor transfer by at least `0.30`; and the correct donor exceeds donor-shuffle,
+norm/covariance-matched, irrelevant-position, and unqueried-swap controls by at least `0.20` of the
+full treatment effect. Report leave-one-node-out effects, but redundancy cannot be converted into a
+post-hoc node-removal rule.
+
+Passing H-LLM-15/16 supports level-4 specificity for a compact mediator set. Circuit level 5 remains
+false until directed paths/edges, replacement faithfulness, outside-set ablation, and minimality are
+tested prospectively. A trajectory Intervention-JEPA is registered only after this study produces
+an eligible causal dataset; its architecture and gates cannot be chosen using protected mediation
+outcomes.
