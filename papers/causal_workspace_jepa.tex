@@ -175,8 +175,10 @@ independent action-space check.  The first clean integration smoke passed its
 original gates but is superseded because it omitted Python-RNG seeding and an
 independent replay.  Corrected V2 freezes deterministic Python/NumPy/Torch/CUDA
 settings and an exact two-process data/model/loss/action fingerprint.  V2 and a
-32-seed post-discovery CEM/MPPI confirmation are preregistered but not yet
-reported as retained results.  Planning competence and later circuit tests
+32-seed post-discovery CEM/MPPI confirmation were preregistered.  Corrected V2
+ran from clean \code{9a18008}: all 12 gates pass and both subprocesses match
+fingerprint \code{16650872...234a1}.  The planner confirmation is not yet a
+retained result.  Planning competence and later circuit tests
 must compare original and constraint-corrected MPPI.
 
 For language models, Jacobian transport and the proposal that a sparse,
@@ -273,6 +275,7 @@ WM-LEWM-001 & source-informed small model & Failed registered gates & \level{Cau
 WM-POPULATION-JACOBIAN-001 & recurrent population transport & Rejected numerical gate & \level{Availability} & Numerical diagnostic only; no protected scientific claim is admissible. \\
 WM-ACTION-PATH-CALIBRATION-001/002 & decoded path cancellation & Calibration only & \level{Availability} & Validation-only numerical and prospective-threshold calibration. \\
 WM-EBJEPA-RUNTIME-001 & SM120 runtime boundary & Smoke validated & \level{Availability} & Exact pin fails matched kernels; disclosed compatible runtime passes. \\
+WM-EBJEPA-INTEGRATION-002 & deterministic official path & Smoke validated & \level{Availability} & Dataset/train/checkpoint/planner smoke passes; no competence claim. \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -879,8 +882,8 @@ schema does not establish shared semantics or shared mechanism.
   claim bitwise dependency equivalence.
   The Two Rooms dependency declaration omits three imported packages, and an
   exploratory MPPI action exceeded its configured norm.  Integration V1 is
-  superseded for incomplete RNG control; corrected integration and planner
-  diagnostics are pending at the time of this draft.
+  superseded for incomplete RNG control; corrected integration passes exact
+  replay, while the planner diagnostic remains pending at the time of this draft.
   \item The first JEPA population-transport study is numerically rejected.  The
   action-path study remains validation-only calibration.  Its cancellation/error
   association has a shared-denominator confound, and the parent artifact omits
@@ -928,6 +931,8 @@ configuration and hypothesis registration.  The principal artifacts are:
   (clean \code{288f663}; 19,176.20 seconds).
   \item \code{artifacts/metrics/eb\_jepa\_runtime\_compatibility.json}
   (clean \code{15d88ce}; all eight frozen gates pass).
+  \item \code{artifacts/metrics/eb\_jepa\_two\_rooms\_integration\_v2.json}
+  (clean \code{9a18008}; exact two-process fingerprint replay).
 \end{itemize}
 
 Each experiment is replayed with

@@ -65,6 +65,10 @@ and YAML files remain authoritative for every threshold and hyperparameter.
     clean diagnostic shows that Torch 2.6+cu126 detects the device but its compiled list ends at
     SM90 and matmul, Conv2D, and GRU all fail. Torch 2.10+cu128 includes SM120 and passes the matched
     kernels. This establishes the required local runtime deviation, not model or mechanism evidence.
+12. **The corrected official Two Rooms integration is deterministic and executable.** V1 is
+    superseded for incomplete RNG control. V2 ran two independent processes from clean `9a18008`;
+    all 12 dataset/train/checkpoint/planner/memory gates passed and the full fingerprint matched
+    exactly. This is Availability-level integration evidence, not learned prediction or planning.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -77,6 +81,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 | --- | --- | --- | --- | --- | --- | --- |
 | WM-EBJEPA-CONTRACT-001 | The pinned official Impala/one-layer-GRU contract supports exact gate decomposition and localized gate edits under the current runtime; no learned mechanism is tested. | Availability | `configs/experiments/eb_jepa_official_contract_smoke.yaml` | `artifacts/metrics/eb_jepa_contract_smoke.json` | `979c2d6` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-RUNTIME-001 | The exact Torch 2.6/cu126 pin omits SM120 and fails matched GPU kernels; the disclosed Torch 2.10/cu128 runtime includes SM120 and passes them. | Availability | `configs/experiments/eb_jepa_runtime_compatibility.yaml` | `artifacts/metrics/eb_jepa_runtime_compatibility.json` | clean `15d88ce` | `SMOKE_VALIDATED` |
+| WM-EBJEPA-INTEGRATION-002 | The pinned official Two Rooms dataset/train/checkpoint/planner path executes deterministically under the disclosed compatible runtime; this is not competence. | Availability | `configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml` | `artifacts/metrics/eb_jepa_two_rooms_integration_v2.json` | clean `9a18008` | `SMOKE_VALIDATED` |
 | WM-ACTION-PATH-CALIBRATION-002 | High-resolution validation-only refinement improves vector integration but remains underresolved in two seeds and cannot repair the shared-denominator/design confound; no protected test was touched. | Availability | `configs/experiments/lewm_action_path_calibration_v2.yaml` | `artifacts/metrics/lewm_action_path_calibration_v2.json` | clean `288f663` | `CALIBRATION_ONLY` |
 | WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and a shared-denominator-confounded cancellation/error association; it makes no scientific claim. | Availability | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |
 | LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is answer-row specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Specificity | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |

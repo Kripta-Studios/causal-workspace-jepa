@@ -60,9 +60,9 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
 - `SUPERSEDED_NONDETERMINISTIC`: clean `WM-EBJEPA-INTEGRATION-001` passed its original dataset,
   train, checkpoint, planner, and memory gates, but omitted Python RNG seeding and independent
   replay. Its artifact is preserved and no result is accepted from it.
-- `IMPLEMENTED_NOT_RUN`: corrected `WM-EBJEPA-INTEGRATION-002` covers the same pinned Two Rooms
+- `SMOKE_VALIDATED`: corrected `WM-EBJEPA-INTEGRATION-002` ran from clean `9a18008` over the pinned Two Rooms
   official dataset, Impala/GRU forward/backward, checkpoint restoration, MPPI call, and peak memory.
-  It adds deterministic Python/NumPy/Torch/CUDA settings and exact two-process fingerprint replay.
+  All 12 gates pass, including exact two-process fingerprint replay (`16650872...234a1`).
   Upstream omits scipy, pandas, and PyYAML from the dependencies required by this path.
 - `IMPLEMENTED_NOT_RUN`: post-discovery planner confirmation freezes a 32-seed matched CEM/MPPI
   control. Exploratory execution found CEM `0/32` versus MPPI `32/32` action-norm violations under

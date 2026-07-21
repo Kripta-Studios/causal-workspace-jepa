@@ -22,7 +22,7 @@
   that upstream omits scipy, pandas, and PyYAML from the required path.
 - [x] Retain and supersede clean `WM-EBJEPA-INTEGRATION-001`: its original gates passed, but missing
   Python RNG seeding and an independent replay make it nondeterministic/ineligible.
-- [ ] Commit/push and retain deterministic `WM-EBJEPA-INTEGRATION-002` with exact cross-process
+- [x] Commit/push and retain deterministic `WM-EBJEPA-INTEGRATION-002` from clean `9a18008` with exact cross-process
   batch/model/loss/action fingerprint replay.
 - [ ] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation; do not silently patch
   the upstream planner before comparing original and corrected planning.

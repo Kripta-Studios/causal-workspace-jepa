@@ -80,6 +80,11 @@ independent Python processes. The retained gate requires an exact SHA-256 match 
 batch, post-update model state, loss, parameter delta, planned action, and planner losses. Its output
 is `artifacts/metrics/eb_jepa_two_rooms_integration_v2.json`; v1 is never overwritten.
 
+Final v2 result from clean `9a18008`: `SMOKE_VALIDATED`, all 12 gates pass. The two independent
+subprocesses exactly match fingerprint `16650872debe76818197183888877d90e76ed27408f67c569cf3d9df478234a1`.
+The official four-step BF16 loss is `9.659334`, parameter delta is `.001000002`, checkpoint restore
+error is zero, and peak reserved memory is `155,189,248` bytes. No numbered hypothesis is decided.
+
 ## WM-EBJEPA-PLANNER-CONSTRAINT-001 Post-discovery Confirmation
 
 Registered on 2026-07-21 after a manual random-weight official-model smoke returned an MPPI action

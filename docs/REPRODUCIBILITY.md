@@ -169,6 +169,9 @@ not seed Python's `random` or require an independent replay. The corrected
 CUDNN determinism, and the CUBLAS workspace contract. Two fresh subprocesses must exactly match a
 SHA-256 fingerprint over batch bytes, post-update model state, loss, parameter delta, action, and
 planner losses. V2 writes a new path and never overwrites v1.
+The retained v2 run started from clean `9a1800818404fde5841c74eef1dae5d0cab38232` and both
+subprocesses produced fingerprint
+`16650872debe76818197183888877d90e76ed27408f67c569cf3d9df478234a1`; all 12 gates pass.
 
 `WM-EBJEPA-PLANNER-CONSTRAINT-001` is separately registered as post-discovery:
 it compares official CEM and MPPI over seeds 0--31 under an identical deterministic objective. No

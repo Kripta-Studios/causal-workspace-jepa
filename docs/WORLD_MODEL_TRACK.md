@@ -52,6 +52,10 @@ The first clean integration run from `f0e7a3e` passed its original gates but is 
 and Torch were seeded while Python `random`, used by the generator, was not, and no independent
 replay was required. Corrected `WM-EBJEPA-INTEGRATION-002` retains the exact same model/data/planner
 settings and requires exact cross-process hashes under deterministic CUDA settings.
+V2 ran from clean `9a18008`; all 12 gates pass and both subprocesses match fingerprint
+`16650872...234a1`. The minimal BF16 loss is `9.6593`, exact checkpoint replay error is zero, and
+peak reserved memory is about 148 MiB. This makes full training executable but supplies no
+competence or mechanism result.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20

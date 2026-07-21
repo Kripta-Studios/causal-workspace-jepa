@@ -20,6 +20,10 @@
   gates: it omitted `random.seed`, and the official generator uses Python randomness. The same-seed
   clean/exploratory losses differed (`11.5872` versus `10.0157`). Corrected v2 preserves all model
   settings and adds exact independent-process hashes over data, updated weights, loss, and planner.
+- Corrected `WM-EBJEPA-INTEGRATION-002` then ran from clean `9a18008`; all 12 gates passed. Both
+  subprocesses produced fingerprint `16650872...234a1`, the BF16 loss was `9.6593`, checkpoint
+  restore error was zero, and peak reserved GPU memory was `155,189,248` bytes. This validates only
+  the minimal official execution path, not learned prediction or planning competence.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 
