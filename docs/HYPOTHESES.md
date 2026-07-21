@@ -104,6 +104,12 @@ engineering confirmation, not a prospective scientific hypothesis.
 - Scientific consequence: official planning competence must be compared under original and
   constraint-corrected MPPI before any recurrent/action circuit or workspace interpretation.
 
+Final post-discovery confirmation from clean `da30443`: `CONFIRMED_UPSTREAM_DEFECT`, all seven
+gates pass. CEM violates in `0/32` seeds with maximum observed norm `2.347382`; MPPI violates in
+`32/32`, with median `6.448531` and maximum `8.301845`. Source gates confirm the CEM/MPPI
+enforcement asymmetry and absent `DotWall.step` action-space check. No numbered scientific
+hypothesis is decided.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

@@ -57,6 +57,13 @@ V2 ran from clean `9a18008`; all 12 gates pass and both subprocesses match finge
 peak reserved memory is about 148 MiB. This makes full training executable but supplies no
 competence or mechanism result.
 
+The frozen planner confirmation ran from clean `da30443`. CEM respected the `2.45` norm in all 32
+seeds, while MPPI violated it in all 32 (median maximum `6.4485`, maximum `8.3018`). The pinned MPPI
+method never references `max_norms`, and `DotWall.step` does not enforce its declared action space.
+This confirms a software/configuration defect. It does not establish that published planning
+competence disappears; the next reproduction must report original and constraint-corrected MPPI
+side by side before the planner is eligible for mechanistic claims.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,

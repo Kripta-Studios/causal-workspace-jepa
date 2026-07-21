@@ -1,0 +1,334 @@
+{
+  "all_passed": true,
+  "claim": "At pinned revision 966e61e..., official CEM enforces the configured 2.45 action norm while official MPPI does not. Under an identical deterministic control objective, the frozen 32-seed confirmation distinguishes the implementations; DotWall.step does not independently enforce its action-space boundary.",
+  "evidence_level": "Availability",
+  "experiment_id": "WM-EBJEPA-PLANNER-CONSTRAINT-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 349.739,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "orchestration_wall_seconds": 3.0390642000129446,
+  "passes": {
+    "cem_never_violates": true,
+    "cem_source_contains_norm_enforcement": true,
+    "environment_passes_action_without_bound_check": true,
+    "frozen_32_seed_design": true,
+    "mppi_source_omits_norm_enforcement": true,
+    "mppi_violation_is_material": true,
+    "mppi_violation_replication": true
+  },
+  "post_discovery_confirmation": true,
+  "probe": {
+    "design": {
+      "max_norm": 2.45,
+      "n_iters": 3,
+      "num_elites": 16,
+      "num_samples": 128,
+      "num_seeds": 32,
+      "objective": "maximize terminal cumulative x under identical deterministic unroll",
+      "plan_length": 3,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    "rows": [
+      {
+        "cem_max_abs_component": 2.241377353668213,
+        "cem_max_norm": 2.242662191390991,
+        "mppi_max_abs_component": 6.619302272796631,
+        "mppi_max_norm": 6.627798080444336,
+        "seed": 0
+      },
+      {
+        "cem_max_abs_component": 2.246119737625122,
+        "cem_max_norm": 2.260268211364746,
+        "mppi_max_abs_component": 5.222081184387207,
+        "mppi_max_norm": 5.7636871337890625,
+        "seed": 1
+      },
+      {
+        "cem_max_abs_component": 2.257431983947754,
+        "cem_max_norm": 2.2752459049224854,
+        "mppi_max_abs_component": 5.585475921630859,
+        "mppi_max_norm": 6.0679802894592285,
+        "seed": 2
+      },
+      {
+        "cem_max_abs_component": 2.2191238403320312,
+        "cem_max_norm": 2.222670078277588,
+        "mppi_max_abs_component": 5.0987958908081055,
+        "mppi_max_norm": 5.098914623260498,
+        "seed": 3
+      },
+      {
+        "cem_max_abs_component": 2.246509075164795,
+        "cem_max_norm": 2.2528445720672607,
+        "mppi_max_abs_component": 4.327206611633301,
+        "mppi_max_norm": 5.325803756713867,
+        "seed": 4
+      },
+      {
+        "cem_max_abs_component": 2.170529365539551,
+        "cem_max_norm": 2.22654390335083,
+        "mppi_max_abs_component": 6.572091102600098,
+        "mppi_max_norm": 6.952221870422363,
+        "seed": 5
+      },
+      {
+        "cem_max_abs_component": 2.284635066986084,
+        "cem_max_norm": 2.285384178161621,
+        "mppi_max_abs_component": 5.370585918426514,
+        "mppi_max_norm": 5.48073673248291,
+        "seed": 6
+      },
+      {
+        "cem_max_abs_component": 2.221012592315674,
+        "cem_max_norm": 2.279788017272949,
+        "mppi_max_abs_component": 6.449253082275391,
+        "mppi_max_norm": 6.449524402618408,
+        "seed": 7
+      },
+      {
+        "cem_max_abs_component": 2.312124729156494,
+        "cem_max_norm": 2.312554121017456,
+        "mppi_max_abs_component": 6.110394477844238,
+        "mppi_max_norm": 6.447538375854492,
+        "seed": 8
+      },
+      {
+        "cem_max_abs_component": 2.3121368885040283,
+        "cem_max_norm": 2.3221354484558105,
+        "mppi_max_abs_component": 6.785234451293945,
+        "mppi_max_norm": 7.5216450691223145,
+        "seed": 9
+      },
+      {
+        "cem_max_abs_component": 2.1151251792907715,
+        "cem_max_norm": 2.203888416290283,
+        "mppi_max_abs_component": 6.206064224243164,
+        "mppi_max_norm": 6.28726053237915,
+        "seed": 10
+      },
+      {
+        "cem_max_abs_component": 2.216609001159668,
+        "cem_max_norm": 2.2652668952941895,
+        "mppi_max_abs_component": 5.903676986694336,
+        "mppi_max_norm": 6.578503608703613,
+        "seed": 11
+      },
+      {
+        "cem_max_abs_component": 2.2454049587249756,
+        "cem_max_norm": 2.264061689376831,
+        "mppi_max_abs_component": 5.883726119995117,
+        "mppi_max_norm": 6.32228422164917,
+        "seed": 12
+      },
+      {
+        "cem_max_abs_component": 2.3175699710845947,
+        "cem_max_norm": 2.3230960369110107,
+        "mppi_max_abs_component": 5.938961029052734,
+        "mppi_max_norm": 6.305899143218994,
+        "seed": 13
+      },
+      {
+        "cem_max_abs_component": 2.268336296081543,
+        "cem_max_norm": 2.273305654525757,
+        "mppi_max_abs_component": 6.721036911010742,
+        "mppi_max_norm": 6.765580654144287,
+        "seed": 14
+      },
+      {
+        "cem_max_abs_component": 2.3234245777130127,
+        "cem_max_norm": 2.325382709503174,
+        "mppi_max_abs_component": 7.302004814147949,
+        "mppi_max_norm": 8.233325004577637,
+        "seed": 15
+      },
+      {
+        "cem_max_abs_component": 2.313539505004883,
+        "cem_max_norm": 2.3261842727661133,
+        "mppi_max_abs_component": 6.902056694030762,
+        "mppi_max_norm": 7.072323322296143,
+        "seed": 16
+      },
+      {
+        "cem_max_abs_component": 2.2662012577056885,
+        "cem_max_norm": 2.285942554473877,
+        "mppi_max_abs_component": 6.28806209564209,
+        "mppi_max_norm": 6.30916166305542,
+        "seed": 17
+      },
+      {
+        "cem_max_abs_component": 2.2386791706085205,
+        "cem_max_norm": 2.24332857131958,
+        "mppi_max_abs_component": 6.891695499420166,
+        "mppi_max_norm": 7.115718364715576,
+        "seed": 18
+      },
+      {
+        "cem_max_abs_component": 2.2853801250457764,
+        "cem_max_norm": 2.28875470161438,
+        "mppi_max_abs_component": 6.221017837524414,
+        "mppi_max_norm": 6.245014190673828,
+        "seed": 19
+      },
+      {
+        "cem_max_abs_component": 2.242290735244751,
+        "cem_max_norm": 2.2595646381378174,
+        "mppi_max_abs_component": 4.940108299255371,
+        "mppi_max_norm": 5.498963356018066,
+        "seed": 20
+      },
+      {
+        "cem_max_abs_component": 2.221048355102539,
+        "cem_max_norm": 2.2523193359375,
+        "mppi_max_abs_component": 7.516676902770996,
+        "mppi_max_norm": 7.614708423614502,
+        "seed": 21
+      },
+      {
+        "cem_max_abs_component": 2.3199846744537354,
+        "cem_max_norm": 2.3242785930633545,
+        "mppi_max_abs_component": 5.865819931030273,
+        "mppi_max_norm": 5.9638991355896,
+        "seed": 22
+      },
+      {
+        "cem_max_abs_component": 2.2868072986602783,
+        "cem_max_norm": 2.3176238536834717,
+        "mppi_max_abs_component": 6.534167289733887,
+        "mppi_max_norm": 6.64448356628418,
+        "seed": 23
+      },
+      {
+        "cem_max_abs_component": 2.218024730682373,
+        "cem_max_norm": 2.2834370136260986,
+        "mppi_max_abs_component": 5.910584926605225,
+        "mppi_max_norm": 6.471780776977539,
+        "seed": 24
+      },
+      {
+        "cem_max_abs_component": 2.193601608276367,
+        "cem_max_norm": 2.193922996520996,
+        "mppi_max_abs_component": 7.259430885314941,
+        "mppi_max_norm": 8.301844596862793,
+        "seed": 25
+      },
+      {
+        "cem_max_abs_component": 2.3259997367858887,
+        "cem_max_norm": 2.347381830215454,
+        "mppi_max_abs_component": 7.433804988861084,
+        "mppi_max_norm": 7.576841831207275,
+        "seed": 26
+      },
+      {
+        "cem_max_abs_component": 2.206752300262451,
+        "cem_max_norm": 2.2589194774627686,
+        "mppi_max_abs_component": 8.17115306854248,
+        "mppi_max_norm": 8.292200088500977,
+        "seed": 27
+      },
+      {
+        "cem_max_abs_component": 2.2773051261901855,
+        "cem_max_norm": 2.277484893798828,
+        "mppi_max_abs_component": 5.657149314880371,
+        "mppi_max_norm": 6.302155017852783,
+        "seed": 28
+      },
+      {
+        "cem_max_abs_component": 2.099801540374756,
+        "cem_max_norm": 2.2046942710876465,
+        "mppi_max_abs_component": 5.292593002319336,
+        "mppi_max_norm": 5.774011135101318,
+        "seed": 29
+      },
+      {
+        "cem_max_abs_component": 2.207387924194336,
+        "cem_max_norm": 2.228415012359619,
+        "mppi_max_abs_component": 5.34670877456665,
+        "mppi_max_norm": 5.636033535003662,
+        "seed": 30
+      },
+      {
+        "cem_max_abs_component": 2.231879711151123,
+        "cem_max_norm": 2.2821426391601562,
+        "mppi_max_abs_component": 6.296998023986816,
+        "mppi_max_norm": 6.570497035980225,
+        "seed": 31
+      }
+    ],
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "python": "3.12.13",
+      "torch": "2.10.0+cu128"
+    },
+    "source_contract": {
+      "cem_plan_mentions_max_norms": true,
+      "environment_step_checks_action_space": false,
+      "environment_step_passes_action_to_transition": true,
+      "mppi_plan_mentions_max_norms": false
+    },
+    "source_revision": "966e61e9285b3a876f49b9774e9720d9a99a7925",
+    "summary": {
+      "cem_max_observed_norm": 2.347381830215454,
+      "cem_median_max_norm": 2.274275779724121,
+      "cem_violation_count": 0,
+      "cem_violation_fraction": 0.0,
+      "mppi_max_observed_norm": 8.301844596862793,
+      "mppi_median_max_norm": 6.44853138923645,
+      "mppi_violation_count": 32,
+      "mppi_violation_fraction": 1.0
+    }
+  },
+  "probe_stderr": "",
+  "scientific_boundary": "This confirms a planner implementation/configuration defect, not model competence or a learned JEPA mechanism. Published success must be reproduced with both original and constraint-corrected MPPI before interpreting action or recurrent circuits.",
+  "status": "CONFIRMED_UPSTREAM_DEFECT"
+}

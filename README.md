@@ -64,9 +64,10 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   official dataset, Impala/GRU forward/backward, checkpoint restoration, MPPI call, and peak memory.
   All 12 gates pass, including exact two-process fingerprint replay (`16650872...234a1`).
   Upstream omits scipy, pandas, and PyYAML from the dependencies required by this path.
-- `IMPLEMENTED_NOT_RUN`: post-discovery planner confirmation freezes a 32-seed matched CEM/MPPI
-  control. Exploratory execution found CEM `0/32` versus MPPI `32/32` action-norm violations under
-  configured maximum `2.45`; this must be retained cleanly before reporting it as confirmed.
+- `CONFIRMED_UPSTREAM_DEFECT`: the post-discovery planner confirmation ran from clean `da30443`.
+  Under the frozen matched control, CEM had `0/32` action-norm violations (maximum `2.3474`) while
+  MPPI had `32/32` (median `6.4485`, maximum `8.3018`) under configured maximum `2.45`. `DotWall`
+  adds no independent bound check. This is an implementation result, not learned-model evidence.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

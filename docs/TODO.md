@@ -24,8 +24,11 @@
   Python RNG seeding and an independent replay make it nondeterministic/ineligible.
 - [x] Commit/push and retain deterministic `WM-EBJEPA-INTEGRATION-002` from clean `9a18008` with exact cross-process
   batch/model/loss/action fingerprint replay.
-- [ ] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation; do not silently patch
+- [x] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation from clean `da30443`;
+  CEM is `0/32`, MPPI `32/32`. Do not silently patch
   the upstream planner before comparing original and corrected planning.
+- [ ] Implement a separately named constraint-corrected MPPI adapter with exact within-bound tests;
+  preserve the original official implementation as the reproduction baseline.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
 

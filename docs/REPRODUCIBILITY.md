@@ -175,7 +175,10 @@ subprocesses produced fingerprint
 
 `WM-EBJEPA-PLANNER-CONSTRAINT-001` is separately registered as post-discovery:
 it compares official CEM and MPPI over seeds 0--31 under an identical deterministic objective. No
-retained result may be described until both run from a clean pushed implementation commit.
+retained result may be described until both run from a clean pushed implementation commit. The
+retained run started from clean `da30443011f25ccbc689bc0595063720aadbb6d6`; all seven gates pass
+in `3.04` seconds. The artifact stores all 64 per-seed planner maxima and source-contract booleans,
+not only the aggregate violation counts.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an

@@ -177,8 +177,10 @@ independent replay.  Corrected V2 freezes deterministic Python/NumPy/Torch/CUDA
 settings and an exact two-process data/model/loss/action fingerprint.  V2 and a
 32-seed post-discovery CEM/MPPI confirmation were preregistered.  Corrected V2
 ran from clean \code{9a18008}: all 12 gates pass and both subprocesses match
-fingerprint \code{16650872...234a1}.  The planner confirmation is not yet a
-retained result.  Planning competence and later circuit tests
+fingerprint \code{16650872...234a1}.  The planner confirmation then ran from
+clean \code{da30443}.  CEM violated the configured $2.45$ norm in $0/32$
+seeds, whereas MPPI violated in $32/32$ (median $6.4485$, maximum $8.3018$);
+all seven source/dynamic gates pass.  Planning competence and later circuit tests
 must compare original and constraint-corrected MPPI.
 
 For language models, Jacobian transport and the proposal that a sparse,
@@ -276,6 +278,7 @@ WM-POPULATION-JACOBIAN-001 & recurrent population transport & Rejected numerical
 WM-ACTION-PATH-CALIBRATION-001/002 & decoded path cancellation & Calibration only & \level{Availability} & Validation-only numerical and prospective-threshold calibration. \\
 WM-EBJEPA-RUNTIME-001 & SM120 runtime boundary & Smoke validated & \level{Availability} & Exact pin fails matched kernels; disclosed compatible runtime passes. \\
 WM-EBJEPA-INTEGRATION-002 & deterministic official path & Smoke validated & \level{Availability} & Dataset/train/checkpoint/planner smoke passes; no competence claim. \\
+WM-EBJEPA-PLANNER-CONSTRAINT-001 & action-bound audit & Confirmed defect & \level{Availability} & MPPI ignores the configured norm; CEM and source controls pass. \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -883,7 +886,8 @@ schema does not establish shared semantics or shared mechanism.
   The Two Rooms dependency declaration omits three imported packages, and an
   exploratory MPPI action exceeded its configured norm.  Integration V1 is
   superseded for incomplete RNG control; corrected integration passes exact
-  replay, while the planner diagnostic remains pending at the time of this draft.
+  replay, and the planner bound defect is confirmed.  Neither establishes
+  trained planning competence.
   \item The first JEPA population-transport study is numerically rejected.  The
   action-path study remains validation-only calibration.  Its cancellation/error
   association has a shared-denominator confound, and the parent artifact omits
@@ -933,6 +937,8 @@ configuration and hypothesis registration.  The principal artifacts are:
   (clean \code{15d88ce}; all eight frozen gates pass).
   \item \code{artifacts/metrics/eb\_jepa\_two\_rooms\_integration\_v2.json}
   (clean \code{9a18008}; exact two-process fingerprint replay).
+  \item \code{artifacts/metrics/eb\_jepa\_planner\_constraint.json}
+  (clean \code{da30443}; all seven post-discovery gates pass).
 \end{itemize}
 
 Each experiment is replayed with
@@ -974,10 +980,12 @@ circuit and workspace acceptance gates fail.  Decoded recurrent action-path
 cancellation is closed as a scientific route in the current small model because
 the acquired artifact cannot identify the proposed geometry.  The official
 EB-JEPA one-layer recurrence is now exactly decomposed and intervention-ready,
-but remains random-weight engineering evidence.  The next discriminating studies
-should use a precisely replayed Qwen treatment to compare module mediator rankings
-and reproduce the competent official EB-JEPA planner before auditing recurrent
-action routes.  Only an eligible causal dataset from
+but remains random-weight engineering evidence.  Its official MPPI planner also
+ignores a configured action-norm bound that CEM enforces; the environment supplies
+no fallback check.  The next discriminating studies should use a precisely
+replayed Qwen treatment to compare module mediator rankings and reproduce the
+competent official EB-JEPA planner under both original and corrected MPPI before
+auditing recurrent action routes.  Only an eligible causal dataset from
 the former can support a new trajectory Intervention-JEPA test.  Direct held-out
 behavior, grouped uncertainty, cross-model replication, and controls separating
 native mechanism from flexible prediction remain mandatory.

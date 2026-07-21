@@ -24,6 +24,12 @@
   subprocesses produced fingerprint `16650872...234a1`, the BF16 loss was `9.6593`, checkpoint
   restore error was zero, and peak reserved GPU memory was `155,189,248` bytes. This validates only
   the minimal official execution path, not learned prediction or planning competence.
+- `WM-EBJEPA-PLANNER-CONSTRAINT-001` then ran from clean `da30443`; all seven frozen gates passed.
+  CEM violated `max_norms=2.45` in `0/32` seeds (maximum `2.3474`), while MPPI violated it in
+  `32/32` (median `6.4485`, maximum `8.3018`). Official MPPI does not use `max_norms`, and
+  `DotWall.step` does not check `action_space` before applying the transition. This confirms an
+  upstream planner defect, not failure of the reported trained model; original and corrected MPPI
+  must now be compared during competence reproduction.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 

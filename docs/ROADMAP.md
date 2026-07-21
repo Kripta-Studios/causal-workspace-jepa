@@ -9,6 +9,9 @@
   remaining upstream dependencies without changing model/data/config semantics, reproduce competent
   three-seed Two Rooms planning, and only afterward preregister the recurrent action/gate/hidden-
   state necessity/sufficiency audit.
+- Preserve official MPPI as the reproduction baseline, add a separately named constraint-corrected
+  implementation, and report competence under both. Do not interpret recurrent/action circuits if
+  success depends on out-of-contract actions.
 - Implement ordered multi-site Qwen interventions and treatment/restoration replay tests. Then
   preregister a module-only binding mediator benchmark comparing population/local Jacobians, HVP,
   AtP*, probes, magnitude, random controls, and direct patching. Do not call it a JEPA experiment.
