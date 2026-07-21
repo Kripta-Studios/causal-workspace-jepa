@@ -210,6 +210,15 @@ updates, but records zero Dynamo frames and zero unique graphs.  Thus the
 configured wrapper is ineffective on the executed \code{unroll} path.  This
 decides no scientific hypothesis.
 
+A second post-discovery planner audit finds that both official MPPI and CEM
+YAML files declare \code{var\_scale=1.5}.  CEM consumes this keyword, whereas
+MPPI names its parameter \code{max\_std}, accepts unmatched keywords through
+\code{**kwargs}, and therefore executes with its default $2.0$.  The clean
+\code{4f0cc80} confirmation passes six frozen gates; explicit keyword
+translation yields MPPI scale $1.5$.  The official as-executed $2.0$ arm,
+bound-corrected $2.0$ arm, and any intention-corrected $1.5$ arm must remain
+separately labeled.  This is not model-mechanism evidence.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests

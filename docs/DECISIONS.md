@@ -18,6 +18,11 @@
   source config, but state that the custom `unroll` entrypoint captured zero Dynamo graphs; do not
   attribute throughput or equivalence to compiled execution.
 
+- Treat MPPI proposal scale 2.0 as the official as-executed baseline even though its YAML says
+  `var_scale=1.5`; the constructor silently ignores that key. The bound-corrected arm must retain
+  2.0 to isolate the action-constraint change. If evaluated, scale-1.5 MPPI is a separately named
+  intention-corrected arm, never a replacement for the official result.
+
 - Install the official Two Rooms path with the committed isolated lock and `--no-deps` editable
   source install. Never run upstream `uv sync` in the SM120 environment because it would replace
   Torch 2.10/cu128 with the incompatible Torch 2.6 pin. Record the upstream omission of `scipy`,

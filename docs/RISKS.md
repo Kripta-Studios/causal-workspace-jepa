@@ -12,6 +12,10 @@ Status: `ACTIVE`.
   Preserve the flag for source-config fidelity and report execution as eager unless a future
   source change compiles the actual entrypoint.
 
+- `MITIGATED_PLANNER_KEY_MISMATCH`: MPPI YAML declares `var_scale=1.5`, but the constructor expects
+  `max_std`; `**kwargs` silently absorbs the key and actual MPPI scale is 2.0. CEM consumes 1.5.
+  Every evaluation must report the executed scale and keep keyword correction as a separate arm.
+
 - `MITIGATED`: the bounded required suite passes `AUDIT-COMPLETE-001`, but a completion audit is not
   scientific validation. Both reconstructed circuit candidates remain rejected and the workspace
   hypothesis remains null in the tested systems.

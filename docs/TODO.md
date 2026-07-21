@@ -27,8 +27,8 @@
 - [x] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation from clean `da30443`;
   CEM is `0/32`, MPPI `32/32`. Do not silently patch
   the upstream planner before comparing original and corrected planning.
-- [ ] Commit/push and retain `WM-EBJEPA-PLANNER-CONFIG-001`, confirming whether MPPI silently
-  ignores YAML `var_scale=1.5` and executes with default `max_std=2.0`.
+- [x] Commit/push and retain `WM-EBJEPA-PLANNER-CONFIG-001` from clean `4f0cc80`: all six gates
+  pass; MPPI silently ignores YAML `var_scale=1.5` and executes with default `max_std=2.0`.
 - [x] Implement/preregister a separately named constraint-corrected MPPI adapter with exact
   no-bound official-equivalence and within-bound cost/return tests.
 - [x] Commit/push and retain `WM-EBJEPA-MPPI-CORRECTION-001` from clean `f58308a`; all five gates

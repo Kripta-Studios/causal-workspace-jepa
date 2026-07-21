@@ -68,6 +68,9 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   Under the frozen matched control, CEM had `0/32` action-norm violations (maximum `2.3474`) while
   MPPI had `32/32` (median `6.4485`, maximum `8.3018`) under configured maximum `2.45`. `DotWall`
   adds no independent bound check. This is an implementation result, not learned-model evidence.
+- `CONFIRMED_UPSTREAM_CONFIG_MISMATCH`: `WM-EBJEPA-PLANNER-CONFIG-001` ran from clean `4f0cc80`.
+  Both planner YAMLs specify `var_scale=1.5`, but MPPI expects `max_std`, silently consumes the
+  unknown key through `**kwargs`, and executes with default `2.0`; CEM actually uses `1.5`.
 - `SMOKE_VALIDATED`: `WM-EBJEPA-MPPI-CORRECTION-001` ran from clean `f58308a`. Across 32 seeds,
   the separately named constrained planner matched official MPPI exactly when bounds were disabled
   (maximum action/loss difference `0.0`) and produced zero cost-input or returned-action violations

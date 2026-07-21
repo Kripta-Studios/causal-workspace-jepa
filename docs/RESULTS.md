@@ -79,6 +79,10 @@ and YAML files remain authoritative for every threshold and hyperparameter.
     The official `torch.compile(jepa)` call created an `OptimizedModule`, yet the two actual custom
     `unroll` updates captured zero Dynamo frames and zero graphs. This is Availability-level
     engineering evidence and does not change the model's scientific result.
+15. **The official MPPI and CEM YAMLs do not execute with matched proposal scales.** Both specify
+    `var_scale=1.5`, but MPPI expects `max_std`; `**kwargs` silently absorbs the YAML key and MPPI
+    retains default `2.0`, while CEM consumes `1.5`. Explicit keyword translation recovers MPPI
+    `1.5`. This is a configuration-contract finding, not a trained planning result.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -93,6 +97,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 | WM-EBJEPA-RUNTIME-001 | The exact Torch 2.6/cu126 pin omits SM120 and fails matched GPU kernels; the disclosed Torch 2.10/cu128 runtime includes SM120 and passes them. | Availability | `configs/experiments/eb_jepa_runtime_compatibility.yaml` | `artifacts/metrics/eb_jepa_runtime_compatibility.json` | clean `15d88ce` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-INTEGRATION-002 | The pinned official Two Rooms dataset/train/checkpoint/planner path executes deterministically under the disclosed compatible runtime; this is not competence. | Availability | `configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml` | `artifacts/metrics/eb_jepa_two_rooms_integration_v2.json` | clean `9a18008` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-PLANNER-CONSTRAINT-001 | Official CEM enforces `max_norms=2.45`; official MPPI ignores it and the environment does not enforce a fallback bound. | Availability | `configs/experiments/eb_jepa_planner_constraint.yaml` | `artifacts/metrics/eb_jepa_planner_constraint.json` | clean `da30443` | `CONFIRMED_UPSTREAM_DEFECT` |
+| WM-EBJEPA-PLANNER-CONFIG-001 | Both official planner YAMLs declare proposal scale 1.5, but MPPI silently executes at default 2.0 while CEM uses 1.5. | Availability | `configs/experiments/eb_jepa_planner_config.yaml` | `artifacts/metrics/eb_jepa_planner_config.json` | clean `4f0cc80` | `CONFIRMED_UPSTREAM_CONFIG_MISMATCH` |
 | WM-EBJEPA-TRAIN-RESOURCE-001 | Official eager batch 384 fits below the local safety ceiling, while `torch.compile(jepa)` captures zero graphs on the custom `unroll` training entrypoint. | Availability | `configs/experiments/eb_jepa_training_resources.yaml` | `artifacts/metrics/eb_jepa_training_resources.json` | clean `fed920e` | `PROFILED` |
 | WM-ACTION-PATH-CALIBRATION-002 | High-resolution validation-only refinement improves vector integration but remains underresolved in two seeds and cannot repair the shared-denominator/design confound; no protected test was touched. | Availability | `configs/experiments/lewm_action_path_calibration_v2.yaml` | `artifacts/metrics/lewm_action_path_calibration_v2.json` | clean `288f663` | `CALIBRATION_ONLY` |
 | WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and a shared-denominator-confounded cancellation/error association; it makes no scientific claim. | Availability | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |

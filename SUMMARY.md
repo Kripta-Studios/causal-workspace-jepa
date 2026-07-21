@@ -44,6 +44,11 @@
   but the actual two `unroll` updates produced exactly zero Dynamo frames and zero unique graphs.
   Thus `compile=true` is an ineffective wrapper on the executed upstream training path; this is a
   new engineering/reproduction finding, not learned-model or mechanistic evidence.
+- `WM-EBJEPA-PLANNER-CONFIG-001` ran from clean `4f0cc80`; all six gates passed. Although both
+  official planner YAMLs specify `var_scale=1.5`, MPPI's constructor expects `max_std`, accepts the
+  unknown key through `**kwargs`, and retains default `2.0`; CEM consumes `1.5`. Explicitly mapping
+  the key yields MPPI `1.5`. The published CEM/MPPI configs are therefore not proposal-scale matched
+  as executed, independently of the action-bound defect.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 

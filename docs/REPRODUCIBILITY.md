@@ -200,6 +200,11 @@ The retained clean `fed920e` run passed all five gates in `93.08` seconds. Batch
 `OptimizedModule` but zero Dynamo frames/graphs; later source-faithful configs may leave the flag
 enabled, while reports must state that the observed `unroll` path remained eager.
 
+`WM-EBJEPA-PLANNER-CONFIG-001` additionally freezes the proposal-scale contract. The official MPPI
+YAML contains `var_scale=1.5`, but the constructor expects `max_std` and executes at default `2.0`;
+CEM consumes `1.5`. Reproductions must record instantiated planner attributes, not only copied YAML,
+and the bound-only correction retains `2.0` to isolate one change.
+
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the

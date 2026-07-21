@@ -126,6 +126,10 @@ mismatch and before retaining a confirmation.
 - Later evaluation must label the official as-executed MPPI scale 2.0. Any scale-1.5 MPPI is an
   additional intention-corrected arm and may not replace the official baseline.
 
+Final retained confirmation from clean `4f0cc80`: `CONFIRMED_UPSTREAM_CONFIG_MISMATCH`, all six
+gates pass in `2.72` seconds. Official MPPI instantiates with `max_std=2.0`; official CEM uses
+`var_scale=1.5`; explicit MPPI keyword correction yields `1.5`. No numbered hypothesis is decided.
+
 ## WM-EBJEPA-MPPI-CORRECTION-001 Engineering Preregistration
 
 Registered on 2026-07-21 after confirming the official constraint defect and before retaining the

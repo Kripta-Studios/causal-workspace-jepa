@@ -77,6 +77,12 @@ preregistered 10-GB ceiling. The configured `torch.compile(jepa)` call returns a
 but two real `unroll` updates capture zero Dynamo frames and zero graphs. Training can preserve the
 flag for configuration fidelity, but cannot claim compiled execution on this path.
 
+The official planner configuration has a second independent mismatch. Both MPPI and CEM YAMLs
+declare `var_scale=1.5`; CEM consumes it, whereas MPPI expects `max_std`, absorbs the unknown key in
+`**kwargs`, and runs at default `2.0`. The clean `4f0cc80` confirmation passes all six source/runtime
+gates. Planning reports must separate official 2.0, bound-corrected 2.0, and any intention-corrected
+1.5 arm.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,
