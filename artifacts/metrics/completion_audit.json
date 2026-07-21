@@ -38,7 +38,7 @@
     },
     "published_action_jepa": {
       "evidence_level": "Availability",
-      "note": "Source-traceable faithful small LeWorldModel reproduction passed its modeling gate on 3/3 seeds.",
+      "note": "Source-informed small LeWorldModel variant passed its modeling gate on 3/3 seeds.",
       "passed": true
     },
     "pushed_branch_before_output": {
@@ -74,7 +74,7 @@
   },
   "evidence_level": "Availability",
   "experiment_id": "AUDIT-COMPLETE-001",
-  "runtime_seconds": 5.987262200011173,
+  "runtime_seconds": 68.82292259999667,
   "scientific_boundary": "Completion means the explicit repository criteria are implemented and audited. It does not turn rejected circuit/workspace hypotheses into positive findings.",
   "software_checks": {
     "git_diff_check": {
@@ -95,10 +95,10 @@
         "{",
         "  \"checksum_status\": \"SKIPPED_RESOURCE\",",
         "  \"checksums_skipped_missing_local_data\": 7,",
-        "  \"checksums_verified\": 4,",
+        "  \"checksums_verified\": 10,",
         "  \"errors\": [],",
         "  \"local_data_complete\": false,",
-        "  \"metric_artifacts\": 17,",
+        "  \"metric_artifacts\": 28,",
         "  \"missing\": [],",
         "  \"status\": \"SMOKE_VALIDATED\"",
         "}"
@@ -130,11 +130,11 @@
         "test_*.py"
       ],
       "output_tail": [
-        ".............................................<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute",
+        "............................................................................<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute",
         "<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute",
-        ".......................",
+        ".............................",
         "----------------------------------------------------------------------",
-        "Ran 68 tests in 3.733s",
+        "Ran 105 tests in 48.549s",
         "",
         "OK",
         "<sys>:0: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"

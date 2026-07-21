@@ -158,6 +158,7 @@ installation on the RTX host contains an unrelated system bibliography with the 
 Generated PDF and auxiliary files are ignored. Before a paper milestone, require zero undefined
 citations/references and no overfull boxes, then compare every table against its committed JSON.
 
-Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`; all 14 criteria and all
-software checks passed, including 68 tests and the corrected exact-JVP disposition. Its own
+Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `3593475`; all 14 criteria and all
+software checks passed, including 105 tests, 28 metric/provenance pairs, 10 locally verified
+checksums, and the corrected exact-JVP disposition. Its own
 metrics/provenance pair is committed, so later runs can audit the audit.

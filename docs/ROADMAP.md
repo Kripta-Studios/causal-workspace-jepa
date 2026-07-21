@@ -76,7 +76,7 @@ instrumentation, storage, and direct-data gates remain validated.
 - The bounded Qwen3-4B selected-site capture passed from clean commit `55087ea`: exact pinned
   revision, 180 rows, and a 574,308-byte checksummed shard.
 - Updated `AUDIT-COMPLETE-001` passed all 14 explicit completion criteria from clean synchronized
-  commit `98a9e62`, including the corrected exact-JVP result, 68-test suite, Ruff, and
+  commit `3593475`, including the corrected exact-JVP result, 105-test suite, Ruff, and
   reproducibility audit.
 - `WM-POPULATION-JACOBIAN-001` ran from clean `89b2e14` and is `REJECTED_NUMERICAL_GATE`: gauge
   controls pass, but fixed 12-node integration underresolves stiff recurrent action chords. The

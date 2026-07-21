@@ -147,7 +147,7 @@ Exact upstream training remains separate because the official Python 3.12/Torch
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.
 - `SMOKE_VALIDATED`: updated `AUDIT-COMPLETE-001` passed all 14 explicit bounded completion criteria
-  from clean synchronized commit `98a9e62`; the audit includes 68 tests, Ruff,
+  from clean synchronized commit `3593475`; the audit includes 105 tests, Ruff,
   provenance/checksum validation, the exact-JVP correction, multi-seed evidence, and retention of
   the rejected/null findings.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
@@ -402,8 +402,8 @@ Validated CPU smoke results:
   null on every seed.
 - Qwen3-4B selected-site capture (`LLM-QWEN-CAPTURE-001`) ran from clean commit `55087ea`: exact
   pinned revision, 180 rows, one 574,308-byte checksum-verified shard, and all budget gates passed.
-- Updated final audit (`AUDIT-COMPLETE-001`) ran from clean synchronized commit `98a9e62`. All 14
-  explicit criteria passed; 68 tests, Ruff, Git diff, and reproducibility checks returned zero. It
+- Updated final audit (`AUDIT-COMPLETE-001`) ran from clean synchronized commit `3593475`. All 14
+  explicit criteria passed; 105 tests, Ruff, Git diff, and reproducibility checks returned zero. It
   now requires the valid exact-JVP audit and withdrawn H-LLM-01 result. This audit
   certifies implementation/evidence coverage, not a positive workspace or circuit discovery.
 

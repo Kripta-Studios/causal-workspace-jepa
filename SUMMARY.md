@@ -332,9 +332,9 @@
 - The corrected conclusion is that these selected Qwen3-0.6B residual edits are mostly local, with
   second-order transport explaining nearly all selected-target effect power. The old BF16 secant's
   MSE `120.8994` was a precision artifact, not evidence of a nonlinear JEPA advantage.
-- Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`: all 14 criteria pass,
-  including the corrected exact-JVP comparator/disposition, 68 tests, Ruff, diff checks, and 17
-  audited metric/provenance pairs with four locally verified shard checksums.
+- Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `3593475`: all 14 criteria pass,
+  including the corrected exact-JVP comparator/disposition, 105 tests, Ruff, diff checks, and 28
+  audited metric/provenance pairs with 10 locally verified shard checksums.
 - Literature review found that generic reachability/observability balancing is established prior
   art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct
