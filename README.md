@@ -44,7 +44,8 @@ program, but the current learned JEPA result is negative; the gap is not claimed
 - `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
-  autograd preservation; offline tiny-Qwen tests; and a preregistered Qwen3-0.6B smoke runner.
+  autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
+  offline tests; and a preregistered Qwen3-0.6B smoke runner.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with

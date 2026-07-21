@@ -23,6 +23,11 @@
   treated mediator states and necessity by restoring clean mediators in the treated run, freezes
   `k <= 4` on train, clusters uncertainty by episode/key/value, and calls a positive result a
   mediator set rather than a circuit or JEPA result.
+- Implemented ordered multi-site Qwen intervention programs. Tiny-Qwen tests establish exact
+  upstream treatment replay by patching the changed layer-0 input position, exact clean recovery by
+  restoring a downstream residual state, and explicit order sensitivity for repeated same-site
+  operations. Head-level intervention remains deferred until a pre-`o_proj` hook has an exact
+  attention reconstruction test.
 
 ## 2026-07-21 — Resumable long-run action-path execution
 

@@ -20,6 +20,12 @@ replayed upstream value-swap treatment, ordered multi-site patch/restore, episod
 and controls separating binding from generic copying. It will create an eligible causal dataset for
 a later Intervention-JEPA; a positive localizer result would not itself be evidence for JEPA.
 
+The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
+the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the
+clean layer-0 `resid_post` after that treatment recovers clean logits to `1e-6`. Repeated same-site
+operations are applied in caller order. These are instrumentation identities, not scientific
+mediation results on the pinned Qwen checkpoint.
+
 The primary-scale capture script is now implemented for `Qwen/Qwen3-4B` at immutable revision
 `1cfa9a7...`. Its repository estimate is 8,060,926,626 bytes; it captures five residual sites and
 three selected positions over 12 fixed prompts into resumable checksummed HDF5 under a 64 MB output

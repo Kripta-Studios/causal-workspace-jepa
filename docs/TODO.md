@@ -5,8 +5,10 @@
 - [x] Refresh the July-2026 primary-source frontier and register EB-JEPA, Qwen-Scope, Circuit
   Tracing, NLA, causal physics steering, faithfulness/path patching, and induction-head prior art.
 - [x] Adversarially reject the first Qwen population-mediation draft before preregistration.
-- [ ] Implement and test ordered multi-site Qwen patch/restore with exact treatment replay; keep the
-  first causal localization study module-only until pre-`o_proj` head hooks reconstruct attention.
+- [x] Implement and test ordered multi-site Qwen patch/restore with exact upstream treatment and
+  downstream clean-restoration replay.
+- [ ] Keep the first causal localization study module-only; add pre-`o_proj` head hooks only in a
+  separate milestone with exact attention reconstruction tests.
 - [ ] Preregister the corrected binding mediator study with independent episode units, train-only
   `k <= 4`, grouped intervals, full-vocabulary behavior, and direct necessity/sufficiency controls.
 - [ ] Integrate/pin official EB-JEPA and reproduce the competent Two Rooms planner across three

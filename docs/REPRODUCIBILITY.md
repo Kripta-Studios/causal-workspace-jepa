@@ -124,6 +124,12 @@ match; duplicate or unexpected seeds fail closed. Final metrics/provenance recor
 used and the number of loaded horizon blocks, then remove the progress file. This mechanism was
 implemented after the active `288f663` process imported its code, so it cannot retroactively provide
 partial recovery for that run.
+
+Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
+order, while repeated specifications at one site execute in list order. Offline tests require an
+upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the
+clean recipient within `1e-6`. Multi-site scientific runs must log the complete ordered list; a set
+of sites is insufficient provenance.
 Seed completion additionally requires an explicit marker, both horizon blocks, and the derived
 horizon-amplification summary; the presence of horizon 4 alone cannot skip final aggregation.
 

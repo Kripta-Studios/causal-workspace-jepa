@@ -83,6 +83,66 @@ class QwenHFAdapterTests(unittest.TestCase):
         changed = self.adapter.forward_with_intervention(batch, spec, ["logits"])
         self.assertGreater(float(np.max(np.abs(changed.logits - clean.logits))), 0.0)
 
+    def test_ordered_same_site_interventions_preserve_program_order(self) -> None:
+        batch = self.adapter.tokenize(["alpha beta"])
+        site = transformer_site(0, "mlp_out")
+        zero = InterventionSpec(
+            site=site,
+            operation="zero",
+            positions=(1,),
+            feature_ids=(0,),
+        )
+        steer = InterventionSpec(
+            site=site,
+            operation="steer",
+            positions=(1,),
+            feature_ids=(0,),
+            magnitude=2.0,
+        )
+        zero_then_steer = self.adapter.forward_with_interventions(
+            batch, [zero, steer], [site]
+        )
+        steer_then_zero = self.adapter.forward_with_interventions(
+            batch, [steer, zero], [site]
+        )
+        self.assertEqual(float(zero_then_steer.activations[site][0, 1, 0]), 2.0)
+        self.assertEqual(float(steer_then_zero.activations[site][0, 1, 0]), 0.0)
+
+    def test_upstream_treatment_and_downstream_restore_replay_exactly(self) -> None:
+        recipient_batch = self.adapter.tokenize(["alpha beta"])
+        donor_batch = self.adapter.tokenize(["gamma beta"])
+        treatment_site = transformer_site(0, "resid_pre")
+        restore_site = transformer_site(0, "resid_post")
+        sites = [treatment_site, restore_site, "logits"]
+        recipient = self.adapter.forward_with_cache(recipient_batch, sites)
+        donor = self.adapter.forward_with_cache(donor_batch, sites)
+        self.adapter.register_donor(
+            "treatment_donor", treatment_site, donor.activations[treatment_site]
+        )
+        self.adapter.register_donor(
+            "recipient_clean", restore_site, recipient.activations[restore_site]
+        )
+        treatment = InterventionSpec(
+            site=treatment_site,
+            operation="patch",
+            positions=(0,),
+            donor_example_id="treatment_donor",
+        )
+        restore = InterventionSpec(
+            site=restore_site,
+            operation="patch",
+            donor_example_id="recipient_clean",
+        )
+
+        treated = self.adapter.forward_with_interventions(
+            recipient_batch, [treatment], ["logits"]
+        )
+        restored = self.adapter.forward_with_interventions(
+            recipient_batch, [treatment, restore], ["logits"]
+        )
+        np.testing.assert_allclose(treated.logits, donor.logits, atol=1e-6, rtol=1e-6)
+        np.testing.assert_allclose(restored.logits, recipient.logits, atol=1e-6, rtol=1e-6)
+
     def test_batch_one_mean_and_resample_require_registered_values(self) -> None:
         batch = self.adapter.tokenize(["alpha beta"])
         site = transformer_site(0, "resid_pre")

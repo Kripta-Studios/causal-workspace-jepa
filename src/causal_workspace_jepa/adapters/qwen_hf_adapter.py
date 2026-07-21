@@ -154,7 +154,7 @@ class QwenHFAdapter:
         self._bases[site] = _as_torch(self._torch, basis, self.device)
 
     def forward_with_cache(self, batch: TokenBatch, sites: Sequence[str]) -> LLMRun:
-        return self._forward(batch, sites, intervention=None)
+        return self._forward(batch, sites, interventions=())
 
     def forward_with_intervention(
         self,
@@ -163,13 +163,31 @@ class QwenHFAdapter:
         sites: Sequence[str],
     ) -> LLMRun:
         self._validate_site(intervention.site)
-        return self._forward(batch, sites, intervention=intervention)
+        return self._forward(batch, sites, interventions=(intervention,))
+
+    def forward_with_interventions(
+        self,
+        batch: TokenBatch,
+        interventions: Sequence[InterventionSpec],
+        sites: Sequence[str],
+    ) -> LLMRun:
+        """Apply an ordered intervention program in one forward pass.
+
+        Specifications at different sites run in model execution order. Multiple
+        specifications at the same site run in the sequence supplied by the
+        caller, making patch/restore and order-sensitive controls replayable.
+        """
+
+        frozen = tuple(interventions)
+        for intervention in frozen:
+            self._validate_site(intervention.site)
+        return self._forward(batch, sites, interventions=frozen)
 
     def _forward(
         self,
         batch: TokenBatch,
         sites: Sequence[str],
-        intervention: InterventionSpec | None,
+        interventions: Sequence[InterventionSpec],
     ) -> LLMRun:
         requested = set(sites)
         unknown = requested.difference(self.named_activation_points())
@@ -177,14 +195,22 @@ class QwenHFAdapter:
             raise KeyError(f"unknown Qwen activation sites: {sorted(unknown)}")
         captured: dict[str, Any] = {}
         handles: list[Any] = []
-        hook_sites = requested | ({intervention.site} if intervention is not None else set())
+        interventions_by_site: dict[str, list[InterventionSpec]] = {}
+        for intervention in interventions:
+            interventions_by_site.setdefault(intervention.site, []).append(intervention)
+        hook_sites = requested | set(interventions_by_site)
 
         for layer_index, layer in enumerate(self.layers):
             resid_pre = transformer_site(layer_index, "resid_pre")
             if resid_pre in hook_sites:
                 handles.append(
                     layer.register_forward_pre_hook(
-                        self._pre_hook(resid_pre, captured, requested, intervention),
+                        self._pre_hook(
+                            resid_pre,
+                            captured,
+                            requested,
+                            tuple(interventions_by_site.get(resid_pre, ())),
+                        ),
                         with_kwargs=True,
                     )
                 )
@@ -193,14 +219,24 @@ class QwenHFAdapter:
                 if site in hook_sites:
                     handles.append(
                         module.register_forward_hook(
-                            self._forward_hook(site, captured, requested, intervention)
+                            self._forward_hook(
+                                site,
+                                captured,
+                                requested,
+                                tuple(interventions_by_site.get(site, ())),
+                            )
                         )
                     )
             resid_post = transformer_site(layer_index, "resid_post")
             if resid_post in hook_sites:
                 handles.append(
                     layer.register_forward_hook(
-                        self._forward_hook(resid_post, captured, requested, intervention)
+                        self._forward_hook(
+                            resid_post,
+                            captured,
+                            requested,
+                            tuple(interventions_by_site.get(resid_post, ())),
+                        )
                     )
                 )
 
@@ -214,7 +250,7 @@ class QwenHFAdapter:
                     logits_to_keep=0,
                 )
                 logits = output.logits
-                if intervention is not None and intervention.site == "logits":
+                for intervention in interventions_by_site.get("logits", ()):
                     logits = self._apply_torch_intervention(logits, intervention)
                 if "logits" in requested:
                     captured["logits"] = logits
@@ -235,18 +271,18 @@ class QwenHFAdapter:
         site: str,
         captured: dict[str, Any],
         requested: set[str],
-        intervention: InterventionSpec | None,
+        interventions: Sequence[InterventionSpec],
     ) -> Any:
         def hook(_module: Any, args: tuple[Any, ...], kwargs: dict[str, Any]) -> Any:
             if args:
                 value = args[0]
                 rest = args[1:]
-                updated = self._maybe_intervene(site, value, intervention)
+                updated = self._maybe_intervene(site, value, interventions)
                 if site in requested:
                     captured[site] = updated
                 return (updated, *rest), kwargs
             value = kwargs["hidden_states"]
-            updated = self._maybe_intervene(site, value, intervention)
+            updated = self._maybe_intervene(site, value, interventions)
             if site in requested:
                 captured[site] = updated
             updated_kwargs = dict(kwargs)
@@ -260,15 +296,15 @@ class QwenHFAdapter:
         site: str,
         captured: dict[str, Any],
         requested: set[str],
-        intervention: InterventionSpec | None,
+        interventions: Sequence[InterventionSpec],
     ) -> Any:
         def hook(_module: Any, _args: tuple[Any, ...], output: Any) -> Any:
             if isinstance(output, tuple):
                 value = output[0]
-                updated = self._maybe_intervene(site, value, intervention)
+                updated = self._maybe_intervene(site, value, interventions)
                 replaced = (updated, *output[1:])
             else:
-                updated = self._maybe_intervene(site, output, intervention)
+                updated = self._maybe_intervene(site, output, interventions)
                 replaced = updated
             if site in requested:
                 captured[site] = updated
@@ -280,11 +316,16 @@ class QwenHFAdapter:
         self,
         site: str,
         value: Any,
-        intervention: InterventionSpec | None,
+        interventions: Sequence[InterventionSpec],
     ) -> Any:
-        if intervention is None or intervention.site != site:
-            return value
-        return self._apply_torch_intervention(value, intervention)
+        updated = value
+        for intervention in interventions:
+            if intervention.site != site:  # defensive: callers pre-group by site
+                raise ValueError(
+                    f"intervention for {intervention.site!r} routed to hook {site!r}"
+                )
+            updated = self._apply_torch_intervention(updated, intervention)
+        return updated
 
     def _apply_torch_intervention(self, activation: Any, spec: InterventionSpec) -> Any:
         torch = self._torch
