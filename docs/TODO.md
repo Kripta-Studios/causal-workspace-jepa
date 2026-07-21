@@ -13,7 +13,8 @@
 - [x] Withdraw restricted H-LLM-01 after 0/3 seeds beat exact JVP/quadratic Taylor.
 - [x] Revise and rerun the executable completion audit from clean `98a9e62`; all 14 criteria pass.
 - [ ] Implement a genuine target-encoder/stop-gradient Intervention-JEPA with anti-collapse tests.
-- [ ] Generate a split-safe semantic donor-answer dataset with aggregate behavior-changing edits.
+- [x] Implement/preregister a split-safe semantic donor-answer dataset with aggregate behavior gates.
+- [ ] Commit/push and execute `LLM-CAPITAL-PATCH-001` unchanged; retain failed eligibility if any.
 - [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.

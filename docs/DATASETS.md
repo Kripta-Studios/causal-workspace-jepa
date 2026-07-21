@@ -67,3 +67,11 @@ same 432-record FP32 audit. The ignored HDF5 shard is 962,334 bytes with SHA-256
 `171a5521a7c37eb30b590c4e12b6c1e7f93f050bfacf44c6c1b80d781dd451f5`. The committed manifest
 records all shapes and the 64 MB budget. Status: `SMOKE_VALIDATED` audit data; H-LLM-01 result
 `WITHDRAWN`.
+
+`LLM-CAPITAL-PATCH-001` is implemented/preregistered but unexecuted. It crosses 36 fixed one-token
+country/capital facts into 612 ordered non-self donor patches while keeping recipient and donor
+inside disjoint 24/6/6 entity splits. It stores full source/final hidden vectors, 36 answer logits,
+direct effects, exact JVP, central, quadratic, behavior IDs, and semantic diagnostics under 64 MB.
+Japan, Canada, China, and Kenya were used only for layer engineering and are excluded. Leakage risk:
+the factual prompt template is shared, but no entity, answer, recipient, or donor crosses splits.
+Status: `IMPLEMENTED_UNVALIDATED`.

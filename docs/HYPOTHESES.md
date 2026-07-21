@@ -234,6 +234,40 @@ secant `120.8994`. Therefore the prior restricted H-LLM-01 result is `WITHDRAWN`
 Specificity result: the tested finite edits are largely local and captured even better at second
 order; it is not evidence against nonlinear meta-models on other tasks or behavior-changing edits.
 
+## LLM-CAPITAL-PATCH-001 Behavior-Dataset Preregistration
+
+Registered on 2026-07-21 before any forward pass on the final entity suite. Earlier engineering
+calibration used only Japan, Canada, China, and Kenya to select layer 21; those four countries are
+excluded from every final split and result.
+
+- Task: 36 repository-fixed country/capital facts using the prompt `The capital of {country} is`.
+  Tokenizer-only inspection, before model execution, requires each leading-space capital answer to
+  be one unique Qwen token. No entity is selected or removed using model correctness or patch effect.
+- Entity split: seed-211 fixed 24 train, 6 validation, and 6 test entities, recorded explicitly in
+  `data/manifests/llm_prompts.yaml`. Both recipient and donor remain inside the same entity split;
+  all ordered non-self pairs yield `24*23 + 6*5 + 6*5 = 612` outcomes. Thus no train entity, answer,
+  recipient, or donor appears in validation/test.
+- Model/intervention: pinned Qwen3-0.6B revision `c1899de...`, FP32 eager attention, source
+  `blocks.21.resid_post`, final prompt position, complete 1024-dimensional donor replacement.
+  Target is `blocks.27.resid_post` plus logits for all 36 preregistered answer tokens.
+- Strong local controls: compute an exact autograd directional JVP for the complete donor direction,
+  a symmetric central difference at epsilon `1/8`, and a directional quadratic Taylor prediction.
+  Direct source semantics must be exact; `h+(donor-h)` must stay within the same two-rounding
+  float32 bound as JVP audit v2; JVP/central median/p95 relative errors must be at most `0.05/0.15`;
+  and all direct target effects must be nonzero. Numerical failure rejects the dataset.
+- Behavior eligibility, fixed before execution: clean top-token capital accuracy must be at least
+  `0.60` in every entity split; full-vocabulary donor-answer transfer must be at least `0.40` on the
+  test split; and at least `0.40` of all patches must change the top token. These are eligibility
+  gates for the later meta-model study, not adjustable acceptance thresholds.
+- Stored arrays: clean/donor source, source delta, clean/intervened final hidden states, clean/direct
+  36-answer logits, direct effect, exact JVP, central difference, quadratic Taylor, entity/split IDs,
+  answer IDs, top tokens, and numerical diagnostics. Sharded HDF5 must remain below 64 MB and is
+  ignored; checksum manifest, metrics, and provenance are committed.
+- Evidence boundary: a passing dataset establishes behavior-changing direct causal mediation and
+  valid local baselines. It does not validate a learned meta-model, target-encoder JEPA, feature
+  semantics, circuit, or workspace. If behavior eligibility fails, the frozen result is retained
+  and the associated learned-model hypothesis is not run on a post-selected subset.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

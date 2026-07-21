@@ -72,6 +72,15 @@ Exact-derivative corrective milestone:
   Restricted H-LLM-01 is withdrawn. The next dataset must target actual semantic behavior changes,
   and the next learned model must implement a genuine target-encoder JEPA objective.
 
+Behavior-changing continuation:
+
+- `LLM-CAPITAL-PATCH-001` fixes 36 one-token capital facts and entity-disjoint 24/6/6 splits. It
+  applies every ordered within-split full residual donor patch at layer 21 and records direct
+  full-vocabulary answer transfer plus exact JVP and quadratic controls.
+- Layer selection used four excluded calibration countries only. The final roster was inspected for
+  tokenizer token count, never model success. The dataset is not yet executed; a later genuine-JEPA
+  study is permitted only if the preregistered clean-competence and behavior-change gates pass.
+
 Current mock implementation:
 
 - exposes `resid_pre`, `attn_out`, `mlp_out`, `resid_post`, and `logits`;

@@ -24,6 +24,9 @@
 - Accept v2 as a valid negative Specificity result from clean commit `a779ff6`. Withdraw restricted
   H-LLM-01: exact JVP and especially quadratic Taylor explain the selected finite-edit effects much
   better than the legacy bottleneck. Do not reinterpret this as a universal linearity claim.
+- Move the next Qwen dataset to full residual donor patches that transfer a known one-token answer.
+  Split recipient and donor entities together, exclude all layer-calibration entities, store exact
+  JVP/quadratic controls up front, and require aggregate behavior change before fitting a new model.
 
 - Activate `gpu_12gb` after detecting an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, CUDA-enabled
   PyTorch, approximately 370 GB free, and a passing GPU doctor check.

@@ -47,6 +47,10 @@
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct
   behavior execution and cross-context pooling/permutation controls; no generic balancing novelty
   is claimed.
+- Implemented/preregistered `LLM-CAPITAL-PATCH-001` to leave the mostly non-behavioral coordinate
+  grid: 36 fixed single-token capitals, 24/6/6 disjoint recipient/donor entity splits, 612 full
+  layer-21 residual donor patches, direct top-token behavior, exact JVP, central convergence, and
+  quadratic Taylor. Japan/Canada/China/Kenya calibration examples are excluded from final data.
 
 ## 2026-07-21 — GPU continuation begins
 

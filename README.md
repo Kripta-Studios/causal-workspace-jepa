@@ -47,6 +47,10 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   and JVP/central-convergence gates. Exact JVP/quadratic MSE were `0.6143`/`0.07870`, versus
   conditional bottleneck `3.1899`; zero of three learned seeds passed. Restricted H-LLM-01 is
   withdrawn, not supported.
+- `IMPLEMENTED_UNVALIDATED`: a 612-outcome Qwen capital donor-patch generator now targets actual
+  top-token answer transfer. It uses 36 tokenizer-eligible facts, disjoint recipient/donor entity
+  splits, full layer-21 residual patches, exact JVP, quadratic controls, and excludes every entity
+  used during layer calibration. It must be committed before its first run.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

@@ -14,6 +14,10 @@ Status: `ACTIVE`.
 - `MITIGATED_POSTHOC`: JVP audit v2 was designed after v1 exposed the endpoint problem and is not a
   blind test. Its semantic repair is source-level and machine-epsilon-derived, while every observed
   scientific comparison threshold is frozen; reporting must retain this post-diagnostic boundary.
+- `MITIGATED_PREREGISTRATION`: layer 21 was selected using Japan/Canada/China/Kenya engineering
+  patches. Those entities are excluded from `LLM-CAPITAL-PATCH-001`; the 36 final facts and splits
+  were fixed using tokenizer structure only. Shared prompt wording remains a deliberate task-family
+  limitation and must not be called cross-task generalization.
 - `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
   a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
   it; a genuine JEPA must be implemented and compared separately.
