@@ -1,5 +1,20 @@
 # SUMMARY
 
+## 2026-07-21 — JEPA population-geometry preregistration
+
+- Implemented `WM-POPULATION-JACOBIAN-001` as a prospective cross-domain test of the confirmed Qwen
+  population-Jacobian observation. It freezes all three `WM-LEWM-001` checkpoint hashes, a seed-401
+  12/5/5 goal partition, every valid one-hot first-action swap, horizons one/four, and four fixed
+  suffixes. V1 may inspect validation goals only; test goals remain protected.
+- The primary comparison uses decoded `x/y/distance` effects from a train-goal-only readout because
+  raw latent Euclidean MSE is coordinate dependent. A condition-100 reparameterization must preserve
+  decoded effects to `1e-10`, while an analytic control demonstrates raw method-ranking reversal.
+  Twelve-node path integration, within-context vertex/centroid controls, an averaging-size curve,
+  and all 23 nonidentity action-column permutations distinguish curvature smoothing from label loss.
+- The weak inherited planner cannot support behavior evidence unless its direct action choice is
+  environment-optimal on at least 60% of contexts. No checkpoint has yet been evaluated under this
+  analysis. Commit and push the preregistration before running it unchanged.
+
 ## 2026-07-21 — Corrective derivative and novelty audit
 
 - Independent adversarial review found that the `LLM-IJEPA-001` “local Jacobian” is a one-sided

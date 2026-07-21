@@ -26,8 +26,12 @@
   averaging-size, per-context, bootstrap, answer-row, and discrete/continuous endpoint controls.
 - [x] Commit/push and execute `LLM-POPULATION-JACOBIAN-001` unchanged from `3725714`; all three
   validation confirmation gates pass.
-- [ ] Replicate population-versus-local finite transport on a JEPA recurrent dynamics endpoint and
-  another Qwen prompt family/model before any general or SOTA claim.
+- [x] Implement and preregister `WM-POPULATION-JACOBIAN-001` on three frozen LeWorldModel seeds,
+  valid one-hot action swaps, held-out goals, path integration, decoded physics, and gauge controls.
+- [ ] Commit/push and execute `WM-POPULATION-JACOBIAN-001` unchanged on validation goals; preserve
+  the five test goals for a separately preregistered confirmation if warranted.
+- [ ] Replicate population-versus-local finite transport on another Qwen prompt family/model before
+  any general or SOTA claim.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.

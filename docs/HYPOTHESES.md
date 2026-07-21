@@ -428,6 +428,62 @@ continuous MSE (`0.7738`). This confirms the finite-effect population-regulariza
 on a second entity-disjoint split. Corpus-averaged Jacobian transport itself is prior art in the
 Jacobian Lens; this is not a new algorithm or workspace claim.
 
+## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
+
+Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The
+experiment ports the Qwen population-versus-local finite-transport question to autoregressive JEPA
+dynamics. It uses the already frozen `WM-LEWM-001` checkpoints without retraining or checkpoint
+selection; their SHA-256 values are pinned in the config. This is a new analysis of those models,
+not a revision of the failed `WM-LEWM-001` circuit/workspace decisions.
+
+- Environment-action contract: each intervention replaces the first action of a one- or four-step
+  rollout between two different one-hot actions. All 12 ordered recipient/donor pairs are executed
+  directly. Four-step rollouts use exactly four registered three-action suffixes. These are valid
+  environment actions, not interpretability interventions or arbitrary latent directions.
+- Goal split: seed 401 fixes 12 train-Jacobian goals, five validation-analysis goals, and five
+  untouched test goals. V1 analyzes only validation goals; the test goals remain protected for a
+  separately committed confirmation if warranted. Every goal is crossed with all 22 valid current
+  positions. The checkpoint was originally trained on random trajectories spanning the maze, so
+  this is a held-out Jacobian-estimation split, not a claim of model-training OOD generalization.
+- Derivatives: `J(z,a,s)` is the exact FP32 autograd Jacobian of the final predicted latent with
+  respect to the first action, conditional on initial latent `z` and fixed suffix `s`. The local
+  predictor is `J(z,a_recipient,s)(a_donor-a_recipient)`. The population predictor averages
+  Jacobians over every train goal, position, suffix, and action vertex. Within-context vertex mean,
+  action-centroid, and endpoint-trapezoid transports are reported as mechanism controls.
+- Direct target and path oracle: the target is the frozen model's directly executed donor-minus-
+  recipient final latent. A 12-node Gauss-Legendre integral of the Jacobian along 128 fixed action
+  chords per seed/horizon must reconstruct direct effects with maximum relative error at most
+  `1e-4`; otherwise scientific comparisons are rejected.
+- Primary gauge-safe endpoint: a frozen ridge readout is fit only on encoded next images from the
+  12 train goals and maps latent states to next `x`, `y`, and Manhattan distance. Population/local
+  decisions use decoded physical-effect MSE and correlation. Raw latent scores are secondary
+  because an invertible latent reparameterization can change Euclidean method rankings. Under a
+  condition-100 diagonal gauge change, the decoder is transformed contragrediently and must retain
+  effects to `1e-10`; an analytic two-dimensional control must flip a raw-MSE method ranking.
+- `H-WM-11 — Population transition smoothing`: at horizon four, the population Jacobian must have
+  decoded normalized MSE at most `0.80x` local, correlation at least `+0.02` higher, and lower MSE
+  in at least four of five validation goals. At least two of three checkpoint seeds must pass.
+- `H-WM-12 — Averaging dose response`: using 64 fixed subsets at `1/4/16/64/256` train anchors and
+  the unique full mean, size-256 median decoded MSE must be at most `0.85x` size-one and correlation
+  of log subset size with median MSE at most `-0.80`. At least two seeds must pass.
+- `H-WM-13 — Within-context path averaging`: the mean of the four action-vertex Jacobians in the
+  same held-out context must have decoded MSE at most `0.80x` local at both horizons. This tests
+  whether categorical-vertex curvature, rather than only cross-context noise, causes local failure.
+- `H-WM-14 — Action-semantic specificity`: the aligned population Jacobian's horizon-four decoded
+  MSE must be at most `0.80x` the p05 of all 23 nonidentity action-column permutations. At least two
+  seeds must pass.
+- `H-GEO-07 — Gauge-safe causal fidelity`: both path-integral and decoded-gauge numerical gates,
+  plus the analytic raw-ranking counterexample, must pass in at least two seeds. This validates an
+  evaluation contract, not a learned mechanism.
+- `H-CROSS-02 — Finite-chord population transport`: this is supported only if the already frozen
+  Qwen H-GEO-04/05/06 decisions remain positive and JEPA H-WM-11/12 pass in at least two seeds. A
+  pass would be bounded cross-domain evidence that derivative averaging regularizes finite causal
+  chords; corpus averaging itself is Jacobian-Lens prior art and is not claimed as a new algorithm.
+- Planning boundary: first-action agreement with direct latent-cost choices is reported, but it is
+  causal-behavior evidence only if the direct frozen planner selects an environment-optimal action
+  on at least `60%` of contexts. The known weak `WM-LEWM-001` planner makes ineligibility plausible;
+  no threshold changes after execution. No outcome can establish a workspace or circuit here.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

@@ -31,6 +31,13 @@ seed 107; the aggregate graph is rejected. Clean planning succeeds on just one o
 so this is not a successful control benchmark. All workspace candidates fail despite valid planted
 controls and valid five-consumer readouts.
 
+`WM-POPULATION-JACOBIAN-001` is implemented and prospectively registered against the three
+unchanged checkpoint files. It executes every ordered categorical first-action replacement over
+one and four autoregressive steps, estimates population derivatives only from 12 train-goal
+families, and evaluates on five disjoint validation goals. Exact line integration checks autograd;
+a train-only physical decoder and contragredient gauge transform prevent raw latent Euclidean MSE
+from deciding the primary claim. The five test goals are untouched, and no result exists yet.
+
 Validated CPU smoke:
 
 - `WM-T0-001` ran on PointMass2D with code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.

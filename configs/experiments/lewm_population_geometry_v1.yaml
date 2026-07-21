@@ -1,0 +1,38 @@
+id: WM-POPULATION-JACOBIAN-001
+status: PREREGISTERED
+resource_profile: configs/resource/gpu_12gb.yaml
+device: cuda
+model_seeds: [101, 103, 107]
+required_passing_seeds: 2
+analysis_seed: 419
+goal_split_seed: 401
+train_goal_ids: [0, 14, 20, 18, 3, 19, 9, 4, 5, 6, 16, 17]
+validation_goal_ids: [8, 13, 1, 15, 7]
+test_goal_ids: [12, 11, 10, 21, 2]
+analysis_split: validation
+horizons: [1, 4]
+horizon4_suffix_action_ids: [0, 0, 0, 1, 2, 3, 2, 3, 0, 3, 1, 2]
+cell_size: 4
+checkpoint_dir: artifacts/checkpoints/lewm_small_v1
+checkpoint_sha256:
+  101: eb158924c7cbe1be196ae0e04d374b305af20bd0e874c51fc96cb6ac15e70796
+  103: b4f0c82bb0fca29ef1bb66297a9203093f39e9c9bbfe2d9bf17c6a1c7e9883b3
+  107: 70a1eaa06f57b1a39ba76bc9d9230e174cc0d1e26ac5eb641e0f8c2ef974b6a8
+qwen_confirmation_metrics: artifacts/metrics/qwen_population_jacobian_v1.json
+decoder_ridge: 0.001
+jacobian_chunk_size: 16
+path_audit_pairs: 128
+path_audit_seed: 431
+path_quadrature_nodes: 12
+averaging_curve_draws: 64
+population_mse_ratio_max: 0.80
+population_correlation_margin_min: 0.02
+population_better_goals_min: 4
+curve_mse_ratio_max: 0.85
+curve_log_correlation_max: -0.80
+vertex_mean_mse_ratio_max: 0.80
+semantic_null_mse_ratio_max: 0.80
+path_integral_relative_error_max: 0.0001
+gauge_invariance_max_abs: 1.0e-10
+planner_competence_min: 0.60
+output_metrics: artifacts/metrics/lewm_population_geometry_v1.json

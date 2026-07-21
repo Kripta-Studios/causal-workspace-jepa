@@ -73,6 +73,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
   is `REJECTED` and no workspace is found.
+- `PREREGISTERED`: `WM-POPULATION-JACOBIAN-001` will test whether population transition Jacobians
+  outperform exact local derivatives for valid one-hot action replacements over one and four
+  autoregressive LeWorldModel steps. Three checkpoint hashes, disjoint goal families, exact path
+  integration, decoded-physics/gauge controls, and all action-label permutations are frozen before
+  execution; five test goals remain protected.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.
@@ -182,6 +187,9 @@ python scripts/run_experiment.py `
 
 python scripts/run_experiment.py `
   --config configs/experiments/lewm_small_reproduction_v1.yaml
+
+python scripts/run_experiment.py `
+  --config configs/experiments/lewm_population_geometry_v1.yaml
 
 # Optional primary-scale selected-site capture; downloads the pinned 8.06 GB Qwen3-4B repository.
 python scripts/capture_qwen_activations.py `

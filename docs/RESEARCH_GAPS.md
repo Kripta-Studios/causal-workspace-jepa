@@ -30,3 +30,8 @@ Status: `ACTIVE`.
   contrast-direction steering remain additive, while transport across prompts/layers fails. The
   useful next intervention classes are activation replacement/resampling, patching, and feature
   clamps; more additive steering on this grid is not discriminating.
+- Qwen population-Jacobian regularization is confirmed only within one capital-prompt family.
+  `WM-POPULATION-JACOBIAN-001` is the preregistered cross-domain replication. Its primary endpoint
+  is a train-goal decoded physical effect rather than raw latent MSE, because invertible latent
+  gauges can change Euclidean rankings. Validation goals are the first analysis; five test goals
+  cannot be inspected without a new confirmation commit.

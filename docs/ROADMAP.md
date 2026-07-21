@@ -63,6 +63,10 @@ instrumentation, storage, and direct-data gates remain validated.
 - Updated `AUDIT-COMPLETE-001` passed all 14 explicit completion criteria from clean synchronized
   commit `98a9e62`, including the corrected exact-JVP result, 68-test suite, Ruff, and
   reproducibility audit.
+- `WM-POPULATION-JACOBIAN-001` is prospectively registered to test the Qwen finite-chord averaging
+  observation in one- and four-step recurrent LeWorldModel dynamics. It freezes checkpoint hashes,
+  goal splits, valid one-hot swaps, a path-integral oracle, gauge-safe decoded physics, and semantic
+  action-column nulls. It must be committed and pushed before evaluation.
 
 ## Milestone 3+: Scientific Runs
 

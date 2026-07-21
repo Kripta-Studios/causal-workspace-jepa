@@ -149,3 +149,8 @@
   as the strongest discrete candidate baseline. The averaging algorithm is Jacobian Lens prior art;
   the repository contribution is a bounded causal-fidelity comparison and gauge audit, pending
   cross-task/model and JEPA replication.
+- Port the finite-chord question to the frozen LeWorldModel reproduction before broadening the Qwen
+  claim. Use only valid one-hot environment-action replacements, distinguish one-step from recurrent
+  four-step endpoints, and make decoded physical effects primary because raw latent Euclidean error
+  is gauge dependent. Freeze checkpoint hashes and a 12/5/5 goal partition; v1 may not inspect the
+  five test goals. The inherited planner is evidentially ineligible below 60% direct competence.
