@@ -76,6 +76,12 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   both splits, so H-GEO-08 and the cross-relation H-CROSS-03 conjunction are false. Late factual
   crystallization and population averaging remain prior art; no feature, circuit, or workspace is
   claimed.
+- `PREREGISTERED`: `LLM-STATE-LAYER-GEOMETRY-001` uses an untouched 36-state postal-abbreviation
+  relation to confirm or reject the surviving layer-conditioned observation. It inherits layers
+  18/21/24/26, requires clean held-out accuracy, compares population transport against the better of
+  exact local and quadratic/HVP-style transport, and freezes dual-split sign-change, rank-correlation,
+  averaging, and answer-row-null gates. Tokenization was checked; zero registered model forwards
+  occurred before preregistration.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -200,6 +206,9 @@ python scripts/run_experiment.py `
 
 python scripts/run_experiment.py `
   --config configs/experiments/qwen_element_layer_geometry_v1.yaml
+
+python scripts/run_experiment.py `
+  --config configs/experiments/qwen_state_layer_geometry_v1.yaml
 
 # Optional primary-scale selected-site capture; downloads the pinned 8.06 GB Qwen3-4B repository.
 python scripts/capture_qwen_activations.py `

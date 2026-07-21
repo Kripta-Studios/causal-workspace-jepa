@@ -7,6 +7,9 @@ import numpy as np
 from causal_workspace_jepa.experiments.llm.qwen_element_layer_geometry_study import (
     ELEMENT_PAIRS,
     ELEMENT_SPLIT_IDS,
+    STATE_PAIRS,
+    STATE_SPLIT_IDS,
+    _control_population_association_decision,
     _inversion_decision,
     _scores,
     _transition_decision,
@@ -22,6 +25,14 @@ class QwenElementLayerGeometryTests(unittest.TestCase):
         pairs = _within_split_pairs(ELEMENT_SPLIT_IDS)
         self.assertEqual(len(pairs), 612)
         self.assertTrue(all(ELEMENT_SPLIT_IDS[a] == ELEMENT_SPLIT_IDS[b] for a, b in pairs))
+        self.assertEqual(len(STATE_PAIRS), 36)
+        self.assertEqual(len(set(STATE_PAIRS)), 36)
+        self.assertEqual(np.bincount(STATE_SPLIT_IDS).tolist(), [24, 6, 6])
+        state_pairs = _within_split_pairs(STATE_SPLIT_IDS)
+        self.assertEqual(len(state_pairs), 612)
+        self.assertTrue(
+            all(STATE_SPLIT_IDS[a] == STATE_SPLIT_IDS[b] for a, b in state_pairs)
+        )
 
     def test_scores_separate_vector_candidate_and_donor_endpoints(self) -> None:
         prediction = np.asarray([[2.0, -1.0], [-1.0, 2.0]])
@@ -78,6 +89,21 @@ class QwenElementLayerGeometryTests(unittest.TestCase):
         self.assertTrue(_inversion_decision({}, scores))
         behavior["24"]["test"]["full_vocab_donor_token_transfer"] = 0.2
         self.assertFalse(_transition_decision({}, behavior))
+
+    def test_control_conditioned_population_gate_requires_both_splits(self) -> None:
+        details = {
+            split: {
+                "by_layer": {
+                    "21": {"population_advantage": -0.10},
+                    "24": {"population_advantage": 0.02},
+                },
+                "donor_control_advantage_spearman": 0.9,
+            }
+            for split in ("validation", "test")
+        }
+        self.assertTrue(_control_population_association_decision({}, details))
+        details["test"]["by_layer"]["24"]["population_advantage"] = -0.01
+        self.assertFalse(_control_population_association_decision({}, details))
 
 
 if __name__ == "__main__":

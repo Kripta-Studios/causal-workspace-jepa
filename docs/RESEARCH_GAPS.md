@@ -46,3 +46,7 @@ Status: `ACTIVE`.
   and population averaging are already published, the surviving conjunction is at most a bounded
   candidate observation. A new relation/model must prospectively confirm it; the observed element
   splits cannot be mined for revised thresholds.
+- The preregistered state-abbreviation study addresses only cross-relation replication in the same
+  Qwen3-0.6B. Even a full pass leaves cross-scale/model generalization, component localization,
+  causal circuit reconstruction, and a mechanism for the control boundary unresolved. HVP-style
+  curvature correction is a required prior-art baseline, not the proposed contribution.

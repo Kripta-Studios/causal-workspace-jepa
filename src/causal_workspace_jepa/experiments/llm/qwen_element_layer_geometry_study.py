@@ -1,4 +1,4 @@
-"""Layerwise causal-control and Jacobian-predictivity study on element symbols."""
+"""Layerwise causal-control and Jacobian-predictivity studies on factual relations."""
 
 from __future__ import annotations
 
@@ -104,15 +104,143 @@ ELEMENT_SPLIT_IDS = np.asarray(
     dtype=np.int64,
 )
 
+STATE_PAIRS: tuple[tuple[str, str], ...] = (
+    ("Alaska", "AK"),
+    ("Arizona", "AZ"),
+    ("Arkansas", "AR"),
+    ("California", "CA"),
+    ("Connecticut", "CT"),
+    ("Delaware", "DE"),
+    ("Florida", "FL"),
+    ("Georgia", "GA"),
+    ("Hawaii", "HI"),
+    ("Idaho", "ID"),
+    ("Illinois", "IL"),
+    ("Kansas", "KS"),
+    ("Kentucky", "KY"),
+    ("Louisiana", "LA"),
+    ("Maine", "ME"),
+    ("Maryland", "MD"),
+    ("Michigan", "MI"),
+    ("Montana", "MT"),
+    ("Nebraska", "NE"),
+    ("Nevada", "NV"),
+    ("New Hampshire", "NH"),
+    ("New Jersey", "NJ"),
+    ("New Mexico", "NM"),
+    ("New York", "NY"),
+    ("North Carolina", "NC"),
+    ("Oklahoma", "OK"),
+    ("Oregon", "OR"),
+    ("Pennsylvania", "PA"),
+    ("South Carolina", "SC"),
+    ("South Dakota", "SD"),
+    ("Tennessee", "TN"),
+    ("Utah", "UT"),
+    ("Vermont", "VT"),
+    ("Washington", "WA"),
+    ("West Virginia", "WV"),
+    ("Wisconsin", "WI"),
+)
+
+STATE_SPLIT_IDS = np.asarray(
+    [
+        0,
+        1,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        1,
+        1,
+    ],
+    dtype=np.int64,
+)
+
+
+def _relation_spec(config: dict[str, Any]) -> dict[str, Any]:
+    relation = str(config.get("relation", "element_symbol"))
+    if relation == "element_symbol":
+        return {
+            "name": relation,
+            "pairs": ELEMENT_PAIRS,
+            "split_ids": ELEMENT_SPLIT_IDS,
+            "prompt_template": "The chemical symbol for {entity} is",
+            "donor_prefix": "element",
+            "calibration_boundary": {
+                "excluded_elements": ["Gold", "Silver", "Tin", "Lead"],
+                "selected_transition": [21, 24],
+                "registered_entities_used_for_calibration": False,
+            },
+            "scientific_boundary": (
+                "Late factual crystallization and attribution-patching nonlinearity are prior "
+                "art. This study tests the narrower coupling between directly executed donor "
+                "control and a layerwise inversion in local-versus-population finite-effect "
+                "predictivity. It does not identify a feature, circuit, J-space, or workspace."
+            ),
+        }
+    if relation == "us_state_postal_abbreviation":
+        return {
+            "name": relation,
+            "pairs": STATE_PAIRS,
+            "split_ids": STATE_SPLIT_IDS,
+            "prompt_template": "The postal abbreviation for {entity} is",
+            "donor_prefix": "state",
+            "calibration_boundary": {
+                "selection_seed": 521,
+                "split_seed": 523,
+                "model_forwards_before_preregistration": 0,
+                "layer_grid_inherited_from": "LLM-ELEMENT-LAYER-GEOMETRY-001",
+            },
+            "scientific_boundary": (
+                "Late factual crystallization, population Jacobians, and HVP corrections are "
+                "prior art. This untouched relation prospectively tests whether the relative "
+                "utility of population transport changes sign at a direct causal-control boundary. "
+                "It does not identify a feature, circuit, J-space, or workspace."
+            ),
+        }
+    raise ValueError(f"unsupported factual relation: {relation}")
+
 
 def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, Any]:
-    """Execute direct patches and full selected-logit Jacobians at four frozen layers."""
+    """Execute a registered factual-relation patch/Jacobian study."""
 
     import torch
 
     started = time.perf_counter()
     config_path = Path(config_path)
     config = load_config(config_path)
+    relation = _relation_spec(config)
+    relation_pairs: tuple[tuple[str, str], ...] = relation["pairs"]
+    split_ids: np.ndarray = relation["split_ids"]
     resource_profile = str(config.get("resource_profile", "configs/resource/gpu_12gb.yaml"))
     hardware = require_free_disk(resource_profile)
     seed = int(config.get("seed", 463))
@@ -122,7 +250,7 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
         seed=seed,
     )
     if provenance.git_dirty:
-        raise RuntimeError("LLM-ELEMENT-LAYER-GEOMETRY-001 requires a clean committed worktree")
+        raise RuntimeError(f"{config['id']} requires a clean committed worktree")
     torch.manual_seed(seed)
     np.random.seed(seed)
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -145,8 +273,8 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
         parameter.requires_grad_(False)
     layers = tuple(int(value) for value in config.get("layers", [18, 21, 24, 26]))
     sites = tuple(transformer_site(layer, "resid_post") for layer in layers)
-    prompts = [f"The chemical symbol for {element} is" for element, _symbol in ELEMENT_PAIRS]
-    answer_ids = _answer_ids(adapter)
+    prompts = [str(relation["prompt_template"]).format(entity=entity) for entity, _answer in relation_pairs]
+    answer_ids = _answer_ids(adapter, relation_pairs, relation_name=str(relation["name"]))
     answer_tensor = torch.as_tensor(answer_ids, device=adapter.device)
     clean_runs = [
         adapter.forward_with_cache(adapter.tokenize([prompt]), [*sites, "logits"])
@@ -167,10 +295,10 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
     jacobians, replay_errors = _full_jacobians(
         adapter, clean_runs, sites, answer_tensor
     )
-    pairs = _within_split_pairs(ELEMENT_SPLIT_IDS)
+    pairs = _within_split_pairs(split_ids)
     recipient_ids = np.asarray([pair[0] for pair in pairs], dtype=np.int64)
     donor_ids = np.asarray([pair[1] for pair in pairs], dtype=np.int64)
-    patch_split_ids = ELEMENT_SPLIT_IDS[recipient_ids]
+    patch_split_ids = split_ids[recipient_ids]
     layer_count = len(layers)
     outcome_count = len(pairs)
     answer_count = len(answer_ids)
@@ -178,7 +306,7 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
     expected_bytes = int(
         4
         * (
-            layer_count * len(ELEMENT_PAIRS) * answer_count * hidden_size
+            layer_count * len(relation_pairs) * answer_count * hidden_size
             + layer_count * outcome_count * hidden_size
             + 5 * layer_count * outcome_count * answer_count
         )
@@ -187,7 +315,8 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
     budget_bytes = int(float(config.get("activation_budget_mb", 96)) * 1024**2)
     if expected_bytes > budget_bytes:
         raise RuntimeError(
-            f"BLOCKED_RESOURCE: estimated element geometry {expected_bytes} exceeds {budget_bytes}"
+            f"BLOCKED_RESOURCE: estimated {relation['name']} geometry "
+            f"{expected_bytes} exceeds {budget_bytes}"
         )
     source_delta = np.empty((layer_count, outcome_count, hidden_size), dtype=np.float32)
     intervened_logits = np.empty(
@@ -202,7 +331,9 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
     epsilon = float(config.get("central_epsilon", 0.125))
     for layer_index, (layer, site) in enumerate(zip(layers, sites, strict=True)):
         for entity_id, run in enumerate(clean_runs):
-            adapter.register_donor(f"element_{layer}_{entity_id}", site, run.activations[site])
+            adapter.register_donor(
+                f"{relation['donor_prefix']}_{layer}_{entity_id}", site, run.activations[site]
+            )
         for row, (recipient_id, donor_id) in enumerate(pairs):
             clean = clean_runs[recipient_id]
             recipient_source = clean.activations[site][0, -1].detach().float()
@@ -214,7 +345,7 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
                     site=site,
                     operation="patch",
                     positions=(-1,),
-                    donor_example_id=f"element_{layer}_{donor_id}",
+                    donor_example_id=f"{relation['donor_prefix']}_{layer}_{donor_id}",
                     seed=seed,
                 ),
                 [site, "logits"],
@@ -268,7 +399,7 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
         "recipient_id": recipient_ids,
         "donor_id": donor_ids,
         "split_id": patch_split_ids,
-        "entity_split_id": ELEMENT_SPLIT_IDS,
+        "entity_split_id": split_ids,
         "answer_token_id": np.asarray(answer_ids, dtype=np.int64),
         "layer": np.asarray(layers, dtype=np.int64),
     }
@@ -276,7 +407,7 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
     stored_arrays = {name: value[None] for name, value in arrays.items()}
     records = [
         {
-            "record_type": "complete_element_layer_grid",
+            "record_type": f"complete_{relation['name']}_layer_grid",
             "outcomes_per_layer": outcome_count,
             "layers": list(layers),
             "operation": "full_residual_donor_patch_at_final_prompt_position",
@@ -284,52 +415,44 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
         }
     ]
     storage = write_hdf5_shards(
-        str(config.get("output_dir", "data/activations/qwen_element_layer_geometry_v1")),
+        str(config.get("output_dir", "data/activations/qwen_relation_layer_geometry_v1")),
         stored_arrays,
         records,
-        dataset_id=str(config.get("id", "LLM-ELEMENT-LAYER-GEOMETRY-001")),
+        dataset_id=str(config.get("id", "LLM-RELATION-LAYER-GEOMETRY-001")),
         config_digest=_config_digest(config),
         max_shard_mb=float(config.get("max_shard_mb", 64)),
         budget_mb=float(config.get("activation_budget_mb", 96)),
         resume=bool(config.get("resume", True)),
     )
     metrics: dict[str, Any] = {
-        "experiment_id": str(config.get("id", "LLM-ELEMENT-LAYER-GEOMETRY-001")),
+        "experiment_id": str(config.get("id", "LLM-RELATION-LAYER-GEOMETRY-001")),
         "status": analysis["status"],
         "evidence_level": "Generalization",
         "model": str(config.get("model")),
         "model_revision": adapter._metadata()["resolved_revision"],
         "precision": "float32",
-        "prompt_template": "The chemical symbol for {element} is",
-        "entities": len(ELEMENT_PAIRS),
+        "prompt_template": relation["prompt_template"],
+        "relation": relation["name"],
+        "entities": len(relation_pairs),
         "outcomes_per_layer": outcome_count,
         "layers": list(layers),
         "split_entity_ids": {
-            name: np.flatnonzero(ELEMENT_SPLIT_IDS == index).tolist()
+            name: np.flatnonzero(split_ids == index).tolist()
             for index, name in enumerate(("train", "validation", "test"))
         },
-        "calibration_boundary": {
-            "excluded_elements": ["Gold", "Silver", "Tin", "Lead"],
-            "selected_transition": [21, 24],
-            "registered_entities_used_for_calibration": False,
-        },
+        "calibration_boundary": relation["calibration_boundary"],
         "analysis": analysis,
         "storage": storage,
         "estimated_bytes_before_capture": expected_bytes,
         "hardware": hardware.as_dict(),
         "runtime_seconds": float(time.perf_counter() - started),
-        "scientific_boundary": (
-            "Late factual crystallization and attribution-patching nonlinearity are prior art. "
-            "This study tests the narrower coupling between directly executed donor control and a "
-            "layerwise inversion in local-versus-population finite-effect predictivity. It does "
-            "not identify a feature, circuit, J-space, or workspace."
-        ),
+        "scientific_boundary": relation["scientific_boundary"],
     }
     output_metrics = Path(
-        str(config.get("output_metrics", "artifacts/metrics/qwen_element_layer_geometry_v1.json"))
+        str(config.get("output_metrics", "artifacts/metrics/qwen_relation_layer_geometry_v1.json"))
     )
     output_manifest = Path(
-        str(config.get("output_manifest", "data/manifests/qwen_element_layer_geometry_v1.json"))
+        str(config.get("output_manifest", "data/manifests/qwen_relation_layer_geometry_v1.json"))
     )
     output_metrics.parent.mkdir(parents=True, exist_ok=True)
     output_manifest.parent.mkdir(parents=True, exist_ok=True)
@@ -341,7 +464,7 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
         "precision": "float32",
         "layers": list(layers),
         "local_data_root": str(config.get("output_dir")),
-        "entity_split_ids": ELEMENT_SPLIT_IDS.tolist(),
+        "entity_split_ids": split_ids.tolist(),
     }
     for shard in manifest["shards"]:
         shard["path"] = f"{manifest['local_data_root']}/{shard['path']}"
@@ -356,19 +479,26 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
         },
     )
     if not analysis["numerical_audit_passed"]:
-        raise RuntimeError("element layer geometry failed numerical validity gates")
+        raise RuntimeError(f"{relation['name']} layer geometry failed numerical validity gates")
     return metrics
 
 
-def _answer_ids(adapter: QwenHFAdapter) -> list[int]:
+def _answer_ids(
+    adapter: QwenHFAdapter,
+    relation_pairs: tuple[tuple[str, str], ...] = ELEMENT_PAIRS,
+    *,
+    relation_name: str = "element_symbol",
+) -> list[int]:
     result = []
-    for _element, symbol in ELEMENT_PAIRS:
-        token_ids = adapter.tokenizer.encode(f" {symbol}", add_special_tokens=False)
+    for _entity, answer in relation_pairs:
+        token_ids = adapter.tokenizer.encode(f" {answer}", add_special_tokens=False)
         if len(token_ids) != 1:
-            raise RuntimeError(f"registered symbol is not one token: {symbol} -> {token_ids}")
+            raise RuntimeError(
+                f"registered {relation_name} answer is not one token: {answer} -> {token_ids}"
+            )
         result.append(int(token_ids[0]))
     if len(set(result)) != len(result):
-        raise RuntimeError("element symbol token IDs must be unique")
+        raise RuntimeError(f"{relation_name} answer token IDs must be unique")
     return result
 
 
@@ -547,21 +677,63 @@ def _analyze(
             for split, split_name in enumerate(("train", "validation", "test"))
         }
     numerical_passed = bool(all(value["passed"] for value in numerical_by_layer.values()))
-    transition_pass = _transition_decision(config, behavior)
-    inversion_pass = _inversion_decision(config, layer_scores)
-    semantic_pass = _semantic_decision(config, layer_scores)
-    capital = json.loads(Path(str(config["capital_confirmation_metrics"])).read_text("utf-8"))
-    capital_pass = bool(all(capital["hypothesis_decisions"].values()))
-    decisions = {
-        "h_llm_08_late_causal_control_transition": transition_pass,
-        "h_geo_08_local_population_predictivity_inversion": inversion_pass,
-        "h_geo_09_late_population_semantic_specificity": semantic_pass,
-        "h_cross_03_population_transport_cross_relation": bool(
-            capital_pass and transition_pass and inversion_pass and semantic_pass
-        ),
-    }
+    decision_family = str(config.get("decision_family", "element_inversion"))
+    behavior_floor = float(config.get("clean_behavior_accuracy_min", 0.0))
+    behavior_eligible = bool(
+        clean_accuracy["validation"] >= behavior_floor
+        and clean_accuracy["test"] >= behavior_floor
+    )
+    transition_pass = bool(behavior_eligible and _transition_decision(config, behavior))
+    semantic_pass = bool(behavior_eligible and _semantic_decision(config, layer_scores))
+    frozen_confirmation: dict[str, Any]
+    population_advantage = _population_advantage_details(layer_scores, behavior)
+    if decision_family == "control_conditioned_population":
+        association_pass = bool(
+            behavior_eligible
+            and _control_population_association_decision(config, population_advantage)
+        )
+        element = json.loads(
+            Path(str(config["element_confirmation_metrics"])).read_text("utf-8")
+        )
+        element_decisions = element["analysis"]["hypothesis_decisions"]
+        element_pass = bool(
+            element_decisions["h_llm_08_late_causal_control_transition"]
+            and element_decisions["h_geo_09_late_population_semantic_specificity"]
+        )
+        decisions = {
+            "h_llm_10_state_late_causal_control_transition": transition_pass,
+            "h_geo_10_control_conditioned_population_advantage": association_pass,
+            "h_geo_11_state_late_population_semantic_specificity": semantic_pass,
+            "h_cross_04_control_conditioned_transport_cross_relation": bool(
+                element_pass and transition_pass and association_pass and semantic_pass
+            ),
+        }
+        frozen_confirmation = {
+            "element_metrics": str(config["element_confirmation_metrics"]),
+            "element_h_llm_08_and_h_geo_09_passed": element_pass,
+        }
+    else:
+        inversion_pass = _inversion_decision(config, layer_scores)
+        capital = json.loads(
+            Path(str(config["capital_confirmation_metrics"])).read_text("utf-8")
+        )
+        capital_pass = bool(all(capital["hypothesis_decisions"].values()))
+        decisions = {
+            "h_llm_08_late_causal_control_transition": transition_pass,
+            "h_geo_08_local_population_predictivity_inversion": inversion_pass,
+            "h_geo_09_late_population_semantic_specificity": semantic_pass,
+            "h_cross_03_population_transport_cross_relation": bool(
+                capital_pass and transition_pass and inversion_pass and semantic_pass
+            ),
+        }
+        frozen_confirmation = {
+            "capital_metrics": str(config["capital_confirmation_metrics"]),
+            "capital_confirmation_passed": capital_pass,
+        }
     if not numerical_passed:
         status = "REJECTED_NUMERICAL_GATE"
+    elif not behavior_eligible:
+        status = "REJECTED_BEHAVIOR_GATE"
     elif all(decisions.values()):
         status = "COMPLETED_POSITIVE"
     elif any(decisions.values()):
@@ -573,9 +745,12 @@ def _analyze(
         "numerical_audit_passed": numerical_passed,
         "numerical_by_layer": numerical_by_layer,
         "clean_full_vocab_accuracy_by_split": clean_accuracy,
+        "clean_behavior_accuracy_min": behavior_floor,
+        "behavior_eligible": behavior_eligible,
         "behavior_by_layer": behavior,
         "layer_scores": layer_scores,
-        "capital_confirmation_passed": capital_pass,
+        "population_advantage_by_layer": population_advantage,
+        "frozen_confirmation": frozen_confirmation,
         "hypothesis_decisions": decisions,
     }
 
@@ -663,6 +838,79 @@ def _semantic_decision(config: dict[str, Any], scores: dict[str, Any]) -> bool:
     return True
 
 
+def _population_advantage_details(
+    scores: dict[str, Any], behavior: dict[str, Any]
+) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for split in ("validation", "test"):
+        donor_control = []
+        advantages = []
+        by_layer = {}
+        for layer in ("18", "21", "24", "26"):
+            layer_scores = scores[layer]["splits"][split]
+            local_mse = layer_scores["local_jacobian"]["contrast_normalized_mse"]
+            quadratic_mse = layer_scores["quadratic_taylor"]["contrast_normalized_mse"]
+            population_mse = layer_scores["train_population_jacobian"][
+                "contrast_normalized_mse"
+            ]
+            best_local = min(local_mse, quadratic_mse)
+            advantage = best_local - population_mse
+            control = behavior[layer][split]["full_vocab_donor_token_transfer"]
+            donor_control.append(control)
+            advantages.append(advantage)
+            by_layer[layer] = {
+                "best_local_or_hvp_mse": best_local,
+                "population_mse": population_mse,
+                "population_advantage": advantage,
+                "full_vocab_donor_transfer": control,
+            }
+        result[split] = {
+            "by_layer": by_layer,
+            "donor_control_advantage_spearman": _spearman(donor_control, advantages),
+        }
+    return result
+
+
+def _control_population_association_decision(
+    config: dict[str, Any], details: dict[str, Any]
+) -> bool:
+    early_margin = float(config.get("early_best_transport_margin_min", 0.05))
+    late_margin = float(config.get("late_population_advantage_margin_min", 0.0))
+    correlation_min = float(config.get("control_advantage_spearman_min", 0.80))
+    for split in ("validation", "test"):
+        split_details = details[split]
+        early_advantage = split_details["by_layer"]["21"]["population_advantage"]
+        late_advantage = split_details["by_layer"]["24"]["population_advantage"]
+        if not (
+            early_advantage <= -early_margin
+            and late_advantage >= late_margin
+            and split_details["donor_control_advantage_spearman"] >= correlation_min
+        ):
+            return False
+    return True
+
+
+def _spearman(left: list[float], right: list[float]) -> float:
+    left_rank = _rankdata(np.asarray(left, dtype=np.float64))
+    right_rank = _rankdata(np.asarray(right, dtype=np.float64))
+    if np.std(left_rank) == 0.0 or np.std(right_rank) == 0.0:
+        return 0.0
+    return float(np.corrcoef(left_rank, right_rank)[0, 1])
+
+
+def _rankdata(values: np.ndarray) -> np.ndarray:
+    order = np.argsort(values, kind="stable")
+    ranks = np.empty(len(values), dtype=np.float64)
+    start = 0
+    while start < len(values):
+        end = start + 1
+        while end < len(values) and values[order[end]] == values[order[start]]:
+            end += 1
+        ranks[order[start:end]] = (start + end - 1) / 2.0
+        start = end
+    return ranks
+
+
 def _row_permutation_null(
     config: dict[str, Any],
     population_jacobian: np.ndarray,
@@ -742,8 +990,14 @@ def _config_digest(config: dict[str, Any]) -> str:
 __all__ = [
     "ELEMENT_PAIRS",
     "ELEMENT_SPLIT_IDS",
+    "STATE_PAIRS",
+    "STATE_SPLIT_IDS",
+    "_control_population_association_decision",
     "_inversion_decision",
+    "_population_advantage_details",
+    "_relation_spec",
     "_scores",
+    "_spearman",
     "_transition_decision",
     "_within_split_pairs",
     "run_qwen_element_layer_geometry_study",

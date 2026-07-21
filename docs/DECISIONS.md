@@ -168,3 +168,8 @@
   fail. Do not lower the `0.25/0.60` ratios or create a posthoc coupling claim. Any continuation must
   preregister a new relation/model and distinguish known late crystallization from the narrower
   question of when context averaging helps finite causal transport.
+- Use a tokenization-only state/postal-abbreviation roster for the next confirmation; inherit the
+  element layer grid without another pilot. Require clean-answer competence and compare population
+  transport against the better of exact local and quadratic/HVP-style correction. The new score may
+  test only the prospectively frozen sign switch and control correlation; it may not reinterpret the
+  failed element thresholds or claim novelty for population averaging, late crystallization, or HVP.

@@ -135,7 +135,10 @@ def main() -> int:
         metrics = run_qwen_population_jacobian_confirmation(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
-    if experiment_id == "LLM-ELEMENT-LAYER-GEOMETRY-001":
+    if experiment_id in {
+        "LLM-ELEMENT-LAYER-GEOMETRY-001",
+        "LLM-STATE-LAYER-GEOMETRY-001",
+    }:
         metrics = run_qwen_element_layer_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0

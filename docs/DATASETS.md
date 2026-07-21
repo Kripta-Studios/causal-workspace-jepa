@@ -94,3 +94,11 @@ is 30,852,462 bytes with SHA-256
 `8c54fd307c49a23f4fdf377f55b9799ef6ab7b507604173238e59f339d34fec5`, below the 96 MB budget;
 the committed manifest makes it reproducible. Status: derivative dataset `SMOKE_VALIDATED`, study
 `COMPLETED_MIXED`.
+
+`LLM-STATE-LAYER-GEOMETRY-001` prospectively selects 36 of 49 tokenization-eligible U.S. state
+postal abbreviations with seed 521 and fixes 24/6/6 entity-disjoint splits with seed 523. Every
+answer is one unique leading-space Qwen token. It will record 612 within-split donor patches at each
+of layers 18/21/24/26, complete `36 x 1024` selected-answer Jacobians, exact-local and directional
+quadratic predictions, and direct full-vocabulary behavior under a 96 MB budget. Tokenization is the
+only model-adjacent operation performed before registration; no registered prompt has had a forward
+pass. Status: `PREREGISTERED`.

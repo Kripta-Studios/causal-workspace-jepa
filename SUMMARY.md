@@ -1,5 +1,22 @@
 # SUMMARY
 
+## 2026-07-21 — State-abbreviation causal-geometry confirmation preregistration
+
+- Primary-source audit added LIT-041, *When Attribution Patching Lies*. Second-order/HVP correction
+  is prior art, so the existing directional quadratic Taylor remains a mandatory comparator and no
+  novelty is assigned to curvature correction itself.
+- Without running the model, tokenization identified 49 U.S. postal abbreviations represented by
+  unique single Qwen tokens. Seed 521 selected 36; seed 523 froze a 24/6/6 entity split. The exact
+  prompt, four layers inherited from the element study, 2,448 direct patches, 144 full selected-logit
+  Jacobians, storage budget, numerical gates, and clean-accuracy floor are preregistered.
+- H-GEO-10 uses a post-element but prospective endpoint:
+  `A_l = min(local NMSE, quadratic NMSE) - population NMSE`. Both validation and test must show
+  `A_21 <= -0.05`, `A_24 >= 0`, and Spearman correlation at least `0.80` between four-layer donor
+  control and `A_l`. H-LLM-10 repeats the causal-control transition; H-GEO-11 repeats late answer-row
+  specificity; H-CROSS-04 requires all three plus the frozen element positives.
+- This study can confirm only a cross-relation association in Qwen3-0.6B. It cannot by itself explain
+  the mechanism, identify a circuit/workspace, validate a JEPA meta-model, or establish SOTA.
+
 ## 2026-07-21 — Qwen element-layer causal-geometry result
 
 - Rejected the tempting JEPA vertex-dispersion follow-up after post-result controls showed that

@@ -118,6 +118,12 @@ Behavior-changing continuation:
   at layer 24 were `0.879/0.707`, not at most `0.60`, and test layer-21 local/population was `0.326`,
   not at most `0.25`. H-CROSS-03 consequently failed. This is direct causal generalization and a
   bounded layer profile, not a feature, circuit, JEPA-meta-model, J-space, or workspace result.
+- `LLM-STATE-LAYER-GEOMETRY-001` is preregistered on a never-forward-executed state-abbreviation
+  relation. Its population-advantage score compares population transport to the better of exact
+  local and directional quadratic/HVP-style transport, not to a weak baseline. Dual validation/test
+  gates require an early-to-late sign switch, correlation with direct donor control, and answer-row
+  specificity, conditional on at least `0.75` clean held-out accuracy. A full pass remains one-model
+  cross-relation evidence, not a circuit, workspace, JEPA-meta-model, or SOTA claim.
 
 Current mock implementation:
 

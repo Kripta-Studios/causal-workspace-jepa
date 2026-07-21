@@ -73,6 +73,10 @@ instrumentation, storage, and direct-data gates remain validated.
   inversion on both held-out splits and therefore rejects H-CROSS-03. The surviving association
   needs a newly preregistered relation/model confirmation; the observed element thresholds are
   frozen and late crystallization/population averaging remain prior art.
+- `LLM-STATE-LAYER-GEOMETRY-001` is that prospective cross-relation confirmation. It uses an
+  untouched state-abbreviation roster and tests whether population advantage over the better of
+  exact local and quadratic/HVP-style transport changes sign and covaries with direct donor control.
+  Commit/push the preregistration before any state-prompt forward pass.
 
 ## Milestone 3+: Scientific Runs
 

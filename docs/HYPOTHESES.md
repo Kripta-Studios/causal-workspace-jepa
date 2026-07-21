@@ -485,6 +485,51 @@ null p95 `0.167/0.108`. H-GEO-08 failed because the layer-24 population/local MS
 and late semantic specificity survive; the preregistered strong inversion and cross-relation
 conjunction do not.
 
+## LLM-STATE-LAYER-GEOMETRY-001 Preregistration
+
+Registered on 2026-07-21 after freezing the element result and before any forward pass on a
+registered state prompt. Tokenization alone identified 49 states with unique single-token postal
+abbreviations; seed 521 selected 36, and seed 523 fixed 24/6/6 entity-disjoint splits. No clean,
+patched, or derivative outcome from this roster was inspected before this registration.
+
+- Prior-art boundary: Jacobian Lens (LIT-003) already uses population-averaged Jacobians, MechLens
+  (LIT-040) already establishes late factual crystallization, and Zhang/Wang (LIT-041) already
+  diagnose first-order attribution-patching error and introduce HVP corrections. The directional
+  quadratic Taylor result here is an HVP-style comparator, not a new method.
+- Model/data: Qwen3-0.6B revision `c1899de...`, FP32 eager attention, exact prompt
+  `The postal abbreviation for {state} is`, full final-token residual replacement, and layers
+  18/21/24/26 inherited unchanged from the element study. Every ordered non-self pair stays within
+  its split, producing 612 direct patches per layer and complete `36 x 1024` selected-logit
+  Jacobians per context/layer.
+- Numerical gates: independently at every layer, clean replay at most `1e-5`, donor-source error at
+  most `1e-6`, and exact-Jacobian versus symmetric-central median/p95 relative error at most
+  `0.05/0.15`. Any failure rejects every scientific decision.
+- Behavior gate: clean full-vocabulary answer accuracy must be at least `0.75` on both validation
+  and test. Failure yields `REJECTED_BEHAVIOR_GATE` and no geometry hypothesis is decided.
+- Baselines/endpoints: centered 36-answer logit effects are scored with no-change, train mean,
+  exact local Jacobian, directional quadratic Taylor/HVP-style correction, and 24-train-context
+  population Jacobian. Full-vocabulary donor transfer, answer-candidate agreement, 1/2/4/8/16/24
+  averaging curves, and 256 answer-row permutations remain separate endpoints.
+- `H-LLM-10 — State late causal-control transition`: on both validation and test, maximum donor-
+  abbreviation transfer at layers 18/21 is at most `0.10`, minimum transfer at layers 24/26 is at
+  least `0.60`, and the late-minus-early increase is at least `0.50`.
+- Define population advantage at layer `l` as
+  `A_l = min(NMSE_local, NMSE_quadratic) - NMSE_population`; positive values mean population
+  transport beats both exact local and the second-order comparator.
+- `H-GEO-10 — Control-conditioned population advantage`: on both validation and test,
+  `A_21 <= -0.05`, `A_24 >= 0`, and the Spearman correlation across all four layers between direct
+  donor transfer and `A_l` is at least `0.80`. These sign/margin gates were chosen after the element
+  result and are confirmatory only on this untouched relation.
+- `H-GEO-11 — State late population semantic specificity`: at layers 24 and 26 on test, aligned
+  population MSE is at most `0.80x` the answer-row-null p05 and candidate agreement is at least
+  `0.05` above the null p95.
+- `H-CROSS-04 — Control-conditioned transport across factual relations`: passes only if H-LLM-10,
+  H-GEO-10, and H-GEO-11 all pass and the frozen element H-LLM-08/H-GEO-09 decisions remain true.
+- Evidence boundary: a full pass would confirm a layerwise association between direct donor control
+  and the relative utility of population transport across two factual relations in one small Qwen.
+  It would not establish why the transition occurs, identify a feature/circuit, beat published SOTA
+  across models, validate Intervention-JEPA, or establish a J-space/workspace.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The
