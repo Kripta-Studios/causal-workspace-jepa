@@ -1,0 +1,29 @@
+id: WM-EBJEPA-COMPETENCE-001
+status: preregistered_not_run
+resource_profile: configs/resource/gpu_12gb.yaml
+source_root: .cache/upstream/eb_jepa
+revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
+upstream_planner_config: examples/ac_video_jepa/cfgs/planning_mppi.yaml
+checkpoint_root: artifacts/checkpoints/eb_jepa_two_rooms_official_v1
+job_output_root: artifacts/checkpoints/eb_jepa_two_rooms_official_v1/competence_jobs
+training_seeds: [1, 1000, 10000]
+checkpoint_epochs: [9, 10, 11]
+planner_arms: [official_mppi_as_executed, bound_corrected_mppi_as_executed]
+optional_planner_arms: [bound_and_keyword_corrected_mppi]
+num_episodes: 20
+environment_seed: 0
+analysis_seed_base: 730000
+max_environment_steps: 200
+action_max_norm: 2.45
+overall_success_threshold: 0.80
+per_seed_success_threshold: 0.70
+planner_parameters:
+  plan_length: 90
+  n_iters: 20
+  num_samples: 200
+  num_elites: 20
+  num_act_stepped: 1
+  var_scale: 1.5
+  decode_each_iteration: false
+output_metrics: artifacts/metrics/eb_jepa_two_rooms_competence.json

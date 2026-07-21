@@ -212,6 +212,12 @@ writes atomic ignored status files. It hashes all 13 checkpoint files per seed. 
 freezes seeds 1/1000/10000 and epochs 9/10/11 for later evaluation; generated data/checkpoints/logs
 must not be committed.
 
+Competence evaluation uses a repository-owned no-render loop because upstream `main_eval` calls
+`save_gif` unconditionally but only defines `save_path` inside the optional-plots branch. The loop
+preserves the discarded initial environment reset, deterministic RNG-0 episode sequence, zero step,
+200-step receding-horizon interaction, representation objective, and instantiated planner classes.
+It writes one ignored job JSON per seed/checkpoint/arm and only then a compact tracked aggregate.
+
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the
