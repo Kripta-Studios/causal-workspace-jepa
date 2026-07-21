@@ -42,6 +42,50 @@ hypothesis.
 
 Metrics, splits, thresholds, layers, and magnitudes must be registered before each associated experiment.
 
+## WM-EBJEPA-INTEGRATION-001 Engineering Preregistration
+
+Registered on 2026-07-21 before retaining an official Two Rooms integration result. Earlier manual
+smokes established that the path can import and complete one tiny training loop; they are disclosed
+exploration, not the retained result. This experiment tests no numbered world-model hypothesis.
+
+- Source: clean official `facebookresearch/eb_jepa` revision
+  `966e61e9285b3a876f49b9774e9720d9a99a7925`.
+- Runtime: isolated Python 3.12.13, Torch 2.10.0+cu128 compatibility deviation with `sm_120`, plus
+  the committed exact dependency closure
+  `configs/resource/eb_jepa_two_rooms_py312_sm120.lock.txt`. The lock cannot replace Torch.
+- Dataset: seed 29, eight generated training samples, four validation samples, batch size two,
+  nine frames, no workers. Expected batch shapes are frozen in the config evaluator.
+- Model step: official 65x65 Impala encoder, one-layer 512-dimensional GRU, inverse-dynamics and
+  variance/covariance/similarity losses, four-step autoregressive BF16 unroll, backward, and AdamW.
+- Gates: pinned clean source; Python/Torch/CUDA/SM120 identity; exact dataset/output shapes and
+  official encoder/predictor parameter counts; finite loss/gradients; a changed parameter; exact
+  checkpoint restore; finite integrated MPPI output; peak reserved memory below 12 GB.
+- Packaging audit: `scipy`, `pandas`, and `PyYAML` are required by this path but absent from the
+  upstream dependency declaration (`ruamel.yaml` does not provide `import yaml`). This is recorded
+  independently of the integration gates.
+- Boundary: one tiny batch and a random-weight planning call establish only engineering
+  availability. They do not establish learned dynamics, planning competence, a circuit, or a
+  workspace.
+
+## WM-EBJEPA-PLANNER-CONSTRAINT-001 Post-discovery Confirmation
+
+Registered on 2026-07-21 after a manual random-weight official-model smoke returned an MPPI action
+of approximate norm `3.69` despite configured `max_norms: [2.45]`, and after source inspection found
+that official CEM uses `max_norms` while official MPPI does not. This is explicitly a post-discovery
+engineering confirmation, not a prospective scientific hypothesis.
+
+- Frozen comparison: official `CEMPlanner` versus `MPPIPlanner` from revision `966e61e...`, seeds
+  0--31, identical deterministic cumulative-action unroll, terminal-x objective, three iterations,
+  128 samples, 16 elites, plan length three, action width two, and configured maximum norm `2.45`.
+- Source gates: CEM `plan` mentions/enforces `max_norms`; MPPI `plan` does not; `DotWall.step` passes
+  the action to `_calculate_next_position` without checking `action_space`.
+- Dynamic gates: CEM violates the norm in zero seeds and has maximum norm at most `2.450001`; MPPI
+  violates it in at least 31/32 seeds, with median maximum norm at least `3.45`.
+- No threshold will be changed after the retained run. Failure to reproduce freezes the observation
+  as exploratory. Passing establishes an implementation/configuration defect only.
+- Scientific consequence: official planning competence must be compared under original and
+  constraint-corrected MPPI before any recurrent/action circuit or workspace interpretation.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

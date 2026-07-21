@@ -110,6 +110,22 @@ def main() -> int:
         metrics = run_eb_jepa_runtime_compatibility(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
+    if experiment_id == "WM-EBJEPA-INTEGRATION-001":
+        from causal_workspace_jepa.experiments.world_model.eb_jepa_two_rooms_integration import (
+            run_eb_jepa_two_rooms_integration,
+        )
+
+        metrics = run_eb_jepa_two_rooms_integration(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "WM-EBJEPA-PLANNER-CONSTRAINT-001":
+        from causal_workspace_jepa.experiments.world_model.eb_jepa_planner_constraint import (
+            run_eb_jepa_planner_constraint,
+        )
+
+        metrics = run_eb_jepa_planner_constraint(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
     if experiment_id == "WM-POPULATION-JACOBIAN-001":
         metrics = run_lewm_population_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))

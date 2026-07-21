@@ -164,6 +164,18 @@ not an exact environment reproduction.  The clean
 \code{WM-EBJEPA-RUNTIME-001} run from \code{15d88ce} passes all eight frozen
 runtime gates; this is availability evidence only.
 
+The executable Two Rooms path also exposes two reproduction hazards.  Its
+source imports SciPy, pandas, and PyYAML although the upstream project
+dependencies do not declare those distributions.  We therefore freeze a
+separate non-Torch lock and install the source with \code{--no-deps}.  In an
+exploratory random-weight plan, MPPI returned an action of norm approximately
+$3.69$ despite configured \code{max\_norms=[2.45]}.  Source inspection shows
+that CEM applies the bound, MPPI does not, and \code{DotWall.step} performs no
+independent action-space check.  A clean integration smoke and a frozen
+32-seed post-discovery CEM/MPPI confirmation are preregistered but not yet
+reported as retained results.  Planning competence and later circuit tests
+must compare original and constraint-corrected MPPI.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests
@@ -862,6 +874,9 @@ schema does not establish shared semantics or shared mechanism.
   host; local GPU execution requires a disclosed Torch 2.10/cu128 deviation.
   Consequently a later model run can reproduce source/config semantics but not
   claim bitwise dependency equivalence.
+  The Two Rooms dependency declaration omits three imported packages, and an
+  exploratory MPPI action exceeded its configured norm; both clean diagnostics
+  are pending at the time of this draft.
   \item The first JEPA population-transport study is numerically rejected.  The
   action-path study remains validation-only calibration.  Its cancellation/error
   association has a shared-denominator confound, and the parent artifact omits

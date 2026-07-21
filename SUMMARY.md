@@ -1,5 +1,22 @@
 # SUMMARY
 
+## 2026-07-21 — EB-JEPA Two Rooms import closure and planner defect preregistered
+
+- Installed a separate Python 3.12 Two Rooms closure while preserving Torch 2.10.0+cu128. The
+  exact resolved non-Torch environment is committed as a lock, and the installer fails if Torch or
+  the pinned clean official revision changes.
+- Found an upstream packaging gap: the executed Two Rooms path imports scipy, pandas, and PyYAML,
+  but the official project dependencies declare none of them; `ruamel.yaml` does not provide
+  `import yaml`.
+- An exploratory eight-sample official loop completed dataset generation, Impala/GRU BF16
+  forward/backward, AdamW, and checkpoint save on GPU.
+- The same exploratory integration returned an MPPI action of norm about `3.69` despite configured
+  `max_norms: [2.45]`. Source inspection shows CEM enforces the norm while MPPI does not, and the
+  environment passes actions into dynamics without checking its action space.
+- A matched deterministic control found exploratory MPPI violations in `32/32` seeds (median
+  maximum norm `6.45`, maximum `8.30`) versus CEM `0/32` (maximum `2.35`). These numbers are not yet
+  retained evidence: exact gates and the post-discovery status are preregistered for clean runs.
+
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 
 - `WM-ACTION-PATH-CALIBRATION-002` completed from clean `288f663` in `19,176.20` seconds. It used

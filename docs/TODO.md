@@ -18,8 +18,11 @@
 - [x] Build isolated Python 3.12/Torch 2.6+cu126 and Torch 2.10+cu128 runtimes. The exact pin fails
   all three SM120 kernels; the compatible deviation passes all three.
 - [x] Retain `WM-EBJEPA-RUNTIME-001` from clean `15d88ce`; all eight frozen two-runtime gates pass.
-- [ ] Install the remaining official EB-JEPA dependencies into the compatible runtime without
-  importing the incompatible upstream Torch pin.
+- [x] Freeze/install the Two Rooms dependency closure without replacing compatible Torch; record
+  that upstream omits scipy, pandas, and PyYAML from the required path.
+- [ ] Retain `WM-EBJEPA-INTEGRATION-001` from a clean commit.
+- [ ] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation; do not silently patch
+  the upstream planner before comparing original and corrected planning.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
 

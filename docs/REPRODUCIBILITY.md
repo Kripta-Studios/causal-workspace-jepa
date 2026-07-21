@@ -152,6 +152,21 @@ frozen identity/architecture/kernel gates pass. Exact and compatible subprocess 
 `1.51` and `1.75` seconds respectively. The root orchestration runtime remains Python 3.14/Torch
 2.10; each isolated probe records its own Python, Torch, CUDA, device, and compiled architecture list.
 
+The SM120-compatible Two Rooms closure is frozen in
+`configs/resource/eb_jepa_two_rooms_py312_sm120.lock.txt` and installed with
+`scripts/prepare_eb_jepa_two_rooms.py`. Torch is intentionally absent from that lock: the script
+first verifies the existing `2.10.0+cu128` wheel and `sm_120`, installs exact non-Torch packages,
+installs the pinned official checkout editable with `--no-deps`, and fails if Torch changes. Do not
+use upstream `uv sync` on this host. The official path imports `scipy`, `pandas`, and `yaml`, while
+its `pyproject.toml` declares neither scipy, pandas, nor PyYAML; `ruamel.yaml` is not an import-level
+substitute for PyYAML.
+
+`WM-EBJEPA-INTEGRATION-001` freezes a tiny generated dataset, exact model dimensions, one BF16
+forward/backward/AdamW step, exact checkpoint restoration, an integrated random-weight MPPI call,
+and peak GPU memory. `WM-EBJEPA-PLANNER-CONSTRAINT-001` is separately registered as post-discovery:
+it compares official CEM and MPPI over seeds 0--31 under an identical deterministic objective. No
+retained result may be described until both run from a clean pushed implementation commit.
+
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the

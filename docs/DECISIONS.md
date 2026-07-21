@@ -2,6 +2,17 @@
 
 ## 2026-07-21
 
+- Do not interpret official EB-JEPA MPPI behavior until the configured action constraint is audited.
+  Exploratory execution returned an action above `max_norms: [2.45]`; source inspection shows CEM
+  applies that bound, MPPI does not, and `DotWall.step` does not enforce `action_space`. Retain the
+  frozen 32-seed post-discovery confirmation, then compare original versus corrected MPPI during
+  planning reproduction. Do not silently patch upstream before reproducing both conditions.
+
+- Install the official Two Rooms path with the committed isolated lock and `--no-deps` editable
+  source install. Never run upstream `uv sync` in the SM120 environment because it would replace
+  Torch 2.10/cu128 with the incompatible Torch 2.6 pin. Record the upstream omission of `scipy`,
+  `pandas`, and `PyYAML` as a packaging defect, not a model result.
+
 - Do not attempt EB-JEPA GPU training under its literal Torch 2.6 pin on the RTX 5070 Ti. An
   isolated Python 3.12/Torch 2.6+cu126 probe detects SM120 but contains kernels only through SM90;
   matmul, Conv2D, and GRU all fail. Use Python 3.12/Torch 2.10+cu128 as a declared hardware-

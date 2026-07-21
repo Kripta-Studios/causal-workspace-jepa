@@ -57,6 +57,12 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
 - `SMOKE_VALIDATED`: `WM-EBJEPA-RUNTIME-001` ran from clean `15d88ce` and passed all eight frozen
   runtime gates. The exact Python 3.12/Torch 2.6+cu126 wheel omits `sm_120` and fails all three
   kernels; Python 3.12/Torch 2.10+cu128 includes `sm_120` and passes all three with finite outputs.
+- `IMPLEMENTED_NOT_RUN`: a pinned Two Rooms dependency closure and integration smoke cover the
+  official dataset, Impala/GRU forward/backward, checkpoint restoration, MPPI call, and peak memory.
+  Upstream omits scipy, pandas, and PyYAML from the dependencies required by this path.
+- `IMPLEMENTED_NOT_RUN`: post-discovery planner confirmation freezes a 32-seed matched CEM/MPPI
+  control. Exploratory execution found CEM `0/32` versus MPPI `32/32` action-norm violations under
+  configured maximum `2.45`; this must be retained cleanly before reporting it as confirmed.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

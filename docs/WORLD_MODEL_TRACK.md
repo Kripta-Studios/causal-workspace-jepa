@@ -38,6 +38,16 @@ the latter as a declared compatibility deviation. The clean `WM-EBJEPA-RUNTIME-0
 `15d88ce` passed all eight frozen architecture/runtime/kernel gates. Remaining upstream dependencies
 and planner competence are still pending.
 
+The compatible Two Rooms dependency closure is now frozen and installed without allowing the
+upstream package resolver to replace Torch. Source/import audit found undeclared runtime
+requirements for scipy, pandas, and PyYAML. A manual eight-sample official training loop completed
+on GPU. That exploratory run also exposed a planning-control boundary: official CEM applies
+`max_norms`, official MPPI does not, and `DotWall.step` does not enforce its action space. The first
+random-weight MPPI action had norm about `3.69` under a configured `2.45` maximum. A 32-seed
+post-discovery confirmation and a clean integration smoke are preregistered; neither is yet retained
+evidence. Planning reproduction must preserve original MPPI and add a separately labeled corrected
+condition before mechanistic interpretation.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,

@@ -29,6 +29,19 @@ and GRU each fail with `no kernel image is available`. The controlled Python 3.1
 training, label every run `compatibility_deviation`, and preserve the exact-pin CPU probe. Do not
 alter the working Qwen environment in place.
 
+Prepare the isolated Two Rooms closure without replacing Torch:
+
+```powershell
+python scripts/prepare_eb_jepa_two_rooms.py
+$env:PYTHONPATH='src'
+python scripts/run_experiment.py --config configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml
+python scripts/run_experiment.py --config configs/experiments/eb_jepa_planner_constraint.yaml
+```
+
+Do not use upstream `uv sync` in this environment. The committed lock supplies the undeclared
+scipy/pandas/PyYAML imports and exact resolved transitive versions while deliberately excluding
+Torch. The integration and planner-constraint artifacts are engineering evidence only.
+
 ## Decision
 
 Do **not** wait to give Codex the project prompt.
