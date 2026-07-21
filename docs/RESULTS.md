@@ -30,6 +30,7 @@ Qwen circuit has been discovered.
 | LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Generalization | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
 | LLM-ELEMENT-LAYER-GEOMETRY-001 | A second factual relation confirms a sharp late donor-control transition and semantically specific late population transport, but rejects the preregistered strong local/population inversion and cross-relation conjunction. | Generalization | `configs/experiments/qwen_element_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_element_layer_geometry_v1.json` | `5d8de9a` | `COMPLETED_MIXED` |
 | LLM-STATE-LAYER-GEOMETRY-001 | The state-abbreviation confirmation is behavior-ineligible despite valid derivatives; all hypotheses remain undecided. | Availability/eligibility rejection | `configs/experiments/qwen_state_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_layer_geometry_v1.json` | `27ebe43` | `REJECTED_BEHAVIOR_GATE` |
+| LLM-STATE-ONESHOT-LAYER-GEOMETRY-001 | A behavior-competent one-shot state study confirms late population semantic specificity but rejects exact control/population onset equality and the strict early-control gate. | Generalization | `configs/experiments/qwen_state_oneshot_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_oneshot_layer_geometry_v1.json` | `c1daa46` | `COMPLETED_MIXED` |
 | WM-POPULATION-JACOBIAN-001 | The recurrent-JEPA port is rejected because fixed quadrature fails; its provisional action-vertex averaging signal is not accepted, while the global mean fails correlation and semantic specificity. | Numerical rejection | `configs/experiments/lewm_population_geometry_v1.yaml` | `artifacts/metrics/lewm_population_geometry_v1.json` | `89b2e14` | `REJECTED_NUMERICAL_GATE` |
 | WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
@@ -366,3 +367,23 @@ Interpretation: no scientific hypothesis is decided. The clean-answer gate did i
 it prevents model formatting/factual failures from being mistaken for causal geometry. The apparent
 boundary-relative sign change at layer 26 was observed after rejection and can only motivate a new
 behavior-competent preregistration; it cannot rescue H-LLM-10, H-GEO-10, H-GEO-11, or H-CROSS-04.
+
+`LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` key metrics:
+
+- clean execution commit/runtime: `c1daa46`, `235.12` seconds; clean validation/test accuracy
+  `1.0/1.0`; all numerical gates passed with maximum p95 derivative error `0.0492`;
+- validation donor transfer by layer 18/21/24/26: `0/0.033/0.800/1.0`; test:
+  `0/0.233/1.0/1.0`;
+- validation population advantage: `-0.575/-0.220/-0.0266/+0.112`, Spearman `1.0`; test:
+  `-0.600/-0.203/+0.114/+0.127`, Spearman `0.9487`;
+- test control/population boundaries: `24/24`; validation: `24/26`, rejecting H-GEO-12;
+- layer-24/26 test population NMSE/agreement: `0.1193/1.0` and `0.02079/1.0`; row-null p05 MSE:
+  `2.112/1.742`; row-null p95 agreement: `0.133/0.133`; H-GEO-13 passed;
+- H-LLM-12 failed its test early-control ceiling; H-CROSS-05 failed; ignored shard 30,889,987 bytes,
+  SHA-256 `d0c83b0fff029990cb4ca7bd7151bd84e62fef0a43caa63608708e914b9974fa`.
+
+Interpretation: population transport is semantically faithful late in the network, but its exact
+onset need not coincide with the onset of majority donor control on each entity split. The observed
+one-grid-step validation lag is descriptive and cannot replace the registered equality claim. This
+is a discriminating negative for exact coupling, not a circuit, workspace, JEPA-meta-model, or SOTA
+result.

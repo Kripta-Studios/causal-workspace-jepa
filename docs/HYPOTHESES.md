@@ -580,6 +580,15 @@ unchanged from v1, but every exact one-shot target prompt and all of its causal 
   is not an explanation of the boundary, model-scale generalization, component localization,
   circuit reconstruction, a JEPA meta-model result, workspace/J-space evidence, or SOTA.
 
+Measured result from clean commit `c1daa46`: status `COMPLETED_MIXED`. Clean validation/test
+accuracy was `1.0/1.0` and all numerical gates passed. H-GEO-13 passed with layer-24/26 test
+population NMSE `0.1193/0.02079`, agreement `1.0/1.0`, row-null p05 MSE `2.112/1.742`, and null p95
+agreement `0.133/0.133`. H-GEO-12 failed because validation control onset was layer 24 but population
+advantage onset was layer 26 (`A_24=-0.0266`); test aligned at layer 24. Its remaining sign margins
+and Spearman gates passed. H-LLM-12 failed because test layer-21 donor transfer was `0.233`, above
+`0.10`, despite layer-26 transfer `1.0`. H-CROSS-05 therefore failed. Exact boundary identity is
+false for this run; semantic late population fidelity survives.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

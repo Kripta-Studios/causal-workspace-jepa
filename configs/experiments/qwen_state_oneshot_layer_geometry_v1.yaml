@@ -1,5 +1,5 @@
 id: LLM-STATE-ONESHOT-LAYER-GEOMETRY-001
-status: PREREGISTERED
+status: COMPLETED_MIXED
 relation: us_state_postal_abbreviation_one_shot
 decision_family: boundary_conditioned_population
 resource_profile: configs/resource/gpu_12gb.yaml

@@ -81,11 +81,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   frozen `0.75` floor. No scientific hypothesis is decided. Descriptively only, donor-control versus
   population-advantage Spearman was `0.949` on both splits and advantage turned positive at layer 26,
   not the registered layer 24; this is a new follow-up hypothesis, not rescued evidence.
-- `PREREGISTERED`: `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` uses a fixed format example selected at
-  13/13 accuracy on 13 excluded states; no target one-shot prompt has been executed. It raises the
-  held-out competence floor to `0.90` and prospectively tests whether the first ≥50%-donor-control
-  layer equals the first layer where population transport beats both exact local and quadratic
-  transport on validation and test.
+- `COMPLETED_MIXED`: `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` ran unchanged from clean `c1daa46`.
+  Competence and all numerical gates passed; late population semantic specificity passed. Exact
+  boundary alignment failed because validation donor control crossed at layer 24 while population
+  advantage crossed at 26; test aligned at 24. The early-control gate also failed on test (`0.233`
+  at layer 21 versus `0.10`). H-GEO-12, H-LLM-12, and H-CROSS-05 are false as registered.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

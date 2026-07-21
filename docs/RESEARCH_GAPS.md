@@ -51,5 +51,7 @@ Status: `ACTIVE`.
   relative transition rather than move v1's fixed layer after the fact. Even a full future pass
   leaves cross-scale generalization, localization, circuit reconstruction, and mechanism unresolved.
 - One-shot v2 repairs prompt competence prospectively but reuses the v1 state identities and split;
-  only the exact prompt/intervention grid is unobserved. A positive result therefore needs later
-  entity/task/model replication and cannot by itself identify why the two onset layers align.
+  its exact-boundary hypothesis is now false on validation. The remaining descriptive pattern is a
+  zero-or-one-grid-step lag with high rank correlation, but that weaker statement is post-result and
+  needs a new relation with new entities/answer semantics. Why population usefulness lags or tracks
+  donor control remains mechanistically unexplained.

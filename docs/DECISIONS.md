@@ -181,3 +181,7 @@
   winner before any target forward. Test boundary equality rather than hard-code the post-result
   layer 26, require a `0.90` clean floor, and preserve exact/quadratic/population comparators. Reusing
   v1 state identities limits independence and must remain explicit even though exact prompts are new.
+- Freeze one-shot v2 as mixed: H-GEO-13 passes, but exact onset equality and the early-control gate
+  fail. Do not reinterpret a one-grid-step validation lag as equality or relax layer-21 transfer.
+  A weaker bounded-lag hypothesis may be tested only on an independent relation with new target
+  entities/answer semantics and a preregistered competence gate.

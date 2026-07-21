@@ -1,0 +1,212 @@
+{
+  "arrays": {
+    "answer_token_id": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        36
+      ]
+    },
+    "central_prediction": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612,
+        36
+      ]
+    },
+    "central_relative_error": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612
+      ]
+    },
+    "clean_answer_logits": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        36,
+        36
+      ]
+    },
+    "clean_source": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        36,
+        1024
+      ]
+    },
+    "clean_top_token": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        36
+      ]
+    },
+    "donor_id": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        612
+      ]
+    },
+    "entity_split_id": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        36
+      ]
+    },
+    "intervened_answer_logits": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612,
+        36
+      ]
+    },
+    "intervened_top_token": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        4,
+        612
+      ]
+    },
+    "layer": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        4
+      ]
+    },
+    "local_prediction": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612,
+        36
+      ]
+    },
+    "logit_jacobian": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        36,
+        36,
+        1024
+      ]
+    },
+    "quadratic_prediction": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612,
+        36
+      ]
+    },
+    "recipient_id": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        612
+      ]
+    },
+    "source_delta": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612,
+        1024
+      ]
+    },
+    "source_semantic_error": {
+      "dtype": "float32",
+      "shape": [
+        1,
+        4,
+        612
+      ]
+    },
+    "split_id": {
+      "dtype": "int64",
+      "shape": [
+        1,
+        612
+      ]
+    }
+  },
+  "budget_bytes": 100663296,
+  "config_digest": "3f18a83cd32fc71d908beccd24a24bf41e3733728cd3b7bb943edb8ea29eedff",
+  "dataset_id": "LLM-STATE-ONESHOT-LAYER-GEOMETRY-001",
+  "entity_split_ids": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    1
+  ],
+  "estimated_uncompressed_bytes": 33320736,
+  "examples": 1,
+  "format": "hdf5",
+  "layers": [
+    18,
+    21,
+    24,
+    26
+  ],
+  "local_data_root": "data/activations/qwen_state_oneshot_layer_geometry_v1",
+  "max_shard_bytes": 67108864,
+  "model": "Qwen/Qwen3-0.6B",
+  "model_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "precision": "float32",
+  "shards": [
+    {
+      "bytes": 30889987,
+      "path": "data/activations/qwen_state_oneshot_layer_geometry_v1/shard-00000-of-00001.h5",
+      "rows": 1,
+      "sha256": "d0c83b0fff029990cb4ca7bd7151bd84e62fef0a43caa63608708e914b9974fa"
+    }
+  ]
+}

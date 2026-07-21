@@ -1,0 +1,18 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_state_oneshot_layer_geometry_v1.yaml",
+  "git_commit": "c1daa4617274985fa0eff8ea622decb368209a11",
+  "git_dirty": false,
+  "hypothesis_decisions": {
+    "h_cross_05_boundary_alignment_cross_relation": false,
+    "h_geo_12_control_population_boundary_alignment": false,
+    "h_geo_13_boundary_population_semantic_specificity": true,
+    "h_llm_12_one_shot_late_causal_control": false
+  },
+  "metrics": "artifacts/metrics/qwen_state_oneshot_layer_geometry_v1.json",
+  "numerical_audit_passed": true,
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 563,
+  "time_utc": "2026-07-21T14:03:37.989520+00:00"
+}

@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 2026-07-21 — Behavior-competent boundary-relative confirmation preregistration
+## 2026-07-21 — Behavior-competent boundary-relative confirmation result
 
 - Calibrated five prompt formats on only the 13 states excluded by seed 521. Accuracy was
   `12/13`, `3/13`, `13/13`, `8/13`, and `3/13`; the fixed District-of-Columbia example won. No
@@ -17,6 +17,17 @@
 - V2 reuses state identities/splits but every exact prompt and causal outcome is new. A full pass is
   still one-model cross-relation evidence, not an explained circuit, JEPA meta-model, workspace, or
   SOTA result.
+- The unchanged run from clean `c1daa46` completed in `235.12` seconds. Clean validation/test
+  accuracy was `1.0/1.0`; all numerical gates passed, with maximum p95 derivative error `0.0492`.
+- H-GEO-13 passed: test population NMSE/agreement was `0.1193/1.0` at layer 24 and `0.02079/1.0`
+  at layer 26, versus row-null p05 MSE `2.112/1.742` and p95 agreement `0.133/0.133`.
+- H-GEO-12 failed one decisive dual-split subgate. Test control/population boundaries both occurred
+  at layer 24, but validation control crossed at 24 while population advantage stayed negative
+  (`-0.0266`) until layer 26. All early/terminal advantage margins and Spearman (`1.0` validation,
+  `0.949` test) passed. Exact onset equality is therefore false for this run.
+- H-LLM-12 failed because test layer-21 donor transfer was `0.233`, above the registered `0.10`
+  early maximum; terminal transfer was `1.0`. H-CROSS-05 consequently failed. The robust surviving
+  observation is late semantic population fidelity, not exact boundary identity.
 
 ## 2026-07-21 — State-abbreviation causal-geometry confirmation result
 

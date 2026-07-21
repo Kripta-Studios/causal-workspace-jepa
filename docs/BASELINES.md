@@ -110,6 +110,7 @@ directional quadratic Taylor, an HVP-style second-order correction. The clean-be
 the study before this comparator could decide a hypothesis. Its descriptive layer-26 sign change is
 retained only to design a fresh confirmation, never as a baseline win.
 
-One-shot v2 retains the same strong baselines and defines the population onset only when population
-NMSE first becomes no worse than both exact local and quadratic/HVP-style NMSE. Thus its registered
-boundary equality cannot be won by comparing population transport against first order alone.
+One-shot v2 retained the same strong baselines and defined population onset only when population
+NMSE first became no worse than both exact local and quadratic/HVP-style NMSE. Exact equality failed
+on validation even though population beat both comparators by layer 26; this negative cannot be
+recast as a first-order baseline artifact.

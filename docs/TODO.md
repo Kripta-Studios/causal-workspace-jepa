@@ -45,8 +45,10 @@
 - [x] Calibrate five prompts on 13 excluded states; select the 13/13 one-shot format without any
   target one-shot forward.
 - [x] Implement and preregister the boundary-relative `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001`.
-- [ ] Commit/push and execute the one-shot study unchanged; retain all gate failures without moving
-  either empirical boundary after observation.
+- [x] Commit/push and execute the one-shot study unchanged from `c1daa46`; retain H-GEO-13 and the
+  failed early-control, validation-boundary-equality, and cross-relation gates.
+- [ ] Before weakening exact equality to a one-grid-step lag, preregister and execute an independent
+  relation with new entities/answer semantics and strong competence controls.
 - [x] Use four permanently excluded element-symbol facts to calibrate a fixed four-layer grid and
   audit late-crystallization/AtP prior art without touching the registered 36-entity roster.
 - [x] Implement and preregister `LLM-ELEMENT-LAYER-GEOMETRY-001` with direct behavior, full selected-

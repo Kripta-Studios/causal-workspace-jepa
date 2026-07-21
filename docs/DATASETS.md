@@ -105,8 +105,10 @@ directional-quadratic predictions, and direct full-vocabulary behavior. The igno
 Status: dataset `SMOKE_VALIDATED`, experiment `REJECTED_BEHAVIOR_GATE` because held-out clean accuracy
 was below the registered floor.
 
-`LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` reuses the fixed state identities/splits but changes the
+`LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` reused the fixed state identities/splits but changed the
 exact prompt to include one out-of-roster format example. Five templates were evaluated only on the
 13 roster-excluded states; the selected template scored `13/13`. No target one-shot prompt was
-executed before preregistration. The planned arrays, 612 pairs/layer, four layers, precision, and
-96 MB budget match state v1. Status: `PREREGISTERED`.
+executed before preregistration. The arrays, 612 pairs/layer, four layers, and precision match state
+v1. The ignored shard is 30,889,987 bytes with SHA-256
+`d0c83b0fff029990cb4ca7bd7151bd84e62fef0a43caa63608708e914b9974fa`, below the 96 MB budget.
+Status: dataset `SMOKE_VALIDATED`, experiment `COMPLETED_MIXED`.

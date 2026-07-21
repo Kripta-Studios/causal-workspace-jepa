@@ -65,9 +65,9 @@ Status: `ACTIVE`.
   quadratic/HVP-style comparators were present, but no scientific score is eligible. The apparent
   layer-26 alignment was observed after rejection and cannot be promoted without a newly registered,
   behavior-competent task. One-model confirmation would still not establish SOTA.
-- `ACTIVE_CONFIRMATION_V2`: the one-shot prompt is selected on excluded entities and target prompts
-  are untouched, but entity identities/splits are reused from v1. Boundary equality, not a fixed
-  posthoc layer, is registered. Any pass remains vulnerable to one-model/task-family dependence.
+- `COMPLETED_MIXED_V2`: one-shot competence and numerics pass, but exact boundary equality fails on
+  validation and early donor control fails on test. The observed zero-or-one-step lag is posthoc;
+  reporting it as confirmed would be threshold laundering. A new relation is mandatory.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.
