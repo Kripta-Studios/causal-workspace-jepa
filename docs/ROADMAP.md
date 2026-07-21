@@ -68,6 +68,10 @@ instrumentation, storage, and direct-data gates remain validated.
   global population mean fails correlation/semantic controls; a provisional within-context
   action-vertex mean improves over local 3/3 but requires test-goal confirmation with adaptive
   integration. No planner is competent enough for behavior evidence.
+- Do not directly confirm the vertex-MSE effect: its validation correlations and scalar-shrinkage
+  control are not mechanism-specific. First run the hard-locked validation calibration of decoded
+  path cancellation and local finite-effect failure. Only converged, null-separated geometry may
+  motivate a new preregistered analysis of the five protected test goals.
 - `LLM-ELEMENT-LAYER-GEOMETRY-001` completed from clean `5d8de9a`. It confirms the preregistered late
   donor-control transition and late answer-row specificity, but rejects the strict local/population
   inversion on both held-out splits and therefore rejects H-CROSS-03. The surviving association

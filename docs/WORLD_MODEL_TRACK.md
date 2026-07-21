@@ -39,6 +39,13 @@ correlation, and failed action-column specificity. Averaging the four valid acti
 Jacobians within each context provisionally beat local in all seeds and both horizons, but the
 numerical rejection prevents accepting that result. The five test goals remain untouched.
 
+The naive vertex-mean continuation is stopped because validation correlation and scalar-shrinkage
+controls undermine its MSE-only interpretation. `WM-ACTION-PATH-CALIBRATION-001` is instead locked
+to the exposed validation goals. It profiles decoded derivative arc length versus net action effect,
+local finite-chord error, 128/256-node composite-quadrature convergence, speed concentration, and
+within-action-pair permutation nulls. It is calibration only; scientific test thresholds are not yet
+registered and the five test goals remain protected.
+
 Validated CPU smoke:
 
 - `WM-T0-001` ran on PointMass2D with code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.

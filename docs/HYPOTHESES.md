@@ -652,6 +652,22 @@ also had positive `A_21=.2289`, violating the registered negative early margin. 
 The data reject a universal population-after-control ordering at this threshold; they do not prove
 that population transport causes control or identify why relation boundaries differ.
 
+## WM-ACTION-PATH-CALIBRATION-001 Boundary
+
+Registered as calibration-only on 2026-07-21 before running the new dense path profiler. This ID is
+hard-locked to the already exposed five validation goals and therefore makes no scientific
+hypothesis decision. Across the three frozen checkpoints and horizons one/four, it samples exactly
+two contexts for each of 12 ordered action pairs and evaluates exact action JVPs with 8-point
+composite Gauss-Legendre rules at 16 and 32 panels. It reports decoded physical path length, net
+effect, cancellation ratio, local finite-effect error, direct reconstruction error, refinement
+change, speed concentration, and 256 within-action-pair permutations. It may inform a later
+preregistration, but cannot validate a claim, alter v1, or access test goal IDs 12/11/10/21/2.
+
+Local-linear world-action steering is prior art (LIT-042), and latent trajectory curvature is prior
+art (LIT-012). The narrower decoded action-chord cancellation diagnostic was not found in the
+bounded primary-source search; this is not proof of novelty. A future test must preserve decoded
+coordinates, numerical convergence, horizon-one controls, direct effects, and stratified nulls.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

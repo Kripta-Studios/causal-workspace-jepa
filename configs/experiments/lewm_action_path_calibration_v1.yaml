@@ -1,0 +1,28 @@
+id: WM-ACTION-PATH-CALIBRATION-001
+status: CALIBRATION_PLANNED
+resource_profile: configs/resource/gpu_12gb.yaml
+device: cuda
+model_seeds: [101, 103, 107]
+analysis_seed: 631
+profile_seed: 641
+permutation_seed: 643
+goal_split_seed: 401
+train_goal_ids: [0, 14, 20, 18, 3, 19, 9, 4, 5, 6, 16, 17]
+validation_goal_ids: [8, 13, 1, 15, 7]
+test_goal_ids: [12, 11, 10, 21, 2]
+analysis_split: validation
+horizon4_suffix_action_ids: [0, 0, 0, 1, 2, 3, 2, 3, 0, 3, 1, 2]
+cell_size: 4
+checkpoint_dir: artifacts/checkpoints/lewm_small_v1
+checkpoint_sha256:
+  101: eb158924c7cbe1be196ae0e04d374b305af20bd0e874c51fc96cb6ac15e70796
+  103: b4f0c82bb0fca29ef1bb66297a9203093f39e9c9bbfe2d9bf17c6a1c7e9883b3
+  107: 70a1eaa06f57b1a39ba76bc9d9230e174cc0d1e26ac5eb641e0f8c2ef974b6a8
+decoder_ridge: 0.001
+jacobian_chunk_size: 16
+contexts_per_action_pair: 2
+gauss_order: 8
+panel_refinements: [16, 32]
+direct_norm_floor: 0.0001
+permutations: 256
+output_metrics: artifacts/metrics/lewm_action_path_calibration_v1.json

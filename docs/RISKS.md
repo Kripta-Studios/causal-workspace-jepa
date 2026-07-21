@@ -76,6 +76,11 @@ Status: `ACTIVE`.
   validation population boundary preceded the registered 50% control boundary. The surviving
   monotone-control and row-null-specificity results do not establish temporal/causal ordering,
   component localization, or a new population-Jacobian algorithm.
+- `ACTIVE_PATH_CALIBRATION`: large derivative path length divided by small net decoded displacement
+  can reflect real vector cancellation, decoder error, or numerical underresolution. The new
+  validation calibration reports direct reconstruction, refinement change, direct-effect norm,
+  speed concentration, horizon controls, and within-action-pair permutation nulls. It makes no
+  claim and leaves test goals inaccessible until a separate preregistration.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

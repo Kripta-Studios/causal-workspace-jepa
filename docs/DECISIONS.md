@@ -158,6 +158,10 @@
   stiffness. A separately committed v2 may use adaptive integration on the five untouched test
   goals and prospectively test the provisional within-context action-vertex mean. Do not carry the
   failed global-population hypothesis forward merely because shrinkage lowered MSE.
+- Stop the vertex-mean test route before touching protected goals: its validation MSE benefit is
+  compatible with scalar shrinkage and lacks replicated correlation gains. Use exposed validation
+  goals only to calibrate a decoded path-cancellation profiler; require a separate clean commit for
+  any future test-goal hypotheses and retain LIT-012/LIT-042 as adjacent prior art.
 - Use element-symbol retrieval as the next independent Qwen relation. Calibrate layers only on
   Gold/Au, Silver/Ag, Tin/Sn, and Lead/Pb, then exclude them permanently. Freeze layers 18/21/24/26
   and 24/6/6 registered entities before execution. Do not call a late-layer transition novel:

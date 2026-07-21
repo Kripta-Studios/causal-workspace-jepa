@@ -40,6 +40,11 @@ Status: `ACTIVE`.
   validate derivatives locally, adaptively integrate to convergence, retain action-label controls,
   and use only the protected test goals. The global population mean's low MSE is consistent with
   nonspecific shrinkage because correlation and semantic permutation gates failed.
+- The provisional vertex-mean MSE reduction is no longer the protected-test target: validation
+  correlation and a train-calibrated scalar-shrinkage diagnostic undermine its semantic reading.
+  `WM-ACTION-PATH-CALIBRATION-001` instead measures decoded derivative path length, cancellation,
+  local finite-effect failure, two-level quadrature convergence, and within-action-pair nulls on
+  exposed validation goals. Only a later frozen configuration may access the test goals.
 - The element-symbol study supplies an independent relation and four-layer profile. It confirms a
   sharp late donor-control transition and late population semantic specificity, but the registered
   exact-local/population inversion ratios fail on both splits. Because late factual crystallization

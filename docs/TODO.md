@@ -30,8 +30,12 @@
   valid one-hot action swaps, held-out goals, path integration, decoded physics, and gauge controls.
 - [x] Commit/push and execute `WM-POPULATION-JACOBIAN-001` unchanged from `89b2e14`; retain its
   numerical rejection, underresolved path integral, ineligible planners, and untouched test goals.
-- [ ] Preregister a corrected adaptive path-integral audit plus action-vertex-mean confirmation on
-  the five protected test goals; v1's scientific decisions must remain rejected.
+- [x] Reject the naive action-vertex-mean continuation after validation shrinkage/correlation
+  controls; preserve all five test goals.
+- [x] Implement a validation-only decoded action-path cancellation calibration with composite
+  quadrature, refinement checks, and action-pair-stratified nulls.
+- [ ] Commit/push and run `WM-ACTION-PATH-CALIBRATION-001`; then preregister a separate protected-
+  test study only if numerical convergence and discriminating validation signals warrant it.
 - [x] Replicate population-versus-local finite transport on the element-symbol relation; retain the
   failed strict inversion and positive late semantic-specificity decisions separately.
 - [ ] Confirm the surviving causal-control/late-population association on a behavior-competent,

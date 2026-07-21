@@ -45,6 +45,9 @@ from causal_workspace_jepa.experiments.world_model.manifold_workspace_study impo
 from causal_workspace_jepa.experiments.world_model.lewm_population_geometry_study import (
     run_lewm_population_geometry_study,
 )
+from causal_workspace_jepa.experiments.world_model.lewm_action_path_geometry_study import (
+    run_lewm_action_path_geometry_study,
+)
 from causal_workspace_jepa.experiments.world_model.multitask_workspace_study import (
     run_multitask_workspace_study,
 )
@@ -93,6 +96,13 @@ def main() -> int:
         return 0
     if experiment_id == "WM-POPULATION-JACOBIAN-001":
         metrics = run_lewm_population_geometry_study(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id in {
+        "WM-ACTION-PATH-CALIBRATION-001",
+        "WM-ACTION-PATH-GEOMETRY-001",
+    }:
+        metrics = run_lewm_action_path_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     if experiment_id == "LLM-MOCK-001":

@@ -100,6 +100,10 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   scientific transport claim survives. The global mean failed correlation/action-label controls;
   the provisional 3/3 advantage of within-context valid-action-vertex averaging requires a newly
   registered adaptive confirmation on the five untouched test goals.
+- `CALIBRATION_PLANNED`: `WM-ACTION-PATH-CALIBRATION-001` replaces that confounded vertex-MSE route
+  with a validation-only decoded path-cancellation audit. Composite exact-JVP integration,
+  refinement checks, local finite-effect error, concentration metrics, and within-action-pair nulls
+  are implemented; the calibration cannot touch protected test goals or emit a scientific claim.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.

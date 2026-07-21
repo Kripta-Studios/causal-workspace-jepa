@@ -1,5 +1,21 @@
 # SUMMARY
 
+## 2026-07-21 — JEPA action-path calibration implementation
+
+- Stopped the naive protected-test vertex-mean confirmation: validation correlation and the already
+  recorded scalar-shrinkage control show that its MSE gain is not sufficiently semantic.
+- Literature audit added LIT-042. Local-linear world-action steering and temporal straightening are
+  prior art; no source found directly tests decoded path-length cancellation along finite JEPA
+  action chords. Absence from this bounded search is not proof of novelty.
+- Implemented validation-only `WM-ACTION-PATH-CALIBRATION-001`. It profiles exact action JVPs on
+  two contexts per ordered action pair, using 8-point composite Gauss-Legendre at 16/32 panels.
+  Metrics include decoded path length/net displacement, cancellation ratio, local finite-effect
+  error, direct reconstruction, refinement change, speed concentration, and action-pair-stratified
+  permutation nulls across horizons one/four and seeds 101/103/107.
+- The calibration ID is hard-locked to the five already exposed validation goals. It emits no
+  scientific decision and cannot touch protected test goals. Test hypotheses/thresholds will be
+  registered only after calibration, in a separate clean pushed commit.
+
 ## 2026-07-21 — Independent country-code bounded-lag preregistration
 
 - The first clean execution from `ab07627` completed target model computation but failed before
