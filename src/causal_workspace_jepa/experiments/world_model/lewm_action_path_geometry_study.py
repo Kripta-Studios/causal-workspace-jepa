@@ -200,7 +200,7 @@ def _profile_horizon(
     delta = eye[donor_tensor] - eye[recipient_tensor]
     direct_latent = outputs[context_tensor, donor_tensor] - outputs[context_tensor, recipient_tensor]
     decoder_tensor = torch.as_tensor(decoder["weights"], device=device, dtype=initial.dtype)
-    direct = direct_latent @ decoder_tensor
+    direct = (direct_latent @ decoder_tensor).detach().cpu()
     direct_norm = direct.norm(dim=1).clamp_min(float(config.get("direct_norm_floor", 1e-4)))
 
     refinements = tuple(int(value) for value in config["panel_refinements"])
@@ -213,27 +213,34 @@ def _profile_horizon(
         actions = eye[recipient_tensor, None, :] + node_tensor[None, :, None] * delta[:, None, :]
         repeated_initial = initial[context_tensor].repeat_interleave(len(nodes), dim=0)
         repeated_suffix = suffix[context_tensor].repeat_interleave(len(nodes), dim=0)
-        jacobians = _transition_jacobians(
+        repeated_delta = delta[:, None, :].expand(-1, len(nodes), -1).reshape(-1, 4)
+        directional = _decoded_directional_derivatives(
             model,
             repeated_initial,
             repeated_suffix,
             actions.reshape(-1, 4),
+            repeated_delta,
+            decoder_tensor,
             chunk_size=int(config.get("jacobian_chunk_size", 16)),
-        ).reshape(len(selected_contexts), len(nodes), -1, 4)
-        directional = torch.einsum("ntda,na->ntd", jacobians, delta) @ decoder_tensor
-        weight_tensor = torch.as_tensor(weights, device=device, dtype=initial.dtype)
+            outer_batch_size=int(config.get("jacobian_outer_batch_size", 64)),
+        ).reshape(len(selected_contexts), len(nodes), -1)
+        weight_tensor = torch.as_tensor(weights, dtype=directional.dtype)
         estimates.append(torch.einsum("t,ntd->nd", weight_tensor, directional))
         final_directional = directional
         final_weights = weight_tensor
+        del actions, repeated_delta, repeated_initial, repeated_suffix
+        torch.cuda.empty_cache()
 
-    local_jacobians = _transition_jacobians(
+    local = _decoded_directional_derivatives(
         model,
         initial[context_tensor],
         suffix[context_tensor],
         eye[recipient_tensor],
+        delta,
+        decoder_tensor,
         chunk_size=int(config.get("jacobian_chunk_size", 16)),
+        outer_batch_size=int(config.get("jacobian_outer_batch_size", 64)),
     )
-    local = torch.einsum("nda,na->nd", local_jacobians, delta) @ decoder_tensor
     final = estimates[-1]
     previous = estimates[-2]
     integration_error = (final - direct).norm(dim=1) / direct_norm
@@ -300,6 +307,35 @@ def _profile_horizon(
         },
         "chords": rows,
     }
+
+
+def _decoded_directional_derivatives(
+    model: SmallLeWorldModel,
+    initial: torch.Tensor,
+    suffix: torch.Tensor,
+    actions: torch.Tensor,
+    delta: torch.Tensor,
+    decoder: torch.Tensor,
+    *,
+    chunk_size: int,
+    outer_batch_size: int,
+) -> torch.Tensor:
+    """Stream exact Jacobians, immediately decode/detach, and return CPU JVPs."""
+
+    values = []
+    for start in range(0, len(actions), outer_batch_size):
+        stop = min(start + outer_batch_size, len(actions))
+        jacobians = _transition_jacobians(
+            model,
+            initial[start:stop],
+            suffix[start:stop],
+            actions[start:stop],
+            chunk_size=chunk_size,
+        ).detach()
+        decoded = torch.einsum("nda,na->nd", jacobians, delta[start:stop]) @ decoder
+        values.append(decoded.detach().float().cpu())
+        del decoded, jacobians
+    return torch.cat(values)
 
 
 def _composite_legendre(order: int, panels: int) -> tuple[np.ndarray, np.ndarray]:
@@ -417,6 +453,7 @@ def _numpy(value: torch.Tensor) -> np.ndarray:
 __all__ = [
     "_composite_legendre",
     "_decide",
+    "_decoded_directional_derivatives",
     "_spearman",
     "_stratified_permutation_null",
     "_stratified_profile_indices",

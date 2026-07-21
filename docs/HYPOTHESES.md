@@ -686,6 +686,10 @@ prospective hypothesis.
 Execution audit: the first clean v2 launch from `e918d4f` failed with CUDA OOM before metrics or
 provenance were written. The clean retry changes only `jacobian_chunk_size` from 16 to 2; it does
 not change goals, sampled chords, quadrature nodes, outputs, or the absence of decisions.
+The chunk-2 retry from clean `c72d9f5` also emitted no artifact because the implementation retained
+large autograd graphs into the 1,024-node pass. The next clean retry streams 64 outer samples,
+immediately projects each exact Jacobian into the registered decoded coordinates, detaches to CPU,
+and frees its graph; all mathematical settings remain unchanged.
 
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 

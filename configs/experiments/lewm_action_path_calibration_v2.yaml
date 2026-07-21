@@ -20,6 +20,7 @@ checkpoint_sha256:
   107: 70a1eaa06f57b1a39ba76bc9d9230e174cc0d1e26ac5eb641e0f8c2ef974b6a8
 decoder_ridge: 0.001
 jacobian_chunk_size: 2
+jacobian_outer_batch_size: 64
 contexts_per_action_pair: 2
 gauss_order: 8
 panel_refinements: [64, 128]

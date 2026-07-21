@@ -3,9 +3,11 @@ from __future__ import annotations
 import unittest
 
 import numpy as np
+import torch
 
 from causal_workspace_jepa.experiments.world_model.lewm_action_path_geometry_study import (
     _composite_legendre,
+    _decoded_directional_derivatives,
     _spearman,
     _stratified_permutation_null,
     _stratified_profile_indices,
@@ -13,6 +15,43 @@ from causal_workspace_jepa.experiments.world_model.lewm_action_path_geometry_stu
 
 
 class LeWMActionPathGeometryTests(unittest.TestCase):
+    def test_streamed_jacobians_are_exact_detached_cpu_values(self) -> None:
+        class LinearRollout(torch.nn.Module):
+            def __init__(self) -> None:
+                super().__init__()
+                self.register_buffer(
+                    "matrix",
+                    torch.tensor([[1.0, 2.0, 0.0, -1.0], [0.5, 0.0, 1.0, 1.5]]),
+                )
+
+            def rollout(
+                self, initial: torch.Tensor, actions: torch.Tensor
+            ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
+                increments = actions @ self.matrix.T
+                return initial[:, None] + torch.cumsum(increments, dim=1), {}
+
+        model = LinearRollout()
+        initial = torch.zeros(5, 2)
+        suffix = torch.empty(5, 0, 4)
+        actions = torch.eye(4)[torch.tensor([0, 1, 2, 3, 0])]
+        delta = torch.tensor(
+            [[-1.0, 1.0, 0.0, 0.0]] * 5, dtype=torch.float32
+        )
+        actual = _decoded_directional_derivatives(
+            model,
+            initial,
+            suffix,
+            actions,
+            delta,
+            torch.eye(2),
+            chunk_size=2,
+            outer_batch_size=2,
+        )
+        expected = delta @ model.matrix.T
+        self.assertTrue(torch.allclose(actual, expected))
+        self.assertEqual(actual.device.type, "cpu")
+        self.assertFalse(actual.requires_grad)
+
     def test_composite_legendre_integrates_polynomial(self) -> None:
         nodes, weights = _composite_legendre(order=4, panels=5)
         self.assertEqual(len(nodes), 20)
