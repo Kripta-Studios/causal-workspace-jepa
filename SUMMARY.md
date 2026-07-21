@@ -98,6 +98,12 @@
   `0.300`. A context-derangement null had worse continuous MSE (`0.983` mean) but higher average
   candidate agreement (`0.396`), further showing that discrete behavior and vector fidelity can
   disagree. This post-result pattern requires a held-out confirmation before a new claim.
+- Implemented/preregistered `LLM-POPULATION-JACOBIAN-001` as that confirmation. V1's geometry
+  decisions used only test entities; v2 is fixed to the six previously unanalyzed validation
+  entities. It requires the 24-context mean to improve local NMSE by 20%, correlation by `0.03`,
+  candidate agreement by `0.10`, and at least four of six contexts. Separate gates test a monotonic
+  1/2/4/8/16/24-context averaging curve and specificity over 256 answer-row permutations. These
+  thresholds were chosen after the test discovery and are valid only as validation-split confirmation.
 
 ## 2026-07-21 — GPU continuation begins
 

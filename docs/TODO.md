@@ -22,8 +22,9 @@
   dual-coordinate gauge checks, manifold donor chords, and finite behavior endpoints.
 - [x] Commit/push and execute `LLM-CONTEXT-GEOMETRY-001` unchanged from `49d68b7`; retain failed
   pooling/context-specificity gates and the positive gauge diagnostic.
-- [ ] Preregister confirmation of the post-result train-mean-Jacobian advantage on an analysis split
-  not used for v1 decisions; include averaging-size and discrete/continuous endpoint controls.
+- [x] Preregister validation-only confirmation of the post-result train-mean-Jacobian advantage with
+  averaging-size, per-context, bootstrap, answer-row, and discrete/continuous endpoint controls.
+- [ ] Commit/push and execute `LLM-POPULATION-JACOBIAN-001` once without changing its confirmation gates.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.

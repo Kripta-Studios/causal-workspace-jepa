@@ -92,3 +92,9 @@ Measured result: no genuine-JEPA seed passed. Exact JVP minimized full-vector no
 answer-candidate agreement (`0.700`). The target-JEPA ensemble scored `0.930`, `0.587`, and `0.200`
 on those endpoints. The PCA-bilinear control reached `2.04e11` normalized MSE under entity shift;
 this is retained as a failed extrapolative baseline, not clipped or omitted.
+
+The post-result `LLM-POPULATION-JACOBIAN-001` confirmation treats the unweighted mean of 24 exact
+train-context Jacobians as the candidate transport. It compares against each recipient's exact
+local Jacobian, quadratic Taylor, random train-context subset averages at six sizes, and answer-row
+permutations of the same mean Jacobian. This distinguishes derivative averaging from simple output-
+norm shrinkage or label-insensitive smoothing.

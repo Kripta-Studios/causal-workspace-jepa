@@ -52,6 +52,10 @@ Status: `ACTIVE`.
   test analysis, not preregistered. It cannot be promoted to a claim until confirmed on a separately
   frozen analysis or new task/model. Context derangements also improve discrete candidate agreement
   despite worse continuous MSE, so neither endpoint can be used alone.
+- `MITIGATED_CONFIRMATION`: the population-Jacobian thresholds are intentionally chosen after the
+  test-split discovery. The new runner uses only the previously unanalyzed validation split and
+  records the test result as reference; even a pass remains within-family confirmation rather than
+  an independent-model replication.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

@@ -384,6 +384,38 @@ overlap from `0.04036` to `0.0003345`. A non-preregistered observation is that t
 `0.358 < 0.540`, correlation `0.885 > 0.841`, candidate agreement `0.500 > 0.300`. It is labeled a
 post-result hypothesis and requires a held-out confirmatory analysis.
 
+## LLM-POPULATION-JACOBIAN-001 Confirmation Preregistration
+
+Registered on 2026-07-21 after observing the test-split train-mean-Jacobian advantage, but before
+analyzing the six validation entities. Full Jacobians have already been captured; the protected
+object here is the validation analysis and its decisions, not data acquisition. Thresholds are
+explicitly motivated by the test discovery and cannot be described as an independent initial
+hypothesis.
+
+- Confirmation split: exactly the 30 ordered donor patches among Hungary, Norway, Cuba, Australia,
+  North Korea, and Denmark (`split_id=1`). V1 geometry decisions used only `split_id=2`. The
+  population Jacobian is the unweighted mean of the 24 train-entity Jacobians; no validation/test
+  Jacobian enters it.
+- `H-GEO-04 — Population-Jacobian confirmation`: compared with each validation recipient's exact
+  local Jacobian, population transport must have normalized logit MSE at most `0.80x`, correlation
+  at least `+0.03`, answer-candidate agreement at least `+0.10`, and lower MSE in at least four of
+  six recipient contexts. All four gates are required.
+- `H-GEO-05 — Averaging regularization curve`: draw 128 fixed seed-353 subsets at train-context
+  counts `1/2/4/8/16` and use the unique 24-context mean. Median size-16 MSE must be at most `0.80x`
+  size-one MSE, correlation between log subset size and median MSE must be at most `-0.80`, and the
+  24-context candidate agreement must exceed size-one median by at least `0.10`.
+- `H-GEO-06 — Answer-semantic specificity`: under 256 fixed answer-row permutations of the same
+  population Jacobian, the real aligned mean must have MSE at most `0.80x` the null p05 and candidate
+  agreement at least `0.05` above the null p95. This norm-preserving output-label corruption tests
+  whether averaging merely shrinks derivative noise without preserving answer semantics.
+- Report matched local, population, and quadratic scores; predicted/direct donor rates; all
+  population-size distributions; per-context MSE; and a 10,000-draw seed-359 paired bootstrap CI of
+  raw per-example MSE improvement. Bootstrap significance is descriptive and cannot override gates.
+- Evidence boundary: a full pass would confirm that population averaging regularizes finite
+  logit-effect transport across two disjoint six-entity analyses. It would not show a novel
+  algorithm, a semantic activation direction, a circuit, or a workspace. Failure is retained without
+  changing subsets, thresholds, output rows, or entity rosters.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

@@ -102,6 +102,11 @@ Behavior-changing continuation:
   overlap changed about 120-fold under a function-preserving diagonal coordinate transform, while
   `J D^T` was invariant. Unexpectedly, the 24-training-context mean Jacobian outperformed matched
   local Jacobians on finite test replacements; this is post-result and needs separate confirmation.
+- `LLM-POPULATION-JACOBIAN-001` is implemented/preregistered but unexecuted. It protects the
+  validation analysis that v1 did not use, comparing the same 24-train-context mean against exact
+  validation-local Jacobians, quadratic Taylor, averaging-size curves, per-context replication, a
+  paired bootstrap, and 256 answer-row permutations. Its thresholds are post-discovery and cannot
+  be generalized beyond this confirmation without another task/model.
 
 Current mock implementation:
 

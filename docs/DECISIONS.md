@@ -140,3 +140,7 @@
   Preserve both failures. The train-mean Jacobian advantage and extreme gauge sensitivity are new
   observations; only the gauge result was preregistered. Confirm the former on a separate split
   before interpretation, and never equate the invariant contraction with a unique activation basis.
+- The population-Jacobian confirmation uses validation entities precisely because v1 used test
+  entities for discovery. Its thresholds are openly post-discovery. Require continuous fidelity,
+  discrete answer behavior, per-context replication, and answer-row specificity jointly; a favorable
+  bootstrap interval or averaging curve alone cannot establish the claim.
