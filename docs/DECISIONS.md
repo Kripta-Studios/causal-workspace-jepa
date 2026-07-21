@@ -11,6 +11,10 @@
 - Force eager attention and disable TF32 for the exact derivative audit because reverse-over-reverse
   JVP through CPU/SDPA flash attention lacks the required derivative. Validate autograd JVP against
   symmetric central differences before the real run.
+- When `local_files_only` is requested, resolve the pinned Hugging Face snapshot to an actual local
+  directory before constructing both model and tokenizer. This prevents Transformers 5.3's Mistral-
+  regex compatibility check from making an unauthorized metadata request and preserves the exact
+  requested revision in adapter metadata.
 - Do not claim novelty for generic controllability/observability Gramians, Hankel modes, or CoBRAS.
   Any new geometry result must be conditional on the same context, survive a cross-context pooling
   illusion/null, and predict directly executed finite-amplitude behavioral effects.

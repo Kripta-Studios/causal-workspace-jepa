@@ -55,9 +55,20 @@ class QwenHFAdapter:
         self._torch = torch
         self.device = torch.device(self.config.device)
         self.dtype = _torch_dtype(torch, self.config.dtype)
+        model_source = self.config.model_name
+        self._local_snapshot_path: str | None = None
+        if self.config.local_files_only and (model is None or tokenizer is None):
+            from huggingface_hub import snapshot_download
+
+            self._local_snapshot_path = snapshot_download(
+                repo_id=self.config.model_name,
+                revision=self.config.revision,
+                local_files_only=True,
+                token=self.config.token,
+            )
+            model_source = self._local_snapshot_path
         if model is None:
             load_kwargs: dict[str, Any] = {
-                "revision": self.config.revision,
                 "local_files_only": self.config.local_files_only,
                 "trust_remote_code": False,
                 "dtype": self.dtype,
@@ -65,12 +76,14 @@ class QwenHFAdapter:
                 "token": self.config.token,
                 "attn_implementation": self.config.attn_implementation,
             }
+            if self._local_snapshot_path is None:
+                load_kwargs["revision"] = self.config.revision
             load_kwargs = {key: value for key, value in load_kwargs.items() if value is not None}
-            model = AutoModelForCausalLM.from_pretrained(self.config.model_name, **load_kwargs)
+            model = AutoModelForCausalLM.from_pretrained(model_source, **load_kwargs)
         if tokenizer is None:
             tokenizer = AutoTokenizer.from_pretrained(
-                self.config.model_name,
-                revision=self.config.revision,
+                model_source,
+                revision=None if self._local_snapshot_path is not None else self.config.revision,
                 local_files_only=self.config.local_files_only,
                 trust_remote_code=False,
                 token=self.config.token,
@@ -314,10 +327,13 @@ class QwenHFAdapter:
 
     def _metadata(self) -> Mapping[str, Any]:
         config = self.model.config
+        resolved_revision = getattr(config, "_commit_hash", None)
+        if resolved_revision is None and self._local_snapshot_path is not None:
+            resolved_revision = self.config.revision
         return {
             "model": self.config.model_name,
             "requested_revision": self.config.revision,
-            "resolved_revision": getattr(config, "_commit_hash", None),
+            "resolved_revision": resolved_revision,
             "model_type": getattr(config, "model_type", None),
             "layers": len(self.layers),
             "hidden_size": int(config.hidden_size),

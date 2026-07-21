@@ -15,6 +15,11 @@
   BF16/FP32 drift, semantic deduplication, three refit seeds, and frozen numerical/claim gates.
 - A tiny random Qwen3 end-to-end test confirms that the eager-attention exact JVP agrees with a
   symmetric central difference. The real audit must be committed and run from a clean worktree.
+- The first clean real-audit attempt stopped before producing any intervention outcome: Transformers
+  5.3's tokenizer regex check queried the Hub despite `local_files_only` and encountered the host's
+  invalid OAuth token. The adapter now resolves the pinned local snapshot path before loading either
+  model or tokenizer, avoiding the network-only compatibility branch. This is an execution fix;
+  scientific thresholds and the frozen grid are unchanged.
 - Literature review found that generic reachability/observability balancing is established prior
   art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct
