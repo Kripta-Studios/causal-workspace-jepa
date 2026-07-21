@@ -39,6 +39,9 @@
 - The corrected conclusion is that these selected Qwen3-0.6B residual edits are mostly local, with
   second-order transport explaining nearly all selected-target effect power. The old BF16 secant's
   MSE `120.8994` was a precision artifact, not evidence of a nonlinear JEPA advantage.
+- Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`: all 14 criteria pass,
+  including the corrected exact-JVP comparator/disposition, 68 tests, Ruff, diff checks, and 17
+  audited metric/provenance pairs with four locally verified shard checksums.
 - Literature review found that generic reachability/observability balancing is established prior
   art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct
@@ -119,11 +122,11 @@
   one 574,308-byte shard, SHA-256
   `cd1ef5e3a871740bfbd06e45c1a024257ba2ed9c1f0b1f6ac0bc2db1a11240cf`, runtime `473.14`
   seconds including the first download. This is Availability evidence only.
-- Ran `AUDIT-COMPLETE-001` from clean synchronized commit `42492dc`. All 14 explicit bounded
-  completion criteria passed, including 63 tests, Ruff, the reproducibility/checksum audit,
-  multi-seed principal results, direct Qwen execution, workspace controls, and audited rejected
-  circuit graphs. The required bounded suite is complete; this does not make either rejected
-  circuit or the workspace null positive.
+- The earlier `AUDIT-COMPLETE-001` run from clean synchronized commit `42492dc` passed all 14
+  explicit bounded completion criteria with 63 tests, multi-seed results, direct Qwen execution,
+  workspace controls, and rejected circuit graphs. It was superseded by the corrected 68-test audit
+  above after the exact-JVP result. The required bounded suite is complete; this does not make either
+  rejected circuit or the workspace null positive.
 
 ## 2026-07-20
 

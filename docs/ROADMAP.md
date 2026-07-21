@@ -60,8 +60,9 @@ instrumentation, storage, and direct-data gates remain validated.
   planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
 - The bounded Qwen3-4B selected-site capture passed from clean commit `55087ea`: exact pinned
   revision, 180 rows, and a 574,308-byte checksummed shard.
-- `AUDIT-COMPLETE-001` passed all 14 explicit completion criteria from clean synchronized commit
-  `42492dc`, including the 63-test suite, Ruff, and reproducibility audit.
+- Updated `AUDIT-COMPLETE-001` passed all 14 explicit completion criteria from clean synchronized
+  commit `98a9e62`, including the corrected exact-JVP result, 68-test suite, Ruff, and
+  reproducibility audit.
 
 ## Milestone 3+: Scientific Runs
 

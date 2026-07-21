@@ -11,7 +11,7 @@
 - [x] Preregister v2 source-semantic gates after disclosing the v1 result and cancellation diagnosis.
 - [x] Commit/push v2 and execute it unchanged from clean commit `a779ff6`; all numerical gates pass.
 - [x] Withdraw restricted H-LLM-01 after 0/3 seeds beat exact JVP/quadratic Taylor.
-- [ ] Revise and rerun the executable completion audit with the exact-JVP correction included.
+- [x] Revise and rerun the executable completion audit from clean `98a9e62`; all 14 criteria pass.
 - [ ] Implement a genuine target-encoder/stop-gradient Intervention-JEPA with anti-collapse tests.
 - [ ] Generate a split-safe semantic donor-answer dataset with aggregate behavior-changing edits.
 - [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.

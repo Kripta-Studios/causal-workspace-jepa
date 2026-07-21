@@ -89,5 +89,6 @@ metadata before regeneration; checksum mismatches fail the audit.
 Recorded relative paths are normalized to POSIX separators before comparison, allowing provenance
 created on Linux to be audited on Windows without weakening the target-path check.
 
-`AUDIT-COMPLETE-001` ran from clean synchronized commit `42492dc`; all 14 criteria and all software
-checks passed. Its own metrics/provenance pair is committed, so later runs can audit the audit.
+Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`; all 14 criteria and all
+software checks passed, including 68 tests and the corrected exact-JVP disposition. Its own
+metrics/provenance pair is committed, so later runs can audit the audit.

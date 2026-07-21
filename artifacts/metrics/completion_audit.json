@@ -48,7 +48,7 @@
     },
     "qwen_meta_model_baselines": {
       "evidence_level": "Generalization",
-      "note": "Intervention-JEPA and all required baselines were evaluated on fixed held-out prompt/feature/operation splits across three seeds.",
+      "note": "The legacy conditional bottleneck and all required baselines were evaluated on fixed held-out splits across three seeds; the FP32 exact-JVP audit passed and withdrew the old nonlinear-advantage claim.",
       "passed": true
     },
     "real_qwen_dataset": {
@@ -74,7 +74,7 @@
   },
   "evidence_level": "Availability",
   "experiment_id": "AUDIT-COMPLETE-001",
-  "runtime_seconds": 5.83890549998614,
+  "runtime_seconds": 5.987262200011173,
   "scientific_boundary": "Completion means the explicit repository criteria are implemented and audited. It does not turn rejected circuit/workspace hypotheses into positive findings.",
   "software_checks": {
     "git_diff_check": {
@@ -95,10 +95,10 @@
         "{",
         "  \"checksum_status\": \"SKIPPED_RESOURCE\",",
         "  \"checksums_skipped_missing_local_data\": 7,",
-        "  \"checksums_verified\": 2,",
+        "  \"checksums_verified\": 4,",
         "  \"errors\": [],",
         "  \"local_data_complete\": false,",
-        "  \"metric_artifacts\": 14,",
+        "  \"metric_artifacts\": 17,",
         "  \"missing\": [],",
         "  \"status\": \"SMOKE_VALIDATED\"",
         "}"
@@ -132,9 +132,9 @@
       "output_tail": [
         ".............................................<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute",
         "<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute",
-        "..................",
+        ".......................",
         "----------------------------------------------------------------------",
-        "Ran 63 tests in 3.622s",
+        "Ran 68 tests in 3.733s",
         "",
         "OK",
         "<sys>:0: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"
