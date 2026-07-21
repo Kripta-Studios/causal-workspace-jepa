@@ -77,3 +77,9 @@ semantic diagnostics under the 64 MB budget. Japan, Canada, China, and Kenya wer
 layer engineering and are excluded. Leakage risk: the factual prompt template is shared, but no
 entity, answer, recipient, or donor crosses splits. All numerical gates passed; top-token change was
 `0.936`, and held-out donor-answer transfer was `0.500`. Status: `SMOKE_VALIDATED` causal dataset.
+
+`LLM-CONTEXT-GEOMETRY-001` will derive one `36 x 1024` FP32 selected-answer logit Jacobian for each
+of the 36 frozen capital contexts, plus clean sources and logits, under a 16 MB budget. Its donor
+directions and finite targets come exclusively from the checksum-verified capital-patch dataset.
+The ignored shard will be checksum-addressed by a committed manifest. Status:
+`IMPLEMENTED_UNVALIDATED`; no final-suite full Jacobian has run.

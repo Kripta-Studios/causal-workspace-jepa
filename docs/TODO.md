@@ -18,7 +18,9 @@
   negative, rank-diversity failure, oracle-decoder failure, and divergent baseline rankings.
 - [x] Implement/preregister a split-safe semantic donor-answer dataset with aggregate behavior gates.
 - [x] Commit/push and execute `LLM-CAPITAL-PATCH-001` unchanged from `95018cb`; all gates pass.
-- [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.
+- [x] Implement/preregister context-paired causal geometry with analytic pooling, 256 derangements,
+  dual-coordinate gauge checks, manifold donor chords, and finite behavior endpoints.
+- [ ] Commit/push and execute `LLM-CONTEXT-GEOMETRY-001` unchanged; retain all null outcomes.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.

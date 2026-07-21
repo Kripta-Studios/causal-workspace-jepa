@@ -132,3 +132,7 @@
   predictor capacity cannot repair the observed held-out-entity failure. The next route must model
   context-conditioned causal geometry and keep activation, logit, and behavior endpoints separate;
   do not tune the same target encoder on the observed six test entities.
+- For context geometry, treat activation differences as vectors and output gradients as covectors.
+  Use their paired contraction `J D^T` for gauge-stable local effects. Separately pooled Euclidean
+  reachability/observability spans are retained only as an explicitly permutation-insensitive
+  anti-pattern; they cannot by themselves support a shared-subspace or workspace claim.

@@ -332,6 +332,46 @@ H-LLM-01B, H-LLM-02, and the restricted H-LLM-04 are rejected for this frozen ar
 The endpoint-dependent ranking is a new observation within this repository, not a literature-level
 novelty claim without replication on another task/model.
 
+## LLM-CONTEXT-GEOMETRY-001 Preregistration
+
+Registered on 2026-07-21 before computing any final-suite full Jacobian. This is an adversarial
+geometry study, not a retuning of `LLM-TARGET-IJEPA-001`.
+
+- Definitions: for recipient context `r`, `D_r` contains the actual within-split donor residual
+  differences at `blocks.21.resid_post`; these are sampled manifold chords, not an unconstrained
+  intervention basis. `J_s` is the FP32 autograd Jacobian of the 36 fixed answer logits in context
+  `s`, centered across answers to remove the common-logit direction. The context-paired causal
+  coupling is `K_{r,s}=J_s D_r^T`.
+- Gauge contract: under an invertible activation reparameterization `h'=A h`, directions transform
+  as `D'=D A^T` and covectors as `J'=J A^{-1}`, hence `K` is invariant. The real-data audit applies
+  a fixed diagonal transform with condition number near 100 and requires maximum relative coupling
+  error at most `1e-5`. Naive Euclidean subspace overlap is reported before/after but is not assumed
+  gauge invariant.
+- Pooling control: separately pool the top-four Euclidean row spans of all six test `D_r` and `J_r`,
+  compare that overlap with the mean of six correctly paired overlaps, and then permute the context
+  labels of `J`. Separate pooling is permutation invariant by construction. An exact two-dimensional
+  positive control has zero same-context coupling in both contexts but pooled overlap one.
+- Context-specificity null: use 256 seed-347 fixed derangements of the six test Jacobians. For each
+  real donor chord, compare the matched local logit prediction `J_r d` and mismatched `J_s d` against
+  the previously executed finite patch. Also evaluate the mean Jacobian of the 24 train contexts on
+  test chords. No permutation outcome changes the frozen direct targets.
+- Numerical gates: clean source replacement error at most `1e-5`; stored-source replay at most
+  `1e-6`; reconstructed versus stored exact-JVP median/p95 relative error at most `1e-4/1e-3`;
+  diagonal-gauge coupling error at most `1e-5`; analytic pooling control exact. Numerical failure
+  rejects the scientific comparisons.
+- `H-GEO-01 — Real pooling illusion`: top-four separately pooled overlap exceeds mean matched
+  overlap by at least `0.10` and remains unchanged to `1e-10` after context permutation.
+- `H-GEO-02 — Context-specific behavior transport`: matched answer-candidate agreement exceeds the
+  derangement p95 by at least `0.05`, and matched finite-effect normalized MSE is at most `0.80`
+  times the derangement p05. Both gates are required.
+- `H-GEO-03 — Gauge-invariant coupling`: the real diagonal-gauge contraction gate and analytic
+  pooling counterexample both pass. This validates a mathematical diagnostic, not a Qwen mechanism.
+- Identification assumptions: donor chords sample relevant interventions; local logit covectors may
+  approximate but need not explain finite replacement effects; the 36-answer endpoint omits the
+  rest of the vocabulary; context pairing is meaningful at the recipient-prompt level. Every one is
+  emitted in the artifact. Passing does not establish a semantic feature, circuit, J-space, or
+  workspace, and the method is not claimed novel until broader literature/model replication.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

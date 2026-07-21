@@ -92,6 +92,12 @@ Behavior-changing continuation:
   no change on unseen entities. Exact JVP, raw linear ridge, and quadratic Taylor respectively won
   full-vector MSE, logit MSE, and answer behavior. The result is a representation/generalization
   failure, not merely a predictor optimization failure.
+- `LLM-CONTEXT-GEOMETRY-001` is implemented/preregistered but unexecuted. It computes the full
+  36-answer logit Jacobian at each of the 36 clean source states and contracts each covector map with
+  actual donor residual chords. The paired contraction is tested under a dual diagonal coordinate
+  change, while naive pooled Euclidean geometry faces an analytic false-positive and context-label
+  permutations. Matched, train-pooled, and 256 deranged Jacobian transports are scored against the
+  frozen finite Qwen outcomes.
 
 Current mock implementation:
 

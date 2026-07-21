@@ -41,6 +41,10 @@ Status: `ACTIVE`.
   Pooling reachability and observability across different contexts can create false shared modes
   even when no context has a jointly active direction. Future geometry must include within-context,
   permutation/pooling, coordinate-gauge, finite-amplitude, and direct-behavior controls.
+- `ACTIVE_IDENTIFICATION`: `J D^T` identifies the local response of chosen answer logits along
+  sampled donor chords, conditional on a recipient prompt. It does not identify a complete causal
+  state, a unique activation subspace, or the path used by a finite patch. The experiment emits
+  these assumptions explicitly and includes dormant-route/pooling warnings.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

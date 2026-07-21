@@ -76,6 +76,13 @@
   best on direct answer-set behavior (`0.700` agreement). PCA-bilinear extrapolated catastrophically
   (`2.04e11` normalized MSE). This motivates context-conditioned, endpoint-explicit causal geometry;
   it does not support an Intervention-JEPA advantage or a circuit/workspace claim.
+- Implemented/preregistered `LLM-CONTEXT-GEOMETRY-001`. For recipient context `r`, donor-direction
+  matrix `D[r]`, and answer-logit Jacobian `J[s]`, it audits the paired contraction
+  `K[r,s]=J[s]D[r]^T`. This quantity is invariant when activation vectors and gradient covectors are
+  transformed dually, unlike naive separately pooled Euclidean subspaces. The study includes a
+  two-context analytic pooling illusion, all 36 real Qwen context Jacobians, 256 fixed test-context
+  derangements, a train-pooled Jacobian, direct finite-patch behavior, and numerical reconstruction
+  of the already validated exact JVP. No novelty or mechanism claim is made before execution.
 
 ## 2026-07-21 — GPU continuation begins
 

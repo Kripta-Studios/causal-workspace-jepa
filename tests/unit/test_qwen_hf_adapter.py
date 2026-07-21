@@ -145,6 +145,48 @@ class QwenHFAdapterTests(unittest.TestCase):
         ) / (2 * epsilon)
         torch.testing.assert_close(exact, central, atol=2e-3, rtol=2e-3)
 
+    def test_full_selected_logit_jacobian_reconstructs_directional_jvp(self) -> None:
+        import torch
+
+        from causal_workspace_jepa.experiments.llm.qwen_context_geometry_study import (
+            _selected_logit_jacobian,
+        )
+        from causal_workspace_jepa.experiments.llm.qwen_jvp_audit import (
+            _directional_output_function,
+        )
+
+        self.autograd_adapter.model.set_attn_implementation("eager")
+        batch = self.autograd_adapter.tokenize(["alpha beta"])
+        source_site = transformer_site(0, "resid_post")
+        target_site = transformer_site(1, "resid_post")
+        run = self.autograd_adapter.forward_with_cache(batch, [source_site, "logits"])
+        source = run.activations[source_site][0, -1].detach().float()
+        logit_ids = torch.tensor([2, 3, 5], dtype=torch.long)
+        jacobian, replay = _selected_logit_jacobian(
+            self.autograd_adapter,
+            batch,
+            source_site=source_site,
+            source=source,
+            logit_ids=logit_ids,
+        )
+        torch.testing.assert_close(replay, run.logits[0, -1, logit_ids], atol=0.0, rtol=0.0)
+        generator = torch.Generator().manual_seed(31)
+        direction = torch.randn(32, generator=generator)
+        function = _directional_output_function(
+            self.autograd_adapter,
+            batch,
+            source_site=source_site,
+            target_site=target_site,
+            direction=direction,
+            hidden_projection=torch.zeros((32, 0)),
+            logit_ids=logit_ids,
+        )
+        scale = torch.zeros((), requires_grad=True)
+        _, directional = torch.autograd.functional.jvp(
+            function, scale, torch.ones_like(scale), strict=True
+        )
+        torch.testing.assert_close(jacobian @ direction, directional, atol=1e-5, rtol=1e-5)
+
 
 class _TinyTokenizer:
     pad_token_id = 0

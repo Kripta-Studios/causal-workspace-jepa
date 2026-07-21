@@ -47,3 +47,16 @@ prompt_suites:
     intervention: full_last_token_donor_patch
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
     status: SMOKE_VALIDATED
+  qwen_context_geometry_v1:
+    source: LLM-CAPITAL-PATCH-001 prompts and donor directions
+    license: generated prompts; derived model activations
+    split: inherited 24/6/6 disjoint entities; primary geometry uses six test contexts
+    contexts: 36
+    outputs: 36 single-token capital-answer logits
+    source_site: blocks.21.resid_post
+    stored_array: 36x36x1024 float32 logit Jacobians plus clean source/logits
+    intervention_support: manifold-valid within-split donor residual differences
+    permutation_nulls: 256 fixed derangements of six test-context Jacobians
+    resource_modes_allowed: [gpu_12gb, gpu_cluster]
+    budget_mb: 16
+    status: IMPLEMENTED_UNVALIDATED

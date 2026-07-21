@@ -23,6 +23,9 @@ from causal_workspace_jepa.experiments.llm.mock_qwen_intervention_jepa_smoke imp
 from causal_workspace_jepa.experiments.llm.qwen_instrumentation_smoke import (
     run_qwen_instrumentation_smoke,
 )
+from causal_workspace_jepa.experiments.llm.qwen_context_geometry_study import (
+    run_qwen_context_geometry_study,
+)
 from causal_workspace_jepa.experiments.llm.qwen_jvp_audit import run_qwen_jvp_audit
 from causal_workspace_jepa.experiments.llm.qwen_target_encoder_ijepa_study import (
     run_qwen_target_encoder_ijepa_study,
@@ -109,6 +112,10 @@ def main() -> int:
         return 0
     if experiment_id == "LLM-TARGET-IJEPA-001":
         metrics = run_qwen_target_encoder_ijepa_study(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "LLM-CONTEXT-GEOMETRY-001":
+        metrics = run_qwen_context_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     print(f"NOT_STARTED: no experiment runner is registered for {args.config}", file=sys.stderr)
