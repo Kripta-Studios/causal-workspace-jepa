@@ -110,6 +110,26 @@ gates pass. CEM violates in `0/32` seeds with maximum observed norm `2.347382`; 
 enforcement asymmetry and absent `DotWall.step` action-space check. No numbered scientific
 hypothesis is decided.
 
+## WM-EBJEPA-MPPI-CORRECTION-001 Engineering Preregistration
+
+Registered on 2026-07-21 after confirming the official constraint defect and before retaining the
+correction. The official planner remains unchanged. The repository adds a separately named
+`ConstrainedMPPIPlanner` solely to support a controlled reproduction arm.
+
+- Source/control: pinned official MPPI at `966e61e...`; corrected implementation uses the same
+  sampling, elite weighting, terminal selection, and return schema.
+- Seeds/design: seeds 0--31, deterministic cumulative-action unroll, terminal-x objective, three
+  iterations, 128 samples, 16 elites, plan length three, action width two.
+- Equivalence gates: with `max_norms=None`, official and corrected returned actions and per-iteration
+  minimum losses must each match within `1e-6` in every seed.
+- Constraint gates: with `max_norms=[2.45]` over dimensions `[0,1]`, both every candidate action
+  passed into the cost function and every returned action must have norm at most `2.450001`; zero
+  of 32 seeds may violate either gate.
+- The implementation projects sampled candidates before model evaluation and projects the returned
+  action again after any exploration noise. It does not silently replace official MPPI.
+- Passing is Availability-level engineering evidence only. Planning success under original versus
+  corrected MPPI remains a separate multi-seed reproduction, and no model mechanism is tested here.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

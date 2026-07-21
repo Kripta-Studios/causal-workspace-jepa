@@ -64,6 +64,12 @@ This confirms a software/configuration defect. It does not establish that publis
 competence disappears; the next reproduction must report original and constraint-corrected MPPI
 side by side before the planner is eligible for mechanistic claims.
 
+A separate `ConstrainedMPPIPlanner` is implemented without modifying the official checkout. It
+projects candidate actions before cost evaluation and the final returned action. Its frozen
+32-seed smoke requires exact official equivalence with bounds disabled and zero cost/return
+violations with bounds enabled. The exploratory probe passes, but a result is not retained until
+execution from a clean pushed implementation commit.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,

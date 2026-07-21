@@ -8,6 +8,11 @@
   frozen 32-seed post-discovery confirmation, then compare original versus corrected MPPI during
   planning reproduction. Do not silently patch upstream before reproducing both conditions.
 
+- Implement the corrected planner as `ConstrainedMPPIPlanner`, never by editing the ignored
+  official checkout. Require exact no-bound equivalence and bound both cost-evaluation candidates
+  and returned actions. Training/planning reports must label `official_unbounded_mppi` and
+  `constraint_corrected_mppi` separately.
+
 - Install the official Two Rooms path with the committed isolated lock and `--no-deps` editable
   source install. Never run upstream `uv sync` in the SM120 environment because it would replace
   Torch 2.10/cu128 with the incompatible Torch 2.6 pin. Record the upstream omission of `scipy`,

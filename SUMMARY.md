@@ -30,6 +30,10 @@
   `DotWall.step` does not check `action_space` before applying the transition. This confirms an
   upstream planner defect, not failure of the reported trained model; original and corrected MPPI
   must now be compared during competence reproduction.
+- Added a separately named constraint-corrected MPPI without touching upstream. It projects every
+  sampled candidate before model-cost evaluation and the final returned action. The preregistered
+  smoke spans 32 seeds, requires exact unbounded equivalence to official MPPI, and zero bounded
+  violations; exploratory execution meets all gates, but no artifact is retained before commit.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 

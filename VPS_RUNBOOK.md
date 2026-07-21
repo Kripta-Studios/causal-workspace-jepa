@@ -36,6 +36,7 @@ python scripts/prepare_eb_jepa_two_rooms.py
 $env:PYTHONPATH='src'
 python scripts/run_experiment.py --config configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml
 python scripts/run_experiment.py --config configs/experiments/eb_jepa_planner_constraint.yaml
+python scripts/run_experiment.py --config configs/experiments/eb_jepa_mppi_correction.yaml
 ```
 
 Do not use upstream `uv sync` in this environment. The committed lock supplies the undeclared

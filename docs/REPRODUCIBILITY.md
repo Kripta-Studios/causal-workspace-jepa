@@ -180,6 +180,12 @@ retained run started from clean `da30443011f25ccbc689bc0595063720aadbb6d6`; all 
 in `3.04` seconds. The artifact stores all 64 per-seed planner maxima and source-contract booleans,
 not only the aggregate violation counts.
 
+The official MPPI source remains untouched. `ConstrainedMPPIPlanner` is a repository-owned,
+separately named reproduction arm. `WM-EBJEPA-MPPI-CORRECTION-001` first disables the bound and
+requires action/loss equivalence to official MPPI across 32 independent seeds; it then enables the
+bound and instruments every action batch reaching the cost function as well as the returned action.
+This prevents a superficial return-only clamp from claiming a faithful corrected optimization.
+
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the

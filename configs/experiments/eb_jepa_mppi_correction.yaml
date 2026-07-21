@@ -1,0 +1,10 @@
+id: WM-EBJEPA-MPPI-CORRECTION-001
+status: engineering_correction_smoke
+resource_profile: configs/resource/gpu_12gb.yaml
+source_root: .cache/upstream/eb_jepa
+revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
+probe_script: scripts/probe_eb_jepa_mppi_correction.py
+num_seeds: 32
+max_norm: 2.45
+output_metrics: artifacts/metrics/eb_jepa_mppi_correction.json

@@ -183,6 +183,14 @@ seeds, whereas MPPI violated in $32/32$ (median $6.4485$, maximum $8.3018$);
 all seven source/dynamic gates pass.  Planning competence and later circuit tests
 must compare original and constraint-corrected MPPI.
 
+We implement the correction as a separately named planner rather than modifying
+the official checkout.  Its registered validation first disables the constraint
+and requires 32-seed action/loss equivalence to official MPPI within $10^{-6}$.
+With the $2.45$ constraint enabled, every sampled candidate reaching the model
+cost and every returned action must be in bounds.  This prevents a return-only
+clamp from masquerading as a corrected optimizer.  The validation is pending a
+clean retained run and provides no planning-competence evidence by itself.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests

@@ -27,7 +27,9 @@
 - [x] Retain the preregistered 32-seed CEM/MPPI action-constraint confirmation from clean `da30443`;
   CEM is `0/32`, MPPI `32/32`. Do not silently patch
   the upstream planner before comparing original and corrected planning.
-- [ ] Implement a separately named constraint-corrected MPPI adapter with exact within-bound tests;
+- [x] Implement/preregister a separately named constraint-corrected MPPI adapter with exact
+  no-bound official-equivalence and within-bound cost/return tests.
+- [ ] Commit/push and retain `WM-EBJEPA-MPPI-CORRECTION-001`;
   preserve the original official implementation as the reproduction baseline.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
