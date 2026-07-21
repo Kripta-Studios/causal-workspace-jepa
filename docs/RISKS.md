@@ -45,6 +45,13 @@ Status: `ACTIVE`.
   sampled donor chords, conditional on a recipient prompt. It does not identify a complete causal
   state, a unique activation subspace, or the path used by a finite patch. The experiment emits
   these assumptions explicitly and includes dormant-route/pooling warnings.
+- `CONFIRMED_GAUGE_RISK`: the real diagonal reparameterization changed naive pooled subspace overlap
+  from `0.04036` to `0.0003345` without changing the paired functional contraction. Euclidean
+  activation-subspace centrality/overlap must not be interpreted without a coordinate-gauge contract.
+- `ACTIVE_POSTHOC`: the train-mean Jacobian's finite-effect advantage was discovered on the primary
+  test analysis, not preregistered. It cannot be promoted to a claim until confirmed on a separately
+  frozen analysis or new task/model. Context derangements also improve discrete candidate agreement
+  despite worse continuous MSE, so neither endpoint can be used alone.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

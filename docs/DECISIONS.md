@@ -136,3 +136,7 @@
   Use their paired contraction `J D^T` for gauge-stable local effects. Separately pooled Euclidean
   reachability/observability spans are retained only as an explicitly permutation-insensitive
   anti-pattern; they cannot by themselves support a shared-subspace or workspace claim.
+- V1 found no registered real pooling illusion and no context-specific finite-behavior advantage.
+  Preserve both failures. The train-mean Jacobian advantage and extreme gauge sensitivity are new
+  observations; only the gauge result was preregistered. Confirm the former on a separate split
+  before interpretation, and never equate the invariant contraction with a unique activation basis.

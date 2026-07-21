@@ -78,8 +78,10 @@ layer engineering and are excluded. Leakage risk: the factual prompt template is
 entity, answer, recipient, or donor crosses splits. All numerical gates passed; top-token change was
 `0.936`, and held-out donor-answer transfer was `0.500`. Status: `SMOKE_VALIDATED` causal dataset.
 
-`LLM-CONTEXT-GEOMETRY-001` will derive one `36 x 1024` FP32 selected-answer logit Jacobian for each
+`LLM-CONTEXT-GEOMETRY-001` derived one `36 x 1024` FP32 selected-answer logit Jacobian for each
 of the 36 frozen capital contexts, plus clean sources and logits, under a 16 MB budget. Its donor
 directions and finite targets come exclusively from the checksum-verified capital-patch dataset.
-The ignored shard will be checksum-addressed by a committed manifest. Status:
-`IMPLEMENTED_UNVALIDATED`; no final-suite full Jacobian has run.
+The ignored 5,117,677-byte shard has SHA-256
+`1eadc60f960f0b3495ff2f91fa2d1df8be6422012ea4ab492c34e4d1a4ab7406` and is addressed by the
+committed manifest. Full-Jacobian directional reconstruction passed at sub-`5e-7` relative error.
+Status: `SMOKE_VALIDATED` derivative dataset and `COMPLETED_MIXED` geometry experiment.

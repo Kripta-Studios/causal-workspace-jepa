@@ -372,6 +372,18 @@ geometry study, not a retuning of `LLM-TARGET-IJEPA-001`.
   emitted in the artifact. Passing does not establish a semantic feature, circuit, J-space, or
   workspace, and the method is not claimed novel until broader literature/model replication.
 
+Outcome (clean commit `49d68b7`, 2026-07-21): all numerical gates passed; reconstructed-versus-
+stored exact-JVP median/p95 relative error was `2.86e-7/4.58e-7`. H-GEO-01 failed because pooled
+top-four overlap `0.04036` exceeded matched mean `0.03403` by only `0.00633`, not `0.10`.
+H-GEO-02 failed: matched finite transport had `0.540` normalized MSE and `0.300` answer-candidate
+agreement, while 256 derangements averaged `0.983` MSE but `0.396` agreement (p95 `0.467`).
+H-GEO-03 passed: the analytic counterexample was exact and real `J D^T` changed only `1.68e-16`
+under a diagonal transform with condition number `96.4`. The same transform changed naive pooled
+overlap from `0.04036` to `0.0003345`. A non-preregistered observation is that the mean Jacobian of
+24 training contexts beat the exact matched local Jacobian on all three finite endpoints: MSE
+`0.358 < 0.540`, correlation `0.885 > 0.841`, candidate agreement `0.500 > 0.300`. It is labeled a
+post-result hypothesis and requires a held-out confirmatory analysis.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

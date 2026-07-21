@@ -1,0 +1,239 @@
+{
+  "analytic_pooling_counterexample": {
+    "matched_max_abs_coupling": 0.0,
+    "passed": true,
+    "pooled_overlap": 1.0,
+    "swapped_min_abs_coupling": 1.0
+  },
+  "answer_outputs": 36,
+  "clean_replacement_replay_max_abs": 0.0,
+  "contexts": 36,
+  "dataset_id": "LLM-CAPITAL-PATCH-001",
+  "estimated_bytes_before_capture": 6635520,
+  "evidence_level": "Specificity",
+  "experiment_id": "LLM-CONTEXT-GEOMETRY-001",
+  "geometry": {
+    "coupling_spectra": {
+      "1": {
+        "effective_rank": 3.787182426085063,
+        "frobenius_energy": 711.8357063333978,
+        "singular_values": [
+          18.703877470738146,
+          12.361471749391697,
+          10.494567311052965,
+          8.097385775758367,
+          5.7871487482461745
+        ],
+        "top_mode_energy_fraction": 0.4914547406484497
+      },
+      "11": {
+        "effective_rank": 3.564678225244115,
+        "frobenius_energy": 957.9181772025341,
+        "singular_values": [
+          22.1651388049413,
+          14.7654003270675,
+          11.612837853185782,
+          9.414019165545069,
+          5.012583394619994
+        ],
+        "top_mode_energy_fraction": 0.5128761411304128
+      },
+      "20": {
+        "effective_rank": 2.194947572046434,
+        "frobenius_energy": 1738.4903064923885,
+        "singular_values": [
+          36.86170244753299,
+          13.626195319716492,
+          10.161972241861667,
+          7.845629262049427,
+          5.404851700923159
+        ],
+        "top_mode_energy_fraction": 0.7815891191662557
+      },
+      "26": {
+        "effective_rank": 3.5277168490771937,
+        "frobenius_energy": 852.383122824773,
+        "singular_values": [
+          19.416427527745643,
+          16.7617990155363,
+          11.020885429103174,
+          7.505356656604824,
+          4.078880295262346
+        ],
+        "top_mode_energy_fraction": 0.4422866289173341
+      },
+      "35": {
+        "effective_rank": 2.807111232262017,
+        "frobenius_energy": 1054.5352723040883,
+        "singular_values": [
+          26.012744751051848,
+          14.729781368017731,
+          10.06665366302096,
+          6.436203064950277,
+          4.25954197145914
+        ],
+        "top_mode_energy_fraction": 0.6416692805399603
+      },
+      "8": {
+        "effective_rank": 3.5438058772872814,
+        "frobenius_energy": 1095.7186714449163,
+        "singular_values": [
+          23.490505806217993,
+          15.9956434042333,
+          11.938259843846156,
+          11.366006657036497,
+          4.043024248081529
+        ],
+        "top_mode_energy_fraction": 0.5035999453256569
+      }
+    },
+    "gauge": {
+      "coupling_max_relative_error": 1.6818720971240536e-16,
+      "diagonal_condition_number": 96.42915236099523,
+      "naive_overlap_absolute_change": 0.04002746525117108,
+      "naive_pooled_overlap_original": 0.040361970755870856,
+      "naive_pooled_overlap_transformed": 0.0003345055046997724
+    },
+    "subspace": {
+      "matched_mean_overlap": 0.034032241047137264,
+      "matched_overlaps": [
+        0.03329230803909215,
+        0.0479415332549447,
+        0.03050369717883074,
+        0.026980925239349144,
+        0.03359103349918903,
+        0.031883949071417825
+      ],
+      "permuted_mean_overlap_mean": 0.03285542165582806,
+      "permuted_mean_overlap_p05": 0.03180352240601654,
+      "permuted_mean_overlap_p95": 0.03348630038177117,
+      "pooled_overlap": 0.040361970755870856,
+      "pooled_permutation_invariance_error": 1.8735013540549517e-16,
+      "rank": 4
+    },
+    "transport": {
+      "matched": {
+        "answer_candidate_agreement": 0.3,
+        "correlation": 0.8410334346673899,
+        "normalized_mse": 0.539747416973114
+      },
+      "permutation_null": {
+        "mean_candidate_agreement": 0.39622395833333335,
+        "mean_normalized_mse": 0.982828241540119,
+        "p05_candidate_agreement": 0.3,
+        "p05_normalized_mse": 0.6162757277488708,
+        "p95_candidate_agreement": 0.4666666666666667,
+        "p95_normalized_mse": 1.3106112480163574,
+        "permutations": 256
+      },
+      "train_pooled_jacobian": {
+        "answer_candidate_agreement": 0.5,
+        "correlation": 0.8851903046577755,
+        "normalized_mse": 0.3584152162075043
+      }
+    }
+  },
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 359.958,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "hypothesis_decisions": {
+    "h_geo_01_real_pooling_illusion": false,
+    "h_geo_02_context_specific_behavior_transport": false,
+    "h_geo_03_coordinate_gauge_invariant_coupling": true
+  },
+  "identification_assumptions": [
+    "Donor residual differences are treated as sampled manifold chords, not arbitrary actions.",
+    "Logit Jacobians are local covectors and need not predict finite donor replacements.",
+    "The 36-answer contrast endpoint omits non-capital vocabulary logits.",
+    "Separate pooled Euclidean spans discard context pairing and are a diagnostic anti-pattern.",
+    "The invariant coupling J D^T is coordinate-gauge invariant only when vectors and covectors are transformed dually."
+  ],
+  "jacobian_jvp_median_relative_error": 2.8554075015563285e-07,
+  "jacobian_jvp_p95_relative_error": 4.57681210264127e-07,
+  "model": "Qwen/Qwen3-0.6B",
+  "model_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "numerical_audit_passed": true,
+  "numerical_gates": {
+    "analytic_pooling_control": true,
+    "clean_replacement_replay": true,
+    "coupling_diagonal_gauge": true,
+    "jacobian_jvp_median": true,
+    "jacobian_jvp_p95": true,
+    "stored_source_replay": true
+  },
+  "patch_examples": 612,
+  "runtime_seconds": 9.663548499986064,
+  "scientific_boundary": "A passing geometry control diagnoses context pairing or gauge behavior. It does not identify a semantic feature, compact circuit, J-space, or workspace.",
+  "status": "COMPLETED_MIXED",
+  "storage": {
+    "arrays": {
+      "clean_answer_logits": {
+        "dtype": "float32",
+        "shape": [
+          36,
+          36
+        ]
+      },
+      "clean_source": {
+        "dtype": "float32",
+        "shape": [
+          36,
+          1024
+        ]
+      },
+      "entity_id": {
+        "dtype": "int64",
+        "shape": [
+          36
+        ]
+      },
+      "logit_jacobian": {
+        "dtype": "float32",
+        "shape": [
+          36,
+          36,
+          1024
+        ]
+      },
+      "split_id": {
+        "dtype": "int64",
+        "shape": [
+          36
+        ]
+      }
+    },
+    "budget_bytes": 16777216,
+    "config_digest": "0a6d44cec36cc7fa7a1ca9f902625e64eff6432b0866723fab6aad19b796079f",
+    "dataset_id": "LLM-CONTEXT-GEOMETRY-001",
+    "estimated_uncompressed_bytes": 5468319,
+    "examples": 36,
+    "format": "hdf5",
+    "max_shard_bytes": 16777216,
+    "shards": [
+      {
+        "bytes": 5117677,
+        "path": "shard-00000-of-00001.h5",
+        "rows": 36,
+        "sha256": "1eadc60f960f0b3495ff2f91fa2d1df8be6422012ea4ab492c34e4d1a4ab7406"
+      }
+    ]
+  },
+  "stored_source_replay_max_abs": 0.0
+}

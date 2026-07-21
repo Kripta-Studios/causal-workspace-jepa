@@ -83,6 +83,21 @@
   two-context analytic pooling illusion, all 36 real Qwen context Jacobians, 256 fixed test-context
   derangements, a train-pooled Jacobian, direct finite-patch behavior, and numerical reconstruction
   of the already validated exact JVP. No novelty or mechanism claim is made before execution.
+- The clean `49d68b7` run finished in `9.66` seconds and passed every numerical gate: full-Jacobian
+  reconstruction of stored JVPs had median/p95 relative error `2.86e-7/4.58e-7`. H-GEO-01 and
+  H-GEO-02 failed; H-GEO-03 passed. Real top-four pooled/matched/permuted overlap was only
+  `0.04036/0.03403/0.03286`, so the preregistered real pooling gap was absent and context pairing
+  barely exceeded the permutation null.
+- The gauge stress exposed a concrete real-model failure of naive subspace geometry: an invertible
+  diagonal coordinate change with condition number `96.4` moved pooled overlap from `0.04036` to
+  `0.0003345`, while paired `J D^T` changed by only `1.68e-16` relative. This supports the diagnostic,
+  not a semantic mechanism.
+- Contrary to the context-specific hypothesis, the train-context mean Jacobian predicted held-out
+  finite logit effects better than each recipient's exact local Jacobian: normalized MSE
+  `0.358` versus `0.540`, correlation `0.885` versus `0.841`, and candidate agreement `0.500` versus
+  `0.300`. A context-derangement null had worse continuous MSE (`0.983` mean) but higher average
+  candidate agreement (`0.396`), further showing that discrete behavior and vector fidelity can
+  disagree. This post-result pattern requires a held-out confirmation before a new claim.
 
 ## 2026-07-21 — GPU continuation begins
 

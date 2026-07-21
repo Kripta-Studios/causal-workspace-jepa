@@ -59,4 +59,4 @@ prompt_suites:
     permutation_nulls: 256 fixed derangements of six test-context Jacobians
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
     budget_mb: 16
-    status: IMPLEMENTED_UNVALIDATED
+    status: SMOKE_VALIDATED

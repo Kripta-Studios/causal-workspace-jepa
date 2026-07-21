@@ -1,0 +1,17 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_context_geometry_v1.yaml",
+  "git_commit": "49d68b72200328657683b9760a084e0d952948b1",
+  "git_dirty": false,
+  "hypothesis_decisions": {
+    "h_geo_01_real_pooling_illusion": false,
+    "h_geo_02_context_specific_behavior_transport": false,
+    "h_geo_03_coordinate_gauge_invariant_coupling": true
+  },
+  "metrics": "artifacts/metrics/qwen_context_geometry_v1.json",
+  "numerical_audit_passed": true,
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 337,
+  "time_utc": "2026-07-21T12:33:04.767587+00:00"
+}

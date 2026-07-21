@@ -20,7 +20,10 @@
 - [x] Commit/push and execute `LLM-CAPITAL-PATCH-001` unchanged from `95018cb`; all gates pass.
 - [x] Implement/preregister context-paired causal geometry with analytic pooling, 256 derangements,
   dual-coordinate gauge checks, manifold donor chords, and finite behavior endpoints.
-- [ ] Commit/push and execute `LLM-CONTEXT-GEOMETRY-001` unchanged; retain all null outcomes.
+- [x] Commit/push and execute `LLM-CONTEXT-GEOMETRY-001` unchanged from `49d68b7`; retain failed
+  pooling/context-specificity gates and the positive gauge diagnostic.
+- [ ] Preregister confirmation of the post-result train-mean-Jacobian advantage on an analysis split
+  not used for v1 decisions; include averaging-size and discrete/continuous endpoint controls.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.

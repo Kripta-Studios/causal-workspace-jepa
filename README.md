@@ -58,11 +58,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   effective-rank floor, and even oracle target-embedding decodes had normalized MSE above `1.0`.
   Exact JVP won full-vector fidelity, linear ridge won logit MSE, and quadratic Taylor won answer
   behavior; no single metric supports a nonlinear-JEPA advantage.
-- `IMPLEMENTED_UNVALIDATED`: `LLM-CONTEXT-GEOMETRY-001` replaces separately pooled
-  reachability/observability claims with the context-paired contraction `K[r,s] = J[s] D[r]^T`.
-  The contraction is invariant under dual coordinate changes. The preregistered Qwen study computes
-  complete 36-answer Jacobians, context-derangement nulls, finite donor-patch behavior, a diagonal
-  gauge stress, and an analytic pooling-illusion positive control. It must be committed before run.
+- `COMPLETED_MIXED`: `LLM-CONTEXT-GEOMETRY-001` executed from clean `49d68b7`. The real pooling-
+  illusion and context-specificity hypotheses failed; the gauge-invariant coupling control passed.
+  A function-preserving diagonal reparameterization changed naive pooled overlap about 120-fold
+  while `J D^T` was invariant to `1.7e-16`. Unexpectedly, the 24-context train-mean Jacobian beat
+  each test context's own Jacobian on finite logit MSE, correlation, and answer-set agreement.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
