@@ -18,6 +18,10 @@
   sufficiency/necessity, episode-clustered bootstrap intervals, finite-sample Monte Carlo controls,
   and train-only smallest-prefix selection. The registered 560 prompts use calibration plus
   disjoint 24/6/6 key/value pools and an independently rendered paraphrase split.
+- The tokenizer-only audit ran from clean `4e6624f`; all four gates passed over 560 episodes.
+  Primary prompts are exactly 35 tokens, paraphrases 36, every donor differs at exactly two token
+  positions, every query-position count is balanced, and the frozen episode hash is
+  `3ac7a80d1ebeefd9e208b5c3d12fdaa8fb611cc3ad789c7f0e448da244ebaf59`.
 - A positive result may be called a specific compact mediator set only. It is not a circuit until
   paths/edges and faithfulness are reconstructed, and it is not evidence for JEPA. A trajectory
   Intervention-JEPA study remains conditional on this dataset passing competence and treatment

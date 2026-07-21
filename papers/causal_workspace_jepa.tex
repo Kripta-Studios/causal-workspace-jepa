@@ -280,6 +280,11 @@ random sets, donor shuffles, norm/covariance controls, irrelevant positions,
 unqueried swaps, and answer-row permutations.  Passing this experiment would
 support a specific mediator set only.  It would neither validate a JEPA nor
 reconstruct a circuit without directed-edge and faithfulness tests.
+The tokenizer-only audit subsequently ran from clean commit \code{4e6624f}:
+all 560 episodes passed, primary/paraphrase lengths were 35/36, every treatment
+changed exactly two token positions, and query positions were balanced.  This
+is availability evidence only; no Qwen forward outcome from this protocol has
+yet been opened.
 
 Population Jacobian averaging is prior art in the Jacobian Lens literature,
 and second-order/Hessian corrections to attribution patching are also prior art

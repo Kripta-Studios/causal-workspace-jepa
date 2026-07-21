@@ -239,6 +239,11 @@ multisets, exactly two changed token positions, one-token answers, bounded seque
 balanced query positions. It cannot decide task competence, mediation, circuit, JEPA, or workspace
 hypotheses.
 
+The audit executed from clean `4e6624f7561e2646fa9beb65297a5b953f0ac237`; all four gates pass and
+the deterministic episode hash is
+`3ac7a80d1ebeefd9e208b5c3d12fdaa8fb611cc3ad789c7f0e448da244ebaf59`. Protected Qwen outcomes
+remain unopened.
+
 Seed completion additionally requires an explicit marker, both horizon blocks, and the derived
 horizon-amplification summary; the presence of horizon 4 alone cannot skip final aggregation.
 

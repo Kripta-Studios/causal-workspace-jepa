@@ -1,0 +1,17 @@
+{
+  "command": "python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v1.yaml",
+  "gates": {
+    "all_expected_episodes_audited": true,
+    "all_sequences_within_budget": true,
+    "exactly_two_changed_tokens": true,
+    "query_positions_balanced": true
+  },
+  "git_commit": "4e6624f7561e2646fa9beb65297a5b953f0ac237",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_binding_tokenization_audit_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 419,
+  "time_utc": "2026-07-21T22:20:06.400772+00:00"
+}

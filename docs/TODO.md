@@ -11,8 +11,10 @@
   separate milestone with exact attention reconstruction tests.
 - [x] Preregister the corrected binding mediator study with independent episode units, train-only
   `k <= 4`, grouped intervals, full-vocabulary behavior, and direct necessity/sufficiency controls.
-- [ ] Run the clean tokenizer-only audit, then implement/execute the protected Qwen module-mediation
-  capture without changing the frozen pools, splits, rankings, controls, or gates.
+- [x] Run the tokenizer-only audit from clean `4e6624f`: all 560 episodes have exactly two changed
+  positions, lengths 35/36, balanced query positions, and frozen hash `3ac7a80d...ebaf59`.
+- [ ] Implement/execute the protected Qwen module-mediation capture without changing the frozen
+  pools, splits, rankings, controls, or gates.
 - [x] Pin official EB-JEPA and implement/test its source-contract adapter with exact one-layer GRU
   gate decomposition and replay tolerance `1e-6`.
 - [x] Retain `WM-EBJEPA-CONTRACT-001` from clean `979c2d6`; all source, shape, reconstruction, and

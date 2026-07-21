@@ -17,8 +17,9 @@
   `unroll`. Freeze batch 384 and report this ineffective-compile boundary in three-seed training.
 - Ordered multi-site Qwen interventions and treatment/restoration replay tests are implemented.
   `LLM-QWEN-BINDING-MEDIATION-001` now preregisters a module-only comparison of population/local
-  attribution, HVP, AtP*, probes, magnitude, random controls, and direct patch/restore. Run the
-  token audit and protected capture unchanged; do not call this a JEPA experiment.
+  attribution, HVP, AtP*, probes, magnitude, random controls, and direct patch/restore. Its clean
+  560-episode token audit passes; implement and run the protected capture unchanged. Do not call
+  this a JEPA experiment.
 - Only after a causally eligible component-outcome dataset exists, train a new trajectory
   Intervention-JEPA and evaluate composed/held-out interventions against every strong derivative
   and learned baseline.

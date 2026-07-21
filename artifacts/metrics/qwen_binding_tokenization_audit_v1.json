@@ -1,0 +1,84 @@
+{
+  "by_split": {
+    "calibration": {
+      "changed_position_pairs": 6,
+      "episodes": 16,
+      "query_position_counts": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    },
+    "paraphrase": {
+      "changed_position_pairs": 6,
+      "episodes": 96,
+      "query_position_counts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "sequence_lengths": [
+        36
+      ]
+    },
+    "test": {
+      "changed_position_pairs": 6,
+      "episodes": 96,
+      "query_position_counts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    },
+    "train": {
+      "changed_position_pairs": 6,
+      "episodes": 256,
+      "query_position_counts": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    },
+    "validation": {
+      "changed_position_pairs": 6,
+      "episodes": 96,
+      "query_position_counts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    }
+  },
+  "episode_count": 560,
+  "episode_sha256": "3ac7a80d1ebeefd9e208b5c3d12fdaa8fb611cc3ad789c7f0e448da244ebaf59",
+  "evidence_level": "Availability",
+  "experiment_id": "LLM-QWEN-BINDING-TOKEN-AUDIT-001",
+  "gates": {
+    "all_expected_episodes_audited": true,
+    "all_sequences_within_budget": true,
+    "exactly_two_changed_tokens": true,
+    "query_positions_balanced": true
+  },
+  "model": "Qwen/Qwen3-0.6B",
+  "parent_experiment_id": "LLM-QWEN-BINDING-MEDIATION-001",
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "scientific_boundary": "This audit validates deterministic token identity and treatment shape only. It does not execute Qwen, establish task competence, mediation, a circuit, an Intervention-JEPA advantage, or a workspace.",
+  "status": "SMOKE_VALIDATED"
+}

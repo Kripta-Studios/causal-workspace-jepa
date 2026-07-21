@@ -15,7 +15,7 @@ Qwen3-1.7B SAEs are feasible on this GPU, but the collection does not cover the 
 targets and steering alone is not a circuit. Circuit Tracing, AtP*, HVP, EAP-IG faithfulness, path
 patching, and direct activation patching are mandatory comparators for future localization.
 
-`LLM-QWEN-BINDING-MEDIATION-001` is now preregistered but has no model outcomes. Its 560 deterministic
+`LLM-QWEN-BINDING-MEDIATION-001` is preregistered and has no model outcomes. Its 560 deterministic
 episodes use calibration plus disjoint 24/6/6 key/value pools. Recipient and donor retain the same
 token multiset; the donor performs exactly one two-value transposition and the queried answer must
 change. A token audit must prove exactly two changed positions before Qwen is executed. The study
@@ -24,6 +24,11 @@ and random rankings over 56 module outputs. It freezes the smallest train-only p
 four nodes and tests it by clean-to-treated sufficiency and treated-to-clean restoration with
 episode-clustered intervals and matched nulls. A positive result would be a specific mediator set,
 not evidence for JEPA or a reconstructed circuit.
+
+The tokenizer-only audit ran from clean commit `4e6624f` and passed every gate. All 560 episodes
+change exactly two token positions; primary/paraphrase lengths are 35/36; query positions are
+balanced within every split; and the frozen episode hash is `3ac7a80d...ebaf59`. This removes
+token-length and token-identity confounds only. Task competence and mediation remain untested.
 
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the

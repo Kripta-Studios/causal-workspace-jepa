@@ -88,11 +88,12 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
   offline tests; and a preregistered Qwen3-0.6B smoke runner.
-- `PREREGISTERED`: `LLM-QWEN-BINDING-MEDIATION-001` fixes a token-balanced four-binding treatment,
+- `TOKEN_AUDIT_VALIDATED`: `LLM-QWEN-BINDING-MEDIATION-001` fixes a token-balanced four-binding treatment,
   24/6/6 disjoint key/value pools, 56 module candidates, a train-only prefix of at most four nodes,
-  episode-clustered intervals, direct sufficiency/restoration, and matched nulls. This first study
-  tests a mediator set, not a JEPA, circuit, J-space, or workspace; a trajectory Intervention-JEPA
-  is conditional on producing an eligible causal dataset.
+  episode-clustered intervals, direct sufficiency/restoration, and matched nulls. Its clean audit at
+  `4e6624f` verifies all 560 token treatments and hash `3ac7a80d...`; the protected model run has not
+  started. This first study tests a mediator set, not a JEPA, circuit, J-space, or workspace; a
+  trajectory Intervention-JEPA is conditional on producing an eligible causal dataset.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
