@@ -61,10 +61,10 @@ Status: `ACTIVE`.
   share one prompt template, model, layer, and intervention class. Do not call the method novel:
   corpus-averaged Jacobians are central to Anthropic's Jacobian Lens. The new evidence is limited to
   finite causal-fidelity behavior in this suite.
-- `ACTIVE_CONFIRMATION`: the control-conditioned population-advantage score was defined after the
-  element result. It is not evidence until it passes unchanged on the never-executed state roster.
-  A clean-answer floor blocks factual incompetence; exact local and quadratic/HVP-style comparators
-  block a first-order-only straw baseline. One-model confirmation still cannot establish SOTA.
+- `REJECTED_CONFIRMATION`: the state roster failed the clean-answer floor. Exact local and
+  quadratic/HVP-style comparators were present, but no scientific score is eligible. The apparent
+  layer-26 alignment was observed after rejection and cannot be promoted without a newly registered,
+  behavior-competent task. One-model confirmation would still not establish SOTA.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

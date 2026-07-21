@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 2026-07-21 — State-abbreviation causal-geometry confirmation preregistration
+## 2026-07-21 — State-abbreviation causal-geometry confirmation result
 
 - Primary-source audit added LIT-041, *When Attribution Patching Lies*. Second-order/HVP correction
   is prior art, so the existing directional quadratic Taylor remains a mandatory comparator and no
@@ -16,6 +16,17 @@
   specificity; H-CROSS-04 requires all three plus the frozen element positives.
 - This study can confirm only a cross-relation association in Qwen3-0.6B. It cannot by itself explain
   the mechanism, identify a circuit/workspace, validate a JEPA meta-model, or establish SOTA.
+- The unchanged run from clean `27ebe43` completed in `183.92` seconds. All four numerical gates
+  passed, with exact-Jacobian/central p95 relative error at most `0.0354` and exact source replay.
+- The preregistered clean-behavior gate rejected the study: train/validation/test full-vocabulary
+  accuracy was `0.625/0.667/0.667`, below the `0.75` validation/test floor. Consequently H-LLM-10,
+  H-GEO-10, H-GEO-11, and H-CROSS-04 are not scientifically decided; false artifact flags denote
+  gate rejection rather than negative hypothesis evidence.
+- Descriptive diagnostics are retained without promotion: validation/test donor control by layer was
+  `0/0/0.067/0.667` and `0/0/0.400/0.667`; population advantage was
+  `-0.567/-0.314/-0.073/+0.074` and `-0.510/-0.310/-0.010/+0.078`. Their Spearman correlation was
+  `0.949` on both splits. The sign change follows layer 26 here rather than the fixed layer 24. A
+  new prompt/task with prospective competence must confirm that boundary-relative hypothesis.
 
 ## 2026-07-21 — Qwen element-layer causal-geometry result
 

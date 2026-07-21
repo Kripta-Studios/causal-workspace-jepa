@@ -29,6 +29,7 @@ Qwen circuit has been discovered.
 | LLM-CONTEXT-GEOMETRY-001 | Real Qwen rejects fixed pooling/context-specificity gaps but confirms that naive Euclidean overlap is gauge-sensitive while paired `J D^T` is invariant; a train-mean Jacobian unexpectedly beats matched local finite transport. | Specificity | `configs/experiments/qwen_context_geometry_v1.yaml` | `artifacts/metrics/qwen_context_geometry_v1.json` | `49d68b72200328657683b9760a084e0d952948b1` | `COMPLETED_MIXED` |
 | LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Generalization | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
 | LLM-ELEMENT-LAYER-GEOMETRY-001 | A second factual relation confirms a sharp late donor-control transition and semantically specific late population transport, but rejects the preregistered strong local/population inversion and cross-relation conjunction. | Generalization | `configs/experiments/qwen_element_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_element_layer_geometry_v1.json` | `5d8de9a` | `COMPLETED_MIXED` |
+| LLM-STATE-LAYER-GEOMETRY-001 | The state-abbreviation confirmation is behavior-ineligible despite valid derivatives; all hypotheses remain undecided. | Availability/eligibility rejection | `configs/experiments/qwen_state_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_layer_geometry_v1.json` | `27ebe43` | `REJECTED_BEHAVIOR_GATE` |
 | WM-POPULATION-JACOBIAN-001 | The recurrent-JEPA port is rejected because fixed quadrature fails; its provisional action-vertex averaging signal is not accepted, while the global mean fails correlation and semantic specificity. | Numerical rejection | `configs/experiments/lewm_population_geometry_v1.yaml` | `artifacts/metrics/lewm_population_geometry_v1.json` | `89b2e14` | `REJECTED_NUMERICAL_GATE` |
 | WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
@@ -346,3 +347,22 @@ The preregistered strong predictivity inversion is nevertheless false. MechLens 
 factual crystallization and Jacobian Lens already covers corpus averaging, so this is a bounded
 causal-geometry observation that needs a new relation/model confirmation, not a SOTA, circuit, or
 workspace claim.
+
+`LLM-STATE-LAYER-GEOMETRY-001` key metrics:
+
+- clean execution commit/runtime: `27ebe43`, `183.92` seconds; all four numerical gates passed and
+  exact-Jacobian/central p95 relative error was at most `0.0354`;
+- clean train/validation/test full-vocabulary accuracy: `0.625/0.667/0.667`; validation/test failed
+  the fixed `0.75` competence floor, so status is `REJECTED_BEHAVIOR_GATE`;
+- validation/test donor transfer by layer 18/21/24/26: `0/0/0.067/0.667` and
+  `0/0/0.400/0.667`;
+- validation population advantage over the better local/quadratic comparator:
+  `-0.567/-0.314/-0.073/+0.074`; test: `-0.510/-0.310/-0.010/+0.078`;
+- descriptive donor-control/advantage Spearman: `0.9487` on both splits;
+- ignored shard: 30,844,253 bytes, SHA-256
+  `dabdfcf5e2ef751fe9379183e397517f6e36ca92b7c1b0398aa657b23857d8c0`.
+
+Interpretation: no scientific hypothesis is decided. The clean-answer gate did its intended job:
+it prevents model formatting/factual failures from being mistaken for causal geometry. The apparent
+boundary-relative sign change at layer 26 was observed after rejection and can only motivate a new
+behavior-competent preregistration; it cannot rescue H-LLM-10, H-GEO-10, H-GEO-11, or H-CROSS-04.

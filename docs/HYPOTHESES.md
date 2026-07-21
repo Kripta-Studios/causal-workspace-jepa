@@ -530,6 +530,15 @@ patched, or derivative outcome from this roster was inspected before this regist
   It would not establish why the transition occurs, identify a feature/circuit, beat published SOTA
   across models, validate Intervention-JEPA, or establish a J-space/workspace.
 
+Measured result from clean commit `27ebe43`: status `REJECTED_BEHAVIOR_GATE`. All numerical gates
+passed, but clean validation/test accuracy was `0.667/0.667`, below the registered `0.75` floor.
+Therefore H-LLM-10, H-GEO-10, H-GEO-11, and H-CROSS-04 are not scientifically decided. The artifact
+stores `false` decisions because the behavior gate masks every downstream decision; these must not
+be reported as hypothesis falsifications. Descriptively, donor-control/population-advantage Spearman
+was `0.9487` on both splits, while advantage changed from negative through layer 24 to positive at
+layer 26. That boundary-relative pattern was not the registered layer-24 sign gate and is only a
+candidate for a separately preregistered, behavior-competent task.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

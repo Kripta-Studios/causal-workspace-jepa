@@ -34,12 +34,14 @@
   the five protected test goals; v1's scientific decisions must remain rejected.
 - [x] Replicate population-versus-local finite transport on the element-symbol relation; retain the
   failed strict inversion and positive late semantic-specificity decisions separately.
-- [ ] Confirm the surviving causal-control/late-population association on a newly preregistered
-  relation or model before any general or SOTA claim; do not reuse observed element test outcomes.
+- [ ] Confirm the surviving causal-control/late-population association on a behavior-competent,
+  newly preregistered relation or model before any general or SOTA claim.
 - [x] Implement and preregister `LLM-STATE-LAYER-GEOMETRY-001` on an untouched tokenization-only
   roster with exact local, quadratic/HVP-style, population, averaging, and semantic-null controls.
-- [ ] Commit/push and execute the state-abbreviation confirmation unchanged; retain competence,
-  numerical, sign-switch, correlation, and semantic failures exactly as registered.
+- [x] Commit/push and execute state v1 unchanged from `27ebe43`; retain its behavior-gate rejection,
+  numerically valid but non-evidential layer-26 pattern, and undecided hypotheses.
+- [ ] Calibrate a higher-competence prompt using only excluded entities, then preregister a fresh
+  prompt/task before any registered forward; do not filter v1 entities by observed correctness.
 - [x] Use four permanently excluded element-symbol facts to calibrate a fixed four-layer grid and
   audit late-crystallization/AtP prior art without touching the registered 36-entity roster.
 - [x] Implement and preregister `LLM-ELEMENT-LAYER-GEOMETRY-001` with direct behavior, full selected-

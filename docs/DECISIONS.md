@@ -173,3 +173,7 @@
   transport against the better of exact local and quadratic/HVP-style correction. The new score may
   test only the prospectively frozen sign switch and control correlation; it may not reinterpret the
   failed element thresholds or claim novelty for population averaging, late crystallization, or HVP.
+- Preserve state v1 as `REJECTED_BEHAVIOR_GATE`. Do not lower the clean-accuracy floor or shift its
+  registered layer-24 gate to layer 26. The descriptive `0.949` control/advantage correlation can
+  motivate only a new boundary-relative study whose prompt competence is calibrated on excluded
+  entities before registration; never select v1 entities by their observed correctness.

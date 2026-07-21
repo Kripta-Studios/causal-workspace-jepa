@@ -76,12 +76,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   both splits, so H-GEO-08 and the cross-relation H-CROSS-03 conjunction are false. Late factual
   crystallization and population averaging remain prior art; no feature, circuit, or workspace is
   claimed.
-- `PREREGISTERED`: `LLM-STATE-LAYER-GEOMETRY-001` uses an untouched 36-state postal-abbreviation
-  relation to confirm or reject the surviving layer-conditioned observation. It inherits layers
-  18/21/24/26, requires clean held-out accuracy, compares population transport against the better of
-  exact local and quadratic/HVP-style transport, and freezes dual-split sign-change, rank-correlation,
-  averaging, and answer-row-null gates. Tokenization was checked; zero registered model forwards
-  occurred before preregistration.
+- `REJECTED` (behavior gate): `LLM-STATE-LAYER-GEOMETRY-001` ran unchanged from clean `27ebe43` and
+  passed every numerical gate, but clean validation/test accuracy was only `0.667/0.667` versus the
+  frozen `0.75` floor. No scientific hypothesis is decided. Descriptively only, donor-control versus
+  population-advantage Spearman was `0.949` on both splits and advantage turned positive at layer 26,
+  not the registered layer 24; this is a new follow-up hypothesis, not rescued evidence.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

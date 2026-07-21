@@ -73,10 +73,10 @@ instrumentation, storage, and direct-data gates remain validated.
   inversion on both held-out splits and therefore rejects H-CROSS-03. The surviving association
   needs a newly preregistered relation/model confirmation; the observed element thresholds are
   frozen and late crystallization/population averaging remain prior art.
-- `LLM-STATE-LAYER-GEOMETRY-001` is that prospective cross-relation confirmation. It uses an
-  untouched state-abbreviation roster and tests whether population advantage over the better of
-  exact local and quadratic/HVP-style transport changes sign and covaries with direct donor control.
-  Commit/push the preregistration before any state-prompt forward pass.
+- `LLM-STATE-LAYER-GEOMETRY-001` ran from clean `27ebe43` and is `REJECTED_BEHAVIOR_GATE`: clean
+  held-out accuracy missed the `0.75` floor, so no hypothesis is decided. Its descriptive layer-26
+  advantage sign switch and `0.949` control correlation require a new behavior-competent prompt/task
+  with prospective, boundary-relative gates.
 
 ## Milestone 3+: Scientific Runs
 

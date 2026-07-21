@@ -95,10 +95,12 @@ is 30,852,462 bytes with SHA-256
 the committed manifest makes it reproducible. Status: derivative dataset `SMOKE_VALIDATED`, study
 `COMPLETED_MIXED`.
 
-`LLM-STATE-LAYER-GEOMETRY-001` prospectively selects 36 of 49 tokenization-eligible U.S. state
+`LLM-STATE-LAYER-GEOMETRY-001` selected 36 of 49 tokenization-eligible U.S. state
 postal abbreviations with seed 521 and fixes 24/6/6 entity-disjoint splits with seed 523. Every
-answer is one unique leading-space Qwen token. It will record 612 within-split donor patches at each
-of layers 18/21/24/26, complete `36 x 1024` selected-answer Jacobians, exact-local and directional
-quadratic predictions, and direct full-vocabulary behavior under a 96 MB budget. Tokenization is the
-only model-adjacent operation performed before registration; no registered prompt has had a forward
-pass. Status: `PREREGISTERED`.
+answer is one unique leading-space Qwen token. The dataset records 612 within-split donor patches at
+each of layers 18/21/24/26, complete `36 x 1024` selected-answer Jacobians, exact-local and
+directional-quadratic predictions, and direct full-vocabulary behavior. The ignored shard is
+30,844,253 bytes with SHA-256
+`dabdfcf5e2ef751fe9379183e397517f6e36ca92b7c1b0398aa657b23857d8c0`, below the 96 MB budget.
+Status: dataset `SMOKE_VALIDATED`, experiment `REJECTED_BEHAVIOR_GATE` because held-out clean accuracy
+was below the registered floor.

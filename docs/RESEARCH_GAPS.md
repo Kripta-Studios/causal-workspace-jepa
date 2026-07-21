@@ -46,7 +46,7 @@ Status: `ACTIVE`.
   and population averaging are already published, the surviving conjunction is at most a bounded
   candidate observation. A new relation/model must prospectively confirm it; the observed element
   splits cannot be mined for revised thresholds.
-- The preregistered state-abbreviation study addresses only cross-relation replication in the same
-  Qwen3-0.6B. Even a full pass leaves cross-scale/model generalization, component localization,
-  causal circuit reconstruction, and a mechanism for the control boundary unresolved. HVP-style
-  curvature correction is a required prior-art baseline, not the proposed contribution.
+- The state-abbreviation study is behavior-ineligible, so it does not provide cross-relation
+  replication. A new prompt/task must establish clean competence prospectively and test a boundary-
+  relative transition rather than move v1's fixed layer after the fact. Even a full future pass
+  leaves cross-scale generalization, localization, circuit reconstruction, and mechanism unresolved.

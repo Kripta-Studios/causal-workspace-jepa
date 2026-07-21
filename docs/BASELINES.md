@@ -105,7 +105,7 @@ and improved with context count to `0.354`; row permutations failed badly. Quadr
 won candidate agreement at `0.833`, illustrating that population first-order transport is the best
 continuous-logit comparator here, not the best discrete behavior comparator.
 
-`LLM-STATE-LAYER-GEOMETRY-001` strengthens this comparison after LIT-041: at each layer, population
-transport is compared to the lower NMSE of exact local and directional quadratic Taylor, an
-HVP-style second-order correction. The registered population-advantage sign and four-layer rank
-correlation therefore cannot pass merely because first-order attribution patching becomes nonlinear.
+`LLM-STATE-LAYER-GEOMETRY-001` compared population transport to the lower NMSE of exact local and
+directional quadratic Taylor, an HVP-style second-order correction. The clean-behavior gate rejected
+the study before this comparator could decide a hypothesis. Its descriptive layer-26 sign change is
+retained only to design a fresh confirmation, never as a baseline win.

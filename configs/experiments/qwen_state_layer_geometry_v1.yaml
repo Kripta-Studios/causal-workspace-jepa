@@ -1,5 +1,5 @@
 id: LLM-STATE-LAYER-GEOMETRY-001
-status: PREREGISTERED
+status: REJECTED_BEHAVIOR_GATE
 relation: us_state_postal_abbreviation
 decision_family: control_conditioned_population
 resource_profile: configs/resource/gpu_12gb.yaml
