@@ -47,10 +47,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   and JVP/central-convergence gates. Exact JVP/quadratic MSE were `0.6143`/`0.07870`, versus
   conditional bottleneck `3.1899`; zero of three learned seeds passed. Restricted H-LLM-01 is
   withdrawn, not supported.
-- `IMPLEMENTED_UNVALIDATED`: a 612-outcome Qwen capital donor-patch generator now targets actual
-  top-token answer transfer. It uses 36 tokenizer-eligible facts, disjoint recipient/donor entity
-  splits, full layer-21 residual patches, exact JVP, quadratic controls, and excludes every entity
-  used during layer calibration. It must be committed before its first run.
+- `SMOKE_VALIDATED`: `LLM-CAPITAL-PATCH-001` executed 612 entity-disjoint Qwen capital donor
+  patches from clean preregistration commit `95018cb`. All numerical and behavior gates passed:
+  93.6% of patches changed the top token and 50% transferred the donor capital on the test split.
+  Exact-JVP candidate agreement was 35.1%, versus 74.3% for quadratic Taylor; this is a direct
+  causal dataset, not yet learned-meta-model or circuit evidence.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -65,8 +66,9 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
-on this GPU from clean commits. The original nonlinear-advantage result is under corrective audit;
-these are bounded Qwen results, not workspace or circuit evidence.
+on this GPU from clean commits. The original nonlinear-advantage result was withdrawn after its
+corrective audit; the new behavior-changing capital dataset is eligible for a separately
+preregistered genuine target-encoder JEPA. These are bounded Qwen results, not workspace evidence.
 The explicit bounded completion suite is implemented and audited. Larger Tier-1/2 adapters and the
 cluster-scale Qwen3-30B-A3B/SkyJEPA routes remain explicit research extensions or external blocks.
 

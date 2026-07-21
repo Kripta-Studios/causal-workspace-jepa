@@ -1,0 +1,312 @@
+{
+  "answer_token_ids": [
+    12095,
+    19846,
+    21718,
+    24081,
+    80701,
+    45826,
+    57858,
+    52082,
+    76334,
+    63061,
+    72176,
+    46287,
+    69595,
+    78563,
+    32877,
+    37169,
+    37741,
+    14168,
+    52550,
+    70244,
+    59016,
+    63033,
+    68790,
+    54578,
+    61953,
+    85875,
+    94677,
+    52695,
+    55218,
+    91432,
+    22415,
+    56564,
+    50189,
+    60059,
+    20539,
+    56004
+  ],
+  "behavior_eligible": true,
+  "behavior_gates": {
+    "clean_accuracy_each_split": true,
+    "overall_top_token_change": true,
+    "test_donor_transfer": true
+  },
+  "clean_top_token_accuracy_by_split": {
+    "test": 1.0,
+    "train": 0.9166666666666666,
+    "validation": 0.6666666666666666
+  },
+  "direct_source_semantic_max_abs": 0.0,
+  "donor_top_token_transfer_by_split": {
+    "test": 0.5,
+    "train": 0.5797101449275363,
+    "validation": 0.5
+  },
+  "entities": 36,
+  "estimated_bytes_before_capture": 28910880,
+  "evidence_level": "Causal mediation",
+  "exact_jvp_candidate_agreement": 0.35130718954248363,
+  "exact_jvp_normalized_mse": 0.5296206474304199,
+  "experiment_id": "LLM-CAPITAL-PATCH-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 359.973,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "median_jvp_central_relative_error": 0.014152592048048973,
+  "model": "Qwen/Qwen3-0.6B",
+  "model_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "numerical_audit_passed": true,
+  "numerical_gates": {
+    "all_effects_nonzero": true,
+    "direct_source_semantics": true,
+    "direction_endpoint_roundoff": true,
+    "median_jvp_central_relative_error": true,
+    "p95_jvp_central_relative_error": true
+  },
+  "outcomes": 612,
+  "overall_top_token_change_rate": 0.9362745098039216,
+  "p95_jvp_central_relative_error": 0.032756466418504715,
+  "precision": "float32",
+  "quadratic_candidate_agreement": 0.7434640522875817,
+  "quadratic_normalized_mse": 0.6390936374664307,
+  "runtime_seconds": 74.4478218999866,
+  "scientific_boundary": "This dataset establishes direct donor-patch behavior and local baselines only. It does not validate a meta-model, feature meaning, circuit, or workspace.",
+  "source_endpoint_tolerance_violations": 0,
+  "source_site": "blocks.21.resid_post",
+  "splits": {
+    "test": [
+      "Thailand",
+      "Finland",
+      "New Zealand",
+      "Tunisia",
+      "Germany",
+      "Austria"
+    ],
+    "train": [
+      "Iraq",
+      "Netherlands",
+      "Italy",
+      "Egypt",
+      "Indonesia",
+      "Philippines",
+      "Sweden",
+      "Bulgaria",
+      "Iran",
+      "Spain",
+      "Chile",
+      "Belgium",
+      "Greece",
+      "Pakistan",
+      "South Korea",
+      "Peru",
+      "Ireland",
+      "Turkey",
+      "France",
+      "Poland",
+      "Switzerland",
+      "Portugal",
+      "Russia",
+      "Singapore"
+    ],
+    "validation": [
+      "Hungary",
+      "Norway",
+      "Cuba",
+      "Australia",
+      "North Korea",
+      "Denmark"
+    ]
+  },
+  "status": "SMOKE_VALIDATED",
+  "storage": {
+    "arrays": {
+      "central_difference": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1060
+        ]
+      },
+      "clean_answer_logits": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          36
+        ]
+      },
+      "clean_source": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1024
+        ]
+      },
+      "clean_target_hidden": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1024
+        ]
+      },
+      "clean_top_token": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "direct_source_semantic_error": {
+        "dtype": "float32",
+        "shape": [
+          612
+        ]
+      },
+      "donor_answer_id": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "donor_id": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "donor_source": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1024
+        ]
+      },
+      "exact_jvp": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1060
+        ]
+      },
+      "intervened_answer_logits": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          36
+        ]
+      },
+      "intervened_target_hidden": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1024
+        ]
+      },
+      "intervened_top_token": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "jvp_central_relative_error": {
+        "dtype": "float32",
+        "shape": [
+          612
+        ]
+      },
+      "quadratic_taylor": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1060
+        ]
+      },
+      "recipient_answer_id": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "recipient_id": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "source_delta": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1024
+        ]
+      },
+      "source_endpoint_error": {
+        "dtype": "float32",
+        "shape": [
+          612
+        ]
+      },
+      "source_endpoint_tolerance": {
+        "dtype": "float32",
+        "shape": [
+          612
+        ]
+      },
+      "split_id": {
+        "dtype": "int64",
+        "shape": [
+          612
+        ]
+      },
+      "target_effect": {
+        "dtype": "float32",
+        "shape": [
+          612,
+          1060
+        ]
+      }
+    },
+    "budget_bytes": 67108864,
+    "config_digest": "2e089261071c872b8d3c190ad4c6fa72e09cc1eaa9cb97bc1bf73785bbc68a57",
+    "dataset_id": "LLM-CAPITAL-PATCH-001",
+    "estimated_uncompressed_bytes": 23417922,
+    "examples": 612,
+    "format": "hdf5",
+    "max_shard_bytes": 33554432,
+    "shards": [
+      {
+        "bytes": 16536370,
+        "path": "shard-00000-of-00001.h5",
+        "rows": 612,
+        "sha256": "b02340368836a00b4ecada84dba3484bf0c46f59bfe6d78bdc58db3fc7e0b951"
+      }
+    ]
+  },
+  "target_site": "blocks.27.resid_post"
+}

@@ -16,8 +16,13 @@ Status: `ACTIVE`.
   scientific comparison threshold is frozen; reporting must retain this post-diagnostic boundary.
 - `MITIGATED_PREREGISTRATION`: layer 21 was selected using Japan/Canada/China/Kenya engineering
   patches. Those entities are excluded from `LLM-CAPITAL-PATCH-001`; the 36 final facts and splits
-  were fixed using tokenizer structure only. Shared prompt wording remains a deliberate task-family
-  limitation and must not be called cross-task generalization.
+  were fixed using tokenizer structure only. The frozen final run passed all gates, but shared
+  prompt wording remains a deliberate task-family limitation and must not be called cross-task
+  generalization.
+- `ACTIVE_METRIC_CONFLICT`: on capital patches, exact JVP had better full-vector normalized MSE than
+  quadratic Taylor (`0.530` versus `0.639`) while being much worse on answer-candidate agreement
+  (`0.351` versus `0.743`). Learned-model reporting must retain both activation fidelity and direct
+  behavior fidelity; a favorable aggregate MSE cannot substitute for the behavior endpoint.
 - `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
   a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
   it; a genuine JEPA must be implemented and compared separately.

@@ -46,4 +46,4 @@ prompt_suites:
     source_site: blocks.21.resid_post
     intervention: full_last_token_donor_patch
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
-    status: IMPLEMENTED_UNVALIDATED
+    status: SMOKE_VALIDATED

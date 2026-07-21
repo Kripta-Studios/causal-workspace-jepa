@@ -14,7 +14,7 @@
 - [x] Revise and rerun the executable completion audit from clean `98a9e62`; all 14 criteria pass.
 - [ ] Implement a genuine target-encoder/stop-gradient Intervention-JEPA with anti-collapse tests.
 - [x] Implement/preregister a split-safe semantic donor-answer dataset with aggregate behavior gates.
-- [ ] Commit/push and execute `LLM-CAPITAL-PATCH-001` unchanged; retain failed eligibility if any.
+- [x] Commit/push and execute `LLM-CAPITAL-PATCH-001` unchanged from `95018cb`; all gates pass.
 - [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.

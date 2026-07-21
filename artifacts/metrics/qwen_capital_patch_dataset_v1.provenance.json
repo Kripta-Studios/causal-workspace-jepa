@@ -1,0 +1,13 @@
+{
+  "behavior_eligible": true,
+  "command": "python scripts/generate_qwen_capital_patches.py --config configs/experiments/qwen_capital_patch_dataset_v1.yaml",
+  "git_commit": "95018cb326d5604ed45f128338f66f51b13d04ae",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_capital_patch_dataset_v1.json",
+  "numerical_audit_passed": true,
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 223,
+  "time_utc": "2026-07-21T12:02:08.883789+00:00"
+}

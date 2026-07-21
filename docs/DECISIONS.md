@@ -120,3 +120,7 @@
 - Preserve the `LLM-GPT2-003` null. Seen-prompt bilinear success is memorization evidence, not
   composition generalization. Do not add prompts or tune this observed grid; a continuation must
   change intervention class to replacement, resampling, patching, or feature clamping.
+- `LLM-CAPITAL-PATCH-001` passed its frozen behavior eligibility gates. Freeze its 612-example grid
+  and entity split for the learned study. Because exact-JVP full-vector MSE and candidate agreement
+  rank controls differently, require both activation-space fidelity and behavior fidelity; do not
+  optimize or report only the more favorable endpoint.

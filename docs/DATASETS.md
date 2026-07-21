@@ -68,10 +68,12 @@ same 432-record FP32 audit. The ignored HDF5 shard is 962,334 bytes with SHA-256
 records all shapes and the 64 MB budget. Status: `SMOKE_VALIDATED` audit data; H-LLM-01 result
 `WITHDRAWN`.
 
-`LLM-CAPITAL-PATCH-001` is implemented/preregistered but unexecuted. It crosses 36 fixed one-token
+`LLM-CAPITAL-PATCH-001` executed from clean commit `95018cb`. It crosses 36 fixed one-token
 country/capital facts into 612 ordered non-self donor patches while keeping recipient and donor
-inside disjoint 24/6/6 entity splits. It stores full source/final hidden vectors, 36 answer logits,
-direct effects, exact JVP, central, quadratic, behavior IDs, and semantic diagnostics under 64 MB.
-Japan, Canada, China, and Kenya were used only for layer engineering and are excluded. Leakage risk:
-the factual prompt template is shared, but no entity, answer, recipient, or donor crosses splits.
-Status: `IMPLEMENTED_UNVALIDATED`.
+inside disjoint 24/6/6 entity splits. Its 16,536,370-byte HDF5 shard has SHA-256
+`b02340368836a00b4ecada84dba3484bf0c46f59bfe6d78bdc58db3fc7e0b951` and stores full source/final
+hidden vectors, 36 answer logits, direct effects, exact JVP, central, quadratic, behavior IDs, and
+semantic diagnostics under the 64 MB budget. Japan, Canada, China, and Kenya were used only for
+layer engineering and are excluded. Leakage risk: the factual prompt template is shared, but no
+entity, answer, recipient, or donor crosses splits. All numerical gates passed; top-token change was
+`0.936`, and held-out donor-answer transfer was `0.500`. Status: `SMOKE_VALIDATED` causal dataset.

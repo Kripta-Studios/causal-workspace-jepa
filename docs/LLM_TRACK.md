@@ -78,8 +78,10 @@ Behavior-changing continuation:
   applies every ordered within-split full residual donor patch at layer 21 and records direct
   full-vocabulary answer transfer plus exact JVP and quadratic controls.
 - Layer selection used four excluded calibration countries only. The final roster was inspected for
-  tokenizer token count, never model success. The dataset is not yet executed; a later genuine-JEPA
-  study is permitted only if the preregistered clean-competence and behavior-change gates pass.
+  tokenizer token count, never model success. The clean `95018cb` run passed all eligibility gates:
+  93.6% top-token change and 50% test donor-answer transfer. Exact-JVP/quadratic candidate agreement
+  was 35.1%/74.3%. The next study may therefore fit a genuine target-encoder JEPA, but this dataset
+  result alone is only direct causal mediation.
 
 Current mock implementation:
 

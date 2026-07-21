@@ -51,6 +51,13 @@
   grid: 36 fixed single-token capitals, 24/6/6 disjoint recipient/donor entity splits, 612 full
   layer-21 residual donor patches, direct top-token behavior, exact JVP, central convergence, and
   quadratic Taylor. Japan/Canada/China/Kenya calibration examples are excluded from final data.
+- The unchanged dataset ran from clean commit `95018cb` in `74.45` seconds and passed every
+  numerical and behavior gate. Clean answer accuracy was `0.917/0.667/1.000` on train/validation/
+  test; donor-answer transfer was `0.580/0.500/0.500`; and 93.6% of patches changed the top token.
+  Exact JVP had `0.5296` normalized MSE and only 35.1% candidate agreement, while quadratic Taylor
+  had `0.6391` full-vector normalized MSE but 74.3% candidate agreement. This is evidence that
+  behavior fidelity and activation-space MSE can rank local approximations differently; it enables,
+  but does not itself validate, the genuine target-encoder Intervention-JEPA study.
 
 ## 2026-07-21 — GPU continuation begins
 

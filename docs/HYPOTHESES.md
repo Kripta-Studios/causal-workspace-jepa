@@ -268,6 +268,14 @@ excluded from every final split and result.
   semantics, circuit, or workspace. If behavior eligibility fails, the frozen result is retained
   and the associated learned-model hypothesis is not run on a post-selected subset.
 
+Outcome (clean commit `95018cb`, 2026-07-21): every numerical and behavior gate passed. Clean
+top-token accuracy was `0.917/0.667/1.000` on train/validation/test, donor-answer transfer was
+`0.580/0.500/0.500`, and overall top-token change was `0.936`. Exact JVP/central relative error was
+`0.0142` median and `0.0328` p95. Exact JVP achieved `0.5296` normalized full-target MSE and `0.351`
+answer-candidate agreement; quadratic Taylor achieved `0.6391` and `0.743`, respectively. The
+dataset is eligible for the prospectively registered learned-model experiment. The disagreement
+between vector MSE and answer behavior is descriptive only until tested on a separate model or task.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering
