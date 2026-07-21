@@ -8,7 +8,8 @@
   convergence controls.
 - [x] Commit/push the audit preregistration and execute v1 unchanged from clean commit `686368e`.
 - [x] Retain v1 as `REJECTED` on its numerical endpoint gate; do not relax that threshold.
-- [ ] Preregister a v2 source-semantic gate after disclosing the v1 result and cancellation diagnosis.
+- [x] Preregister v2 source-semantic gates after disclosing the v1 result and cancellation diagnosis.
+- [ ] Commit/push v2, then execute it once unchanged from a clean worktree.
 - [ ] Revise every affected result, completion audit, and claim from the measured audit outcome.
 - [ ] Implement a genuine target-encoder/stop-gradient Intervention-JEPA with anti-collapse tests.
 - [ ] Generate a split-safe semantic donor-answer dataset with aggregate behavior-changing edits.

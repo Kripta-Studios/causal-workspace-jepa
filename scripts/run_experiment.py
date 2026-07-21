@@ -100,7 +100,7 @@ def main() -> int:
         metrics = run_qwen_intervention_jepa_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
-    if experiment_id == "LLM-QWEN-JVP-AUDIT-001":
+    if experiment_id in {"LLM-QWEN-JVP-AUDIT-001", "LLM-QWEN-JVP-AUDIT-002"}:
         metrics = run_qwen_jvp_audit(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0

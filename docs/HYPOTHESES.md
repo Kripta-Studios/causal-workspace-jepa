@@ -193,6 +193,36 @@ preregistered source-semantic validation. The v1 JSON's mechanically emitted `WI
 is superseded by the preregistered rule that a numerical-gate failure rejects the audit; the runner
 will be corrected prospectively. H-LLM-01 stays `UNDER_REAUDIT`.
 
+## LLM-QWEN-JVP-AUDIT-002 Source-Semantic Confirmatory Preregistration
+
+Registered on 2026-07-21 after fully disclosing the rejected v1 measurements and the no-write
+source-cancellation diagnosis. This is explicitly post-diagnostic, not a blind replication. V1's
+threshold and rejection remain immutable.
+
+- Frozen components: model/revision, FP32 eager execution, TF32 setting, 432 intervention records,
+  prompts/splits/donors, sites, target projections/logits, epsilon sweep, predictor architecture,
+  predictor seeds, derivative-convergence thresholds, finite-amplitude nonlinearity thresholds,
+  semantic deduplication, and corrected H-LLM-01 retention rule are identical to v1.
+- Replaced invalid gate: v1 compared downstream outputs from direct feature replacement with the
+  algebraic endpoint `h + (edited-h)` at an absolute `1e-5`. Float32 subtraction/addition need not
+  reproduce a replacement bitwise, and downstream amplification makes that an invalid semantic
+  identity gate.
+- Direct semantic gate: capture the source activation after every ordinary adapter intervention and
+  require maximum absolute difference from the explicitly constructed edited source to be exactly
+  zero (`0.0`). This directly tests intervention implementation before downstream propagation.
+- Direction endpoint gate: require every `h + (edited-h)` source discrepancy to be no larger than
+  `2 * eps_float32 * max(1, |h|_max, |edited|_max)`, a scale-aware two-rounding bound computed per
+  record. No observed downstream value determines this bound.
+- Descriptive endpoint control: still report absolute and effect-normalized downstream endpoint
+  discrepancy, but do not use it as a semantic gate once the exact source edit and roundoff-bounded
+  direction have separately passed.
+- Disposition: numerical validity requires all source, convergence, replay, and norm gates. If it
+  fails, emit `UNRESOLVED_NUMERICAL_REJECT`. If it passes, apply v1's unchanged nonlinearity and
+  two-of-three learned-predictor rules: `RETAINED` only on a full pass, otherwise `WITHDRAWN`.
+- Evidence boundary: v2 can correct one restricted H-LLM-01 result on the selected projected targets.
+  It cannot validate H-LLM-02/03 broadly, a genuine JEPA architecture, behavior prediction, a Qwen
+  circuit, or a workspace.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

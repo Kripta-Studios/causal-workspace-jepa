@@ -28,6 +28,9 @@
 - A no-write diagnostic localized the failed endpoint comparison to float32 cancellation of at most
   `4.768e-7` at replacement-source coordinates. This justifies a separately preregistered direct
   source-semantic validation, but cannot change v1's `REJECTED` numerical-gate result or decide H-LLM-01.
+- Implemented/preregistered v2 after disclosing v1. It captures the actual edited source, requires
+  exact adapter semantics, and bounds the algebraic direction endpoint by two scale-aware float32
+  roundings. All JVP, nonlinearity, predictor, seed, split, and disposition thresholds remain v1's.
 - Literature review found that generic reachability/observability balancing is established prior
   art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
   contribution must instead test context-conditioned finite-amplitude causal fidelity with direct

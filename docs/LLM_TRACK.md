@@ -63,6 +63,9 @@ Exact-derivative corrective milestone:
   preliminary exact-JVP MSE `0.6143` beat the conditional bottleneck `3.1899`; quadratic Taylor was
   `0.07870`, and zero learned seeds beat exact JVP. H-LLM-01 remains unresolved until a separately
   registered source-semantic check passes.
+- V2 is implemented/preregistered as a post-diagnostic confirmation. It adds source captures and
+  replaces only v1's invalid downstream absolute identity test with exact direct-source equality
+  plus a two-rounding float32 bound. All scientific score and disposition gates are unchanged.
 
 Current mock implementation:
 

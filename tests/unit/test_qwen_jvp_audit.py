@@ -7,6 +7,7 @@ import numpy as np
 from causal_workspace_jepa.experiments.llm.qwen_jvp_audit import (
     _regenerate_hidden_projection,
     _row_relative_error,
+    _hypothesis_disposition,
     deduplicated_effect_mask,
 )
 
@@ -35,6 +36,16 @@ class QwenJVPAuditTests(unittest.TestCase):
         np.testing.assert_array_equal(
             deduplicated_effect_mask(prompt, layer, delta, effect),
             [True, False, True],
+        )
+
+    def test_invalid_audit_cannot_withdraw_hypothesis(self) -> None:
+        self.assertEqual(
+            _hypothesis_disposition(audit_passed=False, retained=False),
+            "UNRESOLVED_NUMERICAL_REJECT",
+        )
+        self.assertEqual(
+            _hypothesis_disposition(audit_passed=True, retained=False),
+            "WITHDRAWN",
         )
 
 

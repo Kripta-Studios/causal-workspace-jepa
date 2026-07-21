@@ -42,6 +42,10 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   strong JVP/central agreement, but missed its absolute semantic-endpoint gate (`1.335e-4` versus
   `1e-5`). Its preliminary exact-JVP MSE (`0.6143`) beat the legacy conditional bottleneck
   (`3.1899`), but v1 cannot decide H-LLM-01; a source-semantic v2 must be preregistered.
+- `IMPLEMENTED_UNVALIDATED`: v2 is now preregistered as a disclosed post-diagnostic confirmation.
+  It replaces only the invalid downstream absolute identity gate with exact direct-source semantics
+  and a per-record float32 roundoff bound; all scientific comparisons and hypothesis thresholds are
+  frozen from v1.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

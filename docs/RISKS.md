@@ -11,6 +11,9 @@ Status: `ACTIVE`.
 - `RESOLVED_REPORTING_REQUIRED`: JVP audit v1 mechanically emitted `WITHDRAWN` even though its own
   preregistration says numerical failure leaves H-LLM-01 unresolved. Documentation follows the
   preregistered rule; the prospective runner must emit `UNRESOLVED_NUMERICAL_REJECT` on that path.
+- `MITIGATED_POSTHOC`: JVP audit v2 was designed after v1 exposed the endpoint problem and is not a
+  blind test. Its semantic repair is source-level and machine-epsilon-derived, while every observed
+  scientific comparison threshold is frozen; reporting must retain this post-diagnostic boundary.
 - `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
   a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
   it; a genuine JEPA must be implemented and compared separately.

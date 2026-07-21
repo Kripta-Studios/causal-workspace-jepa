@@ -124,6 +124,10 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
     central_rows: list[np.ndarray] = []
     quadratic_rows: list[np.ndarray] = []
     semantic_reconstruction_errors: list[float] = []
+    direct_source_semantic_errors: list[float] = []
+    source_endpoint_errors: list[float] = []
+    source_endpoint_tolerances: list[float] = []
+    downstream_endpoint_relative_errors: list[float] = []
     fp32_clean_top_tokens: list[int] = []
     fp32_top_tokens: list[int] = []
 
@@ -132,7 +136,8 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
         site = str(record["site"])
         spec = InterventionSpec.from_dict(record["intervention"])
         clean = clean_runs[prompt_index]
-        clean_source = clean.activations[site][0, -1].detach().float().cpu().numpy()
+        clean_source_tensor = clean.activations[site][0, -1].detach().float()
+        clean_source = clean_source_tensor.cpu().numpy()
         donor = None
         if spec.donor_example_id is not None:
             donor = (
@@ -148,14 +153,26 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
             mean=adapter._means[site].detach().float().cpu().numpy(),
             donor=donor,
         )
+        edited_tensor = torch.as_tensor(edited, device=adapter.device)
         direction = torch.as_tensor(edited - clean_source, device=adapter.device)
         with torch.no_grad():
             direct_run = adapter.forward_with_intervention(
-                clean.token_batch, spec, [target_site, "logits"]
+                clean.token_batch, spec, [site, target_site, "logits"]
             )
             direct_target = _target_vector(
                 direct_run, target_site, projection_tensor, logit_tensor
             )
+        direct_source = direct_run.activations[site][0, -1].detach().float()
+        direct_source_semantic_errors.append(
+            float((direct_source - edited_tensor).abs().max().cpu())
+        )
+        source_endpoint = clean_source_tensor + direction
+        source_endpoint_errors.append(
+            float((source_endpoint - edited_tensor).abs().max().cpu())
+        )
+        source_endpoint_tolerances.append(
+            _float32_endpoint_tolerance(clean_source_tensor, edited_tensor)
+        )
         direct_effect = direct_target - clean_targets[prompt_index]
         scalar_function = _directional_output_function(
             adapter,
@@ -186,6 +203,13 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
         semantic_reconstruction_errors.append(
             float((dense_full - direct_target).abs().max().cpu())
         )
+        dense_effect = dense_full - clean_targets[prompt_index]
+        downstream_endpoint_relative_errors.append(
+            float(
+                (dense_effect - direct_effect).norm().cpu()
+                / max(float(direct_effect.norm().cpu()), 1e-8)
+            )
+        )
         plus, minus = outputs[quadratic_epsilon]
         second = (
             plus - 2.0 * clean_targets[prompt_index] + minus
@@ -215,6 +239,18 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
         "operation_id": original["operation_id"].astype(np.int64),
         "feature_id": original["feature_id"].astype(np.int64),
         "magnitude": original["magnitude"].astype(np.float32),
+        "direct_source_semantic_error": np.asarray(
+            direct_source_semantic_errors, dtype=np.float32
+        ),
+        "source_direction_endpoint_error": np.asarray(
+            source_endpoint_errors, dtype=np.float32
+        ),
+        "source_direction_endpoint_tolerance": np.asarray(
+            source_endpoint_tolerances, dtype=np.float32
+        ),
+        "downstream_endpoint_relative_error": np.asarray(
+            downstream_endpoint_relative_errors, dtype=np.float32
+        ),
     }
     storage = write_hdf5_shards(
         str(config.get("output_dir", "data/activations/qwen3_0_6b_jvp_audit_v1")),
@@ -233,11 +269,19 @@ def run_qwen_jvp_audit(config_path: str | Path) -> dict[str, Any]:
         epsilons,
         clean_replay_max_abs=clean_replay_max_abs,
         semantic_reconstruction_errors=np.asarray(semantic_reconstruction_errors),
+        direct_source_semantic_errors=np.asarray(direct_source_semantic_errors),
+        source_endpoint_errors=np.asarray(source_endpoint_errors),
+        source_endpoint_tolerances=np.asarray(source_endpoint_tolerances),
+        downstream_endpoint_relative_errors=np.asarray(
+            downstream_endpoint_relative_errors
+        ),
     )
     metrics.update(
         {
             "experiment_id": str(config.get("id", "LLM-QWEN-JVP-AUDIT-001")),
-            "status": "SMOKE_VALIDATED" if metrics["audit_passed"] else "REJECTED",
+            "status": (
+                "SMOKE_VALIDATED" if metrics["audit_passed"] else "REJECTED_NUMERICAL"
+            ),
             "evidence_level": "Specificity",
             "model": str(config.get("model")),
             "model_revision": adapter._metadata()["resolved_revision"],
@@ -357,6 +401,17 @@ def _regenerate_hidden_projection(
     ).astype(np.float32)
 
 
+def _float32_endpoint_tolerance(clean: Any, edited: Any) -> float:
+    """Return a scale-aware two-rounding tolerance for h + (edited - h)."""
+
+    scale = max(
+        1.0,
+        float(clean.detach().abs().max().cpu()),
+        float(edited.detach().abs().max().cpu()),
+    )
+    return float(2.0 * np.finfo(np.float32).eps * scale)
+
+
 def _evaluate_audit(
     config: dict[str, Any],
     original: dict[str, np.ndarray],
@@ -365,6 +420,10 @@ def _evaluate_audit(
     *,
     clean_replay_max_abs: float,
     semantic_reconstruction_errors: np.ndarray,
+    direct_source_semantic_errors: np.ndarray,
+    source_endpoint_errors: np.ndarray,
+    source_endpoint_tolerances: np.ndarray,
+    downstream_endpoint_relative_errors: np.ndarray,
 ) -> dict[str, Any]:
     direct = evaluated["direct_effect_fp32"]
     jvp = evaluated["exact_jvp_fp32"]
@@ -379,8 +438,6 @@ def _evaluate_audit(
     norm_ratio = np.linalg.norm(jvp, axis=1) / np.maximum(np.linalg.norm(direct, axis=1), 1e-8)
     derivative_gates = {
         "clean_replay": clean_replay_max_abs <= float(config.get("clean_replay_atol", 1e-6)),
-        "semantic_dense_edit_reconstruction": float(np.max(semantic_reconstruction_errors))
-        <= float(config.get("semantic_reconstruction_atol", 1e-5)),
         "median_jvp_central_relative_error": float(np.median(relative))
         <= float(config.get("median_relative_error_max", 0.05)),
         "p95_jvp_central_relative_error": float(np.quantile(relative, 0.95))
@@ -390,6 +447,24 @@ def _evaluate_audit(
         "jvp_norm_outlier_rate": float(np.mean(norm_ratio > 10.0))
         <= float(config.get("jvp_norm_outlier_rate_max", 0.05)),
     }
+    semantic_validation_mode = str(
+        config.get("semantic_validation_mode", "downstream_endpoint_v1")
+    )
+    if semantic_validation_mode == "downstream_endpoint_v1":
+        derivative_gates["semantic_dense_edit_reconstruction"] = bool(
+            float(np.max(semantic_reconstruction_errors))
+            <= float(config.get("semantic_reconstruction_atol", 1e-5))
+        )
+    elif semantic_validation_mode == "source_semantics_v2":
+        derivative_gates["direct_source_semantics"] = bool(
+            float(np.max(direct_source_semantic_errors))
+            <= float(config.get("direct_source_semantic_atol", 0.0))
+        )
+        derivative_gates["directional_source_endpoint"] = bool(
+            np.all(source_endpoint_errors <= source_endpoint_tolerances)
+        )
+    else:
+        raise ValueError(f"unknown semantic_validation_mode: {semantic_validation_mode}")
     split = original["split_id"]
     feature = original["feature_id"]
     operation = original["operation_id"]
@@ -549,14 +624,34 @@ def _evaluate_audit(
         and nonlinearity["finite_amplitude_nonlinearity_pass"]
         and predictor_passing_seeds >= int(config.get("required_passing_seeds", 2))
     )
+    disposition = _hypothesis_disposition(audit_passed, h_llm_01_retained)
     return {
         "audit_passed": audit_passed,
         "h_llm_01_retained": h_llm_01_retained,
-        "prior_h_llm_01_disposition": "RETAINED" if h_llm_01_retained else "WITHDRAWN",
+        "prior_h_llm_01_disposition": disposition,
         "derivative_gates": derivative_gates,
         "derivative_diagnostics": {
             "clean_replay_max_abs": clean_replay_max_abs,
             "semantic_dense_edit_max_abs": float(np.max(semantic_reconstruction_errors)),
+            "semantic_validation_mode": semantic_validation_mode,
+            "direct_source_semantic_max_abs": float(
+                np.max(direct_source_semantic_errors)
+            ),
+            "source_direction_endpoint_max_abs": float(
+                np.max(source_endpoint_errors)
+            ),
+            "source_direction_endpoint_max_tolerance": float(
+                np.max(source_endpoint_tolerances)
+            ),
+            "source_direction_endpoint_tolerance_violations": int(
+                np.sum(source_endpoint_errors > source_endpoint_tolerances)
+            ),
+            "downstream_endpoint_median_relative_error": float(
+                np.median(downstream_endpoint_relative_errors)
+            ),
+            "downstream_endpoint_p95_relative_error": float(
+                np.quantile(downstream_endpoint_relative_errors, 0.95)
+            ),
             "median_jvp_central_relative_error": float(np.median(relative)),
             "p95_jvp_central_relative_error": float(np.quantile(relative, 0.95)),
             "median_adjacent_epsilon_relative_error": float(np.median(adjacent)),
@@ -590,6 +685,12 @@ def _evaluate_audit(
             )
         ),
     }
+
+
+def _hypothesis_disposition(audit_passed: bool, retained: bool) -> str:
+    if not audit_passed:
+        return "UNRESOLVED_NUMERICAL_REJECT"
+    return "RETAINED" if retained else "WITHDRAWN"
 
 
 def deduplicated_effect_mask(

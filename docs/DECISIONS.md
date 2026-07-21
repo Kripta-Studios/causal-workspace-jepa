@@ -18,6 +18,9 @@
 - Do not claim novelty for generic controllability/observability Gramians, Hankel modes, or CoBRAS.
   Any new geometry result must be conditional on the same context, survive a cross-context pooling
   illusion/null, and predict directly executed finite-amplitude behavioral effects.
+- Preserve JVP audit v1 as rejected. V2 may replace only the invalid semantic identity test with
+  source-level checks: exact direct edit and a two-rounding float32 endpoint bound. Every scientific
+  split, baseline, nonlinearity threshold, and learned-predictor threshold stays frozen from v1.
 
 - Activate `gpu_12gb` after detecting an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, CUDA-enabled
   PyTorch, approximately 370 GB free, and a passing GPU doctor check.
