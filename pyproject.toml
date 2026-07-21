@@ -31,6 +31,7 @@ gpu = [
   "transformers>=4.45,<6",
   "accelerate>=0.34",
   "safetensors>=0.4",
+  "h5py>=3.12,<4",
 ]
 
 [project.scripts]

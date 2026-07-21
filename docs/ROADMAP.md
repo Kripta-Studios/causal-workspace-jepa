@@ -42,6 +42,8 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection; scientific GPU r
 - Windows provenance-path comparison and fresh-clone checksum audit were repaired and tested.
 - Next: implement Qwen3-0.6B instrumentation before scaling to Qwen3-4B, and implement one faithful
   published action-conditioned JEPA reproduction before mechanistic claims.
+- Qwen3-0.6B adapter and smoke runner are `IMPLEMENTED_UNVALIDATED`; run only after the pre-run code
+  commit so provenance can point to clean code.
 
 ## Milestone 3+: Scientific Runs
 

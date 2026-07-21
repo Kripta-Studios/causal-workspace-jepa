@@ -30,6 +30,31 @@ scientific validation.
 
 Metrics, splits, thresholds, layers, and magnitudes must be registered before each associated experiment.
 
+## LLM-QWEN-001 Instrumentation Preregistration
+
+Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an
+instrumentation acceptance test, not a test of H-LLM-01 through H-LLM-07 and not a workspace test.
+
+- Model: public `Qwen/Qwen3-0.6B` at immutable revision
+  `c1899de289a04d12100db370d81485cdf75e47ca`; estimated repository bytes `1,519,209,243`;
+  Apache-2.0 model card; bfloat16 on the RTX 5070 Ti.
+- Inputs: four fixed repository-authored seven-token factual/causal prompts, seed `41`, sequence cap
+  `16`. This smoke has no train/test scientific split.
+- Site: `blocks.14.resid_post`, final non-padding position, coordinates `0..7`. Target capture is
+  `blocks.27.resid_post` plus logits.
+- Operations: zero, a mean computed across the four clean prompt activations, donor resampling,
+  donor patching, and magnitude-2 steering. The donor is prompt 1 and the recipient prompt 0.
+- Required controls: two hooked clean forwards must be bitwise identical. Mean and resampling may
+  not fall back to a batch-one identity; both require explicitly registered statistics/donors.
+- Autograd: the selected maximum logit must have a finite nonzero gradient with respect to the
+  captured layer-14 residual activation in a separate graph-preserving forward.
+- Acceptance: the resolved model revision equals the pin; deterministic max absolute logit error is
+  exactly zero; every operation has nonzero mean absolute logit delta; autograd gradient norm is
+  finite and positive.
+- Evidence boundary: passing establishes selected-site availability and direct causal mediation
+  only. It cannot establish a Qwen circuit, feature meaning, meta-model fidelity, behavior change,
+  J-space, or workspace.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

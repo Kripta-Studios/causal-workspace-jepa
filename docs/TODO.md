@@ -6,7 +6,9 @@
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.
 - [x] Run the full pre-change test and reproducibility baseline.
 - [x] Repair Windows provenance-path comparison and fresh-clone checksum expectations.
-- [ ] Implement and test the Hugging Face Qwen adapter and bounded activation store.
+- [x] Implement and offline-test the Hugging Face Qwen adapter, selected hooks, interventions, and autograd.
+- [ ] Implement and test the bounded sharded HDF5 activation store.
+- [ ] Execute the preregistered Qwen3-0.6B instrumentation smoke from clean committed code.
 - [ ] Preregister, commit, and run a real Qwen3-0.6B intervention dataset.
 - [ ] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
 - [ ] Directly execute and verify ranked meta-model circuit candidates.

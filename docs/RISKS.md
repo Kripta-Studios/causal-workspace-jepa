@@ -7,6 +7,10 @@ Status: `ACTIVE`.
 - `ACTIVE`: GPT-2 Medium was downloaded and run after explicit user override; weights are under `.cache/` and ignored by Git.
 - `ACTIVE`: bounded Qwen3-0.6B/4B downloads are permitted by `gpu_12gb`, but storage and VRAM must be
   estimated first and all-layer/all-token capture remains prohibited.
+- `MITIGATED`: the host has an invalid implicit Hugging Face OAuth token for public API calls. Qwen
+  loaders explicitly use `token=False`; no token value was printed, changed, stored, or committed.
+- `ACTIVE`: the real Qwen adapter has only offline tiny-model tests until `LLM-QWEN-001` runs from
+  clean committed code. Hook correctness on a random tiny model is not real-Qwen evidence.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.

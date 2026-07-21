@@ -25,6 +25,9 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   predictors failed on held-out prompts. All three registered hypotheses failed.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
+- `IMPLEMENTED_UNVALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
+  attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
+  autograd preservation; offline tiny-Qwen tests; and a preregistered Qwen3-0.6B smoke runner.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments; their former local resource blocker has been removed, but no result is claimed yet.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
@@ -111,6 +114,9 @@ python -m causal_workspace_jepa.cli doctor `
   --resource-profile configs/resource/gpu_12gb.yaml
 python -m unittest discover -s tests -p "test_*.py"
 python scripts/audit_reproducibility.py
+
+python scripts/run_experiment.py `
+  --config configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml
 ```
 
 The following Unix-style commands remain the intended clean-environment workflow; the Qwen and

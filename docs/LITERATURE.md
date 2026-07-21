@@ -25,6 +25,6 @@ Last primary-source check: 2026-07-20. Unchecked entries remain `UNVERIFIED_FROM
 | LIT-019 | Let's Think Dot by Dot | https://arxiv.org/abs/2404.15758 | Not verified | Hidden computation across filler tokens. | `UNVERIFIED_FROM_PROMPT` |
 | LIT-020 | When Chain-of-Thought Fails | https://arxiv.org/abs/2604.23351 | Not verified | Hidden-state answer evidence. | `UNVERIFIED_FROM_PROMPT` |
 | LIT-021 | Switchable Latent Reasoning | https://arxiv.org/abs/2606.13106 | Not verified | Hidden-state recurrence. | `UNVERIFIED_FROM_PROMPT` |
-| LIT-022 | Qwen3-0.6B | https://huggingface.co/Qwen/Qwen3-0.6B | Hugging Face | Smoke target on GPU profile, not CPU VPS. | `BLOCKED_RESOURCE` |
+| LIT-022 | Qwen3-0.6B | https://huggingface.co/Qwen/Qwen3-0.6B | Hugging Face; Apache-2.0; pinned revision `c1899de...` | Official 28-layer, 0.6B-parameter smoke target; selected-site instrumentation only. | `PRIMARY_VERIFIED_2026-07-21` |
 | LIT-023 | Qwen3-4B | https://huggingface.co/Qwen/Qwen3-4B | Hugging Face | Primary mechanistic target on GPU profile. | `BLOCKED_RESOURCE` |
 | LIT-024 | Qwen3-30B-A3B | https://huggingface.co/Qwen/Qwen3-30B-A3B | Hugging Face | Cluster-scale target. Full weights required despite sparse activation. | `BLOCKED_RESOURCE` |

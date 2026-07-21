@@ -11,6 +11,11 @@
 - Normalize recorded relative metric paths in the reproducibility audit so Linux provenance can be
   checked on Windows. A fresh clone may skip ignored shard checksums, but any available shard must
   still match exactly.
+- Pin the first Qwen target to public revision `c1899de289a04d12100db370d81485cdf75e47ca`
+  and pass `token=False`; an invalid implicit local OAuth token returned HTTP 401 for a public model,
+  and repository experiments must neither depend on nor modify user credentials.
+- Require explicit training-split statistics or registered donors for Torch mean/resample operations.
+  Batch-one self-means and self-resampling are invalid controls.
 
 ## 2026-07-20
 

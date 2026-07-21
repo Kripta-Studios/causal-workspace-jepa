@@ -5,8 +5,10 @@ Status: `SMOKE_VALIDATED`.
 The inherited CPU implementation uses a mock transformer with known activation dependencies. It is valid for interface, leakage, and intervention-pipeline tests only.
 
 Real Hugging Face Qwen instrumentation is `ACTIVE` on the RTX 5070 Ti host, but the current adapter
-and scripts are still placeholders and no Qwen result exists. Qwen3-0.6B is the first bounded target;
-Qwen3-4B follows after storage/hook validation. Ollama is not a hidden-state or autograd source.
+is now `IMPLEMENTED_UNVALIDATED` and no real-Qwen result exists. Offline tests cover stable selected
+sites, deterministic capture, Torch interventions, donor/statistic registration, and autograd on a
+tiny random Qwen3. Qwen3-0.6B revision `c1899de...` is the first bounded direct target; Qwen3-4B
+follows after storage/hook validation. Ollama is not a hidden-state or autograd source.
 
 Current mock implementation:
 

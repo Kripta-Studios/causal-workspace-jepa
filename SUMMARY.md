@@ -18,6 +18,11 @@
 - Independent Qwen, world-model, and adversarial audits confirm that real Qwen and published-JEPA
   integrations are placeholders despite the newly available hardware. Those are the next milestones;
   no GPU scientific claim has yet been made.
+- Replaced the Qwen failure stub with a selected-site Torch/Hugging Face adapter. Offline tiny-Qwen3
+  tests cover residual/attention/MLP/logit capture, clean replay equality, zero/mean/resample/patch/
+  steer semantics, explicit donor/statistic requirements, and graph-preserving autograd.
+- Pinned and preregistered `LLM-QWEN-001` at public Qwen3-0.6B revision `c1899de...` with a
+  1,519,209,243-byte repository estimate. Do not run until this code milestone is committed/pushed.
 
 ## 2026-07-20
 
