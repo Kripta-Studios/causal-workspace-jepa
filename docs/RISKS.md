@@ -77,15 +77,15 @@ Status: `ACTIVE`.
   validation population boundary preceded the registered 50% control boundary. The surviving
   monotone-control and row-null-specificity results do not establish temporal/causal ordering,
   component localization, or a new population-Jacobian algorithm.
-- `ACTIVE_PATH_CALIBRATION`: large derivative path length divided by small net decoded displacement
-  can reflect real vector cancellation, decoder error, or numerical underresolution. The new
-  validation calibration reports direct reconstruction, refinement change, direct-effect norm,
-  speed concentration, horizon controls, and within-action-pair permutation nulls. It makes no
-  claim and leaves test goals inaccessible until a separate preregistration.
+- `CLOSED_PATH_DESIGN`: large derivative path length divided by small net decoded displacement
+  can reflect real vector cancellation, decoder error, or numerical underresolution. V2 reports
+  integrated-vector reconstruction but not scalar path-length refinement or unclamped direct norm;
+  sparse within-pair sampling prevents the needed joint conditional null. It makes no claim, and
+  this family is closed without accessing test goals.
 - `CONFIRMED_SHARED_DENOMINATOR`: cancellation and normalized local error both divide by decoded
   direct-effect norm. Small effects can mechanically inflate both quantities; within-action-pair
-  permutation does not remove this. Protected testing remains closed even if v2 converges until a
-  preregistered validation audit passes unnormalized, partial, and effect-size-conditioned controls.
+  permutation does not remove this. The proposed derived audit was rejected before commit;
+  protected testing remains closed even if v2's vector reconstruction converges.
 - `ACTIVE_MANUSCRIPT_DRIFT`: a paper can silently overstate evolving repository evidence. The
   source-of-truth `papers/causal_workspace_jepa.tex` therefore names experiment IDs, run commits,
   evidence levels, negative dispositions, and artifact paths; it is compiled with local BibTeX and

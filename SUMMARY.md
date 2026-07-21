@@ -13,6 +13,14 @@
   expensive block and the derived seed summary.
 - This hardening applies to future launches. The already running clean v2 process imported commit
   `288f663` before the change and therefore still writes only at completion.
+- Before the v2 metrics existed, adversarial review rejected a proposed derived denominator audit
+  before commit. V2 checks convergence of an integrated vector, not convergence of the scalar path
+  length used by cancellation; it stores no 512-node path length and clamps the recorded direct
+  norm. With only two chords per action pair, neither separate action-pair/effect-bin permutations
+  nor leave-one-pair-out summaries identify denominator-independent geometry. V2 is therefore
+  numerical calibration only, protected test remains locked, and this small-model route is closed
+  unless a materially new prospective design records both path lengths, raw norms, substantially
+  more chords, row-level split guards, and a valid joint conditional null.
 
 ## 2026-07-21 — Scientific manuscript and consolidated discovery boundary
 

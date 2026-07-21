@@ -48,11 +48,13 @@ and YAML files remain authoritative for every threshold and hyperparameter.
    planner was too weak for a useful mechanism claim, and no post-hoc workspace-readout proxy
    passed matched controls. The raw flag is not accepted as evidence-level-5 circuit
    reconstruction, and even a positive post-hoc proxy would not itself establish a workspace.
-9. **Decoded recurrent action-path cancellation is a pending candidate, not a discovery.** The
+9. **Decoded recurrent action-path cancellation is closed as a current scientific route.** The
    first validation calibration found large cancellation in some seed/horizon pairs, but
    high-resolution quadrature is required for seeds 101/103. Cancellation and normalized local
-   error also share the direct-effect denominator, so a new validation control is required before
-   protected test goals can be considered. Those goals remain untouched.
+   error share the direct-effect denominator. Pre-result adversarial review further established
+   that v2 lacks scalar path-length refinement, raw direct norms, dense within-pair sampling, and a
+   joint conditional null. It can provide numerical/vector calibration only; the proposed derived
+   audit was rejected before commit and protected test goals remain untouched.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -394,9 +396,10 @@ untouched test goals remain protected; validation calibration must converge firs
 - median horizon-four/horizon-one cancellation amplification was `1.05/2.82/.983`, so recurrence
   amplification does not replicate at the calibration sample size.
 
-Interpretation: exact path profiling is feasible and suggests chord-specific cancellation may track
-local linearization failure, but the stiffest seeds are not numerically stable and the effect is
-weak relative to a strong within-action-pair null. This is calibration, not evidence or novelty.
+Interpretation: exact path profiling is feasible, but the apparent cancellation/local-failure
+association is not identified by this design. The stiffest seeds are numerically unstable, the two
+normalized endpoints share a denominator, and the stored v2 quantities cannot retrospectively
+repair the confound. This is calibration, not evidence or novelty; the current route is closed.
 
 `LLM-ELEMENT-LAYER-GEOMETRY-001` key metrics:
 

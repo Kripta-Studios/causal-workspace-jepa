@@ -48,14 +48,16 @@ registered and the five test goals remain protected.
 
 Adversarial review identified that cancellation and normalized local error both divide by the
 decoded net-effect norm. This can create association for small effects even within action-pair
-strata. High-resolution convergence is therefore only a numerical result; a separately registered
-validation audit of unnormalized and partial associations must pass before test can be considered.
+strata. A proposed derived audit was rejected before commit because v2 lacks scalar path-length
+refinement and unclamped direct norms, and only two chords are available per action pair. Separate
+conditional permutations cannot supply the missing joint support. High-resolution convergence is
+therefore only a numerical/vector result; the route is closed without accessing test goals.
 
 Calibration v1 ran from clean `eb943a5` in `72.59` seconds. Horizon one converged across seeds, but
 horizon four remained underresolved for seeds 101/103 even at 256 nodes. Cancellation/local-error
 Spearman exceeded the within-action-pair null p95 in all three horizon-four samples only narrowly,
 and median recurrence amplification occurred strongly in just seed 103. No evidence is accepted;
-the next step is higher-resolution validation plus a denominator-confound audit, not a protected-test run.
+v2 will be archived as numerical calibration and no protected-test run follows from this family.
 
 Validated CPU smoke:
 

@@ -119,7 +119,11 @@ cancellation remains validation-only calibration with a shared-denominator confo
   no scientific claim or protected-test launch is authorized.
 - `RUNNING_CALIBRATION`: `WM-ACTION-PATH-CALIBRATION-002` repeats the identical exposed validation
   chords at 512/1024 nodes to test numerical stability from clean `288f663`. It remains
-  decision-free and split-locked; a separate validation denominator audit is required afterward.
+  decision-free and split-locked. Adversarial design review found that it does not store path
+  length at both resolutions or the unclamped direct-effect norm, and its two chords per action
+  pair cannot support a joint action-pair/effect-size conditional null. The proposed derived
+  denominator audit was rejected before commit. V2 will be retained as numerical/vector
+  calibration only; this small-model action-path route is closed without accessing test goals.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.

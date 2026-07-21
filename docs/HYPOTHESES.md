@@ -695,9 +695,6 @@ Adversarial review before v2 completed identified a structural confound: cancell
 `L / ||delta_y||` and normalized local error both divide by `||delta_y||`. Their correlation may
 therefore arise mechanically when the net decoded effect is small, and action-pair stratification
 does not remove it. Even a numerically converged v2 cannot directly authorize protected-test access.
-A new validation-only preregistration must require unnormalized path-excess/local-residual
-association, partial association controlling direct-effect norm, and permutations conditioned on
-effect-size bins before any protected-test hypothesis can be considered.
 
 Execution audit: the first clean v2 launch from `e918d4f` failed with CUDA OOM before metrics or
 provenance were written. The clean retry changes only `jacobian_chunk_size` from 16 to 2; it does
@@ -706,6 +703,17 @@ The chunk-2 retry from clean `c72d9f5` also emitted no artifact because the impl
 large autograd graphs into the 1,024-node pass. The next clean retry streams 64 outer samples,
 immediately projects each exact Jacobian into the registered decoded coordinates, detaches to CPU,
 and frees its graph; all mathematical settings remain unchanged.
+
+Pre-result adversarial review also rejected a proposed derived denominator audit before commit.
+The parent records convergence of the integrated decoded vector, not the scalar path length `L` at
+both resolutions, and its stored direct norm is floored at `1e-4`. Only two chords are available for
+each ordered action pair. Thus unnormalized path excess and local residual still inherit common
+scale/direction structure, separate action-pair and effect-bin permutations do not form a joint
+conditional null, and leave-one-pair-out summaries cannot compensate for sparse within-pair support.
+V2 therefore remains numerical/vector calibration regardless of its outcome. No protected-test
+hypothesis follows, and this small-model family is closed. A materially new prospective study would
+need raw norms, path lengths at both resolutions, substantially more chords per pair, row-level
+split/seed guards, and a preregistered joint conditional null.
 
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 

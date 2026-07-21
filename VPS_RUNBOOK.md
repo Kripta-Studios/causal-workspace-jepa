@@ -355,10 +355,11 @@ stale progress aborts. The v2 process launched from `288f663` predates this prot
 next high-resolution launch, benchmark bounded outer/chunk batch pairs on the target GPU rather than
 guessing from VRAM alone.
 
-Do not promote a converged cancellation/local-error correlation directly to protected test. Both
-normalized quantities divide by the decoded direct-effect norm. First run a separately registered
-validation audit with unnormalized residuals, partial association, and effect-size-conditioned
-permutations.
+Do not promote a converged cancellation/local-error correlation to protected test. Both normalized
+quantities divide by the decoded direct-effect norm, while v2 omits scalar path length at its lower
+resolution and stores a floored direct norm. A proposed retrospective audit was rejected before
+commit; there are also only two chords per action pair, insufficient for a joint conditional null.
+Retain v2 as numerical/vector calibration and do not launch a downstream analysis from it.
 
 The working scientific paper is built locally with:
 

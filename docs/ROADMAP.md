@@ -78,8 +78,10 @@ instrumentation, storage, and direct-data gates remain validated.
   this family if convergence or replicated association does not survive.
 - Calibration v2 is implemented with identical chords and 512/1024 nodes. Numerical convergence
   cannot directly permit test preregistration because cancellation and normalized local error share
-  a denominator. The next fork is a preregistered validation-only unnormalized/partial-association
-  audit; failure closes the family without touching test goals.
+  a denominator. Adversarial review rejected the proposed derived audit before commit: the parent
+  does not store scalar path length at both resolutions or raw direct norm, and two chords per
+  action pair cannot support a joint conditional null. Keep V2 as numerical/vector calibration and
+  close this family without touching test goals.
 - A source-of-truth scientific manuscript now lives at `papers/causal_workspace_jepa.tex`. It must
   compile with the repository bibliography and remain synchronized with final v2 disposition,
   `docs/RESULTS.md`, `SUMMARY.md`, and the experiment/hypothesis registries.

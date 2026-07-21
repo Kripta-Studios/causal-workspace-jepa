@@ -717,6 +717,17 @@ must preregister unnormalized or partial-association endpoints and permutations
 conditioned on direct-effect magnitude; quadrature convergence alone is not
 sufficient.
 
+Before the V2 artifact existed, adversarial design review rejected a proposed
+derived denominator audit before commit.  V2 checks convergence of an
+integrated vector, but does not store scalar path length at both resolutions;
+the recorded direct norm is clamped, and only two chords are available per
+action pair.  Consequently, separate action-pair and effect-size-bin
+permutations cannot establish a joint conditional null.  We retain V2 only as
+numerical/vector calibration and close this route in the small model without
+accessing protected test goals.  Reopening requires a new prospective data
+collection with raw norms, scalar path-length refinement, substantially denser
+within-pair sampling, row-level split guards, and a preregistered joint null.
+
 \begin{table*}[t]
 \centering
 \small

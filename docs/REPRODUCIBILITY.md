@@ -112,7 +112,10 @@ PID before relaunching. The start-time provenance object already records commit 
 `git_dirty: false`, so later documentation edits cannot change the code/config identity of that run.
 Before its result was available, adversarial review identified the shared decoded-direct-effect
 denominator in cancellation and normalized local error. This is a scientific-design issue rather
-than an implementation change: v2 remains a numerical calibration, and protected test stays locked.
+than an implementation change. A proposed derived audit was rejected before commit because v2
+does not store scalar path length at both resolutions or the unclamped direct norm, and two chords
+per action pair cannot support the required joint conditional null. V2 remains numerical/vector
+calibration, the family is closed, and protected test stays locked.
 
 Future action-path launches write an ignored sibling `*.progress.json` after every completed
 seed/horizon. The write uses a temporary sibling followed by atomic replacement. Resume is permitted

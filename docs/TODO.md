@@ -40,8 +40,12 @@
   and 512/1024-node refinement; retain the hard split lock and empty decisions.
 - [ ] Finish calibration v2 and retain it as numerical calibration only; do not touch protected
   test goals even if it converges because cancellation/local error share a denominator.
-- [ ] Before reading v2, preregister a validation-only denominator audit using unnormalized path
-  excess/local residual, partial association controlling direct-effect norm, and effect-bin nulls.
+- [x] Before reading v2, adversarially reject and remove the proposed denominator audit: it lacks
+  scalar path-length refinement, raw norms, dense within-pair support, and a valid joint conditional
+  null. Keep protected test locked and close the current family.
+- [ ] Reopen action-path inference only if prioritized as a materially new prospective acquisition
+  storing path length at both resolutions, unclamped norms, many chords per pair, row-level split
+  guards, and a preregistered joint conditional null; do not derive it from v2.
 - [x] Draft `papers/causal_workspace_jepa.tex` with equations, evidence-level result tables,
   falsifications, novelty boundary, limitations, and exact artifact/commit references.
 - [x] Compile the draft against the repository-local `papers/references.bib` and ignore generated

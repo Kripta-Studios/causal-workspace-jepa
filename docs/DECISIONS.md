@@ -13,13 +13,17 @@
   transport, and learned predictors differently.
 - Treat decoded JEPA action-path cancellation as a calibration-stage candidate. Cancellation and
   normalized local error share the net-effect denominator, so raw validation correlation is
-  structurally confounded. High-resolution convergence is necessary but not sufficient: a new
-  validation-only preregistration must pass unnormalized/partial association and effect-size-
-  conditioned nulls before any protected-test protocol can be considered.
+  structurally confounded. High-resolution convergence is necessary but not sufficient.
 - Use evidence-level columns only for the six declared hierarchy levels. Eligibility, numerical
   rejection, and run completion belong in separate status columns. Report the strongest positive
   evidence accepted, not the most ambitious held-out design attempted; the current paper has no
   accepted level-6 mechanism result.
+- Reject `WM-ACTION-PATH-DENOMINATOR-AUDIT-001` before commit and before v2 output. Its derived
+  unnormalized endpoints still inherit scale/direction structure, separate conditional nulls do
+  not jointly condition the confounds, and two chords per action pair are too sparse for the
+  proposed inference. The parent also lacks scalar path-length refinement and unclamped direct
+  norms. Retain v2 as numerical/vector calibration and close the small-model path family without
+  inspecting protected test goals. Reopen only with a materially new prospective acquisition.
 - Supersede the positive interpretation of `LLM-IJEPA-001` H-LLM-01 while preserving its original
   run. A BF16 one-sided secant is not an exact Jacobian and may be a numerical-noise baseline.
   Resolve this through the preregistered FP32 exact-JVP audit before making any nonlinear claim.
