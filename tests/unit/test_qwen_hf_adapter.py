@@ -159,6 +159,15 @@ class QwenHFAdapterTests(unittest.TestCase):
                 ["logits"],
             )
 
+    def test_streamed_donor_can_be_released(self) -> None:
+        batch = self.adapter.tokenize(["alpha beta"])
+        site = transformer_site(0, "resid_pre")
+        run = self.adapter.forward_with_cache(batch, [site])
+        self.adapter.register_donor("temporary", site, run.activations[site])
+        self.adapter.unregister_donor("temporary", site)
+        with self.assertRaises(KeyError):
+            self.adapter.unregister_donor("temporary", site)
+
     def test_autograd_preserves_selected_activation(self) -> None:
         import torch
 

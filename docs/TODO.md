@@ -13,8 +13,14 @@
   `k <= 4`, grouped intervals, full-vocabulary behavior, and direct necessity/sufficiency controls.
 - [x] Run the tokenizer-only audit from clean `4e6624f`: all 560 episodes have exactly two changed
   positions, lengths 35/36, balanced query positions, and frozen hash `3ac7a80d...ebaf59`.
-- [ ] Implement/execute the protected Qwen module-mediation capture without changing the frozen
-  pools, splits, rankings, controls, or gates.
+- [x] Supersede v1 before model execution after red-team found unpaired paraphrase, FP16 causal
+  states, and a NaN false-pass; retain its token audit as engineering history only.
+- [x] Preregister/harden v2 with exact test/paraphrase pairing, FP32 states, finite/count/group,
+  runtime, content-hash, and HDF5-readback gates.
+- [ ] Implement and freeze the complete Qwen population/local/HVP/AtP*/probe/magnitude evaluator,
+  direct prefixes, restoration, and matched controls before opening protected activations.
+- [ ] From the clean evaluator commit, run the v2 tokenizer audit; then execute protected capture
+  only after EB-JEPA releases the GPU and without changing the frozen design.
 - [x] Pin official EB-JEPA and implement/test its source-contract adapter with exact one-layer GRU
   gate decomposition and replay tolerance `1e-6`.
 - [x] Retain `WM-EBJEPA-CONTRACT-001` from clean `979c2d6`; all source, shape, reconstruction, and
@@ -41,7 +47,7 @@
 - [x] Commit/push and run `WM-EBJEPA-TRAIN-RESOURCE-001` unchanged from clean `fed920e`: batch 384
   peaks at 5.82 GB reserved; the default compile wrapper captures zero frames/graphs on `unroll`.
 - [x] Commit/push and launch `WM-EBJEPA-TRAIN-001` for official seeds 1/1000/10000 from clean
-  `5065108`; the ignored status records start `2026-07-21T21:53:46Z` and seed 1 is active.
+  `5065108`; seed 1 epochs 0--4 are retained, training is active, and loss decides no competence.
 - [ ] Retain all 12 epoch checkpoints for every training seed and evaluate frozen epochs 9/10/11
   under separately labeled planner arms.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent

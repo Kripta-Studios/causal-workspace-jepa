@@ -209,6 +209,111 @@ def generate_binding_episodes(
     return episodes
 
 
+def binding_episodes_from_config(config: Mapping[str, Any]) -> list[BindingEpisode]:
+    """Materialize the registered order, including explicitly paired shifts."""
+
+    pools = config["token_pools"]
+    assert_disjoint_pools(pools["keys"])
+    assert_disjoint_pools(pools["values"])
+    episodes: list[BindingEpisode] = []
+    by_split: dict[str, list[BindingEpisode]] = {}
+    for split in ("calibration", "train", "validation", "test", "paraphrase"):
+        split_config = config["splits"][split]
+        paired_with = split_config.get("paired_with")
+        if paired_with is not None:
+            source = by_split.get(str(paired_with))
+            if source is None:
+                raise ValueError(f"paired source split {paired_with!r} is not available")
+            if int(split_config["count"]) != len(source):
+                raise ValueError("paired split count must equal its source split count")
+            split_episodes = [
+                BindingEpisode(
+                    episode_id=f"{split}-{index:04d}",
+                    split=split,
+                    keys=episode.keys,
+                    recipient_values=episode.recipient_values,
+                    donor_values=episode.donor_values,
+                    query_index=episode.query_index,
+                    swapped_indices=episode.swapped_indices,
+                    template=str(split_config["template"]),
+                )
+                for index, episode in enumerate(source)
+            ]
+        else:
+            pool = "test" if split == "paraphrase" else split
+            split_episodes = generate_binding_episodes(
+                split=split,
+                keys=pools["keys"][pool],
+                values=pools["values"][pool],
+                count=int(split_config["count"]),
+                seed=int(split_config["seed"]),
+                template=str(split_config["template"]),
+            )
+        by_split[split] = split_episodes
+        episodes.extend(split_episodes)
+    return episodes
+
+
+def tokenized_treatment_payload(
+    episode: BindingEpisode, treatment: TokenizedTreatment
+) -> dict[str, Any]:
+    """Canonical row included in the preregistered token-audit digest."""
+
+    return {
+        "episode": episode.to_dict(),
+        "recipient_ids": treatment.recipient_ids,
+        "donor_ids": treatment.donor_ids,
+        "changed_positions": treatment.changed_positions,
+        "recipient_answer_id": treatment.recipient_answer_id,
+        "donor_answer_id": treatment.donor_answer_id,
+        "sequence_length": len(treatment.recipient_ids),
+    }
+
+
+def tokenization_digest(rows: Sequence[Mapping[str, Any]]) -> str:
+    """Hash ordered canonical audit rows."""
+
+    import hashlib
+    import json
+
+    digest = hashlib.sha256()
+    for row in rows:
+        serialized = json.dumps(row, sort_keys=True, separators=(",", ":"))
+        digest.update(serialized.encode("utf-8"))
+    return digest.hexdigest()
+
+
+def audit_token_pools(
+    token_pools: Mapping[str, Mapping[str, Sequence[str]]],
+    *,
+    encode_item: Callable[[str], Sequence[int]],
+) -> tuple[dict[str, dict[str, dict[str, int | None]]], bool, bool, str]:
+    """Audit and hash the complete registered key/value token-ID roster."""
+
+    import hashlib
+    import json
+
+    payload: dict[str, dict[str, dict[str, int | None]]] = {}
+    flattened: list[int] = []
+    all_single = True
+    for role, pools in token_pools.items():
+        payload[role] = {}
+        for split, items in pools.items():
+            payload[role][split] = {}
+            for item in items:
+                encoded = tuple(int(value) for value in encode_item(str(item)))
+                token_id = encoded[0] if len(encoded) == 1 else None
+                payload[role][split][str(item)] = token_id
+                all_single = all_single and token_id is not None
+                if token_id is not None:
+                    flattened.append(token_id)
+    disjoint = all_single and len(flattened) == len(set(flattened))
+    digest = hashlib.sha256(
+        json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    return payload, all_single, disjoint, digest
+
+
 def audit_tokenized_treatment(
     episode: BindingEpisode,
     *,

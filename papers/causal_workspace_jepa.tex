@@ -35,7 +35,7 @@ in Qwen and Action-Conditioned JEPA Models}
 \author{Causal Workspace JEPA Contributors\\
 \small Independent research repository\\
 \small \url{https://github.com/Kripta-Studios/causal-workspace-jepa}}
-\date{Working paper --- 21 July 2026}
+\date{Working paper --- 22 July 2026}
 
 \begin{document}
 \maketitle
@@ -62,7 +62,10 @@ rules; a recurrent
 action-path result remains a numerical calibration rather than protected
 evidence.  These results provide bounded causal and numerical diagnostics, not
 a new Jacobian method, a circuit discovery, a workspace claim, or a
-state-of-the-art result.
+state-of-the-art result.  We also report a pre-outcome adversarial correction:
+the first Qwen binding-mediation protocol passed token checks but did not
+isolate template shift.  Its replacement pairs episodes exactly and hardens
+lossless capture; no model outcome from that replacement is reported here.
 \end{abstract}
 
 \section{Introduction}
@@ -230,8 +233,9 @@ training seed before a bounded trained model is eligible for mechanistic audit.
 Training completion or loss alone is availability evidence.  The portfolio was
 launched from clean commit \code{5065108} at
 \code{2026-07-21T21:53:46Z}; at the present manuscript state seed 1 is active
-and epoch 0 completed in 901.5 seconds with a 33,793,861-byte checkpoint.
-This is operational availability, not competence or mechanism evidence.
+and epochs 0--4 completed in roughly 900 seconds each, with latest total loss
+$1.2349$.  These non-monotone losses are operational
+availability, not competence or mechanism evidence.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
@@ -283,8 +287,9 @@ reconstruct a circuit without directed-edge and faithfulness tests.
 The tokenizer-only audit subsequently ran from clean commit \code{4e6624f}:
 all 560 episodes passed, primary/paraphrase lengths were 35/36, every treatment
 changed exactly two token positions, and query positions were balanced.  This
-is availability evidence only; no Qwen forward outcome from this protocol has
-yet been opened.
+is availability evidence only.  Adversarial review then showed that the
+paraphrase seed changed episode factors as well as template, so v1 was
+superseded before any Qwen forward; the paired v2 design is specified below.
 
 Population Jacobian averaging is prior art in the Jacobian Lens literature,
 and second-order/Hessian corrections to attribution patching are also prior art
@@ -444,6 +449,30 @@ nearest-neighbor, corpus-average, sparse transport, exact-JVP, and quadratic
 comparators.  Effective rank, target variance, oracle-decoder error, and direct
 candidate agreement are hard gates.  An intervention in the surrogate alone
 is never counted as an intervention in Qwen.
+
+\subsection{Pre-outcome binding-mediation protocol}
+
+The next causal-localization study uses four key--value bindings with disjoint
+train, validation, and test token pools.  A donor transposes two values, one of
+which is queried, and the full treatment patches the two changed positions at
+layer-0 \code{resid\_pre}.  Fifty-six final-query candidates are fixed in
+advance: attention and MLP outputs at all 28 blocks.  Population and local
+attribution patching, a directional Hessian correction, AtP*, a held-out-value
+probe, delta norm, and matched random rankings must all be evaluated by direct
+sufficiency and clean-restoration interventions.  A train-only prefix has at
+most four nodes.  Mediation uses a ratio of aggregate score effects, with whole
+episodes as bootstrap units; decodability or ranking overlap is not mediation.
+
+The first registration produced 560 tokenizer-valid rows, but an adversarial
+audit found that its paraphrase seed changed both the binding episode and the
+template.  We therefore superseded it before any Qwen forward.  The operative
+protocol pairs every paraphrase row to the identical test binding and changes
+only the template.  It also forbids FP16 storage of causal states, rejects any
+non-finite or malformed row, requires worst-key/value performance floors, binds
+resume identity to the exact model/runtime/token-audit tuple, and verifies an
+ordered content hash after reading every HDF5 shard back.  Capture remains
+\level{availability}; H-LLM-15/16 remain untested.  Protected activations may
+not be opened until the complete evaluator and controls are committed.
 
 \section{Methods: action-conditioned JEPA}
 
@@ -954,6 +983,10 @@ schema does not establish shared semantics or shared mechanism.
   \item The target-encoder Intervention-JEPA is evaluated on one factual patch
   family.  Its negative result may reflect entity-dependent target geometry,
   limited data, architecture, or objective.
+  \item The binding-mediation v1 token audit is an engineering result only and
+  its parent design is superseded.  V2 fixes the pre-outcome confounds, but its
+  evaluator and protected Qwen execution are not yet complete; it contributes
+  no mediator, circuit, JEPA, or workspace evidence in this manuscript.
   \item The LeWorldModel is a source-informed small synthetic model using
   selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.
@@ -1063,7 +1096,7 @@ EB-JEPA one-layer recurrence is now exactly decomposed and intervention-ready,
 but remains random-weight engineering evidence.  Its official MPPI planner also
 ignores a configured action-norm bound that CEM enforces; the environment supplies
 no fallback check.  The next discriminating studies should use a precisely
-replayed Qwen treatment to compare module mediator rankings and reproduce the
+replayed, episode-paired Qwen treatment to compare frozen module mediator rankings and reproduce the
 competent official EB-JEPA planner under both original and corrected MPPI before
 auditing recurrent action routes.  Only an eligible causal dataset from
 the former can support a new trajectory Intervention-JEPA test.  Direct held-out

@@ -41,7 +41,7 @@ Status: `ACTIVE`.
   subspace mediates planning. Exact Torch 2.6 GPU execution is now resolved as impossible on this
   SM120 host; Torch 2.10/cu128 is a tested, declared compatibility deviation. Remaining dependencies,
   planning competence is still open. Three-seed training launched from clean `5065108`; seed 1
-  epoch 0 completed in `901.5` seconds, but no competence result exists. A clean capacity profile shows the official
+  epochs 0--4 completed with non-monotone loss, but no competence result exists. A clean capacity profile shows the official
   batch 384 fits in 5.82 GB reserved, but also that `torch.compile(jepa)` captures zero graphs when
   upstream invokes the custom `unroll` method.
 - Ensemble variance falls under the action-subspace intervention even as control worsens. Future

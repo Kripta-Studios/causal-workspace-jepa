@@ -15,7 +15,7 @@ Qwen3-1.7B SAEs are feasible on this GPU, but the collection does not cover the 
 targets and steering alone is not a circuit. Circuit Tracing, AtP*, HVP, EAP-IG faithfulness, path
 patching, and direct activation patching are mandatory comparators for future localization.
 
-`LLM-QWEN-BINDING-MEDIATION-001` is preregistered and has no model outcomes. Its 560 deterministic
+`LLM-QWEN-BINDING-MEDIATION-001` has no model outcomes and is superseded at design time. Its 560 deterministic
 episodes use calibration plus disjoint 24/6/6 key/value pools. Recipient and donor retain the same
 token multiset; the donor performs exactly one two-value transposition and the queried answer must
 change. A token audit must prove exactly two changed positions before Qwen is executed. The study
@@ -30,6 +30,13 @@ change exactly two token positions; primary/paraphrase lengths are 35/36; query 
 balanced within every split; and the frozen episode hash is `3ac7a80d...ebaf59`. This removes
 token-length and token-identity confounds only. Task competence and mediation remain untested.
 
+Adversarial review then found that the v1 paraphrase seed also changed bindings, so it was not an
+isolated template shift. It also found lossy FP16 causal-state storage and a NaN aggregation path.
+`LLM-QWEN-BINDING-MEDIATION-002` repairs these before any Qwen forward: paraphrase/test factors are
+exactly paired, states remain FP32, and capture integrity now includes finite/count/ID/shape/dtype,
+worst-group, exact-revision, runtime, content-hash, and HDF5-readback gates. Capture implementation
+tests pass, but protected outcomes remain unopened until the complete evaluator is frozen.
+
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the
 clean layer-0 `resid_post` after that treatment recovers clean logits to `1e-6`. Repeated same-site
@@ -37,13 +44,17 @@ operations are applied in caller order. These are instrumentation identities, no
 mediation results on the pinned Qwen checkpoint.
 
 The registered token pools and templates live in
-`configs/experiments/qwen_binding_mediation_v1.yaml`. Run the tokenizer-only audit from a clean
+`configs/experiments/qwen_binding_mediation_v2.yaml`. Run the replacement tokenizer-only audit from a clean
 commit before generating protected activation outcomes:
 
 ```powershell
 $env:PYTHONPATH = "src"
-python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v1.yaml
+python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml
 ```
+
+Do not run `scripts/capture_qwen_binding_mediation.py` until the population/local/HVP/AtP*, probe,
+magnitude, direct prefix, restoration, and matched-control evaluator has passed tests and been
+committed/pushed, and until the active EB-JEPA training process has released the GPU.
 
 The later trajectory Intervention-JEPA remains unregistered until the treatment and task-competence
 gates pass; this prevents architecture selection from adapting to protected mediation outcomes.

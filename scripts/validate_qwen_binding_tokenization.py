@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -13,8 +12,11 @@ from causal_workspace_jepa.common.config import load_config
 from causal_workspace_jepa.common.provenance import collect_provenance, write_provenance
 from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_protocol import (
     assert_disjoint_pools,
+    audit_token_pools,
     audit_tokenized_treatment,
-    generate_binding_episodes,
+    binding_episodes_from_config,
+    tokenization_digest,
+    tokenized_treatment_payload,
 )
 
 
@@ -50,43 +52,21 @@ def validate_tokenization(config_path: str | Path) -> dict[str, Any]:
     assert_disjoint_pools(token_pools["keys"])
     assert_disjoint_pools(token_pools["values"])
     split_config = config["splits"]
+    episodes = binding_episodes_from_config(config)
     audits: list[dict[str, Any]] = []
-    digest = hashlib.sha256()
-    for split in ("calibration", "train", "validation", "test", "paraphrase"):
-        pool = "test" if split == "paraphrase" else split
-        spec = split_config[split]
-        episodes = generate_binding_episodes(
-            split=split,
-            keys=token_pools["keys"][pool],
-            values=token_pools["values"][pool],
-            count=int(spec["count"]),
-            seed=int(spec["seed"]),
-            template=str(spec["template"]),
+    for episode in episodes:
+        audit = audit_tokenized_treatment(
+            episode,
+            encode_prompt=lambda prompt: tokenizer.encode(prompt, add_special_tokens=True),
+            encode_answer=lambda answer: tokenizer.encode(
+                f" {answer}", add_special_tokens=False
+            ),
         )
-        for episode in episodes:
-            audit = audit_tokenized_treatment(
-                episode,
-                encode_prompt=lambda prompt: tokenizer.encode(
-                    prompt, add_special_tokens=True
-                ),
-                encode_answer=lambda answer: tokenizer.encode(
-                    f" {answer}", add_special_tokens=False
-                ),
+        if len(audit.recipient_ids) > int(config["max_sequence_length"]):
+            raise RuntimeError(
+                f"{episode.episode_id} length {len(audit.recipient_ids)} exceeds budget"
             )
-            if len(audit.recipient_ids) > int(config["max_sequence_length"]):
-                raise RuntimeError(
-                    f"{episode.episode_id} length {len(audit.recipient_ids)} exceeds budget"
-                )
-            payload = {
-                "episode": episode.to_dict(),
-                "changed_positions": audit.changed_positions,
-                "recipient_answer_id": audit.recipient_answer_id,
-                "donor_answer_id": audit.donor_answer_id,
-                "sequence_length": len(audit.recipient_ids),
-            }
-            serialized = json.dumps(payload, sort_keys=True, separators=(",", ":"))
-            digest.update(serialized.encode("utf-8"))
-            audits.append(payload)
+        audits.append(tokenized_treatment_payload(episode, audit))
     by_split: dict[str, dict[str, Any]] = {}
     for split in split_config:
         rows = [row for row in audits if row["episode"]["split"] == split]
@@ -102,6 +82,16 @@ def validate_tokenization(config_path: str | Path) -> dict[str, Any]:
             ],
         }
     expected = sum(int(spec["count"]) for spec in split_config.values())
+    _, pool_items_single_token, pool_ids_disjoint, pool_digest = (
+        audit_token_pools(
+            token_pools,
+            encode_item=lambda item: tokenizer.encode(
+                f" {item}", add_special_tokens=False
+            ),
+        )
+    )
+    paired_shift_isolated = _paired_shift_isolated(episodes, config)
+    resolved_revision = Path(snapshot).name
     gates = {
         "all_expected_episodes_audited": len(audits) == expected,
         "exactly_two_changed_tokens": all(
@@ -117,16 +107,24 @@ def validate_tokenization(config_path: str | Path) -> dict[str, Any]:
             <= 1
             for summary in by_split.values()
         ),
+        "registered_pool_items_single_token": pool_items_single_token,
+        "token_ids_disjoint_across_splits_and_roles": pool_ids_disjoint,
+        "paired_paraphrase_changes_template_only": paired_shift_isolated,
+        "resolved_revision_matches_pin": resolved_revision == str(config["revision"]),
     }
     metrics: dict[str, Any] = {
-        "experiment_id": "LLM-QWEN-BINDING-TOKEN-AUDIT-001",
+        "experiment_id": str(
+            config.get("tokenization_audit_id", "LLM-QWEN-BINDING-TOKEN-AUDIT-001")
+        ),
         "parent_experiment_id": str(config["id"]),
         "status": "SMOKE_VALIDATED" if all(gates.values()) else "FAILED",
         "evidence_level": "Availability",
         "model": str(config["model"]),
         "revision": str(config["revision"]),
+        "resolved_revision": resolved_revision,
         "episode_count": len(audits),
-        "episode_sha256": digest.hexdigest(),
+        "episode_sha256": tokenization_digest(audits),
+        "token_pool_sha256": pool_digest,
         "by_split": by_split,
         "gates": gates,
         "scientific_boundary": (
@@ -146,6 +144,36 @@ def validate_tokenization(config_path: str | Path) -> dict[str, Any]:
     if not all(gates.values()):
         raise RuntimeError(f"binding tokenization audit failed: {gates}")
     return metrics
+
+
+def _paired_shift_isolated(
+    episodes: list[Any], config: dict[str, Any]
+) -> bool:
+    paired_specs = {
+        split: str(spec["paired_with"])
+        for split, spec in config["splits"].items()
+        if "paired_with" in spec
+    }
+    by_split = {
+        split: [episode for episode in episodes if episode.split == split]
+        for split in config["splits"]
+    }
+    for split, source_split in paired_specs.items():
+        shifted = by_split[split]
+        source = by_split[source_split]
+        if len(shifted) != len(source):
+            return False
+        for left, right in zip(shifted, source, strict=True):
+            if (
+                left.keys != right.keys
+                or left.recipient_values != right.recipient_values
+                or left.donor_values != right.donor_values
+                or left.query_index != right.query_index
+                or left.swapped_indices != right.swapped_indices
+                or left.template == right.template
+            ):
+                return False
+    return True
 
 
 def main() -> int:

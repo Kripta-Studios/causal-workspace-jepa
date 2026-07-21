@@ -1,23 +1,24 @@
 # SUMMARY
 
-## 2026-07-22 — Binding-mediation protocol frozen while EB-JEPA trains
+## 2026-07-22 — Binding-mediation v2 hardened while EB-JEPA trains
 
 - The official EB-JEPA three-seed portfolio launched from clean commit `5065108` at
-  `2026-07-21T21:53:46Z`. Seed 1 epoch 0 completed in `901.5` seconds with logged loss `1.7072`
-  and a 33,793,861-byte checkpoint; later epochs remain active. This is operational progress, not
+  `2026-07-21T21:53:46Z`. Seed 1 epochs 0--4 completed in roughly 900 seconds each; latest total
+  loss is `1.2349`, with all checkpoints retained. Training remains active.
+  The non-monotone loss is operational progress, not
   competence, recurrent-mechanism, or workspace evidence.
 - Primary-source review confirms that activation diffusion priors, Qwen-Scope SAEs, July-2026
   Qwen3-4B transcoders, Jacobian/AtP/HVP localizers, and nonlinear causal abstractions are adjacent
   prior art. None by itself supplies the repository's missing intervention-conditioned causal
   simulator plus directly audited mediators; this remains a gap, not a novelty claim.
-- Preregistered `LLM-QWEN-BINDING-MEDIATION-001`. Recipient and donor prompts contain the same four
+- Preregistered the historical `LLM-QWEN-BINDING-MEDIATION-001`. Recipient and donor prompts contain the same four
   keys and value multiset; the donor changes one queried binding by exactly one value
   transposition. A layer-0 token patch is the treatment, and 56 attention/MLP module outputs at the
   query position are candidate mediators.
 - Added deterministic episode generation, exact two-token treatment audits, ratio-of-sums
   sufficiency/necessity, episode-clustered bootstrap intervals, finite-sample Monte Carlo controls,
   and train-only smallest-prefix selection. The registered 560 prompts use calibration plus
-  disjoint 24/6/6 key/value pools and an independently rendered paraphrase split.
+  disjoint 24/6/6 key/value pools and an independently generated paraphrase split.
 - The tokenizer-only audit ran from clean `4e6624f`; all four gates passed over 560 episodes.
   Primary prompts are exactly 35 tokens, paraphrases 36, every donor differs at exactly two token
   positions, every query-position count is balanced, and the frozen episode hash is
@@ -26,6 +27,16 @@
   paths/edges and faithfulness are reconstructed, and it is not evidence for JEPA. A trajectory
   Intervention-JEPA study remains conditional on this dataset passing competence and treatment
   gates.
+- Adversarial review superseded v1 before any Qwen model forward: its paraphrase seed changed the
+  binding episodes as well as the template, FP16 storage would have altered later direct patches,
+  and Python aggregation could ignore a later NaN. The successful v1 token audit remains an
+  Availability-level engineering artifact, but it cannot decide H-LLM-15/16.
+- `LLM-QWEN-BINDING-MEDIATION-002` is the operative pre-outcome registration. Paraphrase is now an
+  exact episode-paired template shift; all causal states are FP32; finitude, counts, unique IDs,
+  shapes, dtypes, per-key/value minima, exact revision, token-audit digest, runtime fingerprint,
+  HDF5 content hash, and readback fail closed. Thirty-five directed tests and the 149-test full suite
+  pass. Protected activations
+  remain unopened until the complete frozen evaluator and controls are committed and pushed.
 
 ## 2026-07-21 — EB-JEPA Two Rooms import closure and planner constraint correction
 

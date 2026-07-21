@@ -88,6 +88,11 @@ and YAML files remain authoritative for every threshold and hyperparameter.
     prompts have lengths 35/36, exactly two token positions change, query positions are balanced,
     and the episode hash is `3ac7a80d...ebaf59`. Qwen was not executed, so this removes a design
     confound without providing task, mediation, circuit, JEPA, or workspace evidence.
+17. **The first binding token audit is valid but its scientific parent is superseded.** All 560 v1
+    rows passed the registered token treatment checks. Pre-model adversarial review then showed the
+    paraphrase rows changed episode factors as well as template, and found FP16/NaN integrity
+    defects in the unexecuted capture path. No Qwen outcome was acquired. V2 repairs these design
+    issues; it has no result yet.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -98,7 +103,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| LLM-QWEN-BINDING-TOKEN-AUDIT-001 | All 560 frozen binding recipient/donor pairs have equal token multisets, exactly two changed positions, one-token answers, bounded lengths, and balanced queries; Qwen is not executed. | Availability | `configs/experiments/qwen_binding_mediation_v1.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v1.json` | clean `4e6624f` | `SMOKE_VALIDATED` |
+| LLM-QWEN-BINDING-TOKEN-AUDIT-001 | All 560 frozen binding recipient/donor pairs have equal token multisets, exactly two changed positions, one-token answers, bounded lengths, and balanced queries; Qwen is not executed. The parent study was later superseded before model execution because paraphrase was not episode-paired. | Availability | `configs/experiments/qwen_binding_mediation_v1.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v1.json` | clean `4e6624f` | `SMOKE_VALIDATED_PARENT_SUPERSEDED` |
 | WM-EBJEPA-CONTRACT-001 | The pinned official Impala/one-layer-GRU contract supports exact gate decomposition and localized gate edits under the current runtime; no learned mechanism is tested. | Availability | `configs/experiments/eb_jepa_official_contract_smoke.yaml` | `artifacts/metrics/eb_jepa_contract_smoke.json` | `979c2d6` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-RUNTIME-001 | The exact Torch 2.6/cu126 pin omits SM120 and fails matched GPU kernels; the disclosed Torch 2.10/cu128 runtime includes SM120 and passes them. | Availability | `configs/experiments/eb_jepa_runtime_compatibility.yaml` | `artifacts/metrics/eb_jepa_runtime_compatibility.json` | clean `15d88ce` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-INTEGRATION-002 | The pinned official Two Rooms dataset/train/checkpoint/planner path executes deterministically under the disclosed compatible runtime; this is not competence. | Availability | `configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml` | `artifacts/metrics/eb_jepa_two_rooms_integration_v2.json` | clean `9a18008` | `SMOKE_VALIDATED` |

@@ -1221,6 +1221,13 @@ severe prompt memorization. Restricted H-LLM-01, H-LLM-02, and H-LLM-03 are fals
 
 ## LLM-QWEN-BINDING-MEDIATION-001 Preregistration
 
+**Disposition (2026-07-22, before any model forward): `SUPERSEDED_DESIGN`.** The tokenizer audit
+itself remains a valid engineering result, but adversarial review found that seed 443 generated new
+test-pool bindings for the paraphrase split instead of changing only the template of the same test
+episodes. It therefore confounded template shift with episode shift. No activation, logit, ranking,
+or mediation outcome was acquired under v1, and v1 cannot decide H-LLM-15/16. The complete operative
+registration is v2 below; this historical text is retained rather than silently rewritten.
+
 Registered on 2026-07-22 before executing any prompt in this study through the pinned model. The
 tokenizer may be audited before model execution because token identity, length, and split membership
 are design invariants rather than scientific outcomes. No direct activation, logit, ranking, or
@@ -1322,3 +1329,39 @@ false until directed paths/edges, replacement faithfulness, outside-set ablation
 tested prospectively. A trajectory Intervention-JEPA is registered only after this study produces
 an eligible causal dataset; its architecture and gates cannot be chosen using protected mediation
 outcomes.
+
+## LLM-QWEN-BINDING-MEDIATION-002 Preregistered Amendment
+
+Registered on 2026-07-22 after the v1 token-only result and adversarial implementation review, but
+before any protected model forward. The full canonical configuration is
+`configs/experiments/qwen_binding_mediation_v2.yaml`; every unchanged ranking, estimator, control,
+bootstrap, and H-LLM-15/16 decision rule from v1 is inherited. V2 changes only pre-outcome design
+and integrity defects:
+
+- The 96 paraphrase rows are exact copies of the 96 test episodes in keys, recipient/donor values,
+  query, and transposition. Only the fixed prompt template changes. There is no paraphrase seed.
+- A single canonical episode materializer is used by token audit, capture, and analysis. The audit
+  digest includes full recipient/donor context IDs and is recomputed with the live tokenizer before
+  capture; the resolved model revision must equal `c1899de...` exactly.
+- Key and value pool entries must each be one token with a leading space, and token IDs must be
+  unique across roles and splits. The token audit additionally proves exact paired factors.
+- Clean/treated module and final residual states are captured losslessly in FP32. FP16 causal-state
+  storage is forbidden. The conservative progress-plus-shard ceiling is raised from 512 MiB to
+  1,024 MiB; each shard remains at most 256 MiB.
+- Capture fails before HDF5 output on any non-finite numeric value, noncanonical episode roster or
+  order, altered intervention record, wrong split count, shape, or dtype. It hashes ordered arrays
+  and records, reads every HDF5 shard back, and requires an exact
+  content-hash match. Resume identity includes config, Git commit, token-audit hash, resolved model
+  revision, Torch/Transformers/NumPy versions, CUDA runtime/device/capability, attention backend,
+  and dtype.
+- Protected split eligibility now also requires donor clean accuracy `>=0.90`, mean absolute
+  treatment score effect `>=1e-4`, and the worst query-key/answer-value group clean, donor, and
+  donor-transfer accuracy each `>=0.50`. These group floors were fixed before model outcomes to
+  prevent micro-averages from hiding token-specific failure.
+- Capture alone remains evidence level 1 (Availability), even when exact treatment replay passes.
+  No model run is authorized until the full population/local/HVP/AtP*/probe/magnitude evaluator,
+  direct prefix sufficiency/restoration, and matched-control execution path are implemented,
+  tested, documented, committed, and pushed.
+
+H-LLM-15/16 are now decided only by v2. Passing still supports at most a specific compact mediator
+set; it does not by itself establish a directed circuit, JEPA advantage, workspace, or SOTA claim.

@@ -2,6 +2,9 @@
 
 ## July 2026 research pivot
 
+- Treat Qwen binding v1 as design-superseded before model execution. Freeze the full v2 evaluator
+  before any protected forward; then rerun its paired token audit and execute only after EB-JEPA
+  releases the GPU. A positive result is a compact specific mediator set, not a JEPA/workspace claim.
 - `WM-ACTION-PATH-CALIBRATION-002` is archived as numerical/vector calibration only; the downstream
   small-model action-path route is closed by design before protected-test access.
 - Retain the two-runtime EB-JEPA CUDA diagnostic: the exact Torch 2.6/cu126 pin is GPU-incompatible
@@ -16,10 +19,10 @@
   reserved under the 10-GB ceiling, while the configured compile wrapper captures zero graphs on
   `unroll`. Freeze batch 384 and report this ineffective-compile boundary in three-seed training.
 - Ordered multi-site Qwen interventions and treatment/restoration replay tests are implemented.
-  `LLM-QWEN-BINDING-MEDIATION-001` now preregisters a module-only comparison of population/local
-  attribution, HVP, AtP*, probes, magnitude, random controls, and direct patch/restore. Its clean
-  560-episode token audit passes; implement and run the protected capture unchanged. Do not call
-  this a JEPA experiment.
+  `LLM-QWEN-BINDING-MEDIATION-002` replaces the unpaired v1 design and preregisters a module-only
+  comparison of population/local attribution, HVP, AtP*, probes, magnitude, random controls, and
+  direct patch/restore. Implement/freeze the full evaluator, then run the replacement paired token
+  audit and protected capture unchanged. Do not call this a JEPA experiment.
 - Only after a causally eligible component-outcome dataset exists, train a new trajectory
   Intervention-JEPA and evaluate composed/held-out interventions against every strong derivative
   and learned baseline.

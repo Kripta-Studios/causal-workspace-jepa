@@ -145,6 +145,15 @@ class QwenHFAdapter:
         self._validate_site(site)
         self._donors[(example_id, site)] = _as_torch(self._torch, activation, self.device)
 
+    def unregister_donor(self, example_id: str, site: str) -> None:
+        """Release a registered donor after a streamed intervention unit."""
+
+        self._validate_site(site)
+        key = (example_id, site)
+        if key not in self._donors:
+            raise KeyError(f"unregistered donor {example_id!r} at {site}")
+        del self._donors[key]
+
     def register_mean(self, site: str, mean: Any) -> None:
         self._validate_site(site)
         self._means[site] = _as_torch(self._torch, mean, self.device)

@@ -25,6 +25,13 @@ Exact upstream training remains separate because the official Python 3.12/Torch
 2.6/cu126 runtime cannot execute kernels on this host's SM120 GPU. A Python 3.12/Torch 2.10/cu128
 compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit and auditable.
 
+The first Qwen binding-mediation design is now marked `SUPERSEDED_DESIGN` before any model forward.
+Its tokenizer audit is retained, but it did not isolate paraphrase from episode shift. The operative
+v2 preregistration pairs each paraphrase with the identical test binding, stores causal states in
+FP32, rejects non-finite or malformed captures, and binds resume/readback to exact content and
+runtime identity. The protected capture is deliberately not authorized until every ranking,
+direct-mediation, restoration, and matched-control evaluator is frozen in committed code.
+
 ## Current Status
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
@@ -82,18 +89,19 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
 - `RUNNING`: `WM-EBJEPA-TRAIN-001` launched from clean commit `5065108` at
   `2026-07-21T21:53:46Z`. It freezes official seeds 1/1000/10000, batch 384, 12 epochs, all
   checkpoint hashes, and evaluation of epochs 9/10/11 under official-unbounded and
-  bound-corrected MPPI at the actual proposal scale 2.0. Seed 1 is active; epoch 0 completed in
-  `901.5` seconds and wrote a 33,793,861-byte checkpoint. No competence result exists yet.
+  bound-corrected MPPI at the actual proposal scale 2.0. Seed 1 is active; epochs 0--4 completed in
+  roughly 900 seconds each, with latest non-monotone total loss `1.2349`. No competence
+  result exists yet.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
   offline tests; and a preregistered Qwen3-0.6B smoke runner.
-- `TOKEN_AUDIT_VALIDATED`: `LLM-QWEN-BINDING-MEDIATION-001` fixes a token-balanced four-binding treatment,
-  24/6/6 disjoint key/value pools, 56 module candidates, a train-only prefix of at most four nodes,
-  episode-clustered intervals, direct sufficiency/restoration, and matched nulls. Its clean audit at
-  `4e6624f` verifies all 560 token treatments and hash `3ac7a80d...`; the protected model run has not
-  started. This first study tests a mediator set, not a JEPA, circuit, J-space, or workspace; a
-  trajectory Intervention-JEPA is conditional on producing an eligible causal dataset.
+- `PREREGISTERED`: `LLM-QWEN-BINDING-MEDIATION-002` replaces v1 before any model forward. V1's clean
+  audit at `4e6624f` still verifies 560 token treatments, but its paraphrase was not episode-paired.
+  V2 freezes exact pairing, 24/6/6 disjoint pools, 56 candidates, `k<=4`, FP32 causal states,
+  grouped competence, content/readback integrity, direct sufficiency/restoration, and matched
+  nulls. Protected outcomes remain unopened pending the complete evaluator. This tests a mediator
+  set, not a JEPA, circuit, J-space, or workspace.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with

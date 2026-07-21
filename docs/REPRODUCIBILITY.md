@@ -224,20 +224,32 @@ upstream layer-0 token treatment to replay the donor and a later residual restor
 clean recipient within `1e-6`. Multi-site scientific runs must log the complete ordered list; a set
 of sites is insufficient provenance.
 
-The Qwen binding-mediation preregistration freezes all token pools, seeds, templates, split counts,
+The superseded Qwen binding-mediation v1 preregistration froze all token pools, seeds, templates, split counts,
 candidate modules, ranking baselines, matched controls, and decision gates in
-`configs/experiments/qwen_binding_mediation_v1.yaml`. Before model execution, run from a clean
+`configs/experiments/qwen_binding_mediation_v1.yaml`. Its clean token audit is retained, but the
+paraphrase rows were not paired to the test episodes and no model outcomes were opened. The
+operative v2 registration is `configs/experiments/qwen_binding_mediation_v2.yaml`. Before model
+execution, run from a clean
 commit:
 
 ```powershell
 $env:PYTHONPATH = "src"
-python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v1.yaml
+python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml
 ```
 
 The committed audit may establish only deterministic token identity: equal recipient/donor token
 multisets, exactly two changed token positions, one-token answers, bounded sequence length, and
 balanced query positions. It cannot decide task competence, mediation, circuit, JEPA, or workspace
 hypotheses.
+
+V2 additionally requires single-token/disjoint key and value IDs, exact test/paraphrase factor
+pairing, and exact resolved revision. Capture recomputes the token digest and binds every progress
+unit to config, commit, model revision, token audit, and runtime fingerprint. Candidate/final causal
+states are FP32. Every numeric array must be finite; the exact canonical episode roster/order,
+intervention record, split counts, shapes, and dtypes are enforced. Full context IDs and the
+single-token/disjoint pool roster are separately hashed. Final HDF5 shards are read back and compared to an ordered
+array-plus-record content hash. Protected capture remains prohibited until its complete downstream
+evaluator and controls are committed, pushed, and independently tested.
 
 The audit executed from clean `4e6624f7561e2646fa9beb65297a5b953f0ac237`; all four gates pass and
 the deterministic episode hash is
