@@ -144,7 +144,12 @@ predictor followed by final normalization.  We expose the reset, update,
 candidate, pre-normalization hidden, and post-normalization hidden variables by
 algebraically decomposing the native GRU step.  This is an instrumentation
 boundary only until native-step replay, trained planning competence, and causal
-task mediation are all validated.
+task mediation are all validated.  The clean \code{WM-EBJEPA-CONTRACT-001}
+engineering run reconstructs the native transition to maximum absolute error
+$4.768\times10^{-7}$ and a one-coordinate update-gate edit produces downstream
+latent $\ell_2$ effect $2.1505$ with zero same-step collateral error outside
+the edited coordinate.  The weights are random, so this is Availability-level
+contract evidence rather than a learned-mechanism result.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
@@ -879,6 +884,8 @@ configuration and hypothesis registration.  The principal artifacts are:
   (\code{4dbc388});
   \item \code{artifacts/metrics/lewm\_action\_path\_calibration\_v1.json}
   (\code{eb943a5});
+  \item \code{artifacts/metrics/eb\_jepa\_contract\_smoke.json}
+  (\code{979c2d6});
   \item the high-resolution v2 calibration launched from \code{288f663}.
 \end{itemize}
 
@@ -919,10 +926,12 @@ families and four-layer grids; and one target-encoder JEPA variant fails its
 registered held-out gates.  In the physical track, predictive gates pass while
 circuit and workspace acceptance gates fail.  Decoded recurrent action-path
 cancellation is closed as a scientific route in the current small model because
-the acquired artifact cannot identify the proposed geometry.  The next
-discriminating studies should use a precisely replayed Qwen treatment to compare
-module mediator rankings and reproduce the competent official EB-JEPA planner
-before auditing recurrent action routes.  Only an eligible causal dataset from
+the acquired artifact cannot identify the proposed geometry.  The official
+EB-JEPA one-layer recurrence is now exactly decomposed and intervention-ready,
+but remains random-weight engineering evidence.  The next discriminating studies
+should use a precisely replayed Qwen treatment to compare module mediator rankings
+and reproduce the competent official EB-JEPA planner before auditing recurrent
+action routes.  Only an eligible causal dataset from
 the former can support a new trajectory Intervention-JEPA test.  Direct held-out
 behavior, grouped uncertainty, cross-model replication, and controls separating
 native mechanism from flexible prediction remain mandatory.

@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "command": "python scripts/run_experiment.py --config configs/experiments/eb_jepa_official_contract_smoke.yaml",
+  "git_commit": "979c2d692383a471f3f46de15168f475629020e3",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/eb_jepa_contract_smoke.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 23,
+  "time_utc": "2026-07-21T20:17:14.901421+00:00"
+}

@@ -134,6 +134,9 @@ Impala encoder and one-layer GRU, checks native-versus-decomposed recurrence at 
 that it uses random weights. It is distinct from exact training reproduction. Upstream pins Python
 3.12 and Torch 2.6; the present Python 3.14/Torch 2.10 runtime is explicitly
 `BLOCKED_OFFICIAL_ENV` for that stronger claim even though the contract works.
+The retained smoke ran from clean `979c2d692383a471f3f46de15168f475629020e3`; its provenance
+records `git_dirty=false`, exact source revision, reconstruction error `4.768e-7`, and the explicit
+random-weight/no-planning limitation.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an

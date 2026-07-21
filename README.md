@@ -20,8 +20,8 @@ program, but the current learned JEPA result is negative; the gap is not claimed
 
 The official EB-JEPA source is now pinned at `966e61e...`, and its real one-layer 512-dimensional
 GRU transition has a typed adapter with reset/update/candidate/hidden intervention sites. Unit tests
-reconstruct native `torch.nn.GRU` within `1e-6`; a retained clean source-contract smoke is the next
-engineering step. Exact upstream training remains separate because the official Python 3.12/Torch
+reconstruct native `torch.nn.GRU` within `1e-6`; the clean retained source-contract smoke passes.
+Exact upstream training remains separate because the official Python 3.12/Torch
 2.6 environment does not match this host's Python 3.14/Torch 2.10 runtime.
 
 ## Current Status
@@ -48,9 +48,9 @@ engineering step. Exact upstream training remains separate because the official 
 - `SMOKE_VALIDATED`: documentation/source registries, data/artifact policy, typed package tree,
   provenance helpers, and executable reproducibility checks.
 - `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
-- `IMPLEMENTED_NOT_RUN`: official EB-JEPA adapter and contract smoke at pinned commit `966e61e...`.
-  The adapter exposes the actual one-layer GRU gates and validates exact recurrence reconstruction;
-  no trained checkpoint or planning evidence is claimed before a clean retained run.
+- `SMOKE_VALIDATED`: `WM-EBJEPA-CONTRACT-001` ran from clean `979c2d6` against official commit
+  `966e61e...`; native/decomposed GRU error was `4.768e-7`, and a targeted update-gate edit had a
+  nonzero downstream latent effect. Random weights mean no planning, circuit, or workspace evidence.
 - `BLOCKED_OFFICIAL_ENV`: the current runtime is not the exact EB-JEPA Python 3.12/Torch 2.6
   environment. Hardware and source checks pass; the isolated environment and compute-capability
   compatibility must pass before reproducing the published three-seed planner.

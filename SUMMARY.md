@@ -12,11 +12,11 @@
 - Implemented an explicit PyTorch-GRU decomposition into reset, update, candidate, pre-normalized
   hidden, and post-normalized hidden sites. Unit tests compare it to native `torch.nn.GRU` and test
   position/feature-specific gate intervention plus downstream recurrence.
-- A direct uncommitted engineering check against the pinned official classes produced latent
-  shape `[1,1,512]`, three-step prediction/gate shapes `[1,3,512]`, and maximum native-versus-
-  decomposed recurrence error `4.768e-7`. This value must be rerun from the clean implementation
-  commit before entering the experiment registry as a retained artifact.
-- Added a configured source-contract smoke and an EB-JEPA-specific doctor. Hardware passes, but the
+- The retained clean `WM-EBJEPA-CONTRACT-001` run from `979c2d6` used the pinned official classes
+  and produced latent shape `[1,1,512]`, three-step prediction/gate shapes `[1,3,512]`, maximum
+  native-versus-decomposed recurrence error `4.768e-7`, zero same-step collateral error outside the
+  edited coordinate, and downstream latent L2 effect `2.1505`.
+- Added and retained a configured source-contract smoke and an EB-JEPA-specific doctor. Hardware passes, but the
   current Python 3.14.2/PyTorch 2.10.0 runtime differs from upstream's exact Python 3.12/PyTorch
   2.6 pin and lacks nine declared packages. This blocks an exact upstream training-reproduction
   claim, not the separately tested source contract.

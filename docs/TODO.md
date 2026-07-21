@@ -13,7 +13,8 @@
   `k <= 4`, grouped intervals, full-vocabulary behavior, and direct necessity/sufficiency controls.
 - [x] Pin official EB-JEPA and implement/test its source-contract adapter with exact one-layer GRU
   gate decomposition and replay tolerance `1e-6`.
-- [ ] Retain the official-source contract smoke from a clean pushed commit.
+- [x] Retain `WM-EBJEPA-CONTRACT-001` from clean `979c2d6`; all source, shape, reconstruction, and
+  targeted-intervention gates pass.
 - [ ] Build the isolated Python 3.12/Torch 2.6 EB-JEPA environment and validate support for the RTX
   5070 Ti compute capability before launching training.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent

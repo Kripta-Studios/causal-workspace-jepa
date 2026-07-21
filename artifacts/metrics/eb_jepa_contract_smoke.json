@@ -1,0 +1,98 @@
+{
+  "all_passed": true,
+  "architecture": {
+    "action_width": 2,
+    "encoder": "official ImpalaEncoder",
+    "latent_width": 512,
+    "predictor": "official one-layer torch.nn.GRU",
+    "steps": 3
+  },
+  "claim": "The pinned official EB-JEPA Impala/one-layer-GRU object contract can be loaded, and the GRU transition can be decomposed and intervened on with numerical replay. This is an engineering smoke only: no checkpoint, planning competence, circuit, or workspace claim is evaluated.",
+  "downstream_latent_l2_after_gate_edit": 2.150486946105957,
+  "evidence_level": "Availability",
+  "experiment_id": "WM-EBJEPA-CONTRACT-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 367.378,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "limitations": [
+    "The current runtime differs from upstream's exact Python 3.12/Torch 2.6 pin.",
+    "Weights are random; no published or locally trained checkpoint is used.",
+    "A gate edit with a downstream effect does not establish task mediation or specificity."
+  ],
+  "max_gru_reconstruction_error": 4.76837158203125e-07,
+  "named_activation_points": [
+    "encoder.state",
+    "action.encoded",
+    "predictor.reset_gate",
+    "predictor.update_gate",
+    "predictor.candidate_state",
+    "predictor.hidden_pre_norm",
+    "predictor.hidden_post_norm",
+    "prediction.latent"
+  ],
+  "passes": {
+    "gate_intervention_has_downstream_effect": true,
+    "gate_trace_shape": true,
+    "gru_reconstruction": true,
+    "intervention_is_same_step_feature_specific": true,
+    "intervention_is_upstream_safe": true,
+    "official_latent_shape": true,
+    "official_prediction_shape": true,
+    "source_checkout_clean": true,
+    "source_revision_matches_pin": true
+  },
+  "reconstruction_atol": 1e-06,
+  "runtime": {
+    "device": "cpu",
+    "official_environment_exact": false,
+    "official_requires_python": "3.12.*",
+    "official_requires_torch": "2.6.0",
+    "python": "3.14.2",
+    "torch": "2.10.0+cu128"
+  },
+  "same_step_other_feature_error": 0.0,
+  "seed": 23,
+  "shapes": {
+    "latent": [
+      1,
+      1,
+      512
+    ],
+    "prediction": [
+      1,
+      3,
+      512
+    ],
+    "update_gate": [
+      1,
+      3,
+      512
+    ]
+  },
+  "source": {
+    "clean": true,
+    "expected_revision": "966e61e9285b3a876f49b9774e9720d9a99a7925",
+    "resolved_revision": "966e61e9285b3a876f49b9774e9720d9a99a7925",
+    "source_root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa\\.cache\\upstream\\eb_jepa",
+    "source_url": "https://github.com/facebookresearch/eb_jepa.git"
+  },
+  "status": "SMOKE_VALIDATED",
+  "upstream_gate_error_after_later_edit": 0.0
+}

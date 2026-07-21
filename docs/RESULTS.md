@@ -55,6 +55,11 @@ and YAML files remain authoritative for every threshold and hyperparameter.
    that v2 lacks scalar path-length refinement, raw direct norms, dense within-pair sampling, and a
    joint conditional null. It can provide numerical/vector calibration only; the proposed derived
    audit was rejected before commit and protected test goals remain untouched.
+10. **The official EB-JEPA recurrence is now instrumentable, not yet interpreted.** A clean run
+    against pinned official source `966e61e...` reconstructs its one-layer 512-dimensional native
+    GRU within `4.768e-7`. Zeroing one update-gate coordinate at one step leaves other coordinates
+    at that step unchanged and produces downstream latent L2 effect `2.1505`. Because weights are
+    random and no planner is evaluated, this is Availability-level engineering evidence only.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -65,6 +70,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
+| WM-EBJEPA-CONTRACT-001 | The pinned official Impala/one-layer-GRU contract supports exact gate decomposition and localized gate edits under the current runtime; no learned mechanism is tested. | Availability | `configs/experiments/eb_jepa_official_contract_smoke.yaml` | `artifacts/metrics/eb_jepa_contract_smoke.json` | `979c2d6` | `SMOKE_VALIDATED` |
 | WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and a shared-denominator-confounded cancellation/error association; it makes no scientific claim. | Availability | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |
 | LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is answer-row specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Specificity | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | `12fce84` | `SMOKE_VALIDATED` |

@@ -27,10 +27,12 @@ Source inspection corrects the predictor description: the official action-condit
 uses an Impala encoder with a 512-dimensional output, an identity two-dimensional action encoder,
 and a **one-layer** `torch.nn.GRU`, followed by the encoder's final normalization. The adapter
 decomposes the exact GRU equations into reset, update, candidate, pre-normalization hidden, and
-post-normalization hidden sites. Offline contract tests pass, and a direct check against the pinned
-official classes reconstructed native recurrence within `4.768e-7`; that diagnostic is not yet a
-retained clean-run result. The current runtime differs from upstream's exact Python 3.12/Torch 2.6
-pin, so training reproduction remains `BLOCKED_OFFICIAL_ENV` until an isolated runtime passes.
+post-normalization hidden sites. Offline contract tests pass, and the clean retained
+`WM-EBJEPA-CONTRACT-001` run from `979c2d6` reconstructed native recurrence within `4.768e-7`.
+A single-coordinate update-gate edit had zero same-step collateral error outside that coordinate and
+changed the downstream latent by L2 `2.1505`. These are engineering gates over random weights. The
+current runtime differs from upstream's exact Python 3.12/Torch 2.6 pin, so training reproduction
+remains `BLOCKED_OFFICIAL_ENV` until an isolated runtime passes.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
