@@ -110,6 +110,22 @@ gates pass. CEM violates in `0/32` seeds with maximum observed norm `2.347382`; 
 enforcement asymmetry and absent `DotWall.step` action-space check. No numbered scientific
 hypothesis is decided.
 
+## WM-EBJEPA-PLANNER-CONFIG-001 Engineering Preregistration
+
+Registered on 2026-07-21 immediately after source inspection found a proposal-scale keyword
+mismatch and before retaining a confirmation.
+
+- Pinned source: clean EB-JEPA `966e61e...` and its unmodified `planning_mppi.yaml` and
+  `planning_cem.yaml`.
+- Frozen gates require both YAML files to contain `var_scale=1.5`, MPPI YAML to omit `max_std`, the
+  MPPI constructor to accept `max_std` plus `**kwargs` but no `var_scale`, the instantiated official
+  MPPI to retain default `max_std=2.0`, CEM to consume `var_scale=1.5`, and an explicit keyword
+  translation `var_scale -> max_std` to produce MPPI scale 1.5.
+- Passing confirms a silent configuration-contract mismatch and that the documented planner
+  comparison is not proposal-scale matched as executed. It does not decide model competence.
+- Later evaluation must label the official as-executed MPPI scale 2.0. Any scale-1.5 MPPI is an
+  additional intention-corrected arm and may not replace the official baseline.
+
 ## WM-EBJEPA-MPPI-CORRECTION-001 Engineering Preregistration
 
 Registered on 2026-07-21 after confirming the official constraint defect and before retaining the

@@ -1,0 +1,8 @@
+id: WM-EBJEPA-PLANNER-CONFIG-001
+status: post_discovery_engineering_confirmation
+resource_profile: configs/resource/gpu_12gb.yaml
+source_root: .cache/upstream/eb_jepa
+revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
+probe_script: scripts/probe_eb_jepa_planner_config.py
+output_metrics: artifacts/metrics/eb_jepa_planner_config.json

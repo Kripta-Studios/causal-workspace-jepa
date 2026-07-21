@@ -126,6 +126,14 @@ def main() -> int:
         metrics = run_eb_jepa_planner_constraint(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
+    if experiment_id == "WM-EBJEPA-PLANNER-CONFIG-001":
+        from causal_workspace_jepa.experiments.world_model.eb_jepa_planner_config import (
+            run_eb_jepa_planner_config,
+        )
+
+        metrics = run_eb_jepa_planner_config(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
     if experiment_id == "WM-EBJEPA-MPPI-CORRECTION-001":
         from causal_workspace_jepa.experiments.world_model.eb_jepa_mppi_correction import (
             run_eb_jepa_mppi_correction,
