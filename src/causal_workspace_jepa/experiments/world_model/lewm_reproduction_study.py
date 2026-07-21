@@ -149,7 +149,7 @@ def run_lewm_reproduction_study(config_path: str | Path) -> dict[str, Any]:
                 int(config.get("test_seed", 97)),
             ],
         },
-        "hardware": hardware,
+        "hardware": hardware.as_dict(),
         "seeds": seeds,
         "required_passing_seeds": required,
         "reproduction_passing_seeds": reproduction_passes,
