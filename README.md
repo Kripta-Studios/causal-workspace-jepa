@@ -23,7 +23,8 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
 - `SMOKE_VALIDATED`: `LLM-GPT2-003` contrast-direction composition study. Effects remained almost
   additive; prompt-local Jacobians generalized to compositions, while all singles-only learned
   predictors failed on held-out prompts. All three registered hypotheses failed.
-- `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
+- `SMOKE_VALIDATED`: documentation/source registries, data/artifact policy, typed package tree,
+  provenance helpers, and executable reproducibility checks.
 - `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
@@ -44,6 +45,8 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
 on this GPU from clean commits. These are bounded Qwen results, not workspace or circuit evidence.
+The final executable completion audit and optional bounded Qwen3-4B availability capture are
+implemented but not yet executed; larger Tier-1/2 adapters remain explicit research extensions.
 
 ## Objective
 
@@ -138,6 +141,10 @@ python scripts/run_experiment.py `
 
 python scripts/run_experiment.py `
   --config configs/experiments/lewm_small_reproduction_v1.yaml
+
+# Optional primary-scale selected-site capture; downloads the pinned 8.06 GB Qwen3-4B repository.
+python scripts/capture_qwen_activations.py `
+  --config configs/llm/qwen3_4b_selected_layers.yaml
 ```
 
 The following Unix-style commands remain the intended clean-environment workflow:

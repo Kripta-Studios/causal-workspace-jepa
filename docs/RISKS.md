@@ -7,6 +7,8 @@ Status: `ACTIVE`.
 - `ACTIVE`: GPT-2 Medium was downloaded and run after explicit user override; weights are under `.cache/` and ignored by Git.
 - `ACTIVE`: bounded Qwen3-0.6B/4B downloads are permitted by `gpu_12gb`, but storage and VRAM must be
   estimated first and all-layer/all-token capture remains prohibited.
+- `ACTIVE`: pinned Qwen3-4B is 8.06 GB and 4.0B parameters. Its five-layer/three-position capture is
+  budgeted, but a clean run must still establish that bfloat16 inference fits this 12,227 MiB GPU.
 - `MITIGATED`: the host has an invalid implicit Hugging Face OAuth token for public API calls. Qwen
   loaders explicitly use `token=False`; no token value was printed, changed, stored, or committed.
 - `RESOLVED`: `LLM-QWEN-001` validates real pinned Qwen3-0.6B hooks/interventions/autograd from clean

@@ -39,6 +39,12 @@
 - Retain `WM-LEWM-001` as a failed replicated mechanism result without threshold changes. Separate
   the 3/3 faithful-reproduction result and 2/3 selective planner-intervention result from the 1/3
   full hidden-patch/circuit result; reject the aggregate graph.
+- Pin the bounded Qwen3-4B availability capture to revision `1cfa9a7...`, five residual-post sites,
+  three semantic position selectors, 12 fixed prompts, and a 64 MB HDF5 budget. Commit the code and
+  gates before downloading or observing the model output.
+- Define repository completion through an executable audit of the explicit completion criteria.
+  A passing audit must preserve the rejected Qwen/world-model circuit graphs and workspace null;
+  it must not recast negative scientific outcomes as discoveries.
 
 ## 2026-07-20
 

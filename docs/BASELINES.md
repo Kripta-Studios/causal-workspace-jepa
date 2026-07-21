@@ -1,7 +1,7 @@
 # Baselines
 
-Status: `SMOKE_VALIDATED` for implemented CPU/Qwen methods; a published-model small reproduction is
-`IMPLEMENTED_UNVALIDATED`.
+Status: `SMOKE_VALIDATED` for implemented CPU/Qwen methods and the completed published-model small
+reproduction, whose circuit result is negative.
 
 ## World Model
 

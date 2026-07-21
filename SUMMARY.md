@@ -65,6 +65,10 @@
   aggregate action-to-planner graph is `REJECTED`, not a circuit claim. All workspace candidates
   failed, while planted shared/disjoint controls behaved correctly. The intervention reduced rather
   than raised ensemble variance (`0.506` to `0.250`), a possible overconfidence failure mode.
+- Replaced the obsolete Qwen capture blocker with a generic selected-site Hugging Face capture
+  pipeline. The primary Qwen3-4B target is pinned to revision `1cfa9a7...` (8,060,926,626 repository
+  bytes), captures only five layers and three semantic position selectors from 12 fixed prompts,
+  and enforces a 64 MB checksummed HDF5 budget. It remains unvalidated until a clean run.
 
 ## 2026-07-20
 

@@ -9,6 +9,11 @@ the RTX 5070 Ti host. Tests cover stable selected sites, deterministic capture, 
 donor/statistic registration, and autograd. Qwen3-4B remains a broader follow-up. Ollama is not a
 hidden-state or autograd source.
 
+The primary-scale capture script is now implemented for `Qwen/Qwen3-4B` at immutable revision
+`1cfa9a7...`. Its repository estimate is 8,060,926,626 bytes; it captures five residual sites and
+three selected positions over 12 fixed prompts into resumable checksummed HDF5 under a 64 MB output
+budget. This path is `IMPLEMENTED_UNVALIDATED` until executed from clean code.
+
 Validated Qwen instrumentation smoke:
 
 - `LLM-QWEN-001` ran at pinned revision `c1899de...` from clean commit `0d6a37b`.

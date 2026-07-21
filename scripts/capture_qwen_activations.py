@@ -1,22 +1,22 @@
 #!/usr/bin/env python
-"""Capture selected Hugging Face Qwen activations.
-
-Blocked on the CPU VPS because it requires model weights and Transformers.
-"""
+"""Capture bounded selected-site Hugging Face Qwen activations."""
 
 from __future__ import annotations
 
 import argparse
-import sys
+import json
+
+from causal_workspace_jepa.data.llm_prompts.capture_qwen import run_qwen_activation_capture
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
-    parser.parse_args()
-    print("BLOCKED_RESOURCE: real Qwen activation capture requires gpu_12gb or larger", file=sys.stderr)
-    return 2
+    args = parser.parse_args()
+    result = run_qwen_activation_capture(args.config)
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

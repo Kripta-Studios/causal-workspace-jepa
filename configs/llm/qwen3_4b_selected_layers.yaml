@@ -1,9 +1,19 @@
 id: qwen3_4b_selected_layers
-status: NOT_STARTED
+status: IMPLEMENTED_UNVALIDATED
 resource_profile: configs/resource/gpu_12gb.yaml
 model: Qwen/Qwen3-4B
+revision: 1cfa9a7208912126459214e8b04321603b3df60c
+device: cuda
+seed: 113
 max_sequence_length: 128
-selected_layers: [0, 8, 16, 24, 31]
+prompt_count: 12
+selected_layers: [0, 9, 18, 27, 35]
 selected_positions: [last, filler, answer]
 dtype: bfloat16
+local_files_only: false
+estimated_download_bytes: 8060926626
+activation_budget_mb: 64
+shard_size_mb: 32
 output_dir: data/activations/qwen3_4b_selected_layers
+committed_manifest: data/manifests/qwen3_4b_selected_activation_capture.json
+output_metrics: artifacts/metrics/qwen3_4b_selected_activation_capture.json

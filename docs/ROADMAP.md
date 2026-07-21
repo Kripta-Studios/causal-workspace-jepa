@@ -41,16 +41,18 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection and bounded Qwen3
 - `gpu_12gb` doctor passes with about 370 GB free.
 - Windows provenance-path comparison and fresh-clone checksum audit were repaired and tested.
 - Qwen3-0.6B instrumentation, a 432-effect dataset, and three-seed Intervention-JEPA evaluation are
-  validated. Implement one faithful published action-conditioned JEPA reproduction next.
-- Qwen3-0.6B adapter and smoke runner are `SMOKE_VALIDATED` from clean commit `0d6a37b`. Next build
-  the bounded intervention dataset; do not infer a circuit from the instrumentation pass.
-- The 432-outcome split-controlled HDF5 dataset is `SMOKE_VALIDATED` from clean commit `0aa80ac`.
-  Next preregister and train the meta-model/baselines without changing this observed dataset.
+  validated; direct ranking verification rejected the proposed coordinate circuit.
+- Qwen3-0.6B adapter and smoke runner are `SMOKE_VALIDATED` from clean commit `0d6a37b`; no circuit
+  is inferred from the instrumentation pass.
+- The 432-outcome split-controlled HDF5 dataset is `SMOKE_VALIDATED` from clean commit `0aa80ac` and
+  remains frozen for the completed meta-model comparison.
 - `LLM-IJEPA-001` is `SMOKE_VALIDATED` from clean commit `a54f2ed`. H-LLM-01/02/03 passed the fixed
   gates, while H-LLM-06 failed direct precision@1 and the candidate graph is rejected.
 - Official LeWorldModel revision `8edfeb3...` is verified. A faithful small reproduction and
   intervention/planning/circuit audit completed as `WM-LEWM-001`. Reproduction passes 3/3 and
   planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
+- The bounded Qwen3-4B selected-site capture and executable repository completion audit are
+  implemented and preregistered; both still require execution from clean pushed code.
 
 ## Milestone 3+: Scientific Runs
 
