@@ -1,5 +1,5 @@
 id: qwen3_4b_selected_layers
-status: IMPLEMENTED_UNVALIDATED
+status: SMOKE_VALIDATED
 resource_profile: configs/resource/gpu_12gb.yaml
 model: Qwen/Qwen3-4B
 revision: 1cfa9a7208912126459214e8b04321603b3df60c

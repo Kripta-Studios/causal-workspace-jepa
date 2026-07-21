@@ -23,7 +23,8 @@
   retain the failed replicated causal/circuit gates and rejected graph.
 - [ ] Run the final multi-seed scientific/software audit.
 - [x] Replace the Qwen activation-capture blocker with a bounded generic Hugging Face implementation.
-- [ ] Execute the pinned Qwen3-4B selected-site capture from clean code if it fits 12 GB VRAM.
+- [x] Execute the pinned Qwen3-4B selected-site capture from clean commit `55087ea`; verify the
+  resolved revision, 180 rows, 574,308-byte shard, and SHA-256 manifest.
 
 ## Milestone 0
 

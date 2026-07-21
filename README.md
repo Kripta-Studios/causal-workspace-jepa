@@ -41,12 +41,15 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
   is `REJECTED` and no workspace is found.
+- `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
+  selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
+  4B causal-intervention evidence.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
 on this GPU from clean commits. These are bounded Qwen results, not workspace or circuit evidence.
-The final executable completion audit and optional bounded Qwen3-4B availability capture are
-implemented but not yet executed; larger Tier-1/2 adapters remain explicit research extensions.
+The final executable completion audit is implemented but not yet executed. Larger Tier-1/2 adapters
+remain explicit research extensions.
 
 ## Objective
 

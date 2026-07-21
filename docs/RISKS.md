@@ -7,8 +7,9 @@ Status: `ACTIVE`.
 - `ACTIVE`: GPT-2 Medium was downloaded and run after explicit user override; weights are under `.cache/` and ignored by Git.
 - `ACTIVE`: bounded Qwen3-0.6B/4B downloads are permitted by `gpu_12gb`, but storage and VRAM must be
   estimated first and all-layer/all-token capture remains prohibited.
-- `ACTIVE`: pinned Qwen3-4B is 8.06 GB and 4.0B parameters. Its five-layer/three-position capture is
-  budgeted, but a clean run must still establish that bfloat16 inference fits this 12,227 MiB GPU.
+- `RESOLVED`: pinned Qwen3-4B is 8.06 GB and 4.0B parameters. Its bounded bfloat16 selected-site
+  capture fit the 12,227 MiB GPU and passed all storage/checksum gates. Broader gradients,
+  interventions, and all-layer capture remain outside this result.
 - `MITIGATED`: the host has an invalid implicit Hugging Face OAuth token for public API calls. Qwen
   loaders explicitly use `token=False`; no token value was printed, changed, stored, or committed.
 - `RESOLVED`: `LLM-QWEN-001` validates real pinned Qwen3-0.6B hooks/interventions/autograd from clean
@@ -47,10 +48,11 @@ Status: `ACTIVE`.
   changes are real model-mediated trajectory/cost/action effects, but not evidence of strong control.
 - `ACTIVE`: intervention reduces ensemble variance from `0.506` to `0.250` despite weaker outcomes,
   exposing a possible overconfidence failure rather than a useful uncertainty response.
-- `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
-  A project-local reproducible environment/lock must be repaired before this host is a clean install target.
-- `ACTIVE`: Four central literature entries have now been checked against their primary web/arXiv
-  sources; the remaining registry entries are still prompt-derived.
+- `MITIGATED`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers
+  5.3, while the project supports Python 3.11+. The resolved `uv.lock` is committed; environment
+  provenance still records the actual runtime for every experiment.
+- `RESOLVED`: all 24 required literature entries were checked against primary paper, project,
+  code, or model-card sources and now include the required registry fields.
 - `RESOLVED`: `uv` is installed and the previously empty `uv.lock` has been regenerated from the
   declared dependency groups. Actual experiment provenance must still record the running versions.
 - `RESOLVED`: the reproducibility audit compared POSIX provenance strings to Windows-rendered paths;

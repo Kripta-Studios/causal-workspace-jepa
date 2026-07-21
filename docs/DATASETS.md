@@ -48,3 +48,9 @@ Prompt IDs use a fixed 8/2/2 split; donors stay inside recipient splits; output-
 are selected on training prompts only. The clean run produced 432 outcomes, a 412,332-byte shard
 with SHA-256 `3cf0411b321c87e07465eeab1fdd53a00d366d257cf8b651d90be18279655e8f`, and 17
 top-token changes. Status: `SMOKE_VALIDATED`.
+
+`LLM-QWEN-CAPTURE-001` stores 180 selected Qwen3-4B residual rows: 12 fixed prompts crossed with
+five layers and three semantic position selectors. The ignored HDF5 shard is 574,308 bytes with
+SHA-256 `cd1ef5e3a871740bfbd06e45c1a024257ba2ed9c1f0b1f6ac0bc2db1a11240cf`;
+`data/manifests/qwen3_4b_selected_activation_capture.json` records its fixed 8/2/2 prompt split,
+array shapes, model revision, and 64 MB budget. Status: `SMOKE_VALIDATED` Availability capture.

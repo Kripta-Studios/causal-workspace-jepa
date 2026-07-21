@@ -1,0 +1,127 @@
+{
+  "all_passed": true,
+  "committed_manifest": "data/manifests/qwen3_4b_selected_activation_capture.json",
+  "estimated_bytes": 1382400,
+  "evidence_level": "Availability",
+  "experiment_id": "LLM-QWEN-CAPTURE-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 368.724,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "hidden_size": 2560,
+  "layers": [
+    0,
+    9,
+    18,
+    27,
+    35
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "passes": {
+    "budget_respected": true,
+    "checksummed_shards": true,
+    "requested_revision_resolved": true,
+    "row_count": true
+  },
+  "position_kinds": [
+    "last",
+    "filler",
+    "answer"
+  ],
+  "prompts": 12,
+  "requested_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "resolved_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "rows": 180,
+  "runtime_seconds": 473.14245220000157,
+  "status": "SMOKE_VALIDATED",
+  "storage": {
+    "arrays": {
+      "activation": {
+        "dtype": "float16",
+        "shape": [
+          180,
+          2560
+        ]
+      },
+      "layer": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "position": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "position_kind": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "prompt_id": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "split_id": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "token_id": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "top_logit_id": {
+        "dtype": "int64",
+        "shape": [
+          180
+        ]
+      },
+      "top_logit_value": {
+        "dtype": "float64",
+        "shape": [
+          180
+        ]
+      }
+    },
+    "budget_bytes": 67108864,
+    "config_digest": "f163833e12474706cd83e613c3c4c79db4c08ccd27de6d076629bf1f18f0aa8d",
+    "dataset_id": "qwen3_4b_selected_layers",
+    "estimated_uncompressed_bytes": 947298,
+    "examples": 180,
+    "format": "hdf5",
+    "max_shard_bytes": 33554432,
+    "shards": [
+      {
+        "bytes": 574308,
+        "path": "shard-00000-of-00001.h5",
+        "rows": 180,
+        "sha256": "cd1ef5e3a871740bfbd06e45c1a024257ba2ed9c1f0b1f6ac0bc2db1a11240cf"
+      }
+    ]
+  }
+}

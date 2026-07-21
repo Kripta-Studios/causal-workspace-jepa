@@ -45,6 +45,9 @@
 - Define repository completion through an executable audit of the explicit completion criteria.
   A passing audit must preserve the rejected Qwen/world-model circuit graphs and workspace null;
   it must not recast negative scientific outcomes as discoveries.
+- Accept `LLM-QWEN-CAPTURE-001` as an Availability result after its clean run resolved the exact
+  Qwen3-4B revision and passed row-count, budget, and checksum gates. Do not extrapolate it to
+  autograd, causal intervention, feature, circuit, behavior, or workspace evidence at 4B scale.
 
 ## 2026-07-20
 

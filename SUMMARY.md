@@ -68,7 +68,12 @@
 - Replaced the obsolete Qwen capture blocker with a generic selected-site Hugging Face capture
   pipeline. The primary Qwen3-4B target is pinned to revision `1cfa9a7...` (8,060,926,626 repository
   bytes), captures only five layers and three semantic position selectors from 12 fixed prompts,
-  and enforces a 64 MB checksummed HDF5 budget. It remains unvalidated until a clean run.
+  and enforces a 64 MB checksummed HDF5 budget.
+- Ran that capture from clean commit `55087ea`. The exact revision resolved, bfloat16 inference fit
+  the RTX 5070 Ti, and all registered gates passed: 180 rows, 947,298 estimated uncompressed bytes,
+  one 574,308-byte shard, SHA-256
+  `cd1ef5e3a871740bfbd06e45c1a024257ba2ed9c1f0b1f6ac0bc2db1a11240cf`, runtime `473.14`
+  seconds including the first download. This is Availability evidence only.
 
 ## 2026-07-20
 

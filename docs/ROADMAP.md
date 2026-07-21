@@ -51,8 +51,9 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection and bounded Qwen3
 - Official LeWorldModel revision `8edfeb3...` is verified. A faithful small reproduction and
   intervention/planning/circuit audit completed as `WM-LEWM-001`. Reproduction passes 3/3 and
   planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
-- The bounded Qwen3-4B selected-site capture and executable repository completion audit are
-  implemented and preregistered; both still require execution from clean pushed code.
+- The bounded Qwen3-4B selected-site capture passed from clean commit `55087ea`: exact pinned
+  revision, 180 rows, and a 574,308-byte checksummed shard. The executable completion audit remains
+  to be run from the next clean synchronized result commit.
 
 ## Milestone 3+: Scientific Runs
 

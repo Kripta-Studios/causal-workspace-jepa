@@ -1,0 +1,11 @@
+{
+  "command": "python scripts/capture_qwen_activations.py --config configs\\llm\\qwen3_4b_selected_layers.yaml",
+  "git_commit": "55087ea1fe12bc361830eb501aed86aaf850e50e",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen3_4b_selected_activation_capture.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 113,
+  "time_utc": "2026-07-21T10:54:36.754879+00:00"
+}
