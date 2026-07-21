@@ -90,6 +90,10 @@ Status: `ACTIVE`.
   for seed-107 horizon four, but fails refinement/direct reconstruction on seeds 101/103 horizon
   four. The small positive stratified-correlation margins may change under better integration;
   neither cancellation nor recurrent amplification is evidence yet.
+- `MITIGATED_LONG_RUN_ATOMICITY`: the v2 streaming run exposed multi-hour, tens-of-thousands-kernel
+  execution with no partial artifact. Future action-path runs checkpoint each completed horizon
+  atomically and resume only when experiment ID, exact config bytes, and source commit match. The
+  active v2 process predates this feature, and safe batch-size benchmarking remains open.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

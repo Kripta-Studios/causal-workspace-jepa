@@ -349,6 +349,12 @@ command can exceed the default 20-minute orchestration timeout even while the ch
 continues normally, so monitor both the configured metrics path and the process rather than
 launching a duplicate.
 
+Newer action-path runner commits also write an ignored atomic `*.progress.json` after each completed
+seed/horizon. A restart resumes only from the same experiment ID, exact config bytes, and Git commit;
+stale progress aborts. The v2 process launched from `288f663` predates this protection. Before the
+next high-resolution launch, benchmark bounded outer/chunk batch pairs on the target GPU rather than
+guessing from VRAM alone.
+
 The working scientific paper is built locally with:
 
 ```powershell

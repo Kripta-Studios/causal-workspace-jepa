@@ -1,5 +1,16 @@
 # SUMMARY
 
+## 2026-07-21 — Resumable long-run action-path execution
+
+- Added atomic per-horizon progress checkpoints to the recurrent JEPA action-path runner. Progress
+  is bound to the exact YAML bytes, experiment ID, and Git commit; stale, duplicate-seed, or
+  cross-experiment progress fails closed instead of silently mixing scientific runs.
+- A resumed final artifact records whether progress was used and how many seed/horizon blocks were
+  loaded. Temporary progress JSON is ignored and removed only after final metrics and provenance
+  are written.
+- This hardening applies to future launches. The already running clean v2 process imported commit
+  `288f663` before the change and therefore still writes only at completion.
+
 ## 2026-07-21 — Scientific manuscript and consolidated discovery boundary
 
 - Added `papers/causal_workspace_jepa.tex`, a source-of-truth working paper covering the

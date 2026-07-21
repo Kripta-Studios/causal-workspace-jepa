@@ -26,6 +26,8 @@ artifacts/**/*.npz
 artifacts/**/*.pt
 artifacts/**/*.pth
 artifacts/**/*.safetensors
+artifacts/metrics/*.progress.json
+artifacts/metrics/*.progress.json.tmp
 papers/*.aux
 papers/*.bbl
 papers/*.blg

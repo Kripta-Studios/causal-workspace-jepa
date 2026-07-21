@@ -46,6 +46,10 @@
   PDF/auxiliary products.
 - [ ] Replace the manuscript's provisional calibration-v2 row with the final clean-run metrics,
   complete adversarial/doc consistency review, then commit and push the paper milestone.
+- [x] Add atomic action-path checkpoints per completed seed/horizon, bound to exact config bytes and
+  source commit, with fail-closed resume tests and explicit final provenance.
+- [ ] Benchmark safe `jacobian_outer_batch_size`/`jacobian_chunk_size` pairs on the RTX 5070 Ti and
+  preregister a bounded batching choice before another high-resolution action-path launch.
 - [x] Replicate population-versus-local finite transport on the element-symbol relation; retain the
   failed strict inversion and positive late semantic-specificity decisions separately.
 - [ ] Confirm the surviving causal-control/late-population association on a behavior-competent,

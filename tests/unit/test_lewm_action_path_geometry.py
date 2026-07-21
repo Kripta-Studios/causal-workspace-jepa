@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import numpy as np
 import torch
@@ -8,9 +10,12 @@ import torch
 from causal_workspace_jepa.experiments.world_model.lewm_action_path_geometry_study import (
     _composite_legendre,
     _decoded_directional_derivatives,
+    _load_progress,
+    _run_fingerprint,
     _spearman,
     _stratified_permutation_null,
     _stratified_profile_indices,
+    _write_progress,
 )
 
 
@@ -77,6 +82,45 @@ class LeWMActionPathGeometryTests(unittest.TestCase):
         )
         self.assertAlmostEqual(_spearman(predictor, target), 1.0)
         self.assertLess(null["p95_spearman"], 0.99)
+
+    def test_progress_round_trip_is_bound_to_config_and_commit(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = root / "study.yaml"
+            progress = root / "study.progress.json"
+            config.write_text("id: example\n", encoding="utf-8")
+            fingerprint = _run_fingerprint(config, "abc123")
+            seed_results = [{"model_seed": 101, "horizons": {"1": {"ok": True}}}]
+            _write_progress(
+                progress,
+                experiment_id="EXAMPLE-001",
+                run_fingerprint=fingerprint,
+                git_commit="abc123",
+                seed_results=seed_results,
+            )
+            self.assertEqual(
+                _load_progress(
+                    progress,
+                    experiment_id="EXAMPLE-001",
+                    run_fingerprint=fingerprint,
+                ),
+                seed_results,
+            )
+            self.assertFalse(progress.with_name(progress.name + ".tmp").exists())
+            with self.assertRaisesRegex(RuntimeError, "stale progress fingerprint"):
+                _load_progress(
+                    progress,
+                    experiment_id="EXAMPLE-001",
+                    run_fingerprint=_run_fingerprint(config, "different"),
+                )
+
+    def test_run_fingerprint_changes_with_config_bytes(self) -> None:
+        with TemporaryDirectory() as directory:
+            config = Path(directory) / "study.yaml"
+            config.write_text("value: 1\n", encoding="utf-8")
+            first = _run_fingerprint(config, "abc123")
+            config.write_text("value: 2\n", encoding="utf-8")
+            self.assertNotEqual(first, _run_fingerprint(config, "abc123"))
 
 
 if __name__ == "__main__":

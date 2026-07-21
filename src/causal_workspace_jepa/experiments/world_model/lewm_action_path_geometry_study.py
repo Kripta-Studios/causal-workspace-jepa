@@ -8,6 +8,7 @@ test mode may consume the protected test goals after thresholds are frozen.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import time
 from pathlib import Path
@@ -54,6 +55,26 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
         raise RuntimeError("LeWorldModel action-path geometry requires a clean worktree")
 
     experiment_id = str(config["id"])
+    output = Path(str(config["output_metrics"]))
+    progress_path = Path(
+        str(config.get("progress_metrics", output.with_suffix(".progress.json")))
+    )
+    if progress_path == output:
+        raise ValueError("progress_metrics must differ from output_metrics")
+    run_fingerprint = _run_fingerprint(config_path, provenance.git_commit)
+    progress_seed_results = _load_progress(
+        progress_path,
+        experiment_id=experiment_id,
+        run_fingerprint=run_fingerprint,
+    )
+    progress_by_seed = {
+        int(result["model_seed"]): result for result in progress_seed_results
+    }
+    if len(progress_by_seed) != len(progress_seed_results):
+        raise RuntimeError(f"duplicate model seeds in progress: {progress_path}")
+    loaded_seed_horizons = sum(
+        len(result.get("horizons", {})) for result in progress_seed_results
+    )
     split_name = str(config["analysis_split"])
     if experiment_id in {
         "WM-ACTION-PATH-CALIBRATION-001",
@@ -69,6 +90,11 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
     _validate_goal_split(train_goal_ids, validation_goal_ids, test_goal_ids, len(positions))
     evaluation_goal_ids = validation_goal_ids if split_name == "validation" else test_goal_ids
     seeds = tuple(int(value) for value in config["model_seeds"])
+    unexpected_progress_seeds = set(progress_by_seed) - set(seeds)
+    if unexpected_progress_seeds:
+        raise RuntimeError(
+            f"unexpected model seeds in progress: {sorted(unexpected_progress_seeds)}"
+        )
     checkpoints = _checkpoint_records(config, seeds)
     suffix_templates = np.asarray(
         config["horizon4_suffix_action_ids"], dtype=np.int64
@@ -81,6 +107,10 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
 
     seed_results = []
     for seed in seeds:
+        resumed = progress_by_seed.get(seed)
+        if resumed is not None and set(resumed.get("horizons", {})) == {"1", "4"}:
+            seed_results.append(resumed)
+            continue
         checkpoint = checkpoints[seed]
         model = SmallLeWorldModel.load(checkpoint["path"], map_location=device).to(device).eval()
         decoder = _fit_physical_decoder(
@@ -90,8 +120,10 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
             ridge=float(config.get("decoder_ridge", 1e-3)),
             device=device,
         )
-        horizon_results = {}
+        horizon_results = dict(resumed.get("horizons", {})) if resumed is not None else {}
         for horizon in (1, 4):
+            if str(horizon) in horizon_results:
+                continue
             bank = _make_context_bank(
                 evaluation_goal_ids,
                 positions,
@@ -107,6 +139,20 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
                 seed=seed,
                 device=device,
             )
+            partial = {
+                "model_seed": seed,
+                "checkpoint": checkpoint,
+                "decoder": decoder["metrics"],
+                "horizons": horizon_results,
+            }
+            progress_by_seed[seed] = partial
+            _write_progress(
+                progress_path,
+                experiment_id=experiment_id,
+                run_fingerprint=run_fingerprint,
+                git_commit=provenance.git_commit,
+                seed_results=[progress_by_seed[value] for value in seeds if value in progress_by_seed],
+            )
         amplification = (
             horizon_results["4"]["summary"]["median_cancellation_ratio"]
             / max(
@@ -114,14 +160,21 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
                 1e-12,
             )
         )
-        seed_results.append(
-            {
-                "model_seed": seed,
-                "checkpoint": checkpoint,
-                "decoder": decoder["metrics"],
-                "horizons": horizon_results,
-                "horizon4_to_horizon1_median_cancellation_ratio": amplification,
-            }
+        completed_seed = {
+            "model_seed": seed,
+            "checkpoint": checkpoint,
+            "decoder": decoder["metrics"],
+            "horizons": horizon_results,
+            "horizon4_to_horizon1_median_cancellation_ratio": amplification,
+        }
+        progress_by_seed[seed] = completed_seed
+        seed_results.append(completed_seed)
+        _write_progress(
+            progress_path,
+            experiment_id=experiment_id,
+            run_fingerprint=run_fingerprint,
+            git_commit=provenance.git_commit,
+            seed_results=[progress_by_seed[value] for value in seeds if value in progress_by_seed],
         )
 
     decisions = _decide(config, seed_results) if split_name == "test" else {}
@@ -143,6 +196,10 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
         "goal_ids": list(evaluation_goal_ids),
         "protected_test_goals_touched": split_name == "test",
         "calibration_parent_metrics": config.get("calibration_parent_metrics"),
+        "progress_resume": {
+            "used": bool(progress_seed_results),
+            "loaded_seed_horizons": loaded_seed_horizons,
+        },
         "profile": {
             "contexts_per_action_pair": int(config["contexts_per_action_pair"]),
             "action_pairs": len(_action_pairs()),
@@ -161,15 +218,72 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
             "workspace, semantic axis, or conscious process."
         ),
     }
-    output = Path(str(config["output_metrics"]))
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", "utf-8")
     write_provenance(
         output.with_suffix(".provenance.json"),
         provenance,
-        extra={"metrics": output.as_posix(), "hypothesis_decisions": decisions},
+        extra={
+            "metrics": output.as_posix(),
+            "hypothesis_decisions": decisions,
+            "progress_resume": metrics["progress_resume"],
+        },
     )
+    progress_path.unlink(missing_ok=True)
     return metrics
+
+
+def _run_fingerprint(config_path: Path, git_commit: str) -> str:
+    """Bind resumable progress to the exact configuration bytes and source commit."""
+
+    digest = hashlib.sha256()
+    digest.update(config_path.read_bytes())
+    digest.update(b"\0")
+    digest.update(git_commit.encode("utf-8"))
+    return digest.hexdigest()
+
+
+def _load_progress(
+    path: Path,
+    *,
+    experiment_id: str,
+    run_fingerprint: str,
+) -> list[dict[str, Any]]:
+    """Load compatible progress or fail closed instead of mixing scientific runs."""
+
+    if not path.exists():
+        return []
+    payload = json.loads(path.read_text("utf-8"))
+    if payload.get("experiment_id") != experiment_id:
+        raise RuntimeError(f"progress experiment mismatch: {path}")
+    if payload.get("run_fingerprint") != run_fingerprint:
+        raise RuntimeError(f"stale progress fingerprint: {path}")
+    results = payload.get("seed_results")
+    if not isinstance(results, list):
+        raise RuntimeError(f"invalid progress seed_results: {path}")
+    return results
+
+
+def _write_progress(
+    path: Path,
+    *,
+    experiment_id: str,
+    run_fingerprint: str,
+    git_commit: str,
+    seed_results: list[dict[str, Any]],
+) -> None:
+    """Atomically checkpoint completed horizons for safe same-run resumption."""
+
+    payload = {
+        "experiment_id": experiment_id,
+        "git_commit": git_commit,
+        "run_fingerprint": run_fingerprint,
+        "seed_results": seed_results,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", "utf-8")
+    temporary.replace(path)
 
 
 def _profile_horizon(

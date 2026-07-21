@@ -111,6 +111,14 @@ coordinates to CPU, and releases each graph. The orchestration wrapper stopped w
 PID before relaunching. The start-time provenance object already records commit `288f663` and
 `git_dirty: false`, so later documentation edits cannot change the code/config identity of that run.
 
+Future action-path launches write an ignored sibling `*.progress.json` after every completed
+seed/horizon. The write uses a temporary sibling followed by atomic replacement. Resume is permitted
+only when the stored experiment ID and SHA-256 fingerprint of the exact YAML bytes plus Git commit
+match; duplicate or unexpected seeds fail closed. Final metrics/provenance record whether resume was
+used and the number of loaded horizon blocks, then remove the progress file. This mechanism was
+implemented after the active `288f663` process imported its code, so it cannot retroactively provide
+partial recovery for that run.
+
 The working paper is validated separately from scientific experiments:
 
 ```powershell
