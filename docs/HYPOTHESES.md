@@ -428,6 +428,53 @@ continuous MSE (`0.7738`). This confirms the finite-effect population-regulariza
 on a second entity-disjoint split. Corpus-averaged Jacobian transport itself is prior art in the
 Jacobian Lens; this is not a new algorithm or workspace claim.
 
+## LLM-ELEMENT-LAYER-GEOMETRY-001 Preregistration
+
+Registered on 2026-07-21 before executing any of the 36 final element prompts. Four excluded
+calibration facts—Gold/Au, Silver/Ag, Tin/Sn, and Lead/Pb—were used only to choose the fixed layer
+grid and hypotheses. On those excluded examples, full-residual donor patches had zero donor-symbol
+control through layer 21 and complete control at layers 24/26; local versus population behavior also
+reversed across that interval. These pilot outcomes set the thresholds below and are not evidence.
+
+- Prior-art boundary: MechLens (LIT-040) already reports late factual crystallization, and AtP*
+  (LIT-030) already documents nonlinear failure modes of gradient attribution. The new question is
+  narrower: whether directly executed donor control and a reversal in exact-local versus population
+  finite-effect predictivity coincide across an entity-disjoint factual relation. Neither late
+  emergence nor population Jacobian averaging is claimed as a new algorithm.
+- Data: 36 unique element/symbol facts whose leading-space symbol is exactly one unique Qwen token.
+  Seed 457 fixes 24/6/6 entity-disjoint train/validation/test sets; donor and recipient always stay
+  in the same split. The prompt is exactly `The chemical symbol for {element} is`. The four pilot
+  elements never enter this roster. Every ordered non-self pair yields 612 patches per layer.
+- Model/intervention: Qwen3-0.6B revision `c1899de...`, FP32 eager attention, final prompt token,
+  full residual replacement at `blocks.18/21/24/26.resid_post`, and direct full-vocabulary behavior.
+  Each clean context also receives a complete `36 x 1024` selected-answer logit Jacobian.
+- Numerical gates: clean source replacement error at most `1e-5`, direct donor-source error at most
+  `1e-6`, and exact-Jacobian versus symmetric central-difference relative error median/p95 at most
+  `0.05/0.15` independently at every layer. Any layer failure rejects all scientific decisions.
+- Endpoints/baselines: selected-logit effects are centered across the 36 answers before MSE and
+  correlation, removing common-logit shifts. Direct answer candidate and full-vocabulary top token
+  remain separate. Report no change, train mean effect, exact local Jacobian, quadratic Taylor, and
+  train-population Jacobian at all layers/splits, plus context-count curves and 256 answer-row
+  permutations. Direct execution remains the target.
+- `H-LLM-08 — Late causal-control transition`: on both validation and test, maximum full-vocabulary
+  donor-symbol transfer across layers 18/21 is at most `0.10`, minimum transfer across layers 24/26
+  is at least `0.60`, and the late-minus-early increase is at least `0.50`.
+- `H-GEO-08 — Local/population predictivity inversion`: on both validation and test, layer-21 local
+  contrast MSE is at most `0.25x` population MSE; layer-24 population MSE is at most `0.60x` local;
+  layer-24 local MSE is at least `3x` layer-21 local; and layer-24 population correlation exceeds
+  local by at least `0.01`. All four gates on both splits are required.
+- `H-GEO-09 — Late population semantic specificity`: at both layers 24 and 26 on test, the aligned
+  population Jacobian has contrast MSE at most `0.80x` the p05 of 256 answer-row permutations and
+  candidate agreement at least `0.05` above the null p95.
+- `H-CROSS-03 — Population transport across factual relations`: supported only if H-LLM-08,
+  H-GEO-08, and H-GEO-09 all pass and the already frozen capital H-GEO-04/05/06 result remains
+  positive. Quadratic Taylor is always reported and may still be the stronger behavior baseline.
+- Evidence boundary: a full pass would establish a replicated layerwise association among direct
+  causal control, finite-effect nonlinearity, and population transport in this Qwen model. It would
+  not identify the source feature, prove the transition is a circuit, validate Intervention-JEPA,
+  or establish J-space/workspace structure. No layer, entity, threshold, or output row changes after
+  the first registered prompt execution.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

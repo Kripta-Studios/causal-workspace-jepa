@@ -68,6 +68,11 @@ instrumentation, storage, and direct-data gates remain validated.
   global population mean fails correlation/semantic controls; a provisional within-context
   action-vertex mean improves over local 3/3 but requires test-goal confirmation with adaptive
   integration. No planner is competent enough for behavior evidence.
+- `LLM-ELEMENT-LAYER-GEOMETRY-001` is the independent Qwen relation/layer replication. Four excluded
+  calibration facts set a fixed layer-21→24 transition; the registered 36-element suite jointly
+  tests direct donor-symbol control, exact local/quadratic/population fidelity, and semantic row
+  nulls across validation and test. MechLens late crystallization and AtP* nonlinearity are treated
+  as prior art, so only their narrower coupling can be a repository finding.
 
 ## Milestone 3+: Scientific Runs
 

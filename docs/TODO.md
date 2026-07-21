@@ -34,6 +34,12 @@
   the five protected test goals; v1's scientific decisions must remain rejected.
 - [ ] Replicate population-versus-local finite transport on another Qwen prompt family/model before
   any general or SOTA claim.
+- [x] Use four permanently excluded element-symbol facts to calibrate a fixed four-layer grid and
+  audit late-crystallization/AtP prior art without touching the registered 36-entity roster.
+- [x] Implement and preregister `LLM-ELEMENT-LAYER-GEOMETRY-001` with direct behavior, full selected-
+  logit Jacobians, quadratic/population controls, dual entity splits, and answer-row nulls.
+- [ ] Commit/push and execute the element-layer study unchanged; retain all failures and endpoint
+  disagreements before deciding whether any result is new beyond known late crystallization.
 
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.

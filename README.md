@@ -69,6 +69,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   `0.300→0.533`; averaging showed a registered dose response and answer-row permutations failed.
   Corpus Jacobian averaging is prior art; the result is bounded finite-intervention fidelity, not a
   new lens algorithm, circuit, or workspace.
+- `PREREGISTERED`: `LLM-ELEMENT-LAYER-GEOMETRY-001` uses 36 unique one-token chemical symbols and
+  four Qwen residual layers to test whether late donor-symbol control coincides with a reversal from
+  exact-local to population-Jacobian finite-effect predictivity. Full direct behavior, quadratic
+  controls, dual entity splits, and answer-row permutations are frozen. Four pilot elements are
+  permanently excluded; late factual crystallization itself is prior art.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -190,6 +195,9 @@ python scripts/run_experiment.py `
 
 python scripts/run_experiment.py `
   --config configs/experiments/lewm_population_geometry_v1.yaml
+
+python scripts/run_experiment.py `
+  --config configs/experiments/qwen_element_layer_geometry_v1.yaml
 
 # Optional primary-scale selected-site capture; downloads the pinned 8.06 GB Qwen3-4B repository.
 python scripts/capture_qwen_activations.py `

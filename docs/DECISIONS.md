@@ -158,3 +158,8 @@
   stiffness. A separately committed v2 may use adaptive integration on the five untouched test
   goals and prospectively test the provisional within-context action-vertex mean. Do not carry the
   failed global-population hypothesis forward merely because shrinkage lowered MSE.
+- Use element-symbol retrieval as the next independent Qwen relation. Calibrate layers only on
+  Gold/Au, Silver/Ag, Tin/Sn, and Lead/Pb, then exclude them permanently. Freeze layers 18/21/24/26
+  and 24/6/6 registered entities before execution. Do not call a late-layer transition novel:
+  MechLens is direct prior art. Test only whether direct donor control coincides with a reversal in
+  exact-local versus population finite-effect fidelity, with quadratic and semantic null controls.

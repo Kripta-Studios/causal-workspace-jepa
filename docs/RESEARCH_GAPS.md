@@ -40,3 +40,8 @@ Status: `ACTIVE`.
   validate derivatives locally, adaptively integrate to convergence, retain action-label controls,
   and use only the protected test goals. The global population mean's low MSE is consistent with
   nonspecific shrinkage because correlation and semantic permutation gates failed.
+- The capital population result still lacks an independent relation and layer profile. The element-
+  symbol study addresses this, but late factual crystallization and attribution-patching
+  nonlinearity are already published. A positive result must satisfy direct full-vocabulary donor
+  control and exact-local/population inversion on both validation and test, survive answer-row
+  permutations, and retain quadratic Taylor even when it wins.

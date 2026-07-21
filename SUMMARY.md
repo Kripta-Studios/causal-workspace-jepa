@@ -1,5 +1,23 @@
 # SUMMARY
 
+## 2026-07-21 — Qwen element-layer causal-geometry preregistration
+
+- Rejected the tempting JEPA vertex-dispersion follow-up after post-result controls showed that
+  train-calibrated scalar shrinkage beat the vertex mean on seeds 101/103 and simple derivative norm
+  explained most of the apparent failure prediction. No protected test goal was touched.
+- On four permanently excluded element-symbol calibration facts, donor control was 0% through Qwen
+  layer 21 and 100% at layers 24/26. Over the same transition, exact local selected-logit MSE changed
+  from about `0.021` to `0.361`, while the four-context mean changed from `0.327` to `0.053`.
+  These pilot values are hypothesis-design inputs, not evidence.
+- Literature audit found MechLens already establishes late factual crystallization and AtP* already
+  establishes nonlinear gradient-attribution failures. The prospective novelty is restricted to a
+  direct causal-control/local-predictivity inversion, if it generalizes across disjoint entities.
+- Implemented/preregistered `LLM-ELEMENT-LAYER-GEOMETRY-001`: 36 unique single-token symbols,
+  fixed 24/6/6 entities, 612 within-split patches at each of layers 18/21/24/26, full `36x1024`
+  Jacobians per context/layer, exact local/quadratic/population baselines, central numerical checks,
+  context-count curves, 256 row nulls, and full-vocabulary behavior. It must be committed/pushed
+  before the first registered prompt is executed.
+
 ## 2026-07-21 — JEPA population-geometry preregistration
 
 - Implemented `WM-POPULATION-JACOBIAN-001` as a prospective cross-domain test of the confirmed Qwen

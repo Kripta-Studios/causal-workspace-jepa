@@ -110,6 +110,13 @@ Behavior-changing continuation:
   MSE was `0.354/0.737`, correlation `0.866/0.835`, and candidate agreement `0.533/0.300`; the
   averaging-size and answer-row specificity controls also passed. This confirms a bounded finite-
   effect benefit of corpus averaging, not novelty of the Jacobian Lens method.
+- `LLM-ELEMENT-LAYER-GEOMETRY-001` is prospectively registered as the independent relation/layer
+  test. It uses 36 unique element symbols, entity-disjoint 24/6/6 splits, all within-split donor
+  pairs, and layers 18/21/24/26. Four excluded calibration elements fixed the 21→24 transition
+  before any registered prompt was run. Full selected-logit Jacobians, symmetric central checks,
+  quadratic Taylor, population averages, averaging curves, row permutations, and direct full-vocab
+  donor transfer are mandatory. MechLens/AtP* make late crystallization and nonlinear attribution
+  prior art; only a replicated coupling between causal control and predictivity inversion is new.
 
 Current mock implementation:
 
