@@ -145,13 +145,13 @@ def run_qwen_instrumentation_smoke(config_path: str | Path) -> dict[str, Any]:
     output_path = Path(
         str(config.get("output_metrics", "artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json"))
     )
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     provenance = collect_provenance(
         command=f"python scripts/run_experiment.py --config {config_path}",
         resource_profile=resource_profile,
         seed=seed,
     )
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     write_provenance(
         output_path.with_suffix(".provenance.json"),
         provenance,
