@@ -227,6 +227,30 @@ def _relation_spec(config: dict[str, Any]) -> dict[str, Any]:
                 "It does not identify a feature, circuit, J-space, or workspace."
             ),
         }
+    if relation == "us_state_postal_abbreviation_one_shot":
+        return {
+            "name": relation,
+            "pairs": STATE_PAIRS,
+            "split_ids": STATE_SPLIT_IDS,
+            "prompt_template": (
+                "Example: The postal abbreviation for District of Columbia is DC. "
+                "The postal abbreviation for {entity} is"
+            ),
+            "donor_prefix": "state_one_shot",
+            "calibration_boundary": {
+                "prompt_candidates": 5,
+                "prompt_calibration_entities": 13,
+                "selected_prompt_calibration_accuracy": 1.0,
+                "target_prompt_forwards_before_preregistration": 0,
+                "layer_grid_inherited_from": "LLM-ELEMENT-LAYER-GEOMETRY-001",
+            },
+            "scientific_boundary": (
+                "Population Jacobians, late crystallization, and HVP corrections are prior art. "
+                "This new prompt prospectively tests whether the empirical onset of direct donor "
+                "control aligns with the onset of population-over-local/HVP advantage. It does "
+                "not identify a feature, circuit, J-space, or workspace."
+            ),
+        }
     raise ValueError(f"unsupported factual relation: {relation}")
 
 
@@ -427,7 +451,9 @@ def run_qwen_element_layer_geometry_study(config_path: str | Path) -> dict[str, 
     metrics: dict[str, Any] = {
         "experiment_id": str(config.get("id", "LLM-RELATION-LAYER-GEOMETRY-001")),
         "status": analysis["status"],
-        "evidence_level": "Generalization",
+        "evidence_level": (
+            "Generalization" if analysis["status"].startswith("COMPLETED") else "Availability"
+        ),
         "model": str(config.get("model")),
         "model_revision": adapter._metadata()["resolved_revision"],
         "precision": "float32",
@@ -687,7 +713,49 @@ def _analyze(
     semantic_pass = bool(behavior_eligible and _semantic_decision(config, layer_scores))
     frozen_confirmation: dict[str, Any]
     population_advantage = _population_advantage_details(layer_scores, behavior)
-    if decision_family == "control_conditioned_population":
+    boundary_alignment = _boundary_alignment_details(config, population_advantage)
+    if decision_family == "boundary_conditioned_population":
+        alignment_pass = bool(
+            behavior_eligible
+            and _boundary_alignment_decision(config, population_advantage, boundary_alignment)
+        )
+        transition_pass = bool(
+            behavior_eligible and _terminal_transition_decision(config, behavior)
+        )
+        semantic_pass = bool(
+            behavior_eligible
+            and _boundary_semantic_decision(config, layer_scores, boundary_alignment)
+        )
+        element = json.loads(
+            Path(str(config["element_confirmation_metrics"])).read_text("utf-8")
+        )
+        element_analysis = element["analysis"]
+        element_details = _population_advantage_details(
+            element_analysis["layer_scores"], element_analysis["behavior_by_layer"]
+        )
+        element_boundaries = _boundary_alignment_details(config, element_details)
+        element_decisions = element_analysis["hypothesis_decisions"]
+        element_pass = bool(
+            element_decisions["h_llm_08_late_causal_control_transition"]
+            and element_decisions["h_geo_09_late_population_semantic_specificity"]
+            and _boundary_sign_equality_decision(
+                config, element_details, element_boundaries
+            )
+        )
+        decisions = {
+            "h_llm_12_one_shot_late_causal_control": transition_pass,
+            "h_geo_12_control_population_boundary_alignment": alignment_pass,
+            "h_geo_13_boundary_population_semantic_specificity": semantic_pass,
+            "h_cross_05_boundary_alignment_cross_relation": bool(
+                element_pass and transition_pass and alignment_pass and semantic_pass
+            ),
+        }
+        frozen_confirmation = {
+            "element_metrics": str(config["element_confirmation_metrics"]),
+            "element_boundary_alignment_passed": element_pass,
+            "element_boundary_alignment": element_boundaries,
+        }
+    elif decision_family == "control_conditioned_population":
         association_pass = bool(
             behavior_eligible
             and _control_population_association_decision(config, population_advantage)
@@ -750,6 +818,7 @@ def _analyze(
         "behavior_by_layer": behavior,
         "layer_scores": layer_scores,
         "population_advantage_by_layer": population_advantage,
+        "boundary_alignment_by_split": boundary_alignment,
         "frozen_confirmation": frozen_confirmation,
         "hypothesis_decisions": decisions,
     }
@@ -795,6 +864,25 @@ def _transition_decision(config: dict[str, Any], behavior: dict[str, Any]) -> bo
             behavior["26"][split]["full_vocab_donor_token_transfer"],
         )
         if not (early <= early_max and late >= late_min and late - early >= increase):
+            return False
+    return True
+
+
+def _terminal_transition_decision(config: dict[str, Any], behavior: dict[str, Any]) -> bool:
+    early_max = float(config.get("early_donor_transfer_max", 0.10))
+    terminal_min = float(config.get("terminal_donor_transfer_min", 0.60))
+    increase = float(config.get("donor_transfer_increase_min", 0.50))
+    for split in ("validation", "test"):
+        early = max(
+            behavior["18"][split]["full_vocab_donor_token_transfer"],
+            behavior["21"][split]["full_vocab_donor_token_transfer"],
+        )
+        terminal = behavior["26"][split]["full_vocab_donor_token_transfer"]
+        if not (
+            early <= early_max
+            and terminal >= terminal_min
+            and terminal - early >= increase
+        ):
             return False
     return True
 
@@ -885,6 +973,96 @@ def _control_population_association_decision(
             early_advantage <= -early_margin
             and late_advantage >= late_margin
             and split_details["donor_control_advantage_spearman"] >= correlation_min
+        ):
+            return False
+    return True
+
+
+def _boundary_alignment_details(
+    config: dict[str, Any], details: dict[str, Any]
+) -> dict[str, Any]:
+    control_threshold = float(config.get("control_boundary_transfer_min", 0.50))
+    advantage_threshold = float(config.get("advantage_boundary_min", 0.0))
+    result = {}
+    for split in ("validation", "test"):
+        by_layer = details[split]["by_layer"]
+        control_layer = next(
+            (
+                int(layer)
+                for layer in ("18", "21", "24", "26")
+                if by_layer[layer]["full_vocab_donor_transfer"] >= control_threshold
+            ),
+            None,
+        )
+        advantage_layer = next(
+            (
+                int(layer)
+                for layer in ("18", "21", "24", "26")
+                if by_layer[layer]["population_advantage"] >= advantage_threshold
+            ),
+            None,
+        )
+        result[split] = {
+            "control_boundary_layer": control_layer,
+            "population_advantage_boundary_layer": advantage_layer,
+            "boundaries_equal": bool(
+                control_layer is not None and control_layer == advantage_layer
+            ),
+        }
+    return result
+
+
+def _boundary_alignment_decision(
+    config: dict[str, Any],
+    details: dict[str, Any],
+    boundaries: dict[str, Any],
+) -> bool:
+    correlation_min = float(config.get("control_advantage_spearman_min", 0.80))
+    if not _boundary_sign_equality_decision(config, details, boundaries):
+        return False
+    for split in ("validation", "test"):
+        if details[split]["donor_control_advantage_spearman"] < correlation_min:
+            return False
+    return True
+
+
+def _boundary_sign_equality_decision(
+    config: dict[str, Any],
+    details: dict[str, Any],
+    boundaries: dict[str, Any],
+) -> bool:
+    early_margin = float(config.get("early_best_transport_margin_min", 0.05))
+    terminal_margin = float(config.get("terminal_population_advantage_min", 0.05))
+    for split in ("validation", "test"):
+        split_details = details[split]
+        if not (
+            split_details["by_layer"]["21"]["population_advantage"] <= -early_margin
+            and split_details["by_layer"]["26"]["population_advantage"]
+            >= terminal_margin
+            and boundaries[split]["boundaries_equal"]
+        ):
+            return False
+    return True
+
+
+def _boundary_semantic_decision(
+    config: dict[str, Any],
+    scores: dict[str, Any],
+    boundaries: dict[str, Any],
+) -> bool:
+    boundary = boundaries["test"]["control_boundary_layer"]
+    if boundary is None:
+        return False
+    for layer in {str(boundary), "26"}:
+        real = scores[layer]["splits"]["test"]["train_population_jacobian"]
+        null = scores[layer]["row_permutation_null_test"]
+        if not (
+            real["contrast_normalized_mse"]
+            <= null["p05_contrast_normalized_mse"]
+            * float(config.get("row_null_mse_ratio_max", 0.80))
+            and real["answer_candidate_agreement"]
+            >= null["p95_answer_candidate_agreement"]
+            + float(config.get("row_null_candidate_margin_min", 0.05))
         ):
             return False
     return True
@@ -992,6 +1170,10 @@ __all__ = [
     "ELEMENT_SPLIT_IDS",
     "STATE_PAIRS",
     "STATE_SPLIT_IDS",
+    "_boundary_alignment_decision",
+    "_boundary_alignment_details",
+    "_boundary_sign_equality_decision",
+    "_boundary_semantic_decision",
     "_control_population_association_decision",
     "_inversion_decision",
     "_population_advantage_details",
@@ -999,6 +1181,7 @@ __all__ = [
     "_scores",
     "_spearman",
     "_transition_decision",
+    "_terminal_transition_decision",
     "_within_split_pairs",
     "run_qwen_element_layer_geometry_study",
 ]

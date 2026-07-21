@@ -109,3 +109,7 @@ continuous-logit comparator here, not the best discrete behavior comparator.
 directional quadratic Taylor, an HVP-style second-order correction. The clean-behavior gate rejected
 the study before this comparator could decide a hypothesis. Its descriptive layer-26 sign change is
 retained only to design a fresh confirmation, never as a baseline win.
+
+One-shot v2 retains the same strong baselines and defines the population onset only when population
+NMSE first becomes no worse than both exact local and quadratic/HVP-style NMSE. Thus its registered
+boundary equality cannot be won by comparing population transport against first order alone.

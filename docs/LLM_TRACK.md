@@ -124,6 +124,12 @@ Behavior-changing continuation:
   population transport with the better exact-local/quadratic result rose monotonically enough to
   correlate `0.949` with donor control on both splits, turning positive only at layer 26. Because
   the fixed layer-24 gate and competence gate failed, this cannot support a cross-relation claim.
+- `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` is preregistered after a five-template calibration on only
+  13 roster-excluded states. The selected one-shot format scored 13/13; no target prompt has run.
+  Rather than retune layer 24, H-GEO-12 compares the first registered layer crossing 50% direct donor
+  control with the first layer where population transport beats both exact local and directional
+  quadratic transport. Equality, early/terminal margins, Spearman, semantic nulls, and a `0.90`
+  clean-accuracy floor must all pass on the frozen validation/test splits.
 
 Current mock implementation:
 

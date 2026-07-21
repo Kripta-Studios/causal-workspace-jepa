@@ -1,5 +1,23 @@
 # SUMMARY
 
+## 2026-07-21 — Behavior-competent boundary-relative confirmation preregistration
+
+- Calibrated five prompt formats on only the 13 states excluded by seed 521. Accuracy was
+  `12/13`, `3/13`, `13/13`, `8/13`, and `3/13`; the fixed District-of-Columbia example won. No
+  one-shot target prompt from the 36-entity roster was forwarded before registration.
+- Implemented/preregistered `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` with a stricter `0.90` clean
+  held-out floor. It retains FP32 exact Jacobians, directional quadratic/HVP-style correction,
+  24-context population transport, averaging curves, row nulls, and the fixed four-layer grid.
+- The new H-GEO-12 does not move a fixed layer: it defines control onset as the first layer with
+  donor transfer at least `0.50` and population onset as the first layer where population NMSE beats
+  both exact-local and quadratic NMSE. These first-crossing layers must be equal on validation and
+  test, with early/terminal margins and Spearman at least `0.80`. H-CROSS-05 requires the frozen
+  element boundary equality and sign margins, but not the new Spearman gate: its already-known test
+  Spearman is `0.738`. This pre-execution distinction prevents an impossible cross hypothesis.
+- V2 reuses state identities/splits but every exact prompt and causal outcome is new. A full pass is
+  still one-model cross-relation evidence, not an explained circuit, JEPA meta-model, workspace, or
+  SOTA result.
+
 ## 2026-07-21 — State-abbreviation causal-geometry confirmation result
 
 - Primary-source audit added LIT-041, *When Attribution Patching Lies*. Second-order/HVP correction

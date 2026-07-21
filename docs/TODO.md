@@ -42,6 +42,11 @@
   numerically valid but non-evidential layer-26 pattern, and undecided hypotheses.
 - [ ] Calibrate a higher-competence prompt using only excluded entities, then preregister a fresh
   prompt/task before any registered forward; do not filter v1 entities by observed correctness.
+- [x] Calibrate five prompts on 13 excluded states; select the 13/13 one-shot format without any
+  target one-shot forward.
+- [x] Implement and preregister the boundary-relative `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001`.
+- [ ] Commit/push and execute the one-shot study unchanged; retain all gate failures without moving
+  either empirical boundary after observation.
 - [x] Use four permanently excluded element-symbol facts to calibrate a fixed four-layer grid and
   audit late-crystallization/AtP prior art without touching the registered 36-entity roster.
 - [x] Implement and preregister `LLM-ELEMENT-LAYER-GEOMETRY-001` with direct behavior, full selected-

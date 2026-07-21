@@ -539,6 +539,47 @@ was `0.9487` on both splits, while advantage changed from negative through layer
 layer 26. That boundary-relative pattern was not the registered layer-24 sign gate and is only a
 candidate for a separately preregistered, behavior-competent task.
 
+## LLM-STATE-ONESHOT-LAYER-GEOMETRY-001 Preregistration
+
+Registered on 2026-07-21 after freezing state v1 and before any forward pass on a target one-shot
+prompt. Prompt calibration used only the 13 seed-521 states excluded from the 36-entity roster. Five
+templates scored clean top-token accuracy `12/13`, `3/13`, `13/13`, `8/13`, and `3/13`; the fixed
+District-of-Columbia example was selected solely for its `13/13` score. The target roster/splits are
+unchanged from v1, but every exact one-shot target prompt and all of its causal outcomes are new.
+
+- Prior-art boundary: population Jacobians (LIT-003), late crystallization (LIT-040), and HVP
+  corrections (LIT-041) are established methods/phenomena. The prospective question is the equality
+  of two empirical onset layers, not a new lens or second-order algorithm.
+- Model/intervention: pinned Qwen3-0.6B FP32/eager; exact prompt
+  `Example: The postal abbreviation for District of Columbia is DC. The postal abbreviation for
+  {state} is`; final-token full-residual donor patches at layers 18/21/24/26; the same fixed 24/6/6
+  entity split; 612 within-split patches per layer; complete selected-logit Jacobians.
+- Numerical gates are unchanged: clean replay at most `1e-5`, donor-source error at most `1e-6`, and
+  exact-Jacobian/central median/p95 relative error at most `0.05/0.15` independently at every layer.
+- Behavior competence is stricter than v1: clean validation and test top-token accuracy must each be
+  at least `0.90`, or every scientific decision is rejected.
+- `H-LLM-12 — One-shot late causal control`: on both validation and test, maximum donor-token
+  transfer at layers 18/21 is at most `0.10`, layer-26 transfer is at least `0.60`, and the increase
+  is at least `0.50`. Layer 24 is reported but is not fixed as the onset.
+- Population advantage remains
+  `A_l = min(NMSE_local, NMSE_quadratic) - NMSE_population`. Define the control boundary as the first
+  registered layer with donor-token transfer at least `0.50`, and the population boundary as the
+  first registered layer with `A_l >= 0`.
+- `H-GEO-12 — Control/population boundary alignment`: on both validation and test, `A_21 <= -0.05`,
+  `A_26 >= 0.05`, donor-control/advantage Spearman across all four layers is at least `0.80`, and
+  the two first-crossing layers are exactly equal.
+- `H-GEO-13 — Boundary population semantic specificity`: on test, the aligned population transport
+  at the detected control boundary and layer 26 must have MSE at most `0.80x` answer-row-null p05
+  and candidate agreement at least `0.05` above null p95.
+- `H-CROSS-05 — Boundary alignment across factual relations`: passes only if H-LLM-12, H-GEO-12,
+  and H-GEO-13 pass and the frozen element data independently satisfy boundary equality plus the
+  same `A_21 <= -0.05` and `A_26 >= 0.05` margins and their registered H-LLM-08/H-GEO-09 decisions.
+  The frozen element test Spearman is `0.738`, so H-CROSS-05 does not require it to meet the new
+  state-only `0.80` gate; this distinction was recorded before any target one-shot forward.
+- Evidence boundary: a full pass is a cross-relation, dual-split association in one small model. It
+  is not an explanation of the boundary, model-scale generalization, component localization,
+  circuit reconstruction, a JEPA meta-model result, workspace/J-space evidence, or SOTA.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

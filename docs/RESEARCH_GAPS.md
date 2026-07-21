@@ -50,3 +50,6 @@ Status: `ACTIVE`.
   replication. A new prompt/task must establish clean competence prospectively and test a boundary-
   relative transition rather than move v1's fixed layer after the fact. Even a full future pass
   leaves cross-scale generalization, localization, circuit reconstruction, and mechanism unresolved.
+- One-shot v2 repairs prompt competence prospectively but reuses the v1 state identities and split;
+  only the exact prompt/intervention grid is unobserved. A positive result therefore needs later
+  entity/task/model replication and cannot by itself identify why the two onset layers align.

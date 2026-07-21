@@ -77,6 +77,10 @@ instrumentation, storage, and direct-data gates remain validated.
   held-out accuracy missed the `0.75` floor, so no hypothesis is decided. Its descriptive layer-26
   advantage sign switch and `0.949` control correlation require a new behavior-competent prompt/task
   with prospective, boundary-relative gates.
+- `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` supplies that prospective test. The prompt format scored
+  13/13 only on excluded calibration states, the target prompt grid is untouched, and the clean
+  held-out floor is `0.90`. Control and population-advantage first-crossing layers must match on both
+  splits while retaining exact-local and quadratic/HVP-style comparators.
 
 ## Milestone 3+: Scientific Runs
 

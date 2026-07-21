@@ -81,6 +81,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   frozen `0.75` floor. No scientific hypothesis is decided. Descriptively only, donor-control versus
   population-advantage Spearman was `0.949` on both splits and advantage turned positive at layer 26,
   not the registered layer 24; this is a new follow-up hypothesis, not rescued evidence.
+- `PREREGISTERED`: `LLM-STATE-ONESHOT-LAYER-GEOMETRY-001` uses a fixed format example selected at
+  13/13 accuracy on 13 excluded states; no target one-shot prompt has been executed. It raises the
+  held-out competence floor to `0.90` and prospectively tests whether the first ≥50%-donor-control
+  layer equals the first layer where population transport beats both exact local and quadratic
+  transport on validation and test.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -208,6 +213,9 @@ python scripts/run_experiment.py `
 
 python scripts/run_experiment.py `
   --config configs/experiments/qwen_state_layer_geometry_v1.yaml
+
+python scripts/run_experiment.py `
+  --config configs/experiments/qwen_state_oneshot_layer_geometry_v1.yaml
 
 # Optional primary-scale selected-site capture; downloads the pinned 8.06 GB Qwen3-4B repository.
 python scripts/capture_qwen_activations.py `

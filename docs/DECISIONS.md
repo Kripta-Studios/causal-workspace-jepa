@@ -177,3 +177,7 @@
   registered layer-24 gate to layer 26. The descriptive `0.949` control/advantage correlation can
   motivate only a new boundary-relative study whose prompt competence is calibrated on excluded
   entities before registration; never select v1 entities by their observed correctness.
+- Select the one-shot prompt solely by clean accuracy on the 13 excluded states; freeze its 13/13
+  winner before any target forward. Test boundary equality rather than hard-code the post-result
+  layer 26, require a `0.90` clean floor, and preserve exact/quadratic/population comparators. Reusing
+  v1 state identities limits independence and must remain explicit even though exact prompts are new.

@@ -9,9 +9,13 @@ from causal_workspace_jepa.experiments.llm.qwen_element_layer_geometry_study imp
     ELEMENT_SPLIT_IDS,
     STATE_PAIRS,
     STATE_SPLIT_IDS,
+    _boundary_alignment_decision,
+    _boundary_alignment_details,
+    _boundary_sign_equality_decision,
     _control_population_association_decision,
     _inversion_decision,
     _scores,
+    _terminal_transition_decision,
     _transition_decision,
     _within_split_pairs,
 )
@@ -104,6 +108,52 @@ class QwenElementLayerGeometryTests(unittest.TestCase):
         self.assertTrue(_control_population_association_decision({}, details))
         details["test"]["by_layer"]["24"]["population_advantage"] = -0.01
         self.assertFalse(_control_population_association_decision({}, details))
+
+    def test_boundary_alignment_uses_observed_onset_not_fixed_layer(self) -> None:
+        details = {
+            split: {
+                "by_layer": {
+                    "18": {
+                        "population_advantage": -0.5,
+                        "full_vocab_donor_transfer": 0.0,
+                    },
+                    "21": {
+                        "population_advantage": -0.3,
+                        "full_vocab_donor_transfer": 0.0,
+                    },
+                    "24": {
+                        "population_advantage": -0.01,
+                        "full_vocab_donor_transfer": 0.4,
+                    },
+                    "26": {
+                        "population_advantage": 0.08,
+                        "full_vocab_donor_transfer": 0.7,
+                    },
+                },
+                "donor_control_advantage_spearman": 0.95,
+            }
+            for split in ("validation", "test")
+        }
+        boundaries = _boundary_alignment_details({}, details)
+        self.assertEqual(boundaries["validation"]["control_boundary_layer"], 26)
+        self.assertEqual(
+            boundaries["validation"]["population_advantage_boundary_layer"], 26
+        )
+        self.assertTrue(_boundary_alignment_decision({}, details, boundaries))
+        self.assertTrue(_boundary_sign_equality_decision({}, details, boundaries))
+        details["test"]["by_layer"]["24"]["full_vocab_donor_transfer"] = 0.6
+        boundaries = _boundary_alignment_details({}, details)
+        self.assertFalse(_boundary_alignment_decision({}, details, boundaries))
+
+    def test_terminal_transition_does_not_require_layer_24_control(self) -> None:
+        behavior = {
+            str(layer): {
+                split: {"full_vocab_donor_token_transfer": value}
+                for split in ("validation", "test")
+            }
+            for layer, value in ((18, 0.0), (21, 0.0), (24, 0.2), (26, 0.7))
+        }
+        self.assertTrue(_terminal_transition_decision({}, behavior))
 
 
 if __name__ == "__main__":
