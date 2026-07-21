@@ -130,6 +130,12 @@ correction. The official planner remains unchanged. The repository adds a separa
 - Passing is Availability-level engineering evidence only. Planning success under original versus
   corrected MPPI remains a separate multi-seed reproduction, and no model mechanism is tested here.
 
+Final retained validation from clean `f58308a`: `SMOKE_VALIDATED`, all five gates pass across 32
+seeds. With the constraint disabled, official and corrected actions and losses agree exactly
+(maximum absolute differences `0.0`). With `max_norms=[2.45]`, there are zero cost-input and zero
+returned-action violations; their observed maxima are `2.45000005` and `2.44999909`. No numbered
+scientific hypothesis is decided.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

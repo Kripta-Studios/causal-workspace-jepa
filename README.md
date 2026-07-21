@@ -68,9 +68,10 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   Under the frozen matched control, CEM had `0/32` action-norm violations (maximum `2.3474`) while
   MPPI had `32/32` (median `6.4485`, maximum `8.3018`) under configured maximum `2.45`. `DotWall`
   adds no independent bound check. This is an implementation result, not learned-model evidence.
-- `IMPLEMENTED_NOT_RUN`: a separately named constraint-corrected MPPI projects both candidates used
-  for cost evaluation and returned actions. Its 32-seed smoke requires exact equivalence to official
-  MPPI with bounds disabled and zero violations with the `2.45` bound enabled.
+- `SMOKE_VALIDATED`: `WM-EBJEPA-MPPI-CORRECTION-001` ran from clean `f58308a`. Across 32 seeds,
+  the separately named constrained planner matched official MPPI exactly when bounds were disabled
+  (maximum action/loss difference `0.0`) and produced zero cost-input or returned-action violations
+  with the `2.45` bound enabled. This validates the correction, not trained planning competence.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

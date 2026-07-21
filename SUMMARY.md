@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 2026-07-21 — EB-JEPA Two Rooms import closure and planner defect preregistered
+## 2026-07-21 — EB-JEPA Two Rooms import closure and planner constraint correction
 
 - Installed a separate Python 3.12 Two Rooms closure while preserving Torch 2.10.0+cu128. The
   exact resolved non-Torch environment is committed as a lock, and the installer fails if Torch or
@@ -31,9 +31,11 @@
   upstream planner defect, not failure of the reported trained model; original and corrected MPPI
   must now be compared during competence reproduction.
 - Added a separately named constraint-corrected MPPI without touching upstream. It projects every
-  sampled candidate before model-cost evaluation and the final returned action. The preregistered
-  smoke spans 32 seeds, requires exact unbounded equivalence to official MPPI, and zero bounded
-  violations; exploratory execution meets all gates, but no artifact is retained before commit.
+  sampled candidate before model-cost evaluation and the final returned action.
+  `WM-EBJEPA-MPPI-CORRECTION-001` ran from clean `f58308a`; all five gates passed across 32 seeds.
+  With bounds disabled, maximum official/corrected action and loss differences were exactly `0.0`.
+  With the `2.45` bound enabled, both cost-input and returned-action violations were `0/32`; maxima
+  were `2.45000005` and `2.44999909`. This validates the controlled planner arm only, not competence.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 

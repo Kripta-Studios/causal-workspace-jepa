@@ -29,7 +29,8 @@
   the upstream planner before comparing original and corrected planning.
 - [x] Implement/preregister a separately named constraint-corrected MPPI adapter with exact
   no-bound official-equivalence and within-bound cost/return tests.
-- [ ] Commit/push and retain `WM-EBJEPA-MPPI-CORRECTION-001`;
+- [x] Commit/push and retain `WM-EBJEPA-MPPI-CORRECTION-001` from clean `f58308a`; all five gates
+  pass across 32 seeds with exact unbounded equivalence and zero bounded violations;
   preserve the original official implementation as the reproduction baseline.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.

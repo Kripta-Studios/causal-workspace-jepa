@@ -185,6 +185,10 @@ separately named reproduction arm. `WM-EBJEPA-MPPI-CORRECTION-001` first disable
 requires action/loss equivalence to official MPPI across 32 independent seeds; it then enables the
 bound and instruments every action batch reaching the cost function as well as the returned action.
 This prevents a superficial return-only clamp from claiming a faithful corrected optimization.
+The retained run started from clean `f58308aac5815342ca12d0565cf98d8eef5fd99c` and completed in
+`3.16` seconds. All five gates pass: the unbounded action/loss differences are exactly zero, and
+the bounded cost-input/returned-action violation counts are both zero across 32 seeds. The original
+official planner remains available as a separately labeled baseline.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an

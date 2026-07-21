@@ -66,9 +66,10 @@ side by side before the planner is eligible for mechanistic claims.
 
 A separate `ConstrainedMPPIPlanner` is implemented without modifying the official checkout. It
 projects candidate actions before cost evaluation and the final returned action. Its frozen
-32-seed smoke requires exact official equivalence with bounds disabled and zero cost/return
-violations with bounds enabled. The exploratory probe passes, but a result is not retained until
-execution from a clean pushed implementation commit.
+32-seed smoke ran from clean `f58308a`: exact official equivalence holds with bounds disabled, and
+bounded cost/return violations are both zero. The maximum observed cost-input and returned-action
+norms are `2.45000005` and `2.44999909`. This correction is eligible for a competence comparison,
+but supplies no learned-model, circuit, or workspace evidence.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20

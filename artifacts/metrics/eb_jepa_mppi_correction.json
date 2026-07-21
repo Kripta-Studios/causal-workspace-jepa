@@ -1,0 +1,322 @@
+{
+  "all_passed": true,
+  "claim": "A separately named MPPI implementation matches pinned official MPPI when the action bound is disabled and projects both cost-evaluation candidates and returned actions when the bound is active. It does not modify the official reproduction baseline.",
+  "evidence_level": "Availability",
+  "experiment_id": "WM-EBJEPA-MPPI-CORRECTION-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 349.738,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "orchestration_wall_seconds": 3.164268099993933,
+  "passes": {
+    "cost_inputs_are_bounded": true,
+    "frozen_32_seed_design": true,
+    "returned_actions_are_bounded": true,
+    "unbounded_actions_match_official": true,
+    "unbounded_losses_match_official": true
+  },
+  "probe": {
+    "design": {
+      "max_norm": 2.45,
+      "n_iters": 3,
+      "num_elites": 16,
+      "num_samples": 128,
+      "num_seeds": 32,
+      "plan_length": 3,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    "rows": [
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.2172117233276367,
+        "seed": 0,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 1,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499988555908203,
+        "seed": 2,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 3,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4143903255462646,
+        "seed": 4,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 5,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 6,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.443660020828247,
+        "seed": 7,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 8,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499988555908203,
+        "seed": 9,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 10,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 11,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.378289222717285,
+        "seed": 12,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 13,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4291322231292725,
+        "seed": 14,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 15,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499988555908203,
+        "seed": 16,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 17,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.3937346935272217,
+        "seed": 18,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 19,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 20,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 21,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 22,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.450000047683716,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 23,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 24,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499988555908203,
+        "seed": 25,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 26,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 27,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.3842782974243164,
+        "seed": 28,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499988555908203,
+        "seed": 29,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 30,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      },
+      {
+        "corrected_cost_input_max_norm": 2.4499998092651367,
+        "corrected_returned_max_norm": 2.4499990940093994,
+        "seed": 31,
+        "unbounded_action_max_abs_diff": 0.0,
+        "unbounded_loss_max_abs_diff": 0.0
+      }
+    ],
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "python": "3.12.13",
+      "torch": "2.10.0+cu128"
+    },
+    "source_revision": "966e61e9285b3a876f49b9774e9720d9a99a7925",
+    "summary": {
+      "corrected_cost_input_violation_count": 0,
+      "corrected_max_cost_input_norm": 2.450000047683716,
+      "corrected_max_returned_norm": 2.4499990940093994,
+      "corrected_returned_violation_count": 0,
+      "max_unbounded_action_abs_diff": 0.0,
+      "max_unbounded_loss_abs_diff": 0.0
+    }
+  },
+  "probe_stderr": "",
+  "scientific_boundary": "This validates a planner correction only. It provides no trained planning, model mechanism, circuit, or workspace evidence.",
+  "status": "SMOKE_VALIDATED"
+}
