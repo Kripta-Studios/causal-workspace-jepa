@@ -18,6 +18,12 @@ target and Qwen-Scope/Circuit Tracing/AtP*/HVP as required Qwen comparators. No 
 found that already performs the repository's exact intervention-conditioned JEPA causal-simulator
 program, but the current learned JEPA result is negative; the gap is not claimed as solved or SOTA.
 
+The official EB-JEPA source is now pinned at `966e61e...`, and its real one-layer 512-dimensional
+GRU transition has a typed adapter with reset/update/candidate/hidden intervention sites. Unit tests
+reconstruct native `torch.nn.GRU` within `1e-6`; a retained clean source-contract smoke is the next
+engineering step. Exact upstream training remains separate because the official Python 3.12/Torch
+2.6 environment does not match this host's Python 3.14/Torch 2.10 runtime.
+
 ## Current Status
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
@@ -42,6 +48,12 @@ program, but the current learned JEPA result is negative; the gap is not claimed
 - `SMOKE_VALIDATED`: documentation/source registries, data/artifact policy, typed package tree,
   provenance helpers, and executable reproducibility checks.
 - `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
+- `IMPLEMENTED_NOT_RUN`: official EB-JEPA adapter and contract smoke at pinned commit `966e61e...`.
+  The adapter exposes the actual one-layer GRU gates and validates exact recurrence reconstruction;
+  no trained checkpoint or planning evidence is claimed before a clean retained run.
+- `BLOCKED_OFFICIAL_ENV`: the current runtime is not the exact EB-JEPA Python 3.12/Torch 2.6
+  environment. Hardware and source checks pass; the isolated environment and compute-capability
+  compatibility must pass before reproducing the published three-seed planner.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

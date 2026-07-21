@@ -4,7 +4,8 @@ Status: `SMOKE_VALIDATED`.
 
 Tier 0 datasets are generated locally from explicit seeds and must remain below 512 MB by default.
 Selected Tier 1 assets and bounded Qwen weights are permitted under `gpu_12gb` only after size,
-license, split, and checksum review; none has yet been integrated by this continuation.
+license, split, and checksum review. The EB-JEPA Two Rooms generator is source-pinned and requires
+no raw download, but its exact upstream runtime/training has not yet run.
 
 ## Tier 0 Mandatory
 
@@ -25,6 +26,11 @@ Smoke manifest: `data/manifests/tier0_smoke_manifest.json`; total compressed gen
 
 The official LeWorldModel source and linked assets are verified; `WM-LEWM-001` uses a generated
 Tier 0 source-informed small reproduction of selected design elements rather than downloading its released benchmark data or weights.
+Official EB-JEPA Two Rooms is pinned to `966e61e...`: it generates two-channel 65x65 observations,
+continuous two-dimensional actions, and XY/wall-layout ground truth on the fly (100,000 train and
+10,000 validation samples in the default configuration). Raw size/checksum is therefore not a
+download boundary; source revision, generator seed, layout split, and episode overlap are the
+relevant provenance controls. Status: `BLOCKED_OFFICIAL_ENV` for exact upstream training.
 JEPA-WMs and selected C-JEPA assets remain `ACTIVE` candidates for the current GPU host.
 Large V-JEPA, DROID, RoboCasa, and ManiSkill studies remain deferred by scope/compute. SkyJEPA stays
 `BLOCKED_EXTERNAL` until official assets are verified.

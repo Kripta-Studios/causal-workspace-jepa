@@ -1,5 +1,29 @@
 # SUMMARY
 
+## 2026-07-21 — Official EB-JEPA contract and exact recurrent decomposition
+
+- Pinned the official `facebookresearch/eb_jepa` source at immutable commit
+  `966e61e9285b3a876f49b9774e9720d9a99a7925`; the local ignored checkout is clean and can be
+  recreated with `scripts/prepare_eb_jepa.py`.
+- Replaced the published-adapter placeholder boundary with a typed EB-JEPA adapter for the actual
+  official object contract: Impala encoder, identity two-dimensional action encoder, and a
+  one-layer 512-dimensional `torch.nn.GRU`. This corrects an earlier informal description of the
+  predictor as two-layer.
+- Implemented an explicit PyTorch-GRU decomposition into reset, update, candidate, pre-normalized
+  hidden, and post-normalized hidden sites. Unit tests compare it to native `torch.nn.GRU` and test
+  position/feature-specific gate intervention plus downstream recurrence.
+- A direct uncommitted engineering check against the pinned official classes produced latent
+  shape `[1,1,512]`, three-step prediction/gate shapes `[1,3,512]`, and maximum native-versus-
+  decomposed recurrence error `4.768e-7`. This value must be rerun from the clean implementation
+  commit before entering the experiment registry as a retained artifact.
+- Added a configured source-contract smoke and an EB-JEPA-specific doctor. Hardware passes, but the
+  current Python 3.14.2/PyTorch 2.10.0 runtime differs from upstream's exact Python 3.12/PyTorch
+  2.6 pin and lacks nine declared packages. This blocks an exact upstream training-reproduction
+  claim, not the separately tested source contract.
+- No trained checkpoint, planning result, causal mechanism, circuit, or workspace result follows
+  from this milestone. The next scientific gate remains competent Two Rooms planning across three
+  seeds, followed by a separately preregistered necessity/sufficiency audit.
+
 ## 2026-07-21 — Primary-source SOTA refresh and next experimental boundary
 
 - Verified the July-2026 causal-interpretability frontier against primary papers and official

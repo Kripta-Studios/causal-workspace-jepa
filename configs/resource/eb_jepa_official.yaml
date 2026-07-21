@@ -1,0 +1,29 @@
+name: eb_jepa_official
+status: isolated_runtime_required
+hardware:
+  cpu_cores: 8
+  ram_gb: 32
+  gpu_required: true
+  min_vram_gb: 12
+storage:
+  min_free_gb: 40
+  project_cache_gb: 80
+  tier0_data_gb: 0.5
+  max_single_file_mb: 4096
+runtime:
+  python: 3.12
+  torch: 2.6.0
+  upstream_revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+network:
+  allow_external_datasets: false
+  allow_model_weight_downloads: false
+dependencies:
+  allow_cuda: true
+  allow_docker: false
+  allow_conda: false
+  allow_transformers: false
+  allow_large_simulation_suites: false
+experiments:
+  allow_gpu_tests: true
+  allow_slow_jobs: true
+  max_smoke_runtime_minutes: 60

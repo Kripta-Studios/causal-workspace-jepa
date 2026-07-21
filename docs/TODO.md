@@ -11,8 +11,13 @@
   separate milestone with exact attention reconstruction tests.
 - [ ] Preregister the corrected binding mediator study with independent episode units, train-only
   `k <= 4`, grouped intervals, full-vocabulary behavior, and direct necessity/sufficiency controls.
-- [ ] Integrate/pin official EB-JEPA and reproduce the competent Two Rooms planner across three
-  seeds before registering its recurrent action-circuit audit.
+- [x] Pin official EB-JEPA and implement/test its source-contract adapter with exact one-layer GRU
+  gate decomposition and replay tolerance `1e-6`.
+- [ ] Retain the official-source contract smoke from a clean pushed commit.
+- [ ] Build the isolated Python 3.12/Torch 2.6 EB-JEPA environment and validate support for the RTX
+  5070 Ti compute capability before launching training.
+- [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
+  action-circuit audit.
 
 - [x] Adversarially audit the Qwen Jacobian baseline, model naming, behavior changes, and novelty.
 - [x] Mark H-LLM-01 `UNDER_REAUDIT`; preserve the old result without continuing to claim it.

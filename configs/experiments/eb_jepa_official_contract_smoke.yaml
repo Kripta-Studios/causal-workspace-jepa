@@ -1,0 +1,12 @@
+id: WM-EBJEPA-CONTRACT-001
+status: engineering_smoke
+resource_profile: configs/resource/gpu_12gb.yaml
+source_root: .cache/upstream/eb_jepa
+source_url: https://github.com/facebookresearch/eb_jepa.git
+revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+seed: 23
+device: cpu
+image_size: 65
+steps: 3
+reconstruction_atol: 0.000001
+output_metrics: artifacts/metrics/eb_jepa_contract_smoke.json

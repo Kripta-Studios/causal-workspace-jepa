@@ -135,6 +135,17 @@ Probe-derived physics steering is also established in VideoMAE
 \cite{alam2026physicssteering}; our stronger target is a planning circuit with
 direct necessity, sufficiency, specificity, and closed-loop validation.
 
+For the next published-model experiment, we pin EB-JEPA source revision
+\texttt{\seqsplit{966e61e9285b3a876f49b9774e9720d9a99a7925}}.  Inspection of the executable
+configuration, rather than architectural shorthand, shows that its
+action-conditioned Two Rooms model uses a 512-dimensional Impala encoder,
+identity two-dimensional action encoder, and a one-layer \code{torch.nn.GRU}
+predictor followed by final normalization.  We expose the reset, update,
+candidate, pre-normalization hidden, and post-normalization hidden variables by
+algebraically decomposing the native GRU step.  This is an instrumentation
+boundary only until native-step replay, trained planning competence, and causal
+task mediation are all validated.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests
@@ -822,6 +833,11 @@ schema does not establish shared semantics or shared mechanism.
   \item The LeWorldModel is a source-informed small synthetic model using
   selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.
+  \item The official EB-JEPA source contract is pinned and its recurrent sites
+  are implemented, but no trained checkpoint or local planning result is yet
+  reported.  The host's Python 3.14/PyTorch 2.10 runtime also differs from the
+  upstream Python 3.12/PyTorch 2.6 pin; contract compatibility cannot be
+  reported as an exact training reproduction.
   \item The first JEPA population-transport study is numerically rejected.  The
   action-path study remains validation-only calibration.  Its cancellation/error
   association has a shared-denominator confound, and the parent artifact omits
@@ -841,7 +857,8 @@ TF32 and autocast disabled for derivative studies.  Capital patches edit
 \code{blocks.21.resid\_post} and measure \code{blocks.27.resid\_post} plus 36
 answer logits; the older audit grid additionally uses source layers 7 and 14.
 The small LeWorldModel is source-pinned to official revision
-\texttt{\seqsplit{8edfeb336732b5f3ce7b8b210d0ba370a09e2cac}}.  The reported RTX host uses
+\texttt{\seqsplit{8edfeb336732b5f3ce7b8b210d0ba370a09e2cac}}; the EB-JEPA contract target is
+pinned to \texttt{\seqsplit{966e61e9285b3a876f49b9774e9720d9a99a7925}}.  The reported RTX host uses
 Python 3.14.2, PyTorch 2.10.0+cu128, Transformers 5.3.0, NVIDIA driver 591.86,
 and a 12,227 MiB RTX 5070 Ti Laptop GPU.  Every prompt, entity roster, split,
 donor rule, seed, dtype, site, and threshold is stored in the named YAML

@@ -4,6 +4,27 @@
 > host is the RTX 5070 Ti/32 GB RAM machine and must follow the `gpu_12gb` continuation rules. This
 > document is retained to preserve the original resource boundary and handoff commands.
 
+## Current GPU continuation: EB-JEPA
+
+The official EB-JEPA source is pinned in an ignored checkout and must never be silently upgraded:
+
+```powershell
+$env:PYTHONPATH = "src"
+python scripts/prepare_eb_jepa.py --target .cache/upstream/eb_jepa
+python scripts/doctor_eb_jepa.py
+python scripts/run_experiment.py --config configs/experiments/eb_jepa_official_contract_smoke.yaml
+```
+
+Expected source revision is `966e61e9285b3a876f49b9774e9720d9a99a7925`. The contract smoke
+uses the real upstream Impala encoder and one-layer 512-dimensional GRU, but random weights and CPU
+execution only. Passing it validates shapes, exact gate decomposition (`atol=1e-6`), and intervention
+plumbing; it does not reproduce planning or establish a circuit/workspace.
+
+The official `pyproject.toml` requires Python 3.12 and Torch 2.6. The current host uses Python 3.14
+and Torch 2.10+cu128 on compute capability 12.0, so `doctor_eb_jepa.py` correctly reports
+`BLOCKED_OFFICIAL_ENV`. Build an isolated runtime and verify that Torch 2.6 can execute kernels on
+this GPU before any training launch. Do not alter the working Qwen environment in place.
+
 ## Decision
 
 Do **not** wait to give Codex the project prompt.

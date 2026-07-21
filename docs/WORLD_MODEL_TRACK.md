@@ -14,13 +14,23 @@ Initial implementation order:
 
 The former LeWorldModel placeholder is replaced by a typed, source-traceable small reproduction and
 adapter. `WM-LEWM-001` ran unchanged from clean commit `4dbc388` against official revision
-`8edfeb3...`. Other published adapters remain placeholders.
+`8edfeb3...`. The EB-JEPA placeholder is now replaced by a typed adapter to the pinned official
+source contract at `966e61e...`; published checkpoints/training outcomes remain unexecuted.
 
 Primary-source review now prioritizes official EB-JEPA over further small-model extrapolation. Its
 action-conditioned Two Rooms example is Apache-2.0, designed for a single GPU, includes recurrent
 prediction plus CEM/MPPI, and reports `97 +/- 2%` planning success. The next boundary is to reproduce
 that competence locally, then instrument action, recurrent gates, hidden state, latent prediction,
 planning cost, action choice, and closed-loop success. Publication performance is not local evidence.
+
+Source inspection corrects the predictor description: the official action-conditioned configuration
+uses an Impala encoder with a 512-dimensional output, an identity two-dimensional action encoder,
+and a **one-layer** `torch.nn.GRU`, followed by the encoder's final normalization. The adapter
+decomposes the exact GRU equations into reset, update, candidate, pre-normalization hidden, and
+post-normalization hidden sites. Offline contract tests pass, and a direct check against the pinned
+official classes reconstructed native recurrence within `4.768e-7`; that diagnostic is not yet a
+retained clean-run result. The current runtime differs from upstream's exact Python 3.12/Torch 2.6
+pin, so training reproduction remains `BLOCKED_OFFICIAL_ENV` until an isolated runtime passes.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20

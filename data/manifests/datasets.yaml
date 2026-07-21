@@ -54,6 +54,24 @@ datasets:
     purpose: source-informed small LeWorldModel variant and causal planner audit
     leakage_risks: trajectory_seed_or_goal_overlap
     status: SMOKE_VALIDATED
+  eb_jepa_two_rooms:
+    canonical_name: EB-JEPA Two Rooms
+    source: official on-the-fly generator at facebookresearch/eb_jepa
+    version: 966e61e9285b3a876f49b9774e9720d9a99a7925
+    license: Apache-2.0 upstream code; generated samples
+    checksum: deterministic_seed_and_pinned_source_pending_training_run
+    compressed_size: generated on the fly; no raw download
+    modalities: [two_channel_pixels, continuous_action, xy_state, wall_layout]
+    observation_shape: [2, 65, 65]
+    action_shape: [2]
+    split: official 100000 train and 10000 validation samples with frozen seed per run
+    ood_splits: [fixed_wall, random_wall, heldout_wall_and_door_layouts]
+    download_command: none
+    preprocessing_command: generated online by the official Two Rooms dataloader
+    resource_modes_allowed: [gpu_12gb, gpu_cluster]
+    purpose: competent published action-conditioned planning and recurrent circuit audit
+    leakage_risks: wall_layout_or_planning_episode_overlap
+    status: BLOCKED_OFFICIAL_ENV
   qwen_real:
     canonical_name: Qwen hidden-state interventions
     source: Hugging Face Qwen

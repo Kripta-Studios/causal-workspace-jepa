@@ -2,6 +2,12 @@
 
 ## 2026-07-21
 
+- Pin official EB-JEPA to `966e61e9285b3a876f49b9774e9720d9a99a7925`. Treat the actual
+  action-conditioned predictor as a one-layer 512-dimensional GRU and require native-versus-
+  decomposed recurrence error at most `1e-6` before gate interventions are eligible. Contract
+  validation under Torch 2.10 is an engineering result; exact upstream training still requires an
+  isolated Python 3.12/Torch 2.6 environment and does not inherit a reproduction claim.
+
 - Prioritize official EB-JEPA Two Rooms over further interpretive extrapolation from the weak small
   LeWorldModel planner. First reproduce competent planning, then instrument recurrent action/gate
   routes and audit trajectory, cost, action, and closed-loop mediation across three seeds.

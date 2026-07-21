@@ -50,6 +50,9 @@ PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lew
 PYTHONPATH=src python scripts/generate_qwen_interventions.py --config configs/experiments/qwen_intervention_dataset_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/intervention_jepa_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lewm_small_reproduction_v1.yaml
+PYTHONPATH=src python scripts/prepare_eb_jepa.py --target .cache/upstream/eb_jepa
+PYTHONPATH=src python scripts/doctor_eb_jepa.py
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/eb_jepa_official_contract_smoke.yaml
 PYTHONPATH=src python scripts/capture_qwen_activations.py --config configs/llm/qwen3_4b_selected_layers.yaml
 PYTHONPATH=src python scripts/audit_completion.py
 ```
@@ -124,6 +127,13 @@ match; duplicate or unexpected seeds fail closed. Final metrics/provenance recor
 used and the number of loaded horizon blocks, then remove the progress file. This mechanism was
 implemented after the active `288f663` process imported its code, so it cannot retroactively provide
 partial recovery for that run.
+
+Official EB-JEPA source is fetched only into ignored `.cache/upstream/eb_jepa` and validated at
+commit `966e61e9285b3a876f49b9774e9720d9a99a7925`. The contract smoke imports the real official
+Impala encoder and one-layer GRU, checks native-versus-decomposed recurrence at `1e-6`, and records
+that it uses random weights. It is distinct from exact training reproduction. Upstream pins Python
+3.12 and Torch 2.6; the present Python 3.14/Torch 2.10 runtime is explicitly
+`BLOCKED_OFFICIAL_ENV` for that stronger claim even though the contract works.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
