@@ -42,4 +42,6 @@ and leakage controls. Status: `SMOKE_VALIDATED`.
 
 `LLM-INTDATA-001` is preregistered to generate 432 Qwen3-0.6B outcomes in resumable HDF5 shards.
 Prompt IDs use a fixed 8/2/2 split; donors stay inside recipient splits; output-logit coordinates
-are selected on training prompts only. The data is `IMPLEMENTED_UNVALIDATED` until direct execution.
+are selected on training prompts only. The clean run produced 432 outcomes, a 412,332-byte shard
+with SHA-256 `3cf0411b321c87e07465eeab1fdd53a00d366d257cf8b651d90be18279655e8f`, and 17
+top-token changes. Status: `SMOKE_VALIDATED`.

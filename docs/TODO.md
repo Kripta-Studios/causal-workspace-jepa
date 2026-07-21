@@ -11,6 +11,7 @@
 - [x] Execute the preregistered Qwen3-0.6B instrumentation smoke from clean commit `0d6a37b`.
 - [x] Preregister the 432-outcome Qwen dataset grid, splits, donors, local probes, and storage guard.
 - [ ] Commit the dataset generator, then execute it once from clean code.
+- [x] Commit and execute `LLM-INTDATA-001` from clean commit `0aa80ac`; validate its shard checksum.
 - [ ] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
 - [ ] Directly execute and verify ranked meta-model circuit candidates.
 - [ ] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.

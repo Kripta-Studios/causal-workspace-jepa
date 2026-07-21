@@ -21,6 +21,7 @@ mechanism has been discovered.
 | WM-T0-005 | A multi-task three-seed JEPA fails held-out action, consumer-transfer, shared-sensitivity, and task-counterfactual gates; no shared task-workspace candidate or workspace is found. | Generalization | `configs/experiments/multitask_workspace_study.yaml` | `artifacts/metrics/multitask_workspace_study.json` | `7a9e510e84e7166ce862ca7f52fd598630e8f06a` | `SMOKE_VALIDATED` |
 | LLM-GPT2-003 | Magnitude-6 contrast-direction compositions are almost additive; prompt-local Jacobians predict them, but learned/corpus transports fail on unseen prompts despite excellent seen-prompt scores. | Generalization | `configs/experiments/gpt2_medium_semantic_composition_study.yaml` | `artifacts/metrics/gpt2_medium_semantic_composition_study.json` | `1e57e30218295a6e6802c2db16cf81c353d8d77d` | `SMOKE_VALIDATED` |
 | LLM-QWEN-001 | Pinned Qwen3-0.6B selected-site hooks are deterministic and preserve autograd; five direct residual interventions change downstream hidden states and logits. | Causal mediation | `configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml` | `artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json` | `0d6a37b2f27a862b5d272f254e451fb41b7837e4` | `SMOKE_VALIDATED` |
+| LLM-INTDATA-001 | A split-controlled real Qwen3-0.6B intervention dataset contains 432 nonzero directly executed effects with a checksum-verified HDF5 shard. | Causal mediation | `configs/experiments/qwen_intervention_dataset_v1.yaml` | `artifacts/metrics/qwen3_0_6b_intervention_dataset.json` | `0aa80acc9a6fb17d3fc90dba5b2a5bc358326fb2` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -197,3 +198,17 @@ Interpretation: Hugging Face Qwen hidden-state instrumentation, direct intervent
 autograd work on this host. Resample and patch intentionally share one donor in this acceptance
 test and therefore have identical effects. This result has no held-out effect-prediction split and
 does not support a feature, circuit, meta-model, behavior, J-space, or workspace claim.
+
+`LLM-INTDATA-001` key metrics:
+
+- outcomes/prompts/sites: `432` / `12` / layers `7,14,21`;
+- runtime: `33.85` seconds on RTX 5070 Ti;
+- shard: 412,332 bytes, SHA-256
+  `3cf0411b321c87e07465eeab1fdd53a00d366d257cf8b651d90be18279655e8f`;
+- top-token changes: `17/432` (`3.94%`);
+- mean target-effect L2: `19.65`;
+- mean prompt-local 5-percent linear-approximation MSE: `139.83`.
+
+Interpretation: the real intervention data is generated and leakage/storage gates pass. The large
+local-linear error makes the mixed edit regime discriminating, but no learned predictor has yet
+been evaluated. Dataset existence and nonlinearity do not establish H-LLM-01 or causal compression.

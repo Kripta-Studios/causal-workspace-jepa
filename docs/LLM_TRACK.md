@@ -24,7 +24,8 @@ Dataset continuation:
   classes, disjoint 8/2/2 prompt splits, split-local donors, and training-only target selection.
 - Every example includes a separately executed 5-percent local-linear approximation. Shards are
   ignored HDF5; the checksum manifest and summarized causal-data metrics are committed after a run.
-- Status is `IMPLEMENTED_UNVALIDATED` until execution from clean code.
+- Status is `SMOKE_VALIDATED` from clean commit `0aa80ac`: 432 outcomes, 17 top-token changes, one
+  verified 412 KB shard, and mean local-linear MSE `139.83`.
 
 Current mock implementation:
 

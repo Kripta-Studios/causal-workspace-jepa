@@ -87,6 +87,12 @@ H-LLM-01/02/03/06 tests; dataset-generation metrics do not decide those hypothes
 - Acceptance: exact revision, exactly 432 outcomes, all three splits present, every direct target
   effect nonzero, and stored estimate within budget. Top-token changes are descriptive, not a gate.
 
+Measured result from clean commit `0aa80ac`: all dataset gates passed in `33.85` seconds. The single
+HDF5 shard is 412,332 bytes with SHA-256 `3cf0411b...`; 17/432 edits changed the top token. Mean
+prompt-local linear-approximation MSE was `139.83`. This last value only establishes that the stored
+intervention mix is nonlinear/off-local for the selected targets; H-LLM-01 remains undecided until
+learned models and all registered baselines are evaluated on held-out splits.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

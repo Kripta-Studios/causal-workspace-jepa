@@ -44,8 +44,8 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection; scientific GPU r
   published action-conditioned JEPA reproduction before mechanistic claims.
 - Qwen3-0.6B adapter and smoke runner are `SMOKE_VALIDATED` from clean commit `0d6a37b`. Next build
   the bounded intervention dataset; do not infer a circuit from the instrumentation pass.
-- The 432-outcome split-controlled HDF5 dataset generator is `IMPLEMENTED_UNVALIDATED`; execute only
-  from its clean preregistration commit.
+- The 432-outcome split-controlled HDF5 dataset is `SMOKE_VALIDATED` from clean commit `0aa80ac`.
+  Next preregister and train the meta-model/baselines without changing this observed dataset.
 
 ## Milestone 3+: Scientific Runs
 

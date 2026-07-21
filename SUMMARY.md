@@ -32,6 +32,9 @@
 - Implemented and preregistered `LLM-INTDATA-001`: 432 real direct outcomes, fixed 8/2/2 prompt
   splits, split-local donors, three layers, five operations, a direct small-step local baseline,
   and resumable SHA-256 HDF5 shards under a 128 MB cap. Commit before running.
+- Ran `LLM-INTDATA-001` from clean commit `0aa80ac` in `33.85` seconds. All 432 effects were nonzero,
+  17 changed the top token, and the 412,332-byte HDF5 shard checksum verifies. Prompt-local 5-percent
+  linear MSE was `139.83`; this is a difficult regime, not yet a meta-model result.
 
 ## 2026-07-20
 

@@ -20,6 +20,8 @@ Status: `ACTIVE`.
   adapter method before broader reuse.
 - `ACTIVE`: 432 outcomes cover two small prompt families and selected residual coordinates/sites;
   even a clean run is smoke-scale and cannot establish broad Qwen mechanism generalization.
+- `ACTIVE`: local-linear MSE `139.83` is aggregated across projected hidden/logit targets and very
+  different edit classes. It indicates a hard/off-local regime but is not itself a nonlinear-model win.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.
