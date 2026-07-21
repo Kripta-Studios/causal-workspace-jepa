@@ -93,6 +93,38 @@ prompt-local linear-approximation MSE was `139.83`. This last value only establi
 intervention mix is nonlinear/off-local for the selected targets; H-LLM-01 remains undecided until
 learned models and all registered baselines are evaluated on held-out splits.
 
+## LLM-IJEPA-001 Meta-Model Preregistration
+
+Registered on 2026-07-21 after freezing `LLM-INTDATA-001` and before fitting any predictor.
+
+- Data: the checksum-verified 432-example Qwen dataset is immutable. Training uses prompt split 0
+  while excluding steering feature 256 and all resample edits. Validation uses prompt split 1 with
+  the same exclusions. Primary evaluation is every edit on prompt split 2. Separate stress splits
+  hold out feature 256 and the resample operation on training prompts.
+- Intervention-JEPA: separate 64-unit context/intervention encoders, multiplicative interaction, a
+  24-dimensional meta-state, and a downstream effect predictor. Train seeds `61/67/71` for at most
+  1,000 AdamW steps with validation early stopping. Checkpoint reload must be exactly predictive.
+- Required baselines: no change, training mean effect, linear and bilinear regression, trained MLP,
+  nearest-neighbor retrieval, per-example direct 5-percent local Jacobian, corpus transport learned
+  from training local probes, and a 16-component sparse-dictionary linear transport.
+- H-LLM-01: a seed passes nonlinear advantage only if primary local-Jacobian error is at least 5
+  percent of direct effect power and that seed's Intervention-JEPA primary MSE is lower than the
+  per-example local Jacobian. The replicated decision requires two of three seeds.
+- H-LLM-02: a seed passes causal compression only if primary effect correlation is at least `0.50`
+  and its MSE is below no-change, mean-effect, linear, bilinear, and MLP. The replicated decision
+  requires two of three seeds.
+- H-LLM-03: a seed passes operation generalization only if resample-holdout correlation is at least
+  `0.50` and MSE is below no-change, linear regression, and corpus Jacobian. Two seeds are required.
+- H-LLM-06 direct verification: rank coordinates `0/64/128/256` at layer 14 from model predictions
+  on four entirely new prompts. Execute every predicted edit directly on Qwen. The candidate passes
+  only if precision@1 is one and its observed mean effect exceeds matched magnitude probe-ranked and
+  deterministic random coordinate controls.
+- Circuit boundary: the emitted JSON/GraphML graph is a directly verified ranked-coordinate
+  candidate only. It is not a reconstructed circuit without necessity, sufficiency, edge
+  faithfulness, minimality, and broader held-out tests.
+- Acceptance of the run itself requires finite held-out metrics, exact checkpoint replay, and direct
+  execution of all 16 verification predictions. Hypotheses may validly fail.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

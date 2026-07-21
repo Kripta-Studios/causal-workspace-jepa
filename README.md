@@ -32,6 +32,9 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
   resumable/checksummed sharded HDF5 storage and per-example local-linear direct probes.
+- `IMPLEMENTED_UNVALIDATED`: nonlinear layer-transition and trajectory Intervention-JEPA models,
+  full registered baseline suite, three-seed held-out evaluation, sparse meta-feature audit, and
+  independent direct Qwen verification of ranked coordinate candidates.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments; their former local resource blocker has been removed, but no result is claimed yet.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 

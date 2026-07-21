@@ -20,6 +20,11 @@
   split metadata in every record and choose output-logit coordinates using training prompts only.
 - Attach a direct 5-percent finite-difference execution to every outcome so learned predictors must
   compete with a prompt-local baseline in the later evaluation.
+- Freeze the observed Qwen dataset and test meta-models on three incompatible holdouts: unseen
+  prompts, an unseen steering coordinate, and an unseen operation. Require two-of-three seed
+  replication for numbered hypothesis decisions.
+- Treat the direct-verification graph as a ranked-coordinate candidate, not a circuit, unless later
+  necessity/sufficiency/faithfulness/minimality tests pass.
 
 ## 2026-07-20
 

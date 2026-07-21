@@ -14,6 +14,9 @@
 - [x] Commit and execute `LLM-INTDATA-001` from clean commit `0aa80ac`; validate its shard checksum.
 - [ ] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
 - [ ] Directly execute and verify ranked meta-model circuit candidates.
+- [x] Implement and preregister three-seed neural Intervention-JEPA, trajectory variant, baselines,
+  sparse transport, checkpoint replay, and independent direct-verification logic.
+- [ ] Commit `LLM-IJEPA-001`, then execute once without changing thresholds.
 - [ ] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.
 - [ ] Run the final multi-seed scientific/software audit.
 

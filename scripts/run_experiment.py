@@ -23,6 +23,9 @@ from causal_workspace_jepa.experiments.llm.mock_qwen_intervention_jepa_smoke imp
 from causal_workspace_jepa.experiments.llm.qwen_instrumentation_smoke import (
     run_qwen_instrumentation_smoke,
 )
+from causal_workspace_jepa.experiments.llm.qwen_intervention_jepa_study import (
+    run_qwen_intervention_jepa_study,
+)
 from causal_workspace_jepa.experiments.world_model.manifold_workspace_study import (
     run_manifold_workspace_study,
 )
@@ -82,6 +85,10 @@ def main() -> int:
         return 0
     if experiment_id == "LLM-QWEN-001":
         metrics = run_qwen_instrumentation_smoke(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "LLM-IJEPA-001":
+        metrics = run_qwen_intervention_jepa_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     print(f"NOT_STARTED: no experiment runner is registered for {args.config}", file=sys.stderr)

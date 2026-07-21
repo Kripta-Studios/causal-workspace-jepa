@@ -22,6 +22,10 @@ Status: `ACTIVE`.
   even a clean run is smoke-scale and cannot establish broad Qwen mechanism generalization.
 - `ACTIVE`: local-linear MSE `139.83` is aggregated across projected hidden/logit targets and very
   different edit classes. It indicates a hard/off-local regime but is not itself a nonlinear-model win.
+- `ACTIVE`: bilinear regression has more features than training examples; its implementation uses a
+  dual ridge solve. Comparisons are predictive held-out scores, not parameter-identification claims.
+- `ACTIVE`: direct verification ranks only four residual coordinates at one layer on four new
+  prompts. Even a precision@1 pass is restricted H-LLM-06 evidence, not a full Qwen circuit.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.

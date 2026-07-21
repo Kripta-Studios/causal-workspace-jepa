@@ -52,3 +52,8 @@ nonlinear models are not justified for unit coordinate steering in this tested r
 than a finite-difference Jacobian because it isolates only the interaction residual at the tested
 magnitude. Held-out interaction was `0.043%` of effect power; prompt-local direct addition and
 finite differences dominated all learned models. Seen-prompt bilinear success did not transfer.
+
+`LLM-IJEPA-001` implements the complete registered Qwen comparison: no-change, mean-effect, linear,
+dual-solved bilinear, trained MLP, nearest neighbor, per-example direct local Jacobian, corpus local
+transport, and sparse-dictionary feature transport. None is considered validated until the clean
+held-out run finishes.

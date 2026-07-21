@@ -35,6 +35,9 @@
 - Ran `LLM-INTDATA-001` from clean commit `0aa80ac` in `33.85` seconds. All 432 effects were nonzero,
   17 changed the top token, and the 412,332-byte HDF5 shard checksum verifies. Prompt-local 5-percent
   linear MSE was `139.83`; this is a difficult regime, not yet a meta-model result.
+- Implemented/preregistered `LLM-IJEPA-001`: three neural seeds, layer-transition and trajectory
+  interfaces, exact checkpoint replay, nine baselines, prompt/feature/operation holdouts, and direct
+  execution of every coordinate prediction on four new prompts. Do not run before committing.
 
 ## 2026-07-20
 

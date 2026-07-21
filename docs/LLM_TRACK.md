@@ -27,6 +27,14 @@ Dataset continuation:
 - Status is `SMOKE_VALIDATED` from clean commit `0aa80ac`: 432 outcomes, 17 top-token changes, one
   verified 412 KB shard, and mean local-linear MSE `139.83`.
 
+Meta-model continuation:
+
+- `LLM-IJEPA-001` fixes prompt, coordinate, and operation holdouts and trains three neural
+  Intervention-JEPA seeds against nine baselines.
+- The runner saves/reloads checkpoints, fits a sparse dictionary on training context only, and
+  directly re-executes all 16 coordinate predictions on four new prompts before writing a candidate
+  graph. Status: `IMPLEMENTED_UNVALIDATED` until the clean-code run.
+
 Current mock implementation:
 
 - exposes `resid_pre`, `attn_out`, `mlp_out`, `resid_post`, and `logits`;

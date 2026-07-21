@@ -46,6 +46,8 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection; scientific GPU r
   the bounded intervention dataset; do not infer a circuit from the instrumentation pass.
 - The 432-outcome split-controlled HDF5 dataset is `SMOKE_VALIDATED` from clean commit `0aa80ac`.
   Next preregister and train the meta-model/baselines without changing this observed dataset.
+- `LLM-IJEPA-001` is preregistered and `IMPLEMENTED_UNVALIDATED`; commit before fitting models or
+  executing the independent verification prompts.
 
 ## Milestone 3+: Scientific Runs
 
