@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "command": "python scripts/run_experiment.py --config configs/experiments/eb_jepa_training_resources.yaml",
+  "git_commit": "fed920e2a35d63e1a9eeed2be2e42d9eb5bb4311",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/eb_jepa_training_resources.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 607,
+  "time_utc": "2026-07-21T21:38:22.025418+00:00"
+}

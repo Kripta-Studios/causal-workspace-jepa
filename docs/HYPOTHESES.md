@@ -159,6 +159,13 @@ diagnostic and decides no numbered hypothesis.
 - Any later training configuration must disclose deviations from batch 384, 16 workers, and
   `compile=true`; this profile alone supplies no competence or mechanism evidence.
 
+Final retained profile from clean `fed920e`: `PROFILED`, all five diagnostic gates pass in `93.08`
+seconds. Eager batches 64, 128, 256, and 384 all complete two finite updating steps; their peak
+reserved CUDA memory is `1,063,256,064`, `2,080,374,784`, `3,988,783,104`, and `5,821,693,952`
+bytes. Batch 384 is the recommendation under the frozen 10-GB ceiling. The batch-64 compile arm
+creates an `OptimizedModule` and trains, but records zero Dynamo frames and zero unique graphs on
+the `unroll` entrypoint. No numbered scientific hypothesis is decided.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

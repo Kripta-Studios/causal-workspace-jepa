@@ -37,7 +37,9 @@ Status: `ACTIVE`.
   have been checked, and the native/decomposed replay test says nothing about which learned gate or
   subspace mediates planning. Exact Torch 2.6 GPU execution is now resolved as impossible on this
   SM120 host; Torch 2.10/cu128 is a tested, declared compatibility deviation. Remaining dependencies,
-  training, and planning competence are still open.
+  training and planning competence are still open. A clean capacity profile now shows the official
+  batch 384 fits in 5.82 GB reserved, but also that `torch.compile(jepa)` captures zero graphs when
+  upstream invokes the custom `unroll` method.
 - Ensemble variance falls under the action-subspace intervention even as control worsens. Future
   uncertainty work needs intervention-aware calibration or epistemic/OOD objectives, not raw member
   disagreement alone.

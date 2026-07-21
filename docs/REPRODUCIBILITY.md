@@ -195,6 +195,10 @@ OOMs, and compiler state cannot leak between measurements. It profiles two compl
 updates for eager batches 64/128/256/384 and records Dynamo frames/graphs for the official
 `torch.compile(jepa)` followed by `jepa.unroll(...)` path at batch 64. A zero-graph wrapper is not
 reported as successful compilation. Raw generated batches are not persisted.
+The retained clean `fed920e` run passed all five gates in `93.08` seconds. Batch 384 peaked at
+`5,821,693,952` reserved bytes and is retained for training. The compile arm returned an
+`OptimizedModule` but zero Dynamo frames/graphs; later source-faithful configs may leave the flag
+enabled, while reports must state that the observed `unroll` path remained eager.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an

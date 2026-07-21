@@ -72,9 +72,10 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   the separately named constrained planner matched official MPPI exactly when bounds were disabled
   (maximum action/loss difference `0.0`) and produced zero cost-input or returned-action violations
   with the `2.45` bound enabled. This validates the correction, not trained planning competence.
-- `IMPLEMENTED_NOT_RUN`: `WM-EBJEPA-TRAIN-RESOURCE-001` isolates official eager batches
-  64/128/256/384 and the batch-64 `torch.compile` path. It records memory, throughput, finite
-  updates, and Dynamo graph counts before the three-seed training configuration is frozen.
+- `PROFILED`: `WM-EBJEPA-TRAIN-RESOURCE-001` ran from clean `fed920e`. Every eager batch through
+  the official 384 completed; batch 384 peaked at 5,821,693,952 reserved bytes. The official
+  `torch.compile(jepa)` wrapper completed two `unroll` updates but Dynamo captured zero frames and
+  zero graphs, so compilation is ineffective on the executed training entrypoint.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

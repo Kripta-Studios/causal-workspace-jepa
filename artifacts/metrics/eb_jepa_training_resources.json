@@ -1,0 +1,620 @@
+{
+  "all_passed": true,
+  "claim": "This is a capacity/compiler diagnostic for the pinned official Two Rooms training step. It determines an executable local batch and records whether the custom unroll entrypoint actually produces a torch.compile graph.",
+  "evidence_level": "Availability",
+  "experiment_id": "WM-EBJEPA-TRAIN-RESOURCE-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 349.747,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "orchestration_wall_seconds": 93.08254470000975,
+  "passes": {
+    "all_jobs_returned_structured_payloads": true,
+    "every_success_has_memory_and_update": true,
+    "minimum_eager_batch_trains": true,
+    "sm120_compatible_runtime": true,
+    "source_revision_and_cleanliness": true
+  },
+  "probe_stderr": [
+    {
+      "batch_size": 64,
+      "mode": "eager",
+      "stderr": ""
+    },
+    {
+      "batch_size": 128,
+      "mode": "eager",
+      "stderr": ""
+    },
+    {
+      "batch_size": 256,
+      "mode": "eager",
+      "stderr": ""
+    },
+    {
+      "batch_size": 384,
+      "mode": "eager",
+      "stderr": ""
+    },
+    {
+      "batch_size": 64,
+      "mode": "compile",
+      "stderr": ""
+    }
+  ],
+  "profiles": [
+    {
+      "dataset": {
+        "batch_shapes": [
+          [
+            64,
+            2,
+            17,
+            65,
+            65
+          ],
+          [
+            64,
+            2,
+            17
+          ],
+          [
+            64,
+            2,
+            17
+          ],
+          [
+            64,
+            1
+          ],
+          [
+            64,
+            1
+          ]
+        ],
+        "generation_seconds": 4.119859900005395,
+        "image_size": 65
+      },
+      "profile": {
+        "batch_size": 64,
+        "dataset_n_steps": 91,
+        "dtype": "bfloat16",
+        "mode": "eager",
+        "prediction_steps": 8,
+        "sample_length": 17,
+        "steps_requested": 2
+      },
+      "runtime": {
+        "arch_list": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "capability": [
+          12,
+          0
+        ],
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128"
+      },
+      "runtime_seconds": 7.263403299992206,
+      "source": {
+        "clean": true,
+        "revision": "966e61e9285b3a876f49b9774e9720d9a99a7925"
+      },
+      "training": {
+        "baseline_allocated_bytes": 49017856,
+        "baseline_reserved_bytes": 62914560,
+        "encoder_parameters": 1426096,
+        "gradients_finite": true,
+        "losses_finite": true,
+        "parameter_delta": 0.002001352608203888,
+        "peak_allocated_bytes": 1040839680,
+        "peak_reserved_bytes": 1063256064,
+        "prediction_shape": [
+          64,
+          512,
+          9,
+          1,
+          1
+        ],
+        "predictor_parameters": 793600,
+        "status": "SUCCESS",
+        "step_rows": [
+          {
+            "jepa_loss": 7.682165622711182,
+            "peak_allocated_bytes": 1009235968,
+            "peak_reserved_bytes": 1027604480,
+            "probe_loss": 288.3791198730469,
+            "seconds": 1.2094219000136945,
+            "step": 0,
+            "trajectories_per_second": 52.91784446707581
+          },
+          {
+            "jepa_loss": 7.719703674316406,
+            "peak_allocated_bytes": 1040839680,
+            "peak_reserved_bytes": 1063256064,
+            "probe_loss": 94.6814193725586,
+            "seconds": 0.10218620000523515,
+            "step": 1,
+            "trajectories_per_second": 626.307661863551
+          }
+        ],
+        "steps_completed": 2
+      }
+    },
+    {
+      "dataset": {
+        "batch_shapes": [
+          [
+            128,
+            2,
+            17,
+            65,
+            65
+          ],
+          [
+            128,
+            2,
+            17
+          ],
+          [
+            128,
+            2,
+            17
+          ],
+          [
+            128,
+            1
+          ],
+          [
+            128,
+            1
+          ]
+        ],
+        "generation_seconds": 8.62437969999155,
+        "image_size": 65
+      },
+      "profile": {
+        "batch_size": 128,
+        "dataset_n_steps": 91,
+        "dtype": "bfloat16",
+        "mode": "eager",
+        "prediction_steps": 8,
+        "sample_length": 17,
+        "steps_requested": 2
+      },
+      "runtime": {
+        "arch_list": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "capability": [
+          12,
+          0
+        ],
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128"
+      },
+      "runtime_seconds": 11.614999200013699,
+      "source": {
+        "clean": true,
+        "revision": "966e61e9285b3a876f49b9774e9720d9a99a7925"
+      },
+      "training": {
+        "baseline_allocated_bytes": 84835328,
+        "baseline_reserved_bytes": 100663296,
+        "encoder_parameters": 1426096,
+        "gradients_finite": true,
+        "losses_finite": true,
+        "parameter_delta": 0.0020013574976474047,
+        "peak_allocated_bytes": 1938273280,
+        "peak_reserved_bytes": 2080374784,
+        "prediction_shape": [
+          128,
+          512,
+          9,
+          1,
+          1
+        ],
+        "predictor_parameters": 793600,
+        "status": "SUCCESS",
+        "step_rows": [
+          {
+            "jepa_loss": 7.196186542510986,
+            "peak_allocated_bytes": 1909250048,
+            "peak_reserved_bytes": 2071986176,
+            "probe_loss": 297.836181640625,
+            "seconds": 0.9824979000259191,
+            "step": 0,
+            "trajectories_per_second": 130.28017667683895
+          },
+          {
+            "jepa_loss": 7.884124755859375,
+            "peak_allocated_bytes": 1938273280,
+            "peak_reserved_bytes": 2080374784,
+            "probe_loss": 105.7171859741211,
+            "seconds": 0.13232169998809695,
+            "step": 1,
+            "trajectories_per_second": 967.3394463002991
+          }
+        ],
+        "steps_completed": 2
+      }
+    },
+    {
+      "dataset": {
+        "batch_shapes": [
+          [
+            256,
+            2,
+            17,
+            65,
+            65
+          ],
+          [
+            256,
+            2,
+            17
+          ],
+          [
+            256,
+            2,
+            17
+          ],
+          [
+            256,
+            1
+          ],
+          [
+            256,
+            1
+          ]
+        ],
+        "generation_seconds": 18.016130700008944,
+        "image_size": 65
+      },
+      "profile": {
+        "batch_size": 256,
+        "dataset_n_steps": 91,
+        "dtype": "bfloat16",
+        "mode": "eager",
+        "prediction_steps": 8,
+        "sample_length": 17,
+        "steps_requested": 2
+      },
+      "runtime": {
+        "arch_list": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "capability": [
+          12,
+          0
+        ],
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128"
+      },
+      "runtime_seconds": 20.77915029998985,
+      "source": {
+        "clean": true,
+        "revision": "966e61e9285b3a876f49b9774e9720d9a99a7925"
+      },
+      "training": {
+        "baseline_allocated_bytes": 158418944,
+        "baseline_reserved_bytes": 174063616,
+        "encoder_parameters": 1426096,
+        "gradients_finite": true,
+        "losses_finite": true,
+        "parameter_delta": 0.002001360058784485,
+        "peak_allocated_bytes": 3801395200,
+        "peak_reserved_bytes": 3988783104,
+        "prediction_shape": [
+          256,
+          512,
+          9,
+          1,
+          1
+        ],
+        "predictor_parameters": 793600,
+        "status": "SUCCESS",
+        "step_rows": [
+          {
+            "jepa_loss": 5.315906524658203,
+            "peak_allocated_bytes": 3771339264,
+            "peak_reserved_bytes": 3982491648,
+            "probe_loss": 282.41510009765625,
+            "seconds": 0.6067897000175435,
+            "step": 0,
+            "trajectories_per_second": 421.8924612474446
+          },
+          {
+            "jepa_loss": 6.105680465698242,
+            "peak_allocated_bytes": 3801395200,
+            "peak_reserved_bytes": 3988783104,
+            "probe_loss": 116.4239273071289,
+            "seconds": 0.1745124000008218,
+            "step": 1,
+            "trajectories_per_second": 1466.9444692686277
+          }
+        ],
+        "steps_completed": 2
+      }
+    },
+    {
+      "dataset": {
+        "batch_shapes": [
+          [
+            384,
+            2,
+            17,
+            65,
+            65
+          ],
+          [
+            384,
+            2,
+            17
+          ],
+          [
+            384,
+            2,
+            17
+          ],
+          [
+            384,
+            1
+          ],
+          [
+            384,
+            1
+          ]
+        ],
+        "generation_seconds": 27.66448289999971,
+        "image_size": 65
+      },
+      "profile": {
+        "batch_size": 384,
+        "dataset_n_steps": 91,
+        "dtype": "bfloat16",
+        "mode": "eager",
+        "prediction_steps": 8,
+        "sample_length": 17,
+        "steps_requested": 2
+      },
+      "runtime": {
+        "arch_list": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "capability": [
+          12,
+          0
+        ],
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128"
+      },
+      "runtime_seconds": 30.498137799993856,
+      "source": {
+        "clean": true,
+        "revision": "966e61e9285b3a876f49b9774e9720d9a99a7925"
+      },
+      "training": {
+        "baseline_allocated_bytes": 232002560,
+        "baseline_reserved_bytes": 247463936,
+        "encoder_parameters": 1426096,
+        "gradients_finite": true,
+        "losses_finite": true,
+        "parameter_delta": 0.002001360058784485,
+        "peak_allocated_bytes": 5578304000,
+        "peak_reserved_bytes": 5821693952,
+        "prediction_shape": [
+          384,
+          512,
+          9,
+          1,
+          1
+        ],
+        "predictor_parameters": 793600,
+        "status": "SUCCESS",
+        "step_rows": [
+          {
+            "jepa_loss": 4.783040523529053,
+            "peak_allocated_bytes": 5541477376,
+            "peak_reserved_bytes": 5815402496,
+            "probe_loss": 305.3109130859375,
+            "seconds": 0.7237234999774955,
+            "step": 0,
+            "trajectories_per_second": 530.5893756551233
+          },
+          {
+            "jepa_loss": 5.480922698974609,
+            "peak_allocated_bytes": 5578304000,
+            "peak_reserved_bytes": 5821693952,
+            "probe_loss": 90.0566635131836,
+            "seconds": 0.2351057000050787,
+            "step": 1,
+            "trajectories_per_second": 1633.3079121080643
+          }
+        ],
+        "steps_completed": 2
+      }
+    },
+    {
+      "compile": {
+        "called_entrypoint": "unroll",
+        "effective_graph_capture": false,
+        "frames_ok": 0,
+        "frames_total": 0,
+        "unique_graphs": 0,
+        "wrapper_type": "OptimizedModule"
+      },
+      "dataset": {
+        "batch_shapes": [
+          [
+            64,
+            2,
+            17,
+            65,
+            65
+          ],
+          [
+            64,
+            2,
+            17
+          ],
+          [
+            64,
+            2,
+            17
+          ],
+          [
+            64,
+            1
+          ],
+          [
+            64,
+            1
+          ]
+        ],
+        "generation_seconds": 4.3926433000015095,
+        "image_size": 65
+      },
+      "profile": {
+        "batch_size": 64,
+        "dataset_n_steps": 91,
+        "dtype": "bfloat16",
+        "mode": "compile",
+        "prediction_steps": 8,
+        "sample_length": 17,
+        "steps_requested": 2
+      },
+      "runtime": {
+        "arch_list": [
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90",
+          "sm_100",
+          "sm_120"
+        ],
+        "capability": [
+          12,
+          0
+        ],
+        "cuda_runtime": "12.8",
+        "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128"
+      },
+      "runtime_seconds": 12.855768200010061,
+      "source": {
+        "clean": true,
+        "revision": "966e61e9285b3a876f49b9774e9720d9a99a7925"
+      },
+      "training": {
+        "baseline_allocated_bytes": 49017856,
+        "baseline_reserved_bytes": 62914560,
+        "encoder_parameters": 1426096,
+        "gradients_finite": true,
+        "losses_finite": true,
+        "parameter_delta": 0.002001352608203888,
+        "peak_allocated_bytes": 1040839680,
+        "peak_reserved_bytes": 1063256064,
+        "prediction_shape": [
+          64,
+          512,
+          9,
+          1,
+          1
+        ],
+        "predictor_parameters": 793600,
+        "status": "SUCCESS",
+        "step_rows": [
+          {
+            "jepa_loss": 7.682165622711182,
+            "peak_allocated_bytes": 1009235968,
+            "peak_reserved_bytes": 1027604480,
+            "probe_loss": 288.3791198730469,
+            "seconds": 1.1732050999999046,
+            "step": 0,
+            "trajectories_per_second": 54.551416457365555
+          },
+          {
+            "jepa_loss": 7.719703674316406,
+            "peak_allocated_bytes": 1040839680,
+            "peak_reserved_bytes": 1063256064,
+            "probe_loss": 94.6814193725586,
+            "seconds": 0.13151149998884648,
+            "step": 1,
+            "trajectories_per_second": 486.6494565526806
+          }
+        ],
+        "steps_completed": 2
+      }
+    }
+  ],
+  "scientific_boundary": "Capacity, finite losses, and parameter updates do not establish learned dynamics, planning competence, a circuit, or a workspace.",
+  "seed": 607,
+  "status": "PROFILED",
+  "summary": {
+    "compile_effective_graph_capture": false,
+    "compile_error_category": null,
+    "compile_probe_status": "SUCCESS",
+    "compile_unique_graphs": 0,
+    "official_default_batch_size": 384,
+    "official_default_eager_status": "SUCCESS",
+    "recommended_eager_batch_size": 384,
+    "safe_reserved_budget_bytes": 10000000000,
+    "successful_eager_batch_sizes": [
+      64,
+      128,
+      256,
+      384
+    ]
+  }
+}

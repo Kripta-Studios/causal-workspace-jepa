@@ -36,10 +36,14 @@
   With bounds disabled, maximum official/corrected action and loss differences were exactly `0.0`.
   With the `2.45` bound enabled, both cost-input and returned-action violations were `0/32`; maxima
   were `2.45000005` and `2.44999909`. This validates the controlled planner arm only, not competence.
-- Implemented and preregistered an isolated official-training resource profile, not yet executed.
-  It covers eager batches 64/128/256/384 plus the configured `torch.compile` wrapper at batch 64,
-  including Dynamo graph counters because upstream trains through custom `unroll` rather than
-  `forward`. This will distinguish effective compilation from a successful but bypassed wrapper.
+- `WM-EBJEPA-TRAIN-RESOURCE-001` ran from clean `fed920e`; all five registered diagnostic gates
+  passed. Eager batches 64/128/256/384 all completed two finite updating steps. Peak reserved memory
+  rose from `1,063,256,064` bytes at batch 64 to `5,821,693,952` at batch 384, so the official batch
+  remains below the frozen 10-GB safety ceiling on this GPU.
+- The configured `torch.compile(jepa)` path created an `OptimizedModule` and completed normally,
+  but the actual two `unroll` updates produced exactly zero Dynamo frames and zero unique graphs.
+  Thus `compile=true` is an ineffective wrapper on the executed upstream training path; this is a
+  new engineering/reproduction finding, not learned-model or mechanistic evidence.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 

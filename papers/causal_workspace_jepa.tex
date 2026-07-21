@@ -202,7 +202,13 @@ The official configuration applies \code{torch.compile(jepa)} but subsequently
 invokes the custom \code{unroll} method rather than \code{forward}; therefore a
 batch-64 compiler arm records Dynamo frame and unique-graph counts, so creation
 of a wrapper cannot by itself be reported as effective compilation.  This
-diagnostic is not yet executed and decides no scientific hypothesis.
+The clean \code{fed920e} run passes all five diagnostic gates.  Every eager
+batch through 384 completes two finite updates; peak reserved memory rises from
+$1.063$ GB at batch 64 to $5.822$ GB at batch 384, below the frozen 10-GB
+ceiling.  The compiler arm returns an \code{OptimizedModule} and completes both
+updates, but records zero Dynamo frames and zero unique graphs.  Thus the
+configured wrapper is ineffective on the executed \code{unroll} path.  This
+decides no scientific hypothesis.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,

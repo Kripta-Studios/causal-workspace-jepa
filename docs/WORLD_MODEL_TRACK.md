@@ -71,6 +71,12 @@ bounded cost/return violations are both zero. The maximum observed cost-input an
 norms are `2.45000005` and `2.44999909`. This correction is eligible for a competence comparison,
 but supplies no learned-model, circuit, or workspace evidence.
 
+The retained official-training capacity profile passes from clean `fed920e`. All eager batches
+through the official 384 execute finite updates, and batch 384 peaks at 5.82 GB reserved, below the
+preregistered 10-GB ceiling. The configured `torch.compile(jepa)` call returns an optimized wrapper,
+but two real `unroll` updates capture zero Dynamo frames and zero graphs. Training can preserve the
+flag for configuration fidelity, but cannot claim compiled execution on this path.
+
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
 PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,

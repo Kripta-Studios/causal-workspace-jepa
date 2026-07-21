@@ -12,9 +12,9 @@
 - Preserve official MPPI as the reproduction baseline, add a separately named constraint-corrected
   implementation, and report competence under both. Do not interpret recurrent/action circuits if
   success depends on out-of-contract actions.
-- Retain an isolated official-training profile before long runs: eager batches through 384, a
-  10-GB reserved-memory safety ceiling, and Dynamo graph counters on the configured custom
-  `unroll` call. Freeze any batch/worker/compiler deviation before training the three seeds.
+- The isolated official-training profile is retained from clean `fed920e`: batch 384 uses 5.82 GB
+  reserved under the 10-GB ceiling, while the configured compile wrapper captures zero graphs on
+  `unroll`. Freeze batch 384 and report this ineffective-compile boundary in three-seed training.
 - Implement ordered multi-site Qwen interventions and treatment/restoration replay tests. Then
   preregister a module-only binding mediator benchmark comparing population/local Jacobians, HVP,
   AtP*, probes, magnitude, random controls, and direct patching. Do not call it a JEPA experiment.

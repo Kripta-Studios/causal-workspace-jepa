@@ -7,6 +7,11 @@ Status: `ACTIVE`.
   includes SM120 and passes the matched kernels. Local GPU runs must declare this dependency
   deviation; exact-pin CPU checks and source revision remain separate controls.
 
+- `MITIGATED_CONFIGURATION_NOOP`: official `compile=true` creates an `OptimizedModule`, but the
+  executed custom `unroll` training path captured zero Dynamo frames/graphs in the clean profile.
+  Preserve the flag for source-config fidelity and report execution as eager unless a future
+  source change compiles the actual entrypoint.
+
 - `MITIGATED`: the bounded required suite passes `AUDIT-COMPLETE-001`, but a completion audit is not
   scientific validation. Both reconstructed circuit candidates remain rejected and the workspace
   hypothesis remains null in the tested systems.

@@ -13,6 +13,11 @@
   and returned actions. Training/planning reports must label `official_unbounded_mppi` and
   `constraint_corrected_mppi` separately.
 
+- Keep the official training batch size 384 on the RTX 5070 Ti: the clean profile peaks at 5.82 GB
+  reserved under the preregistered 10-GB ceiling. Preserve `compile=true` when reproducing the
+  source config, but state that the custom `unroll` entrypoint captured zero Dynamo graphs; do not
+  attribute throughput or equivalence to compiled execution.
+
 - Install the official Two Rooms path with the committed isolated lock and `--no-deps` editable
   source install. Never run upstream `uv sync` in the SM120 environment because it would replace
   Torch 2.10/cu128 with the incompatible Torch 2.6 pin. Record the upstream omission of `scipy`,
