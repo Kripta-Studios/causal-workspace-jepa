@@ -1,0 +1,16 @@
+id: WM-EBJEPA-TRAIN-RESOURCE-001
+status: engineering_profile
+resource_profile: configs/resource/gpu_12gb.yaml
+source_root: .cache/upstream/eb_jepa
+revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
+probe_script: scripts/probe_eb_jepa_training_resources.py
+seed: 607
+steps: 2
+eager_batch_sizes: [64, 128, 256, 384]
+compile_batch_size: 64
+minimum_eager_batch: 64
+official_default_batch_size: 384
+safe_reserved_budget_bytes: 10000000000
+timeout_seconds: 900
+output_metrics: artifacts/metrics/eb_jepa_training_resources.json

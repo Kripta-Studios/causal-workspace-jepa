@@ -136,6 +136,29 @@ seeds. With the constraint disabled, official and corrected actions and losses a
 returned-action violations; their observed maxima are `2.45000005` and `2.44999909`. No numbered
 scientific hypothesis is decided.
 
+## WM-EBJEPA-TRAIN-RESOURCE-001 Engineering Preregistration
+
+Registered on 2026-07-21 before measuring official-size batches. This is a capacity/compiler
+diagnostic and decides no numbered hypothesis.
+
+- Pinned source/runtime: clean EB-JEPA `966e61e...`, Python 3.12, Torch 2.10.0+cu128, SM120.
+- Exact executed training semantics: 65x65 Two Rooms trajectories of length 17, horizon eight,
+  Impala encoder, one-layer 512-dimensional GRU, VC/IDM/time regularizer coefficients 8/16/12/1,
+  BF16 autocast, GradScaler, clipping, AdamW, and the detached XY-probe update.
+- Isolated eager processes use batch sizes 64, 128, 256, and the official default 384; each runs two
+  optimizer steps and records generation time, step throughput, loss/gradient finiteness, parameter
+  change, and allocated/reserved CUDA peaks. A 10,000,000,000-byte reserved-memory ceiling defines
+  the locally recommended eager batch.
+- One isolated batch-64 process exercises the official default `torch.compile` call and records
+  Dynamo frame/graph counters around the actual custom `unroll` entrypoint. A successful wrapper
+  with zero captured graphs is retained as an ineffective-compile result; success or a structured
+  compiler failure is diagnostic data, not a gate that may be hidden by eager fallback.
+- Acceptance requires structured results for every job, the pinned clean source/runtime, a finite
+  updating eager batch 64, and valid memory/update fields for every successful job. It does not
+  require batch 384 or compilation to succeed.
+- Any later training configuration must disclose deviations from batch 384, 16 workers, and
+  `compile=true`; this profile alone supplies no competence or mechanism evidence.
+
 ## LLM-QWEN-001 Instrumentation Preregistration
 
 Registered on 2026-07-21 before downloading weights or executing any Qwen forward pass. This is an

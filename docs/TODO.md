@@ -32,6 +32,8 @@
 - [x] Commit/push and retain `WM-EBJEPA-MPPI-CORRECTION-001` from clean `f58308a`; all five gates
   pass across 32 seeds with exact unbounded equivalence and zero bounded violations;
   preserve the original official implementation as the reproduction baseline.
+- [ ] Commit/push and run `WM-EBJEPA-TRAIN-RESOURCE-001` unchanged to profile official eager batch
+  384 and the default `torch.compile` path before freezing long training.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
 

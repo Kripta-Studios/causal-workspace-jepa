@@ -195,6 +195,15 @@ $2.45$ bound, both cost-input and returned-action violations are zero, with
 maxima $2.45000005$ and $2.44999909$, respectively.  This provides no
 planning-competence evidence by itself.
 
+Before long training, we register an isolated resource profile over eager
+batches 64, 128, 256, and the official default 384.  Each process executes two
+complete JEPA and detached-probe updates and records CUDA peaks and throughput.
+The official configuration applies \code{torch.compile(jepa)} but subsequently
+invokes the custom \code{unroll} method rather than \code{forward}; therefore a
+batch-64 compiler arm records Dynamo frame and unique-graph counts, so creation
+of a wrapper cannot by itself be reported as effective compilation.  This
+diagnostic is not yet executed and decides no scientific hypothesis.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests

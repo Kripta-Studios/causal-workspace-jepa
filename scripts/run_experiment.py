@@ -134,6 +134,14 @@ def main() -> int:
         metrics = run_eb_jepa_mppi_correction(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
+    if experiment_id == "WM-EBJEPA-TRAIN-RESOURCE-001":
+        from causal_workspace_jepa.experiments.world_model.eb_jepa_training_resources import (
+            run_eb_jepa_training_resources,
+        )
+
+        metrics = run_eb_jepa_training_resources(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
     if experiment_id == "WM-POPULATION-JACOBIAN-001":
         metrics = run_lewm_population_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))

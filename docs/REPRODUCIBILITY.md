@@ -190,6 +190,12 @@ The retained run started from clean `f58308aac5815342ca12d0565cf98d8eef5fd99c` a
 the bounded cost-input/returned-action violation counts are both zero across 32 seeds. The original
 official planner remains available as a separately labeled baseline.
 
+`WM-EBJEPA-TRAIN-RESOURCE-001` runs every candidate batch in a fresh Python process so CUDA peaks,
+OOMs, and compiler state cannot leak between measurements. It profiles two complete JEPA-plus-probe
+updates for eager batches 64/128/256/384 and records Dynamo frames/graphs for the official
+`torch.compile(jepa)` followed by `jepa.unroll(...)` path at batch 64. A zero-graph wrapper is not
+reported as successful compilation. Raw generated batches are not persisted.
+
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an
 upstream layer-0 token treatment to replay the donor and a later residual restoration to replay the

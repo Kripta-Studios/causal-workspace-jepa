@@ -36,6 +36,10 @@
   With bounds disabled, maximum official/corrected action and loss differences were exactly `0.0`.
   With the `2.45` bound enabled, both cost-input and returned-action violations were `0/32`; maxima
   were `2.45000005` and `2.44999909`. This validates the controlled planner arm only, not competence.
+- Implemented and preregistered an isolated official-training resource profile, not yet executed.
+  It covers eager batches 64/128/256/384 plus the configured `torch.compile` wrapper at batch 64,
+  including Dynamo graph counters because upstream trains through custom `unroll` rather than
+  `forward`. This will distinguish effective compilation from a successful but bypassed wrapper.
 
 ## 2026-07-21 — High-resolution action-path calibration completed and closed
 
