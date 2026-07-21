@@ -110,6 +110,9 @@ coordinates to CPU, and releases each graph. The orchestration wrapper stopped w
 20-minute default, but the child process continued; monitor the configured JSON path and original
 PID before relaunching. The start-time provenance object already records commit `288f663` and
 `git_dirty: false`, so later documentation edits cannot change the code/config identity of that run.
+Before its result was available, adversarial review identified the shared decoded-direct-effect
+denominator in cancellation and normalized local error. This is a scientific-design issue rather
+than an implementation change: v2 remains a numerical calibration, and protected test stays locked.
 
 Future action-path launches write an ignored sibling `*.progress.json` after every completed
 seed/horizon. The write uses a temporary sibling followed by atomic replacement. Resume is permitted
@@ -118,6 +121,8 @@ match; duplicate or unexpected seeds fail closed. Final metrics/provenance recor
 used and the number of loaded horizon blocks, then remove the progress file. This mechanism was
 implemented after the active `288f663` process imported its code, so it cannot retroactively provide
 partial recovery for that run.
+Seed completion additionally requires an explicit marker, both horizon blocks, and the derived
+horizon-amplification summary; the presence of horizon 4 alone cannot skip final aggregation.
 
 The working paper is validated separately from scientific experiments:
 

@@ -338,7 +338,7 @@ Try to do the experiments that are possible with the hardware you got
 ## Current RTX 5070 Ti continuation (2026-07-21)
 
 The project is now on the intended 12 GB GPU host. `configs/resource/gpu_12gb.yaml` is active;
-Qwen3-0.6B causal studies, a bounded Qwen3-4B capture, and the faithful small LeWorldModel study
+Qwen3-0.6B causal studies, a bounded Qwen3-4B capture, and the source-informed small LeWorldModel study
 have been executed from clean commits. Qwen3-30B-A3B remains a cluster-scale target.
 
 High-resolution recurrent-JEPA action-path calibration must stream exact Jacobians and immediately
@@ -354,6 +354,11 @@ seed/horizon. A restart resumes only from the same experiment ID, exact config b
 stale progress aborts. The v2 process launched from `288f663` predates this protection. Before the
 next high-resolution launch, benchmark bounded outer/chunk batch pairs on the target GPU rather than
 guessing from VRAM alone.
+
+Do not promote a converged cancellation/local-error correlation directly to protected test. Both
+normalized quantities divide by the decoded direct-effect norm. First run a separately registered
+validation audit with unnormalized residuals, partial association, and effect-size-conditioned
+permutations.
 
 The working scientific paper is built locally with:
 

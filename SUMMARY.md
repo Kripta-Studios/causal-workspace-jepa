@@ -8,6 +8,9 @@
 - A resumed final artifact records whether progress was used and how many seed/horizon blocks were
   loaded. Temporary progress JSON is ignored and removed only after final metrics and provenance
   are written.
+- A seed is resumably complete only with an explicit `seed_complete` marker, both horizon blocks,
+  and the horizon-4/horizon-1 amplification summary. This closes the crash window between the last
+  expensive block and the derived seed summary.
 - This hardening applies to future launches. The already running clean v2 process imported commit
   `288f663` before the change and therefore still writes only at completion.
 
@@ -25,12 +28,13 @@
 - Consolidated the strongest defensible findings in `docs/RESULTS.md`: direct capital donor patches
   cause behavior changes; the old nonlinear learned advantage was a BF16 precision artifact;
   vector/logit/behavior endpoints rank transports differently; population averaging helps in one
-  bounded relation; fixed control/predictivity onset rules fail; the genuine target-encoder JEPA
-  fails 0/3; gauge-safe dual coupling is a valid control; and no tested JEPA circuit/workspace
-  replicates.
+  bounded relation; registered threshold/grid onset rules fail; one target-encoder JEPA variant
+  fails 0/3; gauge-safe dual coupling is a valid control; and no tested JEPA circuit/workspace proxy
+  meets its acceptance gate.
 - Adversarial manuscript review forbids novelty/SOTA, circuit, workspace, causal-compression, or
   cross-domain-equivalence claims. No positive result reaches circuit-reconstruction level 5 or a
-  broad level-6 mechanism. Decoded action-path cancellation remains a calibration-stage candidate.
+  broad level-6 mechanism. It also identified that cancellation and normalized local error share
+  the net-effect denominator; quadrature convergence alone cannot authorize protected testing.
 
 ## 2026-07-21 — JEPA action-path calibration implementation
 
@@ -196,7 +200,7 @@
   was `0.326`, above the required `0.25`. The local-error jump and correlation-margin subgates did
   pass, but partial conjunctions do not count. H-CROSS-03 is therefore false.
 - Bounded conclusion: causal donor control crystallizes sharply in late Qwen3-0.6B layers and the
-  late population transport is semantically aligned, while the preregistered claim that control
+  late population transport is answer-row aligned, while the preregistered claim that control
   coincides with a strong local-to-population reversal is rejected. MechLens covers late factual
   crystallization and Jacobian Lens covers population averaging; the remaining layer-conditioned
   conjunction needs a new relation/model confirmation before any novelty or SOTA claim.
@@ -396,7 +400,8 @@
   precision@1 was zero, and the effect was slightly below the random coordinate control. H-LLM-06
   failed and `qwen_meta_circuit` is recorded as `REJECTED`; no Qwen circuit or workspace is claimed.
 - Verified the official LeWorldModel paper/code, MIT license, and source revision `8edfeb3...`.
-  Replaced the placeholder with a faithful small reproduction retaining end-to-end pixels, action
+  Replaced the placeholder with a source-informed small reproduction of selected design elements,
+  retaining end-to-end pixels, action
   embedding, AdaLN-zero autoregression, next-embedding MSE, and SIGReg; added PixelTinyMaze, a typed
   adapter, layerwise probes, paired-action interventions, norm-matched planning controls, ensemble
   uncertainty, five consumers, and restricted circuit graph auditing.

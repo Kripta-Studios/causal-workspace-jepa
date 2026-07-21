@@ -14,9 +14,10 @@ principal controls, tables, related work, reproducibility details, and limitatio
 and YAML files remain authoritative for every threshold and hyperparameter.
 
 1. **Direct Qwen donor patches cause behavior changes (causal mediation).** In
-   `LLM-CAPITAL-PATCH-001`, 93.6% of 612 layer-21 capital patches changed the top token and the donor
-   capital became the answer for 50% of held-out test pairs. This establishes a real causal dataset
-   within one prompt family, not a circuit or reusable semantic feature.
+   `LLM-CAPITAL-PATCH-001`, 93.6% of 612 layer-21 capital patches changed the top token, but this
+   aggregate is 90.2% training outcomes. Donor transfer is `.580/.500/.500` on
+   train/validation/test. This establishes a real causal dataset within one prompt family, not a
+   circuit or reusable semantic feature; the held-out splits contain only six recipient clusters.
 2. **The earlier learned nonlinear advantage was a precision artifact (specificity audit).** The
    corrected FP32 audit measured exact-JVP/quadratic MSE `0.6143/0.07870`, versus `3.1899` for the
    legacy learned bottleneck and `120.8994` for the old BF16 one-sided secant. Zero of three learned
@@ -25,37 +26,45 @@ and YAML files remain authoritative for every threshold and hyperparameter.
    raw linear regression, and population transport rank differently for full hidden vectors,
    selected logits, and answer candidates. No single representation-space MSE is accepted as
    behavioral faithfulness.
-4. **Population Jacobian averaging can help in a bounded Qwen relation (generalization).** On 30
+4. **Population Jacobian averaging can help in a bounded Qwen relation (specificity).** On 30
    previously unused capital-validation outcomes, the train-context mean improved normalized logit
    MSE from `.737` to `.354` and candidate agreement from `.300` to `.533`, with an averaging-size
    curve and answer-row null. Population averaging is prior art, and quadratic Taylor still won
    direct candidate agreement (`.833`).
-5. **There is no universal registered control/predictivity boundary (negative generalization).**
-   State one-shot and country-code experiments passed competence, derivative, and semantic-null
-   gates but falsified exact-onset or directional-lag rules. Population usefulness preceded the 50%
-   donor-control boundary on country validation and coincided with it on test.
-6. **The genuine target-encoder Intervention-JEPA failed (negative generalization).** All three
-   seeds failed H-LLM-01B/02/04; every target latent missed the effective-rank floor and even the
-   oracle target-embedding decoder had normalized MSE above `1.0` on held-out entities.
+5. **The registered threshold-and-four-layer-grid boundary rules fail.** State one-shot and
+   country-code experiments passed competence, derivative, and answer-row-null gates but falsified
+   exact-onset or directional-lag rules. Population usefulness preceded the 50% donor-control
+   boundary on country validation and coincided with it on test. This does not exclude a different
+   continuous boundary or denser layer grid.
+6. **One target-encoder Intervention-JEPA variant failed on held-out entities.** All three
+   optimization seeds failed H-LLM-01B/02/04; every target latent missed the registered
+   effective-rank floor, though that floor is not decisive, and the stronger oracle
+   target-embedding decoder had normalized MSE above `1.0`.
 7. **Gauge-safe dual coupling is valid, but no Qwen geometry/circuit was localized (specificity).**
    A compensated coordinate transform changed naive Euclidean overlap by about `120x` while leaving
    `J D^T` invariant to `1.68e-16`. The real pooling/context-specificity hypotheses failed.
-8. **The small LeWorldModel reproduces prediction, not a replicated circuit or workspace.** All
-   three modeling seeds passed; only the raw restricted-circuit flag passed seed 107, the planner
-   was too weak for a useful mechanism claim, and no post-hoc workspace-readout proxy passed matched
-   controls. The raw flag is not accepted as evidence-level-5 circuit reconstruction.
-9. **Decoded recurrent action-path cancellation is a pending candidate, not a discovery.** The first
-   validation calibration found large cancellation in some seed/horizon pairs, but high-resolution
-   quadrature is required for seeds 101/103. Protected test goals remain untouched.
+8. **The source-informed small LeWorldModel passes prediction gates, not circuit/workspace gates.**
+   All three modeling seeds passed; only the raw restricted-circuit flag passed seed 107, the
+   planner was too weak for a useful mechanism claim, and no post-hoc workspace-readout proxy
+   passed matched controls. The raw flag is not accepted as evidence-level-5 circuit
+   reconstruction, and even a positive post-hoc proxy would not itself establish a workspace.
+9. **Decoded recurrent action-path cancellation is a pending candidate, not a discovery.** The
+   first validation calibration found large cancellation in some seed/horizon pairs, but
+   high-resolution quadrature is required for seeds 101/103. Cancellation and normalized local
+   error also share the direct-effect denominator, so a new validation control is required before
+   protected test goals can be considered. Those goals remain untouched.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
-registered tests in the studied models and controls; it is not a universal claim about JEPAs.
+registered proxy tests in the studied models and controls; it is not a universal claim about JEPAs.
+Some historical metric JSON files label the intended held-out test class as `Generalization` or use
+eligibility text in `evidence_level`; the table below reports the strongest positive evidence now
+accepted and keeps run/numerical/eligibility dispositions in `Status`.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and weak candidate cancellation/error association; it makes no scientific claim. | Availability/calibration | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |
-| LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is semantically specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Generalization | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |
+| WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and a shared-denominator-confounded cancellation/error association; it makes no scientific claim. | Availability | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |
+| LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is answer-row specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Specificity | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | `12fce84` | `SMOKE_VALIDATED` |
 | CTRL-GPU-001 | GPU resource guard and CUDA runtime detect the RTX 5070 Ti host; the cross-platform reproducibility audit accepts missing ignored shards only as skipped. | Availability | `configs/resource/gpu_12gb.yaml` | stdout only | `99854eb` plus portability fix | `SMOKE_VALIDATED` |
 | WM-T0-001 | Tiny action-conditioned JEPA predicts PointMass2D latent transitions better than mean, no-action, and shuffled-action controls in the CPU smoke setting. | Availability | `configs/experiments/tiny_jepa_smoke.yaml` | `artifacts/metrics/tiny_jepa_smoke.json` | `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4` | `SMOKE_VALIDATED` |
@@ -73,16 +82,16 @@ registered tests in the studied models and controls; it is not a universal claim
 | LLM-QWEN-JVP-AUDIT-001 | FP32 exact JVP agrees with central differences and preliminarily dominates the learned bottleneck, but the audit failed its absolute semantic-endpoint gate and therefore cannot decide H-LLM-01. | Specificity | `configs/experiments/qwen_jvp_audit_v1.yaml` | `artifacts/metrics/qwen_jvp_audit_v1.json` | `686368e792598aaeb3d0aff7349d34f8f70a3c36` | `REJECTED` numerical gate |
 | LLM-QWEN-JVP-AUDIT-002 | Exact FP32 JVP and quadratic Taylor beat all three legacy conditional-bottleneck seeds after source semantics and derivative convergence pass; restricted H-LLM-01 is withdrawn. | Specificity | `configs/experiments/qwen_jvp_audit_v2.yaml` | `artifacts/metrics/qwen_jvp_audit_v2.json` | `a779ff6ea617f77e2b0c252c79b5a1a1fa66cfdc` | `COMPLETED_NEGATIVE` |
 | LLM-CAPITAL-PATCH-001 | Entity-disjoint layer-21 donor patches change Qwen's top-token capital answer in 93.6% of cases and transfer the donor answer in 50% of held-out test pairs; exact and quadratic controls disagree between vector and behavior metrics. | Causal mediation | `configs/experiments/qwen_capital_patch_dataset_v1.yaml` | `artifacts/metrics/qwen_capital_patch_dataset_v1.json` | `95018cb326d5604ed45f128338f66f51b13d04ae` | `SMOKE_VALIDATED`; behavior eligible |
-| LLM-TARGET-IJEPA-001 | A genuine target-encoder Intervention-JEPA fails all three replicated held-out-entity hypotheses; even oracle target-embedding decode fails, while exact JVP, linear ridge, and quadratic Taylor win different fidelity endpoints. | Generalization | `configs/experiments/qwen_target_encoder_ijepa_v1.yaml` | `artifacts/metrics/qwen_target_ijepa_v1.json` | `3086cd484fb819c3a11525ee9886542049780955` | `COMPLETED_NEGATIVE` |
+| LLM-TARGET-IJEPA-001 | One target-encoder Intervention-JEPA variant fails all three held-out-entity hypotheses across optimization seeds; even oracle target-embedding decode fails, while exact JVP, linear ridge, and quadratic Taylor win different fidelity endpoints. | Availability | `configs/experiments/qwen_target_encoder_ijepa_v1.yaml` | `artifacts/metrics/qwen_target_ijepa_v1.json` | `3086cd484fb819c3a11525ee9886542049780955` | `COMPLETED_NEGATIVE` |
 | LLM-CONTEXT-GEOMETRY-001 | Real Qwen rejects fixed pooling/context-specificity gaps but confirms that naive Euclidean overlap is gauge-sensitive while paired `J D^T` is invariant; a train-mean Jacobian unexpectedly beats matched local finite transport. | Specificity | `configs/experiments/qwen_context_geometry_v1.yaml` | `artifacts/metrics/qwen_context_geometry_v1.json` | `49d68b72200328657683b9760a084e0d952948b1` | `COMPLETED_MIXED` |
-| LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Generalization | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
-| LLM-ELEMENT-LAYER-GEOMETRY-001 | A second factual relation confirms a sharp late donor-control transition and semantically specific late population transport, but rejects the preregistered strong local/population inversion and cross-relation conjunction. | Generalization | `configs/experiments/qwen_element_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_element_layer_geometry_v1.json` | `5d8de9a` | `COMPLETED_MIXED` |
-| LLM-STATE-LAYER-GEOMETRY-001 | The state-abbreviation confirmation is behavior-ineligible despite valid derivatives; all hypotheses remain undecided. | Availability/eligibility rejection | `configs/experiments/qwen_state_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_layer_geometry_v1.json` | `27ebe43` | `REJECTED_BEHAVIOR_GATE` |
-| LLM-STATE-ONESHOT-LAYER-GEOMETRY-001 | A behavior-competent one-shot state study confirms late population semantic specificity but rejects exact control/population onset equality and the strict early-control gate. | Generalization | `configs/experiments/qwen_state_oneshot_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_oneshot_layer_geometry_v1.json` | `c1daa46` | `COMPLETED_MIXED` |
-| WM-POPULATION-JACOBIAN-001 | The recurrent-JEPA port is rejected because fixed quadrature fails; its provisional action-vertex averaging signal is not accepted, while the global mean fails correlation and semantic specificity. | Numerical rejection | `configs/experiments/lewm_population_geometry_v1.yaml` | `artifacts/metrics/lewm_population_geometry_v1.json` | `89b2e14` | `REJECTED_NUMERICAL_GATE` |
-| WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
+| LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Specificity | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
+| LLM-ELEMENT-LAYER-GEOMETRY-001 | A second factual relation confirms a sharp late donor-control transition and answer-row-specific late population transport, but rejects the preregistered strong local/population inversion and cross-relation conjunction. | Specificity | `configs/experiments/qwen_element_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_element_layer_geometry_v1.json` | `5d8de9a` | `COMPLETED_MIXED` |
+| LLM-STATE-LAYER-GEOMETRY-001 | The state-abbreviation confirmation is behavior-ineligible despite valid derivatives; all hypotheses remain undecided. | Availability | `configs/experiments/qwen_state_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_layer_geometry_v1.json` | `27ebe43` | `REJECTED_BEHAVIOR_GATE` |
+| LLM-STATE-ONESHOT-LAYER-GEOMETRY-001 | A behavior-competent one-shot state study confirms late population answer-row specificity but rejects exact control/population onset equality and the strict early-control gate. | Specificity | `configs/experiments/qwen_state_oneshot_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_state_oneshot_layer_geometry_v1.json` | `c1daa46` | `COMPLETED_MIXED` |
+| WM-POPULATION-JACOBIAN-001 | The recurrent-JEPA port is rejected because fixed quadrature fails; its provisional action-vertex averaging signal is not accepted, while the global mean fails correlation and action-label specificity. | Availability | `configs/experiments/lewm_population_geometry_v1.yaml` | `artifacts/metrics/lewm_population_geometry_v1.json` | `89b2e14` | `REJECTED_NUMERICAL_GATE` |
+| WM-LEWM-001A | A source-informed small LeWorldModel using selected design elements learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Availability | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
-| WM-LEWM-001C | Donor decoded recovery and the full restricted action-to-planner circuit pass only one seed; the replicated gate and every workspace candidate fail. | Circuit reconstruction | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json`; rejected graph | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `COMPLETED_NEGATIVE`; graph `REJECTED` |
+| WM-LEWM-001C | Donor decoded recovery and the raw restricted action-to-planner flag pass only one seed; the two-of-three gate and every workspace proxy fail, so no circuit is accepted. | Causal mediation | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json`; rejected graph | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `COMPLETED_NEGATIVE`; graph `REJECTED` |
 | LLM-QWEN-CAPTURE-001 | The pinned Qwen3-4B revision fits bounded bfloat16 inference and yields a budgeted, checksummed five-layer/three-position activation capture. | Availability | `configs/llm/qwen3_4b_selected_layers.yaml` | `artifacts/metrics/qwen3_4b_selected_activation_capture.json` | `55087ea1fe12bc361830eb501aed86aaf850e50e` | `SMOKE_VALIDATED` |
 | AUDIT-COMPLETE-001 | All 14 explicit bounded repository criteria and the corrected 68-test/Ruff/provenance/JVP checks pass while retaining the circuit rejections and workspace null. | Availability | none | `artifacts/metrics/completion_audit.json` | clean execution `98a9e62` | `SMOKE_VALIDATED` |
 
@@ -468,7 +477,7 @@ result.
 - ignored shard: 30,887,576 bytes, SHA-256
   `13f3792ab221f2a795d9529010cfef4da6e622cf21ecc70e08e46e0570224235`.
 
-Interpretation: direct donor-answer control and semantically aligned population transport generalize
-to a third factual relation, but population advantage is not universally ordered after majority
-donor control. This rejects the preregistered bounded-direction account. It does not establish what
+Interpretation: direct donor-answer control and answer-row-aligned population transport occur in
+a third factual relation, but the registered majority-control ordering fails across the studied
+splits and four-layer grid. This rejects the preregistered bounded-direction account. It does not establish what
 causes either transition, a component circuit, a JEPA meta-model, workspace geometry, or SOTA.

@@ -11,9 +11,15 @@
 - Report endpoint disagreement as a result rather than selecting one favorable metric: full hidden
   vectors, selected logits, and answer behavior can rank exact JVP, quadratic Taylor, population
   transport, and learned predictors differently.
-- Treat decoded JEPA action-path cancellation as a calibration-stage candidate. Large cancellation
-  ratios or validation correlations cannot become evidence until high-resolution quadrature
-  converges, prospective thresholds are committed, and untouched test goals pass unchanged.
+- Treat decoded JEPA action-path cancellation as a calibration-stage candidate. Cancellation and
+  normalized local error share the net-effect denominator, so raw validation correlation is
+  structurally confounded. High-resolution convergence is necessary but not sufficient: a new
+  validation-only preregistration must pass unnormalized/partial association and effect-size-
+  conditioned nulls before any protected-test protocol can be considered.
+- Use evidence-level columns only for the six declared hierarchy levels. Eligibility, numerical
+  rejection, and run completion belong in separate status columns. Report the strongest positive
+  evidence accepted, not the most ambitious held-out design attempted; the current paper has no
+  accepted level-6 mechanism result.
 - Supersede the positive interpretation of `LLM-IJEPA-001` H-LLM-01 while preserving its original
   run. A BF16 one-sided secant is not an exact Jacobian and may be a numerical-noise baseline.
   Resolve this through the preregistered FP32 exact-JVP audit before making any nonlinear claim.
@@ -66,7 +72,7 @@
 - Preserve the unchanged `LLM-IJEPA-001` recorded values and original preregistered decisions as
   history, but apply the v2 corrected disposition: H-LLM-01 `WITHDRAWN`; graph `REJECTED`. Neither
   the old nor corrective gates were revised after their scientific outcomes.
-- Integrate LeWorldModel first as a faithful small reproduction at official revision `8edfeb3...`
+- Integrate LeWorldModel first as a source-informed small reproduction of selected design elements at official revision `8edfeb3...`
   instead of claiming benchmark equivalence without installing the larger external framework and
   datasets. Preserve its two-loss recipe and record every deliberate scaling difference.
 - Do not checkpoint-select LeWM by prediction MSE alone: engineering checks showed that this rewards

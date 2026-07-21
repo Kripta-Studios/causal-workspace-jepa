@@ -43,8 +43,8 @@ in Qwen and Action-Conditioned JEPA Models}
 \begin{abstract}
 We conduct a falsification-first sequence of preregistered studies and an
 explicitly post-discovery confirmation of finite hidden-state
-interventions in Qwen3-0.6B and a faithful small reproduction of an
-action-conditioned LeWorldModel.  An FP32 autograd audit overturns an apparent
+interventions in Qwen3-0.6B and a source-informed small model using selected
+design elements of an action-conditioned LeWorldModel.  An FP32 autograd audit overturns an apparent
 nonlinear advantage obtained with a bfloat16 secant: exact Jacobian--vector
 products and second-order Taylor transport outperform the legacy learned
 bottleneck on the registered intervention grid.  On behavior-changing capital
@@ -52,11 +52,13 @@ donor patches, a train-context mean Jacobian predicts held-out finite logit
 effects better in aggregate and in four of six recipient contexts, although
 second-order transport remains stronger on direct answer behavior.  Across
 element, state-abbreviation, and country-code tasks, population transports
-become semantically aligned in late layers, while preregistered hypotheses of
-an exact control--predictivity boundary or a fixed directional lag fail.  A
-target-encoder Intervention-JEPA fails its preregistered target effective-rank
-and causal-fidelity gates across three seeds.  In the world-model track, predictive reproduction
-succeeds, but circuit and workspace candidates do not replicate; a recurrent
+become answer-row-aligned in late layers, while preregistered threshold-and-grid
+rules for an exact control--predictivity boundary or fixed directional lag fail.
+One EMA/stop-gradient target-encoder Intervention-JEPA variant fails its
+preregistered target effective-rank and causal-fidelity gates across three
+optimization seeds.  In the world-model track, predictive gates pass, but
+circuit and workspace candidates do not meet their two-of-three-seed acceptance
+rules; a recurrent
 action-path result remains a numerical calibration rather than protected
 evidence.  These results provide bounded causal and numerical diagnostics, not
 a new Jacobian method, a circuit discovery, a workspace claim, or a
@@ -98,12 +100,13 @@ Our contribution is primarily an audit and a set of falsifications:
   transports across factual relations and layers.  Population averaging can
   improve finite-effect prediction, but preregistered common-onset and lag
   hypotheses fail across these Qwen3-0.6B prompt families and layer grid.
-  \item We train a genuine EMA/stop-gradient target-encoder
+  \item We train one EMA/stop-gradient target-encoder
   Intervention-JEPA.  It fails target effective-rank and held-out causal-fidelity gates
   in all three seeds.
-  \item We reproduce a small action-conditioned LeWorldModel and directly
+  \item We train a source-informed small action-conditioned LeWorldModel and directly
   audit intervention, circuit, planning, and workspace criteria.  Predictive
-  gates replicate, while the proposed circuit and workspace do not.
+  gates pass in three seeds, while the proposed circuit and workspace fail
+  their registered acceptance gates.
   \item We define a decoded action-path cancellation diagnostic for recurrent
   JEPA transitions.  The current measurements are explicitly restricted to
   calibration data until numerical convergence and protected-test gates are
@@ -177,8 +180,14 @@ applicable.  Calibration results cannot decide hypotheses; failed numerical or
 competence gates cannot be rescued by post-result threshold changes.
 
 Table~\ref{tab:disposition} gives the disposition of the central studies.
-``Generalization'' labels the registered held-out design, not generality beyond
-the stated model and prompt family.
+The evidence column reports the strongest positive evidence actually accepted,
+not the most ambitious test attempted.  Run and eligibility states remain in
+their own columns.  No row in this paper establishes level-6 mechanism
+generalization.
+Some historical JSON artifacts used \code{evidence\_level} for the intended
+held-out test class or inserted eligibility text.  Those immutable records are
+preserved, but the re-audited tables here apply the hierarchy above and keep
+eligibility in run status.
 
 \begin{table*}[t]
 \centering
@@ -192,15 +201,15 @@ Experiment & Registered object & Run status & Evidence level & Scientific dispos
 \midrule
 LLM-QWEN-JVP-AUDIT-002 & exact local audit & Smoke validated & \level{Specificity} & FP32 derivative gates pass; prior nonlinear-advantage claim withdrawn. \\
 LLM-CAPITAL-PATCH-001 & donor residual patches & Smoke validated & \level{Causal mediation} & Direct behavior-changing dataset established. \\
-LLM-TARGET-IJEPA-001 & learned intervention transport & Completed negative & \level{Generalization} & H-LLM-01B/02/04 fail in 3/3 seeds. \\
-LLM-POPULATION-JACOBIAN-001 & population transport & Completed positive & \level{Generalization} & Validation confirmation passes within one factual relation. \\
+LLM-TARGET-IJEPA-001 & learned intervention transport & Completed negative & \level{Availability} & H-LLM-01B/02/04 fail in 3/3 seeds; no learned mechanism accepted. \\
+LLM-POPULATION-JACOBIAN-001 & population transport & Completed positive & \level{Specificity} & Answer-row-null specificity passes within one factual relation. \\
 LLM-CONTEXT-GEOMETRY-001 & context pairing and gauge & Completed mixed & \level{Specificity} & Gauge-safe coupling passes; real pooling and context-specific transport fail. \\
-LLM-ELEMENT-LAYER-GEOMETRY-001 & layer geometry & Completed mixed & \level{Generalization} & H-LLM-08/GEO-09 pass; H-GEO-08/CROSS-03 fail. \\
+LLM-ELEMENT-LAYER-GEOMETRY-001 & layer geometry & Completed mixed & \level{Specificity} & H-LLM-08/GEO-09 pass; H-GEO-08/CROSS-03 fail. \\
 LLM-STATE-LAYER-GEOMETRY-001 & zero-shot state layer geometry & Behavior rejected & \level{Availability} & Clean-answer gate fails; all hypotheses undecided. \\
-LLM-STATE-ONESHOT-LAYER-GEOMETRY-001 & layer onset & Completed mixed & \level{Generalization} & Competence/numerics pass; registered boundary alignment fails. \\
-LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 & bounded directional lag & Completed mixed & \level{Generalization} & Control and semantic specificity pass; lag and cross-relation claims fail. \\
-WM-LEWM-001 & small LeWorldModel reproduction & Failed registered gates & \level{Causal mediation} & Prediction replicates; full causal/circuit/workspace bundle does not. \\
-WM-POPULATION-JACOBIAN-001 & recurrent population transport & Rejected numerical gate & \level{Eligibility rejection} & No protected scientific claim is admissible. \\
+LLM-STATE-ONESHOT-LAYER-GEOMETRY-001 & layer onset & Completed mixed & \level{Specificity} & Competence/numerics and row-null specificity pass; boundary alignment fails. \\
+LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 & bounded directional lag & Completed mixed & \level{Specificity} & Control and answer-row specificity pass; lag and cross-relation claims fail. \\
+WM-LEWM-001 & source-informed small model & Failed registered gates & \level{Causal mediation} & Prediction passes; full causal/circuit/workspace bundle does not. \\
+WM-POPULATION-JACOBIAN-001 & recurrent population transport & Rejected numerical gate & \level{Availability} & Numerical diagnostic only; no protected scientific claim is admissible. \\
 WM-ACTION-PATH-CALIBRATION-001/002 & decoded path cancellation & Calibration only & \level{Availability} & Validation-only numerical and prospective-threshold calibration. \\
 \bottomrule
 \end{tabularx}
@@ -391,9 +400,14 @@ BF16 one-sided secant & 120.899 & 17.610 & 0.241 & \level{Specificity} \\
 The capital dataset passes clean-accuracy and numerical gates.  Clean answer
 accuracy is $0.917/0.667/1.000$ on train/validation/test; the deliberately low
 six-entity validation estimate is disclosed rather than filtered.  Across all
-612 patches, 93.6\% change the top token.  Donor-capital transfer is
+612 patches, 93.6\% change the top token.  This aggregate is 90.2\% training
+outcomes (552 train and 30 per held-out split), so it is descriptive rather
+than a held-out estimate.  Donor-capital transfer is
 $0.580/0.500/0.500$ on the three splits.  Thus these are genuine causal
 behavioral interventions, not synthetic surrogate labels.
+They are capped at causal mediation: the dataset does not include matched
+irrelevant subspaces, covariance-matched corruptions, or incompatible semantic
+donors needed to establish intervention specificity.
 
 The approximation ranking depends on the endpoint.  Exact JVP has normalized
 combined target-effect MSE $0.5296$ and answer-candidate agreement $0.351$,
@@ -413,12 +427,14 @@ NMSE rank the two approximations differently.}
 \toprule
 Quantity/method & Value & Split/scope & Evidence level \\
 \midrule
-Top-token change & 0.936 & all 612 patches & \level{Causal mediation} \\
+Top-token change & 0.936 & all; train-weighted & \level{Causal mediation} \\
+Donor transfer & 0.580 & train & \level{Causal mediation} \\
+Donor transfer & 0.500 & validation & \level{Causal mediation} \\
 Donor transfer & 0.500 & test & \level{Causal mediation} \\
-Exact-JVP combined NMSE & 0.5296 & all patches & \level{Specificity} \\
-Exact-JVP candidate agreement & 0.351 & all patches & \level{Specificity} \\
-Quadratic combined NMSE & 0.6391 & all patches & \level{Specificity} \\
-Quadratic candidate agreement & 0.743 & all patches & \level{Specificity} \\
+Exact-JVP combined NMSE & 0.5296 & all patches & \level{Availability} \\
+Exact-JVP candidate agreement & 0.351 & all patches & \level{Availability} \\
+Quadratic combined NMSE & 0.6391 & all patches & \level{Availability} \\
+Quadratic candidate agreement & 0.743 & all patches & \level{Availability} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -455,7 +471,7 @@ Quadratic candidate agreement & 0.743 & all patches & \level{Specificity} \\
 \end{minipage}
 \caption{Registered capital-validation averaging curves.  Medians at 1--16
 contexts use 128 fixed draws; 24 contexts is the single full training mean.
-Evidence level: \level{Generalization} within one relation/model.}
+Evidence level: \level{Specificity} within one relation/model.}
 \label{fig:averaging}
 \end{figure}
 
@@ -495,17 +511,17 @@ and bounded dispositions rather than population-level significance claims.
 \toprule
 Transport & NMSE & Corr. & Candidate agr. & Evidence level \\
 \midrule
-Exact local JVP & 0.737 & 0.835 & 0.300 & \level{Generalization} \\
-Train population JVP & \textbf{0.354} & 0.866 & 0.533 & \level{Generalization} \\
-Quadratic Taylor & 0.774 & \textbf{0.910} & \textbf{0.833} & \level{Generalization} \\
+Exact local JVP & 0.737 & 0.835 & 0.300 & \level{Specificity} \\
+Train population JVP & \textbf{0.354} & 0.866 & 0.533 & \level{Specificity} \\
+Quadratic Taylor & 0.774 & \textbf{0.910} & \textbf{0.833} & \level{Specificity} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Layerwise semantic specificity does not imply a universal boundary}
+\subsection{Registered threshold-and-grid boundary rules do not generalize}
 
 The element, one-shot state, and country-code studies all pass their numerical
-audits and exhibit semantically aligned late-layer population transport beyond
+audits and exhibit answer-row-aligned late-layer population transport beyond
 answer-row nulls.  The earlier zero-shot state study passed numerics but failed
 its competence gate and decided no hypothesis.  The stronger
 temporal-geometric hypotheses do not survive.
@@ -520,9 +536,10 @@ Country-code direct donor transfer progresses as
 $0,.367,.867,1.0$ on validation and $0,.667,.967,1.0$ on test over layers
 18/21/24/26.  At test layers 21 and 26, population NMSE/agreement are
 $0.2949/0.5667$ and $0.01470/0.9667$, versus row-null p05 MSE
-$1.350/1.679$ and p95 agreement $0.233/0.100$.  Semantic specificity is strong,
-but the fixed control--predictivity ordering is false for these registered
-prompt families and the four-layer grid on Qwen3-0.6B.
+$1.350/1.679$ and p95 agreement $0.233/0.100$.  Answer-row specificity is
+strong, but the registered threshold-and-grid ordering rules fail across these
+prompt families and splits on Qwen3-0.6B.  This does not exclude a different
+continuous boundary or a result on a denser layer grid.
 
 \begin{table*}[t]
 \centering
@@ -534,10 +551,10 @@ the named hypothesis, not a circuit or workspace.}
 \toprule
 Relation & Strong claim & Held-out outcome & Evidence level & Interpretation \\
 \midrule
-Elements & H-LLM-08; H-GEO-08/09; H-CROSS-03 & Pass; fail/pass; fail & \level{Generalization} & Donor control and row specificity pass; strict inversion/conjunction fail. \\
+Elements & H-LLM-08; H-GEO-08/09; H-CROSS-03 & Pass; fail/pass; fail & \level{Specificity} & Donor control and row specificity pass; strict inversion/conjunction fail. \\
 States, zero-shot & H-LLM-10; H-GEO-10/11; H-CROSS-04 & Undecided & \level{Availability} & Clean validation/test accuracy $0.667/0.667$ fails the frozen behavior gate. \\
-States, one-shot & H-LLM-12; H-GEO-12/13; H-CROSS-05 & Fail; fail/pass; fail & \level{Generalization} & Validation population onset lags control by one grid step; test aligns. \\
-Countries, one-shot & H-LLM-14; H-GEO-14/15; H-CROSS-06 & Pass; fail/pass; fail & \level{Generalization} & Population usefulness precedes 50\% donor takeover on validation; row specificity passes. \\
+States, one-shot & H-LLM-12; H-GEO-12/13; H-CROSS-05 & Fail; fail/pass; fail & \level{Specificity} & Validation population onset lags control by one grid step; test aligns. \\
+Countries, one-shot & H-LLM-14; H-GEO-14/15; H-CROSS-06 & Pass; fail/pass; fail & \level{Specificity} & Population usefulness precedes 50\% donor takeover on validation; row specificity passes. \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -578,16 +595,17 @@ Countries, one-shot & H-LLM-14; H-GEO-14/15; H-CROSS-06 & Pass; fail/pass; fail 
 \caption{Country-code direct control and population advantage over the best
 local/quadratic MSE.  Validation population advantage crosses zero at layer 21
 before direct donor transfer reaches 0.5 at layer 24; test crosses both at
-layer 21.  Evidence level: \level{Generalization} for the registered negative
-directional-lag decision.}
+layer 21.  Evidence level: \level{Specificity}; the registered directional-lag
+rule is negative.}
 \label{fig:country-layer}
 \end{figure}
 
-\subsection{The genuine Intervention-JEPA fails}
+\subsection{One target-encoder Intervention-JEPA variant fails}
 
 All three target-encoder seeds fail H-LLM-01B, H-LLM-02, and H-LLM-04.  The
 predicted meta-latent effective rank is $8.64$--$9.75$, but every EMA target
-latent falls below the registered floor of 8 ($6.81$--$7.28$).  More
+latent falls below the registered floor of 8 ($6.81$--$7.28$).  That floor may
+also reject a useful compact representation and is not decisive by itself.  More
 decisively, an oracle decoder given the true target embedding has held-out
 normalized MSE $1.065$--$1.753$, showing that failure already exists at the
 target-representation/decoder stage rather than only in the predictor.  This
@@ -599,8 +617,8 @@ Comparator rankings again split by endpoint: exact JVP is best on full-vector
 fidelity ($0.599$ normalized MSE), raw linear ridge is best on logit fidelity
 ($0.329$), and quadratic Taylor is best on direct answer-set behavior ($0.700$
 agreement).  PCA-bilinear transport extrapolates catastrophically
-($2.04\times10^{11}$ normalized MSE).  These are negative generalization
-results for one architecture and prompt family, not a universal impossibility
+($2.04\times10^{11}$ normalized MSE).  These are negative held-out results
+for one variant, architecture, dataset split, and prompt family, not a universal impossibility
 result for intervention-conditioned JEPAs.
 
 \subsection{Gauge-safe coupling is a control, not a discovered mechanism}
@@ -618,26 +636,29 @@ feature or prove a workspace.
 
 \section{Results: action-conditioned JEPA}
 
-\subsection{Prediction replicates; circuit and workspace do not}
+\subsection{Prediction gates pass; circuit and workspace gates do not}
 
 The small LeWorldModel predictive recipe passes its modeling gates in seeds
 101, 103, and 107.  Test embedding MSE ranges from $0.134$ to $0.292$,
 clean/shuffled-action ratios from $0.155$ to $0.643$, and latent standard
-deviation from $0.762$ to $0.862$.  This supports a bounded faithful small
-reproduction; it is not an official checkpoint or benchmark reproduction.
+deviation from $0.762$ to $0.862$.  This supports a source-informed small model
+reproducing selected design elements; it is not an official checkpoint or
+benchmark reproduction.
 
 The broader experiment correctly retains status
 \code{FAILED\_REGISTERED\_GATES}.  Hidden patches can recover latent
 displacement, but decoded donor-state recovery is negative in two seeds.  The
 raw registered restricted-circuit flag passes only seed 107; weak planner
-competence and lack of replication prevent treating that flag as a valid
+competence and failure of the two-of-three-seed rule prevent treating that flag as a valid
 level-5 circuit.  The clean planner succeeds on only one of 12 cases per seed,
 so planner changes are not evidence of useful planning.  The proxy workspace
 readout candidate passes in zero seeds, and matched random subspaces can damage
 the post-hoc consumers more strongly.  We therefore report: no
-candidate passed the registered workspace tests in the studied models and
-controls.  We do not claim that JEPAs in general lack workspace-like
-representations.
+candidate passed the registered post-hoc workspace-proxy tests in the studied
+models and controls.  Because the five consumers are post-hoc readouts rather
+than independently used modules, even a positive proxy would not by itself
+establish a workspace.  We do not claim that JEPAs in general lack
+workspace-like representations.
 
 \begin{table}[t]
 \centering
@@ -648,12 +669,12 @@ representations.
 \toprule
 Criterion & Passing seeds & Result & Evidence level \\
 \midrule
-Predictive reproduction & 3/3 & Pass & \level{Generalization} \\
+Predictive reproduction & 3/3 & Pass & \level{Availability} \\
 Planning-specificity flag & 2/3 & Mixed & \level{Specificity} \\
 Hidden latent+decoded mediation & 1/3 & Reject & \level{Causal mediation} \\
-Raw restricted-circuit flag & 1/3 & Ineligible/reject & \level{Below target L5} \\
-Competent planner & 0/3 & Ineligible & \level{Eligibility only} \\
-Workspace proxy & 0/3 & Null & \level{Specificity} \\
+Raw restricted-circuit flag & 1/3 & Ineligible/reject & \level{Causal mediation} \\
+Competent planner & 0/3 & Ineligible & \level{Availability} \\
+Workspace proxy & 0/3 & Null & \level{Availability} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -687,6 +708,14 @@ $0.045/0.027/0.022$.  Horizon-four versus horizon-one cancellation
 amplification is $1.05/2.82/0.983$, so recurrence amplification is not
 replicated.  Table~\ref{tab:path} retains these measurements as availability
 and numerical-calibration evidence only.
+
+Moreover, cancellation $\kappa=L/\lVert\Delta y\rVert$ and normalized local
+error share the denominator $\lVert\Delta y\rVert$.  Their raw correlation can
+therefore increase mechanically for small net effects.  Action-pair
+stratification does not remove this confound.  Any confirmatory continuation
+must preregister unnormalized or partial-association endpoints and permutations
+conditioned on direct-effect magnitude; quadrature convergence alone is not
+sufficient.
 
 \begin{table*}[t]
 \centering
@@ -722,14 +751,15 @@ exact local transport can dominate vector MSE while a quadratic or population
 transport better predicts answer behavior.  A surrogate's aggregate effect
 correlation is therefore insufficient for mechanistic ranking.
 
-Second, \emph{population usefulness is not ordered by one shared causal
-boundary in the registered suites}.  Aligned population Jacobians become highly predictive in late
-Qwen layers, but the first useful layer can precede, coincide with, or follow a
-fixed donor-control threshold across relations and splits.  This falsifies the
-registered fixed-boundary and directional-lag hypotheses.
+Second, \emph{the registered threshold-and-grid boundary rules do not
+generalize}.  Answer-row-aligned population Jacobians become highly predictive
+in late Qwen layers, but the first useful grid point can precede, coincide with,
+or follow a fixed donor-control threshold across relations and splits.  This
+falsifies the named rules on the studied four-layer grids, not every possible
+continuous boundary.
 
 Third, \emph{learned compression and shared sensitivity are not mechanism
-proofs}.  The genuine Intervention-JEPA can produce a nontrivial predicted
+proofs}.  The tested target-encoder Intervention-JEPA can produce a nontrivial predicted
 latent rank while its target geometry and oracle decoding fail to generalize.
 Likewise, a small JEPA bottleneck and several sensitive heads do not establish
 a workspace when matched controls and planner competence fail.
@@ -747,19 +777,27 @@ schema does not establish shared semantics or shared mechanism.
   bounded activation-capture smoke test; no cross-scale mechanism is claimed.
   \item Factual studies use narrow templates and only six entities in each
   held-out validation/test split.  The population confirmation contains 30
-  held-out outcomes.
+  held-out donor outcomes but only six recipient clusters, and its interval is
+  not recipient-clustered.
   \item Population averaging and late crystallization are prior art.  Our
   contribution is the bounded direct comparison and the failed stronger
   hypotheses, not a new estimator.
   \item We have not localized a robust head/MLP circuit, reconstructed a Qwen
   circuit, or shown cross-task mode reuse.
+  \item The capital donor-patch dataset establishes mediation but lacks matched
+  subspace/covariance corruptions and incompatible-donor controls for
+  specificity.  Its aggregate top-token-change and approximation metrics are
+  train-weighted.
   \item The target-encoder Intervention-JEPA is evaluated on one factual patch
   family.  Its negative result may reflect entity-dependent target geometry,
   limited data, architecture, or objective.
-  \item The LeWorldModel is a small synthetic reproduction.  Its weak planner
+  \item The LeWorldModel is a source-informed small synthetic model using
+  selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.
   \item The first JEPA population-transport study is numerically rejected.  The
-  action-path study remains validation-only calibration until protected test.
+  action-path study remains validation-only calibration; its cancellation/error
+  association also has a shared-denominator confound that must be resolved
+  before any protected test.
   \item No positive circuit reaches evidence level 5, and no result reaches a
   broad multi-model level-6 mechanism claim.
 \end{itemize}
@@ -830,10 +868,10 @@ a corrected empirical boundary on what the current evidence can support.
 Exact FP32 local and quadratic transports overturn an apparent learned
 Intervention-JEPA advantage; direct capital patches establish a real causal
 behavior dataset; population Jacobians improve some finite effects but do not
-obey one shared control--predictivity boundary across the registered factual
-families and layer grid; and the genuine target-encoder
-JEPA fails its registered generalization gates.  In the physical track,
-predictive reproduction succeeds while circuit and workspace claims fail, and
+obey the registered control--predictivity rules across the studied factual
+families and four-layer grids; and one target-encoder JEPA variant fails its
+registered held-out gates.  In the physical track, predictive gates pass while
+circuit and workspace acceptance gates fail, and
 decoded recurrent action-path cancellation remains a falsifiable candidate
 rather than a result.  Future work should prioritize direct held-out behavior,
 competent planners, cross-model replication, and controls that distinguish a

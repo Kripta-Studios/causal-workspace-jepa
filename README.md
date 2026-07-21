@@ -7,9 +7,10 @@ The source-of-truth working paper is
 finite-intervention formalism, preregistered controls, Qwen and world-model evidence, negative
 results, novelty boundary, and reproducibility record. The strongest current conclusion is a
 falsification boundary: exact/second-order/population transports rank differently by endpoint,
-fixed control--predictivity onset rules fail across factual relations, the genuine target-encoder
-Intervention-JEPA fails its registered gates, and no tested JEPA workspace or replicated circuit is
-accepted. Decoded recurrent action-path cancellation remains validation-only calibration.
+the registered threshold-and-four-layer-grid onset rules fail across the studied factual relations,
+one EMA/stop-gradient target-encoder Intervention-JEPA variant fails its registered gates, and no
+tested JEPA workspace proxy or circuit meets its acceptance rule. Decoded recurrent action-path
+cancellation remains validation-only calibration with a shared-denominator confound.
 
 ## Current Status
 
@@ -114,9 +115,11 @@ accepted. Decoded recurrent action-path cancellation remains validation-only cal
   refinement checks, local finite-effect error, concentration metrics, and within-action-pair nulls
   were run on exposed validation goals only. Horizon one converged, but horizon four remained
   underresolved for seeds 101/103. Cancellation/local-error association cleared stratified null p95
-  by only `0.045/0.027/0.022`; no scientific claim or protected-test launch is authorized yet.
-- `CALIBRATION_PLANNED`: `WM-ACTION-PATH-CALIBRATION-002` repeats the identical exposed validation
-  chords at 512/1024 nodes to test numerical stability. It remains decision-free and split-locked.
+  by only `0.045/0.027/0.022`, and both normalized quantities share the direct-effect denominator;
+  no scientific claim or protected-test launch is authorized.
+- `RUNNING_CALIBRATION`: `WM-ACTION-PATH-CALIBRATION-002` repeats the identical exposed validation
+  chords at 512/1024 nodes to test numerical stability from clean `288f663`. It remains
+  decision-free and split-locked; a separate validation denominator audit is required afterward.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.
@@ -384,7 +387,7 @@ Validated CPU smoke results:
 ## Limitations
 
 This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. The bounded Qwen3-0.6B
-pipeline and bounded Qwen3-4B capture are validated; the faithful small LeWorldModel run is retained
+pipeline and bounded Qwen3-4B capture are validated; the source-informed small LeWorldModel run is retained
 as a mixed/negative result. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
 training remain `gpu_cluster` work. The pre-existing GPT-2 artifacts came from a different Linux CPU
 host; their ignored activation shards are absent here and the audit reports their checksums as

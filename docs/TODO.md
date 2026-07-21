@@ -38,8 +38,10 @@
   underresolution and weak-but-consistent stratified association as calibration only.
 - [x] Implement separately recorded `WM-ACTION-PATH-CALIBRATION-002` with the same validation chords
   and 512/1024-node refinement; retain the hard split lock and empty decisions.
-- [ ] Commit/push and run calibration v2; do not preregister or touch protected test goals unless
-  seeds 101/103 converge and the stratified association remains discriminating.
+- [ ] Finish calibration v2 and retain it as numerical calibration only; do not touch protected
+  test goals even if it converges because cancellation/local error share a denominator.
+- [ ] Before reading v2, preregister a validation-only denominator audit using unnormalized path
+  excess/local residual, partial association controlling direct-effect norm, and effect-bin nulls.
 - [x] Draft `papers/causal_workspace_jepa.tex` with equations, evidence-level result tables,
   falsifications, novelty boundary, limitations, and exact artifact/commit references.
 - [x] Compile the draft against the repository-local `papers/references.bib` and ignore generated
@@ -94,7 +96,7 @@
   sparse transport, checkpoint replay, and independent direct-verification logic.
 - [x] Commit `LLM-IJEPA-001`, then execute once without changing thresholds.
 - [x] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.
-- [x] Implement, source-pin, test, and preregister the faithful small LeWorldModel reproduction.
+- [x] Implement, source-pin, test, and preregister the source-informed small LeWorldModel reproduction.
 - [x] Commit `WM-LEWM-001`, then execute its three seeds and restricted circuit audit unchanged;
   retain the failed replicated causal/circuit gates and rejected graph.
 - [x] Run `AUDIT-COMPLETE-001` from clean synchronized commit `42492dc`; all 14 criteria pass.

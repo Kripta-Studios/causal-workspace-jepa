@@ -82,6 +82,10 @@ Status: `ACTIVE`.
   validation calibration reports direct reconstruction, refinement change, direct-effect norm,
   speed concentration, horizon controls, and within-action-pair permutation nulls. It makes no
   claim and leaves test goals inaccessible until a separate preregistration.
+- `CONFIRMED_SHARED_DENOMINATOR`: cancellation and normalized local error both divide by decoded
+  direct-effect norm. Small effects can mechanically inflate both quantities; within-action-pair
+  permutation does not remove this. Protected testing remains closed even if v2 converges until a
+  preregistered validation audit passes unnormalized, partial, and effect-size-conditioned controls.
 - `ACTIVE_MANUSCRIPT_DRIFT`: a paper can silently overstate evolving repository evidence. The
   source-of-truth `papers/causal_workspace_jepa.tex` therefore names experiment IDs, run commits,
   evidence levels, negative dispositions, and artifact paths; it is compiled with local BibTeX and

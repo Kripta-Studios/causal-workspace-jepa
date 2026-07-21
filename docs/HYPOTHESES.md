@@ -10,10 +10,11 @@ validation.
 
 The consolidated scientific account is `papers/causal_workspace_jepa.tex`. Its present supported
 boundary is: direct Qwen donor-patch behavior exists; exact/quadratic/population transports have
-endpoint-dependent fidelity; a fixed cross-relation control/predictivity onset law is false under
-the registered element/state/country studies; the genuine target-encoder Intervention-JEPA is
-negative; and no tested JEPA circuit/workspace replicates. Decoded recurrent action-path
-cancellation remains validation-only calibration and does not decide a numbered hypothesis.
+endpoint-dependent fidelity; the registered threshold-and-four-layer-grid onset rules fail across
+the studied element/state/country relations; one target-encoder Intervention-JEPA variant is
+negative; and no tested JEPA circuit/workspace proxy meets its acceptance gate. Decoded recurrent
+action-path cancellation remains validation-only calibration and does not decide a numbered
+hypothesis.
 
 ## World Model
 
@@ -690,6 +691,14 @@ no decisions and cannot access the test split. Its sole purpose is to determine 
 underresolved cancellation/error association is numerically stable enough to motivate a future
 prospective hypothesis.
 
+Adversarial review before v2 completed identified a structural confound: cancellation
+`L / ||delta_y||` and normalized local error both divide by `||delta_y||`. Their correlation may
+therefore arise mechanically when the net decoded effect is small, and action-pair stratification
+does not remove it. Even a numerically converged v2 cannot directly authorize protected-test access.
+A new validation-only preregistration must require unnormalized path-excess/local-residual
+association, partial association controlling direct-effect norm, and permutations conditioned on
+effect-size bins before any protected-test hypothesis can be considered.
+
 Execution audit: the first clean v2 launch from `e918d4f` failed with CUDA OOM before metrics or
 provenance were written. The clean retry changes only `jacobian_chunk_size` from 16 to 2; it does
 not change goals, sampled chords, quadrature nodes, outputs, or the absence of decisions.
@@ -779,7 +788,8 @@ retained as evidence and did not use this fixed three-seed configuration.
   pixels, action embedding, an autoregressive AdaLN-zero predictor, next-embedding MSE, and SIGReg,
   with no EMA, pretrained encoder, or auxiliary training supervision. It scales the official
   architecture to 20x20 PixelTinyMaze, 32 latent dimensions, two encoder/predictor blocks, and 64
-  SIGReg projections. This is a faithful small reproduction, not the released checkpoint result.
+  SIGReg projections. This is a source-informed small reproduction of selected design elements,
+  not the released checkpoint result.
 - Data/splits: deterministic PixelTinyMaze uses disjoint seeds `83/89/97` for 768/160/192 train,
   validation, and test trajectories. Model seeds are `101/103/107`; two of three must pass.
 - H-WM-01 restricted reproduction gate: test next-embedding MSE at most `0.60`, clean/shuffled-action

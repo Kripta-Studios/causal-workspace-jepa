@@ -44,8 +44,10 @@ Status: `ACTIVE`.
   `WM-ACTION-PATH-CALIBRATION-001` instead measures decoded derivative path length, cancellation,
   local finite-effect failure, two-level quadrature convergence, and within-action-pair nulls on
   exposed validation goals. Its first resolution converged only at horizon one and seed-107
-  horizon four. V2 repeats the exact chords at 512/1024 nodes with streamed Jacobians; only a later
-  separately frozen configuration may access the five test goals.
+  horizon four. V2 repeats the exact chords at 512/1024 nodes with streamed Jacobians. A later
+  audit must first remove the shared denominator between cancellation and normalized local error
+  using unnormalized/partial endpoints and effect-size-conditioned nulls; protected test remains
+  inaccessible regardless of v2 convergence until that validation audit passes.
 - The element-symbol study supplies an independent relation and four-layer profile. It confirms a
   sharp late donor-control transition and late population semantic specificity, but the registered
   exact-local/population inversion ratios fail on both splits. Because late factual crystallization

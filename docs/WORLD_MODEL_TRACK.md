@@ -46,11 +46,16 @@ local finite-chord error, 128/256-node composite-quadrature convergence, speed c
 within-action-pair permutation nulls. It is calibration only; scientific test thresholds are not yet
 registered and the five test goals remain protected.
 
+Adversarial review identified that cancellation and normalized local error both divide by the
+decoded net-effect norm. This can create association for small effects even within action-pair
+strata. High-resolution convergence is therefore only a numerical result; a separately registered
+validation audit of unnormalized and partial associations must pass before test can be considered.
+
 Calibration v1 ran from clean `eb943a5` in `72.59` seconds. Horizon one converged across seeds, but
 horizon four remained underresolved for seeds 101/103 even at 256 nodes. Cancellation/local-error
 Spearman exceeded the within-action-pair null p95 in all three horizon-four samples only narrowly,
 and median recurrence amplification occurred strongly in just seed 103. No evidence is accepted;
-the next step is higher-resolution validation of the same chords, not a protected-test run.
+the next step is higher-resolution validation plus a denominator-confound audit, not a protected-test run.
 
 Validated CPU smoke:
 

@@ -27,7 +27,7 @@ Controls:
 
 A null result is acceptable and must be reported.
 
-`WM-LEWM-001` evaluates another controlled case on the faithful small published-model
+`WM-LEWM-001` evaluates another controlled case on the source-informed small model
 reproduction. It fits five frozen consumers and repeats planted shared/disjoint detector controls,
 but fixes `workspace_found = false` because reportability, voluntary control, selective multistep
 necessity, and task/OOD generalization are outside that experiment. A compact shared sensitivity

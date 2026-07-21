@@ -10,7 +10,8 @@ papers, datasets, weights, and generated LaTeX products are not committed.
 formalism, numerical controls, Qwen and world-model experiments, negative results, evidence levels,
 novelty boundary, limitations, and exact artifact/commit references. It intentionally does **not**
 claim a Qwen circuit, JEPA workspace, new Jacobian method, or SOTA result. The recurrent JEPA
-action-path result is labeled calibration until a preregistered protected-test study passes.
+action-path result is labeled calibration; its shared-denominator confound requires a new
+validation-only control before any protected-test study can even be registered.
 
 Compile from this directory so BibTeX resolves the repository's `references.bib` rather than a
 system file with the same generic name:

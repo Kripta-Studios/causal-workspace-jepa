@@ -108,7 +108,7 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
     seed_results = []
     for seed in seeds:
         resumed = progress_by_seed.get(seed)
-        if resumed is not None and set(resumed.get("horizons", {})) == {"1", "4"}:
+        if resumed is not None and _seed_progress_complete(resumed):
             seed_results.append(resumed)
             continue
         checkpoint = checkpoints[seed]
@@ -141,6 +141,7 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
             )
             partial = {
                 "model_seed": seed,
+                "seed_complete": False,
                 "checkpoint": checkpoint,
                 "decoder": decoder["metrics"],
                 "horizons": horizon_results,
@@ -162,6 +163,7 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
         )
         completed_seed = {
             "model_seed": seed,
+            "seed_complete": True,
             "checkpoint": checkpoint,
             "decoder": decoder["metrics"],
             "horizons": horizon_results,
@@ -241,6 +243,16 @@ def _run_fingerprint(config_path: Path, git_commit: str) -> str:
     digest.update(b"\0")
     digest.update(git_commit.encode("utf-8"))
     return digest.hexdigest()
+
+
+def _seed_progress_complete(result: dict[str, Any]) -> bool:
+    """Require the final seed summary, not merely both expensive horizon blocks."""
+
+    return (
+        result.get("seed_complete") is True
+        and set(result.get("horizons", {})) == {"1", "4"}
+        and "horizon4_to_horizon1_median_cancellation_ratio" in result
+    )
 
 
 def _load_progress(

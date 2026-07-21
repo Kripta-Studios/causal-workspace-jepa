@@ -12,6 +12,7 @@ from causal_workspace_jepa.experiments.world_model.lewm_action_path_geometry_stu
     _decoded_directional_derivatives,
     _load_progress,
     _run_fingerprint,
+    _seed_progress_complete,
     _spearman,
     _stratified_permutation_null,
     _stratified_profile_indices,
@@ -121,6 +122,17 @@ class LeWMActionPathGeometryTests(unittest.TestCase):
             first = _run_fingerprint(config, "abc123")
             config.write_text("value: 2\n", encoding="utf-8")
             self.assertNotEqual(first, _run_fingerprint(config, "abc123"))
+
+    def test_seed_progress_requires_explicit_complete_summary(self) -> None:
+        result = {
+            "model_seed": 101,
+            "horizons": {"1": {}, "4": {}},
+        }
+        self.assertFalse(_seed_progress_complete(result))
+        result["seed_complete"] = True
+        self.assertFalse(_seed_progress_complete(result))
+        result["horizon4_to_horizon1_median_cancellation_ratio"] = 2.0
+        self.assertTrue(_seed_progress_complete(result))
 
 
 if __name__ == "__main__":

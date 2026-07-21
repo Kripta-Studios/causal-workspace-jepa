@@ -55,7 +55,7 @@ instrumentation, storage, and direct-data gates remain validated.
 - V1 was rejected on an invalid downstream endpoint gate. Post-diagnostic v2 passed its source-level
   semantic/convergence audit and withdrew H-LLM-01: exact and quadratic transport beat all learned
   seeds on the frozen selected-target grid.
-- Official LeWorldModel revision `8edfeb3...` is verified. A faithful small reproduction and
+- Official LeWorldModel revision `8edfeb3...` is verified. A source-informed small reproduction and
   intervention/planning/circuit audit completed as `WM-LEWM-001`. Reproduction passes 3/3 and
   planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
 - The bounded Qwen3-4B selected-site capture passed from clean commit `55087ea`: exact pinned
@@ -76,9 +76,10 @@ instrumentation, storage, and direct-data gates remain validated.
   101/103, recurrence amplification is not replicated, and cancellation/error association clears
   stratified null p95 only narrowly. Refine the identical validation chords at 512/1024 nodes; stop
   this family if convergence or replicated association does not survive.
-- Calibration v2 is implemented with identical chords and 512/1024 nodes. Its only fork is:
-  numerical convergence plus retained three-seed null separation permits a new test preregistration;
-  otherwise close the family without touching test goals.
+- Calibration v2 is implemented with identical chords and 512/1024 nodes. Numerical convergence
+  cannot directly permit test preregistration because cancellation and normalized local error share
+  a denominator. The next fork is a preregistered validation-only unnormalized/partial-association
+  audit; failure closes the family without touching test goals.
 - A source-of-truth scientific manuscript now lives at `papers/causal_workspace_jepa.tex`. It must
   compile with the repository bibliography and remain synchronized with final v2 disposition,
   `docs/RESULTS.md`, `SUMMARY.md`, and the experiment/hypothesis registries.
