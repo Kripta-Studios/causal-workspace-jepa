@@ -35,8 +35,9 @@ Status: `ACTIVE`.
 - The pinned EB-JEPA source contract is now instrumented down to exact GRU reset/update/candidate
   states. This closes the software-localization gap but not the scientific one: only random weights
   have been checked, and the native/decomposed replay test says nothing about which learned gate or
-  subspace mediates planning. Exact upstream training is separately blocked on its Python
-  3.12/Torch 2.6 environment and missing dependencies.
+  subspace mediates planning. Exact Torch 2.6 GPU execution is now resolved as impossible on this
+  SM120 host; Torch 2.10/cu128 is a tested, declared compatibility deviation. Remaining dependencies,
+  training, and planning competence are still open.
 - Ensemble variance falls under the action-subspace intervention even as control worsens. Future
   uncertainty work needs intervention-aware calibration or epistemic/OOD objectives, not raw member
   disagreement alone.

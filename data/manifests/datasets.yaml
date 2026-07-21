@@ -71,7 +71,7 @@ datasets:
     resource_modes_allowed: [gpu_12gb, gpu_cluster]
     purpose: competent published action-conditioned planning and recurrent circuit audit
     leakage_risks: wall_layout_or_planning_episode_overlap
-    status: BLOCKED_OFFICIAL_ENV
+    status: PENDING_COMPAT_RUNTIME_DEPS
   qwen_real:
     canonical_name: Qwen hidden-state interventions
     source: Hugging Face Qwen

@@ -151,6 +151,17 @@ latent $\ell_2$ effect $2.1505$ with zero same-step collateral error outside
 the edited coordinate.  The weights are random, so this is Availability-level
 contract evidence rather than a learned-mechanism result.
 
+The upstream dependency pin is not GPU-executable on the reported host.  The
+official PyTorch 2.6 release provides binaries through CUDA 12.6, whereas the
+Blackwell support tracker and maintainer guidance place stable SM120 support at
+PyTorch 2.7 with CUDA 12.8 or later
+\cite{pytorch2025v26,pytorch2025blackwell}.  In matched Python 3.12 probes on
+the RTX 5070 Ti, Torch 2.6+cu126 advertises architectures only through SM90 and
+matmul, Conv2D, and GRU all return a missing-kernel-image error.  Torch
+2.10+cu128 includes SM120 and all three kernels return finite outputs.  We
+therefore classify Torch 2.10 as a disclosed hardware-compatibility deviation,
+not an exact environment reproduction.
+
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
 mediation, and flexible reuse motivate stronger causal tests
@@ -840,9 +851,10 @@ schema does not establish shared semantics or shared mechanism.
   makes behavior-level planning interpretation ineligible.
   \item The official EB-JEPA source contract is pinned and its recurrent sites
   are implemented, but no trained checkpoint or local planning result is yet
-  reported.  The host's Python 3.14/PyTorch 2.10 runtime also differs from the
-  upstream Python 3.12/PyTorch 2.6 pin; contract compatibility cannot be
-  reported as an exact training reproduction.
+  reported.  The upstream Python 3.12/PyTorch 2.6 pin is CPU-only on this SM120
+  host; local GPU execution requires a disclosed Torch 2.10/cu128 deviation.
+  Consequently a later model run can reproduce source/config semantics but not
+  claim bitwise dependency equivalence.
   \item The first JEPA population-transport study is numerically rejected.  The
   action-path study remains validation-only calibration.  Its cancellation/error
   association has a shared-denominator confound, and the parent artifact omits

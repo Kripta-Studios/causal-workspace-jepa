@@ -102,6 +102,14 @@ def main() -> int:
         metrics = run_eb_jepa_contract_smoke(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
+    if experiment_id == "WM-EBJEPA-RUNTIME-001":
+        from causal_workspace_jepa.experiments.world_model.eb_jepa_runtime_compatibility import (
+            run_eb_jepa_runtime_compatibility,
+        )
+
+        metrics = run_eb_jepa_runtime_compatibility(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
     if experiment_id == "WM-POPULATION-JACOBIAN-001":
         metrics = run_lewm_population_geometry_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))

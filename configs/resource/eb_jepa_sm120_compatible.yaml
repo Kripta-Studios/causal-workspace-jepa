@@ -1,5 +1,5 @@
-name: eb_jepa_official
-status: BLOCKED_GPU_SM120
+name: eb_jepa_sm120_compatible
+status: compatibility_deviation
 hardware:
   cpu_cores: 8
   ram_gb: 32
@@ -11,13 +11,11 @@ storage:
   tier0_data_gb: 0.5
   max_single_file_mb: 4096
 runtime:
-  upstream_python: 3.12
-  upstream_torch: 2.6.0
-  upstream_cuda_wheel: 12.6
-  local_gpu_minimum_torch: 2.7.0
-  local_gpu_selected_torch: 2.10.0
-  local_gpu_selected_cuda_wheel: 12.8
+  python: 3.12
+  torch: 2.10.0
+  cuda_wheel: 12.8
   gpu_compute_capability: 12.0
+  deviates_from_upstream_torch: 2.6.0
   upstream_revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
 network:
   allow_external_datasets: false

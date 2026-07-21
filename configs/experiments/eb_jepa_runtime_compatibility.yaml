@@ -1,0 +1,7 @@
+id: WM-EBJEPA-RUNTIME-001
+status: engineering_diagnostic
+resource_profile: configs/resource/gpu_12gb.yaml
+exact_interpreter: .cache/venvs/eb-jepa-py312-torch26/Scripts/python.exe
+compatible_interpreter: .cache/venvs/eb-jepa-py312-torch210/Scripts/python.exe
+probe_script: scripts/probe_cuda_runtime.py
+output_metrics: artifacts/metrics/eb_jepa_runtime_compatibility.json

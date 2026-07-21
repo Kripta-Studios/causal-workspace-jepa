@@ -4,10 +4,11 @@
 
 - Archive `WM-ACTION-PATH-CALIBRATION-002` as numerical/vector calibration only; the downstream
   small-model action-path route is closed by design before protected-test access.
-- Retain the clean source-contract smoke for the pinned official EB-JEPA adapter. Then create and
-  validate its isolated Python 3.12/Torch 2.6 runtime, reproduce competent three-seed Two Rooms
-  planning, and only afterward preregister the recurrent action/gate/hidden-state
-  necessity/sufficiency audit.
+- Retain the two-runtime EB-JEPA CUDA diagnostic: the exact Torch 2.6/cu126 pin is GPU-incompatible
+  with SM120, while the declared Torch 2.10/cu128 deviation passes matched kernels. Install the
+  remaining upstream dependencies without changing model/data/config semantics, reproduce competent
+  three-seed Two Rooms planning, and only afterward preregister the recurrent action/gate/hidden-
+  state necessity/sufficiency audit.
 - Implement ordered multi-site Qwen interventions and treatment/restoration replay tests. Then
   preregister a module-only binding mediator benchmark comparing population/local Jacobians, HVP,
   AtP*, probes, magnitude, random controls, and direct patching. Do not call it a JEPA experiment.

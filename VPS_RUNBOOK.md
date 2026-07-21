@@ -11,8 +11,10 @@ The official EB-JEPA source is pinned in an ignored checkout and must never be s
 ```powershell
 $env:PYTHONPATH = "src"
 python scripts/prepare_eb_jepa.py --target .cache/upstream/eb_jepa
+python scripts/prepare_eb_jepa_torch_runtimes.py --mode both
 python scripts/doctor_eb_jepa.py
 python scripts/run_experiment.py --config configs/experiments/eb_jepa_official_contract_smoke.yaml
+python scripts/run_experiment.py --config configs/experiments/eb_jepa_runtime_compatibility.yaml
 ```
 
 Expected source revision is `966e61e9285b3a876f49b9774e9720d9a99a7925`. The contract smoke
@@ -20,10 +22,12 @@ uses the real upstream Impala encoder and one-layer 512-dimensional GRU, but ran
 execution only. Passing it validates shapes, exact gate decomposition (`atol=1e-6`), and intervention
 plumbing; it does not reproduce planning or establish a circuit/workspace.
 
-The official `pyproject.toml` requires Python 3.12 and Torch 2.6. The current host uses Python 3.14
-and Torch 2.10+cu128 on compute capability 12.0, so `doctor_eb_jepa.py` correctly reports
-`BLOCKED_OFFICIAL_ENV`. Build an isolated runtime and verify that Torch 2.6 can execute kernels on
-this GPU before any training launch. Do not alter the working Qwen environment in place.
+The official `pyproject.toml` requires Python 3.12 and Torch 2.6. The isolated 2.6+cu126 wheel
+detects compute capability 12.0 but its compiled architecture list stops at SM90; matmul, Conv2D,
+and GRU each fail with `no kernel image is available`. The controlled Python 3.12/Torch
+2.10+cu128 environment includes SM120 and passes all three. Therefore use the latter for local GPU
+training, label every run `compatibility_deviation`, and preserve the exact-pin CPU probe. Do not
+alter the working Qwen environment in place.
 
 ## Decision
 

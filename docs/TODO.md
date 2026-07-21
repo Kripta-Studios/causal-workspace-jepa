@@ -15,8 +15,10 @@
   gate decomposition and replay tolerance `1e-6`.
 - [x] Retain `WM-EBJEPA-CONTRACT-001` from clean `979c2d6`; all source, shape, reconstruction, and
   targeted-intervention gates pass.
-- [ ] Build the isolated Python 3.12/Torch 2.6 EB-JEPA environment and validate support for the RTX
-  5070 Ti compute capability before launching training.
+- [x] Build isolated Python 3.12/Torch 2.6+cu126 and Torch 2.10+cu128 runtimes. The exact pin fails
+  all three SM120 kernels; the compatible deviation passes all three.
+- [ ] Retain `WM-EBJEPA-RUNTIME-001` from a clean pushed commit and install the remaining official
+  EB-JEPA dependencies into the compatible runtime.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
 

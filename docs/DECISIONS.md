@@ -2,6 +2,12 @@
 
 ## 2026-07-21
 
+- Do not attempt EB-JEPA GPU training under its literal Torch 2.6 pin on the RTX 5070 Ti. An
+  isolated Python 3.12/Torch 2.6+cu126 probe detects SM120 but contains kernels only through SM90;
+  matmul, Conv2D, and GRU all fail. Use Python 3.12/Torch 2.10+cu128 as a declared hardware-
+  compatibility deviation after its same-kernel control passes. Keep an exact-pin CPU path for
+  source tests; never call the deviated GPU run an exact dependency reproduction.
+
 - Pin official EB-JEPA to `966e61e9285b3a876f49b9774e9720d9a99a7925`. Treat the actual
   action-conditioned predictor as a one-layer 512-dimensional GRU and require native-versus-
   decomposed recurrence error at most `1e-6` before gate interventions are eligible. Contract

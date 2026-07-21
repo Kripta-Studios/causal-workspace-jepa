@@ -30,7 +30,8 @@ Official EB-JEPA Two Rooms is pinned to `966e61e...`: it generates two-channel 6
 continuous two-dimensional actions, and XY/wall-layout ground truth on the fly (100,000 train and
 10,000 validation samples in the default configuration). Raw size/checksum is therefore not a
 download boundary; source revision, generator seed, layout split, and episode overlap are the
-relevant provenance controls. Status: `BLOCKED_OFFICIAL_ENV` for exact upstream training.
+relevant provenance controls. Status: `PENDING_COMPAT_RUNTIME_DEPS`; exact Torch 2.6 GPU execution
+is impossible on SM120, and the tested Torch 2.10/cu128 deviation must be recorded in every run.
 JEPA-WMs and selected C-JEPA assets remain `ACTIVE` candidates for the current GPU host.
 Large V-JEPA, DROID, RoboCasa, and ManiSkill studies remain deferred by scope/compute. SkyJEPA stays
 `BLOCKED_EXTERNAL` until official assets are verified.

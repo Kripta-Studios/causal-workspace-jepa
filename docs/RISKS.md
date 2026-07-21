@@ -2,6 +2,11 @@
 
 Status: `ACTIVE`.
 
+- `RESOLVED_WITH_DECLARED_DEVIATION`: official EB-JEPA pins Torch 2.6, but its cu126 Windows wheel
+  omits SM120 and fails matmul, Conv2D, and GRU on the RTX 5070 Ti. Python 3.12/Torch 2.10+cu128
+  includes SM120 and passes the matched kernels. Local GPU runs must declare this dependency
+  deviation; exact-pin CPU checks and source revision remain separate controls.
+
 - `MITIGATED`: the bounded required suite passes `AUDIT-COMPLETE-001`, but a completion audit is not
   scientific validation. Both reconstructed circuit candidates remain rejected and the workspace
   hypothesis remains null in the tested systems.

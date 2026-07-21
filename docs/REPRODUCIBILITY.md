@@ -51,8 +51,10 @@ PYTHONPATH=src python scripts/generate_qwen_interventions.py --config configs/ex
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/intervention_jepa_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lewm_small_reproduction_v1.yaml
 PYTHONPATH=src python scripts/prepare_eb_jepa.py --target .cache/upstream/eb_jepa
+PYTHONPATH=src python scripts/prepare_eb_jepa_torch_runtimes.py --mode both
 PYTHONPATH=src python scripts/doctor_eb_jepa.py
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/eb_jepa_official_contract_smoke.yaml
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/eb_jepa_runtime_compatibility.yaml
 PYTHONPATH=src python scripts/capture_qwen_activations.py --config configs/llm/qwen3_4b_selected_layers.yaml
 PYTHONPATH=src python scripts/audit_completion.py
 ```
@@ -137,6 +139,13 @@ that it uses random weights. It is distinct from exact training reproduction. Up
 The retained smoke ran from clean `979c2d692383a471f3f46de15168f475629020e3`; its provenance
 records `git_dirty=false`, exact source revision, reconstruction error `4.768e-7`, and the explicit
 random-weight/no-planning limitation.
+
+The exact GPU dependency boundary is tested in two ignored Python 3.12.13 runtimes created by
+`scripts/prepare_eb_jepa_torch_runtimes.py`. Torch 2.6.0+cu126 is the upstream pin; Torch
+2.10.0+cu128 is the declared local SM120 compatibility deviation. The configured runtime diagnostic
+requires the former to omit `sm_120` and fail matmul/Conv2D/GRU with the observed missing-kernel
+error, while the latter must include `sm_120` and pass all three with finite outputs. Neither
+environment is a committed binary artifact; the preparation commands and diagnostic metrics are.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an

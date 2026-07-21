@@ -1,5 +1,20 @@
 # SUMMARY
 
+## 2026-07-21 — EB-JEPA exact-pin GPU incompatibility isolated
+
+- Built two ignored Python 3.12.13 environments that differ at the Torch/CUDA boundary. The exact
+  upstream pin uses Torch 2.6.0+cu126; the local compatibility runtime uses Torch 2.10.0+cu128.
+- On the same RTX 5070 Ti (compute capability 12.0), Torch 2.6 reports compiled architectures only
+  through `sm_90`. Matmul, Conv2D, and GRU all fail with `no kernel image is available`.
+- Torch 2.10 includes `sm_120`; the same three kernels execute with finite outputs and no operation
+  warning. Thus exact upstream dependency reproduction is CPU-only on this host, while GPU training
+  requires a disclosed Torch/CUDA deviation. This is runtime Availability evidence, not a JEPA
+  result.
+- Primary PyTorch sources agree with the local diagnosis: the 2.6 release shipped at most CUDA 12.6,
+  and stable SM120 support begins with 2.7 builds using CUDA 12.8. A configured two-runtime
+  diagnostic and pure acceptance tests are implemented; retain its artifact only after a clean
+  commit/push.
+
 ## 2026-07-21 — Official EB-JEPA contract and exact recurrent decomposition
 
 - Pinned the official `facebookresearch/eb_jepa` source at immutable commit

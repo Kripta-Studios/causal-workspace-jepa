@@ -22,7 +22,8 @@ The official EB-JEPA source is now pinned at `966e61e...`, and its real one-laye
 GRU transition has a typed adapter with reset/update/candidate/hidden intervention sites. Unit tests
 reconstruct native `torch.nn.GRU` within `1e-6`; the clean retained source-contract smoke passes.
 Exact upstream training remains separate because the official Python 3.12/Torch
-2.6 environment does not match this host's Python 3.14/Torch 2.10 runtime.
+2.6/cu126 runtime cannot execute kernels on this host's SM120 GPU. A Python 3.12/Torch 2.10/cu128
+compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit and auditable.
 
 ## Current Status
 
@@ -51,9 +52,10 @@ Exact upstream training remains separate because the official Python 3.12/Torch
 - `SMOKE_VALIDATED`: `WM-EBJEPA-CONTRACT-001` ran from clean `979c2d6` against official commit
   `966e61e...`; native/decomposed GRU error was `4.768e-7`, and a targeted update-gate edit had a
   nonzero downstream latent effect. Random weights mean no planning, circuit, or workspace evidence.
-- `BLOCKED_OFFICIAL_ENV`: the current runtime is not the exact EB-JEPA Python 3.12/Torch 2.6
-  environment. Hardware and source checks pass; the isolated environment and compute-capability
-  compatibility must pass before reproducing the published three-seed planner.
+- `BLOCKED_GPU_SM120`: isolated Python 3.12/Torch 2.6+cu126 detects the RTX 5070 Ti but omits
+  `sm_120`; matmul, Conv2D, and GRU fail with no compatible kernel image.
+- `IMPLEMENTED_NOT_RUN`: `WM-EBJEPA-RUNTIME-001` compares that exact failure to Python 3.12/Torch
+  2.10+cu128, where all three kernels pass. Its retained metric awaits a clean implementation commit.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
