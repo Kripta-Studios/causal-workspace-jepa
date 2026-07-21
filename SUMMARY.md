@@ -28,6 +28,9 @@
   identical profile seed/chords and 8-point rules over 64/128 panels (512/1024 nodes). The runner's
   split lock now names both calibration IDs. V2 still emits empty decisions and cannot authorize a
   claim by itself; it tests whether v1's association survives numerical refinement.
+- The first clean v2 launch from `e918d4f` wrote no artifact: 1,024-node outer `vmap(jacrev)` with
+  chunk size 16 exhausted 12 GB VRAM. The retry changes only resource batching to chunk size 2;
+  goals, chords, nodes, metrics, and the decision-free calibration contract are unchanged.
 
 ## 2026-07-21 — Independent country-code bounded-lag preregistration
 

@@ -683,6 +683,10 @@ no decisions and cannot access the test split. Its sole purpose is to determine 
 underresolved cancellation/error association is numerically stable enough to motivate a future
 prospective hypothesis.
 
+Execution audit: the first clean v2 launch from `e918d4f` failed with CUDA OOM before metrics or
+provenance were written. The clean retry changes only `jacobian_chunk_size` from 16 to 2; it does
+not change goals, sampled chords, quadrature nodes, outputs, or the absence of decisions.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The
