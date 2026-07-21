@@ -10,6 +10,14 @@ sites, deterministic capture, Torch interventions, donor/statistic registration,
 tiny random Qwen3. Qwen3-0.6B revision `c1899de...` is the first bounded direct target; Qwen3-4B
 follows after storage/hook validation. Ollama is not a hidden-state or autograd source.
 
+Validated Qwen instrumentation smoke:
+
+- `LLM-QWEN-001` ran at pinned revision `c1899de...` from clean commit `0d6a37b`.
+- Hooked replay was exact; a selected-logit gradient with respect to layer-14 residual state had norm
+  `0.944`; zero, mean, donor patch/resample, and steering all changed final hidden state and logits.
+- This meets the real-Hugging-Face-instrumentation boundary only. It does not validate Intervention-
+  JEPA, circuit ranking, behavior change, feature meaning, or a workspace.
+
 Current mock implementation:
 
 - exposes `resid_pre`, `attn_out`, `mlp_out`, `resid_post`, and `logits`;

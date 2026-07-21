@@ -9,8 +9,12 @@ Status: `ACTIVE`.
   estimated first and all-layer/all-token capture remains prohibited.
 - `MITIGATED`: the host has an invalid implicit Hugging Face OAuth token for public API calls. Qwen
   loaders explicitly use `token=False`; no token value was printed, changed, stored, or committed.
-- `ACTIVE`: the real Qwen adapter has only offline tiny-model tests until `LLM-QWEN-001` runs from
-  clean committed code. Hook correctness on a random tiny model is not real-Qwen evidence.
+- `RESOLVED`: `LLM-QWEN-001` validates real pinned Qwen3-0.6B hooks/interventions/autograd from clean
+  code. The result remains instrumentation smoke and cannot substitute for held-out meta-model or
+  circuit evidence.
+- `RESOLVED`: the first Qwen run recorded `git_dirty=true` because provenance was collected after
+  creating its output. Those two regenerable files were discarded; ordering was fixed in `0d6a37b`,
+  and only the clean rerun is reported.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.

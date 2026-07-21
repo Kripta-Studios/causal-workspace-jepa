@@ -25,9 +25,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   predictors failed on held-out prompts. All three registered hypotheses failed.
 - `SCAFFOLDED`: documentation registries, data/artifact policy, package tree, provenance helpers.
 - `ACTIVE`: GPU continuation on an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, 32 logical CPU cores, and about 370 GB free at the 2026-07-21 audit.
-- `IMPLEMENTED_UNVALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
+- `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; offline tiny-Qwen tests; and a preregistered Qwen3-0.6B smoke runner.
+- `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
+  exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments; their former local resource blocker has been removed, but no result is claimed yet.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
@@ -214,6 +216,10 @@ Validated CPU smoke results:
   Jacobian MSE was `0.000990`, versus MLP `0.725`, bilinear `1.346`, and no-change `0.418`. The
   bilinear model fit seen-prompt compositions but failed on unseen prompts. Two of 72 interventions
   changed the top token. No semantic feature, J-space, workspace, or Qwen result is claimed.
+- Qwen instrumentation smoke (`LLM-QWEN-001`) ran from clean commit `0d6a37b` at pinned revision
+  `c1899de...`. Deterministic replay error was `0.0`; selected-logit gradient norm was `0.944`;
+  mean absolute logit deltas were `0.0565` zero, `0.0111` mean, `0.00805` donor patch/resample, and
+  `0.0321` steer. This is real-Qwen causal-mediation smoke, not a circuit or workspace result.
 
 ## Limitations
 

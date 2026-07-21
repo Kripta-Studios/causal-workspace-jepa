@@ -42,6 +42,7 @@ PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/wor
 PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/multitask_workspace_study.yaml
 PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/gpt2_medium_mechanistic_study.yaml
 PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/experiments/gpt2_medium_semantic_composition_study.yaml
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml
 ```
 
 GPT-2 Medium uses `local_files_only: true`; the command must fail instead of downloading a missing
@@ -49,6 +50,10 @@ model. Its generated float16 shard is ignored, while the checksum manifest and s
 are committed.
 
 No reported result may depend on uncommitted code.
+
+`LLM-QWEN-001` pins both model revision and clean code commit. The initial execution was rejected
+because provenance was collected after its untracked output was created; only the corrected clean
+rerun from `0d6a37b` is retained.
 
 `scripts/audit_reproducibility.py` checks required control-plane files, every summarized metrics and
 provenance pair, `git_dirty: false`, recorded commit/path fields, JSON validity, and every available

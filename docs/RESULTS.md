@@ -20,6 +20,7 @@ mechanism has been discovered.
 | WM-T0-004 | Conditional donor controls repair the prior off-manifold confound, but neither learned hidden site has a valid shared sensitivity subspace or specificity over matched controls; no workspace is found. | Specificity | `configs/experiments/manifold_workspace_study.yaml` | `artifacts/metrics/manifold_workspace_study.json` | `6785fb1684a04ff1639d6aad326ed6e11df0bf6a` | `SMOKE_VALIDATED` |
 | WM-T0-005 | A multi-task three-seed JEPA fails held-out action, consumer-transfer, shared-sensitivity, and task-counterfactual gates; no shared task-workspace candidate or workspace is found. | Generalization | `configs/experiments/multitask_workspace_study.yaml` | `artifacts/metrics/multitask_workspace_study.json` | `7a9e510e84e7166ce862ca7f52fd598630e8f06a` | `SMOKE_VALIDATED` |
 | LLM-GPT2-003 | Magnitude-6 contrast-direction compositions are almost additive; prompt-local Jacobians predict them, but learned/corpus transports fail on unseen prompts despite excellent seen-prompt scores. | Generalization | `configs/experiments/gpt2_medium_semantic_composition_study.yaml` | `artifacts/metrics/gpt2_medium_semantic_composition_study.json` | `1e57e30218295a6e6802c2db16cf81c353d8d77d` | `SMOKE_VALIDATED` |
+| LLM-QWEN-001 | Pinned Qwen3-0.6B selected-site hooks are deterministic and preserve autograd; five direct residual interventions change downstream hidden states and logits. | Causal mediation | `configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml` | `artifacts/metrics/qwen3_0_6b_instrumentation_smoke.json` | `0d6a37b2f27a862b5d272f254e451fb41b7837e4` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -181,3 +182,18 @@ effects compose almost linearly even at magnitude six. A few same-prompt finite-
 provide an accurate local transport; averaging across prompts or fitting four prompt contexts does
 not. The sharp seen/held-out gap is the most useful result: a meta-model can appear to learn
 composition while only memorizing prompt-specific Jacobians.
+
+`LLM-QWEN-001` key metrics:
+
+- pinned/resolved revision: `c1899de289a04d12100db370d81485cdf75e47ca`;
+- clean-code commit: `0d6a37b2f27a862b5d272f254e451fb41b7837e4`;
+- deterministic repeat maximum absolute logit error: `0.0`;
+- selected-logit gradient norm with respect to `blocks.14.resid_post`: `0.9443`;
+- mean absolute logit delta: zero `0.05647`, mean `0.01115`, donor patch/resample `0.008046`,
+  magnitude-2 steer `0.03208`;
+- target hidden L2 change: `13.42` to `76.51` across operations.
+
+Interpretation: Hugging Face Qwen hidden-state instrumentation, direct interventions, replay, and
+autograd work on this host. Resample and patch intentionally share one donor in this acceptance
+test and therefore have identical effects. This result has no held-out effect-prediction split and
+does not support a feature, circuit, meta-model, behavior, J-space, or workspace claim.

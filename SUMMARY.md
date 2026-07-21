@@ -23,6 +23,12 @@
   steer semantics, explicit donor/statistic requirements, and graph-preserving autograd.
 - Pinned and preregistered `LLM-QWEN-001` at public Qwen3-0.6B revision `c1899de...` with a
   1,519,209,243-byte repository estimate. Do not run until this code milestone is committed/pushed.
+- The first execution passed numerically but was rejected because the new runner collected
+  provenance after writing an untracked metrics file. Fixed the ordering and pushed `0d6a37b`, then
+  reran unchanged from clean code.
+- Clean `LLM-QWEN-001` passes: exact deterministic replay; selected-logit autograd norm `0.944`;
+  nonzero zero/mean/resample/patch/steer downstream hidden/logit effects. This meets real Qwen HF
+  instrumentation only; intervention dataset, meta-model, and circuit verification remain.
 
 ## 2026-07-20
 

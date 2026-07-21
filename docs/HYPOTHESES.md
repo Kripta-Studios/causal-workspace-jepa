@@ -55,6 +55,11 @@ instrumentation acceptance test, not a test of H-LLM-01 through H-LLM-07 and not
   only. It cannot establish a Qwen circuit, feature meaning, meta-model fidelity, behavior change,
   J-space, or workspace.
 
+Measured result from clean commit `0d6a37b`: every registered acceptance gate passed. Resolved
+revision matched, replay error was exactly zero, the selected-logit autograd norm was `0.944`, and
+all five operations caused nonzero downstream changes. This validates instrumentation only and does
+not decide any numbered LLM hypothesis.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds
