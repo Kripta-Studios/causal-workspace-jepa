@@ -54,8 +54,9 @@ compatibility runtime passes matmul, Conv2D, and GRU; that deviation is explicit
   nonzero downstream latent effect. Random weights mean no planning, circuit, or workspace evidence.
 - `BLOCKED_GPU_SM120`: isolated Python 3.12/Torch 2.6+cu126 detects the RTX 5070 Ti but omits
   `sm_120`; matmul, Conv2D, and GRU fail with no compatible kernel image.
-- `IMPLEMENTED_NOT_RUN`: `WM-EBJEPA-RUNTIME-001` compares that exact failure to Python 3.12/Torch
-  2.10+cu128, where all three kernels pass. Its retained metric awaits a clean implementation commit.
+- `SMOKE_VALIDATED`: `WM-EBJEPA-RUNTIME-001` ran from clean `15d88ce` and passed all eight frozen
+  runtime gates. The exact Python 3.12/Torch 2.6+cu126 wheel omits `sm_120` and fails all three
+  kernels; Python 3.12/Torch 2.10+cu128 includes `sm_120` and passes all three with finite outputs.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;

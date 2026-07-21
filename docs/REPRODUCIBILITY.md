@@ -146,6 +146,11 @@ The exact GPU dependency boundary is tested in two ignored Python 3.12.13 runtim
 requires the former to omit `sm_120` and fail matmul/Conv2D/GRU with the observed missing-kernel
 error, while the latter must include `sm_120` and pass all three with finite outputs. Neither
 environment is a committed binary artifact; the preparation commands and diagnostic metrics are.
+The retained `WM-EBJEPA-RUNTIME-001` run started from clean
+`15d88ce15f7ecec3dc924800471937c48b0c4629`; provenance records `git_dirty=false`, and all eight
+frozen identity/architecture/kernel gates pass. Exact and compatible subprocess probes took
+`1.51` and `1.75` seconds respectively. The root orchestration runtime remains Python 3.14/Torch
+2.10; each isolated probe records its own Python, Torch, CUDA, device, and compiled architecture list.
 
 Qwen ordered intervention programs freeze the caller-supplied sequence. Hooks execute in model
 order, while repeated specifications at one site execute in list order. Offline tests require an

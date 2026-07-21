@@ -34,8 +34,9 @@ changed the downstream latent by L2 `2.1505`. These are engineering gates over r
 exact isolated Python 3.12/Torch 2.6+cu126 runtime detects the SM120 GPU but cannot execute matmul,
 Conv2D, or GRU because the wheel contains architectures only through SM90. A matched Python
 3.12/Torch 2.10+cu128 runtime includes SM120 and passes all three. Local training must therefore use
-the latter as a declared compatibility deviation; remaining upstream dependencies and planner
-competence are still pending.
+the latter as a declared compatibility deviation. The clean `WM-EBJEPA-RUNTIME-001` run from
+`15d88ce` passed all eight frozen architecture/runtime/kernel gates. Remaining upstream dependencies
+and planner competence are still pending.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20

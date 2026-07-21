@@ -1,0 +1,146 @@
+{
+  "all_passed": true,
+  "claim": "On this RTX 5070 Ti (SM120), the upstream Torch 2.6/cu126 pin detects CUDA but cannot execute matmul, Conv2D, or GRU kernels because its binary omits sm_120. Python 3.12/Torch 2.10/cu128 includes sm_120 and passes the same three finite-kernel checks. Torch 2.10 is therefore a disclosed hardware-compatibility deviation required for local GPU execution, not an exact dependency reproduction.",
+  "evidence_level": "Availability",
+  "exact_upstream_pin": {
+    "arch_list": [
+      "sm_50",
+      "sm_60",
+      "sm_61",
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90"
+    ],
+    "capability": [
+      12,
+      0
+    ],
+    "checks": {
+      "conv2d": {
+        "error": "CUDA error: no kernel image is available for execution on the device\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n",
+        "error_type": "RuntimeError",
+        "passed": false
+      },
+      "gru": {
+        "error": "CUDA error: no kernel image is available for execution on the device\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n",
+        "error_type": "RuntimeError",
+        "passed": false
+      },
+      "matmul": {
+        "error": "CUDA error: no kernel image is available for execution on the device\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n",
+        "error_type": "RuntimeError",
+        "passed": false
+      }
+    },
+    "cuda_available": true,
+    "cuda_runtime": "12.6",
+    "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "label": "upstream_exact_pin",
+    "python": "3.12.13",
+    "stderr": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa\\.cache\\venvs\\eb-jepa-py312-torch26\\Lib\\site-packages\\torch\\_subclasses\\functional_tensor.py:275: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at C:\\actions-runner\\_work\\pytorch\\pytorch\\pytorch\\torch\\csrc\\utils\\tensor_numpy.cpp:81.)\n  cpu = _conversion_method_template(device=torch.device(\"cpu\"))",
+    "torch": "2.6.0+cu126",
+    "warnings": [
+      "\nNVIDIA GeForce RTX 5070 Ti Laptop GPU with CUDA capability sm_120 is not compatible with the current PyTorch installation.\nThe current PyTorch install supports CUDA capabilities sm_50 sm_60 sm_61 sm_70 sm_75 sm_80 sm_86 sm_90.\nIf you want to use the NVIDIA GeForce RTX 5070 Ti Laptop GPU GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/\n"
+    ]
+  },
+  "experiment_id": "WM-EBJEPA-RUNTIME-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 350.107,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "passes": {
+    "both_use_python_3_12": true,
+    "compatible_binary_includes_sm120": true,
+    "compatible_is_torch_2_10_cu128": true,
+    "compatible_three_kernel_success": true,
+    "exact_binary_omits_sm120": true,
+    "exact_is_torch_2_6_cu126": true,
+    "exact_three_kernel_failure": true,
+    "same_sm120_device": true
+  },
+  "primary_sources": {
+    "pytorch_2_6_release": "https://pytorch.org/blog/pytorch2-6/",
+    "pytorch_blackwell_tracking": "https://github.com/pytorch/pytorch/issues/145949",
+    "pytorch_previous_versions": "https://docs.pytorch.org/get-started/previous-versions/",
+    "pytorch_sm120_maintainer_confirmation": "https://discuss.pytorch.org/t/request-add-cuda-sm-120-blackwell-support-for-convnextv2-fused-kernels/224904/4"
+  },
+  "probe_runtime_seconds": {
+    "compatible": 1.7546462999889627,
+    "exact": 1.512575000000652
+  },
+  "scientific_boundary": "This diagnostic validates runtime feasibility only; it provides no evidence about JEPA training, planning competence, learned representations, circuits, or workspace.",
+  "sm120_compatible_deviation": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capability": [
+      12,
+      0
+    ],
+    "checks": {
+      "conv2d": {
+        "finite": true,
+        "passed": true,
+        "shape": [
+          1,
+          4,
+          6,
+          6
+        ],
+        "warnings": []
+      },
+      "gru": {
+        "finite": true,
+        "passed": true,
+        "shape": [
+          3,
+          1,
+          8
+        ],
+        "warnings": []
+      },
+      "matmul": {
+        "finite": true,
+        "passed": true,
+        "shape": [
+          16,
+          16
+        ],
+        "warnings": []
+      }
+    },
+    "cuda_available": true,
+    "cuda_runtime": "12.8",
+    "device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "label": "sm120_compatible_deviation",
+    "python": "3.12.13",
+    "stderr": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa\\.cache\\venvs\\eb-jepa-py312-torch210\\Lib\\site-packages\\torch\\_subclasses\\functional_tensor.py:283: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at C:\\actions-runner\\_work\\pytorch\\pytorch\\pytorch\\torch\\csrc\\utils\\tensor_numpy.cpp:84.)\n  cpu = _conversion_method_template(device=torch.device(\"cpu\"))",
+    "torch": "2.10.0+cu128",
+    "warnings": []
+  },
+  "status": "SMOKE_VALIDATED"
+}

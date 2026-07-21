@@ -28,9 +28,11 @@
   requires a disclosed Torch/CUDA deviation. This is runtime Availability evidence, not a JEPA
   result.
 - Primary PyTorch sources agree with the local diagnosis: the 2.6 release shipped at most CUDA 12.6,
-  and stable SM120 support begins with 2.7 builds using CUDA 12.8. A configured two-runtime
-  diagnostic and pure acceptance tests are implemented; retain its artifact only after a clean
-  commit/push.
+  and stable SM120 support begins with 2.7 builds using CUDA 12.8.
+- `WM-EBJEPA-RUNTIME-001` ran from clean `15d88ce`; all eight frozen gates passed. The exact runtime
+  advertised `sm_50` through `sm_90` and every matched kernel failed with the missing-image error.
+  The compatible runtime advertised `sm_70` through `sm_120`; matmul, Conv2D, and GRU all returned
+  finite outputs. The committed artifact is runtime Availability evidence only.
 
 ## 2026-07-21 — Official EB-JEPA contract and exact recurrent decomposition
 

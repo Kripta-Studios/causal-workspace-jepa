@@ -160,7 +160,9 @@ the RTX 5070 Ti, Torch 2.6+cu126 advertises architectures only through SM90 and
 matmul, Conv2D, and GRU all return a missing-kernel-image error.  Torch
 2.10+cu128 includes SM120 and all three kernels return finite outputs.  We
 therefore classify Torch 2.10 as a disclosed hardware-compatibility deviation,
-not an exact environment reproduction.
+not an exact environment reproduction.  The clean
+\code{WM-EBJEPA-RUNTIME-001} run from \code{15d88ce} passes all eight frozen
+runtime gates; this is availability evidence only.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
@@ -255,6 +257,7 @@ LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 & bounded directional lag & Completed mixed 
 WM-LEWM-001 & source-informed small model & Failed registered gates & \level{Causal mediation} & Prediction passes; full causal/circuit/workspace bundle does not. \\
 WM-POPULATION-JACOBIAN-001 & recurrent population transport & Rejected numerical gate & \level{Availability} & Numerical diagnostic only; no protected scientific claim is admissible. \\
 WM-ACTION-PATH-CALIBRATION-001/002 & decoded path cancellation & Calibration only & \level{Availability} & Validation-only numerical and prospective-threshold calibration. \\
+WM-EBJEPA-RUNTIME-001 & SM120 runtime boundary & Smoke validated & \level{Availability} & Exact pin fails matched kernels; disclosed compatible runtime passes. \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -904,6 +907,8 @@ configuration and hypothesis registration.  The principal artifacts are:
   (\code{979c2d6});
   \item \code{artifacts/metrics/lewm\_action\_path\_calibration\_v2.json}
   (clean \code{288f663}; 19,176.20 seconds).
+  \item \code{artifacts/metrics/eb\_jepa\_runtime\_compatibility.json}
+  (clean \code{15d88ce}; all eight frozen gates pass).
 \end{itemize}
 
 Each experiment is replayed with

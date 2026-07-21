@@ -17,8 +17,9 @@
   targeted-intervention gates pass.
 - [x] Build isolated Python 3.12/Torch 2.6+cu126 and Torch 2.10+cu128 runtimes. The exact pin fails
   all three SM120 kernels; the compatible deviation passes all three.
-- [ ] Retain `WM-EBJEPA-RUNTIME-001` from a clean pushed commit and install the remaining official
-  EB-JEPA dependencies into the compatible runtime.
+- [x] Retain `WM-EBJEPA-RUNTIME-001` from clean `15d88ce`; all eight frozen two-runtime gates pass.
+- [ ] Install the remaining official EB-JEPA dependencies into the compatible runtime without
+  importing the incompatible upstream Torch pin.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent
   action-circuit audit.
 
