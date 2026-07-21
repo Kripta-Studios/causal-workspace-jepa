@@ -56,6 +56,11 @@ Status: `ACTIVE`.
   test-split discovery. The new runner uses only the previously unanalyzed validation split and
   records the test result as reference; even a pass remains within-family confirmation rather than
   an independent-model replication.
+- `CONFIRMED_BOUNDED`: all validation confirmation gates passed, including averaging dose response
+  and answer-row specificity. The effect now holds on test and validation entity groups, but both
+  share one prompt template, model, layer, and intervention class. Do not call the method novel:
+  corpus-averaged Jacobians are central to Anthropic's Jacobian Lens. The new evidence is limited to
+  finite causal-fidelity behavior in this suite.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

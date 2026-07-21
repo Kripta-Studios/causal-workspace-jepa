@@ -1,0 +1,204 @@
+{
+  "answer_row_permutation_null": {
+    "mean_candidate_agreement": 0.015885416666666666,
+    "mean_normalized_mse": 1.6160238468809949,
+    "p05_candidate_agreement": 0.0,
+    "p05_normalized_mse": 1.4131758426165535,
+    "p95_candidate_agreement": 0.03333333333333333,
+    "p95_normalized_mse": 1.7787521363817347,
+    "permutations": 256
+  },
+  "averaging_curve": {
+    "1": {
+      "draws": 128,
+      "median_candidate_agreement": 0.43333333333333335,
+      "median_normalized_mse": 0.5468163179448563,
+      "p05_candidate_agreement": 0.23333333333333334,
+      "p05_normalized_mse": 0.43679801126232065,
+      "p95_candidate_agreement": 0.5666666666666667,
+      "p95_normalized_mse": 0.8278629669490729
+    },
+    "16": {
+      "draws": 128,
+      "median_candidate_agreement": 0.5,
+      "median_normalized_mse": 0.35827043279033605,
+      "p05_candidate_agreement": 0.4666666666666667,
+      "p05_normalized_mse": 0.3293313815870086,
+      "p95_candidate_agreement": 0.5666666666666667,
+      "p95_normalized_mse": 0.3948991152277299
+    },
+    "2": {
+      "draws": 128,
+      "median_candidate_agreement": 0.43333333333333335,
+      "median_normalized_mse": 0.4507468739216611,
+      "p05_candidate_agreement": 0.24500000000000002,
+      "p05_normalized_mse": 0.3365788054489639,
+      "p95_candidate_agreement": 0.5549999999999997,
+      "p95_normalized_mse": 0.7833452065117451
+    },
+    "24": {
+      "draws": 1,
+      "median_candidate_agreement": 0.5333333333333333,
+      "median_normalized_mse": 0.3537560224206721,
+      "p05_candidate_agreement": 0.5333333333333333,
+      "p05_normalized_mse": 0.3537560224206721,
+      "p95_candidate_agreement": 0.5333333333333333,
+      "p95_normalized_mse": 0.3537560224206721
+    },
+    "4": {
+      "draws": 128,
+      "median_candidate_agreement": 0.4666666666666667,
+      "median_normalized_mse": 0.38825961155106636,
+      "p05_candidate_agreement": 0.36666666666666664,
+      "p05_normalized_mse": 0.3026635555777573,
+      "p95_candidate_agreement": 0.5333333333333333,
+      "p95_normalized_mse": 0.5960989823922265
+    },
+    "8": {
+      "draws": 128,
+      "median_candidate_agreement": 0.5,
+      "median_normalized_mse": 0.37094980718674186,
+      "p05_candidate_agreement": 0.4116666666666667,
+      "p05_normalized_mse": 0.3210043894141386,
+      "p95_candidate_agreement": 0.5666666666666667,
+      "p95_normalized_mse": 0.46224624240852363
+    }
+  },
+  "averaging_curve_log_size_mse_correlation": -0.9146447648358961,
+  "confirmation_split": "validation only; not used in v1 geometry decisions",
+  "dataset_id": "LLM-CAPITAL-PATCH-001 plus LLM-CONTEXT-GEOMETRY-001",
+  "discovery_test_reference": {
+    "matched": {
+      "answer_candidate_agreement": 0.3,
+      "correlation": 0.8410334346673899,
+      "normalized_mse": 0.539747416973114
+    },
+    "permutation_null": {
+      "mean_candidate_agreement": 0.39622395833333335,
+      "mean_normalized_mse": 0.982828241540119,
+      "p05_candidate_agreement": 0.3,
+      "p05_normalized_mse": 0.6162757277488708,
+      "p95_candidate_agreement": 0.4666666666666667,
+      "p95_normalized_mse": 1.3106112480163574,
+      "permutations": 256
+    },
+    "train_pooled_jacobian": {
+      "answer_candidate_agreement": 0.5,
+      "correlation": 0.8851903046577755,
+      "normalized_mse": 0.3584152162075043
+    }
+  },
+  "evidence_level": "Generalization",
+  "experiment_id": "LLM-POPULATION-JACOBIAN-001",
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 359.951,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "hypothesis_decisions": {
+    "h_geo_04_population_jacobian_confirmation": true,
+    "h_geo_05_averaging_regularization_curve": true,
+    "h_geo_06_answer_semantic_specificity": true
+  },
+  "jacobian_contexts": 36,
+  "paired_bootstrap": {
+    "ci95_high": 8.275859917925015,
+    "ci95_low": 2.2816552139133828,
+    "draws": 10000,
+    "mean_raw_mse_improvement": 5.234444955419736,
+    "probability_improvement_positive": 0.9997
+  },
+  "patch_examples": 612,
+  "per_context": {
+    "contexts": [
+      {
+        "entity_id": 6,
+        "local_normalized_mse": 0.49069527992759915,
+        "population_better": false,
+        "population_normalized_mse": 0.49959981307959167
+      },
+      {
+        "entity_id": 9,
+        "local_normalized_mse": 0.4660858943824395,
+        "population_better": true,
+        "population_normalized_mse": 0.4206865252531995
+      },
+      {
+        "entity_id": 12,
+        "local_normalized_mse": 1.251396025543527,
+        "population_better": true,
+        "population_normalized_mse": 0.20621686003143172
+      },
+      {
+        "entity_id": 22,
+        "local_normalized_mse": 1.097359748457499,
+        "population_better": true,
+        "population_normalized_mse": 0.20405769995798864
+      },
+      {
+        "entity_id": 25,
+        "local_normalized_mse": 0.724374838123761,
+        "population_better": true,
+        "population_normalized_mse": 0.226315622402811
+      },
+      {
+        "entity_id": 33,
+        "local_normalized_mse": 0.47473707917409097,
+        "population_better": false,
+        "population_normalized_mse": 0.5816129715980688
+      }
+    ],
+    "population_better_mse_contexts": 4
+  },
+  "runtime_seconds": 1.6720175000082236,
+  "scientific_boundary": "This confirmation tests population averaging of local logit Jacobians for finite donor chords. It does not identify a circuit, semantic activation basis, or workspace. The thresholds were chosen after the test-split discovery and are valid only on this previously unanalyzed validation split.",
+  "scores": {
+    "matched_local_jacobian": {
+      "answer_candidate_agreement": 0.3,
+      "correlation": 0.8350617136195613,
+      "direct_donor_candidate_rate": 0.7333333333333333,
+      "normalized_mse": 0.7371045294149127,
+      "predicted_donor_candidate_rate": 0.2
+    },
+    "quadratic_taylor": {
+      "answer_candidate_agreement": 0.8333333333333334,
+      "correlation": 0.9097214486511725,
+      "direct_donor_candidate_rate": 0.7333333333333333,
+      "normalized_mse": 0.7738436476817669,
+      "predicted_donor_candidate_rate": 0.7
+    },
+    "train_population_jacobian": {
+      "answer_candidate_agreement": 0.5333333333333333,
+      "correlation": 0.8655385740981515,
+      "direct_donor_candidate_rate": 0.7333333333333333,
+      "normalized_mse": 0.3537560224206721,
+      "predicted_donor_candidate_rate": 0.4
+    }
+  },
+  "status": "COMPLETED_POSITIVE",
+  "train_jacobian_contexts": 24,
+  "validation_entities": [
+    6,
+    9,
+    12,
+    22,
+    25,
+    33
+  ],
+  "validation_examples": 30
+}

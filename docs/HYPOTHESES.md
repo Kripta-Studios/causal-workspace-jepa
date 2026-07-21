@@ -416,6 +416,18 @@ hypothesis.
   algorithm, a semantic activation direction, a circuit, or a workspace. Failure is retained without
   changing subsets, thresholds, output rows, or entity rosters.
 
+Outcome (clean commit `3725714`, 2026-07-21): all three confirmation hypotheses passed. Population
+versus exact local transport scored normalized logit MSE `0.3538` versus `0.7371`, correlation
+`0.8655` versus `0.8351`, and answer-candidate agreement `0.5333` versus `0.3000`; population MSE was
+lower in exactly four of six contexts. The paired-bootstrap raw-MSE improvement CI was
+`[2.2817, 8.2759]`. Median subset-average MSE fell from `0.5468` at one train context to `0.3538` at
+24, with log-size/MSE correlation `-0.9146`; candidate agreement rose `0.4333→0.5333`. Answer-row
+permutation p05 MSE was `1.4132` and p95 candidate agreement `0.0333`, so H-GEO-06 passed by a wide
+margin. Quadratic Taylor retained the best discrete candidate agreement (`0.8333`) but had worse
+continuous MSE (`0.7738`). This confirms the finite-effect population-regularization observation
+on a second entity-disjoint split. Corpus-averaged Jacobian transport itself is prior art in the
+Jacobian Lens; this is not a new algorithm or workspace claim.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

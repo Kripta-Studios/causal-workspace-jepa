@@ -104,6 +104,21 @@
   candidate agreement by `0.10`, and at least four of six contexts. Separate gates test a monotonic
   1/2/4/8/16/24-context averaging curve and specificity over 256 answer-row permutations. These
   thresholds were chosen after the test discovery and are valid only as validation-split confirmation.
+- The clean `3725714` confirmation passed H-GEO-04/05/06. On 30 validation outcomes, the 24-context
+  mean versus exact local Jacobian achieved normalized logit MSE `0.354` versus `0.737`, correlation
+  `0.866` versus `0.835`, and answer-candidate agreement `0.533` versus `0.300`, with lower MSE in
+  exactly 4/6 recipient contexts. Paired-bootstrap raw-MSE improvement CI was `[2.28, 8.28]` with
+  `0.9997` positive probability.
+- The averaging curve improved median MSE from `0.547` at one context to `0.354` at 24, with fixed
+  log-size/MSE correlation `-0.915`; candidate agreement rose `0.433→0.533`. Answer-row permutations
+  had p05 MSE `1.413` and p95 agreement `0.033`, so aligned averaging is not merely norm shrinkage.
+  Quadratic Taylor still won candidate behavior (`0.833`) while scoring worse continuous MSE
+  (`0.774`), preserving the endpoint distinction.
+- This confirms population-Jacobian regularization of finite Qwen donor-patch logit effects across
+  two disjoint six-entity analyses. Anthropic's Jacobian Lens already establishes corpus averaging,
+  so the algorithm is not claimed novel. The bounded new empirical finding is that averaging can
+  outperform the exact local derivative for finite behavior-changing replacements; model/task
+  replication remains required before calling it a general mechanism or SOTA.
 
 ## 2026-07-21 — GPU continuation begins
 

@@ -102,11 +102,14 @@ Behavior-changing continuation:
   overlap changed about 120-fold under a function-preserving diagonal coordinate transform, while
   `J D^T` was invariant. Unexpectedly, the 24-training-context mean Jacobian outperformed matched
   local Jacobians on finite test replacements; this is post-result and needs separate confirmation.
-- `LLM-POPULATION-JACOBIAN-001` is implemented/preregistered but unexecuted. It protects the
+- `LLM-POPULATION-JACOBIAN-001` executed from clean `3725714` and passed all three gates. It protects the
   validation analysis that v1 did not use, comparing the same 24-train-context mean against exact
   validation-local Jacobians, quadratic Taylor, averaging-size curves, per-context replication, a
   paired bootstrap, and 256 answer-row permutations. Its thresholds are post-discovery and cannot
-  be generalized beyond this confirmation without another task/model.
+  be generalized beyond this confirmation without another task/model. Population/local validation
+  MSE was `0.354/0.737`, correlation `0.866/0.835`, and candidate agreement `0.533/0.300`; the
+  averaging-size and answer-row specificity controls also passed. This confirms a bounded finite-
+  effect benefit of corpus averaging, not novelty of the Jacobian Lens method.
 
 Current mock implementation:
 

@@ -1,0 +1,16 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_population_jacobian_v1.yaml",
+  "git_commit": "3725714e96c60dc2391aa40700541aab16cb93fc",
+  "git_dirty": false,
+  "hypothesis_decisions": {
+    "h_geo_04_population_jacobian_confirmation": true,
+    "h_geo_05_averaging_regularization_curve": true,
+    "h_geo_06_answer_semantic_specificity": true
+  },
+  "metrics": "artifacts/metrics/qwen_population_jacobian_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 353,
+  "time_utc": "2026-07-21T12:40:44.305261+00:00"
+}

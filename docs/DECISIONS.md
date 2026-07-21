@@ -144,3 +144,8 @@
   entities for discovery. Its thresholds are openly post-discovery. Require continuous fidelity,
   discrete answer behavior, per-context replication, and answer-row specificity jointly; a favorable
   bootstrap interval or averaging curve alone cannot establish the claim.
+- All population-Jacobian confirmation gates passed. Treat population averaging as the strongest
+  continuous finite-logit baseline for this capital-patch regime, while retaining quadratic Taylor
+  as the strongest discrete candidate baseline. The averaging algorithm is Jacobian Lens prior art;
+  the repository contribution is a bounded causal-fidelity comparison and gauge audit, pending
+  cross-task/model and JEPA replication.

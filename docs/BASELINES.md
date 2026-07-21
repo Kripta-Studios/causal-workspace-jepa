@@ -98,3 +98,9 @@ train-context Jacobians as the candidate transport. It compares against each rec
 local Jacobian, quadratic Taylor, random train-context subset averages at six sizes, and answer-row
 permutations of the same mean Jacobian. This distinguishes derivative averaging from simple output-
 norm shrinkage or label-insensitive smoothing.
+
+Measured confirmation: the 24-context mean cut validation logit NMSE from local `0.737` to `0.354`
+and raised candidate agreement from `0.300` to `0.533`. Median one-context subset NMSE was `0.547`
+and improved with context count to `0.354`; row permutations failed badly. Quadratic Taylor still
+won candidate agreement at `0.833`, illustrating that population first-order transport is the best
+continuous-logit comparator here, not the best discrete behavior comparator.

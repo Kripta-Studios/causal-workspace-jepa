@@ -63,10 +63,12 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   A function-preserving diagonal reparameterization changed naive pooled overlap about 120-fold
   while `J D^T` was invariant to `1.7e-16`. Unexpectedly, the 24-context train-mean Jacobian beat
   each test context's own Jacobian on finite logit MSE, correlation, and answer-set agreement.
-- `IMPLEMENTED_UNVALIDATED`: `LLM-POPULATION-JACOBIAN-001` prospectively tests that post-result
-  observation on the six validation entities unused by the geometry decisions. It freezes
-  population-size curves, per-context replication, paired bootstrap estimates, answer-row
-  permutation controls, and joint continuous/discrete gates before analyzing that split.
+- `COMPLETED_POSITIVE`: `LLM-POPULATION-JACOBIAN-001` confirmed all three post-discovery gates on
+  six validation entities unused by v1 decisions. The 24-context mean cut local-Jacobian normalized
+  logit MSE `0.737→0.354`, improved correlation `0.835→0.866`, and candidate agreement
+  `0.300→0.533`; averaging showed a registered dose response and answer-row permutations failed.
+  Corpus Jacobian averaging is prior art; the result is bounded finite-intervention fidelity, not a
+  new lens algorithm, circuit, or workspace.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
