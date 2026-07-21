@@ -1,6 +1,6 @@
 # Literature Registry
 
-Last primary-source check: 2026-07-20. Unchecked entries remain `UNVERIFIED_FROM_PROMPT`.
+Last primary-source check: 2026-07-21. Unchecked entries remain `UNVERIFIED_FROM_PROMPT`.
 
 | ID | Source | URL | Code/Data | Relevance | Status |
 | --- | --- | --- | --- | --- | --- |
@@ -8,7 +8,7 @@ Last primary-source check: 2026-07-20. Unchecked entries remain `UNVERIFIED_FROM
 | LIT-002 | Verbalizable Representations Form a Global Workspace in Language Models | https://transformer-circuits.pub/2026/workspace/index.html | Web publication, published 2026-07-06 | Defines a sparse nonnegative token-aligned J-space and tests report, modulation, reasoning, reuse, selectivity, depth, capacity, and broadcast. | `PRIMARY_VERIFIED_2026-07-20` |
 | LIT-003 | Anthropic Jacobian Lens implementation | https://github.com/anthropics/jacobian-lens | Official companion code; not cloned | Baseline corpus-averaged Jacobian transport and sparse J-space decomposition. | `PRIMARY_VERIFIED_2026-07-20` |
 | LIT-004 | LeJEPA | https://arxiv.org/abs/2511.08544 | Not verified | JEPA theory and scalable objective assumptions. | `UNVERIFIED_FROM_PROMPT` |
-| LIT-005 | LeWorldModel | https://arxiv.org/abs/2603.19312 | https://github.com/lucas-maes/le-wm | Published action-conditioned pixel JEPA target. | `BLOCKED_RESOURCE` |
+| LIT-005 | LeWorldModel | https://arxiv.org/abs/2603.19312 | https://github.com/lucas-maes/le-wm; MIT; revision `8edfeb3...`; HF checkpoints linked by official README | Defines the published action-conditioned pixel JEPA recipe reproduced at small scale in `WM-LEWM-001`. | `PRIMARY_VERIFIED_2026-07-21`; reproduction preregistered |
 | LIT-006 | What Drives Success in Physical Planning with JEPA WMs? | https://arxiv.org/abs/2512.24497 | https://github.com/facebookresearch/jepa-wms | Planning baselines and checkpoints for GPU continuation. | `BLOCKED_RESOURCE` |
 | LIT-007 | Delta-JEPA | https://arxiv.org/abs/2606.31232 | arXiv primary record | Introduces latent-difference action decoding; directly motivates H-WM-02 but not a workspace claim. | `PRIMARY_VERIFIED_2026-07-20` |
 | LIT-008 | Causal-JEPA | https://arxiv.org/abs/2602.11389 | https://github.com/galilai-group/cjepa | Object-level latent intervention comparison. | `BLOCKED_RESOURCE` |
@@ -28,3 +28,18 @@ Last primary-source check: 2026-07-20. Unchecked entries remain `UNVERIFIED_FROM
 | LIT-022 | Qwen3-0.6B | https://huggingface.co/Qwen/Qwen3-0.6B | Hugging Face; Apache-2.0; pinned revision `c1899de...` | Official 28-layer, 0.6B-parameter smoke target; selected-site instrumentation only. | `PRIMARY_VERIFIED_2026-07-21` |
 | LIT-023 | Qwen3-4B | https://huggingface.co/Qwen/Qwen3-4B | Hugging Face | Primary mechanistic target on GPU profile. | `BLOCKED_RESOURCE` |
 | LIT-024 | Qwen3-30B-A3B | https://huggingface.co/Qwen/Qwen3-30B-A3B | Hugging Face | Cluster-scale target. Full weights required despite sparse activation. | `BLOCKED_RESOURCE` |
+
+### LIT-005 verification record
+
+- Title/authors/year: *LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from
+  Pixels*, Lucas Maes, Quentin Le Lidec, Damien Scieur, Yann LeCun, and Randall Balestriero, 2026.
+- Paper/code/data: https://arxiv.org/abs/2603.19312,
+  https://github.com/lucas-maes/le-wm, and the official README's Hugging Face mirrors for Push-T,
+  Cube, TwoRooms, and Reacher.
+- Claimed contribution: stable end-to-end pixel JEPA training with next-embedding prediction plus a
+  Gaussian latent regularizer, followed by latent-space planning.
+- Assumptions/limitations: the official benchmark is roughly 15M parameters and depends on
+  `stable-worldmodel`/`stable-pretraining`; probe availability is not causal use; the repository's
+  reduced PixelTinyMaze reproduction is not checkpoint or benchmark equivalence.
+- Reproduction status: official source cloned only into ignored `.cache/`, revision and MIT license
+  verified; source-traceable small reproduction implemented and preregistered, full run pending.

@@ -36,8 +36,9 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   three seeds and three fixed holdouts. It beat the registered parametric and Jacobian baselines,
   but nearest-neighbor slightly won resampling-holdout MSE and the top-ranked coordinate failed
   direct causal verification; the candidate graph is therefore `REJECTED`.
-- `NOT_STARTED`: published world-model integration and its joint intervention/planning/circuit audit;
-  the former local resource blocker has been removed.
+- `IMPLEMENTED_UNVALIDATED`: official-revision-pinned faithful small LeWorldModel pixel reproduction,
+  typed adapter, three-seed training, probes, intervention/planning controls, and restricted circuit
+  audit. It must be committed before the registered run.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
@@ -133,10 +134,12 @@ python scripts/generate_qwen_interventions.py `
 
 python scripts/run_experiment.py `
   --config configs/experiments/intervention_jepa_v1.yaml
+
+python scripts/run_experiment.py `
+  --config configs/experiments/lewm_small_reproduction_v1.yaml
 ```
 
-The following Unix-style commands remain the intended clean-environment workflow; the published
-world-model commands are still implementation targets:
+The following Unix-style commands remain the intended clean-environment workflow:
 
 ```bash
 source .venv/bin/activate
@@ -154,6 +157,9 @@ python scripts/run_experiment.py \
 
 python scripts/run_experiment.py \
   --config configs/experiments/lewm_pusht_causal_patch.yaml
+
+python scripts/run_experiment.py \
+  --config configs/experiments/lewm_small_reproduction_v1.yaml
 
 python scripts/capture_qwen_activations.py \
   --config configs/llm/qwen3_4b_selected_layers.yaml
@@ -249,7 +255,8 @@ Validated CPU smoke results:
 ## Limitations
 
 This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. The bounded Qwen3-0.6B
-pipeline is validated; published-JEPA integration remains incomplete. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
+pipeline is validated; the faithful small LeWorldModel path is implemented but not yet scientifically
+executed. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
 training remain `gpu_cluster` work. The pre-existing GPT-2 artifacts came from a different Linux CPU
 host; their ignored activation shards are absent here and the audit reports their checksums as
 skipped until regenerated.

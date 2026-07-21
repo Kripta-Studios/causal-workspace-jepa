@@ -18,6 +18,8 @@
   sparse transport, checkpoint replay, and independent direct-verification logic.
 - [x] Commit `LLM-IJEPA-001`, then execute once without changing thresholds.
 - [ ] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.
+- [x] Implement, source-pin, test, and preregister the faithful small LeWorldModel reproduction.
+- [ ] Commit `WM-LEWM-001`, then execute its three seeds and restricted circuit audit unchanged.
 - [ ] Run the final multi-seed scientific/software audit.
 
 ## Milestone 0

@@ -1,7 +1,7 @@
 # Baselines
 
-Status: `SMOKE_VALIDATED` for implemented CPU methods; published/GPU baselines are now `ACTIVE` but
-not yet implemented or executed.
+Status: `SMOKE_VALIDATED` for implemented CPU/Qwen methods; a published-model small reproduction is
+`IMPLEMENTED_UNVALIDATED`.
 
 ## World Model
 
@@ -21,7 +21,12 @@ not yet implemented or executed.
 
 `WM-T0-003` implements equal-dimensional random subspaces, high-variance PCA, a planted shared
 subspace positive control, and disjoint-consumer negative control. The local hardware blocker for
-published baselines is removed; integration evidence remains `NOT_STARTED`.
+published baselines is removed.
+
+`WM-LEWM-001` adds the official LeWorldModel two-loss recipe at small scale. Its strong controls are
+shuffled/no-action prediction, paired donor action swaps, equal-dimensional perturbation-norm-matched
+random subspaces, action-module suppression, layerwise linear/nonlinear probes, and clean versus
+intervened latent planning/closed-loop execution. It is not validated until the clean run finishes.
 
 ## LLM Meta-Model
 
@@ -53,7 +58,8 @@ than a finite-difference Jacobian because it isolates only the interaction resid
 magnitude. Held-out interaction was `0.043%` of effect power; prompt-local direct addition and
 finite differences dominated all learned models. Seen-prompt bilinear success did not transfer.
 
-`LLM-IJEPA-001` implements the complete registered Qwen comparison: no-change, mean-effect, linear,
+`LLM-IJEPA-001` evaluated the complete registered Qwen comparison: no-change, mean-effect, linear,
 dual-solved bilinear, trained MLP, nearest neighbor, per-example direct local Jacobian, corpus local
-transport, and sparse-dictionary feature transport. None is considered validated until the clean
-held-out run finishes.
+transport, and sparse-dictionary feature transport. Intervention-JEPA won the primary fixed split,
+but nearest-neighbor narrowly won resampling-holdout MSE and the ranked coordinate failed direct
+precision@1.

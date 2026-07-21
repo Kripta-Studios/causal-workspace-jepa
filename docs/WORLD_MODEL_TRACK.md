@@ -12,9 +12,18 @@ Initial implementation order:
 6. planning smoke loop: implemented;
 7. workspace criteria with null-result-safe controls: implemented and run with a documented null.
 
-Published world-model adapters are placeholder-only. The RTX 5070 Ti removes the local hardware
-blocker, so a pinned faithful small reproduction is now `ACTIVE`; no published-model result is yet
-claimed.
+The former LeWorldModel placeholder is replaced by a typed, source-traceable small reproduction and
+adapter. `WM-LEWM-001` is preregistered against official revision `8edfeb3...`; it is
+`IMPLEMENTED_UNVALIDATED` until run from clean committed code. Other published adapters remain
+placeholders.
+
+The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
+autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
+PixelTinyMaze and 32 latent dimensions. The audit includes layerwise linear/nonlinear probes,
+paired-action subspace replacement, norm-matched random controls, action-module suppression,
+latent planning, closed-loop execution, ensemble uncertainty, five frozen consumers, and a
+restricted necessity/sufficiency/faithfulness graph. It is not equivalent to a released benchmark
+checkpoint.
 
 Validated CPU smoke:
 

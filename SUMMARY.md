@@ -47,6 +47,15 @@
   was `0.673`, but the predicted winner (coordinate 128) was not the observed winner (coordinate 0),
   precision@1 was zero, and the effect was slightly below the random coordinate control. H-LLM-06
   failed and `qwen_meta_circuit` is recorded as `REJECTED`; no Qwen circuit or workspace is claimed.
+- Verified the official LeWorldModel paper/code, MIT license, and source revision `8edfeb3...`.
+  Replaced the placeholder with a faithful small reproduction retaining end-to-end pixels, action
+  embedding, AdaLN-zero autoregression, next-embedding MSE, and SIGReg; added PixelTinyMaze, a typed
+  adapter, layerwise probes, paired-action interventions, norm-matched planning controls, ensemble
+  uncertainty, five consumers, and restricted circuit graph auditing.
+- Short reduced engineering checks found and fixed a collapse-selecting validation bug: selecting by
+  next-embedding error alone preferred a collapsed encoder despite SIGReg. The registered runner now
+  uses the fixed final training step, as the official training recipe does. These checks are not
+  scientific evidence. `WM-LEWM-001` is preregistered and must be committed before its full run.
 
 ## 2026-07-20
 

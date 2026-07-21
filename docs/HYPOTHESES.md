@@ -134,6 +134,45 @@ H-LLM-03 gate. H-LLM-06 failed: predicted top coordinate 128 did not match obser
 precision@1 was `0`, and the predicted candidate's observed effect did not exceed the deterministic
 random control. The candidate graph is `REJECTED`; no circuit or workspace is inferred.
 
+## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
+
+Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering
+checks were used only to validate gradients, tensor shapes, and runner behavior; they are not
+retained as evidence and did not use this fixed three-seed configuration.
+
+- Published source: official LeWorldModel repository at immutable revision
+  `8edfeb336732b5f3ce7b8b210d0ba370a09e2cac` (MIT license). The reproduction retains end-to-end
+  pixels, action embedding, an autoregressive AdaLN-zero predictor, next-embedding MSE, and SIGReg,
+  with no EMA, pretrained encoder, or auxiliary training supervision. It scales the official
+  architecture to 20x20 PixelTinyMaze, 32 latent dimensions, two encoder/predictor blocks, and 64
+  SIGReg projections. This is a faithful small reproduction, not the released checkpoint result.
+- Data/splits: deterministic PixelTinyMaze uses disjoint seeds `83/89/97` for 768/160/192 train,
+  validation, and test trajectories. Model seeds are `101/103/107`; two of three must pass.
+- H-WM-01 restricted reproduction gate: test next-embedding MSE at most `0.60`, clean/shuffled-action
+  MSE ratio at most `0.85`, mean latent standard deviation at least `0.40`, and frozen nonlinear
+  state-probe R2 at least `0.60`.
+- H-WM-03 specificity gate: at `predictor.block1`, a four-dimensional paired-action subspace swap
+  must recover at least `0.60` of the donor latent effect and `0.15` of decoded-state effect. Latent
+  recovery must exceed the p95 of 16 equal-dimensional, perturbation-norm-matched random controls
+  by at least `0.10`.
+- Planner gate: project out that subspace during four-step latent planning across 12 fixed held-out
+  start/goal pairs. It must change at least `20%` of selected first actions, latent-trajectory MSE by
+  at least `0.02`, and mean candidate-cost magnitude by at least `0.02`. Either action-change rate
+  or cost change must exceed the p95 of eight norm-matched random-subspace controls. Closed-loop
+  success and final distance are measured but not required to improve or degrade.
+- Restricted circuit gate: action-embedding suppression must increase held-out prediction error by
+  at least `1.10x`; full donor action-embedding patch recovery must be at least `0.99`; last-hidden
+  subspace recovery must be at least `0.50`; the specificity and planner gates must pass. Earlier
+  predictor blocks are localization alternatives, not assumed serial nodes, because AdaLN action
+  conditioning enters every block. Passing supports only a restricted learned action-to-planner
+  circuit on this reproduction.
+- Workspace boundary: five frozen physical/value/risk/uncertainty/action consumers and planted
+  shared/disjoint controls are evaluated. `workspace_found` remains false unless all criteria in
+  `docs/WORKSPACE_CRITERIA.md`, including reportability, voluntary control, selective multistep
+  necessity, and task/OOD generalization, are met. WM-LEWM-001 cannot meet those omitted criteria.
+- No threshold, seed, split, site, basis dimension, or candidate set may be changed after the full
+  run begins. A failed gate is a retained negative result.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

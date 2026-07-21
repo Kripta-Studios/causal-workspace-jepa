@@ -27,6 +27,12 @@ Controls:
 
 A null result is acceptable and must be reported.
 
+`WM-LEWM-001` preregisters another controlled evaluation on the faithful small published-model
+reproduction. It fits five frozen consumers and repeats planted shared/disjoint detector controls,
+but fixes `workspace_found = false` because reportability, voluntary control, selective multistep
+necessity, and task/OOD generalization are outside that experiment. A compact shared sensitivity
+result, if any, is therefore only a workspace candidate.
+
 ## Current Tier 0 Result
 
 `WM-T0-002` evaluated the tiny JEPA action-coordinate candidate.

@@ -33,6 +33,11 @@ Status: `ACTIVE`.
 - `ACTIVE`: the fitted 16-component dictionary has density `0.974`; it is a predictive baseline,
   not evidence for sparse or monosemantic Qwen features.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
+- `MITIGATED`: the faithful LeWorldModel reproduction is dimension/data scaled and is not a released
+  checkpoint or benchmark replication. Metrics and docs must always retain this distinction.
+- `RESOLVED_METHODOLOGY`: reduced engineering checks showed that selecting LeWM checkpoints by
+  prediction MSE alone selects collapsed embeddings. The registered runner uses the fixed final
+  optimization step and explicitly gates latent variance and state decodability.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.
 - `ACTIVE`: Four central literature entries have now been checked against their primary web/arXiv

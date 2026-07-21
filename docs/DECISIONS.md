@@ -28,6 +28,14 @@
 - Retain the unchanged `LLM-IJEPA-001` preregistered decisions: H-LLM-01/02/03 pass all three seeds,
   but reject the graph because H-LLM-06 precision@1 fails. Do not revise the gate after seeing that
   nearest-neighbor narrowly beats the model on resampling-holdout MSE.
+- Integrate LeWorldModel first as a faithful small reproduction at official revision `8edfeb3...`
+  instead of claiming benchmark equivalence without installing the larger external framework and
+  datasets. Preserve its two-loss recipe and record every deliberate scaling difference.
+- Do not checkpoint-select LeWM by prediction MSE alone: engineering checks showed that this rewards
+  collapsed embeddings despite a high SIGReg penalty. Use the preregistered final training step.
+- Reconstruct only the restricted action-embedding to final-predictor-site to planner graph. Since
+  AdaLN action conditioning enters every predictor block, earlier blocks are alternatives rather
+  than falsely asserted serial nodes.
 
 ## 2026-07-20
 

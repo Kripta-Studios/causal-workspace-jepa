@@ -48,6 +48,9 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection and bounded Qwen3
   Next preregister and train the meta-model/baselines without changing this observed dataset.
 - `LLM-IJEPA-001` is `SMOKE_VALIDATED` from clean commit `a54f2ed`. H-LLM-01/02/03 passed the fixed
   gates, while H-LLM-06 failed direct precision@1 and the candidate graph is rejected.
+- Official LeWorldModel revision `8edfeb3...` is verified. A faithful small reproduction and
+  intervention/planning/circuit audit are preregistered as `WM-LEWM-001`; execute only after the
+  implementation milestone is committed.
 
 ## Milestone 3+: Scientific Runs
 

@@ -67,6 +67,14 @@ def main() -> int:
         metrics = run_multitask_workspace_study(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
+    if experiment_id == "WM-LEWM-001":
+        from causal_workspace_jepa.experiments.world_model.lewm_reproduction_study import (
+            run_lewm_reproduction_study,
+        )
+
+        metrics = run_lewm_reproduction_study(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
     if experiment_id == "LLM-MOCK-001":
         metrics = run_mock_qwen_intervention_jepa_smoke(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))

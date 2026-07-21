@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "causal-workspace-jepa"
 version = "0.1.0"
-description = "CPU-first reproducible research codebase for action-conditioned JEPA interpretability and intervention-conditioned LLM meta-models."
+description = "Reproducible action-conditioned JEPA interpretability and intervention-conditioned LLM meta-model research codebase."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
