@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/lewm_action_path_calibration_v1.yaml",
+  "git_commit": "eb943a517d064a8d7cb0ca88d3ee26a3022ada73",
+  "git_dirty": false,
+  "hypothesis_decisions": {},
+  "metrics": "artifacts/metrics/lewm_action_path_calibration_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 631,
+  "time_utc": "2026-07-21T14:46:59.761824+00:00"
+}

@@ -81,6 +81,10 @@ Status: `ACTIVE`.
   validation calibration reports direct reconstruction, refinement change, direct-effect norm,
   speed concentration, horizon controls, and within-action-pair permutation nulls. It makes no
   claim and leaves test goals inaccessible until a separate preregistration.
+- `CONFIRMED_PATH_UNDERRESOLUTION`: 256-node composite integration is adequate at horizon one and
+  for seed-107 horizon four, but fails refinement/direct reconstruction on seeds 101/103 horizon
+  four. The small positive stratified-correlation margins may change under better integration;
+  neither cancellation nor recurrent amplification is evidence yet.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

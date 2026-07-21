@@ -668,6 +668,14 @@ art (LIT-012). The narrower decoded action-chord cancellation diagnostic was not
 bounded primary-source search; this is not proof of novelty. A future test must preserve decoded
 coordinates, numerical convergence, horizon-one controls, direct effects, and stratified nulls.
 
+Calibration result from clean `eb943a5`: `CALIBRATION_ONLY`, `72.59` seconds, no decisions, and no
+test-goal access. Horizon one converged for every seed, but horizon-four maximum direct/refinement
+errors were `.0680/.1369`, `.478/2.059`, and `.00197/.00093`; 256 nodes do not resolve seeds 101/103.
+Horizon-four cancellation/local-error Spearman exceeded its stratified null p95 in all seeds, but
+only by `.045/.027/.022`, while median recurrence amplification was `1.05/2.82/.983`. No test
+hypothesis is registered from these diagnostics. A higher-resolution validation-only calibration
+must establish numerical stability before the protected split can be considered.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

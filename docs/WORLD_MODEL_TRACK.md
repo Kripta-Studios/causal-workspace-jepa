@@ -46,6 +46,12 @@ local finite-chord error, 128/256-node composite-quadrature convergence, speed c
 within-action-pair permutation nulls. It is calibration only; scientific test thresholds are not yet
 registered and the five test goals remain protected.
 
+Calibration v1 ran from clean `eb943a5` in `72.59` seconds. Horizon one converged across seeds, but
+horizon four remained underresolved for seeds 101/103 even at 256 nodes. Cancellation/local-error
+Spearman exceeded the within-action-pair null p95 in all three horizon-four samples only narrowly,
+and median recurrence amplification occurred strongly in just seed 103. No evidence is accepted;
+the next step is higher-resolution validation of the same chords, not a protected-test run.
+
 Validated CPU smoke:
 
 - `WM-T0-001` ran on PointMass2D with code commit `0cab19a6c39c98b59f1a2172eb11a64ec5a566a4`.

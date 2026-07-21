@@ -8,6 +8,7 @@ Qwen circuit has been discovered.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
+| WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and weak candidate cancellation/error association; it makes no scientific claim. | Availability/calibration | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |
 | LLM-COUNTRY-CODE-LAYER-GEOMETRY-001 | Country donor control becomes monotone and late population transport is semantically specific, but population advantage can precede the 50% direct-control boundary; directional bounded lag is rejected. | Generalization | `configs/experiments/qwen_country_code_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_country_code_layer_geometry_v1.json` | clean retry `48226c6` | `COMPLETED_MIXED` |
 | CTRL-000 | CPU resource guard can inspect the current machine without heavy downloads. | Availability | `configs/resource/cpu_vps.yaml` | stdout only | `12fce84` | `SMOKE_VALIDATED` |
 | CTRL-GPU-001 | GPU resource guard and CUDA runtime detect the RTX 5070 Ti host; the cross-platform reproducibility audit accepts missing ignored shards only as skipped. | Availability | `configs/resource/gpu_12gb.yaml` | stdout only | `99854eb` plus portability fix | `SMOKE_VALIDATED` |
@@ -323,7 +324,24 @@ Interpretation: exact local derivatives can become very large and cancel along r
 action chords. The fixed quadrature was inadequate, so the experiment decides no scientific
 hypothesis. A post-result diagnostic verified local derivatives by central differences and found
 that the worst chord needed 192 quadrature nodes to reduce error from `49.8` to `0.0058`. The
-untouched test goals permit a separately preregistered adaptive confirmation.
+untouched test goals remain protected; validation calibration must converge first.
+
+`WM-ACTION-PATH-CALIBRATION-001` key metrics:
+
+- clean commit/runtime: `eb943a5`, `72.59` seconds; validation goals only; 24 sampled chords per
+  seed/horizon; `protected_test_goals_touched=false`; no hypothesis decisions;
+- horizon-one maximum direct/refinement error by seed was `.000645/.00140`,
+  `.000767/.00168`, and `.000170/.000162`;
+- horizon-four maximum direct/refinement error was `.0680/.1369`, `.478/2.059`, and
+  `.00197/.000933`; seeds 101/103 remain numerically underresolved at 256 nodes;
+- horizon-four cancellation/local-error Spearman was `.415/.483/.863`, exceeding stratified-null
+  p95 by `.045/.027/.022`; these small margins are provisional until convergence;
+- median horizon-four/horizon-one cancellation amplification was `1.05/2.82/.983`, so recurrence
+  amplification does not replicate at the calibration sample size.
+
+Interpretation: exact path profiling is feasible and suggests chord-specific cancellation may track
+local linearization failure, but the stiffest seeds are not numerically stable and the effect is
+weak relative to a strong within-action-pair null. This is calibration, not evidence or novelty.
 
 `LLM-ELEMENT-LAYER-GEOMETRY-001` key metrics:
 

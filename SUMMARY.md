@@ -15,6 +15,15 @@
 - The calibration ID is hard-locked to the five already exposed validation goals. It emits no
   scientific decision and cannot touch protected test goals. Test hypotheses/thresholds will be
   registered only after calibration, in a separate clean pushed commit.
+- The clean run from `eb943a5` completed in `72.59` seconds with `protected_test_goals_touched=false`
+  and no hypothesis decisions. Horizon-one maximum direct/refinement errors were below
+  `.00077/.00169` across seeds. Horizon four converged for seed 107 (`.00197/.00093`) but not seeds
+  101 (`.0680/.1369`) or 103 (`.478/2.059`), so 256 nodes are still insufficient for stiff chords.
+- Horizon-four cancellation/local-error Spearman was `.415/.483/.863` for seeds 101/103/107,
+  exceeding action-pair-stratified null p95 by only `.045/.027/.022`. Median horizon-four versus
+  horizon-one cancellation ratios were `1.05/2.82/.983`; recurrence amplification is not replicated.
+  These are calibration diagnostics, not evidence. A 512/1024-node validation-only refinement on
+  the same chords is warranted before any protected-test preregistration.
 
 ## 2026-07-21 — Independent country-code bounded-lag preregistration
 

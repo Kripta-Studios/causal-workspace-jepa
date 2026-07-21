@@ -1,5 +1,5 @@
 id: WM-ACTION-PATH-CALIBRATION-001
-status: CALIBRATION_PLANNED
+status: CALIBRATION_ONLY
 resource_profile: configs/resource/gpu_12gb.yaml
 device: cuda
 model_seeds: [101, 103, 107]

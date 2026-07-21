@@ -97,6 +97,11 @@ cached eligibility field. The compatibility-only fallback was tested/pushed at `
 unchanged clean retry wrote metrics/provenance and a 30,887,576-byte ignored shard with SHA-256
 `13f3792ab221f2a795d9529010cfef4da6e622cf21ecc70e08e46e0570224235`.
 
+`WM-ACTION-PATH-CALIBRATION-001` ran from clean `eb943a5` and records
+`protected_test_goals_touched=false`, empty hypothesis decisions, the exact 24 stratified chords per
+seed/horizon, and both 128/256-node estimates. Its numerical underresolution is retained; later
+calibration must use a new ID rather than overwrite this artifact.
+
 Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`; all 14 criteria and all
 software checks passed, including 68 tests and the corrected exact-JVP disposition. Its own
 metrics/provenance pair is committed, so later runs can audit the audit.
