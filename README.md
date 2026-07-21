@@ -73,11 +73,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
   is `REJECTED` and no workspace is found.
-- `PREREGISTERED`: `WM-POPULATION-JACOBIAN-001` will test whether population transition Jacobians
-  outperform exact local derivatives for valid one-hot action replacements over one and four
-  autoregressive LeWorldModel steps. Three checkpoint hashes, disjoint goal families, exact path
-  integration, decoded-physics/gauge controls, and all action-label permutations are frozen before
-  execution; five test goals remain protected.
+- `REJECTED` (numerical gate): `WM-POPULATION-JACOBIAN-001` ran from clean `89b2e14`, but its fixed
+  12-node line integral underresolved stiff recurrent action chords. Gauge checks passed, yet no
+  scientific transport claim survives. The global mean failed correlation/action-label controls;
+  the provisional 3/3 advantage of within-context valid-action-vertex averaging requires a newly
+  registered adaptive confirmation on the five untouched test goals.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.

@@ -1,0 +1,1412 @@
+{
+  "decision_counts": {
+    "h_geo_07_gauge_safe_fidelity": 0,
+    "h_wm_11_population_transition_smoothing": 0,
+    "h_wm_12_averaging_curve": 1,
+    "h_wm_13_within_context_path_averaging": 3,
+    "h_wm_14_action_semantic_specificity": 0
+  },
+  "evidence_level": "Generalization",
+  "experiment_id": "WM-POPULATION-JACOBIAN-001",
+  "goal_split": {
+    "analysis_split": "validation",
+    "goal_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "reserved_test_goal_ids": [
+      12,
+      11,
+      10,
+      21,
+      2
+    ],
+    "seed": 401,
+    "train_goal_ids": [
+      0,
+      14,
+      20,
+      18,
+      3,
+      19,
+      9,
+      4,
+      5,
+      6,
+      16,
+      17
+    ],
+    "validation_goal_ids": [
+      8,
+      13,
+      1,
+      15,
+      7
+    ]
+  },
+  "hardware": {
+    "bf16_supported": true,
+    "cpu_count": 32,
+    "free_gb": 359.944,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "gpu_required": true,
+    "gpu_vram_gb": 12.821,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 40.0,
+    "ok": true,
+    "profile_name": "gpu_12gb",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.10.0+cu128",
+    "total_gb": 1862.159
+  },
+  "hypothesis_decisions": {
+    "h_cross_02_finite_chord_population_transport": false,
+    "h_geo_07_gauge_safe_fidelity": false,
+    "h_wm_11_population_transition_smoothing": false,
+    "h_wm_12_averaging_curve": false,
+    "h_wm_13_within_context_path_averaging": true,
+    "h_wm_14_action_semantic_specificity": false
+  },
+  "intervention": {
+    "horizon4_suffix_action_ids": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        3,
+        1,
+        2
+      ]
+    ],
+    "horizons": [
+      1,
+      4
+    ],
+    "recipient_donor_pairs_per_context": 12,
+    "source": "first action in one- or four-step autoregressive rollout",
+    "type": "valid categorical environment-action replacement"
+  },
+  "model": "faithful small LeWorldModel reproduction",
+  "model_seeds": [
+    101,
+    103,
+    107
+  ],
+  "qwen_confirmation_reference": {
+    "all_registered_decisions_pass": true,
+    "experiment_id": "LLM-POPULATION-JACOBIAN-001",
+    "path": "artifacts/metrics/qwen_population_jacobian_v1.json"
+  },
+  "required_passing_seeds": 2,
+  "runtime_seconds": 55.197653600014746,
+  "scientific_boundary": "The target is the frozen JEPA's directly executed latent transition under valid one-hot action swaps. Decoded physics is a train-goal linear readout and is used to make the primary comparison invariant to an invertible latent coordinate change. Planner agreement is reported only when the direct frozen planner clears the fixed competence gate. This study does not establish a workspace, a semantic latent axis, or novelty of corpus-averaged Jacobians.",
+  "seed_results": [
+    {
+      "checkpoint": {
+        "bytes": 346061,
+        "path": "artifacts/checkpoints/lewm_small_v1/seed_101.pt",
+        "sha256": "eb158924c7cbe1be196ae0e04d374b305af20bd0e874c51fc96cb6ac15e70796"
+      },
+      "decoder": {
+        "evidence_level": "Availability",
+        "fit_examples": 1056,
+        "outputs": [
+          "next_x",
+          "next_y",
+          "next_manhattan_distance"
+        ],
+        "ridge": 0.001,
+        "train_r2": 0.5452214331022178
+      },
+      "horizon1_population_to_local_decoded_mse_ratio": 0.1318574219342965,
+      "horizon4_curve_log_size_mse_correlation": -0.9248960407952758,
+      "horizon4_population_to_local_decoded_mse_ratio": 0.05197951636215064,
+      "horizons": {
+        "1": {
+          "action_column_permutation_null": {
+            "mean_decoded_normalized_mse": 1.0382433560873658,
+            "nonidentity_permutations": 23,
+            "p05_decoded_normalized_mse": 1.0007818398741175,
+            "p95_decoded_normalized_mse": 1.0694485655461232
+          },
+          "averaging_curve": {
+            "1": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 5.91309746507159,
+              "p05_decoded_normalized_mse": 1.2760005518877602,
+              "p95_decoded_normalized_mse": 25.281580789401204
+            },
+            "1056": {
+              "draws": 1,
+              "median_decoded_normalized_mse": 1.0058797143707179,
+              "p05_decoded_normalized_mse": 1.0058797143707179,
+              "p95_decoded_normalized_mse": 1.0058797143707179
+            },
+            "16": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.262359129836705,
+              "p05_decoded_normalized_mse": 1.0342383692988013,
+              "p95_decoded_normalized_mse": 2.2724713494251834
+            },
+            "256": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.0251771789958313,
+              "p05_decoded_normalized_mse": 0.9852436059326215,
+              "p95_decoded_normalized_mse": 1.1222349633597295
+            },
+            "4": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.9521892515792127,
+              "p05_decoded_normalized_mse": 1.1535994073491702,
+              "p95_decoded_normalized_mse": 6.434379565205142
+            },
+            "64": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.0944993667081813,
+              "p05_decoded_normalized_mse": 0.9996489067355586,
+              "p95_decoded_normalized_mse": 1.461107122345409
+            }
+          },
+          "evaluation_contexts": 110,
+          "evidence_level": "Generalization",
+          "finite_action_swaps": 1320,
+          "gauge_audit": {
+            "analytic_ranking_flip": true,
+            "decoded_invariance_max_abs": 2.2737367544323206e-13,
+            "diagonal_condition_number": 100.0,
+            "naive_local_normalized_mse_after": 2.126120796722803,
+            "naive_local_normalized_mse_before": 2.4435709045239897,
+            "naive_population_normalized_mse_after": 0.9300941902552645,
+            "naive_population_normalized_mse_before": 0.9474445394385643
+          },
+          "horizon": 1,
+          "path_integral_audit": {
+            "max_relative_error": 1.2997760772705078,
+            "median_relative_error": 0.00017901415412779897,
+            "p95_relative_error": 0.2504082918167114,
+            "pairs": 128,
+            "quadrature_nodes": 12
+          },
+          "per_goal": {
+            "goals": [
+              {
+                "goal_id": 1,
+                "local_decoded_normalized_mse": 7.757661594788516,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.009315475932102
+              },
+              {
+                "goal_id": 7,
+                "local_decoded_normalized_mse": 7.927774254196368,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0119921951247102
+              },
+              {
+                "goal_id": 8,
+                "local_decoded_normalized_mse": 7.918710913398303,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0036340701983277
+              },
+              {
+                "goal_id": 13,
+                "local_decoded_normalized_mse": 7.593014756979818,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9970239417314035
+              },
+              {
+                "goal_id": 15,
+                "local_decoded_normalized_mse": 6.984787230181804,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0072751405795417
+              }
+            ],
+            "population_better_decoded_mse_goals": 5
+          },
+          "planner": {
+            "behavior_claim_eligible": false,
+            "boundary": "action-selection comparisons are evidential only if behavior_claim_eligible is true",
+            "competence_threshold": 0.6,
+            "direct_environment_optimal_rate": 0.42727272727272725,
+            "evidence_level": "Availability",
+            "local_direct_action_agreement": 0.2727272727272727,
+            "local_environment_optimal_rate": 0.37272727272727274,
+            "population_direct_action_agreement": 0.39090909090909093,
+            "population_environment_optimal_rate": 0.4818181818181818
+          },
+          "scores": {
+            "context_centroid": {
+              "decoded_physics": {
+                "correlation": 0.13850497807109197,
+                "mean_cosine": 0.24362834375973844,
+                "normalized_mse": 23.938973052165256,
+                "recovery": -22.938973052165256
+              },
+              "latent": {
+                "correlation": 0.18671740612299156,
+                "mean_cosine": 0.32375707439909834,
+                "normalized_mse": 5.6416641651831645,
+                "recovery": -4.6416641651831645
+              }
+            },
+            "context_vertex_mean": {
+              "decoded_physics": {
+                "correlation": 0.32539869727123544,
+                "mean_cosine": 0.3101661846939426,
+                "normalized_mse": 1.42236010805145,
+                "recovery": -0.4223601080514501
+              },
+              "latent": {
+                "correlation": 0.3699585900210528,
+                "mean_cosine": 0.36289057028312005,
+                "normalized_mse": 0.8824033447372819,
+                "recovery": 0.11759665526271812
+              }
+            },
+            "endpoint_trapezoid": {
+              "decoded_physics": {
+                "correlation": 0.23759426886689752,
+                "mean_cosine": 0.35165429262196674,
+                "normalized_mse": 3.7030571684417897,
+                "recovery": -2.7030571684417897
+              },
+              "latent": {
+                "correlation": 0.18754831874581598,
+                "mean_cosine": 0.39666004713293923,
+                "normalized_mse": 1.442910058162934,
+                "recovery": -0.44291005816293394
+              }
+            },
+            "local": {
+              "decoded_physics": {
+                "correlation": 0.1648523740660993,
+                "mean_cosine": 0.17613983670754071,
+                "normalized_mse": 7.628541659046161,
+                "recovery": -6.628541659046161
+              },
+              "latent": {
+                "correlation": 0.12379821339138122,
+                "mean_cosine": 0.2553516488749065,
+                "normalized_mse": 2.4435709045239897,
+                "recovery": -1.4435709045239897
+              }
+            },
+            "population": {
+              "decoded_physics": {
+                "correlation": 0.08073453671767677,
+                "mean_cosine": 0.05283944488881662,
+                "normalized_mse": 1.005879836280208,
+                "recovery": -0.00587983628020794
+              },
+              "latent": {
+                "correlation": 0.23133829629491184,
+                "mean_cosine": 0.1475882212460068,
+                "normalized_mse": 0.9474445394385643,
+                "recovery": 0.052555460561435674
+              }
+            }
+          },
+          "train_contexts": 264
+        },
+        "4": {
+          "action_column_permutation_null": {
+            "mean_decoded_normalized_mse": 1.015317234534352,
+            "nonidentity_permutations": 23,
+            "p05_decoded_normalized_mse": 0.9867844999621426,
+            "p95_decoded_normalized_mse": 1.0451187849046788
+          },
+          "averaging_curve": {
+            "1": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 2.153315719191987,
+              "p05_decoded_normalized_mse": 1.011671591339157,
+              "p95_decoded_normalized_mse": 61.54498876320972
+            },
+            "16": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.6814936523140536,
+              "p05_decoded_normalized_mse": 1.0758559339550078,
+              "p95_decoded_normalized_mse": 4.901241326789653
+            },
+            "256": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.0366646098118197,
+              "p05_decoded_normalized_mse": 1.0007636010079122,
+              "p95_decoded_normalized_mse": 1.1474116033024324
+            },
+            "4": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.973323747397866,
+              "p05_decoded_normalized_mse": 1.0160135363409495,
+              "p95_decoded_normalized_mse": 15.733692208086199
+            },
+            "4224": {
+              "draws": 1,
+              "median_decoded_normalized_mse": 0.9970378513677932,
+              "p05_decoded_normalized_mse": 0.9970378513677932,
+              "p95_decoded_normalized_mse": 0.9970378513677932
+            },
+            "64": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.1355471374363897,
+              "p05_decoded_normalized_mse": 1.0167289923918141,
+              "p95_decoded_normalized_mse": 1.5674838159920819
+            }
+          },
+          "evaluation_contexts": 440,
+          "evidence_level": "Generalization",
+          "finite_action_swaps": 5280,
+          "gauge_audit": {
+            "analytic_ranking_flip": true,
+            "decoded_invariance_max_abs": 2.7284841053187847e-12,
+            "diagonal_condition_number": 100.0,
+            "naive_local_normalized_mse_after": 13.735051946401848,
+            "naive_local_normalized_mse_before": 13.292125012694228,
+            "naive_population_normalized_mse_after": 1.0050558148463231,
+            "naive_population_normalized_mse_before": 0.9991262720884373
+          },
+          "horizon": 4,
+          "path_integral_audit": {
+            "max_relative_error": 11.18022632598877,
+            "median_relative_error": 0.11558137089014053,
+            "p95_relative_error": 4.227832794189453,
+            "pairs": 128,
+            "quadrature_nodes": 12
+          },
+          "per_goal": {
+            "goals": [
+              {
+                "goal_id": 1,
+                "local_decoded_normalized_mse": 16.770969656235728,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9963870635295771
+              },
+              {
+                "goal_id": 7,
+                "local_decoded_normalized_mse": 19.11174690621258,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9961239106219375
+              },
+              {
+                "goal_id": 8,
+                "local_decoded_normalized_mse": 17.215228028746434,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9952993744840478
+              },
+              {
+                "goal_id": 13,
+                "local_decoded_normalized_mse": 18.175920533555797,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0012555286724591
+              },
+              {
+                "goal_id": 15,
+                "local_decoded_normalized_mse": 25.458800288865476,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9962023167206642
+              }
+            ],
+            "population_better_decoded_mse_goals": 5
+          },
+          "planner": {
+            "behavior_claim_eligible": false,
+            "boundary": "action-selection comparisons are evidential only if behavior_claim_eligible is true",
+            "competence_threshold": 0.6,
+            "direct_environment_optimal_rate": 0.36363636363636365,
+            "evidence_level": "Availability",
+            "local_direct_action_agreement": 0.29772727272727273,
+            "local_environment_optimal_rate": 0.3840909090909091,
+            "population_direct_action_agreement": 0.25681818181818183,
+            "population_environment_optimal_rate": 0.39545454545454545
+          },
+          "scores": {
+            "context_centroid": {
+              "decoded_physics": {
+                "correlation": 0.05569466824348296,
+                "mean_cosine": 0.09026375469146584,
+                "normalized_mse": 30.839147442525945,
+                "recovery": -29.839147442525945
+              },
+              "latent": {
+                "correlation": 0.09003657099335949,
+                "mean_cosine": 0.18372951434468268,
+                "normalized_mse": 19.581822709311254,
+                "recovery": -18.581822709311254
+              }
+            },
+            "context_vertex_mean": {
+              "decoded_physics": {
+                "correlation": 0.06817220832198043,
+                "mean_cosine": 0.14786657183535104,
+                "normalized_mse": 4.477643308044985,
+                "recovery": -3.4776433080449847
+              },
+              "latent": {
+                "correlation": 0.04115075526533218,
+                "mean_cosine": 0.102625501878518,
+                "normalized_mse": 3.317675778461479,
+                "recovery": -2.317675778461479
+              }
+            },
+            "endpoint_trapezoid": {
+              "decoded_physics": {
+                "correlation": 0.11190551470401533,
+                "mean_cosine": 0.15586482708020039,
+                "normalized_mse": 9.415669906666142,
+                "recovery": -8.415669906666142
+              },
+              "latent": {
+                "correlation": 0.04567428891235547,
+                "mean_cosine": 0.16051359795249914,
+                "normalized_mse": 7.041580233978597,
+                "recovery": -6.041580233978597
+              }
+            },
+            "local": {
+              "decoded_physics": {
+                "correlation": 0.07770311044838484,
+                "mean_cosine": 0.10134277061104542,
+                "normalized_mse": 19.181356790761956,
+                "recovery": -18.181356790761956
+              },
+              "latent": {
+                "correlation": 0.03232382414205961,
+                "mean_cosine": 0.10691612147559368,
+                "normalized_mse": 13.292125012694228,
+                "recovery": -12.292125012694228
+              }
+            },
+            "population": {
+              "decoded_physics": {
+                "correlation": 0.07260024982679837,
+                "mean_cosine": 0.06928001101352942,
+                "normalized_mse": 0.9970376491536603,
+                "recovery": 0.0029623508463396675
+              },
+              "latent": {
+                "correlation": 0.06664366027642166,
+                "mean_cosine": 0.010678245734271518,
+                "normalized_mse": 0.9991262720884373,
+                "recovery": 0.000873727911562705
+              }
+            }
+          },
+          "train_contexts": 1056
+        }
+      },
+      "hypothesis_decisions": {
+        "h_geo_07_gauge_safe_fidelity": false,
+        "h_wm_11_population_transition_smoothing": false,
+        "h_wm_12_averaging_curve": true,
+        "h_wm_13_within_context_path_averaging": true,
+        "h_wm_14_action_semantic_specificity": false
+      },
+      "model_seed": 101
+    },
+    {
+      "checkpoint": {
+        "bytes": 346061,
+        "path": "artifacts/checkpoints/lewm_small_v1/seed_103.pt",
+        "sha256": "b4f0c82bb0fca29ef1bb66297a9203093f39e9c9bbfe2d9bf17c6a1c7e9883b3"
+      },
+      "decoder": {
+        "evidence_level": "Availability",
+        "fit_examples": 1056,
+        "outputs": [
+          "next_x",
+          "next_y",
+          "next_manhattan_distance"
+        ],
+        "ridge": 0.001,
+        "train_r2": 0.6350463677019458
+      },
+      "horizon1_population_to_local_decoded_mse_ratio": 0.2091485176687787,
+      "horizon4_curve_log_size_mse_correlation": -0.7677688729064109,
+      "horizon4_population_to_local_decoded_mse_ratio": 0.03696102495241827,
+      "horizons": {
+        "1": {
+          "action_column_permutation_null": {
+            "mean_decoded_normalized_mse": 1.041351550589168,
+            "nonidentity_permutations": 23,
+            "p05_decoded_normalized_mse": 0.9685892653272542,
+            "p95_decoded_normalized_mse": 1.120666250820444
+          },
+          "averaging_curve": {
+            "1": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 2.0084205294530486,
+              "p05_decoded_normalized_mse": 1.0912267149256827,
+              "p95_decoded_normalized_mse": 13.962461059865406
+            },
+            "1056": {
+              "draws": 1,
+              "median_decoded_normalized_mse": 1.0329578801664816,
+              "p05_decoded_normalized_mse": 1.0329578801664816,
+              "p95_decoded_normalized_mse": 1.0329578801664816
+            },
+            "16": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.2320904639720258,
+              "p05_decoded_normalized_mse": 1.0039193592516724,
+              "p95_decoded_normalized_mse": 2.7172383973776335
+            },
+            "256": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.032196937419907,
+              "p05_decoded_normalized_mse": 0.9944229319519556,
+              "p95_decoded_normalized_mse": 1.1290049797333173
+            },
+            "4": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.6946741235817306,
+              "p05_decoded_normalized_mse": 1.0505633278889857,
+              "p95_decoded_normalized_mse": 5.259318991263629
+            },
+            "64": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.064131907386185,
+              "p05_decoded_normalized_mse": 0.996110426826747,
+              "p95_decoded_normalized_mse": 1.3795128673213894
+            }
+          },
+          "evaluation_contexts": 110,
+          "evidence_level": "Generalization",
+          "finite_action_swaps": 1320,
+          "gauge_audit": {
+            "analytic_ranking_flip": true,
+            "decoded_invariance_max_abs": 1.1368683772161603e-13,
+            "diagonal_condition_number": 100.0,
+            "naive_local_normalized_mse_after": 2.367926351811409,
+            "naive_local_normalized_mse_before": 2.5792593950705274,
+            "naive_population_normalized_mse_after": 0.9768297457218708,
+            "naive_population_normalized_mse_before": 0.982355105348585
+          },
+          "horizon": 1,
+          "path_integral_audit": {
+            "max_relative_error": 0.7991620302200317,
+            "median_relative_error": 0.00022613997862208635,
+            "p95_relative_error": 0.21635957062244415,
+            "pairs": 128,
+            "quadrature_nodes": 12
+          },
+          "per_goal": {
+            "goals": [
+              {
+                "goal_id": 1,
+                "local_decoded_normalized_mse": 5.176207501414184,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0345823047341687
+              },
+              {
+                "goal_id": 7,
+                "local_decoded_normalized_mse": 4.63633810579163,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.037245213885978
+              },
+              {
+                "goal_id": 8,
+                "local_decoded_normalized_mse": 4.47603573637208,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0419370172157953
+              },
+              {
+                "goal_id": 13,
+                "local_decoded_normalized_mse": 5.201641921795416,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0242820075654089
+              },
+              {
+                "goal_id": 15,
+                "local_decoded_normalized_mse": 5.22854448354156,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.0262228537925144
+              }
+            ],
+            "population_better_decoded_mse_goals": 5
+          },
+          "planner": {
+            "behavior_claim_eligible": false,
+            "boundary": "action-selection comparisons are evidential only if behavior_claim_eligible is true",
+            "competence_threshold": 0.6,
+            "direct_environment_optimal_rate": 0.5454545454545454,
+            "evidence_level": "Availability",
+            "local_direct_action_agreement": 0.2727272727272727,
+            "local_environment_optimal_rate": 0.44545454545454544,
+            "population_direct_action_agreement": 0.5545454545454546,
+            "population_environment_optimal_rate": 0.5
+          },
+          "scores": {
+            "context_centroid": {
+              "decoded_physics": {
+                "correlation": 0.17419168060448284,
+                "mean_cosine": 0.17544087511384673,
+                "normalized_mse": 10.309653373118138,
+                "recovery": -9.309653373118138
+              },
+              "latent": {
+                "correlation": 0.14770658328866595,
+                "mean_cosine": 0.13809359921843492,
+                "normalized_mse": 10.28899681948883,
+                "recovery": -9.28899681948883
+              }
+            },
+            "context_vertex_mean": {
+              "decoded_physics": {
+                "correlation": 0.159086383118941,
+                "mean_cosine": 0.1777305890700482,
+                "normalized_mse": 1.8605364076952302,
+                "recovery": -0.8605364076952302
+              },
+              "latent": {
+                "correlation": 0.3749395425690506,
+                "mean_cosine": 0.37817809202806607,
+                "normalized_mse": 0.897027833178171,
+                "recovery": 0.10297216682182897
+              }
+            },
+            "endpoint_trapezoid": {
+              "decoded_physics": {
+                "correlation": -0.007361740923645042,
+                "mean_cosine": 0.0947635736946612,
+                "normalized_mse": 2.9730935731087405,
+                "recovery": -1.9730935731087405
+              },
+              "latent": {
+                "correlation": 0.1994040286798351,
+                "mean_cosine": 0.2892081982716572,
+                "normalized_mse": 1.5172818291780241,
+                "recovery": -0.5172818291780241
+              }
+            },
+            "local": {
+              "decoded_physics": {
+                "correlation": -0.005196804449941579,
+                "mean_cosine": 0.04756572242000992,
+                "normalized_mse": 4.938873661921923,
+                "recovery": -3.9388736619219227
+              },
+              "latent": {
+                "correlation": 0.13482844307415906,
+                "mean_cosine": 0.19925240227374813,
+                "normalized_mse": 2.5792593950705274,
+                "recovery": -1.5792593950705274
+              }
+            },
+            "population": {
+              "decoded_physics": {
+                "correlation": 0.01986210951830117,
+                "mean_cosine": 0.08393797492555094,
+                "normalized_mse": 1.032958105344343,
+                "recovery": -0.03295810534434307
+              },
+              "latent": {
+                "correlation": 0.13542033995785235,
+                "mean_cosine": 0.169525016784486,
+                "normalized_mse": 0.982355105348585,
+                "recovery": 0.017644894651415055
+              }
+            }
+          },
+          "train_contexts": 264
+        },
+        "4": {
+          "action_column_permutation_null": {
+            "mean_decoded_normalized_mse": 1.4327230847300485,
+            "nonidentity_permutations": 23,
+            "p05_decoded_normalized_mse": 1.3495189720941487,
+            "p95_decoded_normalized_mse": 1.5106925677273901
+          },
+          "averaging_curve": {
+            "1": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 2.396122392721846,
+              "p05_decoded_normalized_mse": 1.008675685756138,
+              "p95_decoded_normalized_mse": 78.16799980237963
+            },
+            "16": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 2.6886325177806194,
+              "p05_decoded_normalized_mse": 1.0639713625157687,
+              "p95_decoded_normalized_mse": 11.159753809340216
+            },
+            "256": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.4622704988560111,
+              "p05_decoded_normalized_mse": 1.0354737243412468,
+              "p95_decoded_normalized_mse": 2.551819289952556
+            },
+            "4": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 3.4195916388034933,
+              "p05_decoded_normalized_mse": 1.0296307099050392,
+              "p95_decoded_normalized_mse": 32.18542536471304
+            },
+            "4224": {
+              "draws": 1,
+              "median_decoded_normalized_mse": 1.4154068038617127,
+              "p05_decoded_normalized_mse": 1.4154068038617127,
+              "p95_decoded_normalized_mse": 1.4154068038617127
+            },
+            "64": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.6473107265648501,
+              "p05_decoded_normalized_mse": 1.0256171484622654,
+              "p95_decoded_normalized_mse": 4.075208429190049
+            }
+          },
+          "evaluation_contexts": 440,
+          "evidence_level": "Generalization",
+          "finite_action_swaps": 5280,
+          "gauge_audit": {
+            "analytic_ranking_flip": true,
+            "decoded_invariance_max_abs": 1.3642420526593924e-12,
+            "diagonal_condition_number": 100.0,
+            "naive_local_normalized_mse_after": 21.734313815201336,
+            "naive_local_normalized_mse_before": 21.15339536676391,
+            "naive_population_normalized_mse_after": 1.0429160755881388,
+            "naive_population_normalized_mse_before": 1.0257838529629941
+          },
+          "horizon": 4,
+          "path_integral_audit": {
+            "max_relative_error": 49.58066177368164,
+            "median_relative_error": 0.7041035890579224,
+            "p95_relative_error": 8.891111373901367,
+            "pairs": 128,
+            "quadrature_nodes": 12
+          },
+          "per_goal": {
+            "goals": [
+              {
+                "goal_id": 1,
+                "local_decoded_normalized_mse": 66.92376982862766,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.4317223512111732
+              },
+              {
+                "goal_id": 7,
+                "local_decoded_normalized_mse": 19.668988806553248,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.417251089809937
+              },
+              {
+                "goal_id": 8,
+                "local_decoded_normalized_mse": 48.95635921584345,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.4090277300368574
+              },
+              {
+                "goal_id": 13,
+                "local_decoded_normalized_mse": 29.44008533837432,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.4313946252069054
+              },
+              {
+                "goal_id": 15,
+                "local_decoded_normalized_mse": 27.772499109711184,
+                "population_better": true,
+                "population_decoded_normalized_mse": 1.3881106262390428
+              }
+            ],
+            "population_better_decoded_mse_goals": 5
+          },
+          "planner": {
+            "behavior_claim_eligible": false,
+            "boundary": "action-selection comparisons are evidential only if behavior_claim_eligible is true",
+            "competence_threshold": 0.6,
+            "direct_environment_optimal_rate": 0.5136363636363637,
+            "evidence_level": "Availability",
+            "local_direct_action_agreement": 0.21136363636363636,
+            "local_environment_optimal_rate": 0.42272727272727273,
+            "population_direct_action_agreement": 0.33636363636363636,
+            "population_environment_optimal_rate": 0.4090909090909091
+          },
+          "scores": {
+            "context_centroid": {
+              "decoded_physics": {
+                "correlation": 0.02710424870522178,
+                "mean_cosine": 0.09885736885516652,
+                "normalized_mse": 617.6190976138987,
+                "recovery": -616.6190976138987
+              },
+              "latent": {
+                "correlation": 0.01630581710274622,
+                "mean_cosine": 0.11067365513792239,
+                "normalized_mse": 264.61422922004283,
+                "recovery": -263.61422922004283
+              }
+            },
+            "context_vertex_mean": {
+              "decoded_physics": {
+                "correlation": -0.03645606786776719,
+                "mean_cosine": 0.021752180169320907,
+                "normalized_mse": 13.16245599328527,
+                "recovery": -12.16245599328527
+              },
+              "latent": {
+                "correlation": 0.015722570018070526,
+                "mean_cosine": 0.029608428031308035,
+                "normalized_mse": 7.088379170647932,
+                "recovery": -6.088379170647932
+              }
+            },
+            "endpoint_trapezoid": {
+              "decoded_physics": {
+                "correlation": 0.025865885152359047,
+                "mean_cosine": 0.030593072030551387,
+                "normalized_mse": 19.686844487593728,
+                "recovery": -18.686844487593728
+              },
+              "latent": {
+                "correlation": 0.009258538219875951,
+                "mean_cosine": 0.046041761022117836,
+                "normalized_mse": 11.259414462052742,
+                "recovery": -10.259414462052742
+              }
+            },
+            "local": {
+              "decoded_physics": {
+                "correlation": 0.01836496308782654,
+                "mean_cosine": 0.028614515611809586,
+                "normalized_mse": 38.29457982485131,
+                "recovery": -37.29457982485131
+              },
+              "latent": {
+                "correlation": 0.006615268518336521,
+                "mean_cosine": 0.0556397497746026,
+                "normalized_mse": 21.15339536676391,
+                "recovery": -20.15339536676391
+              }
+            },
+            "population": {
+              "decoded_physics": {
+                "correlation": 0.01262395735924697,
+                "mean_cosine": -0.006197693584241134,
+                "normalized_mse": 1.4154069204487028,
+                "recovery": -0.41540692044870275
+              },
+              "latent": {
+                "correlation": 0.05137632633654815,
+                "mean_cosine": 0.06095809441881452,
+                "normalized_mse": 1.0257838529629941,
+                "recovery": -0.025783852962994125
+              }
+            }
+          },
+          "train_contexts": 1056
+        }
+      },
+      "hypothesis_decisions": {
+        "h_geo_07_gauge_safe_fidelity": false,
+        "h_wm_11_population_transition_smoothing": false,
+        "h_wm_12_averaging_curve": false,
+        "h_wm_13_within_context_path_averaging": true,
+        "h_wm_14_action_semantic_specificity": false
+      },
+      "model_seed": 103
+    },
+    {
+      "checkpoint": {
+        "bytes": 346061,
+        "path": "artifacts/checkpoints/lewm_small_v1/seed_107.pt",
+        "sha256": "70a1eaa06f57b1a39ba76bc9d9230e174cc0d1e26ac5eb641e0f8c2ef974b6a8"
+      },
+      "decoder": {
+        "evidence_level": "Availability",
+        "fit_examples": 1056,
+        "outputs": [
+          "next_x",
+          "next_y",
+          "next_manhattan_distance"
+        ],
+        "ridge": 0.001,
+        "train_r2": 0.6500890943712487
+      },
+      "horizon1_population_to_local_decoded_mse_ratio": 0.5191695424701829,
+      "horizon4_curve_log_size_mse_correlation": -0.8111655969460666,
+      "horizon4_population_to_local_decoded_mse_ratio": 0.4109316011595576,
+      "horizons": {
+        "1": {
+          "action_column_permutation_null": {
+            "mean_decoded_normalized_mse": 1.1615865879541902,
+            "nonidentity_permutations": 23,
+            "p05_decoded_normalized_mse": 0.7868572049836132,
+            "p95_decoded_normalized_mse": 1.5121953701647415
+          },
+          "averaging_curve": {
+            "1": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.7078778554163132,
+              "p05_decoded_normalized_mse": 0.9725987991591214,
+              "p95_decoded_normalized_mse": 4.175284782161518
+            },
+            "1056": {
+              "draws": 1,
+              "median_decoded_normalized_mse": 0.774671325530444,
+              "p05_decoded_normalized_mse": 0.774671325530444,
+              "p95_decoded_normalized_mse": 0.774671325530444
+            },
+            "16": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 0.8453585966734208,
+              "p05_decoded_normalized_mse": 0.7759106153070722,
+              "p95_decoded_normalized_mse": 1.1164595595664881
+            },
+            "256": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 0.779389973736896,
+              "p05_decoded_normalized_mse": 0.765295580609879,
+              "p95_decoded_normalized_mse": 0.8035350264528216
+            },
+            "4": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 0.9935014195326757,
+              "p05_decoded_normalized_mse": 0.8034964712764681,
+              "p95_decoded_normalized_mse": 1.756541739380872
+            },
+            "64": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 0.7909657593046551,
+              "p05_decoded_normalized_mse": 0.7669861194122171,
+              "p95_decoded_normalized_mse": 0.8559860691182162
+            }
+          },
+          "evaluation_contexts": 110,
+          "evidence_level": "Generalization",
+          "finite_action_swaps": 1320,
+          "gauge_audit": {
+            "analytic_ranking_flip": true,
+            "decoded_invariance_max_abs": 5.684341886080802e-14,
+            "diagonal_condition_number": 100.0,
+            "naive_local_normalized_mse_after": 0.665454363173609,
+            "naive_local_normalized_mse_before": 0.7394412935350826,
+            "naive_population_normalized_mse_after": 0.9499420614141161,
+            "naive_population_normalized_mse_before": 0.9324195050156325
+          },
+          "horizon": 1,
+          "path_integral_audit": {
+            "max_relative_error": 0.0008981127175502479,
+            "median_relative_error": 6.544724601553753e-05,
+            "p95_relative_error": 0.0002067898603854701,
+            "pairs": 128,
+            "quadrature_nodes": 12
+          },
+          "per_goal": {
+            "goals": [
+              {
+                "goal_id": 1,
+                "local_decoded_normalized_mse": 1.3645209119783974,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.7750875704011124
+              },
+              {
+                "goal_id": 7,
+                "local_decoded_normalized_mse": 1.4228582769067404,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.7982254909128655
+              },
+              {
+                "goal_id": 8,
+                "local_decoded_normalized_mse": 1.803499157880434,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.8066041806546339
+              },
+              {
+                "goal_id": 13,
+                "local_decoded_normalized_mse": 1.6490229763985345,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.7402046856020448
+              },
+              {
+                "goal_id": 15,
+                "local_decoded_normalized_mse": 1.2951226496563781,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.7524903782195199
+              }
+            ],
+            "population_better_decoded_mse_goals": 5
+          },
+          "planner": {
+            "behavior_claim_eligible": false,
+            "boundary": "action-selection comparisons are evidential only if behavior_claim_eligible is true",
+            "competence_threshold": 0.6,
+            "direct_environment_optimal_rate": 0.34545454545454546,
+            "evidence_level": "Availability",
+            "local_direct_action_agreement": 0.43636363636363634,
+            "local_environment_optimal_rate": 0.37272727272727274,
+            "population_direct_action_agreement": 0.41818181818181815,
+            "population_environment_optimal_rate": 0.4
+          },
+          "scores": {
+            "context_centroid": {
+              "decoded_physics": {
+                "correlation": 0.8679134713743056,
+                "mean_cosine": 0.7965849576129255,
+                "normalized_mse": 0.6337980019217656,
+                "recovery": 0.3662019980782344
+              },
+              "latent": {
+                "correlation": 0.937804437718803,
+                "mean_cosine": 0.8875248394632997,
+                "normalized_mse": 0.6066315360888795,
+                "recovery": 0.39336846391112046
+              }
+            },
+            "context_vertex_mean": {
+              "decoded_physics": {
+                "correlation": 0.7684378010020234,
+                "mean_cosine": 0.6893291294497024,
+                "normalized_mse": 0.4095065679279773,
+                "recovery": 0.5904934320720228
+              },
+              "latent": {
+                "correlation": 0.8365239441276167,
+                "mean_cosine": 0.8700786215783995,
+                "normalized_mse": 0.4061331200977771,
+                "recovery": 0.5938668799022229
+              }
+            },
+            "endpoint_trapezoid": {
+              "decoded_physics": {
+                "correlation": 0.7423254859062934,
+                "mean_cosine": 0.7250954257263725,
+                "normalized_mse": 0.45013464991267604,
+                "recovery": 0.549865350087324
+              },
+              "latent": {
+                "correlation": 0.7965605513389603,
+                "mean_cosine": 0.8928992470196694,
+                "normalized_mse": 0.4494904085951584,
+                "recovery": 0.5505095914048417
+              }
+            },
+            "local": {
+              "decoded_physics": {
+                "correlation": 0.44960123919374473,
+                "mean_cosine": 0.5377630673712577,
+                "normalized_mse": 1.4921355354489931,
+                "recovery": -0.49213553544899313
+              },
+              "latent": {
+                "correlation": 0.5459222617626361,
+                "mean_cosine": 0.6820628598981361,
+                "normalized_mse": 0.7394412935350826,
+                "recovery": 0.2605587064649174
+              }
+            },
+            "population": {
+              "decoded_physics": {
+                "correlation": 0.4860970968636729,
+                "mean_cosine": 0.32992446394173736,
+                "normalized_mse": 0.7746713232425552,
+                "recovery": 0.22532867675744483
+              },
+              "latent": {
+                "correlation": 0.2655812162236973,
+                "mean_cosine": 0.4394837692910989,
+                "normalized_mse": 0.9324195050156325,
+                "recovery": 0.06758049498436747
+              }
+            }
+          },
+          "train_contexts": 264
+        },
+        "4": {
+          "action_column_permutation_null": {
+            "mean_decoded_normalized_mse": 1.0108053244920228,
+            "nonidentity_permutations": 23,
+            "p05_decoded_normalized_mse": 0.9872440692662698,
+            "p95_decoded_normalized_mse": 1.0324747072021612
+          },
+          "averaging_curve": {
+            "1": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.0811936063829939,
+              "p05_decoded_normalized_mse": 0.9896422518315069,
+              "p95_decoded_normalized_mse": 9.726612650859265
+            },
+            "16": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.0815201889135921,
+              "p05_decoded_normalized_mse": 0.9996741765977801,
+              "p95_decoded_normalized_mse": 1.6624452551641726
+            },
+            "256": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 0.9961580983370002,
+              "p05_decoded_normalized_mse": 0.9875666819961153,
+              "p95_decoded_normalized_mse": 1.0177060480963673
+            },
+            "4": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.159361627201191,
+              "p05_decoded_normalized_mse": 0.9963904442465155,
+              "p95_decoded_normalized_mse": 4.0960650364587945
+            },
+            "4224": {
+              "draws": 1,
+              "median_decoded_normalized_mse": 0.9867515055093603,
+              "p05_decoded_normalized_mse": 0.9867515055093603,
+              "p95_decoded_normalized_mse": 0.9867515055093603
+            },
+            "64": {
+              "draws": 64,
+              "median_decoded_normalized_mse": 1.0158663019055083,
+              "p05_decoded_normalized_mse": 0.9893879783822572,
+              "p95_decoded_normalized_mse": 1.1323848472569793
+            }
+          },
+          "evaluation_contexts": 440,
+          "evidence_level": "Generalization",
+          "finite_action_swaps": 5280,
+          "gauge_audit": {
+            "analytic_ranking_flip": true,
+            "decoded_invariance_max_abs": 1.4210854715202004e-13,
+            "diagonal_condition_number": 100.0,
+            "naive_local_normalized_mse_after": 0.9375445303614945,
+            "naive_local_normalized_mse_before": 1.0770023640851,
+            "naive_population_normalized_mse_after": 0.9731591626988729,
+            "naive_population_normalized_mse_before": 0.9575618882875139
+          },
+          "horizon": 4,
+          "path_integral_audit": {
+            "max_relative_error": 0.08217345923185349,
+            "median_relative_error": 0.00012738376972265542,
+            "p95_relative_error": 0.0010859883623197675,
+            "pairs": 128,
+            "quadrature_nodes": 12
+          },
+          "per_goal": {
+            "goals": [
+              {
+                "goal_id": 1,
+                "local_decoded_normalized_mse": 2.5946621402665824,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9857229404813416
+              },
+              {
+                "goal_id": 7,
+                "local_decoded_normalized_mse": 2.394551980290283,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9885533538434433
+              },
+              {
+                "goal_id": 8,
+                "local_decoded_normalized_mse": 2.1144240637166853,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9829822969923941
+              },
+              {
+                "goal_id": 13,
+                "local_decoded_normalized_mse": 2.3099295288592785,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.990707502666232
+              },
+              {
+                "goal_id": 15,
+                "local_decoded_normalized_mse": 2.624240579021518,
+                "population_better": true,
+                "population_decoded_normalized_mse": 0.9864425250370498
+              }
+            ],
+            "population_better_decoded_mse_goals": 5
+          },
+          "planner": {
+            "behavior_claim_eligible": false,
+            "boundary": "action-selection comparisons are evidential only if behavior_claim_eligible is true",
+            "competence_threshold": 0.6,
+            "direct_environment_optimal_rate": 0.29545454545454547,
+            "evidence_level": "Availability",
+            "local_direct_action_agreement": 0.6113636363636363,
+            "local_environment_optimal_rate": 0.31363636363636366,
+            "population_direct_action_agreement": 0.4022727272727273,
+            "population_environment_optimal_rate": 0.2636363636363636
+          },
+          "scores": {
+            "context_centroid": {
+              "decoded_physics": {
+                "correlation": 0.5438307656131371,
+                "mean_cosine": 0.6133769545096869,
+                "normalized_mse": 5.59132882029607,
+                "recovery": -4.59132882029607
+              },
+              "latent": {
+                "correlation": 0.7470545382707836,
+                "mean_cosine": 0.7924195537436476,
+                "normalized_mse": 1.9121540840275226,
+                "recovery": -0.9121540840275226
+              }
+            },
+            "context_vertex_mean": {
+              "decoded_physics": {
+                "correlation": 0.48160883227503265,
+                "mean_cosine": 0.49409941175271216,
+                "normalized_mse": 0.8850403343958875,
+                "recovery": 0.11495966560411253
+              },
+              "latent": {
+                "correlation": 0.7407480971562306,
+                "mean_cosine": 0.8184420186541085,
+                "normalized_mse": 0.4651632267168502,
+                "recovery": 0.5348367732831498
+              }
+            },
+            "endpoint_trapezoid": {
+              "decoded_physics": {
+                "correlation": 0.36372565416157454,
+                "mean_cosine": 0.581516250479718,
+                "normalized_mse": 1.2448926707837196,
+                "recovery": -0.24489267078371957
+              },
+              "latent": {
+                "correlation": 0.6306374890424532,
+                "mean_cosine": 0.8638913583040896,
+                "normalized_mse": 0.6060890331862544,
+                "recovery": 0.3939109668137456
+              }
+            },
+            "local": {
+              "decoded_physics": {
+                "correlation": 0.24471453217979766,
+                "mean_cosine": 0.4438633318529209,
+                "normalized_mse": 2.401254809592666,
+                "recovery": -1.401254809592666
+              },
+              "latent": {
+                "correlation": 0.44786250392671895,
+                "mean_cosine": 0.6777969813333978,
+                "normalized_mse": 1.0770023640851,
+                "recovery": -0.07700236408510008
+              }
+            },
+            "population": {
+              "decoded_physics": {
+                "correlation": 0.11640984798827077,
+                "mean_cosine": -0.0035714083750673694,
+                "normalized_mse": 0.9867514836980029,
+                "recovery": 0.013248516301997082
+              },
+              "latent": {
+                "correlation": 0.2148322960996116,
+                "mean_cosine": 0.17897610616291418,
+                "normalized_mse": 0.9575618882875139,
+                "recovery": 0.042438111712486126
+              }
+            }
+          },
+          "train_contexts": 1056
+        }
+      },
+      "hypothesis_decisions": {
+        "h_geo_07_gauge_safe_fidelity": false,
+        "h_wm_11_population_transition_smoothing": false,
+        "h_wm_12_averaging_curve": false,
+        "h_wm_13_within_context_path_averaging": true,
+        "h_wm_14_action_semantic_specificity": false
+      },
+      "model_seed": 107
+    }
+  ],
+  "status": "REJECTED_NUMERICAL_GATE"
+}

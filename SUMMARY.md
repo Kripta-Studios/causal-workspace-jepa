@@ -14,6 +14,18 @@
 - The weak inherited planner cannot support behavior evidence unless its direct action choice is
   environment-optimal on at least 60% of contexts. No checkpoint has yet been evaluated under this
   analysis. Commit and push the preregistration before running it unchanged.
+- The unchanged run from clean `89b2e14` completed in `55.20` seconds and is
+  `REJECTED_NUMERICAL_GATE`. Gauge-safe decoded effects were invariant to at most `2.73e-12`, but
+  12-node path-integral errors reached `11.18/49.58/0.0822` at horizon four, so no scientific
+  hypothesis is accepted. Every direct planner was below the 60% competence floor.
+- Descriptively, global population transport drove MSE toward one but had near-zero correlation and
+  failed all action-column semantic nulls. The within-context mean of the four valid action-vertex
+  Jacobians beat the local derivative at both horizons in all three seeds; because v1's numerical
+  gate failed, this is a post-result candidate for protected-test confirmation, not evidence yet.
+- A no-write diagnostic confirmed local autograd against central differences and localized the
+  failure to sharp recurrent cancellation: the worst seed-103 chord improved from `49.8` relative
+  integration error with 12 nodes to `0.0058` with 192. V2 must use preregistered adaptive
+  integration and cannot change v1's rejected status.
 
 ## 2026-07-21 — Corrective derivative and novelty audit
 

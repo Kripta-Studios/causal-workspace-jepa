@@ -1,0 +1,19 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/lewm_population_geometry_v1.yaml",
+  "git_commit": "89b2e1490dc8af2fb3878bb1a994b74f140ae1f3",
+  "git_dirty": false,
+  "hypothesis_decisions": {
+    "h_cross_02_finite_chord_population_transport": false,
+    "h_geo_07_gauge_safe_fidelity": false,
+    "h_wm_11_population_transition_smoothing": false,
+    "h_wm_12_averaging_curve": false,
+    "h_wm_13_within_context_path_averaging": true,
+    "h_wm_14_action_semantic_specificity": false
+  },
+  "metrics": "artifacts/metrics/lewm_population_geometry_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 419,
+  "time_utc": "2026-07-21T13:01:33.225320+00:00"
+}

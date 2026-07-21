@@ -1,5 +1,5 @@
 id: WM-POPULATION-JACOBIAN-001
-status: PREREGISTERED
+status: REJECTED_NUMERICAL_GATE
 resource_profile: configs/resource/gpu_12gb.yaml
 device: cuda
 model_seeds: [101, 103, 107]

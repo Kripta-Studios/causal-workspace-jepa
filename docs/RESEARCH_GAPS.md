@@ -35,3 +35,8 @@ Status: `ACTIVE`.
   is a train-goal decoded physical effect rather than raw latent MSE, because invertible latent
   gauges can change Euclidean rankings. Validation goals are the first analysis; five test goals
   cannot be inspected without a new confirmation commit.
+- V1 is numerically rejected because fixed quadrature underresolves sharply varying recurrent
+  derivatives. Do not interpret its provisional vertex-mean result as evidence. A continuation must
+  validate derivatives locally, adaptively integrate to convergence, retain action-label controls,
+  and use only the protected test goals. The global population mean's low MSE is consistent with
+  nonspecific shrinkage because correlation and semantic permutation gates failed.

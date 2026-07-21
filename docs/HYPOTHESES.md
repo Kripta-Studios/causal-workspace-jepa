@@ -484,6 +484,20 @@ not a revision of the failed `WM-LEWM-001` circuit/workspace decisions.
   on at least `60%` of contexts. The known weak `WM-LEWM-001` planner makes ineligibility plausible;
   no threshold changes after execution. No outcome can establish a workspace or circuit here.
 
+Outcome (clean commit `89b2e14`, 2026-07-21): `REJECTED_NUMERICAL_GATE`. The decoded gauge audit
+was stable to at most `2.73e-12` and its analytic ranking-flip control passed, but fixed 12-node path
+integration did not reconstruct the recurrent finite effects. Horizon-four median/p95/max relative
+errors were `0.116/4.23/11.18`, `0.704/8.89/49.58`, and
+`1.27e-4/0.00109/0.0822` for seeds 101/103/107. Therefore no scientific hypothesis is accepted,
+including the artifact's provisional 3/3 H-WM-13 flags. Descriptively, the within-context mean of
+the four valid action-vertex Jacobians reduced decoded MSE versus local in every seed at both
+horizons, while the global mean's low MSE had near-zero correlation and failed every action-column
+specificity gate. All planners were below the 60% competence floor. A post-result diagnostic on the
+worst seed-103 chord confirmed local autograd against central differences but required 192-point
+quadrature to reduce relative integral error from `49.8` to `0.0058`; this indicates stiff,
+cancelling recurrent derivatives rather than a simple autograd failure. A corrected confirmation
+must be separately registered on the untouched test goals.
+
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 
 Registered on 2026-07-21 before any full scientific execution. Short reduced-data engineering

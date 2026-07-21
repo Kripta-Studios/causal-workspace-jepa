@@ -28,8 +28,10 @@
   validation confirmation gates pass.
 - [x] Implement and preregister `WM-POPULATION-JACOBIAN-001` on three frozen LeWorldModel seeds,
   valid one-hot action swaps, held-out goals, path integration, decoded physics, and gauge controls.
-- [ ] Commit/push and execute `WM-POPULATION-JACOBIAN-001` unchanged on validation goals; preserve
-  the five test goals for a separately preregistered confirmation if warranted.
+- [x] Commit/push and execute `WM-POPULATION-JACOBIAN-001` unchanged from `89b2e14`; retain its
+  numerical rejection, underresolved path integral, ineligible planners, and untouched test goals.
+- [ ] Preregister a corrected adaptive path-integral audit plus action-vertex-mean confirmation on
+  the five protected test goals; v1's scientific decisions must remain rejected.
 - [ ] Replicate population-versus-local finite transport on another Qwen prompt family/model before
   any general or SOTA claim.
 

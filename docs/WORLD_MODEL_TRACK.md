@@ -31,12 +31,13 @@ seed 107; the aggregate graph is rejected. Clean planning succeeds on just one o
 so this is not a successful control benchmark. All workspace candidates fail despite valid planted
 controls and valid five-consumer readouts.
 
-`WM-POPULATION-JACOBIAN-001` is implemented and prospectively registered against the three
-unchanged checkpoint files. It executes every ordered categorical first-action replacement over
-one and four autoregressive steps, estimates population derivatives only from 12 train-goal
-families, and evaluates on five disjoint validation goals. Exact line integration checks autograd;
-a train-only physical decoder and contragredient gauge transform prevent raw latent Euclidean MSE
-from deciding the primary claim. The five test goals are untouched, and no result exists yet.
+`WM-POPULATION-JACOBIAN-001` ran against the three unchanged checkpoints from clean `89b2e14` and
+is rejected on its numerical gate. The train-only physical decoder and gauge transform were stable,
+but 12-node line integration badly underresolved stiff, cancelling recurrent derivatives. The
+global mean reduced raw/decoded MSE largely by shrinking effects toward zero, did not improve
+correlation, and failed action-column specificity. Averaging the four valid action-vertex
+Jacobians within each context provisionally beat local in all seeds and both horizons, but the
+numerical rejection prevents accepting that result. The five test goals remain untouched.
 
 Validated CPU smoke:
 

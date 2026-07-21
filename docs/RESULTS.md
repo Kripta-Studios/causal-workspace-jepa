@@ -28,6 +28,7 @@ Qwen circuit has been discovered.
 | LLM-TARGET-IJEPA-001 | A genuine target-encoder Intervention-JEPA fails all three replicated held-out-entity hypotheses; even oracle target-embedding decode fails, while exact JVP, linear ridge, and quadratic Taylor win different fidelity endpoints. | Generalization | `configs/experiments/qwen_target_encoder_ijepa_v1.yaml` | `artifacts/metrics/qwen_target_ijepa_v1.json` | `3086cd484fb819c3a11525ee9886542049780955` | `COMPLETED_NEGATIVE` |
 | LLM-CONTEXT-GEOMETRY-001 | Real Qwen rejects fixed pooling/context-specificity gaps but confirms that naive Euclidean overlap is gauge-sensitive while paired `J D^T` is invariant; a train-mean Jacobian unexpectedly beats matched local finite transport. | Specificity | `configs/experiments/qwen_context_geometry_v1.yaml` | `artifacts/metrics/qwen_context_geometry_v1.json` | `49d68b72200328657683b9760a084e0d952948b1` | `COMPLETED_MIXED` |
 | LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Generalization | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
+| WM-POPULATION-JACOBIAN-001 | The recurrent-JEPA port is rejected because fixed quadrature fails; its provisional action-vertex averaging signal is not accepted, while the global mean fails correlation and semantic specificity. | Numerical rejection | `configs/experiments/lewm_population_geometry_v1.yaml` | `artifacts/metrics/lewm_population_geometry_v1.json` | `89b2e14` | `REJECTED_NUMERICAL_GATE` |
 | WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001C | Donor decoded recovery and the full restricted action-to-planner circuit pass only one seed; the replicated gate and every workspace candidate fail. | Circuit reconstruction | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json`; rejected graph | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `COMPLETED_NEGATIVE`; graph `REJECTED` |
@@ -299,3 +300,23 @@ not generalize to semantic behavior-changing interventions that were not tested.
 Interpretation: the published recipe is reproduced at small scale, and a targeted internal
 intervention has selective trajectory/cost/action effects on two seeds. The proposed hidden circuit
 does not generalize across seeds, decoded donor recovery is unstable, and there is no workspace.
+
+`WM-POPULATION-JACOBIAN-001` key metrics:
+
+- clean execution commit/runtime: `89b2e14`, `55.20` seconds; validation goals only;
+- horizon-four decoded local/population/within-context-vertex MSE by seed:
+  `19.18/0.997/4.48`, `38.29/1.415/13.16`, and `2.401/0.987/0.885`;
+- population correlations were only `0.073/0.013/0.116`, no action-column specificity gate passed,
+  and only one of three averaging-dose gates passed, so low population MSE is not semantic fidelity;
+- the vertex mean provisionally beat local at both horizons in all seeds, but cannot be accepted
+  because the registered numerical gate rejected the run;
+- horizon-four 12-node path median/p95/max relative errors were
+  `0.116/4.23/11.18`, `0.704/8.89/49.58`, and `1.27e-4/0.00109/0.0822`;
+- decoded gauge invariance held to at most `2.73e-12`; direct planner competence was
+  `0.364/0.514/0.295`, below the fixed `0.60` floor for every seed.
+
+Interpretation: exact local derivatives can become very large and cancel along recurrent finite
+action chords. The fixed quadrature was inadequate, so the experiment decides no scientific
+hypothesis. A post-result diagnostic verified local derivatives by central differences and found
+that the worst chord needed 192 quadrature nodes to reduce error from `49.8` to `0.0058`. The
+untouched test goals permit a separately preregistered adaptive confirmation.

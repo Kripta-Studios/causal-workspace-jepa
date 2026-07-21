@@ -154,3 +154,7 @@
   four-step endpoints, and make decoded physical effects primary because raw latent Euclidean error
   is gauge dependent. Freeze checkpoint hashes and a 12/5/5 goal partition; v1 may not inspect the
   five test goals. The inherited planner is evidentially ineligible below 60% direct competence.
+- Preserve V1 as `REJECTED_NUMERICAL_GATE`; do not relax its 12-node threshold after observing
+  stiffness. A separately committed v2 may use adaptive integration on the five untouched test
+  goals and prospectively test the provisional within-context action-vertex mean. Do not carry the
+  failed global-population hypothesis forward merely because shrinkage lowered MSE.
