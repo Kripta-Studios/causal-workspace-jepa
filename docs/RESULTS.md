@@ -28,6 +28,7 @@ Qwen circuit has been discovered.
 | LLM-TARGET-IJEPA-001 | A genuine target-encoder Intervention-JEPA fails all three replicated held-out-entity hypotheses; even oracle target-embedding decode fails, while exact JVP, linear ridge, and quadratic Taylor win different fidelity endpoints. | Generalization | `configs/experiments/qwen_target_encoder_ijepa_v1.yaml` | `artifacts/metrics/qwen_target_ijepa_v1.json` | `3086cd484fb819c3a11525ee9886542049780955` | `COMPLETED_NEGATIVE` |
 | LLM-CONTEXT-GEOMETRY-001 | Real Qwen rejects fixed pooling/context-specificity gaps but confirms that naive Euclidean overlap is gauge-sensitive while paired `J D^T` is invariant; a train-mean Jacobian unexpectedly beats matched local finite transport. | Specificity | `configs/experiments/qwen_context_geometry_v1.yaml` | `artifacts/metrics/qwen_context_geometry_v1.json` | `49d68b72200328657683b9760a084e0d952948b1` | `COMPLETED_MIXED` |
 | LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Generalization | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
+| LLM-ELEMENT-LAYER-GEOMETRY-001 | A second factual relation confirms a sharp late donor-control transition and semantically specific late population transport, but rejects the preregistered strong local/population inversion and cross-relation conjunction. | Generalization | `configs/experiments/qwen_element_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_element_layer_geometry_v1.json` | `5d8de9a` | `COMPLETED_MIXED` |
 | WM-POPULATION-JACOBIAN-001 | The recurrent-JEPA port is rejected because fixed quadrature fails; its provisional action-vertex averaging signal is not accepted, while the global mean fails correlation and semantic specificity. | Numerical rejection | `configs/experiments/lewm_population_geometry_v1.yaml` | `artifacts/metrics/lewm_population_geometry_v1.json` | `89b2e14` | `REJECTED_NUMERICAL_GATE` |
 | WM-LEWM-001A | A source-traceable faithful small LeWorldModel reproduction learns noncollapsed action-conditioned pixel dynamics across all three registered seeds. | Generalization | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
@@ -320,3 +321,28 @@ action chords. The fixed quadrature was inadequate, so the experiment decides no
 hypothesis. A post-result diagnostic verified local derivatives by central differences and found
 that the worst chord needed 192 quadrature nodes to reduce error from `49.8` to `0.0058`. The
 untouched test goals permit a separately preregistered adaptive confirmation.
+
+`LLM-ELEMENT-LAYER-GEOMETRY-001` key metrics:
+
+- clean execution commit/runtime: `5d8de9a`, `190.28` seconds; 2,448 direct patches and 144 complete
+  `36 x 1024` selected-answer Jacobians;
+- all four numerical gates passed; exact-Jacobian/central p95 relative error was at most `0.0402`,
+  with exact clean replay and donor-source semantics;
+- validation full-vocabulary donor-symbol transfer by layer 18/21/24/26: `0/0/0.60/1.00`; test:
+  `0/0/0.90/1.00`; H-LLM-08 passed;
+- test local/population normalized MSE by layer: `0.1138/0.3672`, `0.0809/0.2483`,
+  `0.2558/0.1808`, and `0.0916/0.01131`;
+- layer-24/26 test population correlation was `0.9767/0.9951` and candidate agreement `0.90/1.00`;
+  corresponding answer-row-null p05 MSE was `2.372/1.772` and p95 agreement `0.167/0.108`, so
+  H-GEO-09 passed;
+- H-GEO-08 failed: layer-24 population/local MSE ratios were `0.879` validation and `0.707` test,
+  above the registered `0.60`, while test layer-21 local/population was `0.326` above `0.25`;
+- H-CROSS-03 failed because it required H-GEO-08; quadratic Taylor remains reported and was best at
+  early layers but unstable at layer 24.
+
+Interpretation: donor patches become directly behavior-controlling only in late layers, and late
+population Jacobians preserve the correct answer-row semantics with an averaging-size dose response.
+The preregistered strong predictivity inversion is nevertheless false. MechLens already covers late
+factual crystallization and Jacobian Lens already covers corpus averaging, so this is a bounded
+causal-geometry observation that needs a new relation/model confirmation, not a SOTA, circuit, or
+workspace claim.

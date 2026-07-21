@@ -86,8 +86,11 @@ The ignored 5,117,677-byte shard has SHA-256
 committed manifest. Full-Jacobian directional reconstruction passed at sub-`5e-7` relative error.
 Status: `SMOKE_VALIDATED` derivative dataset and `COMPLETED_MIXED` geometry experiment.
 
-`LLM-ELEMENT-LAYER-GEOMETRY-001` is preregistered for 36 unique one-token element symbols and
-24/6/6 entity-disjoint splits. It will execute 612 within-split donor patches at each of layers
-18/21/24/26, store complete selected-answer Jacobians, exact-local and quadratic predictions, and
-direct full-vocabulary behavior under a 96 MB HDF5 budget. Gold, Silver, Tin, and Lead are excluded
-calibration-only entities. No registered prompt has been executed yet; status `PREREGISTERED`.
+`LLM-ELEMENT-LAYER-GEOMETRY-001` contains 36 unique one-token element symbols and 24/6/6
+entity-disjoint splits. It records 612 within-split donor patches at each of layers 18/21/24/26,
+complete selected-answer Jacobians, exact-local and quadratic predictions, and direct full-vocabulary
+behavior. Gold, Silver, Tin, and Lead are excluded calibration-only entities. The ignored HDF5 shard
+is 30,852,462 bytes with SHA-256
+`8c54fd307c49a23f4fdf377f55b9799ef6ab7b507604173238e59f339d34fec5`, below the 96 MB budget;
+the committed manifest makes it reproducible. Status: derivative dataset `SMOKE_VALIDATED`, study
+`COMPLETED_MIXED`.

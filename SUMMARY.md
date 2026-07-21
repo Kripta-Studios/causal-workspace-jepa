@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 2026-07-21 — Qwen element-layer causal-geometry preregistration
+## 2026-07-21 — Qwen element-layer causal-geometry result
 
 - Rejected the tempting JEPA vertex-dispersion follow-up after post-result controls showed that
   train-calibrated scalar shrinkage beat the vertex mean on seeds 101/103 and simple derivative norm
@@ -15,8 +15,27 @@
 - Implemented/preregistered `LLM-ELEMENT-LAYER-GEOMETRY-001`: 36 unique single-token symbols,
   fixed 24/6/6 entities, 612 within-split patches at each of layers 18/21/24/26, full `36x1024`
   Jacobians per context/layer, exact local/quadratic/population baselines, central numerical checks,
-  context-count curves, 256 row nulls, and full-vocabulary behavior. It must be committed/pushed
-  before the first registered prompt is executed.
+  context-count curves, 256 row nulls, and full-vocabulary behavior. The preregistration was pushed
+  as `5d8de9a` before any registered prompt was executed.
+- The unchanged clean run completed in `190.28` seconds and passed every numerical gate. Exact
+  Jacobian versus symmetric-central median/p95 relative error ranged from `0.00094/0.00300` at layer
+  18 to `0.01093/0.04018` at layer 24; clean replay and donor-source errors were exactly zero.
+- H-LLM-08 passed on both entity-disjoint splits: full-vocabulary donor-symbol transfer was `0/0%`
+  at layers 18/21 and `60/100%` at 24/26 on validation, versus `0/0/90/100%` on test. This is direct
+  causal mediation/generalization for the donor answer, not localization of a feature or circuit.
+- H-GEO-09 passed: on test, aligned population normalized MSE was `0.1808/0.01131` at layers 24/26
+  versus row-permutation p05 `2.372/1.772`, while candidate agreement was `0.90/1.00` versus null
+  p95 `0.167/0.108`. Increasing train contexts reduced layer-24 median MSE from `0.2617` at one
+  context to `0.1808` at 24, and layer-26 from `0.0237` to `0.01131`.
+- H-GEO-08 failed exactly as registered. At layer 24, population/local MSE ratios were `0.879` on
+  validation and `0.707` on test, both above the required `0.60`; on test, layer-21 local/population
+  was `0.326`, above the required `0.25`. The local-error jump and correlation-margin subgates did
+  pass, but partial conjunctions do not count. H-CROSS-03 is therefore false.
+- Bounded conclusion: causal donor control crystallizes sharply in late Qwen3-0.6B layers and the
+  late population transport is semantically aligned, while the preregistered claim that control
+  coincides with a strong local-to-population reversal is rejected. MechLens covers late factual
+  crystallization and Jacobian Lens covers population averaging; the remaining layer-conditioned
+  conjunction needs a new relation/model confirmation before any novelty or SOTA claim.
 
 ## 2026-07-21 — JEPA population-geometry preregistration
 

@@ -475,6 +475,16 @@ reversed across that interval. These pilot outcomes set the thresholds below and
   or establish J-space/workspace structure. No layer, entity, threshold, or output row changes after
   the first registered prompt execution.
 
+Measured result from clean commit `5d8de9a`: all numerical gates passed and the status is
+`COMPLETED_MIXED`. H-LLM-08 passed: validation donor-symbol transfer was `0/0/0.60/1.00` and test
+was `0/0/0.90/1.00` at layers 18/21/24/26. H-GEO-09 also passed: layer-24/26 test population MSE
+was `0.1808/0.01131` against row-null p05 `2.372/1.772`, and agreement was `0.90/1.00` against
+null p95 `0.167/0.108`. H-GEO-08 failed because the layer-24 population/local MSE ratios were
+`0.879` validation and `0.707` test rather than at most `0.60`; test layer-21 local/population was
+`0.326` rather than at most `0.25`. Therefore H-CROSS-03 also failed. The direct-control transition
+and late semantic specificity survive; the preregistered strong inversion and cross-relation
+conjunction do not.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The

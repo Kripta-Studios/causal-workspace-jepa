@@ -1,0 +1,18 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_element_layer_geometry_v1.yaml",
+  "git_commit": "5d8de9afc09f59f53925081345f9bf238c096222",
+  "git_dirty": false,
+  "hypothesis_decisions": {
+    "h_cross_03_population_transport_cross_relation": false,
+    "h_geo_08_local_population_predictivity_inversion": false,
+    "h_geo_09_late_population_semantic_specificity": true,
+    "h_llm_08_late_causal_control_transition": true
+  },
+  "metrics": "artifacts/metrics/qwen_element_layer_geometry_v1.json",
+  "numerical_audit_passed": true,
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 463,
+  "time_utc": "2026-07-21T13:26:57.530725+00:00"
+}

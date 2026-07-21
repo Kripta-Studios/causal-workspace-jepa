@@ -69,11 +69,13 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   `0.300→0.533`; averaging showed a registered dose response and answer-row permutations failed.
   Corpus Jacobian averaging is prior art; the result is bounded finite-intervention fidelity, not a
   new lens algorithm, circuit, or workspace.
-- `PREREGISTERED`: `LLM-ELEMENT-LAYER-GEOMETRY-001` uses 36 unique one-token chemical symbols and
-  four Qwen residual layers to test whether late donor-symbol control coincides with a reversal from
-  exact-local to population-Jacobian finite-effect predictivity. Full direct behavior, quadratic
-  controls, dual entity splits, and answer-row permutations are frozen. Four pilot elements are
-  permanently excluded; late factual crystallization itself is prior art.
+- `COMPLETED_MIXED`: `LLM-ELEMENT-LAYER-GEOMETRY-001` ran unchanged from clean `5d8de9a`; all four
+  derivative gates passed. Donor-symbol control was `0/0%` at layers 18/21 and `90/100%` at 24/26
+  on test (`0/0/60/100%` on validation), confirming H-LLM-08. Late population transports passed
+  answer-row specificity (H-GEO-09), but the strict local/population inversion ratios failed on
+  both splits, so H-GEO-08 and the cross-relation H-CROSS-03 conjunction are false. Late factual
+  crystallization and population averaging remain prior art; no feature, circuit, or workspace is
+  claimed.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph

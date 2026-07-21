@@ -163,3 +163,8 @@
   and 24/6/6 registered entities before execution. Do not call a late-layer transition novel:
   MechLens is direct prior art. Test only whether direct donor control coincides with a reversal in
   exact-local versus population finite-effect fidelity, with quadratic and semantic null controls.
+- Freeze `LLM-ELEMENT-LAYER-GEOMETRY-001` as mixed. Direct donor control and late semantic
+  population specificity pass, but the exact registered inversion and cross-relation conjunction
+  fail. Do not lower the `0.25/0.60` ratios or create a posthoc coupling claim. Any continuation must
+  preregister a new relation/model and distinguish known late crystallization from the narrower
+  question of when context averaging helps finite causal transport.
