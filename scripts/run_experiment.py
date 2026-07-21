@@ -100,6 +100,7 @@ def main() -> int:
         return 0
     if experiment_id in {
         "WM-ACTION-PATH-CALIBRATION-001",
+        "WM-ACTION-PATH-CALIBRATION-002",
         "WM-ACTION-PATH-GEOMETRY-001",
     }:
         metrics = run_lewm_action_path_geometry_study(args.config)

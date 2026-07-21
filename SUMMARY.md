@@ -24,6 +24,10 @@
   horizon-one cancellation ratios were `1.05/2.82/.983`; recurrence amplification is not replicated.
   These are calibration diagnostics, not evidence. A 512/1024-node validation-only refinement on
   the same chords is warranted before any protected-test preregistration.
+- `WM-ACTION-PATH-CALIBRATION-002` is implemented as a separate validation-only artifact using the
+  identical profile seed/chords and 8-point rules over 64/128 panels (512/1024 nodes). The runner's
+  split lock now names both calibration IDs. V2 still emits empty decisions and cannot authorize a
+  claim by itself; it tests whether v1's association survives numerical refinement.
 
 ## 2026-07-21 — Independent country-code bounded-lag preregistration
 

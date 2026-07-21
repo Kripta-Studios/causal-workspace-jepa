@@ -76,6 +76,9 @@ instrumentation, storage, and direct-data gates remain validated.
   101/103, recurrence amplification is not replicated, and cancellation/error association clears
   stratified null p95 only narrowly. Refine the identical validation chords at 512/1024 nodes; stop
   this family if convergence or replicated association does not survive.
+- Calibration v2 is implemented with identical chords and 512/1024 nodes. Its only fork is:
+  numerical convergence plus retained three-seed null separation permits a new test preregistration;
+  otherwise close the family without touching test goals.
 - `LLM-ELEMENT-LAYER-GEOMETRY-001` completed from clean `5d8de9a`. It confirms the preregistered late
   donor-control transition and late answer-row specificity, but rejects the strict local/population
   inversion on both held-out splits and therefore rejects H-CROSS-03. The surviving association

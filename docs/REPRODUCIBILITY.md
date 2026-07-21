@@ -46,6 +46,7 @@ PYTHONPATH=src .venv/bin/python scripts/run_experiment.py --config configs/exper
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/qwen_country_code_layer_geometry_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lewm_action_path_calibration_v1.yaml
+PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lewm_action_path_calibration_v2.yaml
 PYTHONPATH=src python scripts/generate_qwen_interventions.py --config configs/experiments/qwen_intervention_dataset_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/intervention_jepa_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lewm_small_reproduction_v1.yaml

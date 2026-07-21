@@ -55,7 +55,10 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
 
     experiment_id = str(config["id"])
     split_name = str(config["analysis_split"])
-    if experiment_id == "WM-ACTION-PATH-CALIBRATION-001" and split_name != "validation":
+    if experiment_id in {
+        "WM-ACTION-PATH-CALIBRATION-001",
+        "WM-ACTION-PATH-CALIBRATION-002",
+    } and split_name != "validation":
         raise ValueError("calibration is restricted to previously exposed validation goals")
     if experiment_id == "WM-ACTION-PATH-GEOMETRY-001" and split_name != "test":
         raise ValueError("the preregistered study is restricted to protected test goals")
@@ -139,6 +142,7 @@ def run_lewm_action_path_geometry_study(config_path: str | Path) -> dict[str, An
         "analysis_split": split_name,
         "goal_ids": list(evaluation_goal_ids),
         "protected_test_goals_touched": split_name == "test",
+        "calibration_parent_metrics": config.get("calibration_parent_metrics"),
         "profile": {
             "contexts_per_action_pair": int(config["contexts_per_action_pair"]),
             "action_pairs": len(_action_pairs()),

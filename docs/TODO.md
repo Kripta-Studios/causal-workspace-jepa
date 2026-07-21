@@ -36,8 +36,10 @@
   quadrature, refinement checks, and action-pair-stratified nulls.
 - [x] Commit/push and run `WM-ACTION-PATH-CALIBRATION-001`; retain its horizon-four numerical
   underresolution and weak-but-consistent stratified association as calibration only.
-- [ ] Run a separately recorded 512/1024-node validation-only refinement on the same sampled chords;
-  do not preregister or touch protected test goals unless seeds 101/103 converge.
+- [x] Implement separately recorded `WM-ACTION-PATH-CALIBRATION-002` with the same validation chords
+  and 512/1024-node refinement; retain the hard split lock and empty decisions.
+- [ ] Commit/push and run calibration v2; do not preregister or touch protected test goals unless
+  seeds 101/103 converge and the stratified association remains discriminating.
 - [x] Replicate population-versus-local finite transport on the element-symbol relation; retain the
   failed strict inversion and positive late semantic-specificity decisions separately.
 - [ ] Confirm the surviving causal-control/late-population association on a behavior-competent,

@@ -106,6 +106,8 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   were run on exposed validation goals only. Horizon one converged, but horizon four remained
   underresolved for seeds 101/103. Cancellation/local-error association cleared stratified null p95
   by only `0.045/0.027/0.022`; no scientific claim or protected-test launch is authorized yet.
+- `CALIBRATION_PLANNED`: `WM-ACTION-PATH-CALIBRATION-002` repeats the identical exposed validation
+  chords at 512/1024 nodes to test numerical stability. It remains decision-free and split-locked.
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.

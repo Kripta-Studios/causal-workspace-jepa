@@ -676,6 +676,13 @@ only by `.045/.027/.022`, while median recurrence amplification was `1.05/2.82/.
 hypothesis is registered from these diagnostics. A higher-resolution validation-only calibration
 must establish numerical stability before the protected split can be considered.
 
+Calibration v2 is separately registered before execution as `WM-ACTION-PATH-CALIBRATION-002`. It
+uses the identical validation goals, profile seed, 24 chords per seed/horizon, decoder, checkpoints,
+and stratified nulls, changing only composite panels from 16/32 to 64/128 (512/1024 nodes). It emits
+no decisions and cannot access the test split. Its sole purpose is to determine whether v1's
+underresolved cancellation/error association is numerically stable enough to motivate a future
+prospective hypothesis.
+
 ## WM-POPULATION-JACOBIAN-001 JEPA Causal-Geometry Preregistration
 
 Registered on 2026-07-21 before loading any saved LeWorldModel checkpoint for this analysis. The
