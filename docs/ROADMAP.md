@@ -50,7 +50,7 @@ instrumentation, storage, and direct-data gates remain validated.
 - `LLM-IJEPA-001` ran from clean commit `a54f2ed`; corrected v2 withdrew H-LLM-01 because exact and
   quadratic transport beat every learned seed. H-LLM-06 failed direct precision@1 and the candidate
   graph remains rejected.
-- `LLM-QWEN-JVP-AUDIT-001` is implemented/preregistered to re-execute all targets in FP32 and compare
+- `LLM-QWEN-JVP-AUDIT-001` was implemented/preregistered to re-execute all targets in FP32 and compare
   exact autograd JVPs, central convergence, quadratic Taylor, and refitted predictors.
 - V1 was rejected on an invalid downstream endpoint gate. Post-diagnostic v2 passed its source-level
   semantic/convergence audit and withdrew H-LLM-01: exact and quadratic transport beat all learned
@@ -79,6 +79,9 @@ instrumentation, storage, and direct-data gates remain validated.
 - Calibration v2 is implemented with identical chords and 512/1024 nodes. Its only fork is:
   numerical convergence plus retained three-seed null separation permits a new test preregistration;
   otherwise close the family without touching test goals.
+- A source-of-truth scientific manuscript now lives at `papers/causal_workspace_jepa.tex`. It must
+  compile with the repository bibliography and remain synchronized with final v2 disposition,
+  `docs/RESULTS.md`, `SUMMARY.md`, and the experiment/hypothesis registries.
 - `LLM-ELEMENT-LAYER-GEOMETRY-001` completed from clean `5d8de9a`. It confirms the preregistered late
   donor-control transition and late answer-row specificity, but rejects the strict local/population
   inversion on both held-out splits and therefore rejects H-CROSS-03. The surviving association

@@ -40,6 +40,12 @@
   and 512/1024-node refinement; retain the hard split lock and empty decisions.
 - [ ] Commit/push and run calibration v2; do not preregister or touch protected test goals unless
   seeds 101/103 converge and the stratified association remains discriminating.
+- [x] Draft `papers/causal_workspace_jepa.tex` with equations, evidence-level result tables,
+  falsifications, novelty boundary, limitations, and exact artifact/commit references.
+- [x] Compile the draft against the repository-local `papers/references.bib` and ignore generated
+  PDF/auxiliary products.
+- [ ] Replace the manuscript's provisional calibration-v2 row with the final clean-run metrics,
+  complete adversarial/doc consistency review, then commit and push the paper milestone.
 - [x] Replicate population-versus-local finite transport on the element-symbol relation; retain the
   failed strict inversion and positive late semantic-specificity decisions separately.
 - [ ] Confirm the surviving causal-control/late-population association on a behavior-competent,

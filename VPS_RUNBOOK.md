@@ -334,3 +334,28 @@ Start now on the VPS, but constrain Codex to architecture, CPU smoke experiments
 Do not attempt the scientific Qwen or published-world-model experiments there. Those require at least the RTX 5070 Ti machine, and Qwen3-30B-A3B mechanistic work likely requires rented high-memory GPU capacity.
 
 Try to do the experiments that are possible with the hardware you got 
+
+## Current RTX 5070 Ti continuation (2026-07-21)
+
+The project is now on the intended 12 GB GPU host. `configs/resource/gpu_12gb.yaml` is active;
+Qwen3-0.6B causal studies, a bounded Qwen3-4B capture, and the faithful small LeWorldModel study
+have been executed from clean commits. Qwen3-30B-A3B remains a cluster-scale target.
+
+High-resolution recurrent-JEPA action-path calibration must stream exact Jacobians and immediately
+decode/detach them to CPU. The 512/1024-node profile uses `jacobian_outer_batch_size: 64` and
+`jacobian_chunk_size: 2`; two earlier non-streamed launches exhausted memory and emitted no
+scientific artifact. A valid launch records the clean starting commit before any calculation. The
+command can exceed the default 20-minute orchestration timeout even while the child Python process
+continues normally, so monitor both the configured metrics path and the process rather than
+launching a duplicate.
+
+The working scientific paper is built locally with:
+
+```powershell
+cd papers
+latexmk -pdf -interaction=nonstopmode -halt-on-error causal_workspace_jepa.tex
+```
+
+Compile inside `papers/` so BibTeX uses the repository's `references.bib`; this MiKTeX installation
+also contains an unrelated global file with the same basename. Generated PDF and LaTeX auxiliary
+files are ignored, while the `.tex` source and bibliography are committed.

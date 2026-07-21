@@ -31,10 +31,9 @@ Status: `ACTIVE`.
   useful next intervention classes are activation replacement/resampling, patching, and feature
   clamps; more additive steering on this grid is not discriminating.
 - Qwen population-Jacobian regularization is confirmed only within one capital-prompt family.
-  `WM-POPULATION-JACOBIAN-001` is the preregistered cross-domain replication. Its primary endpoint
-  is a train-goal decoded physical effect rather than raw latent MSE, because invertible latent
-  gauges can change Euclidean rankings. Validation goals are the first analysis; five test goals
-  cannot be inspected without a new confirmation commit.
+  `WM-POPULATION-JACOBIAN-001` attempted the cross-domain port with a train-goal decoded physical
+  endpoint, but its quadrature gate failed and its global population mean failed correlation and
+  action-label specificity. There is therefore no positive cross-domain replication.
 - V1 is numerically rejected because fixed quadrature underresolves sharply varying recurrent
   derivatives. Do not interpret its provisional vertex-mean result as evidence. A continuation must
   validate derivatives locally, adaptively integrate to convergence, retain action-label controls,
@@ -44,7 +43,9 @@ Status: `ACTIVE`.
   correlation and a train-calibrated scalar-shrinkage diagnostic undermine its semantic reading.
   `WM-ACTION-PATH-CALIBRATION-001` instead measures decoded derivative path length, cancellation,
   local finite-effect failure, two-level quadrature convergence, and within-action-pair nulls on
-  exposed validation goals. Only a later frozen configuration may access the test goals.
+  exposed validation goals. Its first resolution converged only at horizon one and seed-107
+  horizon four. V2 repeats the exact chords at 512/1024 nodes with streamed Jacobians; only a later
+  separately frozen configuration may access the five test goals.
 - The element-symbol study supplies an independent relation and four-layer profile. It confirms a
   sharp late donor-control transition and late population semantic specificity, but the registered
   exact-local/population inversion ratios fail on both splits. Because late factual crystallization
@@ -60,3 +61,11 @@ Status: `ACTIVE`.
   zero-or-one-grid-step lag with high rank correlation, but that weaker statement is post-result and
   needs a new relation with new entities/answer semantics. Why population usefulness lags or tracks
   donor control remains mechanistically unexplained.
+- The independent country-code relation falsifies the proposed directional lag: population
+  advantage precedes the 50% donor-control boundary on validation and coincides with it on test.
+  Continuous control measures, additional architectures, or component-level mediation are open,
+  but the existing element/state/country thresholds cannot be weakened or re-mined.
+- The working paper makes the current negative/positive boundary explicit, but publication-quality
+  generalization remains open: more prompt families, larger Qwen targets, stronger world-model
+  planners, independently used consumers, head/MLP localization, and direct circuit
+  necessity/sufficiency/faithfulness are still required.

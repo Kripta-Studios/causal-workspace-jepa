@@ -26,6 +26,15 @@ artifacts/**/*.npz
 artifacts/**/*.pt
 artifacts/**/*.pth
 artifacts/**/*.safetensors
+papers/*.aux
+papers/*.bbl
+papers/*.blg
+papers/*.fdb_latexmk
+papers/*.fls
+papers/*.out
+papers/*.pdf
+papers/*.synctex.gz
+papers/*.toc
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/activations/.gitkeep

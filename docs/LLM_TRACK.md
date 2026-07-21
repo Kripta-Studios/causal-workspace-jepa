@@ -51,7 +51,7 @@ Meta-model continuation:
 
 Exact-derivative corrective milestone:
 
-- `LLM-QWEN-JVP-AUDIT-001` is implemented and preregistered but not yet executed. It replays the
+- `LLM-QWEN-JVP-AUDIT-001` was implemented, preregistered, and executed. It replays the
   immutable 432-record grid in float32/eager attention, reconstructs every semantic edit as a dense
   residual direction, computes exact autograd directional JVPs, and checks them against six
   symmetric central-difference scales plus a quadratic Taylor baseline.
@@ -69,8 +69,24 @@ Exact-derivative corrective milestone:
 - V2 completed from clean commit `a779ff6`: every numerical gate passed, finite-amplitude
   nonlinearity failed the registered floor, and zero of three learned seeds beat exact JVP or
   quadratic Taylor. Exact JVP/quadratic/bottleneck raw MSE was `0.6143`/`0.07870`/`3.1899`.
-  Restricted H-LLM-01 is withdrawn. The next dataset must target actual semantic behavior changes,
-  and the next learned model must implement a genuine target-encoder JEPA objective.
+  Restricted H-LLM-01 is withdrawn. It motivated the behavior-changing capital dataset and genuine
+  target-encoder JEPA study summarized below; neither restored a learned nonlinear advantage.
+
+Current bounded synthesis:
+
+- `LLM-CAPITAL-PATCH-001` establishes direct behavior-changing donor patches, but the genuine
+  target-encoder `LLM-TARGET-IJEPA-001` fails all three held-out-entity hypotheses and its target
+  geometry fails the registered effective-rank/oracle-decoder gates.
+- The capital population-Jacobian confirmation improves continuous selected-logit fidelity over a
+  matched local Jacobian, while quadratic Taylor remains better on answer-candidate behavior.
+- Element, one-shot state, and country-code layer studies pass late semantic row-null controls, but
+  registered exact-boundary or fixed directional-lag hypotheses do not replicate. Population
+  usefulness can precede, coincide with, or follow a fixed donor-control threshold.
+- The defensible conclusion is endpoint- and relation-dependent finite-intervention transport in
+  Qwen3-0.6B. There is no validated Qwen circuit, learned causal compression, universal onset law,
+  cross-scale mechanism, J-space identification, workspace, or SOTA claim.
+- The working paper `papers/causal_workspace_jepa.tex` is the consolidated scientific account; its
+  claims must remain traceable to the committed metric/provenance artifacts.
 
 Behavior-changing continuation:
 

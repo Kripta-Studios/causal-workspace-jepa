@@ -2,6 +2,18 @@
 
 ## 2026-07-21
 
+- Maintain `papers/causal_workspace_jepa.tex` as the source-of-truth scientific manuscript. Every
+  result table must name its evidence level, and every empirical statement must trace to a committed
+  metric/provenance artifact. Generated PDF/auxiliary products remain ignored.
+- Frame the present contribution as a falsification-first audit of local, quadratic, population,
+  and learned finite-intervention transports. Do not claim a new Jacobian method, SOTA result,
+  Qwen circuit, learned causal compression, JEPA workspace, or cross-domain mechanism.
+- Report endpoint disagreement as a result rather than selecting one favorable metric: full hidden
+  vectors, selected logits, and answer behavior can rank exact JVP, quadratic Taylor, population
+  transport, and learned predictors differently.
+- Treat decoded JEPA action-path cancellation as a calibration-stage candidate. Large cancellation
+  ratios or validation correlations cannot become evidence until high-resolution quadrature
+  converges, prospective thresholds are committed, and untouched test goals pass unchanged.
 - Supersede the positive interpretation of `LLM-IJEPA-001` H-LLM-01 while preserving its original
   run. A BF16 one-sided secant is not an exact Jacobian and may be a numerical-noise baseline.
   Resolve this through the preregistered FP32 exact-JVP audit before making any nonlinear claim.

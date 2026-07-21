@@ -6,6 +6,52 @@ The scientific results include CPU-scale JEPA studies, three GPT-2 Medium studie
 Qwen3-0.6B instrumentation/data/meta-model runs. No workspace/J-space-like mechanism or validated
 Qwen circuit has been discovered.
 
+## Consolidated findings and falsifications (2026-07-21)
+
+These are the strongest conclusions currently supported by the committed artifacts. The working
+paper [`papers/causal_workspace_jepa.tex`](../papers/causal_workspace_jepa.tex) gives equations,
+principal controls, tables, related work, reproducibility details, and limitations; the registries
+and YAML files remain authoritative for every threshold and hyperparameter.
+
+1. **Direct Qwen donor patches cause behavior changes (causal mediation).** In
+   `LLM-CAPITAL-PATCH-001`, 93.6% of 612 layer-21 capital patches changed the top token and the donor
+   capital became the answer for 50% of held-out test pairs. This establishes a real causal dataset
+   within one prompt family, not a circuit or reusable semantic feature.
+2. **The earlier learned nonlinear advantage was a precision artifact (specificity audit).** The
+   corrected FP32 audit measured exact-JVP/quadratic MSE `0.6143/0.07870`, versus `3.1899` for the
+   legacy learned bottleneck and `120.8994` for the old BF16 one-sided secant. Zero of three learned
+   seeds passed; restricted H-LLM-01 is withdrawn.
+3. **Finite-effect fidelity depends on the endpoint (specificity).** Exact JVP, quadratic Taylor,
+   raw linear regression, and population transport rank differently for full hidden vectors,
+   selected logits, and answer candidates. No single representation-space MSE is accepted as
+   behavioral faithfulness.
+4. **Population Jacobian averaging can help in a bounded Qwen relation (generalization).** On 30
+   previously unused capital-validation outcomes, the train-context mean improved normalized logit
+   MSE from `.737` to `.354` and candidate agreement from `.300` to `.533`, with an averaging-size
+   curve and answer-row null. Population averaging is prior art, and quadratic Taylor still won
+   direct candidate agreement (`.833`).
+5. **There is no universal registered control/predictivity boundary (negative generalization).**
+   State one-shot and country-code experiments passed competence, derivative, and semantic-null
+   gates but falsified exact-onset or directional-lag rules. Population usefulness preceded the 50%
+   donor-control boundary on country validation and coincided with it on test.
+6. **The genuine target-encoder Intervention-JEPA failed (negative generalization).** All three
+   seeds failed H-LLM-01B/02/04; every target latent missed the effective-rank floor and even the
+   oracle target-embedding decoder had normalized MSE above `1.0` on held-out entities.
+7. **Gauge-safe dual coupling is valid, but no Qwen geometry/circuit was localized (specificity).**
+   A compensated coordinate transform changed naive Euclidean overlap by about `120x` while leaving
+   `J D^T` invariant to `1.68e-16`. The real pooling/context-specificity hypotheses failed.
+8. **The small LeWorldModel reproduces prediction, not a replicated circuit or workspace.** All
+   three modeling seeds passed; only the raw restricted-circuit flag passed seed 107, the planner
+   was too weak for a useful mechanism claim, and no post-hoc workspace-readout proxy passed matched
+   controls. The raw flag is not accepted as evidence-level-5 circuit reconstruction.
+9. **Decoded recurrent action-path cancellation is a pending candidate, not a discovery.** The first
+   validation calibration found large cancellation in some seed/horizon pairs, but high-resolution
+   quadrature is required for seeds 101/103. Protected test goals remain untouched.
+
+There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
+cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
+registered tests in the studied models and controls; it is not a universal claim about JEPAs.
+
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | WM-ACTION-PATH-CALIBRATION-001 | Validation-only action-path profiling exposes unresolved horizon-four derivatives and weak candidate cancellation/error association; it makes no scientific claim. | Availability/calibration | `configs/experiments/lewm_action_path_calibration_v1.yaml` | `artifacts/metrics/lewm_action_path_calibration_v1.json` | `eb943a5` | `CALIBRATION_ONLY` |

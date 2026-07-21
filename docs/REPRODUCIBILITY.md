@@ -103,6 +103,26 @@ unchanged clean retry wrote metrics/provenance and a 30,887,576-byte ignored sha
 seed/horizon, and both 128/256-node estimates. Its numerical underresolution is retained; later
 calibration must use a new ID rather than overwrite this artifact.
 
+`WM-ACTION-PATH-CALIBRATION-002` was launched from clean `288f663` after two documented OOM attempts
+that emitted no metrics. The retained implementation streams batches of 64 exact action Jacobians,
+immediately contracts them with the action chord and registered decoder, detaches the three decoded
+coordinates to CPU, and releases each graph. The orchestration wrapper stopped waiting after its
+20-minute default, but the child process continued; monitor the configured JSON path and original
+PID before relaunching. The start-time provenance object already records commit `288f663` and
+`git_dirty: false`, so later documentation edits cannot change the code/config identity of that run.
+
+The working paper is validated separately from scientific experiments:
+
+```powershell
+cd papers
+latexmk -pdf -interaction=nonstopmode -halt-on-error causal_workspace_jepa.tex
+```
+
+Run the command inside `papers/` so BibTeX resolves the tracked local `references.bib`; the MiKTeX
+installation on the RTX host contains an unrelated system bibliography with the same basename.
+Generated PDF and auxiliary files are ignored. Before a paper milestone, require zero undefined
+citations/references and no overfull boxes, then compare every table against its committed JSON.
+
 Updated `AUDIT-COMPLETE-001` ran from clean synchronized commit `98a9e62`; all 14 criteria and all
 software checks passed, including 68 tests and the corrected exact-JVP disposition. Its own
 metrics/provenance pair is committed, so later runs can audit the audit.

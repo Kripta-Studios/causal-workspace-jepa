@@ -8,6 +8,13 @@ not imply advantage over exact local transport. H-LLM-06 fails, the LeWorldModel
 replication, and all workspace decisions remain false. These do not constitute broad scientific
 validation.
 
+The consolidated scientific account is `papers/causal_workspace_jepa.tex`. Its present supported
+boundary is: direct Qwen donor-patch behavior exists; exact/quadratic/population transports have
+endpoint-dependent fidelity; a fixed cross-relation control/predictivity onset law is false under
+the registered element/state/country studies; the genuine target-encoder Intervention-JEPA is
+negative; and no tested JEPA circuit/workspace replicates. Decoded recurrent action-path
+cancellation remains validation-only calibration and does not decide a numbered hypothesis.
+
 ## World Model
 
 - H-WM-01: Physics emergence.

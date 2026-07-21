@@ -23,10 +23,11 @@ Status: `ACTIVE`.
   quadratic Taylor (`0.530` versus `0.639`) while being much worse on answer-candidate agreement
   (`0.351` versus `0.743`). Learned-model reporting must retain both activation fidelity and direct
   behavior fidelity; a favorable aggregate MSE cannot substitute for the behavior endpoint.
-- `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
+- `MITIGATED_NAMING`: `NeuralInterventionJEPA` is a legacy supervised conditional bottleneck without
   a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
-  it. The separately named `TargetEncoderInterventionJEPA` implements those missing mechanisms and
-  is preregistered for a clean comparison; it has not yet produced a real-data result.
+  it. The separately named `TargetEncoderInterventionJEPA` implements those mechanisms and completed
+  a real-data three-seed comparison, but failed every registered hypothesis; neither class name is
+  treated as evidence of causal compression.
 - `ACTIVE_DECODER_SUPERVISION`: the genuine JEPA predicts a target embedding without direct-effect
   labels, but its post-hoc linear decoder is supervised on train-entity effects. The registered run
   failed; even its oracle target-embedding decode did not transfer, so decoder supervision did not
@@ -81,6 +82,10 @@ Status: `ACTIVE`.
   validation calibration reports direct reconstruction, refinement change, direct-effect norm,
   speed concentration, horizon controls, and within-action-pair permutation nulls. It makes no
   claim and leaves test goals inaccessible until a separate preregistration.
+- `ACTIVE_MANUSCRIPT_DRIFT`: a paper can silently overstate evolving repository evidence. The
+  source-of-truth `papers/causal_workspace_jepa.tex` therefore names experiment IDs, run commits,
+  evidence levels, negative dispositions, and artifact paths; it is compiled with local BibTeX and
+  audited against `docs/RESULTS.md` before every paper milestone.
 - `CONFIRMED_PATH_UNDERRESOLUTION`: 256-node composite integration is adequate at horizon one and
   for seed-107 horizon four, but fails refinement/direct reconstruction on seeds 101/103 horizon
   four. The small positive stratified-correlation margins may change under better integration;

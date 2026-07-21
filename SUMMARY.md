@@ -1,5 +1,26 @@
 # SUMMARY
 
+## 2026-07-21 — Scientific manuscript and consolidated discovery boundary
+
+- Added `papers/causal_workspace_jepa.tex`, a source-of-truth working paper covering the
+  shared finite-intervention formalism, exact/quadratic/population/learned transports, direct Qwen
+  behavior patches, the target-encoder Intervention-JEPA null, the small LeWorldModel circuit and
+  workspace nulls, decoded recurrent action-path equations, evidence governance, related work,
+  limitations, and exact metric/commit provenance.
+- The manuscript compiles with MiKTeX/`latexmk` against the repository-local
+  `papers/references.bib`. Generated PDFs and auxiliary files are ignored. `papers/README.md` and
+  `VPS_RUNBOOK.md` contain the exact build command and warn that this host has an unrelated global
+  `references.bib`; compilation must run inside `papers/`.
+- Consolidated the strongest defensible findings in `docs/RESULTS.md`: direct capital donor patches
+  cause behavior changes; the old nonlinear learned advantage was a BF16 precision artifact;
+  vector/logit/behavior endpoints rank transports differently; population averaging helps in one
+  bounded relation; fixed control/predictivity onset rules fail; the genuine target-encoder JEPA
+  fails 0/3; gauge-safe dual coupling is a valid control; and no tested JEPA circuit/workspace
+  replicates.
+- Adversarial manuscript review forbids novelty/SOTA, circuit, workspace, causal-compression, or
+  cross-domain-equivalence claims. No positive result reaches circuit-reconstruction level 5 or a
+  broad level-6 mechanism. Decoded action-path cancellation remains a calibration-stage candidate.
+
 ## 2026-07-21 — JEPA action-path calibration implementation
 
 - Stopped the naive protected-test vertex-mean confirmation: validation correlation and the already

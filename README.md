@@ -2,6 +2,15 @@
 
 Reproducible research codebase for action-conditioned JEPA world-model interpretability and intervention-conditioned LLM meta-modeling.
 
+The source-of-truth working paper is
+[`papers/causal_workspace_jepa.tex`](papers/causal_workspace_jepa.tex). It consolidates the common
+finite-intervention formalism, preregistered controls, Qwen and world-model evidence, negative
+results, novelty boundary, and reproducibility record. The strongest current conclusion is a
+falsification boundary: exact/second-order/population transports rank differently by endpoint,
+fixed control--predictivity onset rules fail across factual relations, the genuine target-encoder
+Intervention-JEPA fails its registered gates, and no tested JEPA workspace or replicated circuit is
+accepted. Decoded recurrent action-path cancellation remains validation-only calibration.
+
 ## Current Status
 
 - `SMOKE_VALIDATED`: repository control plane, resource profiles, `doctor`, typed interfaces, standard-library tests, Tier 0 generators, tiny NumPy JEPA, random-shooting planner, save/load, and the tiny JEPA smoke experiment.
