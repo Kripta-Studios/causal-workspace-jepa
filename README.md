@@ -33,10 +33,11 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
   resumable/checksummed sharded HDF5 storage and per-example local-linear direct probes.
-- `SMOKE_VALIDATED`: `LLM-IJEPA-001` evaluated nonlinear layer-transition Intervention-JEPA across
-  three seeds and three fixed holdouts. It beat the registered parametric and Jacobian baselines,
-  but nearest-neighbor slightly won resampling-holdout MSE and the top-ranked coordinate failed
-  direct causal verification; the candidate graph is therefore `REJECTED`.
+- `UNDER_REAUDIT`: `LLM-IJEPA-001` beat its originally registered comparators, but the so-called
+  local Jacobian was a BF16 one-sided secant and the learned model is a supervised conditional
+  bottleneck rather than a genuine target-encoder JEPA. `LLM-QWEN-JVP-AUDIT-001` is preregistered
+  to re-execute FP32 effects and compare exact autograd JVP, converged central differences, and a
+  quadratic baseline. The directly ranked candidate graph remains `REJECTED`.
 - `COMPLETED_NEGATIVE`: `WM-LEWM-001` faithfully reproduces the small LeWorldModel recipe and all
   three seeds pass prediction/action/latent/probe gates. Planner interventions pass on two seeds,
   but hidden-patch specificity and the full restricted circuit pass only one; the aggregate graph
@@ -50,7 +51,8 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
-on this GPU from clean commits. These are bounded Qwen results, not workspace or circuit evidence.
+on this GPU from clean commits. The original nonlinear-advantage result is under corrective audit;
+these are bounded Qwen results, not workspace or circuit evidence.
 The explicit bounded completion suite is implemented and audited. Larger Tier-1/2 adapters and the
 cluster-scale Qwen3-30B-A3B/SkyJEPA routes remain explicit research extensions or external blocks.
 

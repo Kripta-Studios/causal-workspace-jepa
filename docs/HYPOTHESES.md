@@ -1,8 +1,10 @@
 # Preregistered Hypotheses
 
 Status: `ACTIVE` research program; bounded required suite `SMOKE_VALIDATED`. Registered studies
-tested restricted forms of H-WM-01/02/03/05/06/08 and H-LLM-01/02/03/06. The Qwen meta-model
-passes its bounded H-LLM-01/02/03 gates, H-LLM-06 fails, the LeWorldModel circuit gate fails
+tested restricted forms of H-WM-01/02/03/05/06/08 and H-LLM-01/02/03/06. The earlier Qwen
+H-LLM-01 result is `UNDER_REAUDIT` because its registered BF16 one-sided finite difference is not
+an adequate exact-Jacobian baseline; its bounded H-LLM-02/03 gates remain descriptive pending the
+same FP32 target re-execution. H-LLM-06 fails, the LeWorldModel circuit gate fails
 replication, and all workspace decisions remain false. These do not constitute broad scientific
 validation.
 
@@ -127,7 +129,7 @@ Registered on 2026-07-21 after freezing `LLM-INTDATA-001` and before fitting any
 - Acceptance of the run itself requires finite held-out metrics, exact checkpoint replay, and direct
   execution of all 16 verification predictions. Hypotheses may validly fail.
 
-Measured result, without threshold changes: all seeds `61/67/71` passed the registered H-LLM-01,
+Original measured result, without threshold changes: all seeds `61/67/71` passed the registered H-LLM-01,
 H-LLM-02, and H-LLM-03 gates. Primary Intervention-JEPA MSE/correlation were `3.9227`/`0.6770`,
 compared with local-Jacobian MSE `116.1557` and no-change MSE `7.2429`. Feature-holdout
 MSE/correlation were `8.4928`/`0.5349`. Resample-holdout MSE/correlation were `2.1405`/`0.6802`;
@@ -135,6 +137,49 @@ nearest-neighbor was slightly better on MSE (`2.0946`) even though it was not pa
 H-LLM-03 gate. H-LLM-06 failed: predicted top coordinate 128 did not match observed coordinate 0,
 precision@1 was `0`, and the predicted candidate's observed effect did not exceed the deterministic
 random control. The candidate graph is `REJECTED`; no circuit or workspace is inferred.
+
+Scientific correction registered 2026-07-21: the stored “local Jacobian” is a one-sided 5-percent
+secant executed in bfloat16. Its error can be dominated by quantization/numerical noise, so it does
+not support the claimed nonlinear advantage. The model named `NeuralInterventionJEPA` in this run is
+a supervised conditional bottleneck predictor; it has no target encoder, stop-gradient target, EMA,
+or anti-collapse JEPA objective. Until `LLM-QWEN-JVP-AUDIT-001` resolves the baseline, H-LLM-01 is
+`UNDER_REAUDIT`, not a positive result. This correction changes no observed values or old thresholds.
+
+## LLM-QWEN-JVP-AUDIT-001 Exact-Derivative Preregistration
+
+Registered on 2026-07-21 before any FP32 re-execution. The frozen 432-record intervention grid,
+prompt/feature/operation splits, target coordinates, model revision, and predictor seeds remain
+unchanged. This audit can retain or withdraw the old restricted H-LLM-01 result; it cannot discover
+a circuit, behavior mechanism, or workspace.
+
+- Execution: pinned `Qwen/Qwen3-0.6B` revision `c1899de...`, float32, eager attention, TF32 disabled,
+  final-token residual edits at layers `7/14/21`, and the original layer-27 projected-hidden plus
+  selected-logit targets. Every semantic intervention is directly re-executed in FP32.
+- Exact local baseline: parameterize the complete source edit as `h(alpha)=h+alpha*delta` and compute
+  `dF/dalpha` at zero through autograd. This is the directional JVP for the actual finite edit, not a
+  one-sided secant. Symmetric central differences use the fixed epsilon sweep
+  `1/64,1/32,1/16,1/8,1/4,1/2`; a directional quadratic Taylor baseline uses the second central
+  difference at `1/8`.
+- Numerical-validity gates: clean FP32 replay max error at most `1e-6`; semantic intervention versus
+  dense `alpha=1` reconstruction max error at most `1e-5`; at epsilon `1/8`, median JVP/central row
+  relative error at most `0.05` and p95 at most `0.15`; median central agreement between `1/16` and
+  `1/8` at most `0.10`; and JVP/direct norm-ratio above 10 on at most 5 percent of records. Failure
+  rejects the audit rather than deciding H-LLM-01.
+- Precision and duplication controls: FP32 direct targets replace BF16 targets for all refits and
+  scores. BF16/FP32 drift is reported. Raw primary scores are accompanied by a deterministic
+  semantic-deduplicated view because the frozen grid's patch and resample donors can coincide.
+- Predictor controls: refit the legacy supervised conditional bottleneck at seeds `61/67/71`
+  against no-change, mean-effect, linear, bilinear, MLP, nearest-neighbor, exact-JVP, quadratic,
+  and old BF16-secant baselines. Do not describe this legacy predictor as a genuine target-encoder
+  JEPA.
+- Finite-amplitude nonlinearity gate: exact-JVP normalized MSE must be at least `0.10` on both raw
+  and deduplicated primary sets; quadratic normalized MSE must remain at least `0.05`; and at least
+  three intervention operation classes must individually have JVP normalized MSE at least `0.10`.
+- Corrected H-LLM-01 retention: the numerical audit and finite-amplitude nonlinearity gates must
+  pass, and at least two of three predictor seeds must (i) beat exact JVP and quadratic Taylor by at
+  least 10 percent raw MSE, (ii) beat exact JVP by at least 10 percent deduplicated MSE, and (iii)
+  attain raw effect correlation at least `0.60`. Otherwise the original restricted H-LLM-01 result
+  is `WITHDRAWN`; failure is a valid negative result and thresholds will not be retuned.
 
 ## WM-LEWM-001 Faithful-Reproduction and Circuit Preregistration
 

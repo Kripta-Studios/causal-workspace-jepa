@@ -1,6 +1,7 @@
 # LLM Track
 
-Status: `SMOKE_VALIDATED`.
+Status: `ACTIVE_REAUDIT`; instrumentation/data remain validated, while the original Qwen nonlinear-
+advantage claim is under an exact-FP32-JVP audit.
 
 The inherited CPU implementation uses a mock transformer with known activation dependencies. It is valid for interface, leakage, and intervention-pipeline tests only.
 
@@ -39,9 +40,24 @@ Meta-model continuation:
 - The runner saves/reloads checkpoints, fits a sparse dictionary on training context only, and
   directly re-executes all 16 coordinate predictions on four new prompts before writing a candidate
   graph.
-- Status is `SMOKE_VALIDATED` from clean commit `a54f2ed`. The registered H-LLM-01/02/03 gates pass
-  on all three seeds. The nearest-neighbor baseline narrowly wins resample-holdout MSE, and direct
+- Original status was `SMOKE_VALIDATED` from clean commit `a54f2ed`. The registered gates passed
+  against the then-specified comparators, but H-LLM-01 is now `UNDER_REAUDIT`: the so-called local
+  Jacobian was a BF16 one-sided secant and can be a numerical-noise floor. The nearest-neighbor
+  baseline narrowly wins resample-holdout MSE, and direct
   precision@1 is zero; H-LLM-06 fails and the candidate graph is `REJECTED`.
+- The neural model used there is a supervised two-branch conditional bottleneck. It lacks a target
+  encoder, stop-gradient/EMA target, and JEPA anti-collapse objective, so current documentation no
+  longer treats the class name as architectural evidence that it is a genuine JEPA.
+
+Exact-derivative corrective milestone:
+
+- `LLM-QWEN-JVP-AUDIT-001` is implemented and preregistered but not yet executed. It replays the
+  immutable 432-record grid in float32/eager attention, reconstructs every semantic edit as a dense
+  residual direction, computes exact autograd directional JVPs, and checks them against six
+  symmetric central-difference scales plus a quadratic Taylor baseline.
+- The old H-LLM-01 result is retained only if the numerical audit passes and at least two of three
+  refitted conditional-bottleneck seeds beat exact JVP and quadratic controls under the frozen raw
+  and semantic-deduplicated gates. A negative result will withdraw the old claim.
 
 Current mock implementation:
 

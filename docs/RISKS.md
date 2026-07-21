@@ -5,6 +5,16 @@ Status: `ACTIVE`.
 - `MITIGATED`: the bounded required suite passes `AUDIT-COMPLETE-001`, but a completion audit is not
   scientific validation. Both reconstructed circuit candidates remain rejected and the workspace
   hypothesis remains null in the tested systems.
+- `ACTIVE_CORRECTION`: the `LLM-IJEPA-001` local baseline is a BF16 one-sided 5-percent secant, not
+  an exact Jacobian. Its very large error may be numerical. H-LLM-01 is `UNDER_REAUDIT` until the
+  preregistered FP32 exact-JVP/central-convergence run completes.
+- `ACTIVE_NAMING`: `NeuralInterventionJEPA` is currently a supervised conditional bottleneck without
+  a target encoder, stop-gradient/EMA target, or anti-collapse objective. Documentation qualifies
+  it; a genuine JEPA must be implemented and compared separately.
+- `ACTIVE_NOVELTY`: controllability/observability balancing and CoBRAS are established prior art.
+  Pooling reachability and observability across different contexts can create false shared modes
+  even when no context has a jointly active direction. Future geometry must include within-context,
+  permutation/pooling, coordinate-gauge, finite-amplitude, and direct-behavior controls.
 
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.

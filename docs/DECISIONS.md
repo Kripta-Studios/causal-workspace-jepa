@@ -2,6 +2,19 @@
 
 ## 2026-07-21
 
+- Supersede the positive interpretation of `LLM-IJEPA-001` H-LLM-01 while preserving its original
+  run. A BF16 one-sided secant is not an exact Jacobian and may be a numerical-noise baseline.
+  Resolve this through the preregistered FP32 exact-JVP audit before making any nonlinear claim.
+- Refer to `NeuralInterventionJEPA` from the old run as a legacy supervised conditional bottleneck.
+  The class name does not substitute for a target encoder, stop-gradient/EMA target, or anti-collapse
+  JEPA loss; implement those separately.
+- Force eager attention and disable TF32 for the exact derivative audit because reverse-over-reverse
+  JVP through CPU/SDPA flash attention lacks the required derivative. Validate autograd JVP against
+  symmetric central differences before the real run.
+- Do not claim novelty for generic controllability/observability Gramians, Hankel modes, or CoBRAS.
+  Any new geometry result must be conditional on the same context, survive a cross-context pooling
+  illusion/null, and predict directly executed finite-amplitude behavioral effects.
+
 - Activate `gpu_12gb` after detecting an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM, CUDA-enabled
   PyTorch, approximately 370 GB free, and a passing GPU doctor check.
 - Treat the old VPS resource blocks as historical. Qwen and published-JEPA work is now `ACTIVE`, but
@@ -25,9 +38,9 @@
   replication for numbered hypothesis decisions.
 - Treat the direct-verification graph as a ranked-coordinate candidate, not a circuit, unless later
   necessity/sufficiency/faithfulness/minimality tests pass.
-- Retain the unchanged `LLM-IJEPA-001` preregistered decisions: H-LLM-01/02/03 pass all three seeds,
-  but reject the graph because H-LLM-06 precision@1 fails. Do not revise the gate after seeing that
-  nearest-neighbor narrowly beats the model on resampling-holdout MSE.
+- Preserve the unchanged `LLM-IJEPA-001` recorded values and original preregistered decisions, but
+  mark H-LLM-01 `UNDER_REAUDIT`; reject the graph because H-LLM-06 precision@1 fails. Do not revise
+  either the old or corrective gates after observing outcomes.
 - Integrate LeWorldModel first as a faithful small reproduction at official revision `8edfeb3...`
   instead of claiming benchmark equivalence without installing the larger external framework and
   datasets. Preserve its two-loss recipe and record every deliberate scaling difference.

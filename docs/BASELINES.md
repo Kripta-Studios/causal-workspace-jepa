@@ -1,7 +1,7 @@
 # Baselines
 
-Status: `SMOKE_VALIDATED` for implemented CPU/Qwen methods and the completed published-model small
-reproduction, whose circuit result is negative.
+Status: `ACTIVE_REAUDIT` for the Qwen exact-derivative comparison; other implemented CPU/Qwen
+methods and the completed published-model small reproduction retain their recorded statuses.
 
 ## World Model
 
@@ -16,6 +16,9 @@ reproduction, whose circuit result is negative.
 - Delta-JEPA objective;
 - C-JEPA;
 - local Jacobian;
+- exact autograd directional JVP;
+- symmetric central-difference convergence sweep;
+- second-order directional Taylor approximation;
 - probe-only interpretation;
 - matched random-subspace intervention.
 
@@ -64,3 +67,10 @@ dual-solved bilinear, trained MLP, nearest neighbor, per-example direct local Ja
 transport, and sparse-dictionary feature transport. Intervention-JEPA won the primary fixed split,
 but nearest-neighbor narrowly won resampling-holdout MSE and the ranked coordinate failed direct
 precision@1.
+
+Correction: its per-example “local Jacobian” was actually a one-sided 5-percent bfloat16 secant.
+It is retained as a historical baseline, but it is not a valid strong Jacobian comparator until
+checked against float32 direct effects and exact autograd JVPs. `LLM-QWEN-JVP-AUDIT-001` performs
+that audit with central-difference convergence, quadratic Taylor, raw/deduplicated scoring, and
+BF16/FP32 drift reporting. The learned model in the old run is a supervised conditional bottleneck,
+not a target-encoder/stop-gradient JEPA; a genuine JEPA objective is a separate milestone.

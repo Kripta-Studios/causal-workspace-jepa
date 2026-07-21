@@ -2,6 +2,16 @@
 
 ## GPU Transition (2026-07-21)
 
+- [x] Adversarially audit the Qwen Jacobian baseline, model naming, behavior changes, and novelty.
+- [x] Mark H-LLM-01 `UNDER_REAUDIT`; preserve the old result without continuing to claim it.
+- [x] Implement, unit-test, and preregister `LLM-QWEN-JVP-AUDIT-001` with exact FP32 JVP and central
+  convergence controls.
+- [ ] Commit/push the audit preregistration, then execute it unchanged from a clean worktree.
+- [ ] Revise every affected result, completion audit, and claim from the measured audit outcome.
+- [ ] Implement a genuine target-encoder/stop-gradient Intervention-JEPA with anti-collapse tests.
+- [ ] Generate a split-safe semantic donor-answer dataset with aggregate behavior-changing edits.
+- [ ] Preregister within-context causal geometry with pooling/permutation and coordinate-gauge nulls.
+
 - [x] Re-read `AGENTS.md`, `VPS_RUNBOOK.md`, `SUMMARY.md`, repository docs, and current Git state.
 - [x] Verify RTX 5070 Ti/CUDA, RAM/CPU, disk, Python, Transformers, and the `gpu_12gb` doctor.
 - [x] Run the full pre-change test and reproducibility baseline.

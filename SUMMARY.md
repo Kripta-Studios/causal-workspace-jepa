@@ -1,5 +1,26 @@
 # SUMMARY
 
+## 2026-07-21 — Corrective derivative and novelty audit
+
+- Independent adversarial review found that the `LLM-IJEPA-001` “local Jacobian” is a one-sided
+  5-percent secant executed in bfloat16. Its predicted effects are implausibly larger than the true
+  effects on the frozen data, so H-LLM-01 is now `UNDER_REAUDIT`; the old numbers are preserved but
+  are not reliable nonlinear-advantage evidence.
+- The class named `NeuralInterventionJEPA` is a supervised two-branch bottleneck MLP. It has no
+  target encoder, stop-gradient/EMA target, or anti-collapse JEPA objective. New reporting calls it
+  the legacy conditional bottleneck, and a genuine target-encoder Intervention-JEPA is a separate
+  next milestone.
+- Implemented and preregistered `LLM-QWEN-JVP-AUDIT-001`: full FP32 replay of the immutable 432-edit
+  grid, exact autograd directional JVP, six symmetric central-difference scales, quadratic Taylor,
+  BF16/FP32 drift, semantic deduplication, three refit seeds, and frozen numerical/claim gates.
+- A tiny random Qwen3 end-to-end test confirms that the eager-attention exact JVP agrees with a
+  symmetric central difference. The real audit must be committed and run from a clean worktree.
+- Literature review found that generic reachability/observability balancing is established prior
+  art (control-theoretic DNN interpretation, empirical minimal realization, and CoBRAS). A future
+  contribution must instead test context-conditioned finite-amplitude causal fidelity with direct
+  behavior execution and cross-context pooling/permutation controls; no generic balancing novelty
+  is claimed.
+
 ## 2026-07-21 — GPU continuation begins
 
 - Confirmed a clean, synchronized starting point at `99854eb` on `main`/`origin/main`.

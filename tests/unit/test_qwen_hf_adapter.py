@@ -110,6 +110,41 @@ class QwenHFAdapterTests(unittest.TestCase):
         gradient = torch.autograd.grad(run.logits.sum(), run.activations[site])[0]
         self.assertEqual(tuple(gradient.shape), (1, 2, 32))
 
+    def test_directional_jvp_matches_symmetric_difference(self) -> None:
+        import torch
+
+        from causal_workspace_jepa.experiments.llm.qwen_jvp_audit import (
+            _directional_output_function,
+        )
+
+        self.autograd_adapter.model.set_attn_implementation("eager")
+        batch = self.autograd_adapter.tokenize(["alpha beta"])
+        generator = torch.Generator().manual_seed(17)
+        direction = torch.randn(32, generator=generator)
+        projection = torch.randn(32, 4, generator=generator)
+        logit_ids = torch.tensor([2, 3, 5], dtype=torch.long)
+        function = _directional_output_function(
+            self.autograd_adapter,
+            batch,
+            source_site=transformer_site(0, "resid_post"),
+            target_site=transformer_site(1, "resid_post"),
+            direction=direction,
+            hidden_projection=projection,
+            logit_ids=logit_ids,
+        )
+        scale = torch.zeros((), requires_grad=True)
+        _, exact = torch.autograd.functional.jvp(
+            function,
+            scale,
+            torch.ones_like(scale),
+            strict=True,
+        )
+        epsilon = 1e-3
+        central = (
+            function(torch.tensor(epsilon)) - function(torch.tensor(-epsilon))
+        ) / (2 * epsilon)
+        torch.testing.assert_close(exact, central, atol=2e-3, rtol=2e-3)
+
 
 class _TinyTokenizer:
     pad_token_id = 0

@@ -29,6 +29,7 @@ class QwenAdapterConfig:
     max_length: int = 64
     local_files_only: bool = False
     preserve_autograd: bool = False
+    attn_implementation: str | None = None
     token: bool | str | None = False
 
 
@@ -62,6 +63,7 @@ class QwenHFAdapter:
                 "dtype": self.dtype,
                 "low_cpu_mem_usage": True,
                 "token": self.config.token,
+                "attn_implementation": self.config.attn_implementation,
             }
             load_kwargs = {key: value for key, value in load_kwargs.items() if value is not None}
             model = AutoModelForCausalLM.from_pretrained(self.config.model_name, **load_kwargs)
@@ -324,6 +326,7 @@ class QwenHFAdapter:
             "dtype": str(self.dtype),
             "hidden_activations_available": True,
             "autograd_available": self.config.preserve_autograd,
+            "attention_implementation": getattr(config, "_attn_implementation", None),
         }
 
 
