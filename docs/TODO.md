@@ -21,7 +21,7 @@
 - [x] Implement, source-pin, test, and preregister the faithful small LeWorldModel reproduction.
 - [x] Commit `WM-LEWM-001`, then execute its three seeds and restricted circuit audit unchanged;
   retain the failed replicated causal/circuit gates and rejected graph.
-- [ ] Run the final multi-seed scientific/software audit.
+- [x] Run `AUDIT-COMPLETE-001` from clean synchronized commit `42492dc`; all 14 criteria pass.
 - [x] Replace the Qwen activation-capture blocker with a bounded generic Hugging Face implementation.
 - [x] Execute the pinned Qwen3-4B selected-site capture from clean commit `55087ea`; verify the
   resolved revision, 180 rows, 574,308-byte shard, and SHA-256 manifest.

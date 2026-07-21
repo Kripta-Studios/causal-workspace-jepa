@@ -2,6 +2,10 @@
 
 Status: `ACTIVE`.
 
+- `MITIGATED`: the bounded required suite passes `AUDIT-COMPLETE-001`, but a completion audit is not
+  scientific validation. Both reconstructed circuit candidates remain rejected and the workspace
+  hypothesis remains null in the tested systems.
+
 - `RESOLVED_RESOURCE`: the current host has an RTX 5070 Ti Laptop GPU with 12,227 MiB VRAM and about
   370 GB free; the historical CPU-VPS blocker no longer applies.
 - `ACTIVE`: GPT-2 Medium was downloaded and run after explicit user override; weights are under `.cache/` and ignored by Git.

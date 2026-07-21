@@ -26,6 +26,7 @@ Qwen circuit has been discovered.
 | WM-LEWM-001B | A four-dimensional hidden action-subspace projection changes future latent/decoded trajectories, planning costs, and selected actions beyond a matched-control cost gate on two of three seeds. | Specificity | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json` | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `SMOKE_VALIDATED` sub-result |
 | WM-LEWM-001C | Donor decoded recovery and the full restricted action-to-planner circuit pass only one seed; the replicated gate and every workspace candidate fail. | Circuit reconstruction | `configs/experiments/lewm_small_reproduction_v1.yaml` | `artifacts/metrics/lewm_small_reproduction_v1.json`; rejected graph | `4dbc38856b2f1aa6e42754ade72941f0399d3b93` | `COMPLETED_NEGATIVE`; graph `REJECTED` |
 | LLM-QWEN-CAPTURE-001 | The pinned Qwen3-4B revision fits bounded bfloat16 inference and yields a budgeted, checksummed five-layer/three-position activation capture. | Availability | `configs/llm/qwen3_4b_selected_layers.yaml` | `artifacts/metrics/qwen3_4b_selected_activation_capture.json` | `55087ea1fe12bc361830eb501aed86aaf850e50e` | `SMOKE_VALIDATED` |
+| AUDIT-COMPLETE-001 | All 14 explicit bounded repository criteria and the 63-test/Ruff/provenance checks pass while retaining the circuit rejections and workspace null. | Availability | none | `artifacts/metrics/completion_audit.json` | `42492dcb418bb81c56ba46f9b84ac8476dfbe3c5` | `SMOKE_VALIDATED` |
 
 Validation commands run before the Milestone 0 commit:
 
@@ -37,6 +38,10 @@ git diff --check
 ```
 
 All future result tables must include `evidence_level`.
+
+`AUDIT-COMPLETE-001` is a software/evidence-coverage result. It does not elevate any scientific
+claim: the Qwen coordinate graph and aggregate LeWorldModel graph remain `REJECTED`, and no
+workspace candidate passed the registered tests.
 
 `WM-T0-001` key metrics:
 

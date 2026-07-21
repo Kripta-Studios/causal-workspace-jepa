@@ -1,0 +1,146 @@
+{
+  "all_passed": true,
+  "criteria": {
+    "circuit_reconstructed_and_audited": {
+      "evidence_level": "Circuit reconstruction",
+      "note": "The candidate graph was reconstructed and tested for necessity, sufficiency, specificity, faithfulness, and minimality; it failed replication and is rejected.",
+      "passed": true
+    },
+    "clean_committed_execution": {
+      "evidence_level": "Availability",
+      "note": "The audit started from a clean committed worktree; scientific artifacts record clean source commits.",
+      "passed": true
+    },
+    "cpu_end_to_end": {
+      "evidence_level": "Availability",
+      "note": "Deterministic Tier 0 generation, tiny JEPA train/save/load/eval, and planning metrics exist.",
+      "passed": true
+    },
+    "direct_qwen_verification": {
+      "evidence_level": "Causal mediation",
+      "note": "All 16 predictions were directly executed on new prompts; the failed top-ranked candidate is explicitly rejected.",
+      "passed": true
+    },
+    "documentation_and_manifests": {
+      "evidence_level": "Availability",
+      "note": "Required handoff, literature, hypothesis, dataset, experiment, and result registries exist.",
+      "passed": true
+    },
+    "fast_tests_and_reproducibility": {
+      "evidence_level": "Availability",
+      "note": "Full unittest discovery, Ruff, diff check, and reproducibility audit pass.",
+      "passed": true
+    },
+    "multiple_seed_principal_results": {
+      "evidence_level": "Generalization",
+      "note": "Principal world-model and LLM meta-model results use three registered seeds.",
+      "passed": true
+    },
+    "published_action_jepa": {
+      "evidence_level": "Availability",
+      "note": "Source-traceable faithful small LeWorldModel reproduction passed its modeling gate on 3/3 seeds.",
+      "passed": true
+    },
+    "pushed_branch_before_output": {
+      "evidence_level": "Availability",
+      "note": "HEAD matched its configured upstream before this audit artifact was created.",
+      "passed": true
+    },
+    "qwen_meta_model_baselines": {
+      "evidence_level": "Generalization",
+      "note": "Intervention-JEPA and all required baselines were evaluated on fixed held-out prompt/feature/operation splits across three seeds.",
+      "passed": true
+    },
+    "real_qwen_dataset": {
+      "evidence_level": "Causal mediation",
+      "note": "A checksummed 432-outcome real-Qwen intervention dataset exists with fixed splits.",
+      "passed": true
+    },
+    "real_qwen_hf": {
+      "evidence_level": "Causal mediation",
+      "note": "Pinned Hugging Face Qwen hooks, autograd, and direct interventions passed.",
+      "passed": true
+    },
+    "workspace_controls": {
+      "evidence_level": "Specificity",
+      "note": "Positive/negative controls pass and both tiny/published-reproduction workspace tests retain null results.",
+      "passed": true
+    },
+    "world_selective_intervention": {
+      "evidence_level": "Specificity",
+      "note": "A hidden-subspace intervention selectively changed future trajectory, planning costs, and selected actions on 2/3 seeds; the broader circuit gate remained negative.",
+      "passed": true
+    }
+  },
+  "evidence_level": "Availability",
+  "experiment_id": "AUDIT-COMPLETE-001",
+  "runtime_seconds": 5.83890549998614,
+  "scientific_boundary": "Completion means the explicit repository criteria are implemented and audited. It does not turn rejected circuit/workspace hypotheses into positive findings.",
+  "software_checks": {
+    "git_diff_check": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "output_tail": [],
+      "returncode": 0
+    },
+    "reproducibility_audit": {
+      "command": [
+        "C:\\Program Files\\Python314\\python.exe",
+        "scripts/audit_reproducibility.py"
+      ],
+      "output_tail": [
+        "{",
+        "  \"checksum_status\": \"SKIPPED_RESOURCE\",",
+        "  \"checksums_skipped_missing_local_data\": 7,",
+        "  \"checksums_verified\": 2,",
+        "  \"errors\": [],",
+        "  \"local_data_complete\": false,",
+        "  \"metric_artifacts\": 14,",
+        "  \"missing\": [],",
+        "  \"status\": \"SMOKE_VALIDATED\"",
+        "}"
+      ],
+      "returncode": 0
+    },
+    "ruff": {
+      "command": [
+        "ruff",
+        "check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "output_tail": [
+        "All checks passed!"
+      ],
+      "returncode": 0
+    },
+    "unit_integration_scientific_tests": {
+      "command": [
+        "C:\\Program Files\\Python314\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "output_tail": [
+        ".............................................<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute",
+        "<frozen importlib._bootstrap>:491: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute",
+        "..................",
+        "----------------------------------------------------------------------",
+        "Ran 63 tests in 3.622s",
+        "",
+        "OK",
+        "<sys>:0: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"
+      ],
+      "returncode": 0
+    }
+  },
+  "status": "SMOKE_VALIDATED"
+}

@@ -1,6 +1,6 @@
 # Reproducibility
 
-Status: `SMOKE_VALIDATED` for inherited CPU experiments and cross-platform control-plane checks.
+Status: `SMOKE_VALIDATED` for the complete bounded suite and cross-platform control-plane checks.
 
 Every experiment must record:
 
@@ -29,6 +29,7 @@ $env:PYTHONPATH = "src"
 python -m causal_workspace_jepa.cli doctor --resource-profile configs/resource/gpu_12gb.yaml
 python -m unittest discover -s tests -p "test_*.py"
 python scripts/audit_reproducibility.py
+python scripts/audit_completion.py
 ```
 
 Validated smoke commands:
@@ -47,6 +48,7 @@ PYTHONPATH=src python scripts/generate_qwen_interventions.py --config configs/ex
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/intervention_jepa_v1.yaml
 PYTHONPATH=src python scripts/run_experiment.py --config configs/experiments/lewm_small_reproduction_v1.yaml
 PYTHONPATH=src python scripts/capture_qwen_activations.py --config configs/llm/qwen3_4b_selected_layers.yaml
+PYTHONPATH=src python scripts/audit_completion.py
 ```
 
 GPT-2 Medium uses `local_files_only: true`; the command must fail instead of downloading a missing
@@ -76,3 +78,6 @@ metadata before regeneration; checksum mismatches fail the audit.
 
 Recorded relative paths are normalized to POSIX separators before comparison, allowing provenance
 created on Linux to be audited on Windows without weakening the target-path check.
+
+`AUDIT-COMPLETE-001` ran from clean synchronized commit `42492dc`; all 14 criteria and all software
+checks passed. Its own metrics/provenance pair is committed, so later runs can audit the audit.

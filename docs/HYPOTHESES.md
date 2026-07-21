@@ -1,8 +1,10 @@
 # Preregistered Hypotheses
 
-Status: `ACTIVE`. CPU smoke experiments have tested restricted forms of H-WM-02,
-H-WM-03, H-WM-05, H-LLM-01, and H-LLM-02. They do not constitute broad
-scientific validation.
+Status: `ACTIVE` research program; bounded required suite `SMOKE_VALIDATED`. Registered studies
+tested restricted forms of H-WM-01/02/03/05/06/08 and H-LLM-01/02/03/06. The Qwen meta-model
+passes its bounded H-LLM-01/02/03 gates, H-LLM-06 fails, the LeWorldModel circuit gate fails
+replication, and all workspace decisions remain false. These do not constitute broad scientific
+validation.
 
 ## World Model
 

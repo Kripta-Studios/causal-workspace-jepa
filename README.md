@@ -44,12 +44,15 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
 - `SMOKE_VALIDATED`: pinned Qwen3-4B bounded availability capture. Five residual layers at three
   selected semantic positions produced 180 rows in a 574,308-byte checksummed shard; this is not
   4B causal-intervention evidence.
+- `SMOKE_VALIDATED`: `AUDIT-COMPLETE-001` passed all 14 explicit bounded completion criteria from
+  clean synchronized commit `42492dc`; the audit includes 63 tests, Ruff, provenance/checksum
+  validation, multi-seed evidence, and retention of the rejected/null findings.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
 Real Qwen3-0.6B instrumentation, intervention-data generation, and meta-model experiments have run
 on this GPU from clean commits. These are bounded Qwen results, not workspace or circuit evidence.
-The final executable completion audit is implemented but not yet executed. Larger Tier-1/2 adapters
-remain explicit research extensions.
+The explicit bounded completion suite is implemented and audited. Larger Tier-1/2 adapters and the
+cluster-scale Qwen3-30B-A3B/SkyJEPA routes remain explicit research extensions or external blocks.
 
 ## Objective
 
@@ -148,6 +151,8 @@ python scripts/run_experiment.py `
 # Optional primary-scale selected-site capture; downloads the pinned 8.06 GB Qwen3-4B repository.
 python scripts/capture_qwen_activations.py `
   --config configs/llm/qwen3_4b_selected_layers.yaml
+
+python scripts/audit_completion.py
 ```
 
 The following Unix-style commands remain the intended clean-environment workflow:
@@ -270,12 +275,17 @@ Validated CPU smoke results:
   two seeds. Donor-patch specificity and the full restricted circuit passed only seed 107, so the
   replicated claims failed and the aggregate graph is rejected. Five-consumer workspace tests were
   null on every seed.
+- Qwen3-4B selected-site capture (`LLM-QWEN-CAPTURE-001`) ran from clean commit `55087ea`: exact
+  pinned revision, 180 rows, one 574,308-byte checksum-verified shard, and all budget gates passed.
+- Final audit (`AUDIT-COMPLETE-001`) ran from clean synchronized commit `42492dc`. All 14 explicit
+  criteria passed; 63 tests, Ruff, Git diff, and reproducibility checks returned zero. This audit
+  certifies implementation/evidence coverage, not a positive workspace or circuit discovery.
 
 ## Limitations
 
 This host has a 12,227 MiB RTX 5070 Ti and the `gpu_12gb` profile is active. The bounded Qwen3-0.6B
-pipeline is validated; the faithful small LeWorldModel run is retained as a mixed/negative result.
-Qwen3-30B-A3B, broad all-layer Jacobians, and large video
+pipeline and bounded Qwen3-4B capture are validated; the faithful small LeWorldModel run is retained
+as a mixed/negative result. Qwen3-30B-A3B, broad all-layer Jacobians, and large video
 training remain `gpu_cluster` work. The pre-existing GPT-2 artifacts came from a different Linux CPU
 host; their ignored activation shards are absent here and the audit reports their checksums as
 skipped until regenerated.

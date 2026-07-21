@@ -52,13 +52,14 @@ Status: `SMOKE_VALIDATED` for hardware/control-plane detection and bounded Qwen3
   intervention/planning/circuit audit completed as `WM-LEWM-001`. Reproduction passes 3/3 and
   planner specificity 2/3, but full hidden-patch/circuit replication fails at 1/3; graph rejected.
 - The bounded Qwen3-4B selected-site capture passed from clean commit `55087ea`: exact pinned
-  revision, 180 rows, and a 574,308-byte checksummed shard. The executable completion audit remains
-  to be run from the next clean synchronized result commit.
+  revision, 180 rows, and a 574,308-byte checksummed shard.
+- `AUDIT-COMPLETE-001` passed all 14 explicit completion criteria from clean synchronized commit
+  `42492dc`, including the 63-test suite, Ruff, and reproducibility audit.
 
 ## Milestone 3+: Scientific Runs
 
-Status: `ACTIVE`; the required bounded Qwen and faithful small published-JEPA paths have executed,
-while larger scaling and rejected-mechanism follow-ups remain open research.
+Status: `SMOKE_VALIDATED` for the required bounded suite; larger scaling and rejected-mechanism
+follow-ups remain open research.
 
 - [done] Repair the original action-patch methodology and rerun from committed code.
 - [done] Validate shared-subspace discovery with known positive and negative controls.

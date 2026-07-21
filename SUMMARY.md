@@ -15,9 +15,9 @@
   pairs, zero errors, and seven skipped missing local shards.
 - Regenerated the inherited 41-byte `uv.lock` and corrected the GPT-2 dependency group to include
   PyTorch and a bounded Transformers major version.
-- Independent Qwen, world-model, and adversarial audits confirm that real Qwen and published-JEPA
-  integrations are placeholders despite the newly available hardware. Those are the next milestones;
-  no GPU scientific claim has yet been made.
+- At the continuation start, independent Qwen, world-model, and adversarial audits found that real
+  Qwen and published-JEPA integrations were placeholders. The later entries below record their
+  implementation, execution, and negative controls.
 - Replaced the Qwen failure stub with a selected-site Torch/Hugging Face adapter. Offline tiny-Qwen3
   tests cover residual/attention/MLP/logit capture, clean replay equality, zero/mean/resample/patch/
   steer semantics, explicit donor/statistic requirements, and graph-preserving autograd.
@@ -74,6 +74,11 @@
   one 574,308-byte shard, SHA-256
   `cd1ef5e3a871740bfbd06e45c1a024257ba2ed9c1f0b1f6ac0bc2db1a11240cf`, runtime `473.14`
   seconds including the first download. This is Availability evidence only.
+- Ran `AUDIT-COMPLETE-001` from clean synchronized commit `42492dc`. All 14 explicit bounded
+  completion criteria passed, including 63 tests, Ruff, the reproducibility/checksum audit,
+  multi-seed principal results, direct Qwen execution, workspace controls, and audited rejected
+  circuit graphs. The required bounded suite is complete; this does not make either rejected
+  circuit or the workspace null positive.
 
 ## 2026-07-20
 

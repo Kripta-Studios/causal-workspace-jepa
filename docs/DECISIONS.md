@@ -48,6 +48,9 @@
 - Accept `LLM-QWEN-CAPTURE-001` as an Availability result after its clean run resolved the exact
   Qwen3-4B revision and passed row-count, budget, and checksum gates. Do not extrapolate it to
   autograd, causal intervention, feature, circuit, behavior, or workspace evidence at 4B scale.
+- Accept the bounded repository completion claim only because the executable audit passed every
+  explicit criterion from clean synchronized code. Keep `SMOKE_VALIDATED`, not
+  `SCIENTIFICALLY_VALIDATED`: negative circuit/workspace outcomes and optional scale routes remain.
 
 ## 2026-07-20
 
