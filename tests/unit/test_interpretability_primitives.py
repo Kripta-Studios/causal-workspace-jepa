@@ -28,6 +28,9 @@ class InterpretabilityPrimitiveTests(unittest.TestCase):
         codes = dictionary.encode(activations)
         self.assertEqual(codes.shape, (10, 3))
         self.assertGreaterEqual(dictionary.feature_density(activations), 0.0)
+        shifted = activations + 10.0
+        shifted_dictionary = SparseDictionary.fit(shifted, components=6, threshold=0.0)
+        self.assertLess(shifted_dictionary.reconstruction_mse(shifted), 1e-10)
 
     def test_finite_difference_jacobian(self) -> None:
         jacobian = finite_difference_jacobian(lambda value: value**2, np.array([3.0]))

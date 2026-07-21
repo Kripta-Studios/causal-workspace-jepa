@@ -60,6 +60,33 @@ revision matched, replay error was exactly zero, the selected-logit autograd nor
 all five operations caused nonzero downstream changes. This validates instrumentation only and does
 not decide any numbered LLM hypothesis.
 
+## LLM-INTDATA-001 Dataset Preregistration
+
+Registered on 2026-07-21 before dataset generation. This creates causal observations for later
+H-LLM-01/02/03/06 tests; dataset-generation metrics do not decide those hypotheses.
+
+- Model/revision: the same pinned `Qwen/Qwen3-0.6B` revision `c1899de...`, bfloat16, seed `53`.
+- Prompts/splits: 12 unique fixed prompts in geography and causal-physics families; prompt IDs
+  `0..7` train, `8..9` validation, and `10..11` test. No prompt moves after outcomes are observed.
+- Sites: residual post at layers `7`, `14`, and `21`; target is layer `27` residual plus 32 logit
+  coordinates selected by mean clean training-prompt logits only.
+- Grid: for every prompt/site, steering coordinates `0/64/128/256` at magnitudes `-4/+4`, plus
+  zero, training-mean, donor patch, and donor resample on eight fixed coordinates: exactly 432
+  direct outcomes.
+- Donors: donor prompts exclude the recipient and remain within its prompt split. Mean statistics
+  use training prompts only. Patch and resample use different deterministic donors where possible.
+- Context/targets: seed-fixed 32-dimensional projections of clean source state and actual source
+  delta; targets are 32 projected final-hidden deltas plus 32 selected logit deltas. No downstream
+  post-intervention target enters the context/intervention branch.
+- Strong local baseline: each registered edit gets a separate direct execution at 5 percent of its
+  source-state displacement; its scaled downstream effect is stored as the prompt-local Jacobian
+  approximation. Thresholds must not be tuned using these values.
+- Storage: pre-capture estimate must fit 128 MB; output is resumable sharded HDF5 with 64 MB shard
+  cap and SHA-256 per shard. The tensor shards remain ignored; the manifest/metrics/provenance are
+  committed.
+- Acceptance: exact revision, exactly 432 outcomes, all three splits present, every direct target
+  effect nonzero, and stored estimate within budget. Top-token changes are descriptive, not a gate.
+
 ## WM-T0-005 Preregistration
 
 Registered before execution on 2026-07-20. This is an independent multi-seed follow-up; thresholds

@@ -18,6 +18,14 @@ Validated Qwen instrumentation smoke:
 - This meets the real-Hugging-Face-instrumentation boundary only. It does not validate Intervention-
   JEPA, circuit ranking, behavior change, feature meaning, or a workspace.
 
+Dataset continuation:
+
+- `LLM-INTDATA-001` is preregistered for 432 direct Qwen outcomes across three sites, five operation
+  classes, disjoint 8/2/2 prompt splits, split-local donors, and training-only target selection.
+- Every example includes a separately executed 5-percent local-linear approximation. Shards are
+  ignored HDF5; the checksum manifest and summarized causal-data metrics are committed after a run.
+- Status is `IMPLEMENTED_UNVALIDATED` until execution from clean code.
+
 Current mock implementation:
 
 - exposes `resid_pre`, `attn_out`, `mlp_out`, `resid_post`, and `logits`;

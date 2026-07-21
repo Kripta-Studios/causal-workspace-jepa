@@ -29,6 +29,9 @@
 - Clean `LLM-QWEN-001` passes: exact deterministic replay; selected-logit autograd norm `0.944`;
   nonzero zero/mean/resample/patch/steer downstream hidden/logit effects. This meets real Qwen HF
   instrumentation only; intervention dataset, meta-model, and circuit verification remain.
+- Implemented and preregistered `LLM-INTDATA-001`: 432 real direct outcomes, fixed 8/2/2 prompt
+  splits, split-local donors, three layers, five operations, a direct small-step local baseline,
+  and resumable SHA-256 HDF5 shards under a 128 MB cap. Commit before running.
 
 ## 2026-07-20
 

@@ -15,6 +15,11 @@ Status: `ACTIVE`.
 - `RESOLVED`: the first Qwen run recorded `git_dirty=true` because provenance was collected after
   creating its output. Those two regenerable files were discarded; ordering was fixed in `0d6a37b`,
   and only the clean rerun is reported.
+- `ACTIVE`: the Qwen dataset generator accesses adapter donor/statistic registries to compute the
+  exact source edit without using downstream targets. This is tested but should become a public
+  adapter method before broader reuse.
+- `ACTIVE`: 432 outcomes cover two small prompt families and selected residual coordinates/sites;
+  even a clean run is smoke-scale and cannot establish broad Qwen mechanism generalization.
 - `BLOCKED_EXTERNAL`: SkyJEPA remains blocked until official implementation assets are verified.
 - `ACTIVE`: the current Windows system Python is 3.14 with CUDA PyTorch 2.10 and Transformers 5.3.
   A project-local reproducible environment/lock must be repaired before this host is a clean install target.

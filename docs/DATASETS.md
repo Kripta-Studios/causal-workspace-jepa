@@ -39,3 +39,7 @@ checksum, split, selected sites, and size. The clean run produced an 87,378-byte
 shard. `data/manifests/gpt2_medium_semantic_v3.json` records SHA-256
 `adb4751bd3c9ca3c26139c47dac0423fd82b43515ccf9c56b5b706a78782f631`, prompt splits, shapes,
 and leakage controls. Status: `SMOKE_VALIDATED`.
+
+`LLM-INTDATA-001` is preregistered to generate 432 Qwen3-0.6B outcomes in resumable HDF5 shards.
+Prompt IDs use a fixed 8/2/2 split; donors stay inside recipient splits; output-logit coordinates
+are selected on training prompts only. The data is `IMPLEMENTED_UNVALIDATED` until direct execution.

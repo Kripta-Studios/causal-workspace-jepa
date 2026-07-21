@@ -7,9 +7,10 @@
 - [x] Run the full pre-change test and reproducibility baseline.
 - [x] Repair Windows provenance-path comparison and fresh-clone checksum expectations.
 - [x] Implement and offline-test the Hugging Face Qwen adapter, selected hooks, interventions, and autograd.
-- [ ] Implement and test the bounded sharded HDF5 activation store.
+- [x] Implement and test the bounded resumable sharded HDF5 activation store.
 - [x] Execute the preregistered Qwen3-0.6B instrumentation smoke from clean commit `0d6a37b`.
-- [ ] Preregister, commit, and run a real Qwen3-0.6B intervention dataset.
+- [x] Preregister the 432-outcome Qwen dataset grid, splits, donors, local probes, and storage guard.
+- [ ] Commit the dataset generator, then execute it once from clean code.
 - [ ] Train/evaluate Intervention-JEPA and all required strong baselines on held-out real-Qwen effects.
 - [ ] Directly execute and verify ranked meta-model circuit candidates.
 - [ ] Integrate and execute at least one published action-conditioned JEPA or faithful reproduction.

@@ -30,6 +30,8 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   autograd preservation; offline tiny-Qwen tests; and a preregistered Qwen3-0.6B smoke runner.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
+- `IMPLEMENTED_UNVALIDATED`: split-controlled 432-outcome Qwen intervention generator with
+  resumable/checksummed sharded HDF5 storage and per-example local-linear direct probes.
 - `NOT_STARTED`: real Qwen experiments and published world-model experiments; their former local resource blocker has been removed, but no result is claimed yet.
 - `BLOCKED_EXTERNAL`: SkyJEPA reproduction until official implementation assets are available.
 
@@ -119,6 +121,9 @@ python scripts/audit_reproducibility.py
 
 python scripts/run_experiment.py `
   --config configs/experiments/qwen3_0_6b_instrumentation_smoke.yaml
+
+python scripts/generate_qwen_interventions.py `
+  --config configs/experiments/qwen_intervention_dataset_v1.yaml
 ```
 
 The following Unix-style commands remain the intended clean-environment workflow; the Qwen and

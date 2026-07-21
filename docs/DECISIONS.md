@@ -16,6 +16,10 @@
   and repository experiments must neither depend on nor modify user credentials.
 - Require explicit training-split statistics or registered donors for Torch mean/resample operations.
   Batch-one self-means and self-resampling are invalid controls.
+- Store Qwen intervention data as checksummed HDF5 shards, not monolithic NPZ. Keep prompt/donor
+  split metadata in every record and choose output-logit coordinates using training prompts only.
+- Attach a direct 5-percent finite-difference execution to every outcome so learned predictors must
+  compete with a prompt-local baseline in the later evaluation.
 
 ## 2026-07-20
 

@@ -1,22 +1,24 @@
 #!/usr/bin/env python
-"""Generate real Qwen intervention-outcome datasets.
-
-Blocked on the CPU VPS because it requires Hugging Face hidden activations.
-"""
+"""Generate a real, bounded, checksummed Qwen intervention dataset."""
 
 from __future__ import annotations
 
 import argparse
-import sys
+import json
+
+from causal_workspace_jepa.experiments.llm.qwen_intervention_dataset import (
+    run_qwen_intervention_dataset,
+)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
-    parser.parse_args()
-    print("BLOCKED_RESOURCE: real Qwen intervention data requires gpu_12gb or larger", file=sys.stderr)
-    return 2
+    args = parser.parse_args()
+    metrics = run_qwen_intervention_dataset(args.config)
+    print(json.dumps(metrics, indent=2, sort_keys=True))
+    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

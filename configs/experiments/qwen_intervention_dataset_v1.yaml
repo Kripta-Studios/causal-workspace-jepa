@@ -1,5 +1,24 @@
 id: LLM-INTDATA-001
-status: NOT_STARTED
+status: IMPLEMENTED_UNVALIDATED
 resource_profile: configs/resource/gpu_12gb.yaml
-model: Qwen/Qwen3-4B
-output_dir: data/activations/qwen_intervention_dataset_v1
+model: Qwen/Qwen3-0.6B
+revision: c1899de289a04d12100db370d81485cdf75e47ca
+device: cuda
+dtype: bfloat16
+seed: 53
+local_files_only: true
+max_sequence_length: 24
+selected_layers: [7, 14, 21]
+steer_features: [0, 64, 128, 256]
+steer_magnitudes: [-4.0, 4.0]
+replacement_features: [0, 64, 128, 256, 384, 512, 640, 768]
+local_epsilon: 0.05
+context_projection_dim: 32
+hidden_target_dim: 32
+logit_target_dim: 32
+activation_budget_mb: 128
+max_shard_mb: 64
+resume: true
+output_dir: data/activations/qwen3_0_6b_interventions_v1
+output_manifest: data/manifests/qwen3_0_6b_interventions_v1.json
+output_metrics: artifacts/metrics/qwen3_0_6b_intervention_dataset.json
