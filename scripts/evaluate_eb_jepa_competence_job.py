@@ -20,6 +20,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from causal_workspace_jepa.experiments.world_model.eb_jepa_competence_protocol import (  # noqa: E402
     planner_arm_contract,
+    summarize_action_norms,
 )
 from causal_workspace_jepa.planning.eb_jepa_constrained_mppi import (  # noqa: E402
     ConstrainedMPPIPlanner,
@@ -226,6 +227,10 @@ def main() -> int:
                 first_step = False
                 steps_left -= 1
         final = environment.eval_state(info["target_position"], info["dot_position"])
+        action_summary = summarize_action_norms(
+            action_norms,
+            action_max_norm=float(config["action_max_norm"]),
+        )
         episodes.append(
             {
                 "arm": args.arm,
@@ -235,11 +240,7 @@ def main() -> int:
                 "success": bool(final["success"]),
                 "final_state_distance": float(final["state_dist"]),
                 "episode_seconds": time.perf_counter() - episode_started,
-                "executed_action_count": len(action_norms),
-                "executed_action_violation_count": sum(
-                    norm > float(config["action_max_norm"]) + 1e-6 for norm in action_norms
-                ),
-                "max_executed_action_norm": max(action_norms),
+                **action_summary,
             }
         )
     payload = {

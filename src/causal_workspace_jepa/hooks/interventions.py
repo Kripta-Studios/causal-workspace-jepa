@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import math
+from typing import Any
 
 import numpy as np
 
@@ -58,7 +60,9 @@ def apply_intervention(
     elif spec.operation == "project_out":
         if basis is None:
             raise ValueError("project_out requires basis")
-        updated = _project_out(target, np.asarray(basis, dtype=target.dtype), spec.magnitude)
+        updated = project_out_numpy(
+            target, np.asarray(basis, dtype=target.dtype), spec.magnitude
+        )
     else:
         raise ValueError(f"unsupported intervention operation: {spec.operation}")
     _assign(result, spec, updated)
@@ -124,13 +128,85 @@ def _features(array: np.ndarray, spec: InterventionSpec) -> list[int]:
     return list(spec.feature_ids)
 
 
-def _project_out(target: np.ndarray, basis: np.ndarray, magnitude: float) -> np.ndarray:
+def project_out_numpy(
+    target: np.ndarray, basis: np.ndarray, magnitude: float = 1.0
+) -> np.ndarray:
+    """Remove a column-basis span from a NumPy activation.
+
+    Two-dimensional bases use the repository-wide
+    ``[representation_dim, subspace_dim]`` contract. A one-dimensional vector
+    remains supported as an unambiguous single-column convenience. SVD turns
+    non-orthogonal or redundant coordinates into an orthonormal span, so the
+    intervention is invariant to invertible changes of basis within that span.
+    """
+
+    if not math.isfinite(magnitude):
+        raise ValueError("project_out magnitude must be finite")
+    target_array = np.asarray(target)
+    if not np.issubdtype(target_array.dtype, np.floating):
+        raise TypeError("project_out target must have a floating dtype")
+    flat = target_array.reshape(-1, target.shape[-1])
+    matrix = np.asarray(basis)
+    if matrix.ndim == 1:
+        matrix = matrix[:, None]
+    if matrix.ndim != 2 or matrix.shape[0] != flat.shape[-1] or matrix.shape[1] == 0:
+        raise ValueError(
+            "basis must have shape [representation_dim, subspace_dim] with a nonempty subspace"
+        )
+    if not np.all(np.isfinite(flat)) or not np.all(np.isfinite(matrix)):
+        raise ValueError("project_out target and basis must be finite")
+
+    work = flat.astype(np.float64, copy=False)
+    basis_work = matrix.astype(np.float64, copy=False)
+    left, singular_values, _ = np.linalg.svd(basis_work, full_matrices=False)
+    input_dtype = matrix.dtype if np.issubdtype(matrix.dtype, np.floating) else np.dtype(np.float64)
+    tolerance = (
+        np.finfo(input_dtype).eps
+        * max(basis_work.shape)
+        * float(singular_values[0])
+    )
+    rank = int(np.count_nonzero(singular_values > tolerance))
+    if rank == 0:
+        return np.array(target_array, copy=True)
+    orthonormal = left[:, :rank]
+    projected = work - magnitude * (work @ orthonormal) @ orthonormal.T
+    return projected.astype(target_array.dtype, copy=False).reshape(target_array.shape)
+
+
+def project_out_torch(target: Any, basis: Any, magnitude: float) -> Any:
+    """Torch equivalent of :func:`project_out_numpy` under the column-basis contract."""
+
+    import torch
+
+    if not math.isfinite(magnitude):
+        raise ValueError("project_out magnitude must be finite")
+    if not torch.is_tensor(target) or not torch.is_tensor(basis):
+        raise TypeError("project_out_torch expects torch tensors")
+    if not target.is_floating_point() or not basis.is_floating_point():
+        raise TypeError("project_out target and basis must have floating dtypes")
     flat = target.reshape(-1, target.shape[-1])
-    basis_2d = basis.reshape(-1, basis.shape[-1])
-    for vector in basis_2d:
-        norm = float(np.dot(vector, vector))
-        if norm <= 1e-12:
-            continue
-        projection = (flat @ vector[:, None]) * vector[None, :] / norm
-        flat = flat - magnitude * projection
-    return flat.reshape(target.shape)
+    matrix = basis
+    if matrix.ndim == 1:
+        matrix = matrix[:, None]
+    if matrix.ndim != 2 or matrix.shape[0] != flat.shape[-1] or matrix.shape[1] == 0:
+        raise ValueError(
+            "basis must have shape [representation_dim, subspace_dim] with a nonempty subspace"
+        )
+    if not bool(torch.isfinite(flat).all().item()) or not bool(torch.isfinite(matrix).all().item()):
+        raise ValueError("project_out target and basis must be finite")
+
+    work_dtype = torch.float64 if flat.dtype == torch.float64 else torch.float32
+    work = flat.to(dtype=work_dtype)
+    basis_work = matrix.to(device=flat.device, dtype=work_dtype)
+    left, singular_values, _ = torch.linalg.svd(basis_work, full_matrices=False)
+    tolerance = (
+        torch.finfo(work_dtype).eps
+        * max(basis_work.shape)
+        * singular_values[0]
+    )
+    rank = int((singular_values > tolerance).sum().item())
+    if rank == 0:
+        return target.clone()
+    orthonormal = left[:, :rank]
+    projected = work - magnitude * (work @ orthonormal) @ orthonormal.T
+    return projected.to(dtype=target.dtype).reshape_as(target)

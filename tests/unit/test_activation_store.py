@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -53,6 +54,28 @@ class ActivationStoreTests(unittest.TestCase):
                     dataset_id="too-large",
                     config_digest="abc",
                     budget_mb=0.0001,
+                )
+
+    def test_resume_rejects_vacuous_empty_manifest(self) -> None:
+        arrays = {"x": np.ones((2, 1), dtype=np.float32)}
+        records = [{"id": 0}, {"id": 1}]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            manifest = {
+                "dataset_id": "test",
+                "config_digest": "abc",
+                "format": "hdf5",
+                "examples": 2,
+                "arrays": {"x": {"shape": [2, 1], "dtype": "float32"}},
+                "shards": [],
+            }
+            (Path(tmpdir) / "manifest.json").write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(RuntimeError, "at least one shard"):
+                write_hdf5_shards(
+                    tmpdir,
+                    arrays,
+                    records,
+                    dataset_id="test",
+                    config_digest="abc",
                 )
 
 

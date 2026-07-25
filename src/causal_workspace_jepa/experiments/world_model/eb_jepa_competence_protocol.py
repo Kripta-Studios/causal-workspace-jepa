@@ -6,11 +6,14 @@ from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from typing import Any
 
+import math
+
 
 REQUIRED_ARMS = (
     "official_mppi_as_executed",
     "bound_corrected_mppi_as_executed",
 )
+PRIMARY_ELIGIBILITY_ARM = "bound_corrected_mppi_as_executed"
 
 
 def planner_arm_contract(arm: str) -> dict[str, Any]:
@@ -36,11 +39,33 @@ def planner_arm_contract(arm: str) -> dict[str, Any]:
     return dict(contracts[arm])
 
 
+def summarize_action_norms(
+    action_norms: Sequence[float], *, action_max_norm: float
+) -> dict[str, float | int]:
+    """Reject non-finite planner actions before computing contract metrics."""
+
+    values = [float(value) for value in action_norms]
+    if not values:
+        raise ValueError("at least one executed action norm is required")
+    if not math.isfinite(action_max_norm) or action_max_norm <= 0.0:
+        raise ValueError("action_max_norm must be finite and positive")
+    if not all(math.isfinite(value) and value >= 0.0 for value in values):
+        raise RuntimeError("planner produced a non-finite or negative action norm")
+    return {
+        "executed_action_count": len(values),
+        "executed_action_violation_count": sum(
+            value > action_max_norm + 1e-6 for value in values
+        ),
+        "max_executed_action_norm": max(values),
+    }
+
+
 def aggregate_competence(
     rows: Sequence[Mapping[str, Any]],
     *,
     seeds: Sequence[int],
     required_arms: Sequence[str] = REQUIRED_ARMS,
+    primary_eligibility_arm: str = PRIMARY_ELIGIBILITY_ARM,
     overall_threshold: float = 0.80,
     per_seed_threshold: float = 0.70,
 ) -> dict[str, Any]:
@@ -76,13 +101,21 @@ def aggregate_competence(
             ),
         }
     required_complete = all(arm in arm_summaries for arm in required_arms)
-    all_required_eligible = required_complete and all(
-        arm_summaries[arm]["competence_eligible"] for arm in required_arms
+    if primary_eligibility_arm not in required_arms:
+        raise ValueError("primary eligibility arm must be one of the required arms")
+    primary_eligible = bool(
+        required_complete
+        and arm_summaries[primary_eligibility_arm]["competence_eligible"]
     )
     return {
         "overall_threshold": overall_threshold,
         "per_seed_threshold": per_seed_threshold,
         "arm_summaries": arm_summaries,
         "required_arms_complete": required_complete,
-        "all_required_arms_competent": all_required_eligible,
+        "primary_eligibility_arm": primary_eligibility_arm,
+        "primary_arm_competent": primary_eligible,
+        "all_required_arms_competent": bool(
+            required_complete
+            and all(arm_summaries[arm]["competence_eligible"] for arm in required_arms)
+        ),
     }

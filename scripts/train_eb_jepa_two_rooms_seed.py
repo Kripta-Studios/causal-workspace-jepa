@@ -20,6 +20,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from causal_workspace_jepa.experiments.world_model.eb_jepa_training_protocol import (  # noqa: E402
     required_checkpoint_names,
+    validate_completed_training_status,
     validate_source_training_config,
 )
 
@@ -42,6 +43,19 @@ def _write_status(path: Path, payload: dict) -> None:
     temporary = path.with_suffix(".tmp")
     temporary.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     os.replace(temporary, path)
+
+
+def _inspect_checkpoint(torch: object, path: Path) -> dict[str, object]:
+    payload = torch.load(path, map_location="cpu", weights_only=False)
+    model_state = payload.get("model_state_dict")
+    if not isinstance(model_state, dict) or not model_state:
+        raise RuntimeError(f"checkpoint lacks a model state: {path}")
+    finite = all(
+        (not value.is_floating_point()) or bool(torch.isfinite(value).all().item())
+        for value in model_state.values()
+        if torch.is_tensor(value)
+    )
+    return {"epoch": int(payload.get("epoch", -1)), "all_tensors_finite": finite}
 
 
 def main() -> int:
@@ -98,6 +112,16 @@ def main() -> int:
     if status_path.exists():
         existing_status = json.loads(status_path.read_text(encoding="utf-8"))
         if existing_status.get("status") == "COMPLETED":
+            existing_status["checkpoint_verification"] = validate_completed_training_status(
+                existing_status,
+                run_directory,
+                experiment_id=str(config["id"]),
+                seed=args.seed,
+                source_revision=str(config["revision"]),
+                source_config=source_values,
+                epochs=int(upstream_config.optim.epochs),
+                checkpoint_epoch_reader=lambda path: _inspect_checkpoint(torch, path),
+            )
             print(json.dumps(existing_status, indent=2, sort_keys=True))
             return 0
 
@@ -160,6 +184,16 @@ def main() -> int:
                 "checkpoint_manifest": checkpoint_manifest,
                 "mechanism_claim": False,
             }
+        )
+        status["checkpoint_verification"] = validate_completed_training_status(
+            status,
+            run_directory,
+            experiment_id=str(config["id"]),
+            seed=args.seed,
+            source_revision=str(config["revision"]),
+            source_config=source_values,
+            epochs=int(cfg.optim.epochs),
+            checkpoint_epoch_reader=lambda path: _inspect_checkpoint(torch, path),
         )
         _write_status(status_path, status)
         print(json.dumps(status, indent=2, sort_keys=True))

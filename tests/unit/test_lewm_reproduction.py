@@ -79,6 +79,73 @@ class SmallLeWorldModelTests(unittest.TestCase):
             float(np.max(np.abs(clean.predicted_latents - zero.predicted_latents))), 0.0
         )
 
+    def test_adapter_intervention_positions_select_rollout_steps(self) -> None:
+        from causal_workspace_jepa.adapters.lewm_adapter import LeWorldModelAdapter
+
+        torch.manual_seed(13)
+        adapter = LeWorldModelAdapter(self._model().eval())
+        pixels = np.random.default_rng(13).random((2, 3, 8, 8), dtype=np.float32)
+        latent = adapter.encode(pixels)
+        actions = np.zeros((2, 3, 4), dtype=np.float32)
+        actions[:, :, 1] = 1.0
+        clean = adapter.predict(latent, actions, return_intermediates=True)
+        at_zero = adapter.predict_with_intervention(
+            latent,
+            actions,
+            InterventionSpec(site="predictor.block0", operation="zero", positions=(0,)),
+            return_intermediates=True,
+        )
+        at_two = adapter.predict_with_intervention(
+            latent,
+            actions,
+            InterventionSpec(site="predictor.block0", operation="zero", positions=(2,)),
+            return_intermediates=True,
+        )
+
+        np.testing.assert_array_equal(
+            at_zero.intermediates["predictor.block0"][:, 0],
+            np.zeros((2, 8), dtype=np.float32),
+        )
+        np.testing.assert_allclose(
+            at_two.intermediates["predictor.block0"][:, 0],
+            clean.intermediates["predictor.block0"][:, 0],
+            rtol=0,
+            atol=0,
+        )
+        np.testing.assert_array_equal(
+            at_two.intermediates["predictor.block0"][:, 2],
+            np.zeros((2, 8), dtype=np.float32),
+        )
+        self.assertGreater(
+            float(np.max(np.abs(at_zero.predicted_latents - at_two.predicted_latents))),
+            0.0,
+        )
+
+    def test_adapter_project_out_uses_nonorthogonal_column_basis(self) -> None:
+        from causal_workspace_jepa.adapters.lewm_adapter import LeWorldModelAdapter
+
+        torch.manual_seed(19)
+        adapter = LeWorldModelAdapter(self._model().eval())
+        pixels = np.random.default_rng(19).random((2, 3, 8, 8), dtype=np.float32)
+        latent = adapter.encode(pixels)
+        actions = np.zeros((2, 1, 4), dtype=np.float32)
+        actions[:, :, 2] = 1.0
+        basis = np.zeros((8, 2), dtype=np.float32)
+        basis[0, 0] = 1.0
+        basis[0, 1] = 1.0
+        basis[1, 1] = 1.0
+        adapter.register_basis("predictor.block0", basis)
+
+        projected = adapter.predict_with_intervention(
+            latent,
+            actions,
+            InterventionSpec(site="predictor.block0", operation="project_out"),
+            return_intermediates=True,
+        )
+
+        projected_block = projected.intermediates["predictor.block0"]
+        np.testing.assert_allclose(projected_block @ basis, 0.0, atol=1e-5)
+
 
 class PixelTinyMazeTests(unittest.TestCase):
     def test_generator_is_deterministic_and_action_aligned(self) -> None:

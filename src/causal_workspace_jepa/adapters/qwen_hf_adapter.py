@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from typing import Any, Mapping, Sequence
 
 from causal_workspace_jepa.common.types import InterventionSpec, LLMRun, TokenBatch
+from causal_workspace_jepa.hooks.interventions import project_out_torch
 from causal_workspace_jepa.hooks.names import transformer_site
 
 
@@ -159,8 +160,17 @@ class QwenHFAdapter:
         self._means[site] = _as_torch(self._torch, mean, self.device)
 
     def register_basis(self, site: str, basis: Any) -> None:
+        """Register columns spanning a projection subspace at ``site``."""
+
         self._validate_site(site)
-        self._bases[site] = _as_torch(self._torch, basis, self.device)
+        matrix = _as_torch(self._torch, basis, self.device)
+        if matrix.ndim == 1:
+            matrix = matrix[:, None]
+        if matrix.ndim != 2 or matrix.shape[1] == 0:
+            raise ValueError("basis must have shape [representation_dim, subspace_dim]")
+        if not matrix.is_floating_point() or not bool(self._torch.isfinite(matrix).all().item()):
+            raise ValueError("basis must be finite and floating point")
+        self._bases[site] = matrix
 
     def forward_with_cache(self, batch: TokenBatch, sites: Sequence[str]) -> LLMRun:
         return self._forward(batch, sites, interventions=())
@@ -360,7 +370,7 @@ class QwenHFAdapter:
         elif spec.operation == "project_out":
             if spec.site not in self._bases:
                 raise ValueError("project_out requires a registered basis")
-            updated = _project_out_torch(target, self._bases[spec.site], spec.magnitude)
+            updated = project_out_torch(target, self._bases[spec.site], spec.magnitude)
         else:  # pragma: no cover - Literal and unit tests constrain operations
             raise ValueError(f"unsupported intervention operation: {spec.operation}")
         _torch_assign(result, spec, updated.to(device=result.device, dtype=result.dtype))
@@ -462,11 +472,3 @@ def _broadcast_selected(source: Any, target: Any, spec: InterventionSpec) -> Any
     except RuntimeError:
         full = selected
     return _torch_select(full, spec).expand_as(_torch_select(target, spec))
-
-
-def _project_out_torch(target: Any, basis: Any, magnitude: float) -> Any:
-    flat = target.reshape(-1, target.shape[-1])
-    for vector in basis.reshape(-1, basis.shape[-1]).to(flat):
-        denominator = vector.square().sum().clamp_min(1e-12)
-        flat = flat - magnitude * ((flat @ vector) / denominator).unsqueeze(-1) * vector
-    return flat.reshape_as(target)

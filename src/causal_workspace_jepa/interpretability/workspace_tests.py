@@ -14,6 +14,8 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from causal_workspace_jepa.hooks.interventions import project_out_numpy
+
 
 @dataclass(frozen=True)
 class SharedSubspaceCandidate:
@@ -184,7 +186,7 @@ def project_out_subspace(
         else np.asarray(center, dtype=array.dtype)
     )
     centered = array - origin
-    return array - (centered @ basis_array) @ basis_array.T
+    return origin + project_out_numpy(centered, basis_array)
 
 
 def normalized_output_damage(clean: np.ndarray, intervened: np.ndarray) -> float:

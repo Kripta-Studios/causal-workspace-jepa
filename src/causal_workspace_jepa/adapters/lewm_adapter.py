@@ -12,6 +12,7 @@ from causal_workspace_jepa.common.types import (
     LatentState,
     WorldModelOutput,
 )
+from causal_workspace_jepa.hooks.interventions import project_out_torch
 from causal_workspace_jepa.models.lewm import SmallLeWorldModel
 
 STATUS = "SOURCE_INFORMED_SMALL_MODEL"
@@ -50,10 +51,16 @@ class LeWorldModelAdapter:
         self._donors[(donor_example_id, site)] = torch.as_tensor(value, device=self.device)
 
     def register_basis(self, site: str, value: np.ndarray | torch.Tensor) -> None:
+        """Register columns spanning a projection subspace at ``site``."""
+
         self._validate_site(site)
         basis = torch.as_tensor(value, device=self.device)
-        if basis.ndim != 2:
-            raise ValueError("basis must have shape [representation, dimension]")
+        if basis.ndim == 1:
+            basis = basis[:, None]
+        if basis.ndim != 2 or basis.shape[1] == 0:
+            raise ValueError("basis must have shape [representation_dim, subspace_dim]")
+        if not basis.is_floating_point() or not bool(torch.isfinite(basis).all().item()):
+            raise ValueError("basis must be finite and floating point")
         self._bases[site] = basis
 
     def encode(self, observation: np.ndarray) -> LatentState:
@@ -97,15 +104,8 @@ class LeWorldModelAdapter:
         action_tensor = torch.as_tensor(actions, device=self.device, dtype=torch.float32)
         if action_tensor.ndim == 2:
             action_tensor = action_tensor[None]
-        callbacks = None
-        if intervention is not None:
-            callbacks = {
-                intervention.site: lambda value: self._apply_intervention(value, intervention)
-            }
         with torch.inference_mode():
-            predicted, sites = self.model.rollout(
-                embedding, action_tensor, interventions=callbacks
-            )
+            predicted, sites = self._rollout(embedding, action_tensor, intervention)
         predicted_np = predicted.cpu().numpy()
         decoded = None
         cost_features = None
@@ -125,6 +125,40 @@ class LeWorldModelAdapter:
             action_embeddings=action_tensor.cpu().numpy(),
             cost_features=cost_features,
         )
+
+    def _rollout(
+        self,
+        embedding: torch.Tensor,
+        actions: torch.Tensor,
+        intervention: InterventionSpec | None,
+    ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
+        """Roll out while routing a temporal intervention only to selected steps."""
+
+        current = embedding
+        trajectory: list[torch.Tensor] = []
+        site_values: dict[str, list[torch.Tensor]] = {}
+        for step in range(actions.size(1)):
+            applies = intervention is not None and (
+                intervention.positions is None or step in intervention.positions
+            )
+            callbacks = (
+                {
+                    intervention.site: lambda value: self._apply_intervention(
+                        value, intervention
+                    )
+                }
+                if applies and intervention is not None
+                else None
+            )
+            current, captured = self.model.predict_step(
+                current, actions[:, step], interventions=callbacks
+            )
+            trajectory.append(current)
+            for name, value in captured.items():
+                site_values.setdefault(name, []).append(value)
+        return torch.stack(trajectory, dim=1), {
+            name: torch.stack(values, dim=1) for name, values in site_values.items()
+        }
 
     def decode_state(self, latent: LatentState) -> Mapping[str, np.ndarray]:
         if self._decoder is None:
@@ -165,11 +199,7 @@ class LeWorldModelAdapter:
             if spec.site not in self._bases:
                 raise ValueError("project_out requires a registered basis")
             basis = self._bases[spec.site].to(selected)
-            flat = selected.reshape(-1, selected.shape[-1])
-            for vector in basis.T:
-                denominator = vector.square().sum().clamp_min(1e-12)
-                flat = flat - spec.magnitude * ((flat @ vector) / denominator)[:, None] * vector
-            updated = flat.reshape_as(selected)
+            updated = project_out_torch(selected, basis, spec.magnitude)
         else:  # pragma: no cover - InterventionSpec constrains operations
             raise ValueError(f"unsupported intervention operation: {spec.operation}")
         target[..., features] = updated

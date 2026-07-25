@@ -21,6 +21,8 @@ from causal_workspace_jepa.experiments.world_model.eb_jepa_competence_protocol i
 )
 from causal_workspace_jepa.experiments.world_model.eb_jepa_training_protocol import (  # noqa: E402
     required_checkpoint_names,
+    validate_completed_training_status,
+    validate_source_training_config,
 )
 from causal_workspace_jepa.common.provenance import (  # noqa: E402
     collect_provenance,
@@ -39,6 +41,17 @@ def _write(path: Path, payload: dict) -> None:
     temporary = path.with_suffix(".tmp")
     temporary.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     os.replace(temporary, path)
+
+
+def _inspect_checkpoint(torch: object, path: Path) -> dict[str, object]:
+    payload = torch.load(path, map_location="cpu", weights_only=False)
+    model_state = payload.get("model_state_dict")
+    finite = bool(model_state) and all(
+        (not value.is_floating_point()) or bool(torch.isfinite(value).all().item())
+        for value in model_state.values()
+        if torch.is_tensor(value)
+    )
+    return {"epoch": int(payload.get("epoch", -1)), "all_tensors_finite": finite}
 
 
 def _paired_summary(rows: list[dict], seeds: list[int]) -> dict:
@@ -109,6 +122,7 @@ def main() -> int:
     args = parser.parse_args()
 
     import yaml
+    import torch
 
     config_path = Path(args.config).resolve()
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
@@ -127,6 +141,38 @@ def main() -> int:
     )
     interpreter = (REPO_ROOT / config["interpreter"]).resolve()
     source_root = (REPO_ROOT / config["source_root"]).resolve()
+    if config["training_seeds"] != training_config["seeds"]:
+        raise RuntimeError("competence and training seed portfolios differ")
+    if config["revision"] != training_config["revision"]:
+        raise RuntimeError("competence and training source revisions differ")
+    if config["checkpoint_epochs"] != training_config["checkpoint_epochs_for_evaluation"]:
+        raise RuntimeError("competence checkpoint epochs differ from the training registration")
+    upstream_training_config = yaml.safe_load(
+        (source_root / training_config["upstream_training_config"]).read_text(encoding="utf-8")
+    )
+    expected_source_config = validate_source_training_config(upstream_training_config)
+    training_statuses = []
+    training_verifications = []
+    checkpoint_root = REPO_ROOT / training_config["output_root"]
+    for seed in training_config["seeds"]:
+        run_directory = checkpoint_root / f"seed-{seed}"
+        status_path_for_seed = run_directory / "training_status.json"
+        if not status_path_for_seed.is_file():
+            raise RuntimeError(f"missing completed training status: {status_path_for_seed}")
+        status = json.loads(status_path_for_seed.read_text(encoding="utf-8"))
+        training_statuses.append(status)
+        training_verifications.append(
+            validate_completed_training_status(
+                status,
+                run_directory,
+                experiment_id=str(training_config["id"]),
+                seed=int(seed),
+                source_revision=str(training_config["revision"]),
+                source_config=expected_source_config,
+                epochs=int(training_config["epochs"]),
+                checkpoint_epoch_reader=lambda path: _inspect_checkpoint(torch, path),
+            )
+        )
     environment = os.environ.copy()
     environment["PYTHONPATH"] = os.pathsep.join(
         [str(source_root), str(REPO_ROOT / "src")]
@@ -199,6 +245,7 @@ def main() -> int:
         rows,
         seeds=config["training_seeds"],
         required_arms=config["planner_arms"],
+        primary_eligibility_arm=str(config["mechanistic_eligibility_arm"]),
         overall_threshold=float(config["overall_success_threshold"]),
         per_seed_threshold=float(config["per_seed_success_threshold"]),
     )
@@ -222,16 +269,17 @@ def main() -> int:
         and bounded["max_executed_action_norm"] <= float(config["action_max_norm"]) + 1e-6,
     }
     paired = _paired_summary(rows, [int(seed) for seed in config["training_seeds"]])
+    competence_passed = bool(
+        aggregate["primary_arm_competent"] and all(engineering_passes.values())
+    )
     competence_metrics = {
         "experiment_id": config["id"],
         "status": (
             "COMPETENT_BOUNDED"
-            if aggregate["all_required_arms_competent"] and all(engineering_passes.values())
+            if competence_passed
             else "COMPLETED_INELIGIBLE"
         ),
-        "evidence_level": (
-            "Generalization" if aggregate["all_required_arms_competent"] else "Availability"
-        ),
+        "evidence_level": "Generalization" if competence_passed else "Availability",
         "repo_commit": repo_commit,
         "source_revision": config["revision"],
         "training_seeds": config["training_seeds"],
@@ -271,25 +319,13 @@ def main() -> int:
         provenance,
         extra={
             "metrics": Path(config["output_metrics"]).as_posix(),
-            "all_passed": all(engineering_passes.values()),
+            "all_passed": competence_passed,
         },
     )
 
-    training_statuses = []
-    checkpoint_root = REPO_ROOT / training_config["output_root"]
-    for seed in training_config["seeds"]:
-        training_statuses.append(
-            json.loads(
-                (checkpoint_root / f"seed-{seed}" / "training_status.json").read_text(
-                    encoding="utf-8"
-                )
-            )
-        )
     training_complete = all(
-        status["status"] == "COMPLETED"
-        and set(status["checkpoint_manifest"])
-        == set(required_checkpoint_names(int(training_config["epochs"])))
-        for status in training_statuses
+        set(verification) == set(required_checkpoint_names(int(training_config["epochs"])))
+        for verification in training_verifications
     )
     training_metrics = {
         "experiment_id": training_config["id"],
@@ -299,6 +335,7 @@ def main() -> int:
         "source_revision": training_config["revision"],
         "seeds": training_config["seeds"],
         "seed_summaries": training_statuses,
+        "checkpoint_verifications": training_verifications,
         "scientific_boundary": (
             "Checkpoint completion and hashes alone provide no competence, circuit, or workspace evidence."
         ),

@@ -256,6 +256,34 @@ class QwenHFAdapterTests(unittest.TestCase):
         )
         torch.testing.assert_close(jacobian @ direction, directional, atol=1e-5, rtol=1e-5)
 
+    def test_direct_mediation_executor_replays_treatment_and_state_programs(self) -> None:
+        from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_evaluator import (
+            execute_direct_mediation_episode,
+        )
+
+        outcome = execute_direct_mediation_episode(
+            self.adapter,
+            recipient_prompt="alpha beta",
+            donor_prompt="gamma beta",
+            treatment_site=transformer_site(0, "resid_pre"),
+            treatment_positions=(0,),
+            recipient_answer_id=2,
+            donor_answer_id=3,
+            mediator_sites=(
+                transformer_site(0, "attn_out"),
+                transformer_site(0, "mlp_out"),
+            ),
+            seed=419,
+        )
+        self.assertAlmostEqual(outcome.treated_score, outcome.donor_score, places=6)
+        for value in (
+            outcome.clean_score,
+            outcome.treated_score,
+            outcome.sufficient_score,
+            outcome.restored_score,
+        ):
+            self.assertTrue(np.isfinite(value))
+
 
 class _TinyTokenizer:
     pad_token_id = 0

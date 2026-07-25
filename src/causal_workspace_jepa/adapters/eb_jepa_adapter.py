@@ -26,6 +26,7 @@ from causal_workspace_jepa.common.types import (
     LatentState,
     WorldModelOutput,
 )
+from causal_workspace_jepa.hooks.interventions import project_out_torch
 
 EB_JEPA_UPSTREAM_URL = "https://github.com/facebookresearch/eb_jepa.git"
 EB_JEPA_UPSTREAM_REVISION = "966e61e9285b3a876f49b9774e9720d9a99a7925"
@@ -143,10 +144,16 @@ class EBJEPAAdapter:
         self._donors[(donor_example_id, site)] = torch.as_tensor(value, device=self.device)
 
     def register_basis(self, site: str, value: np.ndarray | torch.Tensor) -> None:
+        """Register columns spanning a projection subspace at ``site``."""
+
         self._validate_site(site)
         basis = torch.as_tensor(value, device=self.device)
-        if basis.ndim != 2:
-            raise ValueError("basis must have shape [representation, dimension]")
+        if basis.ndim == 1:
+            basis = basis[:, None]
+        if basis.ndim != 2 or basis.shape[1] == 0:
+            raise ValueError("basis must have shape [representation_dim, subspace_dim]")
+        if not basis.is_floating_point() or not bool(torch.isfinite(basis).all().item()):
+            raise ValueError("basis must be finite and floating point")
         self._bases[site] = basis
 
     def encode(self, observation: np.ndarray) -> LatentState:
@@ -423,11 +430,7 @@ class EBJEPAAdapter:
             if spec.site not in self._bases:
                 raise ValueError("project_out requires a registered basis")
             basis = self._bases[spec.site].to(selected)
-            flat = selected.reshape(-1, selected.shape[-1])
-            for vector in basis.T:
-                denominator = vector.square().sum().clamp_min(1e-12)
-                flat = flat - spec.magnitude * ((flat @ vector) / denominator)[:, None] * vector
-            updated = flat.reshape_as(selected)
+            updated = project_out_torch(selected, basis, spec.magnitude)
         else:  # pragma: no cover - InterventionSpec constrains operations
             raise ValueError(f"unsupported intervention operation: {spec.operation}")
         target[..., features] = updated

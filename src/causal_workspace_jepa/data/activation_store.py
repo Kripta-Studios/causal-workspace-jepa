@@ -76,6 +76,8 @@ def write_hdf5_shards(
     if len(lengths) != 1:
         raise ValueError("all activation arrays must share the first dimension")
     examples = lengths.pop()
+    if examples <= 0:
+        raise ValueError("activation datasets must contain at least one example")
     if len(records) != examples:
         raise ValueError("metadata record count must equal array example count")
     per_example = sum(max(1, value[0].nbytes) for value in normalized.values())
@@ -93,6 +95,7 @@ def write_hdf5_shards(
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if manifest.get("dataset_id") != dataset_id or manifest.get("config_digest") != config_digest:
             raise RuntimeError("existing activation manifest does not match dataset/config identity")
+        _validate_manifest_structure(manifest, output)
         if all(_sha256(output / shard["path"]) == shard["sha256"] for shard in manifest["shards"]):
             return manifest
         raise RuntimeError("existing activation shard checksum mismatch")
@@ -151,6 +154,7 @@ def read_hdf5_shards(output_dir: str | Path) -> tuple[dict[str, np.ndarray], lis
 
     output = Path(output_dir)
     manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+    _validate_manifest_structure(manifest, output)
     chunks: dict[str, list[np.ndarray]] = {name: [] for name in manifest["arrays"]}
     records: list[dict[str, Any]] = []
     for shard in manifest["shards"]:
@@ -161,7 +165,42 @@ def read_hdf5_shards(output_dir: str | Path) -> tuple[dict[str, np.ndarray], lis
             for name in chunks:
                 chunks[name].append(handle["arrays"][name][...])
             records.extend(json.loads(value) for value in handle["records_json"].asstr()[...])
-    return {name: np.concatenate(value, axis=0) for name, value in chunks.items()}, records
+    arrays = {name: np.concatenate(value, axis=0) for name, value in chunks.items()}
+    if len(records) != int(manifest["examples"]) or any(
+        value.shape[0] != int(manifest["examples"]) for value in arrays.values()
+    ):
+        raise RuntimeError("activation shards do not reconstruct the manifest example count")
+    return arrays, records
+
+
+def _validate_manifest_structure(manifest: Mapping[str, Any], output: Path) -> None:
+    shards = manifest.get("shards")
+    arrays = manifest.get("arrays")
+    examples = manifest.get("examples")
+    if not isinstance(shards, list) or not shards:
+        raise RuntimeError("activation manifest must contain at least one shard")
+    if not isinstance(arrays, Mapping) or not arrays:
+        raise RuntimeError("activation manifest must describe at least one array")
+    if not isinstance(examples, int) or examples <= 0:
+        raise RuntimeError("activation manifest example count must be positive")
+    observed_rows = 0
+    for shard in shards:
+        if not isinstance(shard, Mapping):
+            raise RuntimeError("activation manifest contains a malformed shard record")
+        relative = Path(str(shard.get("path", "")))
+        if relative.is_absolute() or ".." in relative.parts or relative.name != str(relative):
+            raise RuntimeError("activation shard path must be a simple relative filename")
+        path = output / relative
+        if not path.is_file():
+            raise RuntimeError(f"activation shard is missing: {path}")
+        rows = shard.get("rows")
+        if not isinstance(rows, int) or rows <= 0:
+            raise RuntimeError("activation shard row count must be positive")
+        observed_rows += rows
+        if not isinstance(shard.get("sha256"), str) or len(shard["sha256"]) != 64:
+            raise RuntimeError("activation shard checksum is malformed")
+    if observed_rows != examples:
+        raise RuntimeError("activation shard row counts differ from manifest examples")
 
 
 def _sha256(path: Path) -> str:

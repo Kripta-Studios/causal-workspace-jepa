@@ -10,6 +10,7 @@ job_output_root: artifacts/checkpoints/eb_jepa_two_rooms_official_v1/competence_
 training_seeds: [1, 1000, 10000]
 checkpoint_epochs: [9, 10, 11]
 planner_arms: [official_mppi_as_executed, bound_corrected_mppi_as_executed]
+mechanistic_eligibility_arm: bound_corrected_mppi_as_executed
 optional_planner_arms: [bound_and_keyword_corrected_mppi]
 num_episodes: 20
 environment_seed: 0

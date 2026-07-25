@@ -4,10 +4,16 @@ import unittest
 
 import numpy as np
 
+try:
+    import torch
+except ImportError:  # pragma: no cover - minimal CPU install
+    torch = None
+
 from causal_workspace_jepa.common.types import InterventionSpec
 from causal_workspace_jepa.hooks.interventions import (
     apply_intervention,
     matched_random_feature_control,
+    project_out_torch,
     spec_from_json,
     spec_to_json,
 )
@@ -33,6 +39,32 @@ class InterventionTests(unittest.TestCase):
         spec = InterventionSpec(site="x", operation="project_out")
         changed = apply_intervention(activation, spec, basis=np.array([1.0, 0.0], dtype=np.float32))
         np.testing.assert_allclose(changed, np.array([[0.0, 4.0]], dtype=np.float32), atol=1e-6)
+
+    def test_project_out_uses_a_gauge_invariant_nonorthogonal_column_basis(self) -> None:
+        activation = np.array([[3.0, 4.0, 5.0]], dtype=np.float32)
+        spec = InterventionSpec(site="x", operation="project_out")
+        basis = np.array([[1.0, 1.0], [0.0, 1.0], [0.0, 0.0]], dtype=np.float32)
+        gauge = np.array([[2.0, 1.0], [1.0, 1.0]], dtype=np.float32)
+
+        changed = apply_intervention(activation, spec, basis=basis)
+        gauge_changed = apply_intervention(activation, spec, basis=basis @ gauge)
+
+        np.testing.assert_allclose(changed, [[0.0, 0.0, 5.0]], atol=1e-6)
+        np.testing.assert_allclose(gauge_changed, changed, atol=1e-6)
+        with self.assertRaisesRegex(ValueError, "representation_dim"):
+            apply_intervention(activation, spec, basis=basis.T)
+
+    @unittest.skipIf(torch is None, "torch is optional")
+    def test_torch_project_out_matches_column_basis_contract(self) -> None:
+        activation = torch.tensor([[3.0, 4.0, 5.0]])
+        basis = torch.tensor([[1.0, 1.0], [0.0, 1.0], [0.0, 0.0]])
+        gauge = torch.tensor([[2.0, 1.0], [1.0, 1.0]])
+
+        changed = project_out_torch(activation, basis, 1.0)
+        gauge_changed = project_out_torch(activation, basis @ gauge, 1.0)
+
+        torch.testing.assert_close(changed, torch.tensor([[0.0, 0.0, 5.0]]), atol=1e-6, rtol=0)
+        torch.testing.assert_close(gauge_changed, changed, atol=1e-6, rtol=0)
 
     def test_spec_json_and_matched_control(self) -> None:
         spec = InterventionSpec(site="x", operation="scale", feature_ids=(0, 1), magnitude=0.5, seed=1)
