@@ -30,8 +30,9 @@
 - [x] Implement and test a disclosed post-hoc read-only format diagnostic for token `17607`
   collapse versus the partially competent paired paraphrase. It verifies capture identity, exact
   factor/answer pairing, token mapping, finitude, and a clean committed worktree.
-- [ ] Execute that diagnostic from its clean implementation commit, publish metrics/provenance, and
-  retain the boundary that it cannot modify/rerun v2 or select a v3 prompt.
+- [x] Execute the diagnostic from clean `31d3464` and publish metrics/provenance: the exact
+  paraphrase pairing improves four-value clean/donor accuracy by `0.396/0.604` with zero paired
+  losses, but cannot modify/rerun v2 or select a v3 prompt.
 - [ ] If continuing binding mediation, preregister v3 with new episodes and a behavior-competent
   prompt family before any capture; preserve v2 as the negative task-eligibility result.
 - [x] Prospectively preregister `LLM-QWEN-BINDING-ALGEBRA-001` without reading binding-v2 or new

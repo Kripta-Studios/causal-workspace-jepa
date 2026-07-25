@@ -1,5 +1,20 @@
 # SUMMARY
 
+## 2026-07-26 — Binding format diagnostic completed
+
+- The outcome-disclosed `LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001` ran from clean commit `31d3464`
+  over the immutable 560-row capture; provenance records `git_dirty=false`, and donor versus full
+  treatment top tokens and registered-value logits remain exactly identical.
+- The primary test prompt fails beyond output formatting: when prediction is restricted to the
+  four values present in each episode, clean/donor accuracy is only `0.375/0.281`, mean target rank
+  is `2.188/2.312`, and mean correct-versus-best-other margin is `-0.885/-0.892`. In the 96 exactly
+  paired paraphrases, four-value accuracy becomes `0.771/0.885`, rank `1.427/1.208`, and margin
+  `+1.571/+1.772`. There are 38/58 paired four-value gains and zero losses for clean/donor.
+- This is Availability-level, post-hoc evidence that prompt format gates both full-vocabulary
+  emission and answer-logit ordering within the candidate set. It cannot locate whether the change
+  arises in parsing, binding computation, readout, or output-mode competition; it confirms no
+  hypothesis and cannot rescue v2 or choose the prompt for v3.
+
 ## 2026-07-25 — Target diagnosis corrected and causal binding algebra preregistered
 
 - Repository audit found that the official EB-JEPA portfolio is not running. Seed 1 completed all
@@ -44,10 +59,9 @@
   The exactly paired paraphrase reaches clean `0.646`, donor/transfer `0.677`, but its worst-group
   floors are only `0.111--0.133`. H-LLM-15/16 remain undecided; calibration, ranking, and protected
   mediation are prohibited for v2.
-- An explicitly outcome-disclosed, read-only format diagnostic is now implemented but not run. It
-  fixes full-vocabulary, registered-value, within-episode, rank, margin, dominant-token, and paired
-  test-to-paraphrase summaries; requires the immutable capture checksum and exact answer pairing;
-  and cannot rescue v2, select v3, or provide mediator/circuit/workspace evidence.
+- An explicitly outcome-disclosed, read-only format diagnostic was frozen for later clean
+  execution. It fixes full-vocabulary, registered-value, within-episode, rank, margin,
+  dominant-token, and paired test-to-paraphrase summaries and cannot rescue v2 or select v3.
 - Prospectively registered `LLM-QWEN-BINDING-ALGEBRA-001`: primitive binding transpositions train a
   candidate causal transition operator, while unseen double transpositions, three-cycles,
   four-cycles, and action-plus-inverse rollouts test composition and restoration across disjoint
@@ -63,7 +77,8 @@
 
 - The official EB-JEPA three-seed portfolio launched from clean commit `5065108` at
   `2026-07-21T21:53:46Z`. Seed 1 epochs 0--4 completed in roughly 900 seconds each; latest total
-  loss is `1.2349`, with all checkpoints retained. Training remains active.
+  loss was `1.2349`, with all checkpoints retained. This was an interim snapshot; seed 1 later
+  completed epoch 11 and the portfolio stopped before seed 1000 on the clean-worktree guard.
   The non-monotone loss is operational progress, not
   competence, recurrent-mechanism, or workspace evidence.
 - Primary-source review confirms that activation diffusion priors, Qwen-Scope SAEs, July-2026
@@ -93,9 +108,9 @@
 - `LLM-QWEN-BINDING-MEDIATION-002` is the operative pre-outcome registration. Paraphrase is now an
   exact episode-paired template shift; all causal states are FP32; finitude, counts, unique IDs,
   shapes, dtypes, per-key/value minima, exact revision, token-audit digest, runtime fingerprint,
-  HDF5 content hash, and readback fail closed. Thirty-five directed tests and the 149-test full suite
-  pass. Protected activations
-  remain unopened until the complete frozen evaluator and controls are committed and pushed.
+  HDF5 content hash, and readback fail closed. Directed evaluator tests and the current 220-test
+  suite pass. The later separately authorized capture is retained as `INELIGIBLE_TASK`; it cannot
+  progress to a train plan, protected ranking, or direct mediation.
 
 ## 2026-07-21 — EB-JEPA Two Rooms import closure and planner constraint correction
 

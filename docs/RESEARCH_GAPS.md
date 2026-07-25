@@ -18,7 +18,10 @@ Status: `ACTIVE`.
   protocol closes the treatment, phase-separation, ranking, direct-control, resume, and
   inference-design gaps in code, but its full capture is task-ineligible. The primary arrow prompt
   produces zero answer accuracy while the paired colon paraphrase is only partially competent.
-  This exposes prompt-format sensitivity before localization. A new experiment needs a frozen
+  Exact-pair post-hoc diagnosis shows the format also changes four-value answer ordering
+  (`0.375/0.281` primary clean/donor versus `0.771/0.885` paraphrase), not only whether Qwen emits
+  token `17607`. The unresolved gap is to distinguish parsing, binding-state formation, downstream
+  readout, and output-mode competition prospectively. A new experiment needs a frozen
   behavior-competent prompt family and new episodes; only then do directed paths, outside-set
   faithfulness, random-model controls, and a trajectory Intervention-JEPA comparison remain.
 - Conditional donor resampling repaired the random-control manifold failure in `WM-T0-004`, but the

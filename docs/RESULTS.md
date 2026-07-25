@@ -91,8 +91,8 @@ and YAML files remain authoritative for every threshold and hyperparameter.
 17. **The first binding token audit is valid but its scientific parent is superseded.** All 560 v1
     rows passed the registered token treatment checks. Pre-model adversarial review then showed the
     paraphrase rows changed episode factors as well as template, and found FP16/NaN integrity
-    defects in the unexecuted capture path. No Qwen outcome was acquired. V2 repairs these design
-    issues; it has no result yet.
+    defects in the unexecuted capture path. No Qwen outcome was acquired under v1. V2 repaired
+    these design issues and later closed as task-ineligible, as reported below.
 18. **The target-encoder JEPA failed held-out reuse, not a demonstrated train-collapse test.** A
     post-hoc replay of the three frozen checkpoints gives train target ranks
     `20.39/17.70/19.98`, versus `7.28/6.81/6.98` on the six-donor test split. The original
@@ -121,6 +121,14 @@ and YAML files remain authoritative for every threshold and hyperparameter.
     accuracies are `0.0`; the paired paraphrase reaches `0.646/0.677` but worst-group floors are
     `0.111--0.133`. Token `17607` (`" ?\n"`) dominates 242/256 primary train outputs and all 96 test
     outputs. Status is `INELIGIBLE_TASK`; H-LLM-15/16 are undecided and no mediator ranking runs.
+23. **Prompt format changes candidate-answer ordering, not only final-token emission (post hoc,
+    Availability).** The clean `31d3464` diagnostic reuses 96 exact test/paraphrase pairs. Primary
+    four-value clean/donor accuracy is `0.375/0.281`, versus `0.771/0.885` under paraphrase; mean
+    correct-versus-best-other margins change from `-0.885/-0.892` to `+1.571/+1.772`. Clean/donor
+    have `38/58` paired four-value gains and zero losses. This narrows the failure: suppression by
+    token `17607` is not the entire explanation. It does not localize whether the cause is parsing,
+    binding computation, readout, or output-mode competition and cannot rescue v2 or decide a
+    mediator, circuit, or workspace claim.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -131,6 +139,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
+| LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001 | Across exact paired prompts, paraphrase changes within-episode value ordering as well as full-vocabulary output; this is outcome-disclosed diagnosis, not a hypothesis test or mechanism localization. | Availability | `configs/experiments/qwen_binding_format_diagnostic_v1.yaml` | `artifacts/metrics/qwen_binding_format_diagnostic_v1.json` plus provenance | clean `31d3464` | `POSTHOC_DIAGNOSTIC` |
 | LLM-QWEN-BINDING-TOKEN-AUDIT-001 | All 560 frozen binding recipient/donor pairs have equal token multisets, exactly two changed positions, one-token answers, bounded lengths, and balanced queries; Qwen is not executed. The parent study was later superseded before model execution because paraphrase was not episode-paired. | Availability | `configs/experiments/qwen_binding_mediation_v1.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v1.json` | clean `4e6624f` | `SMOKE_VALIDATED_PARENT_SUPERSEDED` |
 | LLM-QWEN-BINDING-CAPTURE-002 | The complete FP32 capture has exact treatment replay and storage integrity, but the task fails registered competence gates; no localization is admissible. | Availability | `configs/experiments/qwen_binding_mediation_v2.yaml` | `artifacts/metrics/qwen_binding_capture_v2.json`; committed manifest, ignored HDF5 | clean execution `2bf7e69` | `INELIGIBLE_TASK` |
 | LLM-QWEN-BINDING-TOKEN-AUDIT-002 | All 560 v2 pairs have the registered token identity, split isolation, exact test/paraphrase factor pairing, and pinned tokenizer revision; Qwen is not executed. | Availability | `configs/experiments/qwen_binding_mediation_v2.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v2.json` | clean execution `bca50e3` | `SMOKE_VALIDATED` |

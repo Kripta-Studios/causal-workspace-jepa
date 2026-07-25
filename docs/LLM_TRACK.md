@@ -46,6 +46,14 @@ transfer accuracies are all zero. The paired paraphrase is partially competent (
 misses global and worst-group floors. Therefore no calibration, train plan, protected ranking, or
 H-LLM-15/16 decision is allowed for v2.
 
+The outcome-disclosed format diagnostic then ran from clean `31d3464` without a new Qwen forward.
+On the 96 exact test/paraphrase pairs, restricting prediction to the four episode values changes
+clean accuracy from `0.375` to `0.771` and donor/treated accuracy from `0.281` to `0.885`; paired
+gain/loss counts are `38/0` and `58/0`. Mean answer margins flip from `-0.885/-0.892` to
+`+1.571/+1.772`. The primary failure is therefore not merely a dominant non-answer output token:
+format also changes answer-token competition. This is post-hoc Availability evidence and cannot
+identify whether parsing, binding computation, readout, or output-mode competition caused it.
+
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the
 clean layer-0 `resid_post` after that treatment recovers clean logits to `1e-6`. Repeated same-site

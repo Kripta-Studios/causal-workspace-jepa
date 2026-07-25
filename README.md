@@ -33,8 +33,10 @@ runtime identity. The phase-separated evaluator is now implemented with train-on
 unit checksums, direct sufficiency/restoration, five differential/learned comparators, 128
 structure-matched random sets, and four specificity controls, published at clean `53cd69d`.
 The replacement v2 token audit now passes from clean `bca50e3` with episode hash
-`96dc6320...f3be`. A separate pre-outcome milestone authorizes capture only; it does not authorize
-ranking changes, hypothesis decisions, or claims before the captured task-eligibility gates pass.
+`96dc6320...f3be`. The separately authorized capture then closed `INELIGIBLE_TASK`. A read-only
+post-hoc diagnostic executed from clean `31d3464` shows that the exact paired paraphrase changes
+not only full-vocabulary emission but the ordering among the four episode values; this remains
+Availability-level diagnosis and cannot rescue v2 or select a new prompt.
 
 ## Current Status
 
@@ -100,7 +102,7 @@ ranking changes, hypothesis decisions, or claims before the captured task-eligib
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
   offline tests; and a preregistered Qwen3-0.6B smoke runner.
-- `PREREGISTERED`: `LLM-QWEN-BINDING-MEDIATION-002` replaces v1 before any model forward. V1's clean
+- `CLOSED_INELIGIBLE_TASK`: `LLM-QWEN-BINDING-MEDIATION-002` replaced v1 before any model forward. V1's clean
   audit at `4e6624f` still verifies 560 token treatments, but its paraphrase was not episode-paired.
   V2 freezes exact pairing, 24/6/6 disjoint pools, 56 candidates, `k<=4`, FP32 causal states,
   grouped competence, content/readback integrity, direct sufficiency/restoration, and matched
@@ -109,9 +111,12 @@ ranking changes, hypothesis decisions, or claims before the captured task-eligib
   then ran from clean `2bf7e69` and is `INELIGIBLE_TASK`: replay/integrity pass exactly, but the
   primary template has zero clean/donor accuracy on train, validation, and test; the paired
   paraphrase reaches only `0.646/0.677`. H-LLM-15/16 remain undecided and no ranking is permitted.
-  A checksum-bound read-only post-hoc format diagnostic is implemented but not yet executed; it
-  cannot rescue v2 or select a replacement prompt. This tests a mediator set, not a JEPA, circuit,
-  J-space, or workspace.
+  A checksum-bound read-only post-hoc format diagnostic then ran from clean `31d3464`. On 96 exact
+  pairs, four-value clean accuracy changes from `0.375` to `0.771` and donor/treated accuracy from
+  `0.281` to `0.885`, with zero paired losses; mean answer margins change from `-0.885/-0.892` to
+  `+1.571/+1.772`. This diagnoses format-dependent answer-logit ordering but cannot distinguish
+  parsing, computation, readout, or output-mode mechanisms, rescue v2, or select a replacement
+  prompt. This tests a mediator set, not a JEPA, circuit, J-space, or workspace.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with

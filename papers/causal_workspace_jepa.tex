@@ -495,6 +495,17 @@ floors.  Token 17607 (decoded ``\texttt{ ?\textbackslash n}'') dominates the
 primary outputs.  We therefore stop before calibration or ranking and leave
 H-LLM-15/16 undecided.
 
+An explicitly outcome-disclosed read-only diagnostic reuses the exact 96
+test--paraphrase pairs.  Restricting predictions to the four values in each
+episode yields primary versus paraphrase clean accuracy $0.375$ versus $0.771$
+and donor/treated accuracy $0.281$ versus $0.885$.  The corresponding mean
+correct-answer margins change from $-0.885$ to $+1.571$ and from $-0.892$ to
+$+1.772$; paired four-value gains/losses are $38/0$ and $58/0$.  Thus the
+format changes candidate-answer ordering as well as full-vocabulary emission.
+Because the analysis is post hoc and has no internal-site intervention, it
+cannot distinguish parsing, binding-state formation, readout, or output-mode
+competition, select a replacement prompt, or rescue the ineligible study.
+
 A separate prospective binding-algebra protocol freezes the finite group
 $S_4$: train only primitive transpositions, then roll the same causal-state
 transition over unseen double transpositions, three-cycles, four-cycles, and
@@ -1033,7 +1044,9 @@ schema does not establish shared semantics or shared mechanism.
   evaluator is implemented and synthetically tested.  Its replacement token
   audit passes, but the full capture fails the registered task-competence gate,
   so no plan or protected mediator execution is run.  It contributes no
-  mediator, circuit, JEPA, or workspace evidence in this manuscript.
+  mediator, circuit, JEPA, or workspace evidence in this manuscript.  A
+  post-hoc exact-pair diagnostic shows that template format also changes
+  within-episode answer-logit ordering, but it does not localize why.
   \item The LeWorldModel is a source-informed small synthetic model using
   selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.

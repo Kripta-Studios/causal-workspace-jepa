@@ -1,0 +1,14 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_binding_format_diagnostic_v1.yaml",
+  "evidence_level": "Availability",
+  "git_commit": "31d34640ff47059eb1d9778314d47bd916fde888",
+  "git_dirty": false,
+  "hypotheses_confirmed": [],
+  "metrics": "artifacts/metrics/qwen_binding_format_diagnostic_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 419,
+  "status": "POSTHOC_DIAGNOSTIC",
+  "time_utc": "2026-07-25T22:19:54.574631+00:00"
+}

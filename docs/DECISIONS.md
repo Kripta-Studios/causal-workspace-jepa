@@ -272,12 +272,11 @@
   but the post-hoc train rank rules out describing that statistic as demonstrated training collapse.
   Do not use the causal-delta PCA oracle to rescue the result; use it only to preregister a future
   multi-relation target/capacity ablation with equal-width controls and untouched outcomes.
-- Keep binding mediation v2 ahead of any new meta-model. Its unique discriminating question is
-  whether the population derivative that improved finite prediction also localizes directly
-  sufficient and necessary mediators better than local/HVP/custom-AtP*/probe/magnitude rankings.
-  The evaluator now freezes phase separation, plan integrity, exact controls, and per-unit checksums
-  at clean `53cd69d`. The v2 token audit passes from clean `bca50e3`. A separate pre-outcome commit
-  authorizes capture only; downstream phases remain fail-closed on capture eligibility and budget.
+- Binding mediation v2 was kept ahead of any new meta-model because its unique discriminating
+  question compared population against local/HVP/custom-AtP*/probe/magnitude mediator rankings.
+  The evaluator froze phase separation, plan integrity, exact controls, and per-unit checksums at
+  clean `53cd69d`, and the token audit passed from clean `bca50e3`. The separately authorized capture
+  then failed competence, so the ranking question remains undecided and downstream phases are closed.
 - Register binding permutation algebra as a separate prospective route. Train only primitive
   transpositions and test composed/inverse actions in causal-delta space; stop at the differential
   null if additive or full-quadratic transports explain validation. Protocol design does not itself
@@ -291,3 +290,7 @@
   calibration, rankings, direct mediator sets, or H-LLM-15/16 decisions on this capture. A new
   prompt family requires a prospectively registered v3 with untouched episodes and gates; v2 may
   be used only for disclosed post-hoc format diagnosis.
+- Retain `LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001` as Availability-level diagnosis only. Its paired
+  candidate-logit shift rules out a pure final-token-suppression account, but it does not identify
+  parsing, binding, readout, or output-mode mechanisms. Do not choose a v3 template from these
+  protected outcomes; calibrate a prompt family only on separately excluded entities.

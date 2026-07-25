@@ -248,13 +248,27 @@ unit to config, commit, model revision, token audit, and runtime fingerprint. Ca
 states are FP32. Every numeric array must be finite; the exact canonical episode roster/order,
 intervention record, split counts, shapes, and dtypes are enforced. Full context IDs and the
 single-token/disjoint pool roster are separately hashed. Final HDF5 shards are read back and compared to an ordered
-array-plus-record content hash. Protected capture remains prohibited until its complete downstream
-evaluator and controls are committed, pushed, and independently tested.
+array-plus-record content hash. Protected capture was prohibited until its complete downstream
+evaluator and controls were committed, pushed, and independently tested. That condition was later
+satisfied at evaluator commit `53cd69d`; the separately authorized capture executed from clean
+`2bf7e69` and closed `INELIGIBLE_TASK`, so calibration, plan generation, rankings, and protected
+direct mediation remain prohibited.
 
 The audit executed from clean `4e6624f7561e2646fa9beb65297a5b953f0ac237`; all four gates pass and
 the deterministic episode hash is
-`3ac7a80d1ebeefd9e208b5c3d12fdaa8fb611cc3ad789c7f0e448da244ebaf59`. Protected Qwen outcomes
-remain unopened.
+`3ac7a80d1ebeefd9e208b5c3d12fdaa8fb611cc3ad789c7f0e448da244ebaf59`. This is the superseded v1
+audit. The operative v2 token audit ran from clean `bca50e3`, and its later protected capture is
+retained with the ineligible disposition above.
+
+The read-only outcome-disclosed format diagnostic is reproduced without a new Qwen forward:
+
+```powershell
+$env:PYTHONPATH = "src"
+python scripts/run_experiment.py --config configs/experiments/qwen_binding_format_diagnostic_v1.yaml
+```
+
+It requires the ignored parent HDF5 shard, its committed manifest/content hash, exact episode and
+answer pairing, and a clean worktree. Its output is Availability-level diagnosis only.
 
 Seed completion additionally requires an explicit marker, both horizon blocks, and the derived
 horizon-amplification summary; the presence of horizon 4 alone cannot skip final aggregation.

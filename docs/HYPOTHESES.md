@@ -1421,6 +1421,16 @@ single-token value roster, exact factor pairing, exact answer-ID pairing, finite
 committed worktree. `confirmatory_claims_allowed=false`: no outcome can rescue v2, choose a v3
 prompt, decide H-LLM-15/16, localize a mediator, or establish a circuit or workspace.
 
+**Post-hoc result (2026-07-26): `POSTHOC_DIAGNOSTIC`; no hypothesis decided.** From clean
+`31d3464`, the immutable 96 test/paraphrase pairs pass every diagnostic identity check. Restricting
+prediction to the four values in each episode gives primary-to-paraphrase accuracy changes of
+`0.375 -> 0.771` for clean and `0.281 -> 0.885` for donor/treated. Mean correct-answer margins change
+from `-0.885 -> +1.571` and `-0.892 -> +1.772`, respectively; the paired four-value gain/loss counts
+are `38/0` and `58/0`. Thus format sensitivity reaches the selected answer logits and is not only a
+full-vocabulary emission failure. Because outcomes were disclosed and no internal site was
+intervened, this cannot distinguish prompt parsing, binding computation, downstream readout, or
+output-mode competition and leaves H-LLM-15/16 undecided.
+
 ## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
 
 Registered prospectively on 2026-07-25 before any prompt from this study is tokenized or passed

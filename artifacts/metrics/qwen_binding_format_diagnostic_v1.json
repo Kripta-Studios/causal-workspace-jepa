@@ -1,0 +1,287 @@
+{
+  "by_split": {
+    "calibration": {
+      "clean": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 1.0,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.375,
+        "episodes": 16,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.0818251371383667,
+        "mean_episode_answer_rank": 2.0,
+        "positive_episode_answer_margin_fraction": 0.375,
+        "registered_value_accuracy": 0.375,
+        "unique_top_tokens": 1
+      },
+      "donor": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 1.0,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.125,
+        "episodes": 16,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.9005535244941711,
+        "mean_episode_answer_rank": 2.25,
+        "positive_episode_answer_margin_fraction": 0.125,
+        "registered_value_accuracy": 0.125,
+        "unique_top_tokens": 1
+      },
+      "treated": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 1.0,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.125,
+        "episodes": 16,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.9005535244941711,
+        "mean_episode_answer_rank": 2.25,
+        "positive_episode_answer_margin_fraction": 0.125,
+        "registered_value_accuracy": 0.125,
+        "unique_top_tokens": 1
+      }
+    },
+    "paraphrase": {
+      "clean": {
+        "dominant_top_token_decoded": " Miami",
+        "dominant_top_token_fraction": 0.21875,
+        "dominant_top_token_id": 17584,
+        "episode_four_value_accuracy": 0.7708333333333334,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.6458333333333334,
+        "mean_episode_answer_margin": 1.5714954733848572,
+        "mean_episode_answer_rank": 1.4270833333333333,
+        "positive_episode_answer_margin_fraction": 0.7708333333333334,
+        "registered_value_accuracy": 0.7708333333333334,
+        "unique_top_tokens": 11
+      },
+      "donor": {
+        "dominant_top_token_decoded": " Austin",
+        "dominant_top_token_fraction": 0.16666666666666666,
+        "dominant_top_token_id": 19260,
+        "episode_four_value_accuracy": 0.8854166666666666,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.6770833333333334,
+        "mean_episode_answer_margin": 1.7723240852355957,
+        "mean_episode_answer_rank": 1.2083333333333333,
+        "positive_episode_answer_margin_fraction": 0.8854166666666666,
+        "registered_value_accuracy": 0.8854166666666666,
+        "unique_top_tokens": 10
+      },
+      "treated": {
+        "dominant_top_token_decoded": " Austin",
+        "dominant_top_token_fraction": 0.16666666666666666,
+        "dominant_top_token_id": 19260,
+        "episode_four_value_accuracy": 0.8854166666666666,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.6770833333333334,
+        "mean_episode_answer_margin": 1.7723240852355957,
+        "mean_episode_answer_rank": 1.2083333333333333,
+        "positive_episode_answer_margin_fraction": 0.8854166666666666,
+        "registered_value_accuracy": 0.8854166666666666,
+        "unique_top_tokens": 10
+      }
+    },
+    "test": {
+      "clean": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 1.0,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.375,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.8851738373438517,
+        "mean_episode_answer_rank": 2.1875,
+        "positive_episode_answer_margin_fraction": 0.375,
+        "registered_value_accuracy": 0.3645833333333333,
+        "unique_top_tokens": 1
+      },
+      "donor": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 1.0,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.28125,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.8919907410939535,
+        "mean_episode_answer_rank": 2.3125,
+        "positive_episode_answer_margin_fraction": 0.28125,
+        "registered_value_accuracy": 0.28125,
+        "unique_top_tokens": 1
+      },
+      "treated": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 1.0,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.28125,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.8919907410939535,
+        "mean_episode_answer_rank": 2.3125,
+        "positive_episode_answer_margin_fraction": 0.28125,
+        "registered_value_accuracy": 0.28125,
+        "unique_top_tokens": 1
+      }
+    },
+    "train": {
+      "clean": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 0.9453125,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.4140625,
+        "episodes": 256,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.7029637545347214,
+        "mean_episode_answer_rank": 2.1171875,
+        "positive_episode_answer_margin_fraction": 0.4140625,
+        "registered_value_accuracy": 0.3515625,
+        "unique_top_tokens": 3
+      },
+      "donor": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 0.96875,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.44140625,
+        "episodes": 256,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.6446378417313099,
+        "mean_episode_answer_rank": 2.01953125,
+        "positive_episode_answer_margin_fraction": 0.44140625,
+        "registered_value_accuracy": 0.37109375,
+        "unique_top_tokens": 3
+      },
+      "treated": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 0.96875,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.44140625,
+        "episodes": 256,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.6446378417313099,
+        "mean_episode_answer_rank": 2.01953125,
+        "positive_episode_answer_margin_fraction": 0.44140625,
+        "registered_value_accuracy": 0.37109375,
+        "unique_top_tokens": 3
+      }
+    },
+    "validation": {
+      "clean": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 0.8958333333333334,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.3958333333333333,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.6090216934680939,
+        "mean_episode_answer_rank": 2.0625,
+        "positive_episode_answer_margin_fraction": 0.3958333333333333,
+        "registered_value_accuracy": 0.3854166666666667,
+        "unique_top_tokens": 3
+      },
+      "donor": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 0.8854166666666666,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.3958333333333333,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.7193075915177664,
+        "mean_episode_answer_rank": 2.1770833333333335,
+        "positive_episode_answer_margin_fraction": 0.3958333333333333,
+        "registered_value_accuracy": 0.3958333333333333,
+        "unique_top_tokens": 3
+      },
+      "treated": {
+        "dominant_top_token_decoded": " ?\n",
+        "dominant_top_token_fraction": 0.8854166666666666,
+        "dominant_top_token_id": 17607,
+        "episode_four_value_accuracy": 0.3958333333333333,
+        "episodes": 96,
+        "full_vocabulary_accuracy": 0.0,
+        "mean_episode_answer_margin": -0.7193075915177664,
+        "mean_episode_answer_rank": 2.1770833333333335,
+        "positive_episode_answer_margin_fraction": 0.3958333333333333,
+        "registered_value_accuracy": 0.3958333333333333,
+        "unique_top_tokens": 3
+      }
+    }
+  },
+  "capture_content_sha256": "6f4bec3941dd8712ba4dbc2cf8cbca2f82a42b9c1a3d731c109a855ff8216947",
+  "capture_status": "INELIGIBLE_TASK",
+  "confirmatory_claims_allowed": false,
+  "donor_treated_top_tokens_identical": true,
+  "donor_treated_value_logits_max_abs_error": 0.0,
+  "episodes": 560,
+  "evidence_level": "Availability",
+  "experiment_id": "LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001",
+  "hardware": {
+    "bf16_supported": null,
+    "cpu_count": 32,
+    "free_gb": 273.202,
+    "gpu_name": null,
+    "gpu_required": false,
+    "gpu_vram_gb": null,
+    "messages": [
+      "SMOKE_VALIDATED: resource guard passed"
+    ],
+    "min_free_gb": 4.0,
+    "ok": true,
+    "profile_name": "cpu_vps",
+    "ram_gb": 31.184,
+    "root": "C:\\Users\\\u00c1lvaro Schwiedop\\Desktop\\KriptaStudios\\causal-workspace-jepa",
+    "torch_cuda_available": null,
+    "torch_cuda_version": null,
+    "torch_version": null,
+    "total_gb": 1862.159
+  },
+  "hypotheses_confirmed": [],
+  "paired_test_to_paraphrase": {
+    "clean": {
+      "episode_four_accuracy_paraphrase": 0.7708333333333334,
+      "episode_four_accuracy_primary": 0.375,
+      "episode_four_gained_under_paraphrase": 38,
+      "episode_four_lost_under_paraphrase": 0,
+      "full_accuracy_paraphrase": 0.6458333333333334,
+      "full_accuracy_primary": 0.0,
+      "full_gained_under_paraphrase": 62,
+      "full_lost_under_paraphrase": 0,
+      "mean_episode_margin_paraphrase": 1.5714954733848572,
+      "mean_episode_margin_primary": -0.8851738373438517,
+      "mean_paired_margin_change": 2.4566693107287088,
+      "pairs": 96
+    },
+    "donor": {
+      "episode_four_accuracy_paraphrase": 0.8854166666666666,
+      "episode_four_accuracy_primary": 0.28125,
+      "episode_four_gained_under_paraphrase": 58,
+      "episode_four_lost_under_paraphrase": 0,
+      "full_accuracy_paraphrase": 0.6770833333333334,
+      "full_accuracy_primary": 0.0,
+      "full_gained_under_paraphrase": 65,
+      "full_lost_under_paraphrase": 0,
+      "mean_episode_margin_paraphrase": 1.7723240852355957,
+      "mean_episode_margin_primary": -0.8919907410939535,
+      "mean_paired_margin_change": 2.6643148263295493,
+      "pairs": 96
+    },
+    "treated": {
+      "episode_four_accuracy_paraphrase": 0.8854166666666666,
+      "episode_four_accuracy_primary": 0.28125,
+      "episode_four_gained_under_paraphrase": 58,
+      "episode_four_lost_under_paraphrase": 0,
+      "full_accuracy_paraphrase": 0.6770833333333334,
+      "full_accuracy_primary": 0.0,
+      "full_gained_under_paraphrase": 65,
+      "full_lost_under_paraphrase": 0,
+      "mean_episode_margin_paraphrase": 1.7723240852355957,
+      "mean_episode_margin_primary": -0.8919907410939535,
+      "mean_paired_margin_change": 2.6643148263295493,
+      "pairs": 96
+    }
+  },
+  "parent_experiment_id": "LLM-QWEN-BINDING-MEDIATION-002",
+  "protected_outcomes_used_posthoc": true,
+  "runtime_seconds": 7.933514099975582,
+  "scientific_boundary": "This outcome-disclosed analysis diagnoses prompt-format gating in an ineligible capture. It cannot rescue binding mediation v2, select a v3 prompt, decide H-LLM-15/16, localize a mediator, or establish a circuit or workspace.",
+  "status": "POSTHOC_DIAGNOSTIC"
+}
