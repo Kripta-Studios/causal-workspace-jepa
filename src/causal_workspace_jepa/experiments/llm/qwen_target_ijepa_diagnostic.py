@@ -164,10 +164,10 @@ def compute_target_ijepa_diagnostic(
     train = masks["train"]
 
     rank_rows: dict[str, Any] = {}
-    donor_rows: dict[str, Any] = {}
+    identity_rows: dict[str, Any] = {}
     for seed, model in sorted(models.items()):
         rank_rows[str(seed)] = {}
-        donor_rows[str(seed)] = {}
+        identity_rows[str(seed)] = {}
         for split_name, mask in masks.items():
             target_latent = model.target_latent(intervened_target[mask])
             clean_latent = model.target_latent(clean_target[mask])
@@ -184,22 +184,40 @@ def compute_target_ijepa_diagnostic(
                 "target_mean_dimension_std": float(target_latent.std(axis=0).mean()),
                 "predicted_mean_dimension_std": float(predicted_latent.std(axis=0).mean()),
             }
-            donor_rows[str(seed)][split_name] = {
+            identity_rows[str(seed)][split_name] = {
                 "target_latent_donor_eta_squared": eta_squared(
                     target_latent, data["donor_id"][mask]
+                ),
+                "target_latent_recipient_eta_squared": eta_squared(
+                    target_latent, data["recipient_id"][mask]
                 ),
                 "latent_delta_donor_eta_squared": eta_squared(
                     target_latent - clean_latent, data["donor_id"][mask]
                 ),
+                "latent_delta_recipient_eta_squared": eta_squared(
+                    target_latent - clean_latent, data["recipient_id"][mask]
+                ),
             }
 
-    raw_donor = {
+    raw_identity = {
         split_name: {
+            "clean_target_donor_eta_squared": eta_squared(
+                clean_target[mask], data["donor_id"][mask]
+            ),
+            "clean_target_recipient_eta_squared": eta_squared(
+                clean_target[mask], data["recipient_id"][mask]
+            ),
             "intervened_target_donor_eta_squared": eta_squared(
                 intervened_target[mask], data["donor_id"][mask]
             ),
+            "intervened_target_recipient_eta_squared": eta_squared(
+                intervened_target[mask], data["recipient_id"][mask]
+            ),
             "causal_delta_donor_eta_squared": eta_squared(
                 causal_delta[mask], data["donor_id"][mask]
+            ),
+            "causal_delta_recipient_eta_squared": eta_squared(
+                causal_delta[mask], data["recipient_id"][mask]
             ),
         }
         for split_name, mask in masks.items()
@@ -256,8 +274,8 @@ def compute_target_ijepa_diagnostic(
             "causal_delta": int(train.sum()),
         },
         "effective_rank_by_seed_and_split": rank_rows,
-        "raw_donor_eta_squared_by_split": raw_donor,
-        "latent_donor_eta_squared_by_seed_and_split": donor_rows,
+        "raw_identity_eta_squared_by_split": raw_identity,
+        "latent_identity_eta_squared_by_seed_and_split": identity_rows,
         "oracle_pca_ridge": pca_rows,
     }
 

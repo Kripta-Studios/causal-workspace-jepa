@@ -114,10 +114,18 @@ class QwenTargetIJEPADiagnosticTests(unittest.TestCase):
             {"train", "validation", "test"},
         )
         self.assertGreater(
-            first["raw_donor_eta_squared_by_split"]["train"][
+            first["raw_identity_eta_squared_by_split"]["train"][
                 "intervened_target_donor_eta_squared"
             ],
             0.5,
+        )
+        self.assertGreater(
+            first["raw_identity_eta_squared_by_split"]["train"][
+                "clean_target_recipient_eta_squared"
+            ],
+            first["raw_identity_eta_squared_by_split"]["train"][
+                "clean_target_donor_eta_squared"
+            ],
         )
         for dimension in ("1", "2"):
             self.assertEqual(
