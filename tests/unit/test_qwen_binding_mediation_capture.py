@@ -17,6 +17,7 @@ from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_capture import
     capture_eligibility_gates,
     estimate_capture_bytes,
     load_episode_progress,
+    run_qwen_binding_mediation_capture,
     save_episode_progress,
     stack_episode_captures,
 )
@@ -31,6 +32,12 @@ from causal_workspace_jepa.hooks.names import transformer_site
 class QwenBindingMediationCaptureTests(unittest.TestCase):
     def setUp(self) -> None:
         self.config = load_config("configs/experiments/qwen_binding_mediation_v2.yaml")
+
+    def test_protected_capture_is_explicitly_blocked_until_executor_freeze(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "protected capture is not authorized"):
+            run_qwen_binding_mediation_capture(
+                "configs/experiments/qwen_binding_mediation_v2.yaml"
+            )
 
     def _contract_fixture(
         self, *, count: int = 1
@@ -175,6 +182,7 @@ class QwenBindingMediationCaptureTests(unittest.TestCase):
 
     def test_capture_metrics_and_gates_use_every_protected_split(self) -> None:
         config = copy.deepcopy(self.config)
+        config["gates"]["treatment_effect_signed_mean_min"] = 1e-4
         config["splits"]["calibration"]["count"] = 0
         for split in ("train", "validation", "test", "paraphrase"):
             config["splits"][split]["count"] = 10
@@ -205,6 +213,14 @@ class QwenBindingMediationCaptureTests(unittest.TestCase):
         gates = capture_eligibility_gates(metrics, config)
         self.assertTrue(gates["treatment_replay"])
         self.assertTrue(gates["all_protected_splits_competent"])
+        negative_effect_captures = copy.deepcopy(captures)
+        for arrays, _record in negative_effect_captures:
+            arrays["treatment_effect"] = np.asarray(-1.0)
+        negative_metrics = aggregate_capture_metrics(negative_effect_captures, config)
+        negative_gates = capture_eligibility_gates(negative_metrics, config)
+        for split in ("train", "validation", "test", "paraphrase"):
+            self.assertFalse(negative_gates[f"{split}_competent"])
+        self.assertFalse(negative_gates["all_protected_splits_competent"])
         captures[-3][0]["treated_top_token"] = np.asarray(9)
         metrics = aggregate_capture_metrics(captures, config)
         gates = capture_eligibility_gates(metrics, config)

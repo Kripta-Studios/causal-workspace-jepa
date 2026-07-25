@@ -379,8 +379,17 @@ def clustered_bootstrap_mediation(
     *,
     draws: int,
     seed: int,
+    bootstrap_denominator: str = "nonzero_signed_sum",
+    minimum_eligible_fraction: float = 0.0,
 ) -> Mapping[str, float | int]:
-    """Episode-clustered bootstrap intervals for the two mediation ratios."""
+    """Episode-clustered bootstrap intervals for the two mediation ratios.
+
+    The historical default accepts either sign for a nonzero aggregate effect.
+    Protected studies may instead require ``positive_signed_sum`` so that a
+    sign-reversed treatment cannot yield apparently well-defined mediation
+    ratios.  A minimum eligible-draw fraction makes unstable denominators fail
+    closed rather than silently computing intervals from a favorable subset.
+    """
 
     arrays = [
         _one_dimensional(clean_scores, "clean_scores"),
@@ -392,6 +401,14 @@ def clustered_bootstrap_mediation(
         raise ValueError("all mediation score arrays must have the same shape")
     if draws <= 0:
         raise ValueError("bootstrap draws must be positive")
+    if bootstrap_denominator not in {"nonzero_signed_sum", "positive_signed_sum"}:
+        raise ValueError(
+            "bootstrap_denominator must be nonzero_signed_sum or positive_signed_sum"
+        )
+    if not np.isfinite(minimum_eligible_fraction) or not (
+        0.0 <= minimum_eligible_fraction <= 1.0
+    ):
+        raise ValueError("minimum_eligible_fraction must be finite and in [0, 1]")
     rng = np.random.default_rng(seed)
     sufficiency: list[float] = []
     necessity: list[float] = []
@@ -399,14 +416,30 @@ def clustered_bootstrap_mediation(
     for _ in range(draws):
         selection = rng.integers(0, rows, size=rows)
         estimate = mediation_estimate(*(array[selection] for array in arrays))
-        if estimate.eligible:
+        denominator_eligible = estimate.eligible and (
+            bootstrap_denominator == "nonzero_signed_sum"
+            or estimate.treatment_effect > 0.0
+        )
+        if denominator_eligible:
             sufficiency.append(estimate.sufficiency)
             necessity.append(estimate.necessity)
     if not sufficiency:
-        raise ValueError("no eligible bootstrap draw had a nonzero aggregate treatment effect")
+        required = (
+            "positive" if bootstrap_denominator == "positive_signed_sum" else "nonzero"
+        )
+        raise ValueError(
+            f"no eligible bootstrap draw had a {required} aggregate treatment effect"
+        )
+    eligible_fraction = len(sufficiency) / draws
+    if eligible_fraction < minimum_eligible_fraction:
+        raise ValueError(
+            "eligible bootstrap fraction "
+            f"{eligible_fraction:.6f} is below minimum {minimum_eligible_fraction:.6f}"
+        )
     return {
         "draws_requested": draws,
         "draws_eligible": len(sufficiency),
+        "eligible_fraction": float(eligible_fraction),
         "sufficiency_p025": float(np.quantile(sufficiency, 0.025)),
         "sufficiency_p975": float(np.quantile(sufficiency, 0.975)),
         "necessity_p025": float(np.quantile(necessity, 0.025)),

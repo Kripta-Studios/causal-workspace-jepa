@@ -34,8 +34,12 @@ Adversarial review then found that the v1 paraphrase seed also changed bindings,
 isolated template shift. It also found lossy FP16 causal-state storage and a NaN aggregation path.
 `LLM-QWEN-BINDING-MEDIATION-002` repairs these before any Qwen forward: paraphrase/test factors are
 exactly paired, states remain FP32, and capture integrity now includes finite/count/ID/shape/dtype,
-worst-group, exact-revision, runtime, content-hash, and HDF5-readback gates. Capture implementation
-tests pass, but protected outcomes remain unopened until the complete evaluator is frozen.
+worst-group, exact-revision, runtime, content-hash, and HDF5-readback gates. The complete evaluator
+is now implemented as calibration, train-plan, and protected-evaluation phases. It freezes rankings,
+the population prefix, matched random sets, control assignments, and an answer-row permutation
+diagnostic before opening protected outcomes; every direct protected episode/condition is stored as
+a checksum-bound replay unit. Protected outcomes remain unopened and capture authorization is false
+until the evaluator commit is pushed and the v2 token audit is rerun from that clean tree.
 
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the
@@ -52,9 +56,12 @@ $env:PYTHONPATH = "src"
 python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml
 ```
 
-Do not run `scripts/capture_qwen_binding_mediation.py` until the population/local/HVP/AtP*, probe,
-magnitude, direct prefix, restoration, and matched-control evaluator has passed tests and been
-committed/pushed, and until the active EB-JEPA training process has released the GPU.
+Do not run `scripts/capture_qwen_binding_mediation.py` while
+`protected_capture_authorized=false`. After the evaluator commit is pushed, rerun the v2 token
+audit, change that flag in a separate pre-outcome commit, and only then capture when the GPU is free.
+The later study phases use `scripts/run_qwen_binding_mediation_study.py`; validation contributes
+capture task-eligibility gates only, while direct mediator decisions are restricted to test and its
+paired paraphrase.
 
 The later trajectory Intervention-JEPA remains unregistered until the treatment and task-competence
 gates pass; this prevents architecture selection from adapting to protected mediation outcomes.
@@ -157,6 +164,15 @@ Behavior-changing continuation:
   no change on unseen entities. Exact JVP, raw linear ridge, and quadratic Taylor respectively won
   full-vector MSE, logit MSE, and answer behavior. The result is a representation/generalization
   failure, not merely a predictor optimization failure.
+- A 2026-07-25 post-hoc diagnostic corrects the stronger “training collapse” interpretation. The
+  target rank is `17.70--20.39` on the 552 train rows and `6.81--7.28` on the 30 test rows grouped
+  into only six donor entities. The registered held-out rank gate still fails, but the statistic
+  does not establish low-rank collapse during fitting. Unadjusted donor/recipient eta-squared shifts
+  from `0.002/1.000` for clean residuals to `0.829/0.128` after intervention; raw causal deltas are
+  balanced at `0.496/0.528`, while target latents remain donor-heavy at
+  `0.791--0.805/0.111--0.124`. Train-fit causal-delta PCA/ridge oracles
+  are more stable than full-state-pair oracles at high capacity, but they reuse test outcomes and
+  cannot confirm a target redesign or rescue any frozen hypothesis.
 - `LLM-CONTEXT-GEOMETRY-001` executed from clean `49d68b7`. It computes the full
   36-answer logit Jacobian at each of the 36 clean source states and contracts each covector map with
   actual donor residual chords. The paired contraction is tested under a dual diagonal coordinate

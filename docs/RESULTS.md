@@ -93,6 +93,21 @@ and YAML files remain authoritative for every threshold and hyperparameter.
     paraphrase rows changed episode factors as well as template, and found FP16/NaN integrity
     defects in the unexecuted capture path. No Qwen outcome was acquired. V2 repairs these design
     issues; it has no result yet.
+18. **The target-encoder JEPA failed held-out reuse, not a demonstrated train-collapse test.** A
+    post-hoc replay of the three frozen checkpoints gives train target ranks
+    `20.39/17.70/19.98`, versus `7.28/6.81/6.98` on the six-donor test split. The original
+    preregistered test-rank gate remains failed. Unadjusted donor/recipient eta-squared changes from
+    clean `0.002/1.000` to intervened `0.829/0.128`; target latents remain donor-heavy at
+    `0.791--0.805/0.111--0.124`. A train-fit 64D causal-delta PCA/ridge oracle reaches test NMSE `0.512`
+    while the clean/intervened state-pair oracle reaches `2.596`. Because test outcomes were
+    already open and the oracle representations differ in input width, this is Availability-level
+    diagnosis only and confirms no target redesign, learned predictor, or mechanism.
+19. **Binding mediation v2 is evaluator-complete but outcome-empty.** The frozen implementation
+    defines a train-only self-hashed plan, five directly executed comparators, 128 structure-matched
+    random sets, four same-denominator specificity controls, exact split cardinalities, code and
+    calibration immutability, runtime identity, and checksum-bound resume. Synthetic planted,
+    null, distractor, replay, and corruption tests pass. `protected_capture_authorized=false`; no
+    v2 Qwen activation, ranking, mediator, or hypothesis result exists yet.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -104,6 +119,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | LLM-QWEN-BINDING-TOKEN-AUDIT-001 | All 560 frozen binding recipient/donor pairs have equal token multisets, exactly two changed positions, one-token answers, bounded lengths, and balanced queries; Qwen is not executed. The parent study was later superseded before model execution because paraphrase was not episode-paired. | Availability | `configs/experiments/qwen_binding_mediation_v1.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v1.json` | clean `4e6624f` | `SMOKE_VALIDATED_PARENT_SUPERSEDED` |
+| LLM-QWEN-BINDING-MEDIATION-002 | The outcome-blind evaluator and exact protected-execution contracts are implemented and synthetically tested; no v2 tokenizer or model outcome is reported. | None | `configs/experiments/qwen_binding_mediation_v2.yaml` | none | pending evaluator commit | `EVALUATOR_IMPLEMENTED_PROTECTED_NOT_RUN` |
 | WM-EBJEPA-CONTRACT-001 | The pinned official Impala/one-layer-GRU contract supports exact gate decomposition and localized gate edits under the current runtime; no learned mechanism is tested. | Availability | `configs/experiments/eb_jepa_official_contract_smoke.yaml` | `artifacts/metrics/eb_jepa_contract_smoke.json` | `979c2d6` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-RUNTIME-001 | The exact Torch 2.6/cu126 pin omits SM120 and fails matched GPU kernels; the disclosed Torch 2.10/cu128 runtime includes SM120 and passes them. | Availability | `configs/experiments/eb_jepa_runtime_compatibility.yaml` | `artifacts/metrics/eb_jepa_runtime_compatibility.json` | clean `15d88ce` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-INTEGRATION-002 | The pinned official Two Rooms dataset/train/checkpoint/planner path executes deterministically under the disclosed compatible runtime; this is not competence. | Availability | `configs/experiments/eb_jepa_two_rooms_integration_smoke.yaml` | `artifacts/metrics/eb_jepa_two_rooms_integration_v2.json` | clean `9a18008` | `SMOKE_VALIDATED` |
@@ -131,6 +147,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 | LLM-QWEN-JVP-AUDIT-002 | Exact FP32 JVP and quadratic Taylor beat all three legacy conditional-bottleneck seeds after source semantics and derivative convergence pass; restricted H-LLM-01 is withdrawn. | Specificity | `configs/experiments/qwen_jvp_audit_v2.yaml` | `artifacts/metrics/qwen_jvp_audit_v2.json` | `a779ff6ea617f77e2b0c252c79b5a1a1fa66cfdc` | `COMPLETED_NEGATIVE` |
 | LLM-CAPITAL-PATCH-001 | Entity-disjoint layer-21 donor patches change Qwen's top-token capital answer in 93.6% of cases and transfer the donor answer in 50% of held-out test pairs; exact and quadratic controls disagree between vector and behavior metrics. | Causal mediation | `configs/experiments/qwen_capital_patch_dataset_v1.yaml` | `artifacts/metrics/qwen_capital_patch_dataset_v1.json` | `95018cb326d5604ed45f128338f66f51b13d04ae` | `SMOKE_VALIDATED`; behavior eligible |
 | LLM-TARGET-IJEPA-001 | One target-encoder Intervention-JEPA variant fails all three held-out-entity hypotheses across optimization seeds; even oracle target-embedding decode fails, while exact JVP, linear ridge, and quadratic Taylor win different fidelity endpoints. | Availability | `configs/experiments/qwen_target_encoder_ijepa_v1.yaml` | `artifacts/metrics/qwen_target_ijepa_v1.json` | `3086cd484fb819c3a11525ee9886542049780955` | `COMPLETED_NEGATIVE` |
+| LLM-TARGET-IJEPA-DIAGNOSTIC-001 | Post-hoc train-only PCA/ridge analysis separates the six-donor held-out rank failure from training collapse and finds better high-capacity reuse for causal deltas than full-state pairs; no hypothesis is tested. | Availability | `configs/experiments/qwen_target_ijepa_diagnostic_v1.yaml` | `artifacts/metrics/qwen_target_ijepa_diagnostic_v1.json` | pending clean result commit | `POSTHOC_DIAGNOSTIC` |
 | LLM-CONTEXT-GEOMETRY-001 | Real Qwen rejects fixed pooling/context-specificity gaps but confirms that naive Euclidean overlap is gauge-sensitive while paired `J D^T` is invariant; a train-mean Jacobian unexpectedly beats matched local finite transport. | Specificity | `configs/experiments/qwen_context_geometry_v1.yaml` | `artifacts/metrics/qwen_context_geometry_v1.json` | `49d68b72200328657683b9760a084e0d952948b1` | `COMPLETED_MIXED` |
 | LLM-POPULATION-JACOBIAN-001 | A preregistered validation-only analysis confirms that the 24-train-context mean Jacobian predicts finite held-out logit effects better than exact local Jacobians, with a context-count dose response and answer-row specificity. | Specificity | `configs/experiments/qwen_population_jacobian_v1.yaml` | `artifacts/metrics/qwen_population_jacobian_v1.json` | `3725714` | `COMPLETED_POSITIVE` |
 | LLM-ELEMENT-LAYER-GEOMETRY-001 | A second factual relation confirms a sharp late donor-control transition and answer-row-specific late population transport, but rejects the preregistered strong local/population inversion and cross-relation conjunction. | Specificity | `configs/experiments/qwen_element_layer_geometry_v1.yaml` | `artifacts/metrics/qwen_element_layer_geometry_v1.json` | `5d8de9a` | `COMPLETED_MIXED` |

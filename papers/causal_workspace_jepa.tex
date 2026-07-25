@@ -228,14 +228,17 @@ seeds 1, 1000, and 10000; batch 384; 100,000 online trajectories per epoch;
 competence evaluation.  The required planner arms are official as-executed
 MPPI (proposal scale 2.0, no effective norm bound) and a bound-only correction
 that retains scale 2.0 while projecting candidates and returned actions to
-2.45.  Each must average at least 0.80 success overall and 0.70 within every
-training seed before a bounded trained model is eligible for mechanistic audit.
+2.45.  The bound-corrected arm must average at least 0.80 success overall and
+0.70 within every training seed before a bounded trained model is eligible for
+mechanistic audit; the official unbounded arm remains a mandatory paired diagnostic.
 Training completion or loss alone is availability evidence.  The portfolio was
 launched from clean commit \code{5065108} at
-\code{2026-07-21T21:53:46Z}; at the present manuscript state seed 1 is active
-and epochs 0--4 completed in roughly 900 seconds each, with latest total loss
-$1.2349$.  These non-monotone losses are operational
-availability, not competence or mechanism evidence.
+\code{2026-07-21T21:53:46Z}. Seed 1 completed all 12 epochs in 10,692.85
+seconds; prediction loss fell from $0.1990$ to $0.0178$, and all 13 checkpoint
+identities revalidate. The portfolio stopped before seed 1000 because its
+clean-worktree guard detected later repository edits. Seeds 1000/10000 and all
+18 competence jobs remain unrun. These losses are operational availability,
+not competence or mechanism evidence.
 
 For language models, Jacobian transport and the proposal that a sparse,
 token-verbalizable J-space can support reportability, voluntary control,
@@ -352,6 +355,7 @@ Experiment & Registered object & Run status & Evidence level & Scientific dispos
 LLM-QWEN-JVP-AUDIT-002 & exact local audit & Smoke validated & \level{Specificity} & FP32 derivative gates pass; prior nonlinear-advantage claim withdrawn. \\
 LLM-CAPITAL-PATCH-001 & donor residual patches & Smoke validated & \level{Causal mediation} & Direct behavior-changing dataset established. \\
 LLM-TARGET-IJEPA-001 & learned intervention transport & Completed negative & \level{Availability} & H-LLM-01B/02/04 fail in 3/3 seeds; no learned mechanism accepted. \\
+LLM-TARGET-IJEPA-DIAGNOSTIC-001 & post-hoc target geometry & Diagnostic only & \level{Availability} & Train/test rank and identity grouping clarify the failure; no hypothesis is reopened. \\
 LLM-POPULATION-JACOBIAN-001 & population transport & Completed positive & \level{Specificity} & Answer-row-null specificity passes within one factual relation. \\
 LLM-CONTEXT-GEOMETRY-001 & context pairing and gauge & Completed mixed & \level{Specificity} & Gauge-safe coupling passes; real pooling and context-specific transport fail. \\
 LLM-ELEMENT-LAYER-GEOMETRY-001 & layer geometry & Completed mixed & \level{Specificity} & H-LLM-08/GEO-09 pass; H-GEO-08/CROSS-03 fail. \\
@@ -470,9 +474,26 @@ protocol pairs every paraphrase row to the identical test binding and changes
 only the template.  It also forbids FP16 storage of causal states, rejects any
 non-finite or malformed row, requires worst-key/value performance floors, binds
 resume identity to the exact model/runtime/token-audit tuple, and verifies an
-ordered content hash after reading every HDF5 shard back.  Capture remains
-\level{availability}; H-LLM-15/16 remain untested.  Protected activations may
-not be opened until the complete evaluator and controls are committed.
+ordered content hash after reading every HDF5 shard back.  The outcome-blind
+evaluator is now implemented in three phases: calibration, train-only plan
+freezing, and protected execution.  The self-hashed plan fixes five direct
+comparators, 128 structure-matched random sets, four same-denominator controls,
+and the population prefix before test access.  Protected units are independently
+checksummed, and execution rejects code, calibration, runtime, split-cardinality,
+or plan drift.  Validation supplies task-eligibility gates only; direct decisions
+use test and its paired paraphrases. Capture remains \level{availability};
+H-LLM-15/16 remain untested and capture authorization is still false.
+
+A separate prospective binding-algebra protocol freezes the finite group
+$S_4$: train only primitive transpositions, then roll the same causal-state
+transition over unseen double transpositions, three-cycles, four-cycles, and
+action--inverse restoration cases drawn from disjoint token alphabets. Targets
+are downstream causal deltas rather than complete treated residuals. Exact
+JVP, population Jacobian, full cross-term quadratic transport, sequentially
+relinearized JVP, ridge, bilinear, MLP, and direct state-patch controls are
+mandatory. Validation first tests whether composition is nonlinear enough to
+justify a learned meta-model. Execution remains unauthorized; this protocol is
+not itself novelty, a causal abstraction, circuit, J-space, or workspace evidence.
 
 \section{Methods: action-conditioned JEPA}
 
@@ -790,6 +811,19 @@ does not distinguish entity dependence, decoder capacity, objective, scale, or
 sample size.  Ensemble normalized MSE is $0.930$,
 correlation $0.483$, and answer-candidate agreement $0.20$.
 
+A post-hoc replay clarifies that the $6.81$--$7.28$ ranks describe only 30
+held-out rows grouped into six donor entities: train target ranks are
+$17.70$--$20.39$, so this is not evidence of low-rank training collapse.
+Unadjusted donor/recipient eta-squared changes from $0.002/1.000$ in clean
+residuals to $0.829/0.128$ after intervention; raw causal deltas are
+$0.496/0.528$, while the target latents remain donor-heavy at
+$0.791$--$0.805/0.111$--$0.124$. A train-fit 64-dimensional causal-delta
+PCA/ridge oracle reaches test NMSE $0.512$, versus $2.596$ for concatenated
+clean/intervened state coordinates. The latter receives twice the decoder
+input width, all test outcomes were already open, and neither oracle is a
+learned predictor. This diagnostic motivates a prospective target ablation but
+reopens no hypothesis.
+
 Comparator rankings again split by endpoint: exact JVP is best on full-vector
 fidelity ($0.599$ normalized MSE), raw linear ridge is best on logit fidelity
 ($0.329$), and quadratic Taylor is best on direct answer-set behavior ($0.700$
@@ -984,9 +1018,10 @@ schema does not establish shared semantics or shared mechanism.
   family.  Its negative result may reflect entity-dependent target geometry,
   limited data, architecture, or objective.
   \item The binding-mediation v1 token audit is an engineering result only and
-  its parent design is superseded.  V2 fixes the pre-outcome confounds, but its
-  evaluator and protected Qwen execution are not yet complete; it contributes
-  no mediator, circuit, JEPA, or workspace evidence in this manuscript.
+  its parent design is superseded.  V2 fixes the pre-outcome confounds and its
+  evaluator is implemented and synthetically tested, but its replacement token
+  audit, capture, plan, and protected Qwen execution are not yet run; it
+  contributes no mediator, circuit, JEPA, or workspace evidence in this manuscript.
   \item The LeWorldModel is a source-informed small synthetic model using
   selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.
@@ -1092,8 +1127,9 @@ registered held-out gates.  In the physical track, predictive gates pass while
 circuit and workspace acceptance gates fail.  Decoded recurrent action-path
 cancellation is closed as a scientific route in the current small model because
 the acquired artifact cannot identify the proposed geometry.  The official
-EB-JEPA one-layer recurrence is now exactly decomposed and intervention-ready,
-but remains random-weight engineering evidence.  Its official MPPI planner also
+EB-JEPA one-layer recurrence is now exactly decomposed and intervention-ready.
+One training seed completed, but no planner-competence job has run; the retained
+mechanistic smoke therefore remains random-weight engineering evidence. Its official MPPI planner also
 ignores a configured action-norm bound that CEM enforces; the environment supplies
 no fallback check.  The next discriminating studies should use a precisely
 replayed, episode-paired Qwen treatment to compare frozen module mediator rankings and reproduce the

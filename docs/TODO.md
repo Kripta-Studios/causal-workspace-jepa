@@ -17,10 +17,24 @@
   states, and a NaN false-pass; retain its token audit as engineering history only.
 - [x] Preregister/harden v2 with exact test/paraphrase pairing, FP32 states, finite/count/group,
   runtime, content-hash, and HDF5-readback gates.
-- [ ] Implement and freeze the complete Qwen population/local/HVP/AtP*/probe/magnitude evaluator,
-  direct prefixes, restoration, and matched controls before opening protected activations.
+- [x] Implement and test the complete Qwen population/local/HVP/custom-AtP*/probe/magnitude
+  evaluator, train-only direct-prefix selection, restoration, five direct comparators, 128 matched
+  random sets, four specificity controls, self-hashed plan, and checksum-bound protected resume.
 - [ ] From the clean evaluator commit, run the v2 tokenizer audit; then execute protected capture
-  only after EB-JEPA releases the GPU and without changing the frozen design.
+  only after a separate authorization commit and without changing the frozen design.
+- [x] Prospectively preregister `LLM-QWEN-BINDING-ALGEBRA-001` without reading binding-v2 or new
+  Qwen outcomes; freeze the `S4` convention, primitive/composed action split, causal-delta target,
+  differential baselines, direct predicted-state controls, thresholds, and null dispositions.
+- [x] Implement the pure binding-algebra protocol and deterministic tests for all 24 permutations,
+  composition, inverse, conjugacy-class counts, minimal transposition rollouts, globally disjoint
+  token alphabets, independent episode units, and exact test/paraphrase pairing.
+- [ ] Keep `execution_authorized=false`. Implement and freeze the algebra tokenizer audit, exact
+  layer-0 multi-position replay, FP32 trajectory capture, full cross-term HVP and oracle sequential
+  JVP baselines, fixed delta-trajectory meta-model, predicted-state patching, episode bootstrap, and
+  fail-closed aggregation before any Qwen forward.
+- [ ] After a clean commit and push, open validation Phase 0 only. If its interaction/quadratic gates
+  fail, record the local-differential null without training or opening protected outcomes; otherwise
+  execute the already-frozen three-seed model and only then open test plus paired paraphrase.
 - [x] Pin official EB-JEPA and implement/test its source-contract adapter with exact one-layer GRU
   gate decomposition and replay tolerance `1e-6`.
 - [x] Retain `WM-EBJEPA-CONTRACT-001` from clean `979c2d6`; all source, shape, reconstruction, and
@@ -46,8 +60,14 @@
   preserve the original official implementation as the reproduction baseline.
 - [x] Commit/push and run `WM-EBJEPA-TRAIN-RESOURCE-001` unchanged from clean `fed920e`: batch 384
   peaks at 5.82 GB reserved; the default compile wrapper captures zero frames/graphs on `unroll`.
-- [x] Commit/push and launch `WM-EBJEPA-TRAIN-001` for official seeds 1/1000/10000 from clean
-  `5065108`; seed 1 epochs 0--4 are retained, training is active, and loss decides no competence.
+- [x] Retain the interrupted `WM-EBJEPA-TRAIN-001` launch from clean `5065108`: seed 1 completed
+  epochs 0--11 and all 13 checkpoint identities revalidate; the portfolio stopped before seed 1000
+  because the repository became dirty. Training loss alone decides no competence.
+- [x] Harden completed-seed reuse against stale status JSON, missing/changed checkpoints, wrong
+  recorded epochs, nonfinite model tensors, and a nonidentical `latest` checkpoint. Make the bounded
+  MPPI arm primary for mechanistic eligibility while retaining the official arm as a paired audit.
+- [ ] From a clean pushed tree, validate seed 1000 as `VALIDATED_NOT_TRAINED`, resume seeds
+  1000/10000, and preserve the disclosed compatible Torch 2.10 runtime.
 - [ ] Retain all 12 epoch checkpoints for every training seed and evaluate frozen epochs 9/10/11
   under separately labeled planner arms.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent

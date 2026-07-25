@@ -1,6 +1,9 @@
 id: LLM-QWEN-BINDING-MEDIATION-002
-status: PREREGISTERED_SUPERSEDES_V1_BEFORE_MODEL_RUN
+status: PREREGISTERED_EVALUATOR_IMPLEMENTED_PROTECTED_NOT_RUN
+protected_capture_authorized: false
+protected_capture_blocker: exact four-control executor must be frozen, committed, and pushed
 registered_date: 2026-07-22
+evaluator_frozen_date: 2026-07-25
 supersedes: LLM-QWEN-BINDING-MEDIATION-001
 amendment_reason: paired paraphrase isolation, lossless causal states, and fail-closed integrity gates
 resource_profile: configs/resource/gpu_12gb.yaml
@@ -58,23 +61,64 @@ candidates:
 ranking:
   methods: [population_atp, exact_local_atp, directional_hvp, atp_star, leave_value_out_probe, delta_norm, random]
   train_only: true
+  score_aggregation: mean_absolute_episode_effect
+  behavioral_score: donor_logit_minus_recipient_logit
+  directional_hvp_coefficient: 0.5
+  directional_hvp:
+    base: clean_candidate_state
+    direction: treated_minus_clean_same_node
+    hessian: network_score_with_respect_to_each_node_separately
+    cross_node_terms: excluded
+    steps: 1
+    precision: float32
+  atp_star:
+    variant: sequential_residual_semilayer_graddrop
+    dropped_sites: all_56_attn_out_and_mlp_out
+    aggregation: sum_absolute_over_drops_divided_by_55_then_mean_over_episodes
+    qk_fix: not_applicable_post_o_proj_nodes
+  leave_value_out_probe:
+    target: treatment_score_effect
+    held_out_group: donor_answer_id
+    projection: fixed_gaussian
+    projection_dim: 32
+    projection_seed: 463
+    ridge: 1.0e-3
+    score: negative_out_of_fold_mse
+  random_seed: 467
   maximum_nodes: 4
+  comparator_cardinality: same_population_selected_k
+  population_must_beat_each_comparator: true
   prefix_sufficiency_min: 0.60
   prefix_necessity_min: 0.60
+evaluation:
+  direct_splits: [test, paraphrase]
+  validation_role: capture_task_eligibility_only
 controls:
   random_sets: 128
+  random_seed: 471
+  random_draws_with_replacement: true
   preserve_module_family: true
   preserve_layer_quartile: true
   answer_row_permutations: 256
+  answer_row_permutation_seed: 479
   donor_shuffle: true
+  donor_shuffle_seed: 487
+  donor_shuffle_contract: same_split_whole_episode_derangement_without_norm_matching
   norm_matched_resample: true
+  norm_resample_seed: 491
+  norm_resample_bins: 10
+  norm_resample_contract: empirical_same_node_delta_then_exact_l2_rescale
   irrelevant_position: true
+  irrelevant_position_index: 0
   unqueried_value_swap: true
   leave_query_key_out: true
   leave_answer_value_out: true
 inference:
   bootstrap_draws: 10000
   bootstrap_seed: 449
+  bootstrap_interval: percentile_95
+  bootstrap_denominator: positive_signed_sum
+  bootstrap_min_eligible_fraction: 0.99
   monte_carlo_alpha: 0.01
 gates:
   clean_accuracy_min_each_split: 0.90
@@ -84,6 +128,7 @@ gates:
   minimum_key_or_value_donor_accuracy_min: 0.50
   minimum_key_or_value_transfer_min: 0.50
   treatment_effect_absolute_min: 1.0e-4
+  treatment_effect_signed_mean_min: 1.0e-4
   treatment_logit_replay_atol: 1.0e-6
   rank_min_qn_margin: 0.10
   rank_ci_lower_min: 0.0

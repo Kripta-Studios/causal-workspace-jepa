@@ -152,6 +152,46 @@ class QwenBindingMediationProtocolTests(unittest.TestCase):
         }
         self.assertEqual(clustered_bootstrap_mediation(**kwargs), clustered_bootstrap_mediation(**kwargs))
 
+    def test_positive_signed_bootstrap_accepts_stable_positive_denominators(self) -> None:
+        result = clustered_bootstrap_mediation(
+            clean_scores=np.zeros(8),
+            treated_scores=np.arange(1.0, 9.0),
+            sufficient_scores=np.arange(1.0, 9.0) * 0.7,
+            restored_scores=np.arange(1.0, 9.0) * 0.4,
+            draws=64,
+            seed=411,
+            bootstrap_denominator="positive_signed_sum",
+            minimum_eligible_fraction=1.0,
+        )
+        self.assertEqual(result["draws_eligible"], 64)
+        self.assertEqual(result["eligible_fraction"], 1.0)
+
+    def test_positive_signed_bootstrap_rejects_negative_denominators(self) -> None:
+        with self.assertRaisesRegex(ValueError, "positive aggregate treatment effect"):
+            clustered_bootstrap_mediation(
+                clean_scores=np.zeros(8),
+                treated_scores=-np.arange(1.0, 9.0),
+                sufficient_scores=-np.arange(1.0, 9.0) * 0.7,
+                restored_scores=-np.arange(1.0, 9.0) * 0.4,
+                draws=64,
+                seed=413,
+                bootstrap_denominator="positive_signed_sum",
+            )
+
+    def test_positive_signed_bootstrap_rejects_low_eligible_fraction(self) -> None:
+        effects = np.asarray([-10.0, 1.0, 1.0, 1.0])
+        with self.assertRaisesRegex(ValueError, "eligible bootstrap fraction"):
+            clustered_bootstrap_mediation(
+                clean_scores=np.zeros(4),
+                treated_scores=effects,
+                sufficient_scores=effects * 0.7,
+                restored_scores=effects * 0.4,
+                draws=128,
+                seed=415,
+                bootstrap_denominator="positive_signed_sum",
+                minimum_eligible_fraction=0.90,
+            )
+
     def test_prefix_selection_uses_smallest_jointly_eligible_prefix(self) -> None:
         estimates = {
             1: MediationEstimate(1.0, 0.7, 0.4, True),

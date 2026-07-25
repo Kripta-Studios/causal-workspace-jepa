@@ -29,8 +29,11 @@ The first Qwen binding-mediation design is now marked `SUPERSEDED_DESIGN` before
 Its tokenizer audit is retained, but it did not isolate paraphrase from episode shift. The operative
 v2 preregistration pairs each paraphrase with the identical test binding, stores causal states in
 FP32, rejects non-finite or malformed captures, and binds resume/readback to exact content and
-runtime identity. The protected capture is deliberately not authorized until every ranking,
-direct-mediation, restoration, and matched-control evaluator is frozen in committed code.
+runtime identity. The phase-separated evaluator is now implemented with train-only plan freezing,
+unit checksums, direct sufficiency/restoration, five differential/learned comparators, 128
+structure-matched random sets, and four specificity controls. Protected capture remains explicitly
+unauthorized until this evaluator is committed/pushed and the replacement v2 token audit passes
+from that clean tree.
 
 ## Current Status
 
@@ -86,12 +89,12 @@ direct-mediation, restoration, and matched-control evaluator is frozen in commit
   the official 384 completed; batch 384 peaked at 5,821,693,952 reserved bytes. The official
   `torch.compile(jepa)` wrapper completed two `unroll` updates but Dynamo captured zero frames and
   zero graphs, so compilation is ineffective on the executed training entrypoint.
-- `RUNNING`: `WM-EBJEPA-TRAIN-001` launched from clean commit `5065108` at
-  `2026-07-21T21:53:46Z`. It freezes official seeds 1/1000/10000, batch 384, 12 epochs, all
-  checkpoint hashes, and evaluation of epochs 9/10/11 under official-unbounded and
-  bound-corrected MPPI at the actual proposal scale 2.0. Seed 1 is active; epochs 0--4 completed in
-  roughly 900 seconds each, with latest non-monotone total loss `1.2349`. No competence
-  result exists yet.
+- `INTERRUPTED_AFTER_SEED_1`: `WM-EBJEPA-TRAIN-001` launched from clean commit `5065108` at
+  `2026-07-21T21:53:46Z`. Seed 1 completed all 12 epochs and its 13 checkpoint files pass byte,
+  SHA-256, recorded-epoch, final/latest equality, and finite-model-tensor validation. Prediction
+  loss fell from `0.1990` to `0.0178`, but this is not competence evidence. The portfolio stopped
+  before seed 1000 because its clean-worktree guard detected later repository changes; seeds 1000
+  and 10000 and all 18 frozen competence jobs remain unrun.
 - `SMOKE_VALIDATED`: torch-aware Hugging Face Qwen3 adapter with selected residual,
   attention, MLP, and logit capture; replayable Torch interventions; registered donors/statistics;
   autograd preservation; ordered multi-site patch/restore with exact tiny-Qwen treatment replay;
@@ -100,8 +103,9 @@ direct-mediation, restoration, and matched-control evaluator is frozen in commit
   audit at `4e6624f` still verifies 560 token treatments, but its paraphrase was not episode-paired.
   V2 freezes exact pairing, 24/6/6 disjoint pools, 56 candidates, `k<=4`, FP32 causal states,
   grouped competence, content/readback integrity, direct sufficiency/restoration, and matched
-  nulls. Protected outcomes remain unopened pending the complete evaluator. This tests a mediator
-  set, not a JEPA, circuit, J-space, or workspace.
+  nulls. The complete phase-separated executor is implemented and its 138-condition protected
+  roster is unit-tested, but capture authorization remains false and no v2 model outcome is open.
+  This tests a mediator set, not a JEPA, circuit, J-space, or workspace.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
@@ -131,6 +135,16 @@ direct-mediation, restoration, and matched-control evaluator is frozen in commit
   effective-rank floor, and even oracle target-embedding decodes had normalized MSE above `1.0`.
   Exact JVP won full-vector fidelity, linear ridge won logit MSE, and quadratic Taylor won answer
   behavior; no single metric supports a nonlinear-JEPA advantage.
+- `POSTHOC_DIAGNOSTIC`: a train-only PCA/ridge reanalysis of the same frozen outcomes separates the
+  registered held-out rank failure from training collapse. Target effective rank is
+  `17.70--20.39` on 552 train rows but `6.81--7.28` on 30 test rows spanning only six donor
+  entities. This does not rescue any hypothesis. Descriptively, a causal-delta PCA oracle remains
+  stable as capacity grows (test NMSE `0.512` at 64D), while a full-state-pair oracle degrades to
+  `2.596`; the test outcomes were reused, so this is design evidence for a future preregistration.
+- `PREREGISTERED_PROTOCOL_ONLY`: `LLM-QWEN-BINDING-ALGEBRA-001` freezes an outcome-blind `S4`
+  transposition/composition/inverse test with causal-delta targets, strong differential baselines,
+  direct predicted-state patching, and paired paraphrases. `execution_authorized=false`; protocol
+  design alone is neither a novelty, mechanism, circuit, J-space, nor workspace result.
 - `COMPLETED_MIXED`: `LLM-CONTEXT-GEOMETRY-001` executed from clean `49d68b7`. The real pooling-
   illusion and context-specificity hypotheses failed; the gauge-invariant coupling control passed.
   A function-preserving diagonal reparameterization changed naive pooled overlap about 120-fold

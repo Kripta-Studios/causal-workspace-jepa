@@ -44,6 +44,10 @@ def run_qwen_binding_mediation_capture(config_path: str | Path) -> dict[str, Any
     started = time.perf_counter()
     config_path = Path(config_path)
     config = load_config(config_path)
+    if config.get("protected_capture_authorized") is not True:
+        raise RuntimeError(
+            "BLOCKED_PROTOCOL_INTERFACE: protected capture is not authorized by the frozen config"
+        )
     resource_profile = str(config["resource_profile"])
     hardware = require_free_disk(resource_profile)
     seed = int(config["seed"])
@@ -710,6 +714,8 @@ def capture_eligibility_gates(
             >= float(threshold["full_treatment_donor_transfer_min_each_split"])
             and by_split.get(split, {}).get("mean_absolute_treatment_effect", -np.inf)
             >= float(threshold.get("treatment_effect_absolute_min", 0.0))
+            and by_split.get(split, {}).get("mean_treatment_effect", -np.inf)
+            >= float(threshold.get("treatment_effect_signed_mean_min", -np.inf))
         )
         for split in protected
     }

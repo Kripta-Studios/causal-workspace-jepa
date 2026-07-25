@@ -268,3 +268,21 @@
   precedes the 50% donor boundary by one grid step. Do not rescue H-GEO-14 with an absolute lag,
   lower control threshold, or removed `A_21` margin on these data; pivot to the independently
   protected recurrent-JEPA test goals.
+- Treat the `LLM-TARGET-IJEPA-001` rank floor exactly as registered: it failed on held-out entities,
+  but the post-hoc train rank rules out describing that statistic as demonstrated training collapse.
+  Do not use the causal-delta PCA oracle to rescue the result; use it only to preregister a future
+  multi-relation target/capacity ablation with equal-width controls and untouched outcomes.
+- Keep binding mediation v2 ahead of any new meta-model. Its unique discriminating question is
+  whether the population derivative that improved finite prediction also localizes directly
+  sufficient and necessary mediators better than local/HVP/custom-AtP*/probe/magnitude rankings.
+  The evaluator now freezes phase separation, plan integrity, exact controls, and per-unit checksums.
+  Protected capture stays closed until that implementation is committed/pushed, the v2 token audit
+  passes from the clean tree, and authorization is changed in a separate pre-outcome commit.
+- Register binding permutation algebra as a separate prospective route. Train only primitive
+  transpositions and test composed/inverse actions in causal-delta space; stop at the differential
+  null if additive or full-quadratic transports explain validation. Protocol design does not itself
+  support novelty, a causal abstraction, circuit, J-space, or workspace.
+- Resume EB-JEPA only from a clean pushed tree. A completed-status JSON is no longer sufficient:
+  every checkpoint must revalidate identity, bytes, hash, epoch, finitude, and final/latest equality.
+  Bounded MPPI competence is the eligibility gate; official unbounded MPPI remains a mandatory
+  paired defect audit and cannot make an otherwise ineligible mechanism interpretable.

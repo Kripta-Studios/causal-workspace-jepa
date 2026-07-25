@@ -1,5 +1,43 @@
 # SUMMARY
 
+## 2026-07-25 — Target diagnosis corrected and causal binding algebra preregistered
+
+- Repository audit found that the official EB-JEPA portfolio is not running. Seed 1 completed all
+  12 epochs in 10,692.85 seconds, but the portfolio stopped before seed 1000 when the clean-worktree
+  guard detected subsequent repository edits. All 13 seed-1 checkpoints were independently
+  rehashed and their recorded epochs verified; no planning-competence job exists yet.
+- EB-JEPA completion now fails closed on experiment/seed/source identity, exact checkpoint roster,
+  byte count, SHA-256, recorded epoch, finite model tensors, and final/latest identity. Competence
+  is decided by the bound-corrected MPPI arm; the official unbounded arm remains a mandatory paired
+  diagnostic. Generalization evidence is forbidden if any engineering gate fails.
+- The retrospective `LLM-TARGET-IJEPA-DIAGNOSTIC-001` reuses the frozen 612 capital-patch outcomes
+  and therefore confirms no hypothesis. It shows that the registered target-rank failure
+  (`6.81--7.28` on 30 test rows) should not be described as training collapse: train ranks are
+  `17.70--20.39`. In train, unadjusted identity eta-squared changes from clean residual
+  donor/recipient `0.002/1.000`, to intervened residual `0.829/0.128`, while the raw causal delta is
+  `0.496/0.528`. The EMA target latents inherit donor eta-squared `0.791--0.805` and recipient
+  `0.111--0.124`. A train-fit causal-delta PCA/ridge oracle
+  has test NMSE `0.512` at 64D versus `2.596` for the full-state-pair oracle; this is post-hoc design
+  evidence, not learned-predictor or mechanism evidence.
+- Binding mediation v2 now has direct sufficiency/restoration aggregation, positive-denominator
+  episode bootstrap, train-population versus local/HVP/custom-AtP*/probe/magnitude comparisons,
+  128 matched random sets, four specificity controls, and planted positive/null/distractor tests.
+  Its three-phase runner freezes a self-hashed train-only plan, requires byte identity with the plan
+  committed at `HEAD`, executes 138 conditions per protected episode, and resumes only through
+  checksum-verified units. Validation is capture-eligibility only; direct decisions use the frozen
+  test and paired-paraphrase splits. Protected Qwen outcomes remain closed until the runner is
+  committed/pushed and the replacement v2 token audit passes from clean code.
+- Prospectively registered `LLM-QWEN-BINDING-ALGEBRA-001`: primitive binding transpositions train a
+  candidate causal transition operator, while unseen double transpositions, three-cycles,
+  four-cycles, and action-plus-inverse rollouts test composition and restoration across disjoint
+  alphabets. The target is a downstream causal-delta trajectory rather than a complete residual.
+  Execution remains explicitly unauthorized until the tokenizer, capture, full-HVP, meta-model,
+  direct-patching, and aggregation stack is frozen.
+- Core intervention contracts were repaired: projection removal now uses a column-basis SVD and is
+  invariant to within-subspace gauge; LeWorldModel applies temporal interventions only at requested
+  rollout positions; HDF5 resume/read rejects empty or malformed manifests; nonfinite planner
+  actions and signed-negative binding treatment effects fail closed.
+
 ## 2026-07-22 — Binding-mediation v2 hardened while EB-JEPA trains
 
 - The official EB-JEPA three-seed portfolio launched from clean commit `5065108` at

@@ -283,6 +283,23 @@ class QwenHFAdapterTests(unittest.TestCase):
             outcome.restored_score,
         ):
             self.assertTrue(np.isfinite(value))
+        irrelevant = execute_direct_mediation_episode(
+            self.adapter,
+            recipient_prompt="alpha beta",
+            donor_prompt="gamma beta",
+            treatment_site=transformer_site(0, "resid_pre"),
+            treatment_positions=(0,),
+            recipient_answer_id=2,
+            donor_answer_id=3,
+            mediator_sites=(
+                transformer_site(0, "attn_out"),
+                transformer_site(0, "mlp_out"),
+            ),
+            mediator_position=0,
+            seed=419,
+        )
+        self.assertAlmostEqual(irrelevant.clean_score, outcome.clean_score, places=6)
+        self.assertAlmostEqual(irrelevant.treated_score, outcome.treated_score, places=6)
 
 
 class _TinyTokenizer:

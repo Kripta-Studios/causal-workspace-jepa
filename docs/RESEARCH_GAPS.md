@@ -9,12 +9,15 @@ Status: `ACTIVE`.
   replacement models, Jacobian/HVP transports, and direct circuit-localization methods, but no
   intervention-conditioned JEPA that predicts Qwen hidden/logit/behavior effects and then survives
   direct mediator validation. This is an open comparison, not proof of novelty. The one repository
-  target-encoder variant failed all three seeds.
+  target-encoder variant failed all three seeds. A post-hoc diagnostic shows healthy train latent
+  rank but poor held-out reuse and an identity-dominated full-state target; the suggested
+  causal-delta target remains an untested prospective design, not a rescued result.
 - Bounded direct Qwen intervention verification is implemented. Broader prompt families, semantic
   features, layer/site holdouts, behavioral endpoints, and a candidate that survives direct ranking
   controls remain open; the first meta-ranked coordinate candidate was rejected. The new binding
-  protocol closes the treatment/inference-design gap but has no model outcome yet. If it passes,
-  directed paths, outside-set faithfulness, random-model controls, and a trajectory
+  protocol now closes the treatment, phase-separation, ranking, direct-control, resume, and
+  inference-design gaps in code but has no v2 token or model outcome yet. If it passes, directed
+  paths, outside-set faithfulness, random-model controls, and a trajectory
   Intervention-JEPA comparison still remain.
 - Conditional donor resampling repaired the random-control manifold failure in `WM-T0-004`, but the
   PCA intervention was too large to be matched. Need a preregistered local-PCA/tangent control.
@@ -41,7 +44,8 @@ Status: `ACTIVE`.
   subspace mediates planning. Exact Torch 2.6 GPU execution is now resolved as impossible on this
   SM120 host; Torch 2.10/cu128 is a tested, declared compatibility deviation. Remaining dependencies,
   planning competence is still open. Three-seed training launched from clean `5065108`; seed 1
-  epochs 0--4 completed with non-monotone loss, but no competence result exists. A clean capacity profile shows the official
+  completed all 12 epochs, but the clean-worktree guard stopped the portfolio before seed 1000 and
+  no competence result exists. A clean capacity profile shows the official
   batch 384 fits in 5.82 GB reserved, but also that `torch.compile(jepa)` captures zero graphs when
   upstream invokes the custom `unroll` method.
 - Ensemble variance falls under the action-subspace intervention even as control worsens. Future

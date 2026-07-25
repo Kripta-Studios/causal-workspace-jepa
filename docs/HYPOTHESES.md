@@ -524,6 +524,20 @@ H-LLM-01B, H-LLM-02, and the restricted H-LLM-04 are rejected for this frozen ar
 The endpoint-dependent ranking is a new observation within this repository, not a literature-level
 novelty claim without replication on another task/model.
 
+Retrospective clarification (2026-07-25; not a new hypothesis test): the reported target ranks
+`7.28/6.81/6.98` are test-split statistics over 30 rows and only six donor entities. Recomputing the
+same frozen embeddings gives train ranks `20.39/17.70/19.98`; therefore the registered held-out
+rank-diversity gate failed, but these numbers do not demonstrate low-rank collapse during training.
+On train, the unadjusted donor/recipient eta-squared changes from `0.002/1.000` in the repeated clean
+residual, to `0.829/0.128` in the intervened residual, while the raw causal delta is
+`0.496/0.528`. The target latents inherit donor/recipient eta-squared
+`0.791--0.805/0.111--0.124`. Train-only
+PCA/ridge oracles on causal deltas have test NMSE `0.752/0.651/0.577/0.512` at dimensions
+`8/16/32/64`, versus `0.755/0.657/1.178/2.596` for concatenated clean/intervened state coordinates.
+The state-pair decoder receives twice as many coordinates at each label, and all test outcomes were
+already open. This post-hoc result motivates a prospective target/capacity ablation; it confirms no
+hypothesis and does not show that the EMA target irreversibly discarded causal information.
+
 ## LLM-CONTEXT-GEOMETRY-001 Preregistration
 
 Registered on 2026-07-21 before computing any final-suite full Jacobian. This is an adversarial
@@ -1300,7 +1314,7 @@ N(S) = sum_e [s(T) - s(T with clean states restored at S)] / sum_e Delta_T
 Bootstrap intervals resample whole episodes with 10,000 draws and seed 449. Sensitivity analyses
 leave out each query key and each answer value; they do not replace the primary episode bootstrap.
 
-### Controls and decisions
+### Controls and decisions (historical v1 wording; v2 exact control semantics supersede it)
 
 - Execute 128 random sets of the same size, preserving module family and layer quartile; use the
   finite-sample corrected Monte Carlo p-value `(1 + exceedances)/(129)`.
@@ -1335,8 +1349,9 @@ outcomes.
 Registered on 2026-07-22 after the v1 token-only result and adversarial implementation review, but
 before any protected model forward. The full canonical configuration is
 `configs/experiments/qwen_binding_mediation_v2.yaml`; every unchanged ranking, estimator, control,
-bootstrap, and H-LLM-15/16 decision rule from v1 is inherited. V2 changes only pre-outcome design
-and integrity defects:
+bootstrap, and H-LLM-15/16 scientific thresholds from v1 are inherited. V2 also freezes the exact
+pre-outcome evaluator semantics below; these replace underspecified v1 control wording before any
+v2 model outcome:
 
 - The 96 paraphrase rows are exact copies of the 96 test episodes in keys, recipient/donor values,
   query, and transposition. Only the fixed prompt template changes. There is no paraphrase seed.
@@ -1358,6 +1373,22 @@ and integrity defects:
   treatment score effect `>=1e-4`, and the worst query-key/answer-value group clean, donor, and
   donor-transfer accuracy each `>=0.50`. These group floors were fixed before model outcomes to
   prevent micro-averages from hiding token-specific failure.
+- Rankings and prefix size use train only. Validation is reported through capture task-eligibility
+  gates but is not a direct-mediation selection or decision split. Direct execution and decisions
+  are restricted to the 96 token-held-out test episodes and their 96 exactly paired paraphrases.
+- H-LLM-15 computes a paired 10,000-draw interval against each of the five registered comparators
+  and requires their conjunction. The observed best comparator is descriptive only; it is not
+  selected on protected outcomes and then bootstrapped post-selection.
+- The four direct specificity controls are exact and preserve the same primary clean/treated
+  denominator: a same-split whole-episode donor derangement frozen on train-plan creation; a
+  same-node train-delta resample chosen by norm bin and rescaled to the exact target L2 norm; the
+  correct final-query mediator state written at token position 0; and mediator states induced by
+  swapping the two value slots outside the queried treatment. The first control is not norm-matched
+  and the second is not covariance-matched; neither property may be claimed.
+- The study is split into calibration, train-plan, and protected-evaluation phases. The train plan
+  is self-hashed and must be committed byte-for-byte. Protected execution rejects changes to the
+  evaluator code paths after plan creation, a different calibration hash, incomplete split counts,
+  runtime/model-revision drift, dirty code, and corrupt or stale per-condition episode units.
 - Capture alone remains evidence level 1 (Availability), even when exact treatment replay passes.
   No model run is authorized until the full population/local/HVP/AtP*/probe/magnitude evaluator,
   direct prefix sufficiency/restoration, and matched-control execution path are implemented,
@@ -1365,3 +1396,133 @@ and integrity defects:
 
 H-LLM-15/16 are now decided only by v2. Passing still supports at most a specific compact mediator
 set; it does not by itself establish a directed circuit, JEPA advantage, workspace, or SOTA claim.
+
+## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
+
+Registered prospectively on 2026-07-25 before any prompt from this study is tokenized or passed
+through Qwen. The canonical design is
+`configs/experiments/qwen_binding_algebra_v1.yaml`; the pure finite-action protocol is
+`src/causal_workspace_jepa/experiments/llm/qwen_binding_algebra_protocol.py`. This registration
+does not authorize execution. The tokenizer audit, capture, differential evaluator, fixed
+meta-model, direct predicted-state patcher, aggregation, and failure-status code must be tested,
+documented, committed, and pushed from a clean worktree before `execution_authorized` can change.
+
+This experiment asks whether a controlled four-slot binding update behaves like a reusable causal
+operator whose primitive transpositions compose and invert across unseen token alphabets. It does
+not assume that such an operator exists. Prior work on function vectors, cell-based relational
+binding, causal abstractions, and activation patching prevents treating transfer, vector arithmetic,
+or high prediction accuracy alone as a novelty or mechanism claim. A positive result is bounded
+evidence for a causal binding-permutation operator in one pinned Qwen model, not a circuit,
+J-space, workspace, global algorithm, semantic equivalence, SOTA result, or consciousness claim.
+
+### Frozen finite action algebra
+
+- A permutation is a member of `S4` mapping each source binding slot to a destination slot.
+  `compose_permutations(first, second)` means apply `first` and then `second`. The six
+  transpositions are the only training action class.
+- Validation, protected test, and paired paraphrase targets use only the three disjoint composed
+  conjugacy classes: three double transpositions, eight three-cycles, and six four-cycles. Cases
+  that leave the queried slot unchanged are excluded by a rule fixed before episode generation.
+  Consequently each base train episode yields three query-changing primitive cases and each base
+  composed episode yields fifteen query-changing cases: three double transpositions, six
+  three-cycles, and six four-cycles.
+- Every target action has a deterministic minimal rollout of one, two, or three transposition
+  generators. Training rollout length is exactly one. No direct composed target may enter training.
+  Evaluation rolls out the learned one-step transition for two or three steps and compares it with
+  the directly executed composed action.
+- Identity is a no-op control. A target action followed by its group inverse is a restoration
+  control. Associativity, inverse, class counts, temporal composition convention, and deterministic
+  decomposition are executable protocol invariants, not model results.
+
+### Frozen episodes and anti-leakage split
+
+- Model, if later authorized: `Qwen/Qwen3-0.6B` at immutable revision
+  `c1899de289a04d12100db370d81485cdf75e47ca`, FP32, eager attention, evaluation mode.
+- Independent base-episode counts are calibration/train/validation/test `16/192/64/64`; the 64
+  paraphrase episodes copy the protected test keys, values, query, and action exactly and change
+  only the template. Action-expanded rows remain clustered under their base episode and are never
+  counted as independent observations.
+- Literal key and value alphabets are globally disjoint across roles and independent splits. A
+  future tokenizer audit must additionally prove that every item is a unique single token under
+  the live pinned tokenizer, every rendered action preserves length and token multiset, and the
+  changed prompt positions exactly match the support of the permutation. Failure is
+  `INELIGIBLE_TOKENIZATION` and stops before model outcomes.
+- Token IDs are forbidden predictor features. The donor activation and post-treatment state are
+  forbidden context inputs. Candidate logits are reindexed by the four within-episode roles, so a
+  global vocabulary row cannot serve as the label. Complete held-out key and value alphabets plus
+  the exactly paired template shift are required; neither split can rescue the other.
+
+### Direct treatment and causal-state target
+
+- The ground-truth action is executed both as a directly rendered permuted prompt and as an exact
+  layer-0 residual patch at every changed value-token position. Maximum full-logit replay error
+  must be at most `1e-6` in FP32.
+- Only the final query position is captured at residual-post layers `14`, `18`, `21`, `24`, and
+  `27`. The state target is always the directly observed FP32 causal delta
+  `h_treated - h_clean`, never the complete treated residual used by
+  `LLM-TARGET-IJEPA-001`. The behavioral target is the four candidate-logit deltas reindexed by
+  episode role.
+- The frozen candidate is an EMA/stop-gradient delta-trajectory Intervention-JEPA with a shared
+  `48`-unit layer encoder, `16`-dimensional meta-state, `48`-unit recurrent predictor, fixed `4x4`
+  permutation-matrix action encoding, SIGReg (`weight=0.09`, `17` knots, `64` projections), and at
+  most `150,000` trainable parameters. Seeds are `541/547/557`. Exact loss weights and the
+  validation-only early-stopping contract are frozen in the YAML.
+- Predicted layer-21 deltas are added to the same episode's clean residual and directly patched
+  into Qwen. Outcome prediction without this direct execution remains Availability evidence even
+  if activation or logit MSE is low.
+
+### Mandatory baselines and two-phase lock
+
+The mandatory baselines are no-change, train mean, same-episode direct primitive addition, exact
+FP32 local JVP, train-population Jacobian, full quadratic Taylor including cross-action Hessian
+terms, oracle-intermediate sequentially relinearized JVP, ridge, low-rank bilinear regression, and
+a parameter-capped MLP. Learned baselines receive the same inputs, train rows, parameter ceiling,
+and early-stopping split. Endpoint-wise comparison is against the best eligible baseline, not a
+fixed weak comparator.
+
+Phase 0 uses validation only. For a composed action `sigma` with its canonical primitive rollout
+`tau_1,...,tau_m`, define the direct-additive residual on an endpoint as
+
+```text
+R_sigma = Delta_direct(sigma) - sum_j Delta_direct(tau_j)
+interaction_power = sum ||R_sigma||^2 / sum ||Delta_direct(sigma)||^2
+```
+
+The denominator and sum are computed over complete base episodes before division. Phase 0 passes
+only if validation interaction power is at least `0.10` and the best full quadratic differential
+transport has normalized MSE at least `0.10`. Otherwise the run stops as
+`COMPLETED_NEGATIVE_LOCALLY_DIFFERENTIAL`; no meta-model is trained and protected outcomes remain
+closed. All Phase-1 architecture, seeds, losses, thresholds, and code must already be frozen before
+Phase 0 is opened, so the validation result cannot select a new model family.
+
+### Hypotheses and decisions
+
+**H-LLM-17 — Finite binding-composition nonlinearity.** Passes only if all competence, numerical,
+split, and replay gates hold; the Phase-0 interaction and quadratic-error gates pass on validation;
+and both quantities independently replicate at their same thresholds on protected test and paired
+paraphrase. This establishes a bounded finite-effect failure of primitive addition and second-order
+local transport. It does not establish a learned causal abstraction.
+
+**H-LLM-18 — Generalizing causal permutation operator.** Passes only if H-LLM-17 passes and all
+three frozen meta-model seeds satisfy every condition below on both protected test and paired
+paraphrase:
+
+- trajectory-delta and role-logit NMSE are each at most `0.80` times the best eligible baseline;
+- composed-answer agreement exceeds the best baseline by at least `0.10`, and the episode-paired
+  bootstrap 95% lower bound of the advantage is above zero;
+- directly patching the predicted layer-21 state recovers at least `0.50` of the directly executed
+  composed treatment effect;
+- correct predicted-state patches exceed same-class wrong permutations, donor shuffle, and
+  norm-matched deltas by at least `0.20` of the direct effect; and
+- composing an action with its inverse restores at least `0.75` of the clean behavioral margin.
+
+Bootstrap sampling uses whole base episodes, `10,000` draws, and seed `563`. Results are also
+reported separately for double transpositions, three-cycles, four-cycles, query slot, key, value,
+rollout length, and template; subgroup results cannot replace the conjunctive protected decision.
+
+If prediction passes but direct predicted-state patching fails, H-LLM-18 is false and the result is
+`AVAILABILITY_ONLY`. Failure on either protected split rejects the hypothesis. Passing H-LLM-18
+supports at most evidence level 4 (Specificity) for this bounded operator because the predicted
+state is directly executed against matched controls. Circuit level 5 remains false until directed
+edges, minimality, necessity, sufficiency, outside-state faithfulness, and independent replication
+are prospectively established.
