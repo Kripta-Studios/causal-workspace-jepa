@@ -1397,6 +1397,11 @@ v2 model outcome:
 H-LLM-15/16 are now decided only by v2. Passing still supports at most a specific compact mediator
 set; it does not by itself establish a directed circuit, JEPA advantage, workspace, or SOTA claim.
 
+**Pre-outcome engineering result (2026-07-25).** The replacement token audit ran from clean
+`bca50e3` and passed all eight registered gates over 560 episodes, with episode hash
+`96dc6320...f3be`. It executes no Qwen forward and changes no hypothesis status. Capture remains
+blocked by `protected_capture_authorized=false` until a separate committed authorization milestone.
+
 ## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
 
 Registered prospectively on 2026-07-25 before any prompt from this study is tokenized or passed

@@ -38,9 +38,10 @@ worst-group, exact-revision, runtime, content-hash, and HDF5-readback gates. The
 is now implemented as calibration, train-plan, and protected-evaluation phases. It freezes rankings,
 the population prefix, matched random sets, control assignments, and an answer-row permutation
 diagnostic before opening protected outcomes; every direct protected episode/condition is stored as
-a checksum-bound replay unit. The evaluator was published at clean `53cd69d`. Protected outcomes
-remain unopened and capture authorization is false until the v2 token audit is rerun from a clean
-tree and a separate pre-outcome commit changes the flag.
+a checksum-bound replay unit. The evaluator was published at clean `53cd69d`. The replacement v2
+token audit then passed all eight gates from clean `bca50e3`; its episode hash is
+`96dc6320...f3be`. Protected outcomes remain unopened and capture authorization is false until a
+separate pre-outcome commit changes the flag.
 
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the

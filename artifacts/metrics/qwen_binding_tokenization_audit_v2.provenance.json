@@ -1,0 +1,21 @@
+{
+  "command": "python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml",
+  "gates": {
+    "all_expected_episodes_audited": true,
+    "all_sequences_within_budget": true,
+    "exactly_two_changed_tokens": true,
+    "paired_paraphrase_changes_template_only": true,
+    "query_positions_balanced": true,
+    "registered_pool_items_single_token": true,
+    "resolved_revision_matches_pin": true,
+    "token_ids_disjoint_across_splits_and_roles": true
+  },
+  "git_commit": "bca50e316d51630f470c345192527106ca928fa4",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_binding_tokenization_audit_v2.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 419,
+  "time_utc": "2026-07-25T22:01:20.540035+00:00"
+}

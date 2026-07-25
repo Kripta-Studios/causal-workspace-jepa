@@ -1,0 +1,90 @@
+{
+  "by_split": {
+    "calibration": {
+      "changed_position_pairs": 6,
+      "episodes": 16,
+      "query_position_counts": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    },
+    "paraphrase": {
+      "changed_position_pairs": 6,
+      "episodes": 96,
+      "query_position_counts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "sequence_lengths": [
+        36
+      ]
+    },
+    "test": {
+      "changed_position_pairs": 6,
+      "episodes": 96,
+      "query_position_counts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    },
+    "train": {
+      "changed_position_pairs": 6,
+      "episodes": 256,
+      "query_position_counts": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    },
+    "validation": {
+      "changed_position_pairs": 6,
+      "episodes": 96,
+      "query_position_counts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "sequence_lengths": [
+        35
+      ]
+    }
+  },
+  "episode_count": 560,
+  "episode_sha256": "96dc6320f3bab86e974f10ccf20b148152516775ff6a7dd0dd87b92ae75bf3be",
+  "evidence_level": "Availability",
+  "experiment_id": "LLM-QWEN-BINDING-TOKEN-AUDIT-002",
+  "gates": {
+    "all_expected_episodes_audited": true,
+    "all_sequences_within_budget": true,
+    "exactly_two_changed_tokens": true,
+    "paired_paraphrase_changes_template_only": true,
+    "query_positions_balanced": true,
+    "registered_pool_items_single_token": true,
+    "resolved_revision_matches_pin": true,
+    "token_ids_disjoint_across_splits_and_roles": true
+  },
+  "model": "Qwen/Qwen3-0.6B",
+  "parent_experiment_id": "LLM-QWEN-BINDING-MEDIATION-002",
+  "resolved_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "scientific_boundary": "This audit validates deterministic token identity and treatment shape only. It does not execute Qwen, establish task competence, mediation, a circuit, an Intervention-JEPA advantage, or a workspace.",
+  "status": "SMOKE_VALIDATED",
+  "token_pool_sha256": "0f64e8683abae32b0221c855f7bca6dbf61b1ae512569e0f83a57cd5a98f9de5"
+}

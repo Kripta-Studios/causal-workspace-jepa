@@ -482,7 +482,11 @@ and the population prefix before test access.  Protected units are independently
 checksummed, and execution rejects code, calibration, runtime, split-cardinality,
 or plan drift.  Validation supplies task-eligibility gates only; direct decisions
 use test and its paired paraphrases. Capture remains \level{availability};
-H-LLM-15/16 remain untested and capture authorization is still false.
+H-LLM-15/16 remain untested and capture authorization is still false.  A
+replacement token audit from clean commit \code{bca50e3} passes all eight gates
+over 560 rows, including exact test--paraphrase factor pairing and role/split
+token-ID disjointness; its episode hash is \code{96dc6320...f3be}.  This audit
+executes no Qwen forward.
 
 A separate prospective binding-algebra protocol freezes the finite group
 $S_4$: train only primitive transpositions, then roll the same causal-state
