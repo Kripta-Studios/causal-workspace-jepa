@@ -22,8 +22,10 @@
   random sets, four specificity controls, self-hashed plan, and checksum-bound protected resume.
 - [x] From clean `bca50e3`, run the v2 tokenizer audit: all 560 rows pass all eight gates; episode
   hash `96dc6320...f3be`; no Qwen forward executed.
-- [ ] In a separate clean pre-outcome commit, authorize and execute protected capture without
-  changing the frozen evaluator design.
+- [x] Authorize capture only in a separate pre-outcome commit bound to evaluator `53cd69d` and
+  token-audit result `f19d308`; downstream ranking and hypothesis decisions remain unauthorized.
+- [ ] From that clean authorization commit, execute protected capture without changing the frozen
+  design; commit its compact metrics/manifest/provenance before calibration.
 - [x] Prospectively preregister `LLM-QWEN-BINDING-ALGEBRA-001` without reading binding-v2 or new
   Qwen outcomes; freeze the `S4` convention, primitive/composed action split, causal-delta target,
   differential baselines, direct predicted-state controls, thresholds, and null dispositions.

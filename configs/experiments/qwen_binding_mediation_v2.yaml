@@ -1,7 +1,10 @@
 id: LLM-QWEN-BINDING-MEDIATION-002
 status: PREREGISTERED_EVALUATOR_IMPLEMENTED_PROTECTED_NOT_RUN
-protected_capture_authorized: false
-protected_capture_blocker: exact four-control executor must be frozen, committed, and pushed
+protected_capture_authorized: true
+protected_capture_authorization_basis:
+  evaluator_commit: 53cd69d5734450bf3bf367fff558d6c42e966b6c
+  token_audit_result_commit: f19d308
+  authorization_scope: capture_only_no_ranking_or_hypothesis_decision
 registered_date: 2026-07-22
 evaluator_frozen_date: 2026-07-25
 supersedes: LLM-QWEN-BINDING-MEDIATION-001

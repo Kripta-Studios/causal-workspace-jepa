@@ -112,6 +112,9 @@ and YAML files remain authoritative for every threshold and hyperparameter.
     `bca50e3`, all 560 episodes pass exact two-token treatment, length, balance, single-token pool,
     cross-role/split disjointness, paired-paraphrase, and pinned-revision gates. The episode hash is
     `96dc6320...f3be`. This is Availability only and does not establish task competence or mediation.
+21. **Capture is authorized prospectively, with no outcome yet.** The authorization is bound to
+    evaluator `53cd69d` and token-audit result `f19d308`; its scope is only the frozen FP32 capture.
+    It adds no evidence and cannot authorize rankings or H-LLM-15/16 if task/integrity gates fail.
 
 There is currently no positive evidence-level-5 circuit, broad level-6 mechanism, JEPA workspace,
 cross-model mechanism, or SOTA result. “No workspace found” means that no candidate passed the
@@ -123,7 +126,7 @@ accepted and keeps run/numerical/eligibility dispositions in `Status`.
 | Result ID | Claim | Evidence Level | Config | Metrics | Commit | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | LLM-QWEN-BINDING-TOKEN-AUDIT-001 | All 560 frozen binding recipient/donor pairs have equal token multisets, exactly two changed positions, one-token answers, bounded lengths, and balanced queries; Qwen is not executed. The parent study was later superseded before model execution because paraphrase was not episode-paired. | Availability | `configs/experiments/qwen_binding_mediation_v1.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v1.json` | clean `4e6624f` | `SMOKE_VALIDATED_PARENT_SUPERSEDED` |
-| LLM-QWEN-BINDING-MEDIATION-002 | The outcome-blind evaluator and exact protected-execution contracts are implemented and synthetically tested; no v2 tokenizer or model outcome is reported. | None | `configs/experiments/qwen_binding_mediation_v2.yaml` | none | clean `53cd69d` | `EVALUATOR_IMPLEMENTED_PROTECTED_NOT_RUN` |
+| LLM-QWEN-BINDING-MEDIATION-002 | The outcome-blind evaluator and exact protected-execution contracts are implemented and synthetically tested; capture is prospectively authorized but no v2 model outcome is reported. | None | `configs/experiments/qwen_binding_mediation_v2.yaml` | none | evaluator `53cd69d`; token audit `f19d308` | `CAPTURE_AUTHORIZED_NOT_RUN` |
 | LLM-QWEN-BINDING-TOKEN-AUDIT-002 | All 560 v2 pairs have the registered token identity, split isolation, exact test/paraphrase factor pairing, and pinned tokenizer revision; Qwen is not executed. | Availability | `configs/experiments/qwen_binding_mediation_v2.yaml` | `artifacts/metrics/qwen_binding_tokenization_audit_v2.json` | clean execution `bca50e3` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-CONTRACT-001 | The pinned official Impala/one-layer-GRU contract supports exact gate decomposition and localized gate edits under the current runtime; no learned mechanism is tested. | Availability | `configs/experiments/eb_jepa_official_contract_smoke.yaml` | `artifacts/metrics/eb_jepa_contract_smoke.json` | `979c2d6` | `SMOKE_VALIDATED` |
 | WM-EBJEPA-RUNTIME-001 | The exact Torch 2.6/cu126 pin omits SM120 and fails matched GPU kernels; the disclosed Torch 2.10/cu128 runtime includes SM120 and passes them. | Availability | `configs/experiments/eb_jepa_runtime_compatibility.yaml` | `artifacts/metrics/eb_jepa_runtime_compatibility.json` | clean `15d88ce` | `SMOKE_VALIDATED` |

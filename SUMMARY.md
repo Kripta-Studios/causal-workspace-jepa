@@ -34,6 +34,9 @@
   Test and paraphrase share identical bindings and differ only in template; exactly two token
   positions change in every episode; all registered role/split token IDs are disjoint; the episode
   hash is `96dc6320...f3be`. This is Availability-only token evidence and executes no Qwen forward.
+- A separate pre-outcome commit changes `protected_capture_authorized` to true, bound to evaluator
+  `53cd69d` and token-audit result `f19d308`. Its scope is capture only: ranking, train-plan freezing,
+  protected evaluation, and H-LLM-15/16 remain gated by the captured competence/integrity result.
 - Prospectively registered `LLM-QWEN-BINDING-ALGEBRA-001`: primitive binding transpositions train a
   candidate causal transition operator, while unseen double transpositions, three-cycles,
   four-cycles, and action-plus-inverse rollouts test composition and restoration across disjoint

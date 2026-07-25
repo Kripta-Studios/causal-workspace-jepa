@@ -1399,8 +1399,9 @@ set; it does not by itself establish a directed circuit, JEPA advantage, workspa
 
 **Pre-outcome engineering result (2026-07-25).** The replacement token audit ran from clean
 `bca50e3` and passed all eight registered gates over 560 episodes, with episode hash
-`96dc6320...f3be`. It executes no Qwen forward and changes no hypothesis status. Capture remains
-blocked by `protected_capture_authorized=false` until a separate committed authorization milestone.
+`96dc6320...f3be`. It executes no Qwen forward and changes no hypothesis status. A separate
+pre-outcome milestone authorizes only the frozen capture, bound to evaluator `53cd69d` and token
+audit result `f19d308`; ranking and H-LLM-15/16 remain conditional on capture eligibility.
 
 ## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
 

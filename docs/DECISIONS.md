@@ -276,8 +276,8 @@
   whether the population derivative that improved finite prediction also localizes directly
   sufficient and necessary mediators better than local/HVP/custom-AtP*/probe/magnitude rankings.
   The evaluator now freezes phase separation, plan integrity, exact controls, and per-unit checksums
-  at clean `53cd69d`. The v2 token audit passes from clean `bca50e3`; protected capture stays closed
-  until authorization is changed in a separate pre-outcome commit.
+  at clean `53cd69d`. The v2 token audit passes from clean `bca50e3`. A separate pre-outcome commit
+  authorizes capture only; downstream phases remain fail-closed on capture eligibility and budget.
 - Register binding permutation algebra as a separate prospective route. Train only primitive
   transpositions and test composed/inverse actions in causal-delta space; stop at the differential
   null if additive or full-quadratic transports explain validation. Protocol design does not itself

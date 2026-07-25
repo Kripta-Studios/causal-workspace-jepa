@@ -33,11 +33,21 @@ class QwenBindingMediationCaptureTests(unittest.TestCase):
     def setUp(self) -> None:
         self.config = load_config("configs/experiments/qwen_binding_mediation_v2.yaml")
 
-    def test_protected_capture_is_explicitly_blocked_until_executor_freeze(self) -> None:
-        with self.assertRaisesRegex(RuntimeError, "protected capture is not authorized"):
-            run_qwen_binding_mediation_capture(
-                "configs/experiments/qwen_binding_mediation_v2.yaml"
-            )
+    def test_false_authorization_blocks_capture_before_resource_or_model_access(self) -> None:
+        source = Path("configs/experiments/qwen_binding_mediation_v2.yaml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("protected_capture_authorized: true", source)
+        blocked = source.replace(
+            "protected_capture_authorized: true",
+            "protected_capture_authorized: false",
+            1,
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "blocked.yaml"
+            path.write_text(blocked, encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "protected capture is not authorized"):
+                run_qwen_binding_mediation_capture(path)
 
     def _contract_fixture(
         self, *, count: int = 1

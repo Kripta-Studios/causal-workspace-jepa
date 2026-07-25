@@ -33,8 +33,8 @@ runtime identity. The phase-separated evaluator is now implemented with train-on
 unit checksums, direct sufficiency/restoration, five differential/learned comparators, 128
 structure-matched random sets, and four specificity controls, published at clean `53cd69d`.
 The replacement v2 token audit now passes from clean `bca50e3` with episode hash
-`96dc6320...f3be`. Protected capture remains explicitly unauthorized until a separate pre-outcome
-commit changes the authorization flag.
+`96dc6320...f3be`. A separate pre-outcome milestone authorizes capture only; it does not authorize
+ranking changes, hypothesis decisions, or claims before the captured task-eligibility gates pass.
 
 ## Current Status
 
@@ -105,8 +105,8 @@ commit changes the authorization flag.
   V2 freezes exact pairing, 24/6/6 disjoint pools, 56 candidates, `k<=4`, FP32 causal states,
   grouped competence, content/readback integrity, direct sufficiency/restoration, and matched
   nulls. The complete phase-separated executor is implemented and its 138-condition protected
-  roster is unit-tested. The clean v2 token audit passes all eight gates over 560 rows, but capture
-  authorization remains false and no v2 model outcome is open.
+  roster is unit-tested. The clean v2 token audit passes all eight gates over 560 rows and capture
+  is separately authorized, but no v2 model outcome is open.
   This tests a mediator set, not a JEPA, circuit, J-space, or workspace.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
