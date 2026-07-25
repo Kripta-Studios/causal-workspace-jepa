@@ -13,6 +13,7 @@ from causal_workspace_jepa.common.types import InterventionSpec
 from causal_workspace_jepa.hooks.interventions import (
     apply_intervention,
     matched_random_feature_control,
+    project_out_numpy,
     project_out_torch,
     spec_from_json,
     spec_to_json,
@@ -65,6 +66,16 @@ class InterventionTests(unittest.TestCase):
 
         torch.testing.assert_close(changed, torch.tensor([[0.0, 0.0, 5.0]]), atol=1e-6, rtol=0)
         torch.testing.assert_close(gauge_changed, changed, atol=1e-6, rtol=0)
+
+    @unittest.skipIf(torch is None, "torch is optional")
+    def test_project_out_rejects_a_zero_rank_basis(self) -> None:
+        activation = np.asarray([[1.0, 2.0]], dtype=np.float32)
+        with self.assertRaisesRegex(ValueError, "zero numerical rank"):
+            project_out_numpy(activation, np.zeros((2, 1), dtype=np.float32))
+        with self.assertRaisesRegex(ValueError, "zero numerical rank"):
+            project_out_torch(
+                torch.as_tensor(activation), torch.zeros((2, 1), dtype=torch.float32), 1.0
+            )
 
     def test_spec_json_and_matched_control(self) -> None:
         spec = InterventionSpec(site="x", operation="scale", feature_ids=(0, 1), magnitude=0.5, seed=1)

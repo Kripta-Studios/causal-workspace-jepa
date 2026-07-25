@@ -60,15 +60,130 @@ def summarize_action_norms(
     }
 
 
+def validate_competence_job_payload(
+    payload: Mapping[str, Any],
+    *,
+    experiment_id: str,
+    repo_commit: str,
+    source_revision: str,
+    training_seed: int,
+    checkpoint_epoch: int,
+    checkpoint_sha256: str,
+    arm: str,
+    arm_contract: Mapping[str, Any],
+    analysis_seed: int,
+    environment_seed: int,
+    num_episodes: int,
+) -> None:
+    """Reject stale, incomplete, or relabeled ignored competence jobs."""
+
+    expected_identity = {
+        "status": "COMPLETED",
+        "experiment_id": experiment_id,
+        "repo_commit": repo_commit,
+        "repo_dirty_at_start": False,
+        "source_revision": source_revision,
+        "source_clean": True,
+        "training_seed": int(training_seed),
+        "checkpoint_epoch": int(checkpoint_epoch),
+        "checkpoint_recorded_epoch": int(checkpoint_epoch),
+        "checkpoint_sha256": checkpoint_sha256,
+        "arm": arm,
+        "arm_contract": dict(arm_contract),
+        "analysis_seed": int(analysis_seed),
+        "environment_seed": int(environment_seed),
+    }
+    observed = {key: payload.get(key) for key in expected_identity}
+    if observed != expected_identity:
+        raise RuntimeError("existing competence job identity differs from the frozen job")
+    episodes = payload.get("episodes")
+    if not isinstance(episodes, list) or len(episodes) != num_episodes:
+        raise RuntimeError("existing competence job has the wrong episode count")
+    for index, row in enumerate(episodes):
+        if not isinstance(row, Mapping):
+            raise RuntimeError("existing competence job contains a malformed episode")
+        row_identity = (
+            row.get("arm"),
+            row.get("training_seed"),
+            row.get("checkpoint_epoch"),
+            row.get("episode"),
+        )
+        if row_identity != (arm, training_seed, checkpoint_epoch, index):
+            raise RuntimeError("existing competence episode identity/order differs")
+        numeric = (
+            row.get("final_state_distance"),
+            row.get("episode_seconds"),
+            row.get("max_executed_action_norm"),
+        )
+        if type(row.get("success")) is not bool or not all(
+            isinstance(value, (int, float)) and math.isfinite(float(value)) and value >= 0
+            for value in numeric
+        ):
+            raise RuntimeError("existing competence episode has invalid outcomes")
+        if not isinstance(row.get("executed_action_count"), int) or row[
+            "executed_action_count"
+        ] <= 0:
+            raise RuntimeError("existing competence episode has no executed actions")
+        if not isinstance(row.get("executed_action_violation_count"), int) or row[
+            "executed_action_violation_count"
+        ] < 0:
+            raise RuntimeError("existing competence episode has invalid violation count")
+    summary = payload.get("summary")
+    if not isinstance(summary, Mapping):
+        raise RuntimeError("existing competence job lacks a summary")
+    expected_summary = {
+        "success_rate": sum(row["success"] for row in episodes) / num_episodes,
+        "mean_final_state_distance": sum(row["final_state_distance"] for row in episodes)
+        / num_episodes,
+        "executed_action_violation_count": sum(
+            row["executed_action_violation_count"] for row in episodes
+        ),
+        "max_executed_action_norm": max(
+            row["max_executed_action_norm"] for row in episodes
+        ),
+    }
+    for key, expected in expected_summary.items():
+        observed_value = summary.get(key)
+        if not isinstance(observed_value, (int, float)) or not math.isclose(
+            float(observed_value), float(expected), rel_tol=1e-12, abs_tol=1e-12
+        ):
+            raise RuntimeError(f"existing competence summary differs at {key}")
+
+
 def aggregate_competence(
     rows: Sequence[Mapping[str, Any]],
     *,
     seeds: Sequence[int],
+    checkpoint_epochs: Sequence[int] | None = None,
+    episodes_per_job: int | None = None,
     required_arms: Sequence[str] = REQUIRED_ARMS,
     primary_eligibility_arm: str = PRIMARY_ELIGIBILITY_ARM,
     overall_threshold: float = 0.80,
     per_seed_threshold: float = 0.70,
 ) -> dict[str, Any]:
+    if (checkpoint_epochs is None) != (episodes_per_job is None):
+        raise ValueError("checkpoint_epochs and episodes_per_job must be provided together")
+    if checkpoint_epochs is not None:
+        if not checkpoint_epochs or episodes_per_job is None or episodes_per_job <= 0:
+            raise ValueError("the frozen checkpoint roster and episode count must be nonempty")
+        expected = {
+            (int(seed), int(epoch), str(arm), episode)
+            for seed in seeds
+            for epoch in checkpoint_epochs
+            for arm in required_arms
+            for episode in range(episodes_per_job)
+        }
+        observed = {
+            (
+                int(row["training_seed"]),
+                int(row["checkpoint_epoch"]),
+                str(row["arm"]),
+                int(row["episode"]),
+            )
+            for row in rows
+        }
+        if len(rows) != len(expected) or observed != expected:
+            raise RuntimeError("competence rows do not match the exact frozen job roster")
     by_arm: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
     for row in rows:
         by_arm[str(row["arm"])].append(row)

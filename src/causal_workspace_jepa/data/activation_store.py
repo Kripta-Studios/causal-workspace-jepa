@@ -72,6 +72,11 @@ def write_hdf5_shards(
     if not arrays:
         raise ValueError("at least one array is required")
     normalized = {name: np.asarray(value) for name, value in arrays.items()}
+    for name, value in normalized.items():
+        if not np.issubdtype(value.dtype, np.number):
+            raise TypeError(f"activation array must be numeric: {name}")
+        if not np.all(np.isfinite(value)):
+            raise FloatingPointError(f"activation array contains nonfinite values: {name}")
     lengths = {value.shape[0] for value in normalized.values()}
     if len(lengths) != 1:
         raise ValueError("all activation arrays must share the first dimension")
@@ -97,6 +102,7 @@ def write_hdf5_shards(
             raise RuntimeError("existing activation manifest does not match dataset/config identity")
         _validate_manifest_structure(manifest, output)
         if all(_sha256(output / shard["path"]) == shard["sha256"] for shard in manifest["shards"]):
+            _validate_existing_content(manifest, output, normalized, records)
             return manifest
         raise RuntimeError("existing activation shard checksum mismatch")
     output.mkdir(parents=True, exist_ok=True)
@@ -174,6 +180,8 @@ def read_hdf5_shards(output_dir: str | Path) -> tuple[dict[str, np.ndarray], lis
 
 
 def _validate_manifest_structure(manifest: Mapping[str, Any], output: Path) -> None:
+    import h5py
+
     shards = manifest.get("shards")
     arrays = manifest.get("arrays")
     examples = manifest.get("examples")
@@ -184,6 +192,8 @@ def _validate_manifest_structure(manifest: Mapping[str, Any], output: Path) -> N
     if not isinstance(examples, int) or examples <= 0:
         raise RuntimeError("activation manifest example count must be positive")
     observed_rows = 0
+    observed_paths: set[str] = set()
+    expected_start = 0
     for shard in shards:
         if not isinstance(shard, Mapping):
             raise RuntimeError("activation manifest contains a malformed shard record")
@@ -193,14 +203,74 @@ def _validate_manifest_structure(manifest: Mapping[str, Any], output: Path) -> N
         path = output / relative
         if not path.is_file():
             raise RuntimeError(f"activation shard is missing: {path}")
+        if str(relative) in observed_paths:
+            raise RuntimeError(f"activation manifest repeats a shard path: {relative}")
+        observed_paths.add(str(relative))
         rows = shard.get("rows")
         if not isinstance(rows, int) or rows <= 0:
             raise RuntimeError("activation shard row count must be positive")
         observed_rows += rows
         if not isinstance(shard.get("sha256"), str) or len(shard["sha256"]) != 64:
             raise RuntimeError("activation shard checksum is malformed")
+        with h5py.File(path, "r") as handle:
+            start = int(handle.attrs.get("start", -1))
+            stop = int(handle.attrs.get("stop", -1))
+            if start != expected_start or stop != start + rows:
+                raise RuntimeError("activation shard ranges are not contiguous and ordered")
+            if handle.attrs.get("dataset_id") != manifest.get("dataset_id") or handle.attrs.get(
+                "config_digest"
+            ) != manifest.get("config_digest"):
+                raise RuntimeError("activation shard identity differs from its manifest")
+            if "arrays" not in handle or set(handle["arrays"]) != set(arrays):
+                raise RuntimeError("activation shard array names differ from its manifest")
+            for name, schema in arrays.items():
+                if not isinstance(schema, Mapping):
+                    raise RuntimeError("activation manifest contains a malformed array schema")
+                dataset = handle["arrays"][name]
+                expected_shape = tuple(int(value) for value in schema.get("shape", ()))
+                if not expected_shape or dataset.shape != (rows, *expected_shape[1:]):
+                    raise RuntimeError("activation shard array shape differs from its manifest")
+                if str(dataset.dtype) != str(schema.get("dtype")):
+                    raise RuntimeError("activation shard array dtype differs from its manifest")
+            if "records_json" not in handle or handle["records_json"].shape != (rows,):
+                raise RuntimeError("activation shard record count differs from its manifest")
+        expected_start = stop
     if observed_rows != examples:
         raise RuntimeError("activation shard row counts differ from manifest examples")
+
+
+def _validate_existing_content(
+    manifest: Mapping[str, Any],
+    output: Path,
+    arrays: Mapping[str, np.ndarray],
+    records: list[Mapping[str, Any]],
+) -> None:
+    """Prove that a resume request is byte-semantically the existing dataset."""
+
+    import h5py
+
+    expected_schema = {
+        name: {"shape": list(value.shape), "dtype": str(value.dtype)}
+        for name, value in arrays.items()
+    }
+    if int(manifest["examples"]) != len(records) or manifest["arrays"] != expected_schema:
+        raise RuntimeError("existing activation manifest schema differs from requested content")
+    cursor = 0
+    for shard in manifest["shards"]:
+        rows = int(shard["rows"])
+        with h5py.File(output / shard["path"], "r") as handle:
+            for name, value in arrays.items():
+                if not np.array_equal(handle["arrays"][name][...], value[cursor : cursor + rows]):
+                    raise RuntimeError(
+                        f"existing activation content differs from resume request: {name}"
+                    )
+            observed_records = [
+                json.loads(value) for value in handle["records_json"].asstr()[...]
+            ]
+            expected_records = [dict(value) for value in records[cursor : cursor + rows]]
+            if observed_records != expected_records:
+                raise RuntimeError("existing activation records differ from resume request")
+        cursor += rows
 
 
 def _sha256(path: Path) -> str:

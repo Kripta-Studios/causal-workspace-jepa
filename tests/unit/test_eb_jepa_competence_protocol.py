@@ -2,6 +2,7 @@ from causal_workspace_jepa.experiments.world_model.eb_jepa_competence_protocol i
     aggregate_competence,
     planner_arm_contract,
     summarize_action_norms,
+    validate_competence_job_payload,
 )
 
 import pytest
@@ -65,3 +66,90 @@ def test_action_norm_summary_fails_closed_on_nan() -> None:
         summarize_action_norms([1.0, float("nan")], action_max_norm=2.45)
     summary = summarize_action_norms([2.0, 2.5], action_max_norm=2.45)
     assert summary["executed_action_violation_count"] == 1
+
+
+def test_completed_job_reuse_requires_exact_identity_and_episode_roster() -> None:
+    arm = "bound_corrected_mppi_as_executed"
+    episodes = [
+        {
+            "arm": arm,
+            "training_seed": 1,
+            "checkpoint_epoch": 9,
+            "episode": index,
+            "success": index == 0,
+            "final_state_distance": float(index + 1),
+            "episode_seconds": 0.5,
+            "executed_action_count": 2,
+            "executed_action_violation_count": 0,
+            "max_executed_action_norm": 2.0,
+        }
+        for index in range(2)
+    ]
+    payload = {
+        "status": "COMPLETED",
+        "experiment_id": "WM-EBJEPA-COMPETENCE-001",
+        "repo_commit": "abc",
+        "repo_dirty_at_start": False,
+        "source_revision": "def",
+        "source_clean": True,
+        "training_seed": 1,
+        "checkpoint_epoch": 9,
+        "checkpoint_recorded_epoch": 9,
+        "checkpoint_sha256": "0" * 64,
+        "arm": arm,
+        "arm_contract": planner_arm_contract(arm),
+        "analysis_seed": 730010,
+        "environment_seed": 0,
+        "episodes": episodes,
+        "summary": {
+            "success_rate": 0.5,
+            "mean_final_state_distance": 1.5,
+            "executed_action_violation_count": 0,
+            "max_executed_action_norm": 2.0,
+        },
+    }
+    kwargs = {
+        "experiment_id": "WM-EBJEPA-COMPETENCE-001",
+        "repo_commit": "abc",
+        "source_revision": "def",
+        "training_seed": 1,
+        "checkpoint_epoch": 9,
+        "checkpoint_sha256": "0" * 64,
+        "arm": arm,
+        "arm_contract": planner_arm_contract(arm),
+        "analysis_seed": 730010,
+        "environment_seed": 0,
+        "num_episodes": 2,
+    }
+    validate_competence_job_payload(payload, **kwargs)
+    payload["episodes"][1]["episode"] = 0
+    with pytest.raises(RuntimeError, match="identity/order"):
+        validate_competence_job_payload(payload, **kwargs)
+
+
+def test_aggregate_rejects_duplicate_or_missing_frozen_rows() -> None:
+    rows = [
+        {
+            "arm": arm,
+            "training_seed": 1,
+            "checkpoint_epoch": 9,
+            "episode": episode,
+            "success": True,
+        }
+        for arm in ("official_mppi_as_executed", "bound_corrected_mppi_as_executed")
+        for episode in range(2)
+    ]
+    aggregate_competence(
+        rows,
+        seeds=(1,),
+        checkpoint_epochs=(9,),
+        episodes_per_job=2,
+    )
+    rows[-1] = dict(rows[-2])
+    with pytest.raises(RuntimeError, match="exact frozen job roster"):
+        aggregate_competence(
+            rows,
+            seeds=(1,),
+            checkpoint_epochs=(9,),
+            episodes_per_job=2,
+        )

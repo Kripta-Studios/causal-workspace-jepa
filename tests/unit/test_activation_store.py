@@ -78,6 +78,46 @@ class ActivationStoreTests(unittest.TestCase):
                     config_digest="abc",
                 )
 
+    def test_read_rejects_duplicate_shard_paths(self) -> None:
+        arrays = {"x": np.arange(4, dtype=np.float32).reshape(4, 1)}
+        records = [{"id": index} for index in range(4)]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            manifest = write_hdf5_shards(
+                tmpdir,
+                arrays,
+                records,
+                dataset_id="test",
+                config_digest="abc",
+                max_shard_mb=1,
+            )
+            manifest["examples"] = 8
+            manifest["shards"] = [manifest["shards"][0], manifest["shards"][0]]
+            (Path(tmpdir) / "manifest.json").write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(RuntimeError, "repeats a shard"):
+                read_hdf5_shards(tmpdir)
+
+    def test_resume_rejects_different_requested_content(self) -> None:
+        arrays = {"x": np.arange(4, dtype=np.float32).reshape(4, 1)}
+        records = [{"id": index} for index in range(4)]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            write_hdf5_shards(
+                tmpdir,
+                arrays,
+                records,
+                dataset_id="test",
+                config_digest="abc",
+            )
+            changed = {"x": arrays["x"].copy()}
+            changed["x"][0, 0] = 999.0
+            with self.assertRaisesRegex(RuntimeError, "differs from resume request"):
+                write_hdf5_shards(
+                    tmpdir,
+                    changed,
+                    records,
+                    dataset_id="test",
+                    config_digest="abc",
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

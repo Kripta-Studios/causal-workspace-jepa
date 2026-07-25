@@ -120,6 +120,22 @@ class SmallLeWorldModelTests(unittest.TestCase):
             float(np.max(np.abs(at_zero.predicted_latents - at_two.predicted_latents))),
             0.0,
         )
+        at_last = adapter.predict_with_intervention(
+            latent,
+            actions,
+            InterventionSpec(site="predictor.block0", operation="zero", positions=(-1,)),
+            return_intermediates=True,
+        )
+        np.testing.assert_array_equal(
+            at_last.intermediates["predictor.block0"][:, 2],
+            np.zeros((2, 8), dtype=np.float32),
+        )
+        with self.assertRaisesRegex(IndexError, "out of range"):
+            adapter.predict_with_intervention(
+                latent,
+                actions,
+                InterventionSpec(site="predictor.block0", operation="zero", positions=(99,)),
+            )
 
     def test_adapter_project_out_uses_nonorthogonal_column_basis(self) -> None:
         from causal_workspace_jepa.adapters.lewm_adapter import LeWorldModelAdapter

@@ -137,9 +137,23 @@ class LeWorldModelAdapter:
         current = embedding
         trajectory: list[torch.Tensor] = []
         site_values: dict[str, list[torch.Tensor]] = {}
+        selected_steps: set[int] | None = None
+        if intervention is not None and intervention.positions is not None:
+            horizon = int(actions.size(1))
+            if not intervention.positions:
+                raise ValueError("temporal intervention positions must be nonempty")
+            normalized = tuple(
+                position if position >= 0 else horizon + position
+                for position in intervention.positions
+            )
+            if len(set(normalized)) != len(normalized) or any(
+                position < 0 or position >= horizon for position in normalized
+            ):
+                raise IndexError("temporal intervention position is duplicated or out of range")
+            selected_steps = set(normalized)
         for step in range(actions.size(1)):
             applies = intervention is not None and (
-                intervention.positions is None or step in intervention.positions
+                selected_steps is None or step in selected_steps
             )
             callbacks = (
                 {

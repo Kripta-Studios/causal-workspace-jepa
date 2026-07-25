@@ -167,7 +167,7 @@ def project_out_numpy(
     )
     rank = int(np.count_nonzero(singular_values > tolerance))
     if rank == 0:
-        return np.array(target_array, copy=True)
+        raise ValueError("project_out basis has zero numerical rank")
     orthonormal = left[:, :rank]
     projected = work - magnitude * (work @ orthonormal) @ orthonormal.T
     return projected.astype(target_array.dtype, copy=False).reshape(target_array.shape)
@@ -206,7 +206,7 @@ def project_out_torch(target: Any, basis: Any, magnitude: float) -> Any:
     )
     rank = int((singular_values > tolerance).sum().item())
     if rank == 0:
-        return target.clone()
+        raise ValueError("project_out basis has zero numerical rank")
     orthonormal = left[:, :rank]
     projected = work - magnitude * (work @ orthonormal) @ orthonormal.T
     return projected.to(dtype=target.dtype).reshape_as(target)

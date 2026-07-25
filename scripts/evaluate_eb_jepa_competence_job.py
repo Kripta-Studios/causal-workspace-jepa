@@ -21,6 +21,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 from causal_workspace_jepa.experiments.world_model.eb_jepa_competence_protocol import (  # noqa: E402
     planner_arm_contract,
     summarize_action_norms,
+    validate_competence_job_payload,
 )
 from causal_workspace_jepa.planning.eb_jepa_constrained_mppi import (  # noqa: E402
     ConstrainedMPPIPlanner,
@@ -133,15 +134,28 @@ def main() -> int:
         / f"epoch-{args.epoch}"
         / f"{args.arm}.json"
     ).resolve()
+    checkpoint_sha256 = _sha256(checkpoint)
+    analysis_seed = int(config["analysis_seed_base"]) + args.training_seed + args.epoch
+    arm_contract = planner_arm_contract(args.arm)
     if output.exists():
         existing = json.loads(output.read_text(encoding="utf-8"))
-        if existing.get("status") == "COMPLETED" and existing.get(
-            "checkpoint_sha256"
-        ) == _sha256(checkpoint):
-            print(json.dumps(existing, indent=2, sort_keys=True))
-            return 0
+        validate_competence_job_payload(
+            existing,
+            experiment_id=str(config["id"]),
+            repo_commit=repo_commit,
+            source_revision=revision,
+            training_seed=args.training_seed,
+            checkpoint_epoch=args.epoch,
+            checkpoint_sha256=checkpoint_sha256,
+            arm=args.arm,
+            arm_contract=arm_contract,
+            analysis_seed=analysis_seed,
+            environment_seed=int(config["environment_seed"]),
+            num_episodes=int(config["num_episodes"]),
+        )
+        print(json.dumps(existing, indent=2, sort_keys=True))
+        return 0
 
-    analysis_seed = int(config["analysis_seed_base"]) + args.training_seed + args.epoch
     random.seed(analysis_seed)
     np.random.seed(analysis_seed)
     torch.manual_seed(analysis_seed)
@@ -183,7 +197,6 @@ def main() -> int:
         normalizer=environment.normalizer,
         env=environment,
     )
-    arm_contract = planner_arm_contract(args.arm)
     if arm_contract["planner_implementation"] == "constraint_corrected":
         planner_kwargs = dict(plan_config["planner"])
         planner_kwargs["max_std"] = arm_contract["max_std"]
@@ -253,7 +266,7 @@ def main() -> int:
         "training_seed": args.training_seed,
         "checkpoint_epoch": args.epoch,
         "checkpoint_recorded_epoch": int(checkpoint_info["epoch"]) - 1,
-        "checkpoint_sha256": _sha256(checkpoint),
+        "checkpoint_sha256": checkpoint_sha256,
         "arm": args.arm,
         "arm_contract": arm_contract,
         "analysis_seed": analysis_seed,
@@ -280,6 +293,20 @@ def main() -> int:
             "device": torch.cuda.get_device_name(0),
         },
     }
+    validate_competence_job_payload(
+        payload,
+        experiment_id=str(config["id"]),
+        repo_commit=repo_commit,
+        source_revision=revision,
+        training_seed=args.training_seed,
+        checkpoint_epoch=args.epoch,
+        checkpoint_sha256=checkpoint_sha256,
+        arm=args.arm,
+        arm_contract=arm_contract,
+        analysis_seed=analysis_seed,
+        environment_seed=int(config["environment_seed"]),
+        num_episodes=int(config["num_episodes"]),
+    )
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(".tmp")
     temporary.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")

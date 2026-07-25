@@ -244,6 +244,8 @@ def main() -> int:
     aggregate = aggregate_competence(
         rows,
         seeds=config["training_seeds"],
+        checkpoint_epochs=config["checkpoint_epochs"],
+        episodes_per_job=int(config["num_episodes"]),
         required_arms=config["planner_arms"],
         primary_eligibility_arm=str(config["mechanistic_eligibility_arm"]),
         overall_threshold=float(config["overall_success_threshold"]),
@@ -279,7 +281,7 @@ def main() -> int:
             if competence_passed
             else "COMPLETED_INELIGIBLE"
         ),
-        "evidence_level": "Generalization" if competence_passed else "Availability",
+        "evidence_level": "Availability",
         "repo_commit": repo_commit,
         "source_revision": config["revision"],
         "training_seeds": config["training_seeds"],
