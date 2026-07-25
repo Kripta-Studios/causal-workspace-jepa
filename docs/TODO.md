@@ -79,8 +79,12 @@
 - [x] Harden completed-seed reuse against stale status JSON, missing/changed checkpoints, wrong
   recorded epochs, nonfinite model tensors, and a nonidentical `latest` checkpoint. Make the bounded
   MPPI arm primary for mechanistic eligibility while retaining the official arm as a paired audit.
-- [ ] From a clean pushed tree, validate seed 1000 as `VALIDATED_NOT_TRAINED`, resume seeds
-  1000/10000, and preserve the disclosed compatible Torch 2.10 runtime.
+- [x] From clean `66933fe`, validate seed 1000 as `VALIDATED_NOT_TRAINED`; repository, pinned
+  upstream, source config, and compatible Torch 2.10 runtime all match.
+- [ ] When `nvidia-smi` shows safe headroom beyond the measured 5.82-GB batch reservation, resume
+  seeds 1000/10000 with `python scripts/run_eb_jepa_training_portfolio.py --config
+  configs/experiments/eb_jepa_two_rooms_training.yaml`; retain logs/status and do not launch while
+  competing user workloads occupy roughly half the 12-GB GPU.
 - [ ] Retain all 12 epoch checkpoints for every training seed and evaluate frozen epochs 9/10/11
   under separately labeled planner arms.
 - [ ] Reproduce the competent Two Rooms planner across three seeds before registering its recurrent

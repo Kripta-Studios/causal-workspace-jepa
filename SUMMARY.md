@@ -14,6 +14,11 @@
   emission and answer-logit ordering within the candidate set. It cannot locate whether the change
   arises in parsing, binding computation, readout, or output-mode competition; it confirms no
   hypothesis and cannot rescue v2 or choose the prompt for v3.
+- EB-JEPA seed 1000 passed `--validate-only` from clean `66933fe`: the repository, pinned upstream
+  `966e61e...`, batch-384 configuration, and Torch-2.10 compatibility environment are ready. The
+  training launch was deliberately deferred because other user workloads occupied about
+  `6307/12227 MiB` and the measured EB-JEPA batch reserves 5.82 GB; no OOM-risking process was
+  started. Recheck GPU memory and clean-tree state before resuming seeds 1000/10000.
 
 ## 2026-07-25 — Target diagnosis corrected and causal binding algebra preregistered
 

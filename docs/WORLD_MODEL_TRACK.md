@@ -15,7 +15,8 @@ Initial implementation order:
 The former LeWorldModel placeholder is replaced by a typed, source-traceable small reproduction and
 adapter. `WM-LEWM-001` ran unchanged from clean commit `4dbc388` against official revision
 `8edfeb3...`. The EB-JEPA placeholder is now replaced by a typed adapter to the pinned official
-source contract at `966e61e...`; published checkpoints/training outcomes remain unexecuted.
+source contract at `966e61e...`. Local official training seed 1 completed all 12 epochs, but no
+three-seed competence result exists.
 
 Primary-source review now prioritizes official EB-JEPA over further small-model extrapolation. Its
 action-conditioned Two Rooms example is Apache-2.0, designed for a single GPU, includes recurrent
@@ -36,7 +37,7 @@ Conv2D, or GRU because the wheel contains architectures only through SM90. A mat
 3.12/Torch 2.10+cu128 runtime includes SM120 and passes all three. Local training must therefore use
 the latter as a declared compatibility deviation. The clean `WM-EBJEPA-RUNTIME-001` run from
 `15d88ce` passed all eight frozen architecture/runtime/kernel gates. Remaining upstream dependencies
-and planner competence are still pending.
+are installed; planner competence is still pending.
 
 The compatible Two Rooms dependency closure is now frozen and installed without allowing the
 upstream package resolver to replace Torch. Source/import audit found undeclared runtime
@@ -82,6 +83,15 @@ declare `var_scale=1.5`; CEM consumes it, whereas MPPI expects `max_std`, absorb
 `**kwargs`, and runs at default `2.0`. The clean `4f0cc80` confirmation passes all six source/runtime
 gates. Planning reports must separate official 2.0, bound-corrected 2.0, and any intention-corrected
 1.5 arm.
+
+The three-seed training portfolio later completed seed 1 in 10,692.85 seconds with all 13 expected
+checkpoint files independently revalidated; loss fell from `0.1990` to `0.0178`, which is not a
+competence result. The portfolio stopped before seed 1000 when the clean-worktree guard detected
+later repository changes. Seed 1000 then passed `--validate-only` from clean `66933fe`, confirming
+the exact repository, upstream revision, batch-384 source configuration, and compatible runtime.
+Its actual launch is deferred while unrelated user workloads occupy about 6.3/12.2 GB of GPU
+memory, because the retained batch-384 profile reserves 5.82 GB. Seeds 1000/10000 and all paired
+planning-competence jobs remain pending.
 
 The reproduction retains the official end-to-end pixel encoder, action embedder, AdaLN-zero
 autoregressive predictor, next-embedding MSE, and SIGReg. It deliberately scales to 20x20
