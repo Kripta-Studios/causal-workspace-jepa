@@ -31,9 +31,9 @@ v2 preregistration pairs each paraphrase with the identical test binding, stores
 FP32, rejects non-finite or malformed captures, and binds resume/readback to exact content and
 runtime identity. The phase-separated evaluator is now implemented with train-only plan freezing,
 unit checksums, direct sufficiency/restoration, five differential/learned comparators, 128
-structure-matched random sets, and four specificity controls. Protected capture remains explicitly
-unauthorized until this evaluator is committed/pushed and the replacement v2 token audit passes
-from that clean tree.
+structure-matched random sets, and four specificity controls, published at clean `53cd69d`.
+Protected capture remains explicitly unauthorized until the replacement v2 token audit passes
+from a clean tree and a separate pre-outcome commit changes the authorization flag.
 
 ## Current Status
 

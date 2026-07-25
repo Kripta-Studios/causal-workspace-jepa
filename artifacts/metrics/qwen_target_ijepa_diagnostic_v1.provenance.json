@@ -1,0 +1,14 @@
+{
+  "command": "python scripts/run_experiment.py --config configs/experiments/qwen_target_ijepa_diagnostic_v1.yaml",
+  "evidence_level": "Availability",
+  "git_commit": "53cd69d5734450bf3bf367fff558d6c42e966b6c",
+  "git_dirty": false,
+  "hypotheses_confirmed": [],
+  "metrics": "artifacts/metrics/qwen_target_ijepa_diagnostic_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 311,
+  "status": "POSTHOC_DIAGNOSTIC",
+  "time_utc": "2026-07-25T21:59:17.337628+00:00"
+}

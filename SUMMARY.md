@@ -25,8 +25,11 @@
   Its three-phase runner freezes a self-hashed train-only plan, requires byte identity with the plan
   committed at `HEAD`, executes 138 conditions per protected episode, and resumes only through
   checksum-verified units. Validation is capture-eligibility only; direct decisions use the frozen
-  test and paired-paraphrase splits. Protected Qwen outcomes remain closed until the runner is
-  committed/pushed and the replacement v2 token audit passes from clean code.
+  test and paired-paraphrase splits. Protected Qwen outcomes remain closed until the replacement
+  v2 token audit passes from clean code and authorization is changed in a separate commit.
+- The evaluator milestone is published as clean commit `53cd69d`. The target-JEPA diagnostic was
+  then regenerated from that clean tree; its provenance records `git_dirty=false`, commit
+  `53cd69d`, all 612 reused rows, all three checkpoint hashes, and zero confirmed hypotheses.
 - Prospectively registered `LLM-QWEN-BINDING-ALGEBRA-001`: primitive binding transpositions train a
   candidate causal transition operator, while unseen double transpositions, three-cycles,
   four-cycles, and action-plus-inverse rollouts test composition and restoration across disjoint

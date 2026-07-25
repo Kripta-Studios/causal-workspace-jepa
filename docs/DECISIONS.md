@@ -275,9 +275,9 @@
 - Keep binding mediation v2 ahead of any new meta-model. Its unique discriminating question is
   whether the population derivative that improved finite prediction also localizes directly
   sufficient and necessary mediators better than local/HVP/custom-AtP*/probe/magnitude rankings.
-  The evaluator now freezes phase separation, plan integrity, exact controls, and per-unit checksums.
-  Protected capture stays closed until that implementation is committed/pushed, the v2 token audit
-  passes from the clean tree, and authorization is changed in a separate pre-outcome commit.
+  The evaluator now freezes phase separation, plan integrity, exact controls, and per-unit checksums
+  at clean `53cd69d`. Protected capture stays closed until the v2 token audit passes from a clean
+  tree and authorization is changed in a separate pre-outcome commit.
 - Register binding permutation algebra as a separate prospective route. Train only primitive
   transpositions and test composed/inverse actions in causal-delta space; stop at the differential
   null if additive or full-quadratic transports explain validation. Protocol design does not itself
