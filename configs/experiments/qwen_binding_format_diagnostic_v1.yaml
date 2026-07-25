@@ -1,0 +1,12 @@
+id: LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001
+status: POSTHOC_DIAGNOSTIC
+resource_profile: configs/resource/cpu_vps.yaml
+parent_experiment_id: LLM-QWEN-BINDING-MEDIATION-002
+parent_config: configs/experiments/qwen_binding_mediation_v2.yaml
+capture_metrics: artifacts/metrics/qwen_binding_capture_v2.json
+capture_manifest: data/manifests/qwen_binding_mediation_v2.json
+capture_dir: data/activations/qwen_binding_mediation_v2
+output_metrics: artifacts/metrics/qwen_binding_format_diagnostic_v1.json
+seed: 419
+confirmatory_claims_allowed: false
+protected_outcomes_used_posthoc: true

@@ -39,6 +39,9 @@ from causal_workspace_jepa.experiments.llm.qwen_target_encoder_ijepa_study impor
 from causal_workspace_jepa.experiments.llm.qwen_target_ijepa_diagnostic import (
     run_qwen_target_ijepa_diagnostic,
 )
+from causal_workspace_jepa.experiments.llm.qwen_binding_format_diagnostic import (
+    run_qwen_binding_format_diagnostic,
+)
 from causal_workspace_jepa.experiments.llm.qwen_intervention_jepa_study import (
     run_qwen_intervention_jepa_study,
 )
@@ -199,6 +202,10 @@ def main() -> int:
         return 0
     if experiment_id == "LLM-TARGET-IJEPA-DIAGNOSTIC-001":
         metrics = run_qwen_target_ijepa_diagnostic(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001":
+        metrics = run_qwen_binding_format_diagnostic(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     if experiment_id == "LLM-CONTEXT-GEOMETRY-001":

@@ -44,6 +44,10 @@
   The exactly paired paraphrase reaches clean `0.646`, donor/transfer `0.677`, but its worst-group
   floors are only `0.111--0.133`. H-LLM-15/16 remain undecided; calibration, ranking, and protected
   mediation are prohibited for v2.
+- An explicitly outcome-disclosed, read-only format diagnostic is now implemented but not run. It
+  fixes full-vocabulary, registered-value, within-episode, rank, margin, dominant-token, and paired
+  test-to-paraphrase summaries; requires the immutable capture checksum and exact answer pairing;
+  and cannot rescue v2, select v3, or provide mediator/circuit/workspace evidence.
 - Prospectively registered `LLM-QWEN-BINDING-ALGEBRA-001`: primitive binding transpositions train a
   candidate causal transition operator, while unseen double transpositions, three-cycles,
   four-cycles, and action-plus-inverse rollouts test composition and restoration across disjoint

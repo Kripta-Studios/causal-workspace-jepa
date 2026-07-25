@@ -1410,6 +1410,17 @@ only `0.646` clean and `0.677` donor/transfer accuracy and fails worst-group flo
 before calibration, ranking, or direct mediator execution. No threshold, template, or split is
 changed post-outcome; a new prompt family requires a separately preregistered v3 with new episodes.
 
+### Outcome-disclosed format diagnostic
+
+`LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001` was specified on 2026-07-26 after every v2 outcome above
+was open. It is a read-only diagnostic over the immutable capture, not a preregistered hypothesis
+test. It reports full-vocabulary, registered-40-value, and within-episode four-value accuracy;
+correct-answer rank and margin; dominant emitted token; and exact paired test-to-paraphrase changes.
+The implementation requires the original `INELIGIBLE_TASK` status, capture checksum, episode order,
+single-token value roster, exact factor pairing, exact answer-ID pairing, finite arrays, and a clean
+committed worktree. `confirmatory_claims_allowed=false`: no outcome can rescue v2, choose a v3
+prompt, decide H-LLM-15/16, localize a mediator, or establish a circuit or workspace.
+
 ## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
 
 Registered prospectively on 2026-07-25 before any prompt from this study is tokenized or passed

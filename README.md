@@ -109,7 +109,9 @@ ranking changes, hypothesis decisions, or claims before the captured task-eligib
   then ran from clean `2bf7e69` and is `INELIGIBLE_TASK`: replay/integrity pass exactly, but the
   primary template has zero clean/donor accuracy on train, validation, and test; the paired
   paraphrase reaches only `0.646/0.677`. H-LLM-15/16 remain undecided and no ranking is permitted.
-  This tests a mediator set, not a JEPA, circuit, J-space, or workspace.
+  A checksum-bound read-only post-hoc format diagnostic is implemented but not yet executed; it
+  cannot rescue v2 or select a replacement prompt. This tests a mediator set, not a JEPA, circuit,
+  J-space, or workspace.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.
 - `SMOKE_VALIDATED`: split-controlled 432-outcome Qwen intervention generator with
