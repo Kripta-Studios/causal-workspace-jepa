@@ -1,0 +1,260 @@
+{
+  "arrays": {
+    "clean_candidate": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        56,
+        1024
+      ]
+    },
+    "clean_final": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        1024
+      ]
+    },
+    "clean_score": {
+      "dtype": "float32",
+      "shape": [
+        560
+      ]
+    },
+    "clean_top_token": {
+      "dtype": "int64",
+      "shape": [
+        560
+      ]
+    },
+    "clean_value_logits": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        40
+      ]
+    },
+    "donor_answer_id": {
+      "dtype": "int64",
+      "shape": [
+        560
+      ]
+    },
+    "donor_top_token": {
+      "dtype": "int64",
+      "shape": [
+        560
+      ]
+    },
+    "donor_value_logits": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        40
+      ]
+    },
+    "recipient_answer_id": {
+      "dtype": "int64",
+      "shape": [
+        560
+      ]
+    },
+    "treated_candidate": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        56,
+        1024
+      ]
+    },
+    "treated_final": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        1024
+      ]
+    },
+    "treated_score": {
+      "dtype": "float32",
+      "shape": [
+        560
+      ]
+    },
+    "treated_top_token": {
+      "dtype": "int64",
+      "shape": [
+        560
+      ]
+    },
+    "treated_value_logits": {
+      "dtype": "float32",
+      "shape": [
+        560,
+        40
+      ]
+    },
+    "treatment_effect": {
+      "dtype": "float32",
+      "shape": [
+        560
+      ]
+    },
+    "treatment_logit_replay_error": {
+      "dtype": "float32",
+      "shape": [
+        560
+      ]
+    },
+    "treatment_source_replay_error": {
+      "dtype": "float32",
+      "shape": [
+        560
+      ]
+    }
+  },
+  "budget_bytes": 1073741824,
+  "candidate_sites": [
+    "blocks.0.attn_out",
+    "blocks.0.mlp_out",
+    "blocks.1.attn_out",
+    "blocks.1.mlp_out",
+    "blocks.2.attn_out",
+    "blocks.2.mlp_out",
+    "blocks.3.attn_out",
+    "blocks.3.mlp_out",
+    "blocks.4.attn_out",
+    "blocks.4.mlp_out",
+    "blocks.5.attn_out",
+    "blocks.5.mlp_out",
+    "blocks.6.attn_out",
+    "blocks.6.mlp_out",
+    "blocks.7.attn_out",
+    "blocks.7.mlp_out",
+    "blocks.8.attn_out",
+    "blocks.8.mlp_out",
+    "blocks.9.attn_out",
+    "blocks.9.mlp_out",
+    "blocks.10.attn_out",
+    "blocks.10.mlp_out",
+    "blocks.11.attn_out",
+    "blocks.11.mlp_out",
+    "blocks.12.attn_out",
+    "blocks.12.mlp_out",
+    "blocks.13.attn_out",
+    "blocks.13.mlp_out",
+    "blocks.14.attn_out",
+    "blocks.14.mlp_out",
+    "blocks.15.attn_out",
+    "blocks.15.mlp_out",
+    "blocks.16.attn_out",
+    "blocks.16.mlp_out",
+    "blocks.17.attn_out",
+    "blocks.17.mlp_out",
+    "blocks.18.attn_out",
+    "blocks.18.mlp_out",
+    "blocks.19.attn_out",
+    "blocks.19.mlp_out",
+    "blocks.20.attn_out",
+    "blocks.20.mlp_out",
+    "blocks.21.attn_out",
+    "blocks.21.mlp_out",
+    "blocks.22.attn_out",
+    "blocks.22.mlp_out",
+    "blocks.23.attn_out",
+    "blocks.23.mlp_out",
+    "blocks.24.attn_out",
+    "blocks.24.mlp_out",
+    "blocks.25.attn_out",
+    "blocks.25.mlp_out",
+    "blocks.26.attn_out",
+    "blocks.26.mlp_out",
+    "blocks.27.attn_out",
+    "blocks.27.mlp_out"
+  ],
+  "capture_digest": "3a3218db0a972b69dac298ef3cdf7da99f6444246d88eac7c0336f9d4084084b",
+  "capture_identity": {
+    "config_digest": "09722fa063711f79ca52273d5f0436612a2acb27f43bb6cb80fe83f9a3e5a437",
+    "git_commit": "2bf7e69a12417a518e9ce8b328eefd2d7a321acd",
+    "model_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "runtime": {
+      "attention_implementation": "eager",
+      "cuda_capability": [
+        12,
+        0
+      ],
+      "cuda_device": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "cuda_runtime": "12.8",
+      "dtype": "torch.float32",
+      "model_type": "qwen3",
+      "numpy": "2.3.5",
+      "torch": "2.10.0+cu128",
+      "transformers": "5.3.0"
+    },
+    "token_audit_sha256": "96dc6320f3bab86e974f10ccf20b148152516775ff6a7dd0dd87b92ae75bf3be",
+    "token_pool_sha256": "0f64e8683abae32b0221c855f7bca6dbf61b1ae512569e0f83a57cd5a98f9de5"
+  },
+  "config_digest": "3a3218db0a972b69dac298ef3cdf7da99f6444246d88eac7c0336f9d4084084b",
+  "content_sha256": "6f4bec3941dd8712ba4dbc2cf8cbca2f82a42b9c1a3d731c109a855ff8216947",
+  "dataset_id": "LLM-QWEN-BINDING-CAPTURE-002",
+  "estimated_uncompressed_bytes": 262130902,
+  "examples": 560,
+  "final_site": "blocks.27.resid_post",
+  "format": "hdf5",
+  "local_data_root": "data/activations/qwen_binding_mediation_v2",
+  "max_shard_bytes": 268435456,
+  "model": "Qwen/Qwen3-0.6B",
+  "model_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "precision": "float32",
+  "readback_verified": true,
+  "shards": [
+    {
+      "bytes": 243890081,
+      "path": "data/activations/qwen_binding_mediation_v2/shard-00000-of-00001.h5",
+      "rows": 560,
+      "sha256": "565b37683819e640386df56ac5f9f9e0ff51beeecb95d223fa24d3327bcc0877"
+    }
+  ],
+  "treatment_site": "blocks.0.resid_pre",
+  "value_token_ids": [
+    12095,
+    19846,
+    21718,
+    24081,
+    80701,
+    45826,
+    57858,
+    52082,
+    76334,
+    63061,
+    72176,
+    46287,
+    78563,
+    32877,
+    37169,
+    37741,
+    52550,
+    70244,
+    59016,
+    63033,
+    68790,
+    54578,
+    61953,
+    85875,
+    94677,
+    52695,
+    55218,
+    22415,
+    50189,
+    56004,
+    26194,
+    7148,
+    67289,
+    71726,
+    10196,
+    22117,
+    17584,
+    19260,
+    16355,
+    25210
+  ]
+}

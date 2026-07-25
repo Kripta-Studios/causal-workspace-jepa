@@ -105,8 +105,10 @@ ranking changes, hypothesis decisions, or claims before the captured task-eligib
   V2 freezes exact pairing, 24/6/6 disjoint pools, 56 candidates, `k<=4`, FP32 causal states,
   grouped competence, content/readback integrity, direct sufficiency/restoration, and matched
   nulls. The complete phase-separated executor is implemented and its 138-condition protected
-  roster is unit-tested. The clean v2 token audit passes all eight gates over 560 rows and capture
-  is separately authorized, but no v2 model outcome is open.
+  roster is unit-tested. The clean v2 token audit passes all eight gates over 560 rows. The capture
+  then ran from clean `2bf7e69` and is `INELIGIBLE_TASK`: replay/integrity pass exactly, but the
+  primary template has zero clean/donor accuracy on train, validation, and test; the paired
+  paraphrase reaches only `0.646/0.677`. H-LLM-15/16 remain undecided and no ranking is permitted.
   This tests a mediator set, not a JEPA, circuit, J-space, or workspace.
 - `SMOKE_VALIDATED`: `LLM-QWEN-001` executed pinned Qwen3-0.6B on the RTX 5070 Ti. Clean replay was
   exact, real autograd was nonzero, and five intervention operations changed hidden states/logits.

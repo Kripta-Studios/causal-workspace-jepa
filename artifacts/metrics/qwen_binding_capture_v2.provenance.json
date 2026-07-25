@@ -1,0 +1,25 @@
+{
+  "command": "python scripts/capture_qwen_binding_mediation.py --config configs/experiments/qwen_binding_mediation_v2.yaml",
+  "gates": {
+    "all_protected_splits_competent": false,
+    "capture_integrity": true,
+    "paraphrase_competent": false,
+    "paraphrase_groups_competent": false,
+    "test_competent": false,
+    "test_groups_competent": false,
+    "train_competent": false,
+    "train_groups_competent": false,
+    "treatment_replay": true,
+    "validation_competent": false,
+    "validation_groups_competent": false
+  },
+  "git_commit": "2bf7e69a12417a518e9ce8b328eefd2d7a321acd",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_binding_capture_v2.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 419,
+  "status": "INELIGIBLE_TASK",
+  "time_utc": "2026-07-25T22:05:14.174448+00:00"
+}

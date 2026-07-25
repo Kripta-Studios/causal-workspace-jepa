@@ -15,10 +15,12 @@ Status: `ACTIVE`.
 - Bounded direct Qwen intervention verification is implemented. Broader prompt families, semantic
   features, layer/site holdouts, behavioral endpoints, and a candidate that survives direct ranking
   controls remain open; the first meta-ranked coordinate candidate was rejected. The new binding
-  protocol now closes the treatment, phase-separation, ranking, direct-control, resume, and
-  inference-design gaps in code but has no v2 token or model outcome yet. If it passes, directed
-  paths, outside-set faithfulness, random-model controls, and a trajectory
-  Intervention-JEPA comparison still remain.
+  protocol closes the treatment, phase-separation, ranking, direct-control, resume, and
+  inference-design gaps in code, but its full capture is task-ineligible. The primary arrow prompt
+  produces zero answer accuracy while the paired colon paraphrase is only partially competent.
+  This exposes prompt-format sensitivity before localization. A new experiment needs a frozen
+  behavior-competent prompt family and new episodes; only then do directed paths, outside-set
+  faithfulness, random-model controls, and a trajectory Intervention-JEPA comparison remain.
 - Conditional donor resampling repaired the random-control manifold failure in `WM-T0-004`, but the
   PCA intervention was too large to be matched. Need a preregistered local-PCA/tangent control.
 - Deep-ensemble intervals calibrate in distribution, but OOD rank AUC and hidden uncertainty-head R2

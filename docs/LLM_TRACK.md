@@ -40,9 +40,11 @@ the population prefix, matched random sets, control assignments, and an answer-r
 diagnostic before opening protected outcomes; every direct protected episode/condition is stored as
 a checksum-bound replay unit. The evaluator was published at clean `53cd69d`. The replacement v2
 token audit then passed all eight gates from clean `bca50e3`; its episode hash is
-`96dc6320...f3be`. A separate pre-outcome commit authorizes capture only. Protected mediator
-outcomes remain unopened; train planning still requires an eligible committed capture and measured
-calibration, and protected execution additionally requires a committed byte-identical plan.
+`96dc6320...f3be`. The separately authorized capture ran from clean `2bf7e69` and passes exact
+replay/integrity, but is `INELIGIBLE_TASK`. Primary-template train/validation/test clean, donor, and
+transfer accuracies are all zero. The paired paraphrase is partially competent (`0.646/0.677`) but
+misses global and worst-group floors. Therefore no calibration, train plan, protected ranking, or
+H-LLM-15/16 decision is allowed for v2.
 
 The adapter now executes ordered intervention programs. Offline tiny-Qwen tests show that replacing
 the changed token at layer-0 `resid_pre` reproduces the donor logits to `1e-6`, while restoring the
@@ -59,9 +61,9 @@ $env:PYTHONPATH = "src"
 python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml
 ```
 
-Run `scripts/capture_qwen_binding_mediation.py` only from the clean authorization commit and do not
-change the frozen config while resuming. Capture is authorized but can still terminate as
-`INELIGIBLE_TASK` or an integrity/replay failure; such a result must be committed without rescue.
+The v2 capture command has completed and must not be rerun under altered prompts or thresholds.
+Its `INELIGIBLE_TASK` result is retained without rescue. A future competent format is a new
+prospective experiment, not a v2 configuration edit.
 The later study phases use `scripts/run_qwen_binding_mediation_study.py`; validation contributes
 capture task-eligibility gates only, while direct mediator decisions are restricted to test and its
 paired paraphrase.

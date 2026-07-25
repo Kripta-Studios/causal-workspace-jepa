@@ -1403,6 +1403,13 @@ set; it does not by itself establish a directed circuit, JEPA advantage, workspa
 pre-outcome milestone authorizes only the frozen capture, bound to evaluator `53cd69d` and token
 audit result `f19d308`; ranking and H-LLM-15/16 remain conditional on capture eligibility.
 
+**Disposition (2026-07-25): `CLOSED_INELIGIBLE_TASK`; H-LLM-15/16 undecided.** The authorized
+capture ran unchanged from clean `2bf7e69`. Exact replay and all storage/integrity gates pass, but
+primary-template task accuracy is zero on train, validation, and test. The paired paraphrase reaches
+only `0.646` clean and `0.677` donor/transfer accuracy and fails worst-group floors. The study stops
+before calibration, ranking, or direct mediator execution. No threshold, template, or split is
+changed post-outcome; a new prompt family requires a separately preregistered v3 with new episodes.
+
 ## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
 
 Registered prospectively on 2026-07-25 before any prompt from this study is tokenized or passed

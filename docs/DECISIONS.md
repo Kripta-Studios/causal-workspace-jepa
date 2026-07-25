@@ -286,3 +286,8 @@
   every checkpoint must revalidate identity, bytes, hash, epoch, finitude, and final/latest equality.
   Bounded MPPI competence is the eligibility gate; official unbounded MPPI remains a mandatory
   paired defect audit and cannot make an otherwise ineligible mechanism interpretable.
+- Close `LLM-QWEN-BINDING-MEDIATION-002` at the capture gate. Exact treatment replay and strong
+  selected-answer logit effects cannot rescue zero primary-template task accuracy. Do not run
+  calibration, rankings, direct mediator sets, or H-LLM-15/16 decisions on this capture. A new
+  prompt family requires a prospectively registered v3 with untouched episodes and gates; v2 may
+  be used only for disclosed post-hoc format diagnosis.

@@ -24,8 +24,13 @@
   hash `96dc6320...f3be`; no Qwen forward executed.
 - [x] Authorize capture only in a separate pre-outcome commit bound to evaluator `53cd69d` and
   token-audit result `f19d308`; downstream ranking and hypothesis decisions remain unauthorized.
-- [ ] From that clean authorization commit, execute protected capture without changing the frozen
-  design; commit its compact metrics/manifest/provenance before calibration.
+- [x] Execute the 560-row FP32 capture from clean `2bf7e69`: integrity and exact replay pass, but
+  task competence fails (`INELIGIBLE_TASK`); retain metrics/manifest/provenance without rescue.
+- [x] Stop v2 before calibration, train rankings, or protected mediation; H-LLM-15/16 are undecided.
+- [ ] Add a disclosed post-hoc read-only format diagnostic for token `17607` collapse versus the
+  partially competent paired paraphrase. Do not use it to modify or rerun v2.
+- [ ] If continuing binding mediation, preregister v3 with new episodes and a behavior-competent
+  prompt family before any capture; preserve v2 as the negative task-eligibility result.
 - [x] Prospectively preregister `LLM-QWEN-BINDING-ALGEBRA-001` without reading binding-v2 or new
   Qwen outcomes; freeze the `S4` convention, primitive/composed action split, causal-delta target,
   differential baselines, direct predicted-state controls, thresholds, and null dispositions.

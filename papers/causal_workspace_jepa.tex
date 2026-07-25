@@ -482,13 +482,18 @@ and the population prefix before test access.  Protected units are independently
 checksummed, and execution rejects code, calibration, runtime, split-cardinality,
 or plan drift.  Validation supplies task-eligibility gates only; direct decisions
 use test and its paired paraphrases. Capture remains \level{availability};
-H-LLM-15/16 remain untested.  A
+H-LLM-15/16 remain undecided.  A
 replacement token audit from clean commit \code{bca50e3} passes all eight gates
 over 560 rows, including exact test--paraphrase factor pairing and role/split
 token-ID disjointness; its episode hash is \code{96dc6320...f3be}.  This audit
-executes no Qwen forward.  A separate pre-outcome milestone authorizes only
-the frozen capture; downstream ranking and decisions remain conditional on
-capture eligibility, calibration, budget, and a committed train-only plan.
+executes no Qwen forward.  A separate pre-outcome milestone authorized only
+the frozen capture.  That 560-row FP32 capture passes exact replay and storage
+integrity but is \code{INELIGIBLE\_TASK}: clean, donor, and transfer accuracy
+are zero on primary-template train, validation, and test.  The exactly paired
+paraphrase reaches only $0.646/0.677$ clean/donor accuracy and fails worst-group
+floors.  Token 17607 (decoded ``\texttt{ ?\textbackslash n}'') dominates the
+primary outputs.  We therefore stop before calibration or ranking and leave
+H-LLM-15/16 undecided.
 
 A separate prospective binding-algebra protocol freezes the finite group
 $S_4$: train only primitive transpositions, then roll the same causal-state
@@ -1025,9 +1030,10 @@ schema does not establish shared semantics or shared mechanism.
   limited data, architecture, or objective.
   \item The binding-mediation v1 token audit is an engineering result only and
   its parent design is superseded.  V2 fixes the pre-outcome confounds and its
-  evaluator is implemented and synthetically tested, but its replacement token
-  audit, capture, plan, and protected Qwen execution are not yet run; it
-  contributes no mediator, circuit, JEPA, or workspace evidence in this manuscript.
+  evaluator is implemented and synthetically tested.  Its replacement token
+  audit passes, but the full capture fails the registered task-competence gate,
+  so no plan or protected mediator execution is run.  It contributes no
+  mediator, circuit, JEPA, or workspace evidence in this manuscript.
   \item The LeWorldModel is a source-informed small synthetic model using
   selected design elements.  Its weak planner
   makes behavior-level planning interpretation ineligible.

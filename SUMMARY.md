@@ -37,6 +37,13 @@
 - A separate pre-outcome commit changes `protected_capture_authorized` to true, bound to evaluator
   `53cd69d` and token-audit result `f19d308`. Its scope is capture only: ranking, train-plan freezing,
   protected evaluation, and H-LLM-15/16 remain gated by the captured competence/integrity result.
+- The full 560-row FP32 capture ran from clean `2bf7e69` in 126.68 seconds and terminated
+  `INELIGIBLE_TASK`. Integrity, exact counts, finite values, HDF5 readback, and both source/logit
+  replay pass with maximum error `0.0`. The primary arrow template elicits token `17607` (decoded
+  `" ?\n"`) on 242/256 train rows and 96/96 test rows, giving zero clean/donor/transfer accuracy.
+  The exactly paired paraphrase reaches clean `0.646`, donor/transfer `0.677`, but its worst-group
+  floors are only `0.111--0.133`. H-LLM-15/16 remain undecided; calibration, ranking, and protected
+  mediation are prohibited for v2.
 - Prospectively registered `LLM-QWEN-BINDING-ALGEBRA-001`: primitive binding transpositions train a
   candidate causal transition operator, while unseen double transpositions, three-cycles,
   four-cycles, and action-plus-inverse rollouts test composition and restoration across disjoint
