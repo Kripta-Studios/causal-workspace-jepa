@@ -1,0 +1,11 @@
+id: LLM-TARGET-IJEPA-DIAGNOSTIC-001
+status: POSTHOC_DIAGNOSTIC
+resource_profile: configs/resource/cpu_vps.yaml
+dataset_id: LLM-CAPITAL-PATCH-001
+dataset_dir: data/activations/qwen_capital_patches_v1
+dataset_manifest: data/manifests/qwen_capital_patches_v1.json
+checkpoint_dir: artifacts/checkpoints/qwen_target_ijepa_v1
+seeds: [311, 313, 317]
+pca_dimensions: [8, 16, 32, 64]
+decoder_ridge: 1.0
+output_metrics: artifacts/metrics/qwen_target_ijepa_diagnostic_v1.json

@@ -36,6 +36,9 @@ from causal_workspace_jepa.experiments.llm.qwen_population_jacobian_confirmation
 from causal_workspace_jepa.experiments.llm.qwen_target_encoder_ijepa_study import (
     run_qwen_target_encoder_ijepa_study,
 )
+from causal_workspace_jepa.experiments.llm.qwen_target_ijepa_diagnostic import (
+    run_qwen_target_ijepa_diagnostic,
+)
 from causal_workspace_jepa.experiments.llm.qwen_intervention_jepa_study import (
     run_qwen_intervention_jepa_study,
 )
@@ -192,6 +195,10 @@ def main() -> int:
         return 0
     if experiment_id == "LLM-TARGET-IJEPA-001":
         metrics = run_qwen_target_encoder_ijepa_study(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "LLM-TARGET-IJEPA-DIAGNOSTIC-001":
+        metrics = run_qwen_target_ijepa_diagnostic(args.config)
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     if experiment_id == "LLM-CONTEXT-GEOMETRY-001":
