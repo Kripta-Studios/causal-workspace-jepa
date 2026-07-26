@@ -34,6 +34,7 @@ import numpy as np
 from causal_workspace_jepa.common.config import load_config
 from causal_workspace_jepa.common.types import InterventionSpec
 from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_capture import (
+    assert_capture_not_terminally_closed,
     capture_content_digest,
 )
 from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_evaluator import (
@@ -907,6 +908,7 @@ def load_verified_capture(config_path: str | Path) -> CaptureBundle:
 
     config_path = Path(config_path)
     config = load_config(config_path)
+    assert_capture_not_terminally_closed(config, config_path=config_path)
     config_sha = sha256_file(config_path)
     semantic_config_digest = capture_config_digest(config)
     metrics_path = _capture_metrics_path(config)

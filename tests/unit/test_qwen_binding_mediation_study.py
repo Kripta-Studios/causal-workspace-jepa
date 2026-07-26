@@ -29,6 +29,7 @@ from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_study import (
     build_frozen_train_plan,
     capture_config_digest,
     estimate_study_work,
+    load_verified_capture,
     load_derivative_unit,
     load_progress,
     load_direct_outcome_unit,
@@ -61,6 +62,10 @@ class QwenBindingMediationStudyTests(unittest.TestCase):
                 "capture_content_sha256": "4" * 64,
             },
         )
+
+    def test_terminal_disposition_blocks_all_study_phases(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "CLOSED_INELIGIBLE_TASK"):
+            load_verified_capture(CONFIG)
 
     def _plan(self) -> dict[str, object]:
         methods = tuple(str(value) for value in self.config["ranking"]["methods"])

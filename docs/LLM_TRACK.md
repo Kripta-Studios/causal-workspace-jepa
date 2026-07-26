@@ -60,24 +60,23 @@ clean layer-0 `resid_post` after that treatment recovers clean logits to `1e-6`.
 operations are applied in caller order. These are instrumentation identities, not scientific
 mediation results on the pinned Qwen checkpoint.
 
-The registered token pools and templates live in
-`configs/experiments/qwen_binding_mediation_v2.yaml`. Run the replacement tokenizer-only audit from a clean
-commit before generating protected activation outcomes:
+The registered historical token pools and templates live in
+`configs/experiments/qwen_binding_mediation_v2.yaml`. Its tokenizer-only audit can be reproduced
+from a clean commit without generating a new protected activation outcome:
 
 ```powershell
 $env:PYTHONPATH = "src"
 python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml
 ```
 
-The v2 capture command has completed and must not be rerun under altered prompts or thresholds.
-Its `INELIGIBLE_TASK` result is retained without rescue. A future competent format is a new
-prospective experiment, not a v2 configuration edit.
-The later study phases use `scripts/run_qwen_binding_mediation_study.py`; validation contributes
-capture task-eligibility gates only, while direct mediator decisions are restricted to test and its
-paired paraphrase.
+The v2 capture command has completed and must not be rerun. Its `INELIGIBLE_TASK` result is retained
+without rescue. A checksum-bound external disposition closes capture, calibration, train-plan, and
+protected-evaluation entry points without modifying the frozen YAML. A future competent format is
+a new prospective experiment, not a v2 configuration edit.
 
-The later trajectory Intervention-JEPA remains unregistered until the treatment and task-competence
-gates pass; this prevents architecture selection from adapting to protected mediation outcomes.
+The separately registered binding-algebra route remains protocol-only and unauthorized. Its
+outcome-blind implementation must freeze causal-delta trajectories, complete differential
+baselines, phase access, and direct predicted-state patching before any Qwen execution.
 
 The primary-scale capture script is now implemented for `Qwen/Qwen3-4B` at immutable revision
 `1cfa9a7...`. Its repository estimate is 8,060,926,626 bytes; it captures five residual sites and

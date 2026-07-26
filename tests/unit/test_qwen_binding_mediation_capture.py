@@ -13,6 +13,7 @@ from causal_workspace_jepa.common.config import load_config
 from causal_workspace_jepa.experiments.llm.qwen_binding_mediation_capture import (
     aggregate_capture_metrics,
     assert_capture_contract,
+    assert_capture_not_terminally_closed,
     capture_content_digest,
     capture_eligibility_gates,
     estimate_capture_bytes,
@@ -48,6 +49,16 @@ class QwenBindingMediationCaptureTests(unittest.TestCase):
             path.write_text(blocked, encoding="utf-8")
             with self.assertRaisesRegex(RuntimeError, "protected capture is not authorized"):
                 run_qwen_binding_mediation_capture(path)
+
+    def test_committed_ineligible_outcome_closes_frozen_capture(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "CLOSED_INELIGIBLE_TASK"):
+            assert_capture_not_terminally_closed(self.config)
+
+    def test_terminal_disposition_rejects_semantic_config_drift(self) -> None:
+        changed = copy.deepcopy(self.config)
+        changed["seed"] = int(changed["seed"]) + 1
+        with self.assertRaisesRegex(RuntimeError, "does not match config/capture bytes"):
+            assert_capture_not_terminally_closed(changed)
 
     def _contract_fixture(
         self, *, count: int = 1

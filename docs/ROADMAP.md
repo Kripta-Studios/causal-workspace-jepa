@@ -2,9 +2,10 @@
 
 ## July 2026 research pivot
 
-- Treat Qwen binding v1 as design-superseded before model execution. Freeze the full v2 evaluator
-  before any protected forward; then rerun its paired token audit and execute only after EB-JEPA
-  releases the GPU. A positive result is a compact specific mediator set, not a JEPA/workspace claim.
+- Treat Qwen binding v1 as design-superseded before model execution and v2 as
+  `CLOSED_INELIGIBLE_TASK` after its exact-replay capture failed every protected competence gate.
+  The immutable v2 YAML retains its historical capture authorization, while a checksum-bound
+  external disposition blocks recapture, calibration, ranking, and protected mediation.
 - `WM-ACTION-PATH-CALIBRATION-002` is archived as numerical/vector calibration only; the downstream
   small-model action-path route is closed by design before protected-test access.
 - Retain the two-runtime EB-JEPA CUDA diagnostic: the exact Torch 2.6/cu126 pin is GPU-incompatible
@@ -19,13 +20,13 @@
   reserved under the 10-GB ceiling, while the configured compile wrapper captures zero graphs on
   `unroll`. Freeze batch 384 and report this ineffective-compile boundary in three-seed training.
 - Ordered multi-site Qwen interventions and treatment/restoration replay tests are implemented.
-  `LLM-QWEN-BINDING-MEDIATION-002` replaces the unpaired v1 design and preregisters a module-only
-  comparison of population/local attribution, HVP, AtP*, probes, magnitude, random controls, and
-  direct patch/restore. Implement/freeze the full evaluator, then run the replacement paired token
-  audit and protected capture unchanged. Do not call this a JEPA experiment.
-- Only after a causally eligible component-outcome dataset exists, train a new trajectory
-  Intervention-JEPA and evaluate composed/held-out interventions against every strong derivative
-  and learned baseline.
+  Preserve the complete but scientifically ineligible v2 dataset only for declared read-only
+  diagnosis. Do not call it a JEPA experiment or use it to choose a successor prompt.
+- Complete the outcome-blind binding-algebra protocol before any new Qwen forward: permutation
+  matrices, cumulative rollout prefixes, identity/inverse controls, phase-separated split access,
+  complete HVP cross-terms, sequential relinearized JVP, causal-delta targets, and direct
+  predicted-state patching. Keep `execution_authorized=false` until that stack is committed and
+  pushed.
 
 ## Milestone 0: Audit And Safe Bootstrap
 

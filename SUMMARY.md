@@ -45,8 +45,8 @@
   Its three-phase runner freezes a self-hashed train-only plan, requires byte identity with the plan
   committed at `HEAD`, executes 138 conditions per protected episode, and resumes only through
   checksum-verified units. Validation is capture-eligibility only; direct decisions use the frozen
-  test and paired-paraphrase splits. Protected Qwen outcomes remain closed until authorization is
-  changed in a separate commit.
+  test and paired-paraphrase splits. At that pre-outcome milestone, protected Qwen outcomes remained
+  closed pending a separate authorization.
 - The evaluator milestone is published as clean commit `53cd69d`. The target-JEPA diagnostic was
   then regenerated from that clean tree; its provenance records `git_dirty=false`, commit
   `53cd69d`, all 612 reused rows, all three checkpoint hashes, and zero confirmed hypotheses.
@@ -64,6 +64,9 @@
   The exactly paired paraphrase reaches clean `0.646`, donor/transfer `0.677`, but its worst-group
   floors are only `0.111--0.133`. H-LLM-15/16 remain undecided; calibration, ranking, and protected
   mediation are prohibited for v2.
+- A checksum-bound external disposition now preserves the frozen YAML identity while blocking
+  recapture and every downstream study phase. It binds the exact config, capture metrics, manifest,
+  capture digest, and content digest; only declared read-only diagnostics remain allowed.
 - An explicitly outcome-disclosed, read-only format diagnostic was frozen for later clean
   execution. It fixes full-vocabulary, registered-value, within-episode, rank, margin,
   dominant-token, and paired test-to-paraphrase summaries and cannot rescue v2 or select v3.
@@ -696,9 +699,9 @@
   seconds including the first download. This is Availability evidence only.
 - The earlier `AUDIT-COMPLETE-001` run from clean synchronized commit `42492dc` passed all 14
   explicit bounded completion criteria with 63 tests, multi-seed results, direct Qwen execution,
-  workspace controls, and rejected circuit graphs. It was superseded by the corrected 68-test audit
-  above after the exact-JVP result. The required bounded suite is complete; this does not make either
-  rejected circuit or the workspace null positive.
+  workspace controls, and rejected circuit graphs. It was superseded by a corrected 68-test audit
+  after the exact-JVP result, which was itself superseded by the 105-test clean audit at `3593475`.
+  These historical audits do not make either rejected circuit or the workspace null positive.
 
 ## 2026-07-20
 
@@ -775,7 +778,7 @@
 - This led to the separately preregistered `WM-T0-004` deeper predictor, calibrated ensemble, and
   in-manifold donor study recorded below.
 
-### Current Handoff
+### Historical handoff at commit `93431c3`
 
 - Worktree was clean at pushed commit `93431c3` before starting the next code milestone.
 - After the `WM-T0-004` null, implemented and preregistered `WM-T0-005`: four goals crossed with

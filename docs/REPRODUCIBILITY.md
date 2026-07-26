@@ -224,20 +224,19 @@ upstream layer-0 token treatment to replay the donor and a later residual restor
 clean recipient within `1e-6`. Multi-site scientific runs must log the complete ordered list; a set
 of sites is insufficient provenance.
 
-The superseded Qwen binding-mediation v1 preregistration froze all token pools, seeds, templates, split counts,
-candidate modules, ranking baselines, matched controls, and decision gates in
+The superseded Qwen binding-mediation v1 preregistration froze all token pools, seeds, templates,
+split counts, candidate modules, ranking baselines, matched controls, and decision gates in
 `configs/experiments/qwen_binding_mediation_v1.yaml`. Its clean token audit is retained, but the
 paraphrase rows were not paired to the test episodes and no model outcomes were opened. The
-operative v2 registration is `configs/experiments/qwen_binding_mediation_v2.yaml`. Before model
-execution, run from a clean
-commit:
+historical v2 registration is `configs/experiments/qwen_binding_mediation_v2.yaml`. Its tokenizer
+audit remains reproducible from a clean commit:
 
 ```powershell
 $env:PYTHONPATH = "src"
 python scripts/validate_qwen_binding_tokenization.py --config configs/experiments/qwen_binding_mediation_v2.yaml
 ```
 
-The committed audit may establish only deterministic token identity: equal recipient/donor token
+This command may establish only deterministic token identity: equal recipient/donor token
 multisets, exactly two changed token positions, one-token answers, bounded sequence length, and
 balanced query positions. It cannot decide task competence, mediation, circuit, JEPA, or workspace
 hypotheses.
@@ -257,8 +256,11 @@ direct mediation remain prohibited.
 The audit executed from clean `4e6624f7561e2646fa9beb65297a5b953f0ac237`; all four gates pass and
 the deterministic episode hash is
 `3ac7a80d1ebeefd9e208b5c3d12fdaa8fb611cc3ad789c7f0e448da244ebaf59`. This is the superseded v1
-audit. The operative v2 token audit ran from clean `bca50e3`, and its later protected capture is
-retained with the ineligible disposition above.
+audit. The v2 token audit ran from clean `bca50e3`, and its later protected capture is retained with
+the ineligible disposition above. The immutable YAML still records the historical capture
+authorization; `data/manifests/qwen_binding_mediation_v2.disposition.json` binds the exact YAML,
+capture metrics, manifest, and content identity and causes capture or study runners to fail closed
+before resource or model access.
 
 The read-only outcome-disclosed format diagnostic is reproduced without a new Qwen forward:
 

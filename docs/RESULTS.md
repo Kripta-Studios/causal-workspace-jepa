@@ -1,6 +1,7 @@
 # Results
 
-Status: `SMOKE_VALIDATED`; corrected Qwen H-LLM-01 result is negative.
+Status: mixed bounded evidence with retained positive, negative, ineligible, closed-design, and
+not-yet-run studies; corrected Qwen H-LLM-01 is negative.
 
 The scientific results include CPU-scale JEPA studies, three GPT-2 Medium studies, and bounded real
 Qwen3-0.6B instrumentation/data/meta-model runs. No workspace/J-space-like mechanism or validated

@@ -39,8 +39,6 @@ from causal_workspace_jepa.hooks.names import transformer_site
 def run_qwen_binding_mediation_capture(config_path: str | Path) -> dict[str, Any]:
     """Execute and store all frozen clean/donor/treatment trajectories."""
 
-    import torch
-
     started = time.perf_counter()
     config_path = Path(config_path)
     config = load_config(config_path)
@@ -48,6 +46,9 @@ def run_qwen_binding_mediation_capture(config_path: str | Path) -> dict[str, Any
         raise RuntimeError(
             "BLOCKED_PROTOCOL_INTERFACE: protected capture is not authorized by the frozen config"
         )
+    assert_capture_not_terminally_closed(config, config_path=config_path)
+    import torch
+
     resource_profile = str(config["resource_profile"])
     hardware = require_free_disk(resource_profile)
     seed = int(config["seed"])
@@ -924,3 +925,98 @@ def _config_digest(config: Mapping[str, Any]) -> str:
 def _capture_metrics_path(config: Mapping[str, Any]) -> Path:
     final = Path(str(config["output_metrics"]))
     return final.with_name(final.name.replace("mediation", "capture"))
+
+
+def assert_capture_not_terminally_closed(
+    config: Mapping[str, Any],
+    *,
+    config_path: str | Path | None = None,
+) -> None:
+    """Refuse to rerun a capture whose committed outcome closed the task.
+
+    The frozen v2 configuration retains its historical capture authorization so
+    that the executed dataset keeps an immutable identity.  A separate
+    checksum-bound disposition is therefore the authoritative terminal-state
+    guard.
+    """
+
+    metrics_path = _capture_metrics_path(config)
+    manifest_path = Path(str(config["output_manifest"]))
+    disposition_path = manifest_path.with_name(f"{manifest_path.stem}.disposition.json")
+    if disposition_path.is_file():
+        disposition = _read_json_file(disposition_path, label="capture disposition")
+        expected = {
+            "experiment_id": str(config.get("id", "")),
+            "capture_dataset_id": str(config.get("capture_dataset_id", "")),
+            "status": "CLOSED_INELIGIBLE_TASK",
+            "semantic_config_sha256": _config_digest(config),
+            "capture_metrics_sha256": _sha256_file(metrics_path),
+            "capture_manifest_sha256": _sha256_file(manifest_path),
+        }
+        observed = {key: disposition.get(key) for key in expected}
+        if observed != expected:
+            raise RuntimeError(
+                "BLOCKED_CAPTURE_STATE: terminal disposition does not match config/capture bytes"
+            )
+        if config_path is not None:
+            expected_config_file_sha = str(disposition.get("config_file_sha256", ""))
+            if _sha256_file(Path(config_path)) != expected_config_file_sha:
+                raise RuntimeError(
+                    "BLOCKED_CAPTURE_STATE: terminal disposition does not match config file bytes"
+                )
+        metrics = _read_json_file(metrics_path, label="capture metrics")
+        manifest = _read_json_file(manifest_path, label="capture manifest")
+        if (
+            metrics.get("status") != "INELIGIBLE_TASK"
+            or metrics.get("capture_digest") != disposition.get("capture_digest")
+            or metrics.get("storage", {}).get("content_sha256")
+            != disposition.get("capture_content_sha256")
+            or manifest.get("capture_digest") != disposition.get("capture_digest")
+            or manifest.get("content_sha256") != disposition.get("capture_content_sha256")
+        ):
+            raise RuntimeError(
+                "BLOCKED_CAPTURE_STATE: terminal disposition disagrees with capture identity"
+            )
+        raise RuntimeError(
+            "CLOSED_INELIGIBLE_TASK: the committed competence result closed this capture; "
+            "design a prospectively calibrated successor instead"
+        )
+    if not metrics_path.is_file():
+        return
+    metrics = _read_json_file(metrics_path, label="capture metrics")
+    expected_dataset_id = str(config.get("capture_dataset_id", ""))
+    expected_parent_id = str(config.get("id", ""))
+    if (
+        metrics.get("experiment_id") != expected_dataset_id
+        or metrics.get("parent_experiment_id") != expected_parent_id
+    ):
+        raise RuntimeError(
+            "BLOCKED_CAPTURE_STATE: existing capture metrics do not match the frozen config"
+        )
+    if metrics.get("status") == "INELIGIBLE_TASK":
+        raise RuntimeError(
+            "CLOSED_INELIGIBLE_TASK: the committed competence result closed this capture; "
+            "design a prospectively calibrated successor instead"
+        )
+
+
+def _read_json_file(path: Path, *, label: str) -> Mapping[str, Any]:
+    if not path.is_file():
+        raise RuntimeError(f"BLOCKED_CAPTURE_STATE: missing {label} at {path}")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as error:
+        raise RuntimeError(f"BLOCKED_CAPTURE_STATE: cannot verify {label} at {path}") from error
+    if not isinstance(payload, Mapping):
+        raise RuntimeError(f"BLOCKED_CAPTURE_STATE: malformed {label} at {path}")
+    return payload
+
+
+def _sha256_file(path: Path) -> str:
+    if not path.is_file():
+        raise RuntimeError(f"BLOCKED_CAPTURE_STATE: missing identity file at {path}")
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()

@@ -153,7 +153,7 @@
   roster with exact local, quadratic/HVP-style, population, averaging, and semantic-null controls.
 - [x] Commit/push and execute state v1 unchanged from `27ebe43`; retain its behavior-gate rejection,
   numerically valid but non-evidential layer-26 pattern, and undecided hypotheses.
-- [ ] Calibrate a higher-competence prompt using only excluded entities, then preregister a fresh
+- [x] Calibrate a higher-competence prompt using only excluded entities, then preregister a fresh
   prompt/task before any registered forward; do not filter v1 entities by observed correctness.
 - [x] Calibrate five prompts on 13 excluded states; select the 13/13 one-shot format without any
   target one-shot forward.
