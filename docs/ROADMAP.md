@@ -1,5 +1,49 @@
 # Roadmap
 
+## 2026-07-26 SOTA portfolio decision
+
+The next step is not unconditional scale. Existing failures point first to competence, target
+geometry, and causal-control design; increasing parameter count before those gates would confound
+capacity with an underspecified experiment.
+
+### Track A priority
+
+1. Resume official EB-JEPA seeds `1000/10000` only with at least the measured 5.82-GB batch
+   reservation plus safety headroom, then execute all 18 frozen competence jobs. Close the
+   recurrent mechanism route if bounded overall success is below `0.80` or any seed is below
+   `0.70`.
+2. If competence passes, preregister sensitivity-balanced causal modes from actual reachable
+   activation deltas and downstream covectors. Audit finite patching, complement faithfulness,
+   necessity, sufficiency, and gauge covariance against PCA, delta-PCA, gradient-only, random,
+   norm-matched, and condition-matched controls. Exact GRU gate/path patching is the direct
+   localization layer; balanced modes are not a workspace claim.
+3. In parallel at CPU/small-GPU scale, build a capacity-matched MiniPush factorial: vector action
+   versus masked visual action, forward-only versus forward/inverse queries, and three frozen data
+   scales. Use exact state/masks plus permuted, time-reversed, renderer-shift, and non-contact
+   common-warp controls. FlowMimic-style shared warps are hard anticausal controls, not positive
+   physics data.
+4. Scale next to verified C-JEPA pre-extracted object slots/checkpoints. Do not attempt the
+   Wan2.2-14B Masked Visual Actions reproduction on 12 GB; adapt its interface only. Tier-2
+   robotics and SkyJEPA remain later/external.
+
+### Track B priority
+
+1. Finish the outcome-blind `LLM-QWEN-BINDING-ALGEBRA-002` execution stack on Qwen3-0.6B. Phase 0
+   must demonstrate competence and finite residual nonlinearity beyond full quadratic and
+   relinearized-JVP controls before a learned predictor or protected split is opened.
+2. Independently reproduce the official Jacobian Lens on Qwen3-0.6B with prompt-count convergence,
+   local/population/tuned/logit-lens comparisons, whitened transport, and spectrum-matched
+   rotation/row-permutation controls. Treat J-space as a verbalizable transport candidate, not as
+   a small subspace or workspace by definition.
+3. The next scale gate is Qwen3-1.7B Base, selected layers only, paired with verified Qwen-Scope
+   sparse directions. Test Jacobian-aligned high-kurtosis directions against
+   activation/norm/frequency-matched low-alignment directions, raw neurons, rotations, and direct
+   patches. Move to 4B only after a 1.7B causal effect survives; 30B remains cluster-only.
+4. Only if algebra Phase 0 leaves nonlinear residual should a new hybrid be trained:
+   `Taylor2 or sequential JVP + conditional low-rank residual operator`. Compare it with a
+   capacity-matched full-delta JEPA, affine/`S4`-equivariant models, MLP, bilinear, and sparse
+   causal students. Every proposed state must be patched directly back into Qwen.
+
 ## July 2026 research pivot
 
 - Treat Qwen binding v1 as design-superseded before model execution and v2 as
@@ -22,11 +66,11 @@
 - Ordered multi-site Qwen interventions and treatment/restoration replay tests are implemented.
   Preserve the complete but scientifically ineligible v2 dataset only for declared read-only
   diagnosis. Do not call it a JEPA experiment or use it to choose a successor prompt.
-- Complete the outcome-blind binding-algebra protocol before any new Qwen forward: permutation
-  matrices, cumulative rollout prefixes, identity/inverse controls, phase-separated split access,
-  complete HVP cross-terms, sequential relinearized JVP, causal-delta targets, and direct
-  predicted-state patching. Keep `execution_authorized=false` until that stack is committed and
-  pushed.
+- The outcome-blind binding-algebra protocol is hardened as v2: permutation matrices, cumulative
+  rollout prefixes, identity/inverse controls, phase-separated split access, complete HVP
+  cross-terms, sequential relinearized JVP semantics, causal-delta targets, and direct
+  predicted-state replay are frozen. Keep `execution_authorized=false` until the remaining
+  tokenizer/capture/evaluator/model/patch stack is committed and pushed.
 
 ## Milestone 0: Audit And Safe Bootstrap
 

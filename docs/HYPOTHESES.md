@@ -1431,7 +1431,7 @@ full-vocabulary emission failure. Because outcomes were disclosed and no interna
 intervened, this cannot distinguish prompt parsing, binding computation, downstream readout, or
 output-mode competition and leaves H-LLM-15/16 undecided.
 
-## LLM-QWEN-BINDING-ALGEBRA-001 Preregistration
+## LLM-QWEN-BINDING-ALGEBRA-001 Historical Preregistration
 
 Registered prospectively on 2026-07-25 before any prompt from this study is tokenized or passed
 through Qwen. The canonical design is
@@ -1440,6 +1440,9 @@ through Qwen. The canonical design is
 does not authorize execution. The tokenizer audit, capture, differential evaluator, fixed
 meta-model, direct predicted-state patcher, aggregation, and failure-status code must be tested,
 documented, committed, and pushed from a clean worktree before `execution_authorized` can change.
+On 2026-07-26 this design was superseded before tokenizer or model access by
+`LLM-QWEN-BINDING-ALGEBRA-002`. The historical thresholds and hypotheses below are retained; the
+amendment changes only underspecified action, trajectory, control, and phase-isolation contracts.
 
 This experiment asks whether a controlled four-slot binding update behaves like a reusable causal
 operator whose primitive transpositions compose and invert across unseen token alphabets. It does
@@ -1560,3 +1563,39 @@ supports at most evidence level 4 (Specificity) for this bounded operator becaus
 state is directly executed against matched controls. Circuit level 5 remains false until directed
 edges, minimality, necessity, sufficiency, outside-state faithfulness, and independent replication
 are prospectively established.
+
+## LLM-QWEN-BINDING-ALGEBRA-002 Pre-outcome Hardening Amendment
+
+Registered on 2026-07-26 before any tokenizer or model access. The canonical design is now
+`configs/experiments/qwen_binding_algebra_v2.yaml`. V1 is
+`SUPERSEDED_PRE_TOKENIZER_PRE_MODEL`; no Qwen outcome motivated this amendment. H-LLM-17,
+H-LLM-18, every competence gate, every numerical threshold, all seeds, split identities, model
+identity, layer sites, parameter ceiling, and evidence boundary remain unchanged.
+
+The amendment closes five protocol ambiguities:
+
+- A source-to-destination permutation acts on a column vector by left multiplication. Exhaustive
+  tests require `M(first then second) = M(second) M(first)` for all 576 ordered pairs in `S4`.
+  The predictor receives only the ordered sequence of primitive `4x4` transposition matrices; the
+  composed target matrix is forbidden as input.
+- Every causal trajectory stores identity and all cumulative generator prefixes. Each prefix delta
+  is measured against the same episode's original clean state, preventing telescoping targets from
+  hiding accumulated finite error. Before any predicted-state test, the observed layer-21 delta
+  must replay the directly treated state to `1e-6`.
+- Direct primitive addition executes each generator separately from the same clean origin and sums
+  those effects. The oracle sequential JVP instead re-executes every cumulative prefix and
+  recomputes the exact Jacobian there. Full quadratic HVP includes all cross-generator terms.
+- Identity is an explicit control for every base episode. Every nonidentity case has an explicit
+  action-plus-inverse restoration control. Both control rosters, all cumulative prefixes, and the
+  semantic contracts are included in the protocol digest.
+- Phase 0 may open only calibration/train/validation, Phase-1 fitting only train/validation, and
+  protected evaluation only test/paraphrase. These phases write to three distinct roots and fail
+  closed on any cross-phase split request.
+
+The comparison set now also includes a train-fit affine generator rollout and an
+`S4`-equivariant linear baseline that separates the trivial role mean from the three-dimensional
+standard contrast representation. These are capacity-controlled alternatives, not assumed
+mechanisms. The frozen roster contains 400 episodes, 3,504 query-changing action cases, and 3,904
+explicit controls. Its SHA-256 protocol digest is
+`4ae88e6a977a07bb204379150db673ff44ae0beec68fe5a65744bff47b548032`.
+`execution_authorized=false`; this amendment contributes no scientific evidence.

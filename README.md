@@ -13,10 +13,22 @@ tested JEPA workspace proxy or circuit meets its acceptance rule. Decoded recurr
 cancellation is closed as a scientific route after numerical and shared-denominator design
 failures; the completed high-resolution run is retained as vector calibration only.
 
-The 2026-07-21 primary-source refresh adds official EB-JEPA as the next published world-model
-target and Qwen-Scope/Circuit Tracing/AtP*/HVP as required Qwen comparators. No primary source was
-found that already performs the repository's exact intervention-conditioned JEPA causal-simulator
-program, but the current learned JEPA result is negative; the gap is not claimed as solved or SOTA.
+The primary-source frontier was refreshed through 2026-07-26. Official EB-JEPA remains the next
+competence gate; FlowMimic supplies anticausal common-warp controls rather than physical data;
+Masked Visual Actions motivates a small capacity-matched MiniPush action-interface factorial,
+not a local 14B reproduction. Qwen-Scope, official Jacobian Lens, exact HVP/JVP, sparse
+transcoders/students, and conditional operator mixtures define the required LLM comparisons. No
+primary source was found that already performs the repository's exact intervention-conditioned
+JEPA causal-simulator program, but the current learned JEPA result is negative; the gap is not
+claimed as solved or SOTA.
+
+The continuation rule is gate-first, not scale-first. Track A completes three-seed EB-JEPA
+competence before any recurrent mechanism claim, then tests sensitivity-balanced causal modes and
+exact GRU path patches before moving to object-centric C-JEPA. Track B completes binding algebra
+Phase 0 and an official Jacobian-Lens control study at 0.6B before selected-layer Qwen3-1.7B; 4B is
+conditional on a surviving 1.7B causal effect. A learned differential-plus-residual hybrid is
+eligible only if exact quadratic/relinearized transports leave prospectively verified nonlinear
+signal.
 
 The official EB-JEPA source is now pinned at `966e61e...`, and its real one-layer 512-dimensional
 GRU transition has a typed adapter with reset/update/candidate/hidden intervention sites. Unit tests
@@ -152,10 +164,12 @@ Availability-level diagnosis and cannot rescue v2 or select a new prompt.
   entities. This does not rescue any hypothesis. Descriptively, a causal-delta PCA oracle remains
   stable as capacity grows (test NMSE `0.512` at 64D), while a full-state-pair oracle degrades to
   `2.596`; the test outcomes were reused, so this is design evidence for a future preregistration.
-- `PREREGISTERED_PROTOCOL_ONLY`: `LLM-QWEN-BINDING-ALGEBRA-001` freezes an outcome-blind `S4`
-  transposition/composition/inverse test with causal-delta targets, strong differential baselines,
-  direct predicted-state patching, and paired paraphrases. `execution_authorized=false`; protocol
-  design alone is neither a novelty, mechanism, circuit, J-space, nor workspace result.
+- `PREREGISTERED_PROTOCOL_HARDENED`: `LLM-QWEN-BINDING-ALGEBRA-002` supersedes v1 before any
+  tokenizer/model access. It binds the complete `S4` matrix convention, ordered primitive-only
+  inputs, cumulative deltas from one clean origin, 400 episodes/3,504 cases/3,904 explicit
+  identity-inverse controls, phase-isolated split access, affine/equivariant and exact
+  differential baselines, and observed-before-predicted state replay. Its protocol digest is
+  `4ae88e6a...032`; `execution_authorized=false`. This adds no scientific evidence.
 - `COMPLETED_MIXED`: `LLM-CONTEXT-GEOMETRY-001` executed from clean `49d68b7`. The real pooling-
   illusion and context-specificity hypotheses failed; the gauge-invariant coupling control passed.
   A function-preserving diagonal reparameterization changed naive pooled overlap about 120-fold

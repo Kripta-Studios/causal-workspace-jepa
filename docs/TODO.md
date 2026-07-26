@@ -1,5 +1,24 @@
 # TODO
 
+## July 2026 continuation portfolio
+
+- [x] Review FlowMimic and Masked Visual Actions from their primary PDFs; register their exact
+  contribution, resource boundary, limitations, and control value without treating either as
+  causal-mechanism evidence.
+- [x] Choose competence/geometry gates before model scaling: EB-JEPA before a larger world model,
+  binding algebra and official Jacobian-Lens controls before Qwen3-1.7B, then causal 1.7B before 4B.
+- [ ] Implement and unit-test sensitivity-balanced causal modes with planted recovery,
+  biorthogonality, rank truncation, gauge covariance, and oblique-projector controls.
+- [ ] After EB-JEPA competence, preregister finite gate/path/subspace patches against
+  PCA/delta-PCA/gradient-only/random/norm/condition-matched controls.
+- [ ] Build the MiniPush vector-versus-masked-visual-action and
+  forward-versus-forward/inverse factorial with fixed data scales and anticausal common-warp
+  controls.
+- [ ] Reproduce official Jacobian-Lens convergence/rotation/row-null controls on Qwen3-0.6B, then
+  preregister selected-layer Qwen3-1.7B plus Qwen-Scope sparse-feature interventions.
+- [ ] Implement a differential-plus-learned-residual operator only if binding-algebra Phase 0
+  leaves residual nonlinearity beyond full quadratic and relinearized-JVP baselines.
+
 ## GPU Transition (2026-07-21)
 
 - [x] Refresh the July-2026 primary-source frontier and register EB-JEPA, Qwen-Scope, Circuit
@@ -35,9 +54,13 @@
   losses, but cannot modify/rerun v2 or select a v3 prompt.
 - [ ] If continuing binding mediation, preregister v3 with new episodes and a behavior-competent
   prompt family before any capture; preserve v2 as the negative task-eligibility result.
-- [x] Prospectively preregister `LLM-QWEN-BINDING-ALGEBRA-001` without reading binding-v2 or new
-  Qwen outcomes; freeze the `S4` convention, primitive/composed action split, causal-delta target,
-  differential baselines, direct predicted-state controls, thresholds, and null dispositions.
+- [x] Preserve historical `LLM-QWEN-BINDING-ALGEBRA-001` as
+  `SUPERSEDED_PRE_TOKENIZER_PRE_MODEL`; no tokenizer/model outcome was opened and every scientific
+  threshold carries unchanged into v2.
+- [x] Preregister/harden `LLM-QWEN-BINDING-ALGEBRA-002` with exhaustive matrix composition,
+  primitive-only action input, cumulative prefix deltas from one clean origin, explicit
+  identity/inverse cases, separate phase roots, affine/`S4`-equivariant controls, and a
+  checksum-bound semantic roster.
 - [x] Implement the pure binding-algebra protocol and deterministic tests for all 24 permutations,
   composition, inverse, conjugacy-class counts, minimal transposition rollouts, globally disjoint
   token alphabets, independent episode units, and exact test/paraphrase pairing.

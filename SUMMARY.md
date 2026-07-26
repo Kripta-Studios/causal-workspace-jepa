@@ -1,5 +1,36 @@
 # SUMMARY
 
+## 2026-07-26 — Frontier review and binding-algebra protocol hardening
+
+- The July frontier decision is gate-first rather than scale-first. Track A completes the frozen
+  official EB-JEPA seeds and 18 competence jobs before interpreting its recurrent state; a pass
+  unlocks sensitivity-balanced causal modes plus exact GRU gate/path patching, followed by a
+  capacity-matched MiniPush masked-visual-action factorial and verified C-JEPA object slots. Track B
+  completes the hardened algebra Phase 0 and official Jacobian-Lens controls on 0.6B before
+  selected-layer Qwen3-1.7B; 4B is conditional and 30B remains cluster-only.
+- FlowMimic (`2607.18227`) creates pixel-correspondent video edits with shared time-varying warps.
+  It is registered as a hard temporal-coherence/anticausal control, not physical world-model data.
+  Masked Visual Actions (`2607.19343`) represents actions by partially revealed entity
+  trajectories and unifies forward/inverse queries, but its Wan2.2-14B, eight-H200-scale
+  reproduction exceeds this host. Only its interface is proposed for MiniPush.
+- `LLM-QWEN-BINDING-ALGEBRA-001` is superseded before tokenizer/model access. V2 changes no
+  hypothesis, threshold, seed, model, split, site, or evidence rule. It fixes the source-to-
+  destination matrix homomorphism, passes only ordered primitive generator matrices to the
+  predictor, measures every cumulative causal prefix from the same clean origin, explicitly
+  registers identity/inverse controls, separates phase roots/split access, and freezes
+  direct-primitive, complete-HVP, and relinearized-prefix-JVP semantics.
+- The hardened roster contains 400 episodes, 3,504 query-changing cases, and 3,904 controls.
+  Eighteen protocol tests include all 24 actions and all 576 ordered matrix compositions. The
+  frozen digest is `4ae88e6a977a07bb204379150db673ff44ae0beec68fe5a65744bff47b548032`.
+  `execution_authorized=false`; no tokenizer, Qwen forward, model fit, protected outcome, or
+  scientific evidence exists.
+- The preferred mathematical continuation is a vector/covector-balanced causal basis over directly
+  reachable intervention deltas and endpoint gradients, audited by finite patches and
+  gauge/necessity/sufficiency/faithfulness controls. For Qwen, a learned model is eligible only if
+  Phase 0 leaves nonlinear residual beyond full quadratic and relinearized JVP; the candidate then
+  predicts that residual around the strong differential base rather than relearning the full
+  state.
+
 ## 2026-07-26 — Binding format diagnostic completed
 
 - The outcome-disclosed `LLM-QWEN-BINDING-FORMAT-DIAGNOSTIC-001` ran from clean commit `31d3464`

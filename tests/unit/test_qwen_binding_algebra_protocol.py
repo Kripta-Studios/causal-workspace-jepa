@@ -4,8 +4,12 @@ import copy
 import unittest
 from collections import Counter
 
+import numpy as np
+
 from causal_workspace_jepa.common.config import load_config
 from causal_workspace_jepa.experiments.llm.qwen_binding_algebra_protocol import (
+    IDENTITY_CONTROL,
+    INVERSE_CONTROL,
     DOUBLE_TRANSPOSITION_CLASS,
     FOUR_CYCLE_CLASS,
     HELD_OUT_COMPOSITION_CLASSES,
@@ -16,8 +20,10 @@ from causal_workspace_jepa.experiments.llm.qwen_binding_algebra_protocol import 
     all_s4_permutations,
     apply_permutation,
     assert_action_class_partition,
+    assert_phase_split_access,
     assert_globally_disjoint_token_pools,
     binding_algebra_cases_from_config,
+    binding_algebra_controls,
     binding_algebra_episodes_from_config,
     binding_algebra_protocol_digest,
     compose_permutations,
@@ -26,9 +32,13 @@ from causal_workspace_jepa.experiments.llm.qwen_binding_algebra_protocol import 
     generate_binding_algebra_episodes,
     identity_permutation,
     inverse_permutation,
+    permutation_matrix,
     permutation_changes_slot,
     permutation_class,
     permutations_in_classes,
+    phase_access_contract,
+    predictor_generator_action_matrices,
+    rollout_prefixes,
     transposition,
     transposition_generators,
     validate_permutation,
@@ -38,7 +48,7 @@ from causal_workspace_jepa.experiments.llm.qwen_binding_algebra_protocol import 
 class QwenBindingAlgebraProtocolTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.config = load_config("configs/experiments/qwen_binding_algebra_v1.yaml")
+        cls.config = load_config("configs/experiments/qwen_binding_algebra_v2.yaml")
 
     def test_s4_roster_and_cycle_class_counts_are_exact(self) -> None:
         actions = all_s4_permutations()
@@ -88,6 +98,25 @@ class QwenBindingAlgebraProtocolTests(unittest.TestCase):
                 )
                 self.assertEqual(sequential, composed)
 
+    def test_permutation_matrices_match_actions_and_all_compositions(self) -> None:
+        values = np.arange(4, dtype=np.int64)
+        actions = all_s4_permutations()
+        for action in actions:
+            matrix = permutation_matrix(action)
+            self.assertEqual(matrix.shape, (4, 4))
+            np.testing.assert_array_equal(
+                matrix @ values,
+                np.asarray(apply_permutation(values, action)),
+            )
+            np.testing.assert_array_equal(matrix.sum(axis=0), np.ones(4))
+            np.testing.assert_array_equal(matrix.sum(axis=1), np.ones(4))
+        for first in actions:
+            for second in actions:
+                np.testing.assert_array_equal(
+                    permutation_matrix(compose_permutations(first, second)),
+                    permutation_matrix(second) @ permutation_matrix(first),
+                )
+
     def test_every_action_has_a_deterministic_minimal_transposition_rollout(self) -> None:
         expected_lengths = {
             IDENTITY_CLASS: 0,
@@ -105,6 +134,10 @@ class QwenBindingAlgebraProtocolTests(unittest.TestCase):
             self.assertEqual(compose_rollout(first), action)
             self.assertEqual(len(first), expected_lengths[permutation_class(action)])
             self.assertTrue(set(first).issubset(generators))
+            prefixes = rollout_prefixes(first)
+            self.assertEqual(prefixes[0], identity_permutation())
+            self.assertEqual(prefixes[-1], action)
+            self.assertEqual(len(prefixes), len(first) + 1)
 
     def test_validation_rejects_nonpermutations_and_invalid_transpositions(self) -> None:
         for invalid in ((0, 1, 2), (0, 1, 1, 3), (0, 1, 2, 4)):
@@ -225,11 +258,70 @@ class QwenBindingAlgebraProtocolTests(unittest.TestCase):
             self.assertEqual(source.target_permutation, shifted.target_permutation)
             self.assertEqual(source.generator_rollout, shifted.generator_rollout)
 
+    def test_identity_inverse_controls_are_explicit_and_restore_exactly(self) -> None:
+        episodes = binding_algebra_episodes_from_config(self.config)
+        cases = binding_algebra_cases_from_config(self.config)
+        controls = binding_algebra_controls(episodes, cases)
+        counts = Counter(control.control_type for control in controls)
+        self.assertEqual(counts[IDENTITY_CONTROL], len(episodes))
+        self.assertEqual(counts[INVERSE_CONTROL], len(cases))
+        self.assertEqual(len({control.control_id for control in controls}), len(controls))
+        for control in controls:
+            self.assertEqual(
+                compose_rollout(control.action_rollout),
+                control.expected_permutation,
+            )
+            self.assertEqual(control.expected_permutation, identity_permutation())
+            self.assertEqual(
+                rollout_prefixes(control.action_rollout)[-1],
+                identity_permutation(),
+            )
+
+    def test_predictor_receives_generator_program_not_composed_target_matrix(self) -> None:
+        cases = binding_algebra_cases_from_config(self.config)
+        for case in cases:
+            matrices = predictor_generator_action_matrices(case)
+            self.assertEqual(len(matrices), len(case.generator_rollout))
+            for matrix, generator in zip(
+                matrices, case.generator_rollout, strict=True
+            ):
+                np.testing.assert_array_equal(matrix, permutation_matrix(generator))
+            if case.permutation_class in HELD_OUT_COMPOSITION_CLASSES:
+                target = permutation_matrix(case.target_permutation)
+                self.assertTrue(
+                    all(not np.array_equal(matrix, target) for matrix in matrices)
+                )
+
+    def test_phase_policy_blocks_protected_rows_before_frozen_phase(self) -> None:
+        contract = phase_access_contract(self.config)
+        self.assertEqual(
+            contract["allowed_splits"]["phase_0"],
+            ("calibration", "train", "validation"),
+        )
+        self.assertEqual(len(set(contract["output_roots"].values())), 3)
+        self.assertEqual(
+            assert_phase_split_access(
+                self.config, "phase_0", ("calibration", "validation")
+            ),
+            ("calibration", "validation"),
+        )
+        with self.assertRaisesRegex(RuntimeError, "BLOCKED_SPLIT_ACCESS"):
+            assert_phase_split_access(self.config, "phase_0", ("validation", "test"))
+        with self.assertRaisesRegex(RuntimeError, "BLOCKED_SPLIT_ACCESS"):
+            assert_phase_split_access(
+                self.config, "phase_1_train", ("train", "paraphrase")
+            )
+
     def test_protocol_digest_is_deterministic_and_binds_actions(self) -> None:
         episodes = binding_algebra_episodes_from_config(self.config)
         cases = binding_algebra_cases_from_config(self.config)
-        first = binding_algebra_protocol_digest(episodes, cases)
-        second = binding_algebra_protocol_digest(episodes, cases)
+        controls = binding_algebra_controls(episodes, cases)
+        first = binding_algebra_protocol_digest(
+            self.config, episodes, cases, controls
+        )
+        second = binding_algebra_protocol_digest(
+            self.config, episodes, cases, controls
+        )
         self.assertEqual(first, second)
         changed = list(cases)
         original = changed[0]
@@ -245,12 +337,36 @@ class QwenBindingAlgebraProtocolTests(unittest.TestCase):
             permutation_class=TRANSPOSITION_CLASS,
             generator_rollout=(alternative,),
         )
-        self.assertNotEqual(first, binding_algebra_protocol_digest(episodes, changed))
+        self.assertNotEqual(
+            first,
+            binding_algebra_protocol_digest(
+                self.config, episodes, changed, controls
+            ),
+        )
+
+        changed_controls = list(controls)
+        changed_control = changed_controls[-1]
+        changed_controls[-1] = type(changed_control)(
+            control_id=f"{changed_control.control_id}:changed",
+            split=changed_control.split,
+            episode_id=changed_control.episode_id,
+            control_type=changed_control.control_type,
+            parent_case_id=changed_control.parent_case_id,
+            action_rollout=changed_control.action_rollout,
+            expected_permutation=changed_control.expected_permutation,
+        )
+        self.assertNotEqual(
+            first,
+            binding_algebra_protocol_digest(
+                self.config, episodes, cases, changed_controls
+            ),
+        )
 
     def test_config_forbids_old_full_state_and_identity_shortcuts(self) -> None:
         self.assertFalse(self.config["execution_authorized"])
         self.assertEqual(
-            self.config["capture"]["state_target"], "treated_minus_clean_fp32"
+            self.config["capture"]["state_target"],
+            "cumulative_prefix_treated_minus_same_episode_clean_original_fp32",
         )
         self.assertTrue(
             self.config["capture"]["full_residual_state_target_forbidden"]
@@ -262,12 +378,21 @@ class QwenBindingAlgebraProtocolTests(unittest.TestCase):
         self.assertTrue(
             self.config["meta_model"]["train_on_composed_targets_forbidden"]
         )
+        self.assertTrue(
+            self.config["meta_model"]["composed_target_matrix_as_input_forbidden"]
+        )
         self.assertEqual(
             self.config["baselines"]["full_quadratic_cross_terms"], "included"
         )
         self.assertIn(
             "oracle_relinearized_sequential_jvp",
             self.config["baselines"]["methods"],
+        )
+        self.assertIn("affine_generator_rollout", self.config["baselines"]["methods"])
+        self.assertIn("s4_equivariant_linear", self.config["baselines"]["methods"])
+        self.assertEqual(
+            self.config["baselines"]["direct_primitive_addition_semantics"],
+            "each_generator_effect_executed_from_same_clean_origin_then_summed",
         )
 
 

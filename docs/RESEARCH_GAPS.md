@@ -14,9 +14,9 @@ Status: `ACTIVE`.
   causal-delta target remains an untested prospective design, not a rescued result.
 - Bounded direct Qwen intervention verification is implemented. Broader prompt families, semantic
   features, layer/site holdouts, behavioral endpoints, and a candidate that survives direct ranking
-  controls remain open; the first meta-ranked coordinate candidate was rejected. The new binding
-  protocol closes the treatment, phase-separation, ranking, direct-control, resume, and
-  inference-design gaps in code, but its full capture is task-ineligible. The primary arrow prompt
+  controls remain open; the first meta-ranked coordinate candidate was rejected. Binding mediation
+  v2 closes its treatment, phase-separation, ranking, direct-control, resume, and inference-design
+  gaps in code, but its full capture is task-ineligible. The primary arrow prompt
   produces zero answer accuracy while the paired colon paraphrase is only partially competent.
   Exact-pair post-hoc diagnosis shows the format also changes four-value answer ordering
   (`0.375/0.281` primary clean/donor versus `0.771/0.885` paraphrase), not only whether Qwen emits
@@ -24,6 +24,11 @@ Status: `ACTIVE`.
   readout, and output-mode competition prospectively. A new experiment needs a frozen
   behavior-competent prompt family and new episodes; only then do directed paths, outside-set
   faithfulness, random-model controls, and a trajectory Intervention-JEPA comparison remain.
+  Binding algebra v2 is a separate, unexecuted route: it now binds primitive matrix inputs,
+  cumulative causal-prefix targets, explicit identity/inverse controls, strong differential and
+  affine/equivariant baselines, and phase-isolated storage. The tokenizer, capture, complete-HVP,
+  relinearized-JVP, learned predictors, direct patcher, and fail-closed aggregator remain to be
+  implemented before any Qwen forward.
 - Conditional donor resampling repaired the random-control manifold failure in `WM-T0-004`, but the
   PCA intervention was too large to be matched. Need a preregistered local-PCA/tangent control.
 - Deep-ensemble intervals calibrate in distribution, but OOD rank AUC and hidden uncertainty-head R2
@@ -39,10 +44,12 @@ Status: `ACTIVE`.
   planning succeeds on only `1/12` cases per seed, and hidden donor-patch decoding/circuit evidence
   replicates on only one seed. A future route needs a stronger planner objective and a subspace whose
   decoded counterfactual is stable across initialization; the observed thresholds must not be tuned.
-- Official EB-JEPA now supplies a competent single-GPU Two Rooms planner and recurrent
-  action-conditioned target. The missing experiment is not another probe: it is a direct audit of
-  action/GRU routes against future latent, planning cost, selected action, and closed-loop success,
-  with necessity, sufficiency, matched controls, and replication.
+- Official EB-JEPA now supplies a single-GPU-compatible Two Rooms planner and recurrent
+  action-conditioned target, but no retained competence result: only seed 1 is trained, and none of
+  the 18 frozen competence jobs has run. If the three-seed competence gate passes, the missing
+  mechanism experiment is not another probe: it is a direct audit of action/GRU routes against
+  future latent, planning cost, selected action, and closed-loop success, with necessity,
+  sufficiency, matched controls, and replication.
 - The pinned EB-JEPA source contract is now instrumented down to exact GRU reset/update/candidate
   states. This closes the software-localization gap but not the scientific one: only random weights
   have been checked, and the native/decomposed replay test says nothing about which learned gate or
@@ -98,6 +105,21 @@ Status: `ACTIVE`.
   advantage precedes the 50% donor-control boundary on validation and coincides with it on test.
   Continuous control measures, additional architectures, or component-level mediation are open,
   but the existing element/state/country thresholds cannot be weakened or re-mined.
+- A shared mathematical instrument is still missing across tracks. A prospective candidate is
+  sensitivity balancing over directly reachable activation displacements and endpoint gradients,
+  yielding biorthogonal vector/covector modes and an oblique projector. Before scientific use it
+  needs numerical-rank rules, planted recovery, coordinate-change covariance, finite patching,
+  complement faithfulness, and PCA/delta-PCA/gradient/random/norm/condition-matched controls.
+- Masked Visual Actions suggests a stronger action interface, but the released 14B system cannot
+  answer whether improvement comes from action semantics, inverse prediction, data volume, or
+  visual co-motion shortcuts. A small MiniPush factorial with exact masks/state and frozen data
+  scales is required. FlowMimic-style shared warps belong in the negative-control arm because
+  pixel correspondence and temporal smoothness do not establish physical causality.
+- Qwen population Jacobians and quadratic Taylor currently win different endpoints. The missing
+  test is not another threshold search over the same relations: reproduce official Jacobian-Lens
+  convergence/controls, whiten the transport, and compare its directions with Qwen-Scope sparse
+  features under matched direct interventions. Qwen3-1.7B is the next bounded scale gate; 4B should
+  not be the default rescue for a 0.6B target-geometry failure.
 - The working paper makes the current negative/positive boundary explicit, but publication-quality
   generalization remains open: more prompt families, larger Qwen targets, stronger world-model
   planners, independently used consumers, head/MLP localization, and direct circuit

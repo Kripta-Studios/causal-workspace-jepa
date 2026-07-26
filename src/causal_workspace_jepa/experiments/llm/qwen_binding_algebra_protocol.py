@@ -46,6 +46,9 @@ HELD_OUT_COMPOSITION_CLASSES = (
     THREE_CYCLE_CLASS,
     FOUR_CYCLE_CLASS,
 )
+IDENTITY_CONTROL = "identity_noop"
+INVERSE_CONTROL = "inverse_restoration"
+CONTROL_TYPES = (IDENTITY_CONTROL, INVERSE_CONTROL)
 
 PRIMARY_TEMPLATE = (
     "Use the four mappings. Reply with only the value.\n"
@@ -140,7 +143,47 @@ class BindingAlgebraCase:
             raise ValueError("registered cases must change the queried binding")
 
     def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
+        return {
+            **asdict(self),
+            "rollout_prefixes": rollout_prefixes(self.generator_rollout),
+            "generator_action_matrices": predictor_generator_action_matrices(self),
+        }
+
+
+@dataclass(frozen=True)
+class BindingAlgebraControlCase:
+    """One explicitly registered identity or inverse-restoration control."""
+
+    control_id: str
+    split: str
+    episode_id: str
+    control_type: str
+    parent_case_id: str | None
+    action_rollout: tuple[Permutation, ...]
+    expected_permutation: Permutation
+
+    def __post_init__(self) -> None:
+        if self.control_type not in CONTROL_TYPES:
+            raise ValueError(f"unknown binding algebra control: {self.control_type}")
+        if any(
+            permutation_class(action) != TRANSPOSITION_CLASS
+            for action in self.action_rollout
+        ):
+            raise ValueError("control rollouts must contain only transposition generators")
+        expected = validate_permutation(self.expected_permutation)
+        if compose_rollout(self.action_rollout) != expected:
+            raise ValueError("control rollout does not compose to expected_permutation")
+        if self.control_type == IDENTITY_CONTROL:
+            if self.parent_case_id is not None or self.action_rollout:
+                raise ValueError("identity controls must be empty episode-level no-ops")
+        elif self.parent_case_id is None or expected != identity_permutation():
+            raise ValueError("inverse controls must restore a named case to identity")
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **asdict(self),
+            "rollout_prefixes": rollout_prefixes(self.action_rollout),
+        }
 
 
 def validate_permutation(permutation: Sequence[int]) -> Permutation:
@@ -197,6 +240,21 @@ def apply_permutation(values: Sequence[Any], permutation: Sequence[int]) -> tupl
     return tuple(result)
 
 
+def permutation_matrix(permutation: Sequence[int]) -> np.ndarray:
+    """Materialize the source-to-destination action as a 4x4 matrix.
+
+    For a column vector of slot values, ``apply_permutation`` is represented by
+    ``matrix @ values``.  Temporal composition therefore satisfies
+    ``M(first_then_second) == M(second) @ M(first)``.
+    """
+
+    action = validate_permutation(permutation)
+    matrix = np.zeros((SLOT_COUNT, SLOT_COUNT), dtype=np.int64)
+    for source, destination in enumerate(action):
+        matrix[destination, source] = 1
+    return matrix
+
+
 def compose_permutations(
     first: Sequence[int], second: Sequence[int]
 ) -> Permutation:
@@ -214,6 +272,17 @@ def compose_rollout(actions: Sequence[Sequence[int]]) -> Permutation:
     for action in actions:
         result = compose_permutations(result, action)
     return result
+
+
+def rollout_prefixes(
+    actions: Sequence[Sequence[int]],
+) -> tuple[Permutation, ...]:
+    """Return identity followed by every cumulative temporal prefix."""
+
+    prefixes = [identity_permutation()]
+    for action in actions:
+        prefixes.append(compose_permutations(prefixes[-1], action))
+    return tuple(prefixes)
 
 
 def inverse_permutation(permutation: Sequence[int]) -> Permutation:
@@ -303,6 +372,22 @@ def decompose_into_transpositions(permutation: Sequence[int]) -> tuple[Permutati
     if compose_rollout(result) != action:
         raise RuntimeError("internal transposition decomposition error")
     return result
+
+
+def predictor_generator_action_matrices(
+    case: BindingAlgebraCase,
+) -> tuple[tuple[tuple[int, ...], ...], ...]:
+    """Encode only the primitive program, never a direct composed target."""
+
+    if any(
+        permutation_class(action) != TRANSPOSITION_CLASS
+        for action in case.generator_rollout
+    ):
+        raise ValueError("predictor action programs may contain only train generators")
+    return tuple(
+        tuple(tuple(int(value) for value in row) for row in permutation_matrix(action))
+        for action in case.generator_rollout
+    )
 
 
 def render_binding_algebra_prompt(
@@ -494,15 +579,141 @@ def binding_algebra_cases_from_config(
     return cases
 
 
-def binding_algebra_protocol_digest(
+def binding_algebra_controls(
     episodes: Sequence[BindingAlgebraEpisode],
     cases: Sequence[BindingAlgebraCase],
+) -> list[BindingAlgebraControlCase]:
+    """Materialize identity and inverse controls into the protocol roster."""
+
+    episode_ids = [episode.episode_id for episode in episodes]
+    if len(set(episode_ids)) != len(episode_ids):
+        raise ValueError("binding algebra episode IDs must be unique")
+    episode_by_id = {episode.episode_id: episode for episode in episodes}
+    controls = [
+        BindingAlgebraControlCase(
+            control_id=f"{episode.episode_id}:identity",
+            split=episode.split,
+            episode_id=episode.episode_id,
+            control_type=IDENTITY_CONTROL,
+            parent_case_id=None,
+            action_rollout=(),
+            expected_permutation=identity_permutation(),
+        )
+        for episode in episodes
+    ]
+    for case in cases:
+        episode = episode_by_id.get(case.episode_id)
+        if episode is None or episode.split != case.split:
+            raise ValueError("binding algebra case refers to an unknown or wrong-split episode")
+        inverse_rollout = decompose_into_transpositions(
+            inverse_permutation(case.target_permutation)
+        )
+        controls.append(
+            BindingAlgebraControlCase(
+                control_id=f"{case.case_id}:inverse",
+                split=case.split,
+                episode_id=case.episode_id,
+                control_type=INVERSE_CONTROL,
+                parent_case_id=case.case_id,
+                action_rollout=case.generator_rollout + inverse_rollout,
+                expected_permutation=identity_permutation(),
+            )
+        )
+    if len({control.control_id for control in controls}) != len(controls):
+        raise RuntimeError("binding algebra control IDs are not unique")
+    return controls
+
+
+def phase_access_contract(config: Mapping[str, Any]) -> dict[str, Any]:
+    """Validate and canonicalize the preregistered phase/split storage policy."""
+
+    policy = config["phase_policy"]
+    access = policy["access"]
+    observed = {
+        phase: tuple(str(split) for split in access[phase]["allowed_splits"])
+        for phase in ("phase_0", "phase_1_train", "protected_eval")
+    }
+    expected = {
+        "phase_0": ("calibration", "train", "validation"),
+        "phase_1_train": ("train", "validation"),
+        "protected_eval": ("test", "paraphrase"),
+    }
+    if observed != expected:
+        raise ValueError("phase access differs from the preregistered split policy")
+    roots = {
+        phase: str(access[phase]["output_root"])
+        for phase in ("phase_0", "phase_1_train", "protected_eval")
+    }
+    if len(set(roots.values())) != len(roots):
+        raise ValueError("phase outputs must use three distinct roots")
+    if str(policy["phase_0_decision_split"]) != "validation":
+        raise ValueError("phase 0 decisions must use validation only")
+    if policy.get("protected_requires_frozen_phase_1") is not True:
+        raise ValueError("protected access must require a frozen phase-1 checkpoint and plan")
+    return {
+        "allowed_splits": observed,
+        "output_roots": roots,
+        "phase_0_decision_split": "validation",
+        "protected_requires_frozen_phase_1": True,
+    }
+
+
+def assert_phase_split_access(
+    config: Mapping[str, Any],
+    phase: str,
+    requested_splits: Sequence[str],
+) -> tuple[str, ...]:
+    """Fail closed when a runner asks a phase to open an unregistered split."""
+
+    contract = phase_access_contract(config)
+    if phase not in contract["allowed_splits"]:
+        raise ValueError(f"unknown binding algebra phase: {phase}")
+    requested = tuple(str(split) for split in requested_splits)
+    if not requested or len(set(requested)) != len(requested):
+        raise ValueError("requested splits must be nonempty and unique")
+    allowed = set(contract["allowed_splits"][phase])
+    forbidden = set(requested).difference(allowed)
+    if forbidden:
+        raise RuntimeError(
+            f"BLOCKED_SPLIT_ACCESS: {phase} cannot open {sorted(forbidden)}"
+        )
+    return requested
+
+
+def binding_algebra_protocol_digest(
+    config: Mapping[str, Any],
+    episodes: Sequence[BindingAlgebraEpisode],
+    cases: Sequence[BindingAlgebraCase],
+    controls: Sequence[BindingAlgebraControlCase],
 ) -> str:
     """Hash the ordered semantic roster without using model or tokenizer state."""
 
+    phase_contract = phase_access_contract(config)
+    protocol_contract = {
+        "permutation_convention": config["permutation_convention"],
+        "action_partition": config["action_partition"],
+        "treatment": config["treatment"],
+        "capture": config["capture"],
+        "meta_model_action_contract": {
+            key: config["meta_model"][key]
+            for key in (
+                "action_encoding",
+                "train_rollout_length",
+                "evaluation_rollout_lengths",
+                "token_ids_as_features_forbidden",
+                "train_on_composed_targets_forbidden",
+                "composed_target_matrix_as_input_forbidden",
+            )
+        },
+        "baselines": config["baselines"],
+        "controls": config["controls"],
+        "phase_access": phase_contract,
+    }
     payload = {
         "episodes": [episode.to_dict() for episode in episodes],
         "cases": [case.to_dict() for case in cases],
+        "control_cases": [control.to_dict() for control in controls],
+        "protocol_contract": protocol_contract,
     }
     serialized = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()

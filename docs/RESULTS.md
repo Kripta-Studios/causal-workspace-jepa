@@ -7,6 +7,10 @@ The scientific results include CPU-scale JEPA studies, three GPT-2 Medium studie
 Qwen3-0.6B instrumentation/data/meta-model runs. No workspace/J-space-like mechanism or validated
 Qwen circuit has been discovered.
 
+The 2026-07-26 frontier review and `LLM-QWEN-BINDING-ALGEBRA-002` hardening add no scientific
+result. They freeze the next scale/competence gates and repair an unexecuted protocol before any
+tokenizer/model access; evidence level is `None`.
+
 ## Consolidated findings and falsifications (2026-07-21)
 
 These are the strongest conclusions currently supported by the committed artifacts. The working

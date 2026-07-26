@@ -25,8 +25,8 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error causal_workspace_jepa.tex
 The resulting PDF and auxiliary files are ignored. The source must compile with all citations and
 cross-references resolved before a documentation milestone is committed.
 
-All 24 required entries and 28 supplemental adversarial/prior-art entries were checked against
-their primary paper, project, code, or model-card source by 2026-07-21. `docs/LITERATURE.md` records
+All 24 required entries and 36 supplemental adversarial/prior-art entries were checked against
+their primary paper, project, code, or model-card source by 2026-07-26. `docs/LITERATURE.md` records
 authors/version, links, contribution, relevance, assumptions, limitations, reproduction state, and
 verification date. `references.bib` contains one entry for every required source. A verified source
 is not thereby a reproduced result.

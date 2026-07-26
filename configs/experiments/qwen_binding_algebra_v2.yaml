@@ -1,0 +1,177 @@
+id: LLM-QWEN-BINDING-ALGEBRA-002
+status: PREREGISTERED_PROTOCOL_HARDENED_NOT_RUN
+registered_date: 2026-07-26
+supersedes: LLM-QWEN-BINDING-ALGEBRA-001
+amendment_reason: bind matrices, cumulative prefixes, explicit identity/inverse controls, baseline semantics, and phase-isolated storage before tokenizer or model access
+resource_profile: configs/resource/gpu_12gb.yaml
+model: Qwen/Qwen3-0.6B
+revision: c1899de289a04d12100db370d81485cdf75e47ca
+device: cuda
+dtype: float32
+capture_activation_dtype: float32
+attn_implementation: eager
+local_files_only: true
+max_sequence_length: 96
+seed: 499
+execution_authorized: false
+claim_boundary: causal permutation-operator test, not demonstrated novelty, circuit, J-space, workspace, or consciousness evidence
+
+splits:
+  calibration:
+    count: 16
+    seed: 503
+    template: primary
+  train:
+    count: 192
+    seed: 509
+    template: primary
+  validation:
+    count: 64
+    seed: 521
+    template: primary
+  test:
+    count: 64
+    seed: 523
+    template: primary
+  paraphrase:
+    count: 64
+    paired_with: test
+    template: paraphrase
+
+token_pools:
+  keys:
+    calibration: [alder, beryl, cirrus, dahlia]
+    train: [acorn, beacon, canyon, domino, elm, fable, galaxy, hearth, inlet, juniper, kelp, lagoon, meadow, nectar, opal, pebble, quill, reef, summit, tundra, umber, vortex, willow, xenon]
+    validation: [yarrow, zephyr, anvil, brook, cipher, dune, echo, fjord]
+    test: [garnet, hazel, islet, jigsaw, kernel, lichen, mosaic, nickel]
+  values:
+    calibration: [crimson, cobalt, saffron, violet]
+    train: [Albany, Beirut, Chennai, Dresden, Exeter, Fresno, Geneva, Hobart, Izmir, Jaipur, Kigali, Lyon, Manila, Naples, Ottawa, Perth, Quito, Riga, Suva, Taipei, Utrecht, Venice, Wuhan, Yangon]
+    validation: [Accra, Basel, Cusco, Doha, Essen, Fez, Graz, Haifa]
+    test: [Irvine, Juba, Kyoto, Leeds, Malmo, Nuuk, Odesa, Pisa]
+
+permutation_convention:
+  slot_count: 4
+  mapping: source_slot_to_destination_slot
+  composition_order: first_then_second
+  matrix_action: column_vector_left_multiplication
+  matrix_composition: M_second_times_M_first
+  query_must_change: true
+action_partition:
+  train_classes: [transposition]
+  held_out_classes: [double_transposition, three_cycle, four_cycle]
+  train_generators: all_six_transpositions
+  validation_and_test_targets: all_query_changing_held_out_actions
+  paraphrase_pairing: exact_test_episode_and_action
+  identity_control: explicit_per_episode
+  inverse_control: explicit_per_case
+
+treatment:
+  site: blocks.0.resid_pre
+  operation: patch
+  positions: all_value_positions_changed_by_permutation
+  ground_truth: direct_permuted_prompt_and_exact_layer0_replay
+capture:
+  position: final_query
+  trajectory_sites: [blocks.14.resid_post, blocks.18.resid_post, blocks.21.resid_post, blocks.24.resid_post, blocks.27.resid_post]
+  direct_verification_site: blocks.21.resid_post
+  trajectory_prefixes: identity_and_every_cumulative_generator_prefix
+  state_target: cumulative_prefix_treated_minus_same_episode_clean_original_fp32
+  behavior_target: four_candidate_logits_reindexed_by_episode_role
+  direct_verification_replay: observed_layer21_delta_must_replay_before_predicted_patch
+  full_residual_state_target_forbidden: true
+  donor_activation_as_predictor_input_forbidden: true
+
+meta_model:
+  family: ema_stop_gradient_delta_trajectory_intervention_jepa
+  clean_context_site: blocks.14.resid_post
+  action_encoding: ordered_sequence_of_fixed_4_by_4_generator_matrices
+  composed_target_matrix_as_input_forbidden: true
+  shared_layer_encoder_hidden_dim: 48
+  meta_dim: 16
+  recurrent_hidden_dim: 48
+  maximum_trainable_parameters: 150000
+  training_seeds: [541, 547, 557]
+  train_rollout_length: 1
+  evaluation_rollout_lengths: [2, 3]
+  target_encoder_ema_decay: 0.99
+  stop_gradient_target: true
+  sigreg_weight: 0.09
+  sigreg_knots: 17
+  sigreg_projections: 64
+  early_stopping_split: validation
+  token_ids_as_features_forbidden: true
+  train_on_composed_targets_forbidden: true
+loss:
+  latent_alignment_weight: 1.0
+  trajectory_delta_weight: 1.0
+  role_logit_delta_weight: 1.0
+  behavior_weight: 0.5
+  composition_consistency_weight: 0.5
+  identity_noop_weight: 0.25
+
+baselines:
+  methods: [no_change, mean_effect, direct_primitive_addition, exact_local_jvp, population_jacobian, full_quadratic_hvp, oracle_relinearized_sequential_jvp, affine_generator_rollout, s4_equivariant_linear, ridge, low_rank_bilinear, capacity_matched_mlp]
+  exact_local_jvp_precision: float32
+  full_quadratic_cross_terms: included
+  population_fit_split: train_only
+  learned_baseline_parameter_cap: 150000
+  direct_primitive_targets_train_only: true
+  direct_primitive_addition_semantics: each_generator_effect_executed_from_same_clean_origin_then_summed
+  direct_primitive_prefix_effects_forbidden: true
+  oracle_relinearized_sequential_jvp_semantics: recompute_exact_jacobian_at_each_directly_executed_prefix
+  affine_generator_rollout_semantics: compose_train_fit_affine_operator_per_transposition
+  s4_equivariant_linear_semantics: role_mean_trivial_irrep_plus_three_dimensional_standard_contrast_irrep
+
+controls:
+  wrong_permutation_same_class: true
+  inverse_rollout: explicit_action_then_inverse_case
+  identity_noop: explicit_episode_case
+  donor_shuffle: true
+  norm_matched_delta: true
+  role_relabel_equivariance: true
+  exact_test_paraphrase_pairing: true
+  split_by_complete_key_and_value_alphabet: true
+  episode_clustered_inference: true
+
+gates:
+  clean_accuracy_min_each_split: 0.90
+  direct_permutation_accuracy_min_each_split: 0.90
+  exact_layer0_replay_atol: 1.0e-6
+  observed_layer21_patch_replay_atol: 1.0e-6
+  composition_interaction_power_min: 0.10
+  best_quadratic_normalized_mse_min: 0.10
+  meta_model_mse_ratio_to_best_baseline_max: 0.80
+  behavior_agreement_margin_min: 0.10
+  paired_bootstrap_advantage_lower_min: 0.0
+  predicted_state_patch_recovery_min: 0.50
+  predicted_state_control_margin_min: 0.20
+  inverse_restoration_min: 0.75
+  seeds_required: 3
+  protected_splits_required: [test, paraphrase]
+  bootstrap_draws: 10000
+  bootstrap_seed: 563
+
+phase_policy:
+  phase_0: direct_and_differential_nonlinearity_audit
+  phase_0_decision_split: validation
+  phase_1: train_meta_model_only_if_phase_0_passes
+  protected_requires_frozen_phase_1: true
+  phase_0_failure_status: COMPLETED_NEGATIVE_LOCALLY_DIFFERENTIAL
+  prediction_without_direct_patch_status: AVAILABILITY_ONLY
+  any_protected_failure_status: HYPOTHESIS_REJECTED
+  access:
+    phase_0:
+      allowed_splits: [calibration, train, validation]
+      output_root: data/activations/qwen_binding_algebra_v2/phase_0
+    phase_1_train:
+      allowed_splits: [train, validation]
+      output_root: data/activations/qwen_binding_algebra_v2/phase_1_train
+    protected_eval:
+      allowed_splits: [test, paraphrase]
+      output_root: data/activations/qwen_binding_algebra_v2/protected_eval
+
+activation_budget_mb: 1024
+max_shard_mb: 256
+output_manifest: data/manifests/qwen_binding_algebra_v2.json
+output_metrics: artifacts/metrics/qwen_binding_algebra_v2.json

@@ -3,6 +3,31 @@
 Status: `COMPLETED_NEGATIVE` for the corrected Qwen nonlinear-advantage audit; the broader research
 track remains active.
 
+## 2026-07-26 continuation decision
+
+Do not use Qwen3-4B as an automatic rescue for the 0.6B null. The capital intervention is already
+behavior-changing, while the target-encoder JEPA fails even at oracle target decoding and the
+retrospective causal-delta representation is much healthier than the full-state target. This
+points first to task/target/operator design, not demonstrated capacity shortage.
+
+The ordered continuation is:
+
+1. complete `LLM-QWEN-BINDING-ALGEBRA-002` outcome-blind on 0.6B and stop if competence,
+   interaction-power, or best-quadratic residual gates fail;
+2. reproduce official Jacobian-Lens convergence on 0.6B, compare local/population/tuned/logit
+   transports, whitened SVD, and spectrum-matched rotation/row controls;
+3. test selected Qwen3-1.7B Base layers against Qwen-Scope sparse directions with
+   alignment/kurtosis candidates, matched low-alignment features, raw neurons, rotations, and
+   direct patches; and
+4. move to 4B only after a causal 1.7B effect survives. Qwen3-30B-A3B remains cluster-only.
+
+If and only if algebra Phase 0 leaves residual nonlinearity beyond full quadratic and sequentially
+relinearized JVP, compare a conditional low-rank operator that predicts that residual with
+capacity-matched full-delta JEPA, affine/`S4`-equivariant, MLP/bilinear, and sparse causal-student
+models. Predicted states must be executed directly on Qwen. J-space is treated as a
+token-verbalizable transport candidate, not assumed to be low-dimensional, a JEPA latent, or a
+workspace.
+
 The inherited CPU implementation uses a mock transformer with known activation dependencies. It is valid for interface, leakage, and intervention-pipeline tests only.
 
 Real Hugging Face Qwen instrumentation and bounded Qwen3-0.6B experiments are `SMOKE_VALIDATED` on

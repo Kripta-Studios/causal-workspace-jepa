@@ -1,5 +1,35 @@
 # Decisions
 
+## 2026-07-26
+
+- Do not respond to the present negative results by immediately moving to a larger world model or
+  Qwen3-4B. Track A first needs the already frozen EB-JEPA three-seed competence decision; Track B
+  first needs a behavior-competent finite-action task and a target that is causal delta rather than
+  an identity-dominated full residual. Scaling before those gates would not distinguish capacity
+  from task/geometry failure.
+- For Track A, order the next portfolio as EB-JEPA competence, sensitivity-balanced causal modes
+  plus exact GRU gate/path patching, a small MiniPush masked-visual-action factorial, and then
+  verified C-JEPA object slots/checkpoints. Balanced modes pair reachable activation vectors with
+  downstream covectors and must pass gauge, finite-intervention, complement, necessity,
+  sufficiency, and faithfulness controls before any compact-mediator language. They are not
+  evidence for a workspace by construction.
+- Treat FlowMimic's common-warp pairs as temporal-coherence shortcuts and hard anticausal controls,
+  not as positive physical trajectories. Adapt Masked Visual Actions' revealed-entity interface to
+  MiniPush; do not reproduce its Wan2.2-14B backbone on the local 12-GB GPU.
+- For Track B, order the next portfolio as binding algebra v2 on 0.6B, an official
+  Jacobian-Lens convergence/control study, a selected-layer Qwen3-1.7B plus Qwen-Scope
+  sparse-direction causal audit, and only then 4B. Do not assume that J-space is low-dimensional
+  or semantically equivalent to a JEPA workspace.
+- Train a learned hybrid only if binding-algebra Phase 0 demonstrates finite nonlinear residual
+  beyond full quadratic and relinearized-JVP transport. The preferred candidate predicts the
+  residual around that strong differential base with a conditional low-rank operator; it must beat
+  capacity-matched full-delta JEPA, affine/equivariant, MLP/bilinear, and sparse-student baselines
+  and survive direct predicted-state patching.
+- `LLM-QWEN-BINDING-ALGEBRA-001` is superseded before tokenizer/model access. V2 retains every
+  scientific threshold while binding the matrix homomorphism, ordered primitive-only action
+  inputs, cumulative deltas from one clean origin, explicit identity/inverse controls, independent
+  phase roots, complete HVP semantics, and relinearized-prefix JVP semantics.
+
 ## 2026-07-21
 
 - Do not interpret official EB-JEPA MPPI behavior until the configured action constraint is audited.

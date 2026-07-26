@@ -2,6 +2,30 @@
 
 Status: `SMOKE_VALIDATED`.
 
+## 2026-07-26 continuation decision
+
+The immediate bottleneck is competence, not dataset volume or backbone size. Resume EB-JEPA seeds
+`1000/10000` only with safe GPU headroom, then run all 18 frozen planning jobs. If bounded success
+is below `0.80` overall or `0.70` for any seed, close this reproduction's recurrent-mechanism route
+instead of interpreting low-loss hidden states.
+
+If competence passes, construct sensitivity-balanced causal modes from reachable activation
+displacements `D` and downstream gradients/covectors `G`. The cross map `G^T D` yields
+biorthogonal reachability/observability modes and an oblique projector. This is attractive because
+the paired vector/covector object has a coordinate-safe interpretation and can target the parts of
+state both reachable by interventions and visible to prediction, cost, risk, uncertainty, action,
+and success. It remains only a candidate until finite patches, complement faithfulness,
+necessity/sufficiency, condition matching, and gauge-covariance controls pass. Exact GRU
+reset/update/candidate/action path patches remain the direct component audit.
+
+The architectural branch is a small MiniPush factorial inspired by Masked Visual Actions:
+capacity-match vector actions against masked agent-trajectory actions and forward-only against
+forward/inverse queries at three frozen data scales. Exact masks/state permit causal scoring;
+permuted/time-reversed trajectories, renderer shift, and non-contact common warps test visual
+shortcuts. FlowMimic-style shared warps are negative controls, not physical transitions. The next
+published scale is verified C-JEPA pre-extracted object slots/checkpoints. Reproducing the
+Wan2.2-14B visual-action backbone locally is resource-blocked and does not precede these tests.
+
 Initial implementation order:
 
 1. deterministic Tier 0 environments: implemented;
