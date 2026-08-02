@@ -1,0 +1,541 @@
+id: CR-AC-JEPA-001
+protocol: CR-AC-JEPA-V1
+track: A
+title: causal-residual action-conditioned JEPA preregistration
+registered_date: 2026-08-02
+status: PREREGISTERED_NOT_AUTHORIZED
+adr: docs/adr/0001-causal-residual-intervention-jepa.md
+execution_authorized: false
+claim_boundary: causal residual prediction and direct-control audit only; probes, imitation, rank, retrieval, and representation centrality are not mechanism or workspace evidence
+
+learning_contract:
+  paradigm: reward-free action-supervised learning from offline trajectories
+  recorded_actions: true
+  semantic_labels: false
+  reward_annotations: false
+  reinforcement_learning: forbidden
+
+canonical_digest:
+  algorithm: sha256
+  encoding: utf-8
+  serialization: canonical_json_sorted_keys_compact
+  exclude_paths: [canonical_digest.value]
+  prefix: CR-AC-JEPA-V1
+  value: 604a385c4ea0ab12fa306a3d7b591b78287ad2c6223168965246ea7530f10b96
+
+authorization:
+  protected: false
+  expensive: false
+  execution_authorized: false
+  required_for_mechanistic: true
+  required_for_protected: true
+  required_authorization_commit_and_push: true
+  fail_closed: true
+  forbidden_until_authorized: [protected_rows, protected_direct_replay, mechanistic_claims, circuit_claims, workspace_claims]
+
+provenance:
+  record_config_bytes_sha256: true
+  record_canonical_digest: true
+  record_git_commit: true
+  require_clean_worktree: true
+  record_hardware_and_runtime: true
+  record_seed_and_manifest: true
+  outputs_root: artifacts/metrics/cr_ac_jepa_v1
+
+stage_0:
+  name: deterministic_observable_residual_audit
+  execution_authorized: true
+  protected: false
+  resource_profile: configs/resource/cpu_vps.yaml
+  deterministic: true
+  seeds: [0, 1, 2]
+  systems: [linear, quadratic, nonlinear_compositional, predictable_nuisance]
+  observable_targets: [clean_state, treated_state, action_effect, residual_effect]
+  state_source: observable_ground_truth_physical_state
+  frozen_encoder: true
+  target_is_observable_or_frozen_encoder: true
+  learning_allowed: conditional_after_finite_residual_floor
+  no_learning_before_floors: true
+  cartesian_factorial_expansion: forbidden
+  residual_definition: delta_u_minus_frozen_baseline_star
+  delta_definition: x_u_minus_x
+  target_definition: residual_u_equals_delta_u_minus_baseline_star_x_u
+  nuisance_is_planted_and_predictable: true
+  expected_outcome_controls:
+    linear: no_learned_discovery
+    quadratic: no_learned_discovery
+    nonlinear_compositional: nonlinear_replay_improvement_required
+    predictable_nuisance: nuisance_guard_must_detect_weak_causal_signal
+  finite_residual:
+    energy_metric: mean_squared_l2_residual_over_mean_squared_l2_delta
+    minimum_relative_energy: 0.05
+    minimum_absolute_energy: 1.0e-12
+    repeatability_metric: one_minus_normalized_rmse_across_repeated_generation
+    minimum_repeatability: 0.99
+    maximum_repeatability_rmse: 1.0e-6
+    required_repetitions: 3
+    seeds_must_be_distinct: true
+    gate_before_residual_learning: true
+    nonfinite_is_failure: true
+  frozen_targets:
+    target_encoder: frozen_before_split_and_fit
+    decoder: frozen_train_only_decoder
+    normalization: fit_train_only_then_frozen
+    baseline_star: selected_before_residual_model_fit
+    drift_report_required: true
+    collapse_report_required: true
+    replay_report_required: true
+    no_ema_guarantee: true
+  subphases:
+    baseline_and_floor:
+      learning_allowed: false
+      role: deterministic_baseline_selection_and_finite_repeatability
+      requires: [observable_targets, frozen_baseline_star, finite_residual_floor]
+    eligible_synthetic_residual_learning:
+      learning_allowed: true
+      role: train_and_test_cr_residual_on_synthetic_systems_after_floor
+      requires: [baseline_and_floor_pass, train_validation_split, frozen_target_statistics]
+      nonlinear_replay_improvement_required: true
+      linear_and_quadratic_zero_discovery_expected: true
+      protected_access: false
+      cartesian_factorial_expansion: forbidden
+
+baseline_target_selection:
+  target: residual_endpoint_or_residual_trajectory_only
+  complete_state_prediction_is_control: true
+  deployability_contract: same_observable_source_executions_and_inference_budget_as_predictor
+  eligible_baselines: [no_change, train_mean_effect, exact_local_jvp, quadratic_hvp, population_differential, pca_ridge_causal_delta, train_affine_transport, equivariant_transport]
+  deployable_residualizers_only: true
+  fair_comparators: [no_change, train_mean_effect, exact_local_jvp, quadratic_hvp, population_differential, pca_ridge_causal_delta, train_affine_transport, equivariant_transport, complete_delta, complete_state, bilinear, mlp, sparse_student]
+  oracle_ceilings: [observed_prefix_relinearization, exact_treated_prefix_reexecution]
+  oracle_can_select_baseline: false
+  oracle_can_define_target: false
+  target_encoder_forbidden_inputs: [sample_id, answer_label, protected_metadata, treated_state_at_inference, unavailable_execution]
+  selection:
+    split: train_validation_only
+    endpoint: normalized_residual_mse
+    aggregation: macro_mean_over_episode_groups
+    tie_break: [endpoint_then_method_name_lexicographic]
+    selection_record_required: true
+    selection_record_hashed: true
+    freeze_before_protected: true
+  baseline_star:
+    selected_only_from_eligible: true
+    frozen_before_learning: true
+    normalized_with_train_only_statistics: true
+    selection_is_not_outcome_adaptive: true
+
+a0:
+  name: official_eb_jepa_competence_lock
+  execution_authorized: false
+  protected: false
+  config: configs/experiments/eb_jepa_two_rooms_competence.yaml
+  experiment_id: WM-EBJEPA-COMPETENCE-001
+  source_revision: 966e61e9285b3a876f49b9774e9720d9a99a7925
+  seeds: [1, 1000, 10000]
+  planner_arms: [official_mppi_as_executed, bound_corrected_mppi_as_executed]
+  mechanistic_arm: bound_corrected_mppi_as_executed
+  checkpoint_epochs: [9, 10, 11]
+  episodes_per_seed: 20
+  environment_seed: 0
+  action_max_norm: 2.45
+  overall_success_floor: 0.80
+  per_seed_success_floor: 0.70
+  zero_action_violations_required: true
+  checkpoint_manifest_required: true
+  source_config_exact_match_required: true
+  mechanistic_lock: no_mechanistic_phase_without_a0_pass
+  failure_status: INELIGIBLE_TASK
+  current_authorization: false
+
+gates:
+  A0:
+    name: official_competence_matrix
+    prerequisites: [clean_pinned_source, all_three_seeds, bound_corrected_primary_arm]
+    overall_success_min: 0.80
+    per_seed_success_min: 0.70
+    action_violations_max: 0
+    required: true
+    failure_status: INELIGIBLE_TASK
+  A1:
+    name: dense_controllable_representation
+    prerequisites: [stage_0_complete, finite_residual_floor, repeatability_floor, frozen_baseline_target]
+    representation: dense_controllable_action_conditioned_representation
+    residual_stability_floor_included: true
+    dense_tokens_required: true
+    action_effect_decoding_required: true
+    residual_energy_min: 0.05
+    repeatability_min: 0.99
+    target_drift_max: 1.0e-6
+    collapse_allowed: false
+    required: true
+    failure_status: NEGATIVE_RESULT
+  A2:
+    name: exact_recurrent_and_path_interventions
+    prerequisites: [a0_pass, a1_pass]
+    exact_recurrent_intervention_required: true
+    causal_path_patch_required: true
+    path_ablation_and_complement_required: true
+    max_retained_configurations: 2
+    validation_only_selection: true
+    required: true
+    failure_status: NEGATIVE_RESULT
+  A3:
+    name: planning_and_direct_causal_use
+    prerequisites: [a0_pass, a1_pass, a2_pass, a2_frozen]
+    direct_replay_required: true
+    matched_controls_required: true
+    closed_loop_required: true
+    protected_primary_count: 1
+    secondary_is_nonreplacement: true
+    clean_pushed_commit_required: true
+    execution_authorization_required: true
+    required: true
+    failure_status: NEGATIVE_RESULT
+
+funnel:
+  stage_0:
+    role: deterministic_system_and_residual_floor
+    allowed_splits: [synthetic_calibration, synthetic_train, synthetic_validation]
+    learning_allowed: conditional_after_floor
+    subphases: [baseline_and_floor, eligible_synthetic_residual_learning]
+    protected_access: false
+    execution_authorized: true
+  stage_1:
+    role: dense_controllable_representation_one_development_seed
+    seed_count: 1
+    allowed_splits: [train, validation]
+    protected_access: false
+    requires: [A0, A1]
+    prohibited_until_stage_0_and_stage_1: [full_expensive_factorial]
+    execution_authorized: false
+  stage_2:
+    role: exact_recurrent_and_path_intervention_validation
+    maximum_retained_per_track: 2
+    allowed_splits: [train, validation]
+    protected_access: false
+    requires: [A0, A1]
+    execution_authorized: false
+  stage_3:
+    role: planning_and_direct_causal_use_frozen_primary_three_seed_controls
+    seed_count: 3
+    allowed_splits: [train, validation]
+    protected_access: false
+    requires: [A0, A1, A2]
+    execution_authorized: false
+  stage_4:
+    role: one_protected_execution
+    protected: true
+    primary_count: 1
+    secondary_cannot_replace_primary: true
+    allowed_splits: [protected_test]
+    requires: [A0, A1, A2, A3, authorization_commit_and_push]
+    execution_authorized: false
+  validation_selection:
+    split: validation
+    primary_count: 1
+    secondary_count_max: 1
+    selection_before_protected: true
+    protected_results_never_select_methods: true
+
+factorial:
+  purpose: capacity_matched_small_architecture_and_target_audit
+  data_scales: fixed_three_scale_cells
+  data_scale_names: small_medium_large
+  data_scale_selection: fixed_validation_cells_only
+  tokenization: [pooled, dense_patch_object_tokens]
+  action_encoding: [vector, masked_visual_action]
+  query_direction: [forward_only, forward_inverse]
+  target_modes: [next, delta, residual]
+  nuisance_modes: [none, predictable_visual, predictable_time, trajectory_id, policy_id, common_warp_anticausal]
+  tcr_vis_variants: [tcr_vis_off, tcr_vis_on]
+  target_encoder_variants: [frozen_encoder, ema_stop_gradient]
+  counterfactual_masking: [off, on]
+  dense_attention: block_causal
+  fixed_data_scales: true
+  capacity_matched: true
+  full_expensive_factorial: forbidden_until_stage_0_and_stage_1_pass
+  full_expensive_factorial_allowed: false
+  cartesian_product: forbidden
+  required_axes: [pooled_dense, vector_visual_action, forward_inverse, next_delta_residual, nuisance, TCR-VIS, target_mode]
+  required_cells_include: [pooled_vector_forward_next, dense_vector_forward_delta, dense_visual_action_forward_inverse_residual, pooled_vector_forward_residual_tcr_vis, dense_visual_action_forward_inverse_delta_tcr_vis]
+  nuisance_common_warp_is_control: true
+  nuisance_time_trajectory_policy_are_controls: true
+
+same_trajectory_nce:
+  enabled: true
+  objectives: [next_latent_mse, within_trajectory_nce_future, within_trajectory_nce_delta, within_trajectory_nce_residual]
+  next_latent_mse: required
+  within_trajectory_nce_targets: [full_future, delta, residual]
+  residual_visreg_variants: [residual_without_visreg, residual_with_visreg]
+  predictor_training_modes: [e2e, stop_gradient, ema]
+  full_episode_temporal_mean: forbidden
+  positive_scope: same_episode_eligible_transitions
+  near_time_false_negative_exclusion: true
+  dynamically_equivalent_multiple_positives: allowed
+  temporal_exclusion:
+    near_time_min_gap: 2
+    exclude_same_timestamp: true
+    distance_weighting: inverse_temporal_distance
+  action_sensitivity_gate:
+    true_action_required: true
+    shuffled_action_must_deteriorate: true
+    sign_flipped_action_must_deteriorate: true
+    norm_matched_action_must_deteriorate: true
+    counterfactual_action_must_deteriorate: true
+    deterioration_metric: action_effect_nll_or_residual_mse
+    positive_margin_min: 0.05
+  true_action_controls: [shuffled, sign_flipped, norm_matched, counterfactual]
+  action_labels_not_used_as_only_evidence: true
+
+adaptive_intervention_sampler:
+  status: optional_train_only
+  enabled: optional
+  allowed_splits: [train]
+  forbidden_splits: [validation, protected_test]
+  validation_test_unbiased: true
+  triggers: [nontrivial_residual, uncertainty, state_disagreement, behavior_disagreement, borderline_behavior, compositions, on_manifold_support]
+  upweight: [nontrivial_residual, uncertainty, state_disagreement, behavior_disagreement, borderline_behavior, compositions, on_manifold_support]
+  downweight: [trivial, linear, duplicate, off_manifold]
+  no_reinforcement_learning: true
+
+action_decoder:
+  required: true
+  comparisons: [displacement_decoder, concatenated_endpoint_decoder]
+  displacement_input: z_t_plus_1_minus_z_t
+  endpoint_input: concatenate_z_t_and_z_t_plus_1
+  action_identity_more_recoverable_from_displacement_gate: preregistered
+  endpoint_and_displacement_use_same_split_and_capacity: true
+
+actor_factorial:
+  required: true
+  cells: [forward_only, local_inverse_only, goal_intent_only, full_shared_local_goal, independent_parameter_matched_actors, independent_double_capacity_actors, shared_trunk_separate_outputs, without_z_times_m, with_z_times_m, TCR-VIS, CR_residual_forward]
+  cartesian_product: forbidden
+  full_expensive_factorial_forbidden_until: [stage_0_complete, stage_1_complete]
+  full_expensive_factorial_allowed: false
+  validation_selection_required: true
+
+intact:
+  name: INTACT_style_shared_action_law_candidate
+  enabled: true
+  candidate_not_assumed_winner: true
+  operator: one_shared_conditional_action_law
+  factorial:
+    required: true
+    factors: [local_intent, goal_intent, shared_operator, separate_action_likelihoods]
+    shared_operator: required
+    separate_action_likelihoods: required
+  local_goal_factorial: [local_intent, goal_intent]
+  grammar:
+    slot_count: 4
+    slots: [z_t, m_t, z_t_times_m_t, action_embedding_a_t_minus_1]
+    exact_order: true
+    local_intent:
+      expression: successor_z_t_plus_1_minus_z_t
+      successor_attachment: real_successor_attached
+      successor_gradient: enabled
+      current_gradient: enabled
+      target_stop_gradient: false
+    goal_intent:
+      expression: stop_gradient_z_goal_minus_z_t
+      goal_gradient: stopped
+      current_gradient: enabled
+      target_stop_gradient: true
+    local_goal_pointwise_equality: forbidden
+  action_likelihood:
+    local: proper_conditional_likelihood
+    goal: proper_conditional_likelihood
+    separate_losses: true
+    pointwise_equality_constraint: false
+  factorial_required: true
+  shared_operator_required: true
+
+direct:
+  name: Direct
+  enabled: true
+  recurrent_action_chunks: true
+  search: zero_search
+  candidate_sequences: false
+  terminal_latent_cost_calls: false
+  deployment_input_mask:
+    mask_name: direct_zero_search_current_state_goal_previous_action
+    allowed: [current_observation, current_latent, frozen_goal_anchor, previous_executed_action_context, registered_model_state]
+    forbidden: [future_successors, future_trajectories, rewards, success_flags, absolute_time, relative_time, episode_length, policy_identity, candidate_action_sequences, terminal_latent_cost]
+    exact: true
+    future_information_leakage_check: required
+  output: action_chunk
+  closed_loop_required: true
+  first_chunk_only_reencode: true
+  mode_selection: frozen_validation_selected
+  uncertainty_local_verify: true
+  recurrence:
+    forward_predictor: unchanged_registered_forward_predictor
+    each_selected_chunk_uses_forward_predictor: true
+    execute_only_first_registered_chunk: true
+    reencode_next_real_observation: true
+    predicts_action_chunks_recurrently: true
+    first_chunk_only_reencode: true
+    reencode_after_executed_chunk: true
+    mode_selection: frozen_validation_selected
+    uncertainty_local_verify: true
+    mode_selection_uses_future_successors: false
+
+planner_controls:
+  actor_disabled_cem:
+    planner: CEM
+    actor_disabled: true
+    actor_gradients: forbidden
+    candidate_action_search: allowed_as_control_only
+    actor_selects_candidates: false
+  actor_disabled_mppi:
+    planner: MPPI
+    actor_disabled: true
+    actor_gradients: forbidden
+    candidate_action_search: allowed_as_control_only
+    actor_selects_candidates: false
+  centered_verifier:
+    enabled: true
+    centered_on_direct_proposal: true
+    search_scope: local_only
+    broad_search: forbidden
+    terminal_latent_cost_call: forbidden
+  action_heads: [gaussian, mixture]
+  gaussian_head:
+    proper_likelihood: true
+  mixture_head:
+    proper_likelihood: true
+    used_when_multimodal: true
+
+controls:
+  action:
+    true_action: required
+    shuffled_action: required
+    sign_flipped_action: required
+    norm_matched_action: required
+    counterfactual_action: required
+  action_quotient:
+    required: true
+    equivalence_relation: fixed_current_state_same_supported_conditional_expert_action_law
+    fixed_current_state_only: true
+    same_supported_conditional_expert_action_law: true
+    report_raw_and_quotient_metrics: true
+    no_quotient_leakage_across_splits: true
+    metrics: [predicted_to_expert_local_knn_overlap, centered_kernel_or_linear_cka, pointwise_action_r2, effective_rank, conditional_action_nll, actor_disabled_planning, direct_success, optional_verified_success, calibration]
+  support_generalization:
+    required: true
+    held_out_action_support: true
+    held_out_layouts: true
+    held_out_goals: true
+    held_out_object_identities: true
+    held_out_nuisance_combinations: true
+    held_out_trajectory_families: true
+    held_out_obstacles: true
+    held_out_contact_regimes: true
+    held_out_distractors: true
+    held_out_dynamics: true
+    action_equivalent_counterfactuals: true
+    action_distinct_counterfactuals: true
+    post_first_step_drift: required
+    train_validation_test_disjoint: true
+  gauge_pairing:
+    required: true
+    coordinate_gauge_transform: train_fit_invertible_transform
+    paired_contexts: exact_context_paired
+    dual_coordinate_transport: required
+    pooled_unpaired_overlap_is_null_control: true
+    controls: [native, identity_map, calibrated, shuffled, same_objective_cross_seed, reverse_pairings]
+    exact_context_pairing_required: true
+    coordinate_calibration:
+      can_restore_existing_learned_conditional: true
+      can_create_absent_action_dependence: false
+      interpretation: calibration_restores_existing_conditional_only
+  nuisance:
+    required: true
+    planted_suite: [episode_id, slow_timestamp, persistent_camera_marker, persistent_camera_template_marker, predictable_bit_string, norm_matched_direction, covariance_matched_irrelevant_control]
+    probes: [future, absolute_time, relative_time, trajectory_id, policy_id, renderer_id, episode_id, slow_timestamp, camera_marker, bit_string]
+    causal_nuisance_intervention: true
+    nuisance_dominance_rejects_target: true
+    capacity_matching_required: true
+    dominance_metrics: [probe_r2, mutual_information, residual_energy_explained, causal_effect_ratio]
+    clock_drift_phase_episode_length_controls: true
+  causal_path_replay:
+    required: true
+    residual_path_ablation: true
+    residual_path_patching: true
+    direct_observed_replay_before_predicted_replay: true
+    predicted_state_complete_replacement: true
+    matched_representation_shuffle: true
+    actor_only_baseline: true
+    representation_shuffle_baseline: true
+    action_shuffled_execution: true
+    counterfactual_execution: true
+    necessity_sufficiency_faithfulness: required
+    closed_loop_behavior_endpoint: required
+
+metrics:
+  family_metrics: [knn, cka, r2, rank, nll]
+  causal_endpoints: [future_latent_prediction, decoded_physical_state, uncertainty, value, risk, cost, selected_action, direct_closed_loop_success]
+  planning_actor_imitation_not_substitute: true
+  actor_disabled_planning_separate: true
+  latent_drift_reported: true
+  paired_actor_coordinate_compatibility_reported: true
+  evidence_level_required: true
+  no_probe_only_mechanism_claim: true
+
+intact_adoption:
+  candidate: intact
+  required_direct_endpoint: held_out_direct_improvement
+  required_actor_disabled_criterion: at_least_one_actor_disabled_criterion
+  required_controls: [nuisance, support, multimodality, pairing]
+  all_required_controls_must_pass: true
+  failure_label: imitation_interface_only
+  no_causal_or_workspace_claim_on_failure: true
+
+phase_policy:
+  fail_closed: true
+  mechanistic_requires: [A0, A1, A2]
+  protected_requires: [A0, A1, A2, A3, execution_authorized, clean_pushed_commit]
+  blocked_status: EXECUTION_BLOCKED
+  missing_prerequisite_status: INELIGIBLE_TASK
+  finite_floor_failure_status: NEGATIVE_RESULT
+  learned_without_floor_status: EXECUTION_BLOCKED
+  protected_without_authorization_status: EXECUTION_BLOCKED
+  allowed_statuses: [PREREGISTERED_NOT_AUTHORIZED, IMPLEMENTED, SMOKE_VALIDATED, EXECUTION_BLOCKED, INELIGIBLE_TASK, NEGATIVE_RESULT, POSITIVE_EXPLORATORY, POSITIVE_PROTECTED]
+  protected_rows_inaccessible_before_authorization: true
+  protected_results_never_select_method: true
+
+resource_preflight:
+  required: true
+  fail_closed: true
+  profiles:
+    stage_0: configs/resource/cpu_vps.yaml
+    a0: configs/resource/gpu_12gb.yaml
+    mechanistic: configs/resource/gpu_12gb.yaml
+    protected: configs/resource/gpu_12gb.yaml
+  stage_0:
+    cpu_only: true
+    max_dataset_mb: 512
+    network_required: false
+  a0:
+    network_required: false
+    source_checkout_required: true
+    minimum_free_vram_gb: 10.0
+    measured_batch_reservation_gb: 5.82
+    safety_headroom_required: true
+  mechanistic:
+    minimum_free_vram_gb: 10.0
+    source_and_checkpoint_manifest_required: true
+  protected:
+    minimum_free_vram_gb: 10.0
+    clean_pushed_commit_required: true
+    authorization_required: true
+  blocked_status: EXECUTION_BLOCKED
+  unavailable_status: EXECUTION_BLOCKED
+
+outputs:
+  stage_0_metrics: artifacts/metrics/cr_ac_jepa_v1/stage_0.json
+  validation_metrics: artifacts/metrics/cr_ac_jepa_v1/validation.json
+  protected_metrics: artifacts/metrics/cr_ac_jepa_v1/protected.json
+  selection_record: artifacts/metrics/cr_ac_jepa_v1/baseline_selection.json
+  provenance: artifacts/metrics/cr_ac_jepa_v1/provenance.json
+  no_raw_data_in_git: true
