@@ -1,8 +1,26 @@
 # Literature Registry
 
-Last primary-source verification: 2026-07-26. `Deferred` means the source is registered but its
+Last primary-source verification: 2026-08-17. `Deferred` means the source is registered but its
 experiment is outside the completed bounded suite; it does not mean the paper's claim was
 reproduced. Source claims below are motivations, not findings of this repository.
+
+## 2026-08-17 mechanistic-interpretability addendum
+
+- *When Attribution Patching Lies: Diagnosis and a Second-Order Correction* (Zhang & Wang,
+  arXiv:2606.09899) identifies downstream nonlinearity as a dominant source of first-order
+  attribution-patching error and proposes a reliability diagnostic, HVP correction, and
+  Screen-Flag-Fix workflow. HARD-002 records this family as a comparator; HVP is not forced to win.
+- *Tracing Attention Computation Through Feature Interactions* (Kamath, Ameisen et al.,
+  Transformer Circuits, 2025-07-31) decomposes attention-score formation into query/key
+  feature-feature interactions and head-mediated graph edges. It motivates explicit QK/head routing
+  rather than treating residual-stream nodes alone as a complete binding circuit.
+- *Qwen-Scope: Turning Sparse Features into Development Tools for Large Language Models*
+  (arXiv:2605.11887) releases 14 groups of SAEs across seven Qwen3/Qwen3.5 variants. These are
+  prospective sparse substrates, not causal mechanisms until direct necessity/sufficiency tests pass.
+- *Sparse Weight Decomposition for Efficient Circuit Extraction* (arXiv:2608.03913,
+  2026-08-04) factorizes dense transformer weights into sparse factors whose intermediate
+  coordinates are directly addressable circuit units, and reports sufficiency/necessity results on
+  GPT-2, Qwen2.5, and Qwen3.5-27B. It is a new post-July comparator for future Qwen circuit work.
 
 | ID | Title; authors; year/version | Paper/source | Official code; data/checkpoint | Claimed contribution and repository relevance | Assumptions and limitations | Reproduction status |
 | --- | --- | --- | --- | --- | --- | --- |

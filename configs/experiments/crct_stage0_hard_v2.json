@@ -1,0 +1,59 @@
+{
+  "schema_version": "crct_stage0_hard_suite_config_v2",
+  "experiment_id": "CRCT-STAGE0-HARD-002",
+  "expected_base_commit": "f69cc28f00faf9d5382e3a47a551410785ae9374",
+  "required_crct001_source_hashes": {
+    "configs/experiments/crct_stage0_v1.json": "fb61996234f007143828a06dfdfbdff54ad5ba99def8e450fd26afb0ba1f8bed",
+    "docs/CRCT_STAGE0_RUNBOOK.md": "bf71cea69840775cc10b52ad550005b8a60082e1a360dd1223a160732ba8e834",
+    "scripts/run_crct_stage0.ps1": "f3851783973a3284b9aa728ae493387e1fef09f575aece66545550878f9c8006",
+    "scripts/run_crct_stage0_suite.py": "e413366f1042f84ed93ebe140ba9462d967588b096f9cd8e917f5dee5f3b78c6",
+    "src/causal_workspace_jepa/experiments/cross_domain/crct_stage0.py": "53310ce0a061600b69c8e37376176c267acd31b7622da7146d450acde8e04668",
+    "tests/scientific/test_crct_stage0.py": "f885824ceae6398b1c2aff16c3c67644762347a07aef37254573305ada322539"
+  },
+  "default_profile": "full",
+  "default_device": "auto",
+  "primary_seeds": [1009, 2027, 4093],
+  "preflight_seed": 20260817,
+  "preflight_profile": "smoke",
+  "preflight_device": "auto",
+  "preflight_timeout_seconds": 300,
+  "seed_timeout_seconds": 1800,
+  "minimum_cuda_free_gib_for_full": 4.0,
+  "targeted_tests": [
+    "tests/scientific/test_crct_stage0_hard.py",
+    "tests/scientific/test_crct_stage0.py",
+    "tests/scientific/test_causal_residual_synthetic.py",
+    "tests/unit/test_causal_residual_core.py"
+  ],
+  "frozen_gates": {
+    "confirmation_generated_after_freeze": true,
+    "finite_residual_power_ge_0_08": true,
+    "iid_circuit_recovery_ge_0_75": true,
+    "ood_circuit_recovery_ge_0_55": true,
+    "node_precision_ge_0_70": true,
+    "node_recall_ge_0_60": true,
+    "edge_precision_ge_2_of_3": true,
+    "edge_recall_ge_2_of_3": true,
+    "matched_controls_p_le_0_05": true,
+    "matched_controls_margin_ge_0_15": true,
+    "gauge_function_invariant": true,
+    "gauge_causal_rank_invariant": true,
+    "decoy_rejection_ge_0_75": true
+  },
+  "non_gating_diagnostics": [
+    "whether T2/HVP improves or worsens T1 ranking",
+    "Screen-Flag-Fix ranking fidelity versus exact finite patching",
+    "residual-student versus equal-capacity direct-delta student on IID and OOD",
+    "activation-magnitude gauge instability",
+    "individual cancellation/null-pair effects"
+  ],
+  "scientific_boundary": {
+    "synthetic_ground_truth_only": true,
+    "protected_qwen_execution": false,
+    "protected_eb_jepa_execution": false,
+    "workspace_claim_permitted": false,
+    "sota_claim_permitted": false,
+    "threshold_retuning_after_primary_outcomes": false,
+    "crct001_is_historical_positive_control_not_confirmation": true
+  }
+}

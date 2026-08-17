@@ -1,5 +1,17 @@
 # Experiment Registry
 
+## 2026-08-17 CRCT adjudication
+
+- `CRCT-STAGE0-001` — `SMOKE_VALIDATED_SYNTHETIC_POSITIVE_CONTROL`. Full-profile seeds 7/13/23
+  recover the simple planted residual circuit, but the original top-k/random statistic is retained
+  only as method validation rather than confirmatory specificity.
+- `CRCT-STAGE0-HARD-002` — `NEGATIVE_RESULT`. Primary seeds 1009/2027/4093 execute after
+  validation-only discovery and pre-confirmation plan/control freezing. Seeds 1009/4093 fail
+  residual eligibility (`0.0547/0.0420 < 0.08`); seed 2027 fails planted-node recall
+  (`0.400 < 0.600`). Functional IID/OOD recovery remains >0.992 and QK-edge P/R is 1/1 in 3/3
+  seeds. This is synthetic method evidence only. See
+  `docs/CRCT_STAGE0_HARD002_RESULT_2026-08-17.md`.
+
 No level-5 circuit or level-6 general mechanism is validated. Bounded smoke, causal-intervention,
 specificity, negative, and engineering results are recorded below without elevating their claims.
 

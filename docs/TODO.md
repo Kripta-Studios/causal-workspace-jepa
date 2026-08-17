@@ -1,5 +1,23 @@
 # TODO
 
+## 2026-08-17 CRCT adjudication
+
+- [x] Freeze `CRCT-STAGE0-001` as synthetic positive-control evidence only.
+- [x] Execute `CRCT-STAGE0-HARD-002` on untouched primary seeds 1009/2027/4093 with
+  validation-only discovery and controls frozen before IID/OOD generation.
+- [x] Retain HARD-002 as `NEGATIVE_RESULT`; do not retune its thresholds.
+- [ ] Add group/coalition-aware development metrics that distinguish full graph recall from
+  epsilon-functional sufficiency, necessity, redundancy-group coverage, cancellation-group
+  coverage, and equivalent circuit classes.
+- [ ] Freeze that metric/selector design on non-primary development plants before generating any
+  successor primary seeds.
+- [ ] Integrate exact patching plus HVP reliability and QK/head routing on already-open Qwen
+  capital data as development-only plumbing.
+- [ ] Add Qwen-Scope SAE, raw component, transcoder/attribution-graph, and SWD substrate adapters
+  with original-model intervention validation.
+- [ ] Complete outcome-blind execution code for `LLM-QWEN-BINDING-ALGEBRA-002`; open learned
+  residual prediction only if Phase 0 passes its independent residual-nonlinearity gate.
+
 ## July 2026 continuation portfolio
 
 - [x] Review FlowMimic and Masked Visual Actions from their primary PDFs; register their exact

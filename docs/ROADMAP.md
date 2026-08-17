@@ -1,5 +1,27 @@
 # Roadmap
 
+## 2026-08-17 post-HARD-002 decision
+
+1. Freeze `CRCT-STAGE0-HARD-002` as a negative result. Do not run a larger profile or relax the
+   `0.08` residual-power or `0.60` node-recall gates.
+2. Separate circuit ontologies before another synthetic confirmation: full planted graph,
+   epsilon-sufficient functional circuit, individually necessary mechanisms, redundancy/cancellation
+   groups, and equivalent circuit classes. Group/coalition selection may be developed only on
+   development plants; confirmation requires new untouched seeds.
+3. Use already-open capital-patch outcomes only as development data for exact patching, QK/head
+   routing, HVP reliability, sparse-feature substrates, and artifact plumbing. They cannot generate
+   a new confirmatory circuit claim.
+4. Keep `LLM-QWEN-BINDING-ALGEBRA-002` competence-first and phase-separated. Its Phase 0 must
+   establish residual nonlinearity beyond exact T2/relinearized controls before any learned
+   residual model becomes eligible.
+5. On a competent fresh Qwen task, compare raw heads/MLPs, Qwen-Scope SAE directions,
+   cross-layer-transcoder/attribution-graph units, and Sparse Weight Decomposition where feasible.
+   Circuit claims require direct necessity/sufficiency/faithfulness checks on the original model.
+6. Track A is unchanged: finish EB-JEPA multi-seed training and bounded-planner competence before
+   tracing `action -> GRU gates/state -> predicted latent -> cost -> selected action -> success`.
+7. Workspace remains a downstream hypothesis. Reopen it only after a real circuit survives
+   specificity, faithfulness and held-out generalization.
+
 ## 2026-07-26 SOTA portfolio decision
 
 The next step is not unconditional scale. Existing failures point first to competence, target

@@ -1,7 +1,26 @@
 # Results
 
+## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
+
+The harder planted circuit-recovery benchmark completed cleanly on seeds `1009/2027/4093`.
+No thresholds are changed after outcome disclosure. Seeds 1009 and 4093 fail only the frozen
+finite-residual eligibility gate (`0.0547/0.0420 < 0.08` after T2). Seed 2027 is residual-eligible
+(`0.1290`) but fails exhaustive planted-node recall (`0.400 < 0.600`). All three nevertheless
+recover more than `0.992` of IID and OOD residual effect with precision `1.0`, recover all three
+planted QK-like edges, select no decoys, preserve causal ranking under a compensated gauge change,
+and beat 256 validation-frozen matched controls at the finite-sample floor `p=1/257`.
+
+The apparent tension between >99% functional recovery and incomplete node recall is substantive:
+the synthetic truth includes redundant and cancelling pathways, while the frozen greedy selector
+optimizes sparse signed reconstruction. HARD-002 therefore does not license lowering the node-recall
+gate; it shows that future circuit evaluation must distinguish exhaustive generative-graph recall
+from minimal/equivalent functionally sufficient circuits. Equal-capacity direct-delta MLPs also
+beat residual-target MLPs on IID and OOD normalized error in all primary seeds, so no predictive
+advantage for residual learning is established. Full adjudication and hashes are in
+`docs/CRCT_STAGE0_HARD002_RESULT_2026-08-17.md`.
+
 Status: mixed bounded evidence with retained positive, negative, ineligible, closed-design, and
-not-yet-run studies; corrected Qwen H-LLM-01 is negative.
+not-yet-run studies; corrected Qwen H-LLM-01 and CRCT-STAGE0-HARD-002 are negative.
 
 The scientific results include CPU-scale JEPA studies, three GPT-2 Medium studies, and bounded real
 Qwen3-0.6B instrumentation/data/meta-model runs. No workspace/J-space-like mechanism or validated

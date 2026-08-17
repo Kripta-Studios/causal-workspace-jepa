@@ -1,5 +1,14 @@
 # Approach Registry
 
+## 2026-08-17 CRCT update
+
+Causal-residual circuit tracing is now a falsified-or-bounded method family rather than an assumed
+next architecture. CRCT-001 validates simple planted recovery; HARD-002 shows excellent frozen
+functional recovery and QK-like edge specificity but fails the preregistered three-seed conjunction.
+The main blockers are residual eligibility across plants and an ontology mismatch between sparse
+functional sufficiency and exhaustive node recall under redundancy/cancellation. Any successor must
+freeze group/equivalence-aware metrics on fresh plants and must not retune HARD-002.
+
 | Family | Owner | Question | Evidence | Blockers | Next Experiment | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | Architecture/interfaces | root agent | Can the project run reproducibly in CPU mode? | Resource guard, typed interfaces, tests, and audits pass. | None for CPU smoke. | Keep audit green. | `SMOKE_VALIDATED` |

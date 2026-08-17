@@ -2,6 +2,18 @@
 
 Reproducible research codebase for action-conditioned JEPA world-model interpretability and intervention-conditioned LLM meta-modeling.
 
+## 2026-08-17 — Causal-Residual Circuit Tracing falsification update
+
+`CRCT-STAGE0-001` is retained as a bounded synthetic positive control. Its harder successor,
+`CRCT-STAGE0-HARD-002`, is frozen as `NEGATIVE_RESULT` across primary seeds 1009/2027/4093.
+The negative is informative rather than infrastructural: two seeds fail the preregistered
+8% residual-eligibility gate after second-order transport, while the residual-eligible seed
+fails exhaustive planted-node recall despite >99% IID/OOD residual reconstruction, perfect
+QK-like edge recovery, zero selected decoys, and validation-frozen matched-control specificity.
+The result separates minimal functional circuit recovery from exhaustive recovery of redundant
+and cancelling generative paths. No threshold is retuned and no Qwen/JEPA/workspace claim follows.
+See `docs/CRCT_STAGE0_HARD002_RESULT_2026-08-17.md`.
+
 The source-of-truth working paper is
 [`papers/causal_workspace_jepa.tex`](papers/causal_workspace_jepa.tex). It consolidates the common
 finite-intervention formalism, preregistered controls, Qwen and world-model evidence, negative

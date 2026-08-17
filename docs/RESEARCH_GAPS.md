@@ -2,6 +2,24 @@
 
 Status: `ACTIVE`.
 
+## 2026-08-17 CRCT gaps exposed by HARD-002
+
+- Residual eligibility is not stable across random synthetic plants: T2 leaves only `5.47%` and
+  `4.20%` finite-effect energy in two primary seeds, below the frozen `8%` threshold. A residual
+  learner therefore cannot be assumed to be the right target.
+- Sparse functional sufficiency and exhaustive generative-graph recall diverge under redundancy
+  and cancellation. Seed 2027 reconstructs >99% IID/OOD residual with perfect selected precision
+  while recalling only 40% of planted nodes. Future benchmarks need group/equivalence-aware truth,
+  not a post-hoc lower recall threshold.
+- The equal-capacity direct-delta student beats the residual student in IID and OOD NMSE in 3/3
+  seeds. There is no current evidence that residual-target learning is intrinsically easier.
+- QK-like planted edge accounting and validation-frozen matched controls work in the synthetic
+  benchmark, but neither establishes real transformer attention mechanisms. Head/QK routing must
+  be validated with exact interventions in a behavior-competent Qwen task.
+- HVP Screen-Flag-Fix is neutral on this plant because first-order component rankings are already
+  close to exact finite patching. Its value must be tested where a reliability diagnostic actually
+  flags nonlinear approximation error.
+
 - Need causal evidence beyond decodability for all world-model representations.
 - Need matched generic-corruption controls for every intervention claim.
 - Need train/eval split audits preventing trajectory, donor, entity, and intervention leakage.

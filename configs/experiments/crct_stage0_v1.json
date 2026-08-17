@@ -1,0 +1,28 @@
+{
+  "default_device": "auto",
+  "default_profile": "full",
+  "expected_base_commit": "f69cc28f00faf9d5382e3a47a551410785ae9374",
+  "experiment_id": "CRCT-STAGE0-001",
+  "minimum_cuda_free_gib_for_full": 4.0,
+  "preflight_device": "auto",
+  "preflight_profile": "smoke",
+  "preflight_seed": 20260817,
+  "preflight_timeout_seconds": 300,
+  "schema_version": "crct_stage0_suite_config_v1",
+  "scientific_boundary": {
+    "claim_if_failed": "Negative Stage-0 result; do not tune thresholds on protected outcomes.",
+    "claim_if_passed": "Synthetic circuit-recovery falsification benchmark validated only.",
+    "protected_eb_jepa_execution": false,
+    "protected_qwen_execution": false
+  },
+  "seeds": [
+    7,
+    13,
+    23
+  ],
+  "targeted_tests": [
+    "tests/scientific/test_crct_stage0.py",
+    "tests/scientific/test_causal_residual_synthetic.py",
+    "tests/unit/test_causal_residual_core.py"
+  ]
+}

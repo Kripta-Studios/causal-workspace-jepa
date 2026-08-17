@@ -1,5 +1,29 @@
 # SUMMARY
 
+## 2026-08-17 — CRCT synthetic falsification adjudication
+
+- `CRCT-STAGE0-001` remains a method-validation positive control only. Its original random-control
+  statistic is not confirmatory because the candidate top-k and comparison score were not fully
+  separated.
+- `CRCT-STAGE0-HARD-002` fixes that design with validation-only discovery, a hashed frozen circuit
+  and 256 matched controls before IID/OOD confirmation exists. All infrastructure/tests pass, but
+  all three primary seeds are scientifically negative under unchanged preregistered gates.
+- Seeds 1009/4093 leave only `0.0547/0.0420` residual power after T2, below the `0.08` eligibility
+  gate. Seed 2027 leaves `0.1290` but recovers only `0.400` of the full planted node set, below the
+  `0.60` recall gate.
+- This is not a failure of functional reconstruction: frozen circuits recover `0.9928--0.9969`
+  IID residual and `0.9924--0.9978` OOD residual, QK-like edge precision/recall is `1.0/1.0`,
+  selected decoys are zero, gauge-safe causal rank is invariant, and matched-control p is the
+  finite-sample floor `1/257` in every seed.
+- HARD-002 therefore exposes two boundaries: a learned residual route is unjustified when a strong
+  differential baseline already explains >92% of effect energy, and exhaustive node recall is not
+  interchangeable with minimal functional sufficiency under redundancy/cancellation.
+- Equal-capacity direct-delta students beat residual students on IID and OOD NMSE in all three
+  seeds. Differential-plus-residual learning stays conditional, not the default continuation.
+- Do not rerun HARD-002 with relaxed thresholds. The next method work must separate planted-graph
+  recall, epsilon-functional completeness, necessity, redundancy-group coverage, and equivalent
+  circuits on fresh synthetic seeds, then move to competence-first real-model confirmation.
+
 ## 2026-07-26 — Frontier review and binding-algebra protocol hardening
 
 - The July frontier decision is gate-first rather than scale-first. Track A completes the frozen
