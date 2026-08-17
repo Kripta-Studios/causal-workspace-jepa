@@ -264,10 +264,13 @@ def analyze_shard(path: Path, *, expected_sha256: str = DEFAULT_EXPECTED_SHA256)
 
     with h5py.File(path, "r") as handle:
         required = ["source_delta", "target_effect", "exact_jvp", "quadratic_taylor", "split_id"]
-        missing = [name for name in required if name not in handle]
+        if "arrays" not in handle:
+            raise KeyError("capital shard missing required HDF5 group: arrays")
+        group = handle["arrays"]
+        missing = [name for name in required if name not in group]
         if missing:
-            raise KeyError(f"capital shard missing arrays: {missing}")
-        arrays = {name: handle[name][...] for name in required}
+            raise KeyError(f"capital shard missing arrays under arrays/: {missing}")
+        arrays = {name: group[name][...] for name in required}
     payload = analyze_arrays(**arrays)
     payload["source_shard"] = {
         "path": str(path),

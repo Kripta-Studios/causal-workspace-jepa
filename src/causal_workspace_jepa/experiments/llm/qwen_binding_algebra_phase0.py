@@ -1292,7 +1292,9 @@ def run_phase0(
         "parent_experiment_id": bridge["parent_experiment_id"],
         "protocol_guard": {**protocol_guard, "frozen_parent_git_blobs": frozen_blob_checks},
         "phase0_plan_sha256": plan["plan_sha256"],
-        "allowed_splits_executed": list(ALLOWED_SPLITS),
+        "allowed_splits_materialized": list(ALLOWED_SPLITS),
+        "allowed_splits_executed": [],
+        "model_forward_splits_executed": [],
         "protected_splits_executed": [],
         "model": identity,
         "scientific_boundary": {
@@ -1371,6 +1373,8 @@ def run_phase0(
     )
 
     episodes, cases = _generate_allowed_protocol(parent)
+    status_payload["allowed_splits_executed"] = list(ALLOWED_SPLITS)
+    status_payload["model_forward_splits_executed"] = list(ALLOWED_SPLITS)
     for split in ALLOWED_SPLITS:
         _write_ledger(
             ledger,
