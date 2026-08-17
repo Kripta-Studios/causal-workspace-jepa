@@ -1,0 +1,672 @@
+{
+  "all_resolved_values_strict_spaced_single_token": true,
+  "amendment_id": "QWEN-BINDING-ALGEBRA-TOKEN-AMENDMENT-001",
+  "amendment_spec_sha256": "d9fa6874b2f2af840c98619238fd4c5ddb89dce1e932194818d211f39b05f5f6",
+  "expected_source_invalid_values": {
+    "calibration": [
+      "cobalt",
+      "saffron"
+    ],
+    "test": [
+      "Juba",
+      "Malmo",
+      "Nuuk",
+      "Odesa",
+      "Pisa"
+    ],
+    "train": [
+      "Exeter",
+      "Hobart",
+      "Izmir",
+      "Jaipur",
+      "Kigali",
+      "Quito",
+      "Riga",
+      "Suva",
+      "Utrecht",
+      "Wuhan",
+      "Yangon"
+    ],
+    "validation": [
+      "Accra",
+      "Cusco",
+      "Doha",
+      "Fez",
+      "Haifa"
+    ]
+  },
+  "generated_utc": "2026-08-17T21:58:28.035816+00:00",
+  "model": "Qwen/Qwen3-0.6B",
+  "model_outputs_or_logits_used": false,
+  "model_weights_loaded": false,
+  "observed_source_invalid_values": {
+    "calibration": [
+      "cobalt",
+      "saffron"
+    ],
+    "test": [
+      "Juba",
+      "Malmo",
+      "Nuuk",
+      "Odesa",
+      "Pisa"
+    ],
+    "train": [
+      "Exeter",
+      "Hobart",
+      "Izmir",
+      "Jaipur",
+      "Kigali",
+      "Quito",
+      "Riga",
+      "Suva",
+      "Utrecht",
+      "Wuhan",
+      "Yangon"
+    ],
+    "validation": [
+      "Accra",
+      "Cusco",
+      "Doha",
+      "Fez",
+      "Haifa"
+    ]
+  },
+  "old_v2_and_cr_v1_must_remain_unchanged": true,
+  "protected_prompts_materialized": false,
+  "replacement_count": 23,
+  "replacements": [
+    {
+      "candidate_roster": "calibration_colors",
+      "candidate_roster_index": 0,
+      "original": "cobalt",
+      "replacement": "amber",
+      "replacement_token_id": 67605,
+      "slot": 1,
+      "split": "calibration"
+    },
+    {
+      "candidate_roster": "calibration_colors",
+      "candidate_roster_index": 1,
+      "original": "saffron",
+      "replacement": "azure",
+      "replacement_token_id": 76530,
+      "slot": 2,
+      "split": "calibration"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 0,
+      "original": "Exeter",
+      "replacement": "London",
+      "replacement_token_id": 7148,
+      "slot": 4,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 1,
+      "original": "Hobart",
+      "replacement": "Paris",
+      "replacement_token_id": 12095,
+      "slot": 7,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 2,
+      "original": "Izmir",
+      "replacement": "Berlin",
+      "replacement_token_id": 19846,
+      "slot": 8,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 3,
+      "original": "Jaipur",
+      "replacement": "Madrid",
+      "replacement_token_id": 24081,
+      "slot": 9,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 4,
+      "original": "Kigali",
+      "replacement": "Rome",
+      "replacement_token_id": 21718,
+      "slot": 10,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 5,
+      "original": "Quito",
+      "replacement": "Vienna",
+      "replacement_token_id": 46287,
+      "slot": 16,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 6,
+      "original": "Riga",
+      "replacement": "Prague",
+      "replacement_token_id": 67289,
+      "slot": 17,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 7,
+      "original": "Suva",
+      "replacement": "Lisbon",
+      "replacement_token_id": 80701,
+      "slot": 18,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 8,
+      "original": "Utrecht",
+      "replacement": "Athens",
+      "replacement_token_id": 45826,
+      "slot": 20,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 9,
+      "original": "Wuhan",
+      "replacement": "Oslo",
+      "replacement_token_id": 57858,
+      "slot": 22,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 10,
+      "original": "Yangon",
+      "replacement": "Stockholm",
+      "replacement_token_id": 52082,
+      "slot": 23,
+      "split": "train"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 11,
+      "original": "Accra",
+      "replacement": "Helsinki",
+      "replacement_token_id": 76334,
+      "slot": 0,
+      "split": "validation"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 12,
+      "original": "Cusco",
+      "replacement": "Warsaw",
+      "replacement_token_id": 72176,
+      "slot": 2,
+      "split": "validation"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 13,
+      "original": "Doha",
+      "replacement": "Dublin",
+      "replacement_token_id": 32877,
+      "slot": 3,
+      "split": "validation"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 14,
+      "original": "Fez",
+      "replacement": "Brussels",
+      "replacement_token_id": 37169,
+      "slot": 5,
+      "split": "validation"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 15,
+      "original": "Haifa",
+      "replacement": "Munich",
+      "replacement_token_id": 46204,
+      "slot": 7,
+      "split": "validation"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 16,
+      "original": "Juba",
+      "replacement": "Hamburg",
+      "replacement_token_id": 50462,
+      "slot": 1,
+      "split": "test"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 17,
+      "original": "Malmo",
+      "replacement": "Cologne",
+      "replacement_token_id": 78058,
+      "slot": 4,
+      "split": "test"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 18,
+      "original": "Nuuk",
+      "replacement": "Milan",
+      "replacement_token_id": 38755,
+      "slot": 5,
+      "split": "test"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 20,
+      "original": "Odesa",
+      "replacement": "Florence",
+      "replacement_token_id": 47506,
+      "slot": 6,
+      "split": "test"
+    },
+    {
+      "candidate_roster": "cities",
+      "candidate_roster_index": 25,
+      "original": "Pisa",
+      "replacement": "Bristol",
+      "replacement_token_id": 43939,
+      "slot": 7,
+      "split": "test"
+    }
+  ],
+  "resolved_cr_v2_sha256": "6db7ee6c7668ad3f84374446abe006e78cc92460138acbe3eedb339f0e008aa7",
+  "resolved_v3_semantic_sha256": "d537cf0b81560ff7746410e0378475ce67ec5fb11f4fbeb81d90dc9fc271dda2",
+  "resolved_v3_sha256": "a3ddd9859f2472c2c43f1ba14ca5575e190a0c58efec344cd2b1b216eada8a31",
+  "resolved_value_token_rows": [
+    {
+      "encoded_text": " crimson",
+      "slot": 0,
+      "split": "calibration",
+      "token_id": 96019,
+      "value": "crimson"
+    },
+    {
+      "encoded_text": " amber",
+      "slot": 1,
+      "split": "calibration",
+      "token_id": 67605,
+      "value": "amber"
+    },
+    {
+      "encoded_text": " azure",
+      "slot": 2,
+      "split": "calibration",
+      "token_id": 76530,
+      "value": "azure"
+    },
+    {
+      "encoded_text": " violet",
+      "slot": 3,
+      "split": "calibration",
+      "token_id": 79736,
+      "value": "violet"
+    },
+    {
+      "encoded_text": " Albany",
+      "slot": 0,
+      "split": "train",
+      "token_id": 54954,
+      "value": "Albany"
+    },
+    {
+      "encoded_text": " Beirut",
+      "slot": 1,
+      "split": "train",
+      "token_id": 94311,
+      "value": "Beirut"
+    },
+    {
+      "encoded_text": " Chennai",
+      "slot": 2,
+      "split": "train",
+      "token_id": 63821,
+      "value": "Chennai"
+    },
+    {
+      "encoded_text": " Dresden",
+      "slot": 3,
+      "split": "train",
+      "token_id": 85445,
+      "value": "Dresden"
+    },
+    {
+      "encoded_text": " London",
+      "slot": 4,
+      "split": "train",
+      "token_id": 7148,
+      "value": "London"
+    },
+    {
+      "encoded_text": " Fresno",
+      "slot": 5,
+      "split": "train",
+      "token_id": 81170,
+      "value": "Fresno"
+    },
+    {
+      "encoded_text": " Geneva",
+      "slot": 6,
+      "split": "train",
+      "token_id": 44245,
+      "value": "Geneva"
+    },
+    {
+      "encoded_text": " Paris",
+      "slot": 7,
+      "split": "train",
+      "token_id": 12095,
+      "value": "Paris"
+    },
+    {
+      "encoded_text": " Berlin",
+      "slot": 8,
+      "split": "train",
+      "token_id": 19846,
+      "value": "Berlin"
+    },
+    {
+      "encoded_text": " Madrid",
+      "slot": 9,
+      "split": "train",
+      "token_id": 24081,
+      "value": "Madrid"
+    },
+    {
+      "encoded_text": " Rome",
+      "slot": 10,
+      "split": "train",
+      "token_id": 21718,
+      "value": "Rome"
+    },
+    {
+      "encoded_text": " Lyon",
+      "slot": 11,
+      "split": "train",
+      "token_id": 55201,
+      "value": "Lyon"
+    },
+    {
+      "encoded_text": " Manila",
+      "slot": 12,
+      "split": "train",
+      "token_id": 56564,
+      "value": "Manila"
+    },
+    {
+      "encoded_text": " Naples",
+      "slot": 13,
+      "split": "train",
+      "token_id": 82621,
+      "value": "Naples"
+    },
+    {
+      "encoded_text": " Ottawa",
+      "slot": 14,
+      "split": "train",
+      "token_id": 32166,
+      "value": "Ottawa"
+    },
+    {
+      "encoded_text": " Perth",
+      "slot": 15,
+      "split": "train",
+      "token_id": 49444,
+      "value": "Perth"
+    },
+    {
+      "encoded_text": " Vienna",
+      "slot": 16,
+      "split": "train",
+      "token_id": 46287,
+      "value": "Vienna"
+    },
+    {
+      "encoded_text": " Prague",
+      "slot": 17,
+      "split": "train",
+      "token_id": 67289,
+      "value": "Prague"
+    },
+    {
+      "encoded_text": " Lisbon",
+      "slot": 18,
+      "split": "train",
+      "token_id": 80701,
+      "value": "Lisbon"
+    },
+    {
+      "encoded_text": " Taipei",
+      "slot": 19,
+      "split": "train",
+      "token_id": 96345,
+      "value": "Taipei"
+    },
+    {
+      "encoded_text": " Athens",
+      "slot": 20,
+      "split": "train",
+      "token_id": 45826,
+      "value": "Athens"
+    },
+    {
+      "encoded_text": " Venice",
+      "slot": 21,
+      "split": "train",
+      "token_id": 55650,
+      "value": "Venice"
+    },
+    {
+      "encoded_text": " Oslo",
+      "slot": 22,
+      "split": "train",
+      "token_id": 57858,
+      "value": "Oslo"
+    },
+    {
+      "encoded_text": " Stockholm",
+      "slot": 23,
+      "split": "train",
+      "token_id": 52082,
+      "value": "Stockholm"
+    },
+    {
+      "encoded_text": " Helsinki",
+      "slot": 0,
+      "split": "validation",
+      "token_id": 76334,
+      "value": "Helsinki"
+    },
+    {
+      "encoded_text": " Basel",
+      "slot": 1,
+      "split": "validation",
+      "token_id": 89458,
+      "value": "Basel"
+    },
+    {
+      "encoded_text": " Warsaw",
+      "slot": 2,
+      "split": "validation",
+      "token_id": 72176,
+      "value": "Warsaw"
+    },
+    {
+      "encoded_text": " Dublin",
+      "slot": 3,
+      "split": "validation",
+      "token_id": 32877,
+      "value": "Dublin"
+    },
+    {
+      "encoded_text": " Essen",
+      "slot": 4,
+      "split": "validation",
+      "token_id": 98675,
+      "value": "Essen"
+    },
+    {
+      "encoded_text": " Brussels",
+      "slot": 5,
+      "split": "validation",
+      "token_id": 37169,
+      "value": "Brussels"
+    },
+    {
+      "encoded_text": " Graz",
+      "slot": 6,
+      "split": "validation",
+      "token_id": 92930,
+      "value": "Graz"
+    },
+    {
+      "encoded_text": " Munich",
+      "slot": 7,
+      "split": "validation",
+      "token_id": 46204,
+      "value": "Munich"
+    },
+    {
+      "encoded_text": " Irvine",
+      "slot": 0,
+      "split": "test",
+      "token_id": 71285,
+      "value": "Irvine"
+    },
+    {
+      "encoded_text": " Hamburg",
+      "slot": 1,
+      "split": "test",
+      "token_id": 50462,
+      "value": "Hamburg"
+    },
+    {
+      "encoded_text": " Kyoto",
+      "slot": 2,
+      "split": "test",
+      "token_id": 81022,
+      "value": "Kyoto"
+    },
+    {
+      "encoded_text": " Leeds",
+      "slot": 3,
+      "split": "test",
+      "token_id": 51529,
+      "value": "Leeds"
+    },
+    {
+      "encoded_text": " Cologne",
+      "slot": 4,
+      "split": "test",
+      "token_id": 78058,
+      "value": "Cologne"
+    },
+    {
+      "encoded_text": " Milan",
+      "slot": 5,
+      "split": "test",
+      "token_id": 38755,
+      "value": "Milan"
+    },
+    {
+      "encoded_text": " Florence",
+      "slot": 6,
+      "split": "test",
+      "token_id": 47506,
+      "value": "Florence"
+    },
+    {
+      "encoded_text": " Bristol",
+      "slot": 7,
+      "split": "test",
+      "token_id": 43939,
+      "value": "Bristol"
+    }
+  ],
+  "resolved_values": {
+    "calibration": [
+      "crimson",
+      "amber",
+      "azure",
+      "violet"
+    ],
+    "test": [
+      "Irvine",
+      "Hamburg",
+      "Kyoto",
+      "Leeds",
+      "Cologne",
+      "Milan",
+      "Florence",
+      "Bristol"
+    ],
+    "train": [
+      "Albany",
+      "Beirut",
+      "Chennai",
+      "Dresden",
+      "London",
+      "Fresno",
+      "Geneva",
+      "Paris",
+      "Berlin",
+      "Madrid",
+      "Rome",
+      "Lyon",
+      "Manila",
+      "Naples",
+      "Ottawa",
+      "Perth",
+      "Vienna",
+      "Prague",
+      "Lisbon",
+      "Taipei",
+      "Athens",
+      "Venice",
+      "Oslo",
+      "Stockholm"
+    ],
+    "validation": [
+      "Helsinki",
+      "Basel",
+      "Warsaw",
+      "Dublin",
+      "Essen",
+      "Brussels",
+      "Graz",
+      "Munich"
+    ]
+  },
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "schema_version": "qwen_binding_algebra_v3_token_contract_v1",
+  "scientific_thresholds_actions_splits_seeds_changed": false,
+  "selection_depends_only_on_tokenizer_metadata": true,
+  "self_sha256": "dc6951e26fc2aa0ffda1d0b7111344bdf47976a8433ac4f423de6cee2e96c7a1",
+  "source_cr_v1_sha256": "169e91fe871a1174751ca341024713e649209e1642d76367e05cec3ec08773bc",
+  "source_invalid_total": 23,
+  "source_v2_sha256": "80dbbcc11c01dacdabafe3440d779574c6a6f8f485de995c8f0f19910763ca81",
+  "strict_answer_contract": {
+    "bare_tokenization_is_not_sufficient": true,
+    "context": "prompt ends immediately after -> or :; candidate answer token is encoded as one leading ASCII space plus value",
+    "decode_roundtrip_required": true,
+    "keys_are_not_permuted_or_answer_candidates": true,
+    "keys_need_not_be_single_token": true,
+    "required_encoding": "tokenizer(' ' + value, add_special_tokens=False) returns exactly one id"
+  },
+  "tokenizer_class": "Qwen2Tokenizer",
+  "tokenizer_vocab_sha256": "6e949d8fec10c504f4207a43cdeac7d7961f7fd9894d256f14a8153bb5479b63"
+}
