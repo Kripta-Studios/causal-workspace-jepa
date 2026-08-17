@@ -1,0 +1,94 @@
+{
+  "schema_version": "crct_qwen_bridge_config_v1",
+  "experiment_id": "CRCT-QWEN-BRIDGE-001",
+  "registered_date": "2026-08-17",
+  "expected_base_commit": "f69cc28f00faf9d5382e3a47a551410785ae9374",
+  "parent_experiment_id": "LLM-QWEN-BINDING-ALGEBRA-002",
+  "parent_cr_extension_id": "QWEN-BINDING-ALGEBRA-CR-V1",
+  "claim_boundary": "development bridge plus protected-split-closed Phase-0 eligibility audit; no circuit, J-space, workspace, SOTA, or protected Qwen claim",
+  "runtime_seed": 20260817,
+  "frozen_parent_git_blobs": {
+    "configs/experiments/qwen_binding_algebra_v2.yaml": "e307b2185c3fc39f557a9a1c863da15e3321c6fc",
+    "configs/experiments/qwen_binding_algebra_cr_v1.yaml": "b883605d4b7cb9b2b60f3c33bbe57b554c4ede5e",
+    "src/causal_workspace_jepa/experiments/llm/qwen_binding_algebra_protocol.py": "bc2ca63f1666e83502394c383491fca0c1c3b041"
+  },
+  "required_committed_files": [
+    "configs/experiments/crct_qwen_bridge_v1.json",
+    "configs/experiments/qwen_binding_algebra_v2.yaml",
+    "configs/experiments/qwen_binding_algebra_cr_v1.yaml",
+    "docs/CRCT_QWEN_BRIDGE_V1_PROTOCOL.md",
+    "scripts/run_crct_qwen_bridge.ps1",
+    "scripts/run_crct_qwen_bridge_suite.py",
+    "src/causal_workspace_jepa/experiments/llm/qwen_binding_algebra_protocol.py",
+    "src/causal_workspace_jepa/experiments/llm/qwen_binding_algebra_phase0.py",
+    "src/causal_workspace_jepa/experiments/llm/qwen_capital_crct_dev.py",
+    "src/causal_workspace_jepa/experiments/llm/qwen_substrate_readiness.py",
+    "src/causal_workspace_jepa/experiments/cross_domain/circuit_ontology_v3_audit.py",
+    "src/causal_workspace_jepa/interpretability/circuit_ontology_v3.py",
+    "tests/unit/test_qwen_bridge_phase0_guard.py",
+    "tests/unit/test_qwen_capital_crct_dev.py",
+    "tests/unit/test_qwen_substrate_readiness.py",
+    "tests/unit/test_circuit_ontology_v3.py"
+  ],
+  "scoped_authorization": {
+    "execution_authorized": true,
+    "authorization_scope": "B0_B1_only_on_calibration_train_validation",
+    "authorization_is_separate_milestone": true,
+    "parent_execution_authorized_flag_remains_unchanged": true,
+    "requires_committed_pushed_bridge_commit": true,
+    "phase0_only": true,
+    "allowed_splits": [
+      "calibration",
+      "train",
+      "validation"
+    ],
+    "forbidden_splits": [
+      "test",
+      "paraphrase"
+    ],
+    "b2_b3_b4_forbidden": true,
+    "protected_evaluation_forbidden": true,
+    "finite_difference_fallback_forbidden": true,
+    "capital_dataset_confirmation_forbidden": true
+  },
+  "phase0_thresholds": {
+    "clean_accuracy_min": 0.9,
+    "direct_permuted_accuracy_min": 0.9,
+    "layer0_replay_max_abs": 1e-06,
+    "observed_layer21_patch_replay_max_abs": 1e-06,
+    "o_proj_reconstruction_max_abs": 2e-05,
+    "composition_interaction_power_min": 0.1,
+    "quadratic_nmse_min": 0.1
+  },
+  "resource_guard": {
+    "min_cuda_free_gib": 5.5,
+    "required_compute_capability_major": 12,
+    "phase0_timeout_seconds": 21600
+  },
+  "capital_dev": {
+    "shard": "data/activations/qwen_capital_patches_v1/shard-00000-of-00001.h5",
+    "expected_sha256": "b02340368836a00b4ecada84dba3484bf0c46f59bfe6d78bdc58db3fc7e0b951",
+    "already_opened": true,
+    "fresh_confirmation": false
+  },
+  "ontology_v3": {
+    "hard002_functional_sufficiency_threshold": 0.95,
+    "registered_hard002_disposition_must_remain_unchanged": true
+  },
+  "execution": {
+    "device": "cuda",
+    "forward_batch": 16,
+    "replay_batch": 8,
+    "derivative_batch": 1,
+    "phase0_timeout_seconds": 21600
+  },
+  "substrate_readiness": {
+    "exact_0_6b_native_substrates_only_in_phase0": true,
+    "qk_post_rope_requires_exact_reconstruction_before_claim": true,
+    "qwen_scope_0_6b_unfrozen_or_unregistered": true,
+    "qwen_scope_next_registered_target": "Qwen3-1.7B-Base",
+    "transcoder_requires_frozen_replacement": true,
+    "swd_requires_frozen_reproduction": true,
+    "no_ad_hoc_sparse_substitution": true
+  }
+}
