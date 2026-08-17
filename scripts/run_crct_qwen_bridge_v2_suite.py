@@ -79,6 +79,20 @@ def _amendment_guard(config: dict[str, Any]) -> dict[str, Any]:
         return result
     try:
         contract = json.loads(contract_path.read_text(encoding="utf-8"))
+        from causal_workspace_jepa.common.config import load_config
+
+        v3_runtime = load_config(v3_path)
+        cr_v2_runtime = load_config(cr_v2_path)
+        result["v3_repo_loader_compatible"] = bool(
+            v3_runtime.get("id") == "LLM-QWEN-BINDING-ALGEBRA-003"
+            and v3_runtime.get("token_pools", {}).get("values")
+            == contract.get("resolved_values")
+        )
+        result["cr_v2_repo_loader_compatible"] = bool(
+            cr_v2_runtime.get("experiment_id") == "QWEN-BINDING-ALGEBRA-CR-V2"
+            and cr_v2_runtime.get("token_pools", {}).get("values")
+            == contract.get("resolved_values")
+        )
         copy_contract = dict(contract)
         expected_self = str(copy_contract.pop("self_sha256"))
         observed_self = _canonical_sha(copy_contract)
@@ -104,6 +118,8 @@ def _amendment_guard(config: dict[str, Any]) -> dict[str, Any]:
         )
         result["pass"] = bool(
             result["contract_self_hash_matches"]
+            and result["v3_repo_loader_compatible"]
+            and result["cr_v2_repo_loader_compatible"]
             and result["v3_sha256_matches"]
             and result["cr_v2_sha256_matches"]
             and result["spec_sha256_matches"]
@@ -450,12 +466,15 @@ def main() -> int:
             )
         base._event(run_dir, "suite", global_status, error_type=type(exc).__name__)
     finally:
+        bundle: Path | None = None
         try:
             base._manifest(run_dir)
             bundle = base._zip(run_dir)
         except Exception as exc:
             print(f"FAIL-SAFE BUNDLE ERROR: {type(exc).__name__}: {exc}", file=sys.stderr)
-            return 3
+
+    if bundle is None:
+        return 3
 
     payload = base._load_json(run_dir / "SUITE_STATUS.json") or {
         "status": global_status,

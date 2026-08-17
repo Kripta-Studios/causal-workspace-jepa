@@ -38,103 +38,15 @@ splits:
     template: paraphrase
 token_pools:
   keys:
-    calibration:
-    - alder
-    - beryl
-    - cirrus
-    - dahlia
-    train:
-    - acorn
-    - beacon
-    - canyon
-    - domino
-    - elm
-    - fable
-    - galaxy
-    - hearth
-    - inlet
-    - juniper
-    - kelp
-    - lagoon
-    - meadow
-    - nectar
-    - opal
-    - pebble
-    - quill
-    - reef
-    - summit
-    - tundra
-    - umber
-    - vortex
-    - willow
-    - xenon
-    validation:
-    - yarrow
-    - zephyr
-    - anvil
-    - brook
-    - cipher
-    - dune
-    - echo
-    - fjord
-    test:
-    - garnet
-    - hazel
-    - islet
-    - jigsaw
-    - kernel
-    - lichen
-    - mosaic
-    - nickel
+    calibration: [alder, beryl, cirrus, dahlia]
+    train: [acorn, beacon, canyon, domino, elm, fable, galaxy, hearth, inlet, juniper, kelp, lagoon, meadow, nectar, opal, pebble, quill, reef, summit, tundra, umber, vortex, willow, xenon]
+    validation: [yarrow, zephyr, anvil, brook, cipher, dune, echo, fjord]
+    test: [garnet, hazel, islet, jigsaw, kernel, lichen, mosaic, nickel]
   values:
-    calibration:
-    - crimson
-    - amber
-    - azure
-    - violet
-    train:
-    - Albany
-    - Beirut
-    - Chennai
-    - Dresden
-    - London
-    - Fresno
-    - Geneva
-    - Paris
-    - Berlin
-    - Madrid
-    - Rome
-    - Lyon
-    - Manila
-    - Naples
-    - Ottawa
-    - Perth
-    - Vienna
-    - Prague
-    - Lisbon
-    - Taipei
-    - Athens
-    - Venice
-    - Oslo
-    - Stockholm
-    validation:
-    - Helsinki
-    - Basel
-    - Warsaw
-    - Dublin
-    - Essen
-    - Brussels
-    - Graz
-    - Munich
-    test:
-    - Irvine
-    - Hamburg
-    - Kyoto
-    - Leeds
-    - Cologne
-    - Milan
-    - Florence
-    - Bristol
+    calibration: [crimson, amber, azure, violet]
+    train: [Albany, Beirut, Chennai, Dresden, London, Fresno, Geneva, Paris, Berlin, Madrid, Rome, Lyon, Manila, Naples, Ottawa, Perth, Vienna, Prague, Lisbon, Taipei, Athens, Venice, Oslo, Stockholm]
+    validation: [Helsinki, Basel, Warsaw, Dublin, Essen, Brussels, Graz, Munich]
+    test: [Irvine, Hamburg, Kyoto, Leeds, Cologne, Milan, Florence, Bristol]
 permutation_convention:
   slot_count: 4
   mapping: source_slot_to_destination_slot
@@ -143,12 +55,8 @@ permutation_convention:
   matrix_composition: M_second_times_M_first
   query_must_change: true
 action_partition:
-  train_classes:
-  - transposition
-  held_out_classes:
-  - double_transposition
-  - three_cycle
-  - four_cycle
+  train_classes: [transposition]
+  held_out_classes: [double_transposition, three_cycle, four_cycle]
   train_generators: all_six_transpositions
   validation_and_test_targets: all_query_changing_held_out_actions
   paraphrase_pairing: exact_test_episode_and_action
@@ -161,12 +69,7 @@ treatment:
   ground_truth: direct_permuted_prompt_and_exact_layer0_replay
 capture:
   position: final_query
-  trajectory_sites:
-  - blocks.14.resid_post
-  - blocks.18.resid_post
-  - blocks.21.resid_post
-  - blocks.24.resid_post
-  - blocks.27.resid_post
+  trajectory_sites: [blocks.14.resid_post, blocks.18.resid_post, blocks.21.resid_post, blocks.24.resid_post, blocks.27.resid_post]
   direct_verification_site: blocks.21.resid_post
   trajectory_prefixes: identity_and_every_cumulative_generator_prefix
   state_target: cumulative_prefix_treated_minus_same_episode_clean_original_fp32
@@ -183,14 +86,9 @@ meta_model:
   meta_dim: 16
   recurrent_hidden_dim: 48
   maximum_trainable_parameters: 150000
-  training_seeds:
-  - 541
-  - 547
-  - 557
+  training_seeds: [541, 547, 557]
   train_rollout_length: 1
-  evaluation_rollout_lengths:
-  - 2
-  - 3
+  evaluation_rollout_lengths: [2, 3]
   target_encoder_ema_decay: 0.99
   stop_gradient_target: true
   sigreg_weight: 0.09
@@ -207,19 +105,7 @@ loss:
   composition_consistency_weight: 0.5
   identity_noop_weight: 0.25
 baselines:
-  methods:
-  - no_change
-  - mean_effect
-  - direct_primitive_addition
-  - exact_local_jvp
-  - population_jacobian
-  - full_quadratic_hvp
-  - oracle_relinearized_sequential_jvp
-  - affine_generator_rollout
-  - s4_equivariant_linear
-  - ridge
-  - low_rank_bilinear
-  - capacity_matched_mlp
+  methods: [no_change, mean_effect, direct_primitive_addition, exact_local_jvp, population_jacobian, full_quadratic_hvp, oracle_relinearized_sequential_jvp, affine_generator_rollout, s4_equivariant_linear, ridge, low_rank_bilinear, capacity_matched_mlp]
   exact_local_jvp_precision: float32
   full_quadratic_cross_terms: included
   population_fit_split: train_only
@@ -254,9 +140,7 @@ gates:
   predicted_state_control_margin_min: 0.2
   inverse_restoration_min: 0.75
   seeds_required: 3
-  protected_splits_required:
-  - test
-  - paraphrase
+  protected_splits_required: [test, paraphrase]
   bootstrap_draws: 10000
   bootstrap_seed: 563
 phase_policy:
@@ -269,20 +153,13 @@ phase_policy:
   any_protected_failure_status: HYPOTHESIS_REJECTED
   access:
     phase_0:
-      allowed_splits:
-      - calibration
-      - train
-      - validation
+      allowed_splits: [calibration, train, validation]
       output_root: data/activations/qwen_binding_algebra_v3/phase_0
     phase_1_train:
-      allowed_splits:
-      - train
-      - validation
+      allowed_splits: [train, validation]
       output_root: data/activations/qwen_binding_algebra_v3/phase_1_train
     protected_eval:
-      allowed_splits:
-      - test
-      - paraphrase
+      allowed_splits: [test, paraphrase]
       output_root: data/activations/qwen_binding_algebra_v3/protected_eval
 activation_budget_mb: 1024
 max_shard_mb: 256

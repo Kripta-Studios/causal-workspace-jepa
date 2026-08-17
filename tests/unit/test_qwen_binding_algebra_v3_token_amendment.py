@@ -6,6 +6,8 @@ from pathlib import Path
 
 import yaml
 
+from causal_workspace_jepa.common.config import load_config
+
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = ROOT / "configs/experiments/qwen_binding_algebra_v3_token_amendment.json"
 V2 = ROOT / "configs/experiments/qwen_binding_algebra_v2.yaml"
@@ -146,3 +148,24 @@ def test_resolved_values_match_pinned_tokenizer_strict_answer_context() -> None:
         for row in contract["resolved_value_token_rows"]
     ]
     assert rows == expected
+
+def test_generated_configs_match_repository_cpu_yaml_subset_loader() -> None:
+    """Generated preregistrations must be consumable by the runtime loader."""
+
+    rich_v3 = _load_yaml(V3)
+    cpu_v3 = load_config(V3)
+    assert cpu_v3 == rich_v3
+    assert cpu_v3["id"] == "LLM-QWEN-BINDING-ALGEBRA-003"
+
+    rich_cr_v2 = _load_yaml(CR_V2)
+    cpu_cr_v2 = load_config(CR_V2)
+    assert cpu_cr_v2 == rich_cr_v2
+    assert cpu_cr_v2["experiment_id"] == "QWEN-BINDING-ALGEBRA-CR-V2"
+
+    for path in (V3, CR_V2):
+        block_list_lines = [
+            line
+            for line in path.read_text(encoding="utf-8").splitlines()
+            if line.lstrip().startswith("- ")
+        ]
+        assert block_list_lines == []

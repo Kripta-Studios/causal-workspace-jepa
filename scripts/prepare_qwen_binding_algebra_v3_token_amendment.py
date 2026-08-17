@@ -58,9 +58,32 @@ def _load_yaml(path: Path) -> dict[str, Any]:
     return payload
 
 
+class _CpuSubsetDumper(yaml.SafeDumper):
+    """Emit sequence values in the inline form accepted by common.config.load_config."""
+
+
+def _represent_flow_sequence(
+    dumper: yaml.SafeDumper, data: list[Any]
+) -> yaml.nodes.SequenceNode:
+    node = dumper.represent_list(data)
+    node.flow_style = True
+    return node
+
+
+_CpuSubsetDumper.add_representer(list, _represent_flow_sequence)
+
+
 def _dump_yaml(payload: Mapping[str, Any]) -> bytes:
-    text = yaml.safe_dump(
+    """Serialize the preregistration in the repository's deterministic YAML subset.
+
+    ``common.config.load_config`` intentionally rejects block-list syntax. PyYAML's
+    default safe dumper emits lists as ``- item`` blocks, so generated configs must
+    force every simple sequence into flow style: ``[item, ...]``.
+    """
+
+    text = yaml.dump(
         dict(payload),
+        Dumper=_CpuSubsetDumper,
         sort_keys=False,
         allow_unicode=True,
         width=100000,

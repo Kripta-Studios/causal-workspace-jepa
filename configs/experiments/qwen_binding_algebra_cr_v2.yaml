@@ -7,7 +7,7 @@ claim_boundary: bounded_causal_residual_transport_test_not_a_circuit_j_space_wor
 parent_linkage:
   parent_experiment_id: LLM-QWEN-BINDING-ALGEBRA-003
   parent_config: configs/experiments/qwen_binding_algebra_v3.yaml
-  parent_config_sha256: a3ddd9859f2472c2c43f1ba14ca5575e190a0c58efec344cd2b1b216eada8a31
+  parent_config_sha256: 84d0cef1d58db20cdb1a2de4a8edeb6ae0083655d82519dda4853538a5ee7ad4
   parent_semantic_sha256: d537cf0b81560ff7746410e0378475ce67ec5fb11f4fbeb81d90dc9fc271dda2
   relationship: tokenizer_contract_amendment
   exact_parent_required: true
@@ -56,103 +56,15 @@ splits:
     template: paraphrase
 token_pools:
   keys:
-    calibration:
-    - alder
-    - beryl
-    - cirrus
-    - dahlia
-    train:
-    - acorn
-    - beacon
-    - canyon
-    - domino
-    - elm
-    - fable
-    - galaxy
-    - hearth
-    - inlet
-    - juniper
-    - kelp
-    - lagoon
-    - meadow
-    - nectar
-    - opal
-    - pebble
-    - quill
-    - reef
-    - summit
-    - tundra
-    - umber
-    - vortex
-    - willow
-    - xenon
-    validation:
-    - yarrow
-    - zephyr
-    - anvil
-    - brook
-    - cipher
-    - dune
-    - echo
-    - fjord
-    test:
-    - garnet
-    - hazel
-    - islet
-    - jigsaw
-    - kernel
-    - lichen
-    - mosaic
-    - nickel
+    calibration: [alder, beryl, cirrus, dahlia]
+    train: [acorn, beacon, canyon, domino, elm, fable, galaxy, hearth, inlet, juniper, kelp, lagoon, meadow, nectar, opal, pebble, quill, reef, summit, tundra, umber, vortex, willow, xenon]
+    validation: [yarrow, zephyr, anvil, brook, cipher, dune, echo, fjord]
+    test: [garnet, hazel, islet, jigsaw, kernel, lichen, mosaic, nickel]
   values:
-    calibration:
-    - crimson
-    - amber
-    - azure
-    - violet
-    train:
-    - Albany
-    - Beirut
-    - Chennai
-    - Dresden
-    - London
-    - Fresno
-    - Geneva
-    - Paris
-    - Berlin
-    - Madrid
-    - Rome
-    - Lyon
-    - Manila
-    - Naples
-    - Ottawa
-    - Perth
-    - Vienna
-    - Prague
-    - Lisbon
-    - Taipei
-    - Athens
-    - Venice
-    - Oslo
-    - Stockholm
-    validation:
-    - Helsinki
-    - Basel
-    - Warsaw
-    - Dublin
-    - Essen
-    - Brussels
-    - Graz
-    - Munich
-    test:
-    - Irvine
-    - Hamburg
-    - Kyoto
-    - Leeds
-    - Cologne
-    - Milan
-    - Florence
-    - Bristol
+    calibration: [crimson, amber, azure, violet]
+    train: [Albany, Beirut, Chennai, Dresden, London, Fresno, Geneva, Paris, Berlin, Madrid, Rome, Lyon, Manila, Naples, Ottawa, Perth, Vienna, Prague, Lisbon, Taipei, Athens, Venice, Oslo, Stockholm]
+    validation: [Helsinki, Basel, Warsaw, Dublin, Essen, Brussels, Graz, Munich]
+    test: [Irvine, Hamburg, Kyoto, Leeds, Cologne, Milan, Florence, Bristol]
 permutation_convention:
   slot_count: 4
   mapping: source_slot_to_destination_slot
@@ -161,12 +73,8 @@ permutation_convention:
   matrix_composition: M_second_times_M_first
   query_must_change: true
 action_partition:
-  train_classes:
-  - transposition
-  held_out_classes:
-  - double_transposition
-  - three_cycle
-  - four_cycle
+  train_classes: [transposition]
+  held_out_classes: [double_transposition, three_cycle, four_cycle]
   train_generators: all_six_transpositions
   validation_and_test_targets: all_query_changing_held_out_actions
   paraphrase_pairing: exact_test_episode_and_action
@@ -179,12 +87,7 @@ treatment:
   ground_truth: direct_permuted_prompt_and_exact_layer0_replay
 capture:
   position: final_query
-  trajectory_sites:
-  - blocks.14.resid_post
-  - blocks.18.resid_post
-  - blocks.21.resid_post
-  - blocks.24.resid_post
-  - blocks.27.resid_post
+  trajectory_sites: [blocks.14.resid_post, blocks.18.resid_post, blocks.21.resid_post, blocks.24.resid_post, blocks.27.resid_post]
   direct_verification_site: blocks.21.resid_post
   trajectory_prefixes: identity_and_every_cumulative_generator_prefix
   state_target: cumulative_prefix_treated_minus_same_episode_clean_original_fp32
@@ -204,63 +107,16 @@ residual_target:
   complete_delta_primary: forbidden
   complete_state_control: registered_fair_comparator_only
   complete_delta_control: registered_fair_comparator_only
-  fitted_on_splits:
-  - train
-  - validation
+  fitted_on_splits: [train, validation]
   protected_target_fit: forbidden
   protected_rows_as_target_encoder_input: forbidden
 baseline_families:
-  deployable_residualizers:
-  - no_change
-  - mean_effect
-  - direct_primitive_addition
-  - exact_local_jvp
-  - full_quadratic_hvp
-  - population_jacobian
-  - pca_ridge_causal_delta
-  - affine_generator_rollout
-  - s4_equivariant_linear
-  - recurrent_path_transport
-  fair_comparators:
-  - no_change
-  - mean_effect
-  - direct_primitive_addition
-  - exact_local_jvp
-  - full_quadratic_hvp
-  - population_jacobian
-  - pca_ridge_causal_delta
-  - affine_generator_rollout
-  - s4_equivariant_linear
-  - recurrent_path_transport
-  - capacity_matched_bilinear
-  - capacity_matched_mlp
-  - sparse_student
-  - complete_delta_control
-  - complete_state_control
-  oracle_ceilings:
-  - observed_prefix_relinearized_jvp
-  - oracle_relinearized_sequential_jvp
-  - exact_treated_prefix_replay
+  deployable_residualizers: [no_change, mean_effect, direct_primitive_addition, exact_local_jvp, full_quadratic_hvp, population_jacobian, pca_ridge_causal_delta, affine_generator_rollout, s4_equivariant_linear, recurrent_path_transport]
+  fair_comparators: [no_change, mean_effect, direct_primitive_addition, exact_local_jvp, full_quadratic_hvp, population_jacobian, pca_ridge_causal_delta, affine_generator_rollout, s4_equivariant_linear, recurrent_path_transport, capacity_matched_bilinear, capacity_matched_mlp, sparse_student, complete_delta_control, complete_state_control]
+  oracle_ceilings: [observed_prefix_relinearized_jvp, oracle_relinearized_sequential_jvp, exact_treated_prefix_replay]
   oracle_ceiling_definition: consumes_observed_treated_prefix_or_reexecutes_exact_treated_prefix_unavailable_to_deployed_predictor
 baselines:
-  methods:
-  - no_change
-  - mean_effect
-  - direct_primitive_addition
-  - exact_local_jvp
-  - full_quadratic_hvp
-  - population_jacobian
-  - pca_ridge_causal_delta
-  - affine_generator_rollout
-  - s4_equivariant_linear
-  - recurrent_path_transport
-  - capacity_matched_bilinear
-  - capacity_matched_mlp
-  - sparse_student
-  - complete_delta_control
-  - complete_state_control
-  - observed_prefix_relinearized_jvp
-  - oracle_relinearized_sequential_jvp
+  methods: [no_change, mean_effect, direct_primitive_addition, exact_local_jvp, full_quadratic_hvp, population_jacobian, pca_ridge_causal_delta, affine_generator_rollout, s4_equivariant_linear, recurrent_path_transport, capacity_matched_bilinear, capacity_matched_mlp, sparse_student, complete_delta_control, complete_state_control, observed_prefix_relinearized_jvp, oracle_relinearized_sequential_jvp]
   exact_local_jvp_precision: float32
   full_quadratic_cross_terms: included
   population_fit_split: train_only
@@ -276,31 +132,12 @@ baselines:
 baseline_selection:
   selected_baseline_name: baseline_star
   selection_split: validation
-  fit_splits:
-  - train
+  fit_splits: [train]
   eligible_family: deployable_residualizers
   eligible_methods_are_explicit: true
-  eligible_methods:
-  - no_change
-  - mean_effect
-  - direct_primitive_addition
-  - exact_local_jvp
-  - full_quadratic_hvp
-  - population_jacobian
-  - pca_ridge_causal_delta
-  - affine_generator_rollout
-  - s4_equivariant_linear
-  - recurrent_path_transport
-  excluded_fair_comparators:
-  - capacity_matched_bilinear
-  - capacity_matched_mlp
-  - sparse_student
-  - complete_delta_control
-  - complete_state_control
-  excluded_oracle_ceilings:
-  - observed_prefix_relinearized_jvp
-  - oracle_relinearized_sequential_jvp
-  - exact_treated_prefix_replay
+  eligible_methods: [no_change, mean_effect, direct_primitive_addition, exact_local_jvp, full_quadratic_hvp, population_jacobian, pca_ridge_causal_delta, affine_generator_rollout, s4_equivariant_linear, recurrent_path_transport]
+  excluded_fair_comparators: [capacity_matched_bilinear, capacity_matched_mlp, sparse_student, complete_delta_control, complete_state_control]
+  excluded_oracle_ceilings: [observed_prefix_relinearized_jvp, oracle_relinearized_sequential_jvp, exact_treated_prefix_replay]
   endpoint: residual_trajectory
   metric: normalized_mse
   aggregation: ratio_of_sums_over_complete_base_episodes_before_division
@@ -309,35 +146,12 @@ baseline_selection:
   dimensionality_reduction: none_unless_fitted_on_train_only_and_recorded
   deployment_contract: same_clean_source_execution_and_declared_inference_inputs_as_primary_predictor
   tie_break:
-    order:
-    - normalized_mse
-    - inference_flops
-    - parameter_count
-    - method_id_lexicographic
-    direction:
-    - ascending
-    - ascending
-    - ascending
-    - ascending
+    order: [normalized_mse, inference_flops, parameter_count, method_id_lexicographic]
+    direction: [ascending, ascending, ascending, ascending]
     deterministic: true
   selected_method: null
   selection_record_path: artifacts/metrics/qwen_binding_algebra_cr_v2_baseline_selection.json
-  selection_record_required_fields:
-  - experiment_id
-  - config_digest
-  - parent_config_digest
-  - eligible_methods
-  - excluded_methods
-  - deployment_inputs
-  - endpoint
-  - metric
-  - aggregation
-  - tie_break
-  - fitted_artifact_sha256
-  - normalization
-  - dimensionality_reduction
-  - split_ids
-  - selected_method
+  selection_record_required_fields: [experiment_id, config_digest, parent_config_digest, eligible_methods, excluded_methods, deployment_inputs, endpoint, metric, aggregation, tie_break, fitted_artifact_sha256, normalization, dimensionality_reduction, split_ids, selected_method]
   selection_record_self_hash: required_before_residual_fit
   selection_record_outcome_blind: true
   selection_record_protected_rows_forbidden: true
@@ -352,14 +166,9 @@ meta_model:
   meta_dim: 16
   recurrent_hidden_dim: 48
   maximum_trainable_parameters: 150000
-  training_seeds:
-  - 541
-  - 547
-  - 557
+  training_seeds: [541, 547, 557]
   train_rollout_length: 1
-  evaluation_rollout_lengths:
-  - 2
-  - 3
+  evaluation_rollout_lengths: [2, 3]
   target_encoder_ema_decay: 0.99
   stop_gradient_target: true
   sigreg_weight: 0.09
@@ -388,29 +197,12 @@ loss:
   nuisance_anti_shortcut_weight: 0.0
   target_encoder_mode: validation_selected_from_end_to_end_stop_gradient_ema
 loss_roster:
-  terms:
-  - latent_alignment
-  - normalized_residual_reconstruction
-  - replay_endpoint
-  - replay_kl
-  - identity_noop
-  - inverse_restoration
-  - sequential_composition
-  - commutator_noncommuting_interaction
-  - matched_control_specificity
-  - uncertainty_calibration
-  - nuisance_anti_shortcut
-  default_enabled_terms:
-  - latent_alignment
-  - normalized_residual_reconstruction
-  - identity_noop
+  terms: [latent_alignment, normalized_residual_reconstruction, replay_endpoint, replay_kl, identity_noop, inverse_restoration, sequential_composition, commutator_noncommuting_interaction, matched_control_specificity, uncertainty_calibration, nuisance_anti_shortcut]
+  default_enabled_terms: [latent_alignment, normalized_residual_reconstruction, identity_noop]
   validation_selected_terms_only: true
   protected_results_may_change_terms: false
 target_encoder_comparisons:
-  candidates:
-  - end_to_end_target_encoder
-  - stop_gradient_target_encoder
-  - ema_stop_gradient_target_encoder
+  candidates: [end_to_end_target_encoder, stop_gradient_target_encoder, ema_stop_gradient_target_encoder]
   primary_candidate: validation_selected_pending
   end_to_end_is_required_comparator: true
   stop_gradient_is_required_comparator: true
@@ -419,50 +211,21 @@ target_encoder_comparisons:
 within_context_intervention_comparisons:
   target: residual_regression_only
   complete_state_target_as_primary: forbidden
-  candidates:
-  - residual_regression_only
-  - residual_ijepa
-  - residual_ijepa_within_context_nce
-  - residual_ijepa_residual_visreg
-  - residual_ijepa_within_context_nce_and_residual_visreg
-  target_encoder_variants:
-  - end_to_end_target_encoder
-  - stop_gradient_target_encoder
-  - ema_stop_gradient_target_encoder
+  candidates: [residual_regression_only, residual_ijepa, residual_ijepa_within_context_nce, residual_ijepa_residual_visreg, residual_ijepa_within_context_nce_and_residual_visreg]
+  target_encoder_variants: [end_to_end_target_encoder, stop_gradient_target_encoder, ema_stop_gradient_target_encoder]
   validation_selects_at_most_one_candidate_variant: true
   protected_results_may_select_candidate: false
-  candidate_sets_hold_constant_where_possible:
-  - prompt
-  - recipient
-  - answer_format
-  - token_position
-  - layer_family
-  - patch_type
-  - norm
-  - covariance
+  candidate_sets_hold_constant_where_possible: [prompt, recipient, answer_format, token_position, layer_family, patch_type, norm, covariance]
   factor_matching:
-    required_keys:
-    - prompt
-    - recipient
-    - answer_format
-    - token_position
-    - layer_family
-    - patch_type
-    matched_keys_when_feasible:
-    - norm
-    - covariance
+    required_keys: [prompt, recipient, answer_format, token_position, layer_family, patch_type]
+    matched_keys_when_feasible: [norm, covariance]
     matching_is_frozen_before_validation: true
     unmatched_factor_requires_registered_reason: true
-  selection_endpoints:
-  - direct_replay_activation
-  - direct_replay_role_logit
-  - direct_replay_behavior
+  selection_endpoints: [direct_replay_activation, direct_replay_role_logit, direct_replay_behavior]
   intervention_classification_or_retrieval_is_not_selection_endpoint: true
 visreg_contract:
   name: residual_visreg
-  applies_to:
-  - normalized_residual
-  - normalized_residual_trajectory
+  applies_to: [normalized_residual, normalized_residual_trajectory]
   applies_to_complete_state: false
   applies_to_complete_delta: false
   primary_complete_state_visreg_forbidden: true
@@ -470,10 +233,7 @@ visreg_contract:
   direct_replay_and_behavior_required_for_retention: true
 candidate_retention:
   selection_split: validation
-  required_evidence:
-  - direct_replay_activation
-  - direct_replay_role_logit
-  - direct_replay_behavior
+  required_evidence: [direct_replay_activation, direct_replay_role_logit, direct_replay_behavior]
   intervention_classification_is_insufficient: true
   intervention_retrieval_is_insufficient: true
   direct_replay_required: true
@@ -481,45 +241,14 @@ candidate_retention:
   protected_results_may_retain_or_drop_candidate: false
 hard_negatives:
   mandatory: true
-  roster:
-  - same_context_wrong_action
-  - same_context_wrong_prefix
-  - same_episode_wrong_donor
-  - same_donor_different_site
-  - different_donor_norm_matched
-  - different_donor_covariance_matched
-  - different_donor_norm_cov_matched
-  - similar_state_error_different_behavior
-  - similar_behavior_different_residual
-  - same_query_different_episode
-  - same_class_wrong_permutation
-  - identity_action
-  - identity_noop
-  - inverse_action
-  - commuting_composition
-  - noncommuting_composition
-  - norm_matched_delta
-  - covariance_matched_delta
+  roster: [same_context_wrong_action, same_context_wrong_prefix, same_episode_wrong_donor, same_donor_different_site, different_donor_norm_matched, different_donor_covariance_matched, different_donor_norm_cov_matched, similar_state_error_different_behavior, similar_behavior_different_residual, same_query_different_episode, same_class_wrong_permutation, identity_action, identity_noop, inverse_action, commuting_composition, noncommuting_composition, norm_matched_delta, covariance_matched_delta]
   same_context_definition: same_clean_episode_context_with_action_or_donor_changed
   false_negative_exclusion: near_time_or_dynamically_equivalent_rows_excluded_or_marked
   clustered_inference_unit: complete_base_episode
 strongest_comparisons:
-  analytical:
-  - exact_local_jvp
-  - full_quadratic_hvp
-  - population_jacobian
-  - pca_ridge_causal_delta
-  - affine_generator_rollout
-  - s4_equivariant_linear
-  learned:
-  - capacity_matched_bilinear
-  - capacity_matched_mlp
-  - sparse_student
-  - complete_delta_control
-  - complete_state_control
-  oracle_ceiling:
-  - observed_prefix_relinearized_jvp
-  - oracle_relinearized_sequential_jvp
+  analytical: [exact_local_jvp, full_quadratic_hvp, population_jacobian, pca_ridge_causal_delta, affine_generator_rollout, s4_equivariant_linear]
+  learned: [capacity_matched_bilinear, capacity_matched_mlp, sparse_student, complete_delta_control, complete_state_control]
+  oracle_ceiling: [observed_prefix_relinearized_jvp, oracle_relinearized_sequential_jvp]
   protected_primary_must_beat_strongest_analytical: true
   protected_primary_must_beat_strongest_learned: true
   oracle_is_headroom_only: true
@@ -542,52 +271,25 @@ controls:
 ablations:
   nuisance:
     registered: true
-    factors:
-    - donor_entity
-    - recipient_entity
-    - prompt_form
-    - prompt_id
-    - token_position
-    - token_id
-    - episode_id
-    - action_class
-    - rollout_length
-    - slow_timestamp
-    - persistent_marker
-    - predictable_bit_string
-    - norm_matched_delta
-    - covariance_matched_delta
-    fit_splits:
-    - train
-    - validation
+    factors: [donor_entity, recipient_entity, prompt_form, prompt_id, token_position, token_id, episode_id, action_class, rollout_length, slow_timestamp, persistent_marker, predictable_bit_string, norm_matched_delta, covariance_matched_delta]
+    fit_splits: [train, validation]
     protected_selection_allowed: false
     dominance_rejects_target: true
     planted_suite_required: true
-    planted_suite:
-    - episode_id
-    - prompt_id
-    - slow_timestamp
-    - persistent_marker
-    - predictable_bit_string
-    - norm_matched_delta
-    - covariance_matched_delta
+    planted_suite: [episode_id, prompt_id, slow_timestamp, persistent_marker, predictable_bit_string, norm_matched_delta, covariance_matched_delta]
   tcr:
     name: within_context_or_within_trajectory_residual_contrast
     registered: true
     default: disabled
     candidate_only: true
-    fit_splits:
-    - train
-    - validation
+    fit_splits: [train, validation]
     protected_selection_allowed: false
   vis:
     name: residual_visreg
     registered: true
     default: disabled
     candidate_only: true
-    fit_splits:
-    - train
-    - validation
+    fit_splits: [train, validation]
     protected_selection_allowed: false
   tcr_vis:
     tcr_enabled: false
@@ -597,25 +299,12 @@ ablations:
     name: conditional_low_rank_routing
     registered: true
     default: disabled
-    key_coordinates:
-    - layer
-    - site
-    - object
-    - time
+    key_coordinates: [layer, site, object, time]
     key_dimension: 8
     values_retain_source_dimension: true
-    candidates:
-    - no_routing_local
-    - standard_cross_attention
-    - low_rank_routing
-    independent_ablations:
-    - routing_keys_removed
-    - transported_values_removed
-    - keys_only
-    - values_only
-    fit_splits:
-    - train
-    - validation
+    candidates: [no_routing_local, standard_cross_attention, low_rank_routing]
+    independent_ablations: [routing_keys_removed, transported_values_removed, keys_only, values_only]
+    fit_splits: [train, validation]
     protected_selection_allowed: false
 target_sufficiency:
   phase: B2
@@ -627,25 +316,15 @@ target_sufficiency:
   train_only_pca_ridge_comparator: required
   pca_ridge_fit_splits: train_only
   oracle_must_beat_train_only_pca_ridge: true
-  comparison_endpoints:
-  - activation_delta
-  - role_logit_delta
-  - candidate_behavior
+  comparison_endpoints: [activation_delta, role_logit_delta, candidate_behavior]
   donor_dominance_rejects_target: true
   prompt_dominance_rejects_target: true
   position_dominance_rejects_target: true
   token_id_dominance_rejects_target: true
-  nuisance_fit_splits:
-  - train
-  - validation
+  nuisance_fit_splits: [train, validation]
   protected_rows_used_for_target_sufficiency: false
 interpretability_comparisons:
-  methods:
-  - sae
-  - qwen_scope
-  - transcoder
-  - atp_star
-  - jacobian_rankings
+  methods: [sae, qwen_scope, transcoder, atp_star, jacobian_rankings]
   role: localization_comparators_only
   feature_or_router_names_are_hypotheses: true
   direct_ablation_or_patch_required_for_feature_claim: true
@@ -654,11 +333,7 @@ interpretability_comparisons:
 protected_primary:
   selection_split: validation
   selection_rule: select_exactly_one_frozen_candidate_before_protected_access
-  candidate_roster:
-  - no_routing_local
-  - capacity_matched_mlp
-  - standard_cross_attention
-  - conditional_low_rank_routing
+  candidate_roster: [no_routing_local, capacity_matched_mlp, standard_cross_attention, conditional_low_rank_routing]
   max_retained_configurations: 2
   exactly_one_protected_primary: true
   selected_primary: null
@@ -684,9 +359,7 @@ gates:
   predicted_state_control_margin_min: 0.2
   inverse_restoration_min: 0.75
   seeds_required: 3
-  protected_splits_required:
-  - test
-  - paraphrase
+  protected_splits_required: [test, paraphrase]
   bootstrap_draws: 10000
   bootstrap_seed: 563
 decision_logic:
@@ -709,10 +382,7 @@ phase_locks:
   B0:
     name: competence_and_layer0_replay
     order: 0
-    allowed_splits:
-    - calibration
-    - train
-    - validation
+    allowed_splits: [calibration, train, validation]
     decision_split: validation
     requires_previous_pass: false
     requires_execution_authorization: true
@@ -722,10 +392,7 @@ phase_locks:
   B1:
     name: differential_baselines_and_residual_power
     order: 1
-    allowed_splits:
-    - calibration
-    - train
-    - validation
+    allowed_splits: [calibration, train, validation]
     decision_split: validation
     requires_previous_pass: B0
     requires_execution_authorization: true
@@ -737,9 +404,7 @@ phase_locks:
   B2:
     name: residual_target_sufficiency_and_nuisance
     order: 2
-    allowed_splits:
-    - train
-    - validation
+    allowed_splits: [train, validation]
     decision_split: validation
     requires_previous_pass: B1
     requires_execution_authorization: true
@@ -749,26 +414,19 @@ phase_locks:
   B3:
     name: frozen_residual_ijepa_training
     order: 3
-    allowed_splits:
-    - train
-    - validation
+    allowed_splits: [train, validation]
     decision_split: validation
     requires_previous_pass: B2
     requires_execution_authorization: true
     schema_only_dry_run_without_authorization: true
     qwen_execution_without_authorization: false
-    training_seeds:
-    - 541
-    - 547
-    - 557
+    training_seeds: [541, 547, 557]
     protected_access: forbidden
     stop_status: NEGATIVE_RESULT
   B4:
     name: protected_direct_predicted_state_replay
     order: 4
-    allowed_splits:
-    - test
-    - paraphrase
+    allowed_splits: [test, paraphrase]
     decision_split: protected_only_after_frozen_primary
     requires_previous_pass: B3
     requires_execution_authorization: true
@@ -776,12 +434,7 @@ phase_locks:
     requires_self_hashed_plan: true
     exactly_one_protected_primary: true
     protected_results_select_methods: false
-    interpretability_comparisons:
-    - sae
-    - qwen_scope
-    - transcoder
-    - atp_star
-    - jacobian_rankings
+    interpretability_comparisons: [sae, qwen_scope, transcoder, atp_star, jacobian_rankings]
     feature_claim_requires_direct_ablation_or_patch: true
     schema_only_dry_run_without_authorization: true
     qwen_execution_without_authorization: false
@@ -797,20 +450,13 @@ phase_policy:
   any_protected_failure_status: HYPOTHESIS_REJECTED
   access:
     phase_0:
-      allowed_splits:
-      - calibration
-      - train
-      - validation
+      allowed_splits: [calibration, train, validation]
       output_root: data/activations/qwen_binding_algebra_cr_v2/phase_0
     phase_1_train:
-      allowed_splits:
-      - train
-      - validation
+      allowed_splits: [train, validation]
       output_root: data/activations/qwen_binding_algebra_cr_v2/phase_1_train
     protected_eval:
-      allowed_splits:
-      - test
-      - paraphrase
+      allowed_splits: [test, paraphrase]
       output_root: data/activations/qwen_binding_algebra_cr_v2/protected_eval
   protected_results_select_methods: false
   protected_results_select_thresholds: false
@@ -832,14 +478,7 @@ direct_replay:
   same_tokenizer_and_tokenization_required: true
   same_rng_state_required: true
   same_decoding_contract_required: true
-  endpoints:
-  - activation_delta
-  - role_logit_delta
-  - candidate_behavior
-  - inverse_restoration
-  - composition
-  - uncertainty
-  - matched_control_specificity
+  endpoints: [activation_delta, role_logit_delta, candidate_behavior, inverse_restoration, composition, uncertainty, matched_control_specificity]
   recovery_denominator: preregistered_positive_ratio_of_sums
   failure_is_not_zero_effect: true
   predicted_replay_without_direct_execution_evidence_level: Availability
@@ -864,10 +503,7 @@ authorization:
   fail_closed_on_parent_authorization: true
   fail_closed_status: EXECUTION_BLOCKED_UNAUTHORIZED
 resource_contract:
-  allowed_modes:
-  - schema_validation
-  - deterministic_unit_tests
-  - dry_run_without_tokenizer_or_model
+  allowed_modes: [schema_validation, deterministic_unit_tests, dry_run_without_tokenizer_or_model]
   protected_execution_mode: forbidden
   resource_check_required_before_authorization: true
   resource_profile: configs/resource/gpu_12gb.yaml
@@ -893,4 +529,4 @@ token_contract:
   values_changed_only_where_v2_failed_pinned_tokenizer_contract: true
   tokenizer_only_selection_before_model_forward: true
   protected_prompts_or_model_outputs_used_for_selection: false
-canonical_digest: f46341a7f847017e624320f6b69677ce3c4f52b1dd51897e85aafa82b8fa9705
+canonical_digest: 8f9a094500e9f2661e1faf6c07441902f456f35b889851d610424171e06c1658

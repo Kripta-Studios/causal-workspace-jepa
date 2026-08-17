@@ -35,7 +35,7 @@
       "Haifa"
     ]
   },
-  "generated_utc": "2026-08-17T21:58:28.035816+00:00",
+  "generated_utc": "2026-08-17T22:12:53.619237+00:00",
   "model": "Qwen/Qwen3-0.6B",
   "model_outputs_or_logits_used": false,
   "model_weights_loaded": false,
@@ -284,9 +284,9 @@
       "split": "test"
     }
   ],
-  "resolved_cr_v2_sha256": "6db7ee6c7668ad3f84374446abe006e78cc92460138acbe3eedb339f0e008aa7",
+  "resolved_cr_v2_sha256": "32e127a9eb0a3c915a6bfd2e667485f4c1e4afe9658df8200476483c64ca7951",
   "resolved_v3_semantic_sha256": "d537cf0b81560ff7746410e0378475ce67ec5fb11f4fbeb81d90dc9fc271dda2",
-  "resolved_v3_sha256": "a3ddd9859f2472c2c43f1ba14ca5575e190a0c58efec344cd2b1b216eada8a31",
+  "resolved_v3_sha256": "84d0cef1d58db20cdb1a2de4a8edeb6ae0083655d82519dda4853538a5ee7ad4",
   "resolved_value_token_rows": [
     {
       "encoded_text": " crimson",
@@ -655,7 +655,7 @@
   "schema_version": "qwen_binding_algebra_v3_token_contract_v1",
   "scientific_thresholds_actions_splits_seeds_changed": false,
   "selection_depends_only_on_tokenizer_metadata": true,
-  "self_sha256": "dc6951e26fc2aa0ffda1d0b7111344bdf47976a8433ac4f423de6cee2e96c7a1",
+  "self_sha256": "a80eb2edff79e2101c742b1f61ae07eb3a1cee361f6fa7b9bde0ca9b376000dc",
   "source_cr_v1_sha256": "169e91fe871a1174751ca341024713e649209e1642d76367e05cec3ec08773bc",
   "source_invalid_total": 23,
   "source_v2_sha256": "80dbbcc11c01dacdabafe3440d779574c6a6f8f485de995c8f0f19910763ca81",
