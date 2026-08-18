@@ -1,4 +1,3 @@
-\
 param(
     [string]$Device = "cuda",
     [int]$BatchSize = 16,
