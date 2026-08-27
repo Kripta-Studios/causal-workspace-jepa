@@ -50,4 +50,7 @@ H=5 primary. Success = true position MSE `< 0.15`. Amortized latent N=64 must be
 - [x] Adjudicate T1 (`TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`; encoder caveat)
 - [x] Execute T2 if T1 adjudication is integrity-clean
 - [x] Adjudicate T2 (`NEGATIVE_RESULT`; evidence_level None)
-- [ ] Review, suite, docs
+- [x] Review, suite, docs
+  Independent reviews: adversarial `5d22c593-7976-45ed-8e24-a78a7fb9faad`,
+  protocol `e852af8e-0bbf-471b-ac6e-ffa28951cef1` (not Sol High).
+  Local: 329 passed, 1 deselected; Ruff green; audit `SMOKE_VALIDATED`.
