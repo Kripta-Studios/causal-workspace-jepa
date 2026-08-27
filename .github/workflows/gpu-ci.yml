@@ -1,0 +1,18 @@
+name: gpu-ci
+on:
+  workflow_dispatch:
+jobs:
+  gpu:
+    runs-on: self-hosted
+    timeout-minutes: 60
+    env:
+      PYTHONPATH: src
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Require CUDA
+      run: |
+        python -c "import torch; assert torch.cuda.is_available(), 'SKIPPED_RESOURCE: gpu-ci requires CUDA'; print(torch.cuda.get_device_name(0))"
+    - name: GPU suite
+      run: python -m pytest -q tests/unit tests/integration tests/scientific -m "not slow"

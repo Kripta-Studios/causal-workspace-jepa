@@ -4,7 +4,9 @@ Status: `SMOKE_VALIDATED` for the complete bounded suite and cross-platform cont
 
 CPU CI is `.github/workflows/cpu-ci.yml` (pytest non-GPU, Ruff E4/E7/E9/F pinned
 to `ruff==0.15.22`, reproducibility audit, competence entrypoint syntax). It must
-not download Qwen weights or open protected splits.
+not download Qwen weights or open protected splits. Qwen tokenizer/model tests
+are `@pytest.mark.gpu` and require CUDA; run them with
+`scripts/run_gpu_suite.ps1` or `.github/workflows/gpu-ci.yml` on a GPU host.
 
 Confirmation access ledger for `QWEN-BINDING-COMPETENCE-CONFIRM-001` is committed
 at `artifacts/metrics/qwen_competence_confirm_v1.access_ledger.jsonl`. The raw

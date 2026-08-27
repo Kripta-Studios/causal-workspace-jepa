@@ -36,9 +36,14 @@ CPU/non-protected GitHub Actions should include:
 
 Do not:
 - download Qwen weights in ordinary CI;
+- install CPU torch onto a GPU host as a Qwen fallback;
 - open protected splits;
 - run confirmation experiments automatically;
 - mutate artifacts from CI.
+
+Qwen tokenizer/model tests are `@pytest.mark.gpu` and must skip without CUDA
+(`SKIPPED_RESOURCE`). Use `scripts/run_gpu_suite.ps1` or `gpu-ci.yml` on a
+self-hosted CUDA runner.
 
 ## Entrypoint regression
 

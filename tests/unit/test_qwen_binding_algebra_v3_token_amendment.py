@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
+import pytest
 import yaml
 
 from causal_workspace_jepa.common.config import load_config
@@ -122,15 +123,20 @@ def test_cr_v2_is_same_resolved_alphabet_and_remains_unauthorized() -> None:
     assert _canonical(copy_cr) == expected
 
 
+@pytest.mark.gpu
 def test_resolved_values_match_pinned_tokenizer_strict_answer_context() -> None:
+    pytest.importorskip("transformers")
     from transformers import AutoTokenizer
 
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
-    tokenizer = AutoTokenizer.from_pretrained(
-        contract["model"],
-        revision=contract["revision"],
-        local_files_only=True,
-    )
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(
+            contract["model"],
+            revision=contract["revision"],
+            local_files_only=True,
+        )
+    except OSError:
+        pytest.skip("SKIPPED_RESOURCE: pinned Qwen tokenizer is not in the local cache")
     rows = []
     for split in ("calibration", "train", "validation", "test"):
         for slot, value in enumerate(contract["resolved_values"][split]):

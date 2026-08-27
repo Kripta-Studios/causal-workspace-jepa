@@ -1,9 +1,13 @@
+from __future__ import annotations
+
 import hashlib
 
-import h5py
 import numpy as np
+import pytest
 
-from causal_workspace_jepa.experiments.llm.qwen_capital_crct_dev import (
+pytest.importorskip("h5py")
+import h5py  # noqa: E402
+from causal_workspace_jepa.experiments.llm.qwen_capital_crct_dev import (  # noqa: E402
     analyze_arrays,
     analyze_shard,
     nmse,

@@ -102,6 +102,7 @@ dependencies = [
 dev = [
     { name = "mypy" },
     { name = "pytest" },
+    { name = "pyyaml" },
     { name = "ruff" },
 ]
 gpt2 = [
@@ -124,6 +125,7 @@ requires-dist = [
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.10" },
     { name = "numpy", specifier = ">=1.26" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
+    { name = "pyyaml", marker = "extra == 'dev'", specifier = ">=6" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.15.22" },
     { name = "safetensors", marker = "extra == 'gpt2'", specifier = ">=0.8" },
     { name = "safetensors", marker = "extra == 'gpu'", specifier = ">=0.4" },

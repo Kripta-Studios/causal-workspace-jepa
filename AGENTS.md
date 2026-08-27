@@ -42,18 +42,22 @@ audit, Git status/diff, docs sync. CPU CI: `.github/workflows/cpu-ci.yml`.
 ## Resource modes
 
 - `cpu_vps`: no Qwen/JEPA weight downloads, no CUDA installs, tiny smoke only.
-- `gpu_12gb`: Qwen3-0.6B/4B selected-layer work; estimate VRAM first.
+- `gpu_12gb`: Qwen3-0.6B/4B selected-layer work; estimate VRAM first. Qwen
+  tokenizer/model tests and forwards **require CUDA**. There is no CPU fallback.
 - `gpu_cluster`: Qwen3-30B-A3B full hidden-state studies.
 
+GitHub `cpu-ci.yml` never downloads Qwen and excludes `@pytest.mark.gpu`.
+Run the GPU suite with `scripts/run_gpu_suite.ps1` or `.github/workflows/gpu-ci.yml`.
 Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
 
 ## Current critical path (2026-08-27)
 
 1. Keep HARD-002 and V3 frozen.
-2. Execute `QWEN-BINDING-COMPETENCE-CONFIRM-001` only after its protocol commit.
-3. Use `CRCT-COALITION-IBD-001` for coalition/equivalence ontology.
-4. Platonic WM and LeFlow: plan in `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md`
-   only; do not download paper-scale checkpoints from that plan.
+2. Confirmation passed; do not execute `LLM-QWEN-BINDING-ALGEBRA-004` until
+   a later authorization commit. V3 stays ineligible.
+3. Use coalition IBD for equivalence ontology; IBD-001 confirmation is smoke.
+4. Platonic WM + LeFlow: plan only. Distinctive question is planner transfer
+   then CRCT on equivalent computations, not m-kNN. No paper-scale downloads.
 
 Detailed milestone, dataset, interface, and literature requirements remain in
 `docs/agents/AGENTS_FULL.md` and the `docs/` registries.
