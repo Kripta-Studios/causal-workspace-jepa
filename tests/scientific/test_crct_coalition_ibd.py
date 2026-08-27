@@ -93,6 +93,16 @@ def test_literal_recall_differs_from_sufficiency() -> None:
     assert recall["precision"] == 1.0
 
 
+def test_gauge_transform_is_applied_and_preserves_minimal_circuits() -> None:
+    result = run_coalition_benchmark(seed=11, stage="development", device_name="cpu", samples=64)
+    assert result["gauge_applied"] is True
+    assert result["gauge_function_mse"] < 1e-8
+    assert result["uncompensated_known_energy"] > result["causal_energy"]["known_a"] * 10.0
+    gauged_minimal = [set(item) for item in result["gauged"]["minimal_sets"]]
+    assert {"known_a", "unknown", "residual"} in gauged_minimal
+    assert {"known_b", "unknown", "residual"} in gauged_minimal
+
+
 def test_development_stage_runs_frozen_seeds() -> None:
     payload = run_stage("development")
     assert payload["seeds"] == list(DEVELOPMENT_SEEDS)
@@ -103,7 +113,7 @@ def test_development_stage_runs_frozen_seeds() -> None:
 
 def test_ijepa_residual_is_not_privileged_without_fair_baselines() -> None:
     assert "direct_delta_capacity_matched" in REQUIRED_IJEPA_BASELINES
-    assert missing_required_baselines(["jvp_first_order"]) 
+    assert missing_required_baselines(["jvp_first_order"])
     record = learned_residual_claim_eligible(
         residual_power=0.04,
         differential_plus_residual_heldout_nmse=0.2,

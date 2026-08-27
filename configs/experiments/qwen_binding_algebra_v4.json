@@ -1,0 +1,74 @@
+{
+  "experiment_id": "LLM-QWEN-BINDING-ALGEBRA-004",
+  "bridge_id": "CRCT-QWEN-BRIDGE-003",
+  "parent_confirmation_experiment_id": "QWEN-BINDING-COMPETENCE-CONFIRM-001",
+  "parent_v3_experiment_id": "LLM-QWEN-BINDING-ALGEBRA-003",
+  "registered_date": "2026-08-27",
+  "schema_version": "qwen_binding_algebra_v4_config_v1",
+  "status": "PREREGISTERED_NOT_RUN",
+  "execution_authorized": false,
+  "claim_boundary": "prospective B0 competence on a fresh mechanism_dev split using the frozen chat-prefill renderer; does not rescue V3; no circuit, CRCT, workspace, test, or paraphrase",
+  "allowed_model_forward_splits": ["mechanism_dev"],
+  "forbidden_model_forward_splits": ["train", "validation", "test", "paraphrase", "calibration", "confirmation"],
+  "renderer": {
+    "id": "qwen_chat_prefill_v1",
+    "kind": "chat_prefill"
+  },
+  "model": {
+    "attn_implementation": "eager",
+    "dtype": "float32",
+    "local_files_only": true,
+    "name": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca"
+  },
+  "split": {
+    "name": "mechanism_dev",
+    "count": 32,
+    "seed": 901,
+    "template": "primary"
+  },
+  "token_pools": {
+    "keys": {
+      "mechanism_dev": ["cedar", "slate", "ember", "linen"]
+    },
+    "values": {
+      "mechanism_dev": ["navy", "olive", "pearl", "moss"]
+    }
+  },
+  "token_contract": {
+    "model": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "answer_encoding": "strict spaced single token",
+    "model_outputs_or_logits_used": false,
+    "verified_utc": "2026-08-27T13:55:45Z",
+    "keys": {
+      "cedar": 75296,
+      "slate": 50580,
+      "ember": 98284,
+      "linen": 54015
+    },
+    "values": {
+      "navy": 44774,
+      "olive": 32113,
+      "pearl": 69623,
+      "moss": 77243
+    }
+  },
+  "gates": {
+    "clean_full_vocab_accuracy_min": 0.9,
+    "direct_permuted_full_vocab_accuracy_min": 0.9,
+    "candidate_only_accuracy_is_diagnostic_only": true,
+    "if_fail": "INELIGIBLE_TASK_PHASE0"
+  },
+  "scientific_boundary": {
+    "no_prompt_search": true,
+    "no_threshold_retuning": true,
+    "no_v3_rescue": true,
+    "no_test_access": true,
+    "no_paraphrase_access": true,
+    "no_confirmation_reuse_for_circuits": true,
+    "no_b1_until_b0_pass_and_later_protocol": true,
+    "hard002_status_preserved": "NEGATIVE_RESULT",
+    "direct_delta_baseline_required_for_residual_claims": true
+  }
+}

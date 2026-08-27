@@ -87,14 +87,12 @@ any DINO-WM download.
 
 Platonic convergence under a **shared predictor family** is not evidence that
 Qwen residual streams across prompts share a platonic binding subspace.
-Qwen work stays gated on competence confirmation
-(`QWEN-BINDING-COMPETENCE-CONFIRM-001`). If confirmation fails, this plan
-does not open a Qwen stitching or flow-planner experiment.
-
-If confirmation passes, a **later** mechanistic question is whether
-intervention-JEPA meta-latents for the same intervention family align across
-seeds/sites (m-kNN on meta-states) and whether those neighborhoods predict
-direct Qwen replay. That is H-LLM-02/04 territory, not a workspace claim.
+Qwen work stays gated on competence. `QWEN-BINDING-COMPETENCE-CONFIRM-001`
+passed. That still does **not** open a Qwen stitching or flow-planner
+experiment. A later mechanistic question, only after `LLM-QWEN-BINDING-ALGEBRA-004`
+B0, is whether intervention-JEPA meta-latents for the same intervention family
+align across seeds/sites (m-kNN on meta-states) and whether those neighborhoods
+predict direct Qwen replay. That is H-LLM-02/04 territory, not a workspace claim.
 
 ### 5. What not to do
 
@@ -107,7 +105,8 @@ direct Qwen replay. That is H-LLM-02/04 territory, not a workspace claim.
 
 ## Recommended order
 
-1. Close Qwen confirmation and keep V3 ineligible.
+1. Close Qwen confirmation and keep V3 ineligible. Done: confirmation passed;
+   004 drafted not run.
 2. Keep `CRCT-COALITION-IBD-001` as the ontology positive control.
 3. CPU-scale platonic control: two tiny JEPAs, different frozen linear
    observation maps, same dynamics, m-kNN + matched random maps.

@@ -9,6 +9,7 @@ from causal_workspace_jepa.experiments.llm.qwen_binding_competence_confirm impor
     CONFIRM_SPLIT,
     FORBIDDEN_SPLITS,
     FROZEN_RENDERER,
+    _assert_protocol,
     assert_confirmation_disjoint,
 )
 
@@ -76,3 +77,35 @@ def test_confirmation_result_contract_keeps_protected_false() -> None:
     assert '"calibration_executed": False' in source
     assert '"protected_splits_executed": []' in source
     assert '"does_not_rescue_v3": True' in source
+
+
+def test_confirmation_protocol_rejects_protected_forward_authorization() -> None:
+    config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    config["allowed_model_forward_splits"] = ["test"]
+    try:
+        _assert_protocol(config)
+    except RuntimeError:
+        return
+    raise AssertionError("protected split authorization was accepted")
+
+
+def test_algebra_v4_is_draft_only_and_disjoint() -> None:
+    v4 = json.loads((ROOT / "configs/experiments/qwen_binding_algebra_v4.json").read_text(encoding="utf-8"))
+    confirm = json.loads(CONFIG.read_text(encoding="utf-8"))
+    assert v4["execution_authorized"] is False
+    assert v4["status"] == "PREREGISTERED_NOT_RUN"
+    assert v4["allowed_model_forward_splits"] == ["mechanism_dev"]
+    assert "test" not in v4["allowed_model_forward_splits"]
+    assert "paraphrase" not in v4["allowed_model_forward_splits"]
+    used = set()
+    for role in ("keys", "values"):
+        for values in confirm["parent_token_pools"][role].values():
+            used.update(values)
+        used.update(confirm["token_pools"][role]["confirmation"])
+        used.update(v4["token_pools"][role]["mechanism_dev"])
+    assert len(used) == (
+        sum(len(v) for v in confirm["parent_token_pools"]["keys"].values())
+        + sum(len(v) for v in confirm["parent_token_pools"]["values"].values())
+        + 8
+        + 8
+    )

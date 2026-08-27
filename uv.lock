@@ -124,7 +124,7 @@ requires-dist = [
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.10" },
     { name = "numpy", specifier = ">=1.26" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = "==0.15.22" },
     { name = "safetensors", marker = "extra == 'gpt2'", specifier = ">=0.8" },
     { name = "safetensors", marker = "extra == 'gpu'", specifier = ">=0.4" },
     { name = "torch", marker = "extra == 'gpt2'", specifier = ">=2.4" },

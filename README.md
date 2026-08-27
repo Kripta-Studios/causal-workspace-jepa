@@ -20,6 +20,7 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   is preserved.
 - Platonic WM (arXiv:2608.23720) and LeFlow (arXiv:2608.24855) are planned only
   in `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md`. No download or run.
+- `LLM-QWEN-BINDING-ALGEBRA-004` is drafted and not executed.
 
 See `docs/exec-plans/active/2026-08-27-codex-recovery.md`.
 

@@ -2,9 +2,13 @@
 
 Status: `SMOKE_VALIDATED` for the complete bounded suite and cross-platform control-plane checks.
 
-CPU CI is `.github/workflows/cpu-ci.yml` (pytest non-GPU, Ruff E4/E7/E9/F, reproducibility
-audit, competence entrypoint syntax). It must not download Qwen weights or open protected
-splits.
+CPU CI is `.github/workflows/cpu-ci.yml` (pytest non-GPU, Ruff E4/E7/E9/F pinned
+to `ruff==0.15.22`, reproducibility audit, competence entrypoint syntax). It must
+not download Qwen weights or open protected splits.
+
+Confirmation access ledger for `QWEN-BINDING-COMPETENCE-CONFIRM-001` is committed
+at `artifacts/metrics/qwen_competence_confirm_v1.access_ledger.jsonl`. The raw
+run directory under `artifacts/reports/` remains gitignored.
 
 Unprovenanced local metric dumps belong in `artifacts/local_scratch/`, not in
 `artifacts/metrics/`.

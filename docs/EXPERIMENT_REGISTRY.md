@@ -8,9 +8,16 @@
 - `QWEN-BINDING-COMPETENCE-CONFIRM-001` — `COMPETENCE_CONFIRMATION_PASSED`.
   Clean `1.000` / direct `0.9896` on seed 701 confirmation split. Does not
   rescue V3. Metrics `artifacts/metrics/qwen_competence_confirm_v1.json`.
+  Ledger `artifacts/metrics/qwen_competence_confirm_v1.access_ledger.jsonl`.
+- `LLM-QWEN-BINDING-ALGEBRA-004` — `PREREGISTERED_NOT_RUN`,
+  `execution_authorized: false`. Fresh `mechanism_dev` seed 901.
+- `CRCT-QWEN-BRIDGE-003` — `PREREGISTERED_NOT_RUN`. No Qwen forward.
 - `CRCT-COALITION-IBD-001` — coalition/equivalence IBD successor.
-  Development seeds 11/13/17; confirmation seeds 811/823/829. HARD-002
-  primary seeds forbidden. HARD-002 status unchanged.
+  Development seeds 11/13/17; recorded confirmation 811/823/829 is smoke with
+  a documented tautological-gauge caveat. HARD-002 primary seeds forbidden.
+  HARD-002 status unchanged.
+- `CRCT-COALITION-IBD-002` — `PREREGISTERED_NOT_RUN`. Real applied gauge;
+  new seeds. Not executed.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - Platonic WM / LeFlow — plan only, no experiment ID executed.
 

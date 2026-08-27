@@ -11,6 +11,8 @@
   Result: `COMPETENCE_CONFIRMATION_PASSED` (clean 1.000, direct 0.9896).
 - [x] Coalition/equivalence IBD evaluator (`CRCT-COALITION-IBD-001`); HARD-002 seeds blocked.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
+- [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
+- [ ] Execute 004 only after a later authorization commit on origin.
 - [x] Intervention-JEPA fair-baseline policy module.
 - [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
 - [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.

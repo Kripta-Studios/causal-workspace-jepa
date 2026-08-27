@@ -9,14 +9,22 @@
   development selection, evidence level Availability. V3 stays
   `INELIGIBLE_TASK_PHASE0`.
 - `QWEN-BINDING-COMPETENCE-CONFIRM-001` **passed**: clean `1.000` (32),
-  direct-permuted `0.9896` (96), both `>= 0.90`. Ledger is confirmation-only.
+  direct-permuted `0.9896` (96), both `>= 0.90`. Ledger is confirmation-only
+  and copied to `artifacts/metrics/qwen_competence_confirm_v1.access_ledger.jsonl`.
   V3 is unchanged. See
   `docs/QWEN_BINDING_COMPETENCE_CONFIRM_001_ADJUDICATION_2026-08-27.md`.
+- `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` are drafted as
+  `PREREGISTERED_NOT_RUN` with `execution_authorized: false`. No Qwen forward.
 - `CRCT-COALITION-IBD-001` unit/scientific tests pass on development plants
   (`seeds 11/13/17`): literal recall of the full planted graph is incomplete
   for a minimal sufficient set, two equivalent minimal circuits exist, signed
   cancellation is visible, and a matched cancel-pair control is not sufficient.
-  This is synthetic method evidence only. HARD-002 remains `NEGATIVE_RESULT`.
+  Recorded confirmation JSON is engineering smoke. Independent review found the
+  original gauge Spearman compared an untransformed copy; the evaluator now
+  applies a compensated `known_w`/`known_r` reparameterization, but IBD-001
+  confirmation seeds are not re-run. Successor `CRCT-COALITION-IBD-002` is
+  preregistered, not run. This is synthetic method evidence only. HARD-002
+  remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)

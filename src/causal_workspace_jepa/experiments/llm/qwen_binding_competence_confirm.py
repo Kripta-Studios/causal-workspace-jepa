@@ -157,6 +157,13 @@ def _assert_protocol(config: Mapping[str, Any]) -> None:
         raise RuntimeError("direct-permuted full-vocabulary gate is frozen at 0.90")
     if config["gates"]["candidate_only_accuracy_is_diagnostic_only"] is not True:
         raise RuntimeError("candidate-only accuracy cannot be an eligibility metric")
+    if CONFIRM_SPLIT in set(config["forbidden_model_forward_splits"]):
+        raise RuntimeError("confirmation split cannot also be forbidden")
+    if (
+        "test" in config["allowed_model_forward_splits"]
+        or "paraphrase" in config["allowed_model_forward_splits"]
+    ):
+        raise RuntimeError("protected splits cannot be confirmation forwards")
 
 
 def run_confirmation(config: Mapping[str, Any], *, ledger_path: Path) -> dict[str, Any]:

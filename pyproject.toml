@@ -17,7 +17,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "pytest>=8",
-  "ruff>=0.5",
+  "ruff==0.15.22",
   "mypy>=1.10",
 ]
 cpu = []

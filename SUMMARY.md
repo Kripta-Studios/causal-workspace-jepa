@@ -7,6 +7,7 @@
   Development only. V3 remains ineligible.
 - Confirmation `QWEN-BINDING-COMPETENCE-CONFIRM-001` passed (clean 1.000, direct 0.9896).
   V3 remains ineligible. No circuit claim.
+- Successor `LLM-QWEN-BINDING-ALGEBRA-004` is drafted, not authorized to run.
 - Coalition IBD evaluator distinguishes graph recall from functional equivalence on
   a planted bottleneck. HARD-002 stays negative.
 - Platonic representation and LeFlow papers are integrated only as a written plan.

@@ -31,8 +31,13 @@ Both primary gates remain `>= 0.90`. One direct-permuted row emitted ` frost`
 (a table key) instead of a value; that is a residual error, not a reason to
 retune.
 
-ACCESS_LEDGER records only `confirmation` stages. `protected_splits_executed`
-is empty.
+ACCESS_LEDGER records only `confirmation` stages. A copy is committed at
+`artifacts/metrics/qwen_competence_confirm_v1.access_ledger.jsonl`.
+`protected_splits_executed` is empty.
+
+The metrics provenance sidecar was collected on a clean worktree with the repo
+`.venv` (Python 3.13.5). The model-forward itself used CUDA Python 3.14.2 /
+torch 2.10.0+cu128. That sidecar does not rewrite the run.
 
 ## What this authorizes
 

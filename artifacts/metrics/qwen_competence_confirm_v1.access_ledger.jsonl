@@ -1,0 +1,7 @@
+{"allowed_split": "confirmation", "forbidden_splits": ["train", "validation", "test", "paraphrase", "calibration"], "protected_split": false, "renderer": "qwen_chat_prefill_v1", "split": "confirmation", "stage": "CONFIRMATION_PLAN_FROZEN", "timestamp_utc": "2026-08-27T13:44:47.430867+00:00"}
+{"episode_count": 32, "protected_split": false, "split": "confirmation", "stage": "CONFIRMATION_PROMPTS_MATERIALIZED_NO_FORWARD", "timestamp_utc": "2026-08-27T13:45:05.287123+00:00"}
+{"protected_split": false, "split": "confirmation", "stage": "MODEL_LOAD_STARTED", "timestamp_utc": "2026-08-27T13:45:05.288224+00:00"}
+{"protected_split": false, "split": "confirmation", "stage": "MODEL_LOAD_COMPLETE", "timestamp_utc": "2026-08-27T13:45:13.058281+00:00"}
+{"clean_count": 32, "direct_count": 96, "prompt_variant_id": "qwen_chat_prefill_v1", "protected_split": false, "split": "confirmation", "stage": "CONFIRMATION_FORWARD_STARTED", "timestamp_utc": "2026-08-27T13:45:13.063630+00:00"}
+{"prompt_variant_id": "qwen_chat_prefill_v1", "protected_split": false, "split": "confirmation", "stage": "CONFIRMATION_FORWARD_COMPLETE", "timestamp_utc": "2026-08-27T13:45:20.587197+00:00"}
+{"protected_split": false, "split": "confirmation", "stage": "COMPETENCE_CONFIRMATION_COMPLETE", "status": "COMPETENCE_CONFIRMATION_PASSED", "timestamp_utc": "2026-08-27T13:45:20.592877+00:00"}

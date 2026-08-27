@@ -232,28 +232,59 @@ def run_coalition_benchmark(
         cancellation_min_member_energy=FROZEN_THRESHOLDS["cancellation_min_member_energy"],
     )
     gauge_base = [causal_energy[name] for name in PLANTED_NODES]
-    scaled = InterpretableBottleneckCircuit(seed, device=device)
-    gauge_state, gauge_action = iid_state, iid_action
-    gauge_contrib = {
-        name: scaled.component_output(name, gauge_state, gauge_action)
-        for name in PLANTED_NODES
-    }
-    # Compensated gauge: known weights scaled in the readout path, ranking should hold.
+    scale = 25.0
+    gauged = InterpretableBottleneckCircuit(seed, device=device)
+    gauged.known_w.mul_(scale)
+    gauged.known_r.div_(scale)
+    gauged_target = gauged.absolute_output(iid_state, iid_action)
+    gauged_all = gauged.contributions(iid_state, iid_action)
+    gauged_contrib = {name: gauged_all[name] for name in PLANTED_NODES}
     gauge_energy = [
-        float(torch.mean(gauge_contrib[name].square()).item()) for name in PLANTED_NODES
+        float(torch.mean(gauged_contrib[name].square()).item()) for name in PLANTED_NODES
     ]
-    gauge_fn_error = float(
-        torch.mean((model.gauge_output(iid_state, iid_action, scale=25.0) - iid_target).square())
-        .item()
+    gauge_fn_error = float(torch.mean((gauged_target - iid_target).square()).item())
+    gauged_report = evaluate_coalition(
+        gauged_contrib,
+        gauged_target,
+        planted=PLANTED_NODES,
+        selected=selected,
+        epsilon=FROZEN_THRESHOLDS["epsilon"],
+        redundancy_correlation_min=FROZEN_THRESHOLDS["redundancy_correlation_min"],
+        cancellation_sum_energy_ratio_max=FROZEN_THRESHOLDS["cancellation_sum_energy_ratio_max"],
+        cancellation_min_member_energy=FROZEN_THRESHOLDS["cancellation_min_member_energy"],
+        support_labels=support,
+    )
+    broken = InterpretableBottleneckCircuit(seed, device=device)
+    broken.known_w.mul_(scale)
+    broken_known_energy = float(
+        torch.mean(broken.component_output("known_a", iid_state, iid_action).square()).item()
     )
     decoy_energy = float(torch.mean(iid_all["decoy"].square()).item())
     decoy_causal = 0.0  # decoy is excluded from absolute_output by construction
+    gauge_spearman = _spearman(gauge_base, gauge_energy)
+    gauged_minimal = {frozenset(item) for item in gauged_report.minimal_sets}
+    out_of_support_labeled = any(not bool(item["in_support"]) for item in support)
+    gauge_ok = (
+        gauge_fn_error <= 1e-8
+        and gauge_spearman >= FROZEN_THRESHOLDS["gauge_spearman_min"]
+        and gauged_report.sufficient
+        and frozenset({"known_a", "unknown", "residual"}) in gauged_minimal
+        and frozenset({"known_b", "unknown", "residual"}) in gauged_minimal
+        and broken_known_energy > causal_energy["known_a"] * 10.0
+    )
     ontology_distinguished = (
         iid_report.literal["recall"] < 1.0
         and iid_report.sufficient
         and any(set(item) == {"known_a", "unknown", "residual"} for item in iid_report.minimal_sets)
         and any(set(item) == {"known_b", "unknown", "residual"} for item in iid_report.minimal_sets)
         and not control_report.sufficient
+        and any(item["equivalent"] for item in iid_report.equivalence)
+        and bool(iid_report.cancellation)
+        and decoy_causal == 0.0
+        and decoy_energy > 1.0
+        and out_of_support_labeled
+        and gauge_ok
+        and ood_report.sufficient
     )
     return {
         "experiment_id": "CRCT-COALITION-IBD-001",
@@ -271,7 +302,10 @@ def run_coalition_benchmark(
         "decoy_activation_energy": decoy_energy,
         "decoy_causal_energy": decoy_causal,
         "gauge_function_mse": gauge_fn_error,
-        "gauge_energy_spearman": _spearman(gauge_base, gauge_energy),
+        "gauge_energy_spearman": gauge_spearman,
+        "gauge_applied": True,
+        "uncompensated_known_energy": broken_known_energy,
+        "gauged": gauged_report.as_dict(),
         "ontology_distinguished": ontology_distinguished,
         "hard002_primary_seeds_reused": False,
         "status": "SMOKE_VALIDATED" if ontology_distinguished else "NEGATIVE_RESULT",

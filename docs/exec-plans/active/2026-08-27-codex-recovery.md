@@ -8,7 +8,7 @@ Authoritative plan for `CODEX_MASTER_PROMPT.md` on `crct-stage0-001`.
 - HEAD at start: `3f58ec5a25ad8374c4678f94171a18892fdc0ead`
 - Remote: `origin/crct-stage0-001` (in sync at start)
 - Hardware: RTX 5070 Ti Laptop 12 GB; system Python 3.14.2 + torch 2.10.0+cu128; repo `.venv` is Python 3.13.5 CPU torch
-- Model routing: `UNVERIFIED` for Luna/Sol role overrides; parent continued without claiming routed workers ran
+- Model routing: `UNVERIFIED` for Luna/Sol Codex role overrides; parent continued without claiming routed workers ran. Independent review used available Sol-medium subagents, not native Codex role routing.
 
 ## Scientific invariants (frozen)
 
@@ -35,7 +35,7 @@ No provenance was invented for the moved JSON files.
 ### D-001 — Ruff rule pin
 
 - Evidence: `ruff check .` with extra local rules reported 325 issues; isolated E4/E7/E9/F matched the handoff's 5 issues.
-- Decision: pin `[tool.ruff.lint] select = ["E4", "E7", "E9", "F"]` and fix those 5 plus new-file F401s.
+- Decision: pin `[tool.ruff.lint] select = ["E4", "E7", "E9", "F"]` and `ruff==0.15.22`.
 
 ### D-002 — Competence recovery adjudication
 
@@ -56,16 +56,33 @@ No provenance was invented for the moved JSON files.
 - epsilon 0.02 and related floors frozen in code before confirmation seeds 811/823/829
 - HARD-002 seeds 1009/2027/4093 rejected by constructor
 
+### D-005 — IBD-001 gauge caveat
+
+- Independent review: original Spearman compared an untransformed copy.
+- Decision: apply compensated gauge in code now; do not relabel IBD-001 confirmation; preregister IBD-002.
+
+### D-006 — 004 is draft-only
+
+- Confirmation pass authorizes drafting `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003`.
+- `execution_authorized: false`. No Qwen forward.
+
 ## Phase checklist
 
 - [x] P0 hygiene: ruff, audit, scratch move, CI
 - [x] P0 competence recovery adjudication from artifact
 - [x] P0 confirmation protocol preregistered
-- [ ] P0 confirmation model-forward (requires CUDA Python after protocol commit)
+- [x] P0 confirmation model-forward (CUDA Python after protocol commit)
 - [x] P1 coalition IBD evaluator + tests
 - [x] P1 Intervention-JEPA fair-baseline policy module
 - [x] P2 LeVLJEPA MiniPush factorial preregistered, not run
 - [x] Platonic WM + LeFlow integration plan (docs only)
-- [ ] Independent Sol High review of full diff
-- [ ] Full non-protected suite after docs
-- [ ] Commits
+- [x] Independent review of full diff (Sol-medium subagents; Codex Sol High routing UNVERIFIED)
+- [x] P1 review remediations: real gauge, committed ledger copy, Ruff pin, 004 draft, failure-path test
+- [x] Full non-protected suite after this docs/code pass (315 passed, Ruff green, audit SMOKE_VALIDATED)
+- [ ] Push remaining commits to origin/crct-stage0-001
+
+## Review notes
+
+Protocol-boundary verifier: PASS on protected splits, V3, HARD-002, confirmation freshness, Platonic/LeFlow plan-only.
+
+Adversarial reviewer P1s addressed in this increment except remote CI (requires push) and IBD-001 temporal-separation (frozen as smoke; IBD-002 is the prospective sequence).
