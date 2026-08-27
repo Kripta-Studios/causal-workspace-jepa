@@ -122,7 +122,7 @@ def test_adjudicate_does_not_learn_thresholds_from_outcomes() -> None:
     assert json.dumps(config["gates"], sort_keys=True) == gates_before
     assert metrics["status"] == "NEGATIVE_RESULT"
     assert metrics["seed_rows"][0]["chance_floor"] == 2.0 * config["mknn"]["chance"]
-    assert metrics["evidence_level"] == "Availability"
+    assert metrics["evidence_level"] == "None"
     assert metrics["stitching_executed"] is False
 
 

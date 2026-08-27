@@ -272,13 +272,14 @@ def adjudicate(seed_rows: list[Mapping[str, Any]], config: Mapping[str, Any]) ->
         adjudicated.append({**dict(row), "seed_passed": seed_passed, "chance_floor": chance_floor})
         all_passed = all_passed and seed_passed
     status = str(gates["pass_status"]) if all_passed else str(gates["fail_status"])
+    evidence_level = str(config["claim_boundary"]["evidence_level_if_pass"]) if all_passed else "None"
     encoder_already_high = any(
         float(row["encoder_mknn_ab"]) > chance_floor for row in seed_rows
     )
     return {
         "experiment_id": "WM-PLATONIC-MKNN-001",
         "status": status,
-        "evidence_level": "Availability",
+        "evidence_level": evidence_level,
         "all_seeds_passed": all_passed,
         "chance_floor": chance_floor,
         "encoder_geometry_already_above_chance_floor": encoder_already_high,

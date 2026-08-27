@@ -184,6 +184,7 @@ def test_adjudicate_uses_frozen_gates_only() -> None:
     metrics = adjudicate([fake_row], config)
     assert json.dumps(config["gates"], sort_keys=True) == gates_before
     assert metrics["status"] == "NEGATIVE_RESULT"
+    assert metrics["evidence_level"] == "None"
     assert metrics["not_a_leflow_reproduction"] is True
     assert metrics["world_model_frozen"] is True
 

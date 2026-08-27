@@ -310,10 +310,11 @@ def adjudicate(seed_rows: list[Mapping[str, Any]], config: Mapping[str, Any]) ->
         )
         all_passed = all_passed and seed_passed
     status = str(gates["pass_status"]) if all_passed else str(gates["fail_status"])
+    evidence_level = str(config["claim_boundary"]["evidence_level_if_pass"]) if all_passed else "None"
     return {
         "experiment_id": "WM-LEFLOW-AMORTIZE-001",
         "status": status,
-        "evidence_level": "Availability",
+        "evidence_level": evidence_level,
         "all_seeds_passed": all_passed,
         "not_a_leflow_reproduction": True,
         "integrity_blockers": [],
