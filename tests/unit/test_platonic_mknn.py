@@ -16,6 +16,7 @@ from causal_workspace_jepa.experiments.world_model.platonic_mknn import (
     reject_forbidden_seed,
     run_seed,
     sha256_array,
+    write_artifacts,
 )
 from causal_workspace_jepa.interpretability.mutual_knn import chance_reference, mutual_knn
 from causal_workspace_jepa.models.tiny_jepa import TinyActionConditionedJEPA
@@ -123,3 +124,27 @@ def test_adjudicate_does_not_learn_thresholds_from_outcomes() -> None:
     assert metrics["seed_rows"][0]["chance_floor"] == 2.0 * config["mknn"]["chance"]
     assert metrics["evidence_level"] == "Availability"
     assert metrics["stitching_executed"] is False
+
+
+def test_write_artifacts_collects_provenance_before_metrics_exist(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from causal_workspace_jepa.common.provenance import Provenance
+
+    existed: dict[str, bool] = {}
+
+    def fake_collect(command: str, resource_profile: str, seed: int | None = None) -> Provenance:
+        existed["metrics"] = (tmp_path / "wm.json").exists()
+        return Provenance("t", "abc1234", False, "3", "win", command, seed, resource_profile)
+
+    monkeypatch.setattr(
+        "causal_workspace_jepa.experiments.world_model.platonic_mknn.collect_provenance",
+        fake_collect,
+    )
+    config = load_json_config(CONFIG)
+    config["output_metrics"] = str(tmp_path / "wm.json")
+    write_artifacts({"status": "X"}, config, command="cmd")
+    assert existed["metrics"] is False
+    assert (tmp_path / "wm.json").exists()
+    sidecar = json.loads((tmp_path / "wm.provenance.json").read_text(encoding="utf-8"))
+    assert sidecar["git_dirty"] is False

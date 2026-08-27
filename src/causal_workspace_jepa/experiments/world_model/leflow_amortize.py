@@ -338,13 +338,13 @@ def run_confirmation(config: Mapping[str, Any], *, mknn_metrics_path: str | Path
 
 def write_artifacts(metrics: Mapping[str, Any], config: Mapping[str, Any], *, command: str) -> None:
     output = Path(str(config["output_metrics"]))
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     provenance = collect_provenance(
         command=command,
         resource_profile=str(config["resource_profile"]),
         seed=int(config["confirmation_seeds"][0]),
     )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     write_provenance(
         output.with_suffix(".provenance.json"),
         provenance,
