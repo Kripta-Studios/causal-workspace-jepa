@@ -14,6 +14,13 @@ Seeds 83/89 are not interpreted retrospectively.
    with a shared split class (`DIRECT` or `DISTRIBUTED`).
 5. Independent post-run review. Do not retune gates.
 
+## Closed
+
+004 ran: `INCONCLUSIVE`, evidence `None`, confirmation closed.
+Post-mortem (no rerun):
+`docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
+Do not climb to 5000. Successor 005 is draft-only and not authorized.
+
 ## Non-actions
 
 No 001/002/003 mutation. No JEPA objective, friction, MiniPush, planning,
