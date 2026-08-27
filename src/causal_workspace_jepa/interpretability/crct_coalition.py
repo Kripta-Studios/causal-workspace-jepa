@@ -24,6 +24,18 @@ def _nmse(prediction: Tensor, target: Tensor) -> float:
     return _energy(prediction - target) / denom
 
 
+def nmse(prediction: Tensor, target: Tensor) -> float:
+    """Public alias of normalized MSE. Does not change HARD-002 or IBD-001 gates."""
+
+    return _nmse(prediction, target)
+
+
+def restoration_error(restored: Tensor, full: Tensor) -> float:
+    """Intervention-effect error after restore-only / patching, not oracle summing."""
+
+    return _nmse(restored, full)
+
+
 def signed_contributions(
     contributions: Mapping[str, Tensor],
 ) -> dict[str, dict[str, float]]:

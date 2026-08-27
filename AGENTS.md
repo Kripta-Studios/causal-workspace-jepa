@@ -55,14 +55,20 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
 1. Keep HARD-002 and V3 frozen.
 2. Confirmation passed; do not execute `LLM-QWEN-BINDING-ALGEBRA-004` until
    a later authorization commit. V3 stays ineligible.
-3. Use coalition IBD for equivalence ontology; IBD-001 confirmation is smoke.
-4. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
+3. **Primary track: mechanistic interpretability.** Coalition-aware CRCT →
+   IBD validation → learned JEPA action-Δ mechanisms → contact → cross-model
+   equivalence. Planning, geometry, and probes are secondary readouts.
+4. `CRCT-COALITION-IBD-001` confirmation is smoke. `CRCT-COALITION-IBD-002`
+   remains `PREREGISTERED_NOT_RUN` (protocol inadequate; do not execute or
+   mutate). Successor `CRCT-COALITION-IBD-003` is the interventional recovery
+   control.
+5. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
-   encoder-geometry caveat. CPU `WM-LEFLOW-AMORTIZE-001` is
+   encoder-geometry caveat (Availability only). CPU `WM-LEFLOW-AMORTIZE-001` is
    `NEGATIVE_RESULT`. CPU `WM-AMORTIZED-PLANNING-MINIPUSH-002` is
    `UNINFORMATIVE_SUBSTRATE`. `WM-AMORTIZED-PLANNING-REACHABLE-003` is
    `DRAFT_NOT_PREREGISTERED` (not authorized). Do not execute 004, IBD-002,
-   stitching, or 003.
+   stitching, or Reachable-003.
 
 Detailed milestone, dataset, interface, and literature requirements remain in
 `docs/agents/AGENTS_FULL.md` and the `docs/` registries.

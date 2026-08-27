@@ -1,6 +1,12 @@
 # Causal Workspace JEPA
 
-Reproducible research codebase for action-conditioned JEPA world-model interpretability and intervention-conditioned LLM meta-modeling.
+Reproducible research codebase for **mechanistic interpretability** of
+action-conditioned JEPA world models and intervention-conditioned LLM
+meta-modeling.
+
+The scientific center is coalition-aware CRCT: discover, causally verify, and
+compare internal mechanisms. Representation similarity, probes, geometry, and
+planning success are secondary readouts, not mechanism evidence.
 
 ## 2026-08-27 — recovery, confirmation freeze, coalition CRCT
 

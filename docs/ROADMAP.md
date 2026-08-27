@@ -2,12 +2,33 @@
 
 ## 2026-08-27
 
+**PRIMARY TRACK — mechanistic interpretability**
+
+1. Coalition-aware CRCT (HARD-002 frozen negative; do not retune).
+2. Interpretable-by-design validation: IBD-001 smoke; IBD-002 not executed;
+   IBD-003 interventional recovery successor.
+3. Learned tiny JEPA / world-model action→Δ-state mechanisms (only after IBD
+   recovery is validated).
+4. Nonlinear / contact mechanisms.
+5. Cross-seed / cross-model mechanistic equivalence (not m-kNN).
+
+**SECONDARY READOUTS:** planning success, behavioral performance,
+representation geometry, probes.
+
+**PAUSED / CONDITIONAL:** Platonic stitching, LeFlow / Rectified Flow,
+amortized planning, paper-scale DINO-WM/LeWM, Qwen 004.
+
+Historical planning/geometry results are unchanged and are not mechanistic
+claims: T1 Availability only; T2 `NEGATIVE_RESULT`; MiniPush-002
+`UNINFORMATIVE_SUBSTRATE`.
+
 1. Keep HARD-002 frozen negative and V3 frozen ineligible.
 2. `QWEN-BINDING-COMPETENCE-CONFIRM-001` passed. Next: draft
    `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without opening
    test/paraphrase and without changing V3.
-3. Use `CRCT-COALITION-IBD-001` as the ontology control for later real-model
-   circuit claims. Do not collapse sufficiency into graph recall.
+3. Use `CRCT-COALITION-IBD-003` as the interventional ontology control. IBD-001
+   remains smoke; do not execute IBD-002. Do not collapse sufficiency into
+   graph recall.
 4. Residual Intervention-JEPA remains ineligible unless residual power, fair
    baselines, and held-out direct-delta comparisons pass.
 5. CPU Platonic/amortize controls are preregistered as

@@ -16,8 +16,14 @@
   Development seeds 11/13/17; recorded confirmation 811/823/829 is smoke with
   a documented tautological-gauge caveat. HARD-002 primary seeds forbidden.
   HARD-002 status unchanged.
-- `CRCT-COALITION-IBD-002` — `PREREGISTERED_NOT_RUN`. Real applied gauge;
-  new seeds. Not executed.
+- `CRCT-COALITION-IBD-002` — `PREREGISTERED_NOT_RUN`. Independent review found
+  the protocol scientifically inadequate (no selector, alias equivalence,
+  additive oracle sums, tautological gauge). **Not executed.** See
+  `docs/CRCT_COALITION_IBD_002_AUDIT_2026-08-27.md`.
+- `CRCT-COALITION-IBD-003` — interventional coalition recovery. Development
+  seeds 31/37/41; confirmation 971/977/983. `execution_authorized: true`
+  after freeze. Does not mutate IBD-002. Protocol
+  `docs/CRCT_COALITION_IBD_003_PROTOCOL.md`.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,
