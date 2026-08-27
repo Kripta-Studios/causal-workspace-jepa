@@ -66,18 +66,18 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
    `CRCT-LEARNED-WM-ACTION-DELTA-002` is `INCONCLUSIVE` (confirmation closed).
    `CRCT-LEARNED-WM-ACTION-DELTA-003` is `MODEL_INCOMPETENT` (confirmation
    closed; CRCT not run). `CRCT-LEARNED-WM-ACTION-DELTA-004` is
-   `INCONCLUSIVE` (confirmation closed). Do not mutate 001/002/003/004/005.
+   `INCONCLUSIVE` (confirmation closed). Do not mutate 001/002/003/004/005/006.
    `CRCT-LEARNED-WM-ACTION-DELTA-005` is `INCONCLUSIVE` (confirmation
    closed). `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` is
-   `PREREGISTERED_NOT_RUN` until executed on the freeze commit.
+   `INCONCLUSIVE` (confirmation closed; Stage A failed; Stage 2B not
+   status-determining). Do not mutate 001/002/003/004/005/006.
 5. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
    encoder-geometry caveat (Availability only). CPU `WM-LEFLOW-AMORTIZE-001` is
    `NEGATIVE_RESULT`. CPU `WM-AMORTIZED-PLANNING-MINIPUSH-002` is
    `UNINFORMATIVE_SUBSTRATE`. `WM-AMORTIZED-PLANNING-REACHABLE-003` is
-   `DRAFT_NOT_PREREGISTERED` (not authorized). Do not execute 005,
-   IBD-002, stitching, or Reachable-003. 006 may run only on its freeze
-   commit.
+   `DRAFT_NOT_PREREGISTERED` (not authorized). Do not execute 005, 006,
+   IBD-002, stitching, or Reachable-003.
 
 Detailed milestone, dataset, interface, and literature requirements remain in
 `docs/agents/AGENTS_FULL.md` and the `docs/` registries.

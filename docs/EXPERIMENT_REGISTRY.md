@@ -47,9 +47,11 @@
   004 unchanged. See
   `docs/CRCT_LEARNED_WM_ACTION_DELTA_005_ADJUDICATION_2026-08-27.md`.
 - `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` —
-  **`PREREGISTERED_NOT_RUN`**. Freeze after written FREEZE_ALLOWED
-  protocol and adversarial reviews. Level 2B only. 005 unchanged. See
-  `docs/CRCT_LEARNED_WM_CONDITIONAL_MEDIATOR_006_PROTOCOL.md`.
+  **`INCONCLUSIVE`**. Freeze `0d3aed7`. Rung 800 competent; development
+  Stage A failed (sufficiency / specificity); Stage 2B not
+  status-determining; confirmation closed. Level 2B only; Level 3 not
+  authorized. Not a JEPA objective. 005 unchanged. See
+  `docs/CRCT_LEARNED_WM_CONDITIONAL_MEDIATOR_006_ADJUDICATION_2026-08-27.md`.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,

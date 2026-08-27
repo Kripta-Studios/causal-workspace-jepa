@@ -1,0 +1,795 @@
+{
+  "all_seeds_competent": true,
+  "all_seeds_passed": false,
+  "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; Level 2B conditional downstream mediation; Level 3 is not authorized; does not reinterpret 001/002/003/004/005; 005 remains INCONCLUSIVE with confirmation CLOSED; does not require residual-unit membership by fiat; cached r2_P does not assign Stage-2B class; mean-fill MSRS is not the same object as recompute G_V; does not alter HARD-002, IBD-002, or IBD-003",
+  "evidence_level": "None",
+  "experiment_id": "CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006",
+  "functional_convergence": false,
+  "h_equivalent": false,
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "level3_authorized": false,
+  "literal_overlap_jaccard": {
+    "173_179": 0.14285714285714285,
+    "173_181": 0.3333333333333333,
+    "179_181": 0.3333333333333333
+  },
+  "mechanism_object": "M=(C,V_up,V_down,E,I)",
+  "nomenclature": "learned WM, not JEPA objective",
+  "parent_001_status_preserved": "MODEL_INCOMPETENT",
+  "parent_002_status_preserved": "INCONCLUSIVE",
+  "parent_003_status_preserved": "MODEL_INCOMPETENT",
+  "parent_004_status_preserved": "INCONCLUSIVE",
+  "parent_005_status_preserved": "INCONCLUSIVE",
+  "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-005",
+  "physics_dependency": {
+    "dvx": {
+      "ax": "D",
+      "ay": "0",
+      "vx": "D",
+      "vy": "0"
+    },
+    "dvy": {
+      "ax": "0",
+      "ay": "D",
+      "vx": "0",
+      "vy": "D"
+    },
+    "dx": {
+      "ax": "D",
+      "ay": "0",
+      "vx": "D",
+      "vy": "0"
+    },
+    "dy": {
+      "ax": "0",
+      "ay": "D",
+      "vx": "0",
+      "vy": "D"
+    }
+  },
+  "require_residual_units_by_fiat": false,
+  "required_shared_class": null,
+  "rows": [
+    {
+      "act_random_control_sufficient_count": 0,
+      "action_embedding_only": false,
+      "branch_control_failed": false,
+      "cached_r2_assigns_class": false,
+      "checkpoint_sha256": "ed132e46c6e83ce49a17dd4c681d28ca46da3ef48cb172caf5e279445d32ed56",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; Level 2B conditional downstream mediation; Level 3 is not authorized; does not reinterpret 001/002/003/004/005; 005 remains INCONCLUSIVE with confirmation CLOSED; does not require residual-unit membership by fiat; cached r2_P does not assign Stage-2B class; mean-fill MSRS is not the same object as recompute G_V; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0034152320586144924,
+            "mse": 7.237430509121623e-06,
+            "nmse": 0.002119162149133063,
+            "pred_variance": 0.0034066757652908564,
+            "variance": 0.003423053538426757
+          },
+          "dvy": {
+            "energy": 0.00353762274608016,
+            "mse": 2.3211601728689857e-05,
+            "nmse": 0.0065613558580855805,
+            "pred_variance": 0.003541506826877594,
+            "variance": 0.0035478840582072735
+          },
+          "dx": {
+            "energy": 0.00024911999935284257,
+            "mse": 8.647707545605954e-06,
+            "nmse": 0.034713020103045694,
+            "pred_variance": 0.0002459676470607519,
+            "variance": 0.0002495942753739655
+          },
+          "dy": {
+            "energy": 0.0002786664408631623,
+            "mse": 2.9397631351457676e-06,
+            "nmse": 0.01054939778912712,
+            "pred_variance": 0.00027181190671399236,
+            "variance": 0.00027943108580075204
+          },
+          "full": {
+            "energy": 0.0018701605731621385,
+            "mse": 1.0509124876989517e-05,
+            "nmse": 0.005619370351295712,
+            "pred_variance": 0.0018628723919391632,
+            "variance": 0.0018711222801357508
+          }
+        },
+        "dev_loss_mse": 1.0509124876989517e-05,
+        "nmse": {
+          "dvx": 0.002119162149133063,
+          "dvy": 0.0065613558580855805,
+          "dx": 0.034713020103045694,
+          "dy": 0.01054939778912712
+        },
+        "passed": true
+      },
+      "downstream_class": null,
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006",
+      "g_damaged": 0.802517294883728,
+      "g_hold_r1": 0.7529458403587341,
+      "g_hold_r1_cached_r2": 0.7214758992195129,
+      "g_hold_r2": 0.9312179088592529,
+      "g_v": 0.879845917224884,
+      "gauge_downstream_class": "DIRECT",
+      "gauge_function_mse": 8.9633164121304e-16,
+      "gauge_necessity_dvx": 0.802457089959628,
+      "gauge_sufficiency_dvx": 0.0476264909333847,
+      "gauge_v_up": [
+        "act_1",
+        "b1_3",
+        "b2_4",
+        "b1_1"
+      ],
+      "hierarchy_level": "0",
+      "interaction_r1_r2": -0.001998990774154663,
+      "level": 0,
+      "level3_authorized": false,
+      "literal_jaccard_vs_gauge": 0.14285714285714285,
+      "mechanism_object": "M=(C,V_up,V_down,E,I)_conditional_branch_messages",
+      "minimality_drop": {
+        "act_1": 0.4367197559286749,
+        "act_2": 0.23240452778084478,
+        "act_3": 0.42747065916305227,
+        "b1_2": 0.21428338594647073
+      },
+      "msrs": [
+        "act_1",
+        "act_3",
+        "act_2",
+        "b1_2"
+      ],
+      "n_both": 0.08788882328971614,
+      "n_r1": 0.14422988659924063,
+      "n_r2": -0.058387486523096,
+      "necessity": {
+        "dvx": 0.6525705050929599,
+        "dvy": 0.2599013446426676,
+        "dx": 1.727430563742527,
+        "dy": 0.9163761304233506
+      },
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-005",
+      "path_class": null,
+      "pre_prune_circuit": [
+        "act_1",
+        "act_3",
+        "act_2",
+        "b1_2"
+      ],
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "require_residual_units_by_fiat": false,
+      "s_both": 1.0,
+      "s_r1_desc": 1.0,
+      "s_r1_hold": 1.6643334651395643,
+      "s_r2_hold": -0.6410492392622242,
+      "seed": 173,
+      "seed_97_retrospective_pass": false,
+      "shuffled_r1_s_down": null,
+      "specificity_independent": {
+        "dvy": 2.510839280151336,
+        "dy": 0.7121208021770308
+      },
+      "stage": "development",
+      "stage2b_specificity": {
+        "dx_cf_effect": 4.849011020269245e-05,
+        "dx_downstream_not_a_negative_control": true,
+        "failed": true,
+        "independent": {
+          "dvy": {
+            "cf_effect": 9.244776265404653e-06,
+            "g_v": 0.7600082159042358,
+            "inactive": false,
+            "passed": false,
+            "ratio_dvx_over_control": 1.157679481369907
+          },
+          "dy": {
+            "cf_effect": 1.661258806961996e-06,
+            "g_v": -54.6870231628418,
+            "inactive": false,
+            "passed": true,
+            "ratio_dvx_over_control": 87984591.7224884
+          }
+        },
+        "physics_dependency": {
+          "dvx": {
+            "ax": "D",
+            "ay": "0",
+            "vx": "D",
+            "vy": "0"
+          },
+          "dvy": {
+            "ax": "0",
+            "ay": "D",
+            "vx": "0",
+            "vy": "D"
+          },
+          "dx": {
+            "ax": "D",
+            "ay": "0",
+            "vx": "D",
+            "vy": "0"
+          },
+          "dy": {
+            "ax": "0",
+            "ay": "D",
+            "vx": "0",
+            "vy": "D"
+          }
+        }
+      },
+      "stage_2b_ran": false,
+      "stage_a_ok": false,
+      "status": "SUFFICIENCY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.14937049964762675,
+        "dvy": 0.3180207364881323,
+        "dx": 2.21511941555557,
+        "dy": 0.33006912423842605
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.0032863665837794542,
+          "mse": 6.650078830716666e-06,
+          "nmse": 0.002023535312079764,
+          "pred_variance": 0.003293077927082777,
+          "variance": 0.0032889284193515778
+        },
+        "dvy": {
+          "energy": 0.0032905060797929764,
+          "mse": 2.05141168407863e-05,
+          "nmse": 0.006234334884461588,
+          "pred_variance": 0.0032454757019877434,
+          "variance": 0.0032930702436715364
+        },
+        "dx": {
+          "energy": 0.00022607113351114094,
+          "mse": 8.473733032587916e-06,
+          "nmse": 0.03748259630047073,
+          "pred_variance": 0.0002277325838804245,
+          "variance": 0.00022612334578298032
+        },
+        "dy": {
+          "energy": 0.00021229863341432065,
+          "mse": 2.7935675461776555e-06,
+          "nmse": 0.013158669470687298,
+          "pred_variance": 0.00021135313727427274,
+          "variance": 0.00021142829791642725
+        },
+        "full": {
+          "energy": 0.0017538105603307486,
+          "mse": 9.60787474468816e-06,
+          "nmse": 0.005478285375859652,
+          "pred_variance": 0.0017436706693843007,
+          "variance": 0.0017540649278089404
+        }
+      },
+      "train_loss_curve": [
+        0.00043376622488722205,
+        9.211391443386674e-05,
+        5.820257501909509e-05,
+        5.1722268835874274e-05,
+        3.2312287657987326e-05,
+        1.6733412849134766e-05,
+        1.3294061318447348e-05,
+        1.2567710655275732e-05,
+        1.168951621366432e-05,
+        9.361022421217058e-06
+      ],
+      "train_loss_final": 9.361022421217058e-06,
+      "train_loss_fullsplit": 9.60787474468816e-06,
+      "train_steps": 800,
+      "v_down_messages": [
+        "r1",
+        "r2"
+      ],
+      "v_up": [
+        "act_1",
+        "act_3",
+        "act_2",
+        "b1_2"
+      ]
+    },
+    {
+      "act_random_control_sufficient_count": 0,
+      "action_embedding_only": true,
+      "branch_control_failed": false,
+      "cached_r2_assigns_class": false,
+      "checkpoint_sha256": "1ac06ffc15a41a13be51f199183f3b2bb73f3193577dc2537237d7501bd9eb12",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; Level 2B conditional downstream mediation; Level 3 is not authorized; does not reinterpret 001/002/003/004/005; 005 remains INCONCLUSIVE with confirmation CLOSED; does not require residual-unit membership by fiat; cached r2_P does not assign Stage-2B class; mean-fill MSRS is not the same object as recompute G_V; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003377553541213274,
+            "mse": 5.21063566338853e-06,
+            "nmse": 0.0015427248154049342,
+            "pred_variance": 0.003378318389877677,
+            "variance": 0.003371355589479208
+          },
+          "dvy": {
+            "energy": 0.003106187330558896,
+            "mse": 9.261767445423175e-06,
+            "nmse": 0.002981715672556267,
+            "pred_variance": 0.003107083262875676,
+            "variance": 0.0031098995823413134
+          },
+          "dx": {
+            "energy": 0.0002142466400982812,
+            "mse": 8.824041287880391e-06,
+            "nmse": 0.041186369521746265,
+            "pred_variance": 0.00022119183267932385,
+            "variance": 0.00021491796360351145
+          },
+          "dy": {
+            "energy": 0.00019283927395008504,
+            "mse": 4.067716872668825e-06,
+            "nmse": 0.02109381968385611,
+            "pred_variance": 0.00017898727674037218,
+            "variance": 0.00018510606605559587
+          },
+          "full": {
+            "energy": 0.0017227064818143845,
+            "mse": 6.841039976279717e-06,
+            "nmse": 0.0039711001546094,
+            "pred_variance": 0.001720390166155994,
+            "variance": 0.0017184774624183774
+          }
+        },
+        "dev_loss_mse": 6.841039976279717e-06,
+        "nmse": {
+          "dvx": 0.0015427248154049342,
+          "dvy": 0.002981715672556267,
+          "dx": 0.041186369521746265,
+          "dy": 0.02109381968385611
+        },
+        "passed": true
+      },
+      "downstream_class": null,
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006",
+      "g_damaged": 0.9943304657936096,
+      "g_hold_r1": 0.9841519594192505,
+      "g_hold_r1_cached_r2": 0.9819168448448181,
+      "g_hold_r2": 0.9583972692489624,
+      "g_v": 0.9999322295188904,
+      "gauge_downstream_class": "DIRECT",
+      "gauge_function_mse": 8.534948027902258e-16,
+      "gauge_necessity_dvx": 0.6312009729133697,
+      "gauge_sufficiency_dvx": 0.03833353260041515,
+      "gauge_v_up": [
+        "act_1"
+      ],
+      "hierarchy_level": "0",
+      "interaction_r1_r2": -0.00027392804622650146,
+      "level": 0,
+      "level3_authorized": false,
+      "literal_jaccard_vs_gauge": 0.0,
+      "mechanism_object": "M=(C,V_up,V_down,E,I)_conditional_branch_messages",
+      "minimality_drop": {
+        "act_0": 0.06329184617017396,
+        "act_2": 0.06048395794199766,
+        "act_4": 0.14820960170743427,
+        "act_5": 0.3135275835195773
+      },
+      "msrs": [
+        "act_4",
+        "act_0",
+        "act_5",
+        "act_2"
+      ],
+      "n_both": 0.005602143385233238,
+      "n_r1": 0.015781339608617717,
+      "n_r2": 0.041537775304944624,
+      "necessity": {
+        "dvx": 1.0035928522141313,
+        "dvy": 1.2909883672699807,
+        "dx": 2.0541406210458097,
+        "dy": 0.45107176752075695
+      },
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-005",
+      "path_class": null,
+      "pre_prune_circuit": [
+        "act_4",
+        "act_0",
+        "act_5",
+        "act_2"
+      ],
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "require_residual_units_by_fiat": false,
+      "s_both": 1.0,
+      "s_r1_desc": 1.0,
+      "s_r1_hold": -6.414621948883829,
+      "s_r2_hold": -1.817018152412164,
+      "seed": 179,
+      "seed_97_retrospective_pass": false,
+      "shuffled_r1_s_down": null,
+      "specificity_independent": {
+        "dvy": 0.7773833426062566,
+        "dy": 2.2249072641593535
+      },
+      "stage": "development",
+      "stage2b_specificity": {
+        "dx_cf_effect": 3.576922244974412e-05,
+        "dx_downstream_not_a_negative_control": true,
+        "failed": false,
+        "independent": {
+          "dvy": {
+            "cf_effect": 2.8743625080096535e-06,
+            "g_v": -15.454402923583984,
+            "inactive": false,
+            "passed": true,
+            "ratio_dvx_over_control": 99993222.95188904
+          },
+          "dy": {
+            "cf_effect": 1.4631364138040226e-06,
+            "g_v": -20.854785919189453,
+            "inactive": false,
+            "passed": true,
+            "ratio_dvx_over_control": 99993222.95188904
+          }
+        },
+        "physics_dependency": {
+          "dvx": {
+            "ax": "D",
+            "ay": "0",
+            "vx": "D",
+            "vy": "0"
+          },
+          "dvy": {
+            "ax": "0",
+            "ay": "D",
+            "vx": "0",
+            "vy": "D"
+          },
+          "dx": {
+            "ax": "D",
+            "ay": "0",
+            "vx": "D",
+            "vy": "0"
+          },
+          "dy": {
+            "ax": "0",
+            "ay": "D",
+            "vx": "0",
+            "vy": "D"
+          }
+        }
+      },
+      "stage_2b_ran": false,
+      "stage_a_ok": false,
+      "status": "SPECIFICITY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.03647129592516305,
+        "dvy": 0.15474586984444225,
+        "dx": 1.842983831549901,
+        "dy": 2.2390203339035124
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.0032686362974345684,
+          "mse": 6.372934876708314e-06,
+          "nmse": 0.0019497228497738321,
+          "pred_variance": 0.0032619659323245287,
+          "variance": 0.003271103138104081
+        },
+        "dvy": {
+          "energy": 0.003313454333692789,
+          "mse": 1.112991139962105e-05,
+          "nmse": 0.003359005520748177,
+          "pred_variance": 0.003300613723695278,
+          "variance": 0.0033156699500977993
+        },
+        "dx": {
+          "energy": 0.00021023524459451437,
+          "mse": 8.904261449060868e-06,
+          "nmse": 0.042353799745778714,
+          "pred_variance": 0.0002153105306206271,
+          "variance": 0.00021038604609202594
+        },
+        "dy": {
+          "energy": 0.00023401975340675563,
+          "mse": 4.150169843342155e-06,
+          "nmse": 0.017734271500272205,
+          "pred_variance": 0.0002250210236525163,
+          "variance": 0.0002337307669222355
+        },
+        "full": {
+          "energy": 0.00175658636726439,
+          "mse": 7.639318937435746e-06,
+          "nmse": 0.004348957204610894,
+          "pred_variance": 0.0017498035449534655,
+          "variance": 0.0017567460890859365
+        }
+      },
+      "train_loss_curve": [
+        0.0003417677653487772,
+        0.00012637770851142704,
+        8.768177940510213e-05,
+        7.784701301716268e-05,
+        7.414587162202224e-05,
+        5.421096284408122e-05,
+        4.2520754504948854e-05,
+        1.7775817468645982e-05,
+        1.0162330909224693e-05,
+        8.605335096945055e-06
+      ],
+      "train_loss_final": 8.605335096945055e-06,
+      "train_loss_fullsplit": 7.639318937435746e-06,
+      "train_steps": 800,
+      "v_down_messages": [
+        "r1",
+        "r2"
+      ],
+      "v_up": [
+        "act_4",
+        "act_0",
+        "act_5",
+        "act_2"
+      ]
+    },
+    {
+      "act_random_control_sufficient_count": 0,
+      "action_embedding_only": false,
+      "branch_control_failed": false,
+      "cached_r2_assigns_class": false,
+      "checkpoint_sha256": "5432777a7b5f08a21a9f8ae56af2fdabf7a71099f379f60c12e89a1327dd788f",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; Level 2B conditional downstream mediation; Level 3 is not authorized; does not reinterpret 001/002/003/004/005; 005 remains INCONCLUSIVE with confirmation CLOSED; does not require residual-unit membership by fiat; cached r2_P does not assign Stage-2B class; mean-fill MSRS is not the same object as recompute G_V; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.00347501365467906,
+            "mse": 1.1790224561991636e-05,
+            "nmse": 0.003392857045645347,
+            "pred_variance": 0.0035040199290961027,
+            "variance": 0.0034856183920055628
+          },
+          "dvy": {
+            "energy": 0.0030709393322467804,
+            "mse": 2.3883653739176225e-06,
+            "nmse": 0.0007777312136512418,
+            "pred_variance": 0.0030732592567801476,
+            "variance": 0.003079386427998543
+          },
+          "dx": {
+            "energy": 0.00018677421030588448,
+            "mse": 1.4513022961182287e-06,
+            "nmse": 0.007770357019533891,
+            "pred_variance": 0.00018240137433167547,
+            "variance": 0.00018735468620434403
+          },
+          "dy": {
+            "energy": 0.00021631154231727123,
+            "mse": 2.427543677185895e-06,
+            "nmse": 0.011222441720772056,
+            "pred_variance": 0.00020720418251585215,
+            "variance": 0.00021465796453412622
+          },
+          "full": {
+            "energy": 0.0017372596776112914,
+            "mse": 4.51435926152044e-06,
+            "nmse": 0.0025985517995373167,
+            "pred_variance": 0.0017387163825333118,
+            "variance": 0.0017380266217514873
+          }
+        },
+        "dev_loss_mse": 4.51435926152044e-06,
+        "nmse": {
+          "dvx": 0.003392857045645347,
+          "dvy": 0.0007777312136512418,
+          "dx": 0.007770357019533891,
+          "dy": 0.011222441720772056
+        },
+        "passed": true
+      },
+      "downstream_class": null,
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006",
+      "g_damaged": 0.37705111503601074,
+      "g_hold_r1": 0.312947154045105,
+      "g_hold_r1_cached_r2": 0.29834073781967163,
+      "g_hold_r2": 0.6497134566307068,
+      "g_v": 0.5951976180076599,
+      "gauge_downstream_class": null,
+      "gauge_function_mse": 8.814837889223825e-16,
+      "gauge_necessity_dvx": 0.2818016416702268,
+      "gauge_sufficiency_dvx": 0.17776379621338984,
+      "gauge_v_up": [
+        "act_1",
+        "act_2",
+        "act_3"
+      ],
+      "hierarchy_level": "0",
+      "interaction_r1_r2": -0.0006391853094100952,
+      "level": 0,
+      "level3_authorized": false,
+      "literal_jaccard_vs_gauge": 0.4,
+      "mechanism_object": "M=(C,V_up,V_down,E,I)_conditional_branch_messages",
+      "minimality_drop": {
+        "act_1": 0.667582257311761,
+        "act_2": 0.48994766049219596,
+        "act_4": 0.6110941216083743,
+        "b1_0": 0.6753192369002055
+      },
+      "msrs": [
+        "act_1",
+        "b1_0",
+        "act_4",
+        "act_2"
+      ],
+      "n_both": 0.3665110483840036,
+      "n_r1": 0.4742130267714252,
+      "n_r2": -0.09159283735968393,
+      "necessity": {
+        "dvx": 0.1736522270396638,
+        "dvy": 0.6169606171318494,
+        "dx": 0.16353423447044482,
+        "dy": 3.395257275687976
+      },
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-005",
+      "path_class": null,
+      "pre_prune_circuit": [
+        "act_1",
+        "b1_0",
+        "act_4",
+        "act_2"
+      ],
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "require_residual_units_by_fiat": false,
+      "s_both": 1.0,
+      "s_r1_desc": 1.0,
+      "s_r1_hold": 1.2499047102768908,
+      "s_r2_hold": -0.29385738537022005,
+      "seed": 181,
+      "seed_97_retrospective_pass": false,
+      "shuffled_r1_s_down": null,
+      "specificity_independent": {
+        "dvy": 0.28146403873709974,
+        "dy": 0.05114552828827291
+      },
+      "stage": "development",
+      "stage2b_specificity": {
+        "dx_cf_effect": 4.40107069152873e-05,
+        "dx_downstream_not_a_negative_control": true,
+        "failed": false,
+        "independent": {
+          "dvy": {
+            "cf_effect": 2.3660143142478773e-06,
+            "g_v": -54.882686614990234,
+            "inactive": false,
+            "passed": true,
+            "ratio_dvx_over_control": 59519761.80076599
+          },
+          "dy": {
+            "cf_effect": 2.7449721073935507e-07,
+            "g_v": -126.2818374633789,
+            "inactive": false,
+            "passed": true,
+            "ratio_dvx_over_control": 59519761.80076599
+          }
+        },
+        "physics_dependency": {
+          "dvx": {
+            "ax": "D",
+            "ay": "0",
+            "vx": "D",
+            "vy": "0"
+          },
+          "dvy": {
+            "ax": "0",
+            "ay": "D",
+            "vx": "0",
+            "vy": "D"
+          },
+          "dx": {
+            "ax": "D",
+            "ay": "0",
+            "vx": "D",
+            "vy": "0"
+          },
+          "dy": {
+            "ax": "0",
+            "ay": "D",
+            "vx": "0",
+            "vy": "D"
+          }
+        }
+      },
+      "stage_2b_ran": false,
+      "stage_a_ok": false,
+      "status": "SUFFICIENCY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.3658928643733324,
+        "dvy": 0.3351704350915703,
+        "dx": 0.7242948627495118,
+        "dy": 0.983422305134323
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.0032219626009464264,
+          "mse": 1.2250287909409963e-05,
+          "nmse": 0.003802119833983031,
+          "pred_variance": 0.0032399955671280622,
+          "variance": 0.0032167790923267603
+        },
+        "dvy": {
+          "energy": 0.00321970391087234,
+          "mse": 2.253576440125471e-06,
+          "nmse": 0.0006999328206906117,
+          "pred_variance": 0.0032441820949316025,
+          "variance": 0.003219730919227004
+        },
+        "dx": {
+          "energy": 0.00020011316519230604,
+          "mse": 1.1397935395507375e-06,
+          "nmse": 0.005695744897420474,
+          "pred_variance": 0.00019664705905597657,
+          "variance": 0.00020021417003590614
+        },
+        "dy": {
+          "energy": 0.00020370716811157763,
+          "mse": 1.6844591073095216e-06,
+          "nmse": 0.008269022258396345,
+          "pred_variance": 0.00019886151130776852,
+          "variance": 0.00020092452177777886
+        },
+        "full": {
+          "energy": 0.001711371704004705,
+          "mse": 4.332029675424565e-06,
+          "nmse": 0.0025313201482105693,
+          "pred_variance": 0.0017202948220074177,
+          "variance": 0.0017116705421358347
+        }
+      },
+      "train_loss_curve": [
+        6.703897088300437e-05,
+        4.250228812452406e-05,
+        4.947055640514009e-05,
+        3.751330586965196e-05,
+        1.569634332554415e-05,
+        3.963163180742413e-06,
+        4.197921043669339e-06,
+        4.350745257397648e-06,
+        3.850039774988545e-06,
+        2.8475603812694317e-06
+      ],
+      "train_loss_final": 2.8475603812694317e-06,
+      "train_loss_fullsplit": 4.332029675424565e-06,
+      "train_steps": 800,
+      "v_down_messages": [
+        "r1",
+        "r2"
+      ],
+      "v_up": [
+        "act_1",
+        "b1_0",
+        "act_4",
+        "act_2"
+      ]
+    }
+  ],
+  "seed_97_retrospective_pass": false,
+  "seeds": [
+    173,
+    179,
+    181
+  ],
+  "selected_rung": 800,
+  "shared_downstream_class": null,
+  "shared_path_class": null,
+  "source_digest": "07292921c5c6615c31cd97af6debe955dd8be3bd6880cecf86c190bd419982b3",
+  "stage": "development",
+  "status": "INCONCLUSIVE",
+  "substrate": "supervised_residual_mlp_not_jepa_objective",
+  "threshold_digest": "d5ee57347085873754f31c235dd79ee2b77c828a35aad89245cd199df23f84a7",
+  "train_steps": 800
+}

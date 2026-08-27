@@ -1,6 +1,6 @@
 # Execution plan — 2026-08-27 CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006
 
-Prepare freeze candidate. **No learned execution until freeze commit.**
+Closed. Registered outcome: **`INCONCLUSIVE`**. Confirmation stays CLOSED.
 
 ## Intent
 
@@ -14,11 +14,12 @@ Independent protocol + adversarial reviews of 006. Freeze only after both
 - [x] Plant KEY TEST and six-class instrument
 - [x] Independent protocol review (FREEZE_ALLOWED after P0 repairs)
 - [x] Independent adversarial review (FREEZE_ALLOWED)
-- [ ] Freeze commit
-- [ ] Execute development only after freeze
-- [ ] Confirmation only if frozen development authorization passes
+- [x] Freeze commit `0d3aed7`
+- [x] Execute development only after freeze (rung 800; stop)
+- [x] Confirmation only if frozen development authorization passes
+      (it did not; confirmation CLOSED)
 
 ## Non-actions
 
-No 005 rerun. No JEPA, friction, MiniPush, planning, stitching, Qwen 004,
-IBD-002.
+No 005 rerun. No 006 rerun. No JEPA, friction, MiniPush, planning,
+stitching, Qwen 004, IBD-002.

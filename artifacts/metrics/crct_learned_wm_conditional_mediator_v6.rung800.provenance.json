@@ -1,0 +1,22 @@
+{
+  "command": "python -m causal_workspace_jepa.experiments.cross_domain.crct_learned_wm_conditional_mediator_006 --stage development --output artifacts/metrics/crct_learned_wm_conditional_mediator_v6.rung800.json --rung 800",
+  "command_stage": "development",
+  "experiment_id": "CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006",
+  "git_commit": "0d3aed7d8b6c285326d3985c2af3d16a4b5449e4",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/crct_learned_wm_conditional_mediator_v6.rung800.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 173,
+  "seeds": [
+    173,
+    179,
+    181
+  ],
+  "source_digest": "07292921c5c6615c31cd97af6debe955dd8be3bd6880cecf86c190bd419982b3",
+  "stage": "development",
+  "threshold_digest": "d5ee57347085873754f31c235dd79ee2b77c828a35aad89245cd199df23f84a7",
+  "time_utc": "2026-08-27T21:56:28.204723+00:00",
+  "train_steps": 800
+}

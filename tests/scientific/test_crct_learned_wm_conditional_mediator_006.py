@@ -37,23 +37,16 @@ from causal_workspace_jepa.experiments.cross_domain.crct_learned_wm_conditional_
 )
 
 
-def test_005_status_unchanged_and_006_is_draft() -> None:
+def test_005_unchanged_and_006_is_inconclusive() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     assert config["experiment_id"] == EXPERIMENT_ID
-    assert config["status"] in {
-        "DRAFT_NOT_PREREGISTERED",
-        "PREREGISTERED_NOT_RUN",
-        "INCONCLUSIVE",
-        "MODEL_INCOMPETENT",
-        "CONDITIONAL_DOWNSTREAM_MEDIATION_PASSED",
-        "REDUNDANT_DOWNSTREAM",
-        "INTERACTING_DOWNSTREAM",
-    }
-    if config["status"] == "DRAFT_NOT_PREREGISTERED":
-        assert config["execution_authorized"] is False
+    assert config["status"] == "INCONCLUSIVE"
+    assert config["execution_authorized"] is False
+    assert config["confirmation"] == "CLOSED"
+    assert config["selected_rung"] == 800
+    assert config["learned_models_trained"] is True
     assert config["parent"] == PARENT_ID
     assert config["parent_status_preserved"] == "INCONCLUSIVE"
-    assert config["learned_models_trained"] is False
     assert config["require_residual_units_by_fiat"] is False
     assert config["level3_authorized"] is False
     assert config["cached_r2_assigns_class"] is False
@@ -75,9 +68,15 @@ def test_005_status_unchanged_and_006_is_draft() -> None:
     assert all(row.get("stage_b_ran") is False for row in rung["rows"])
     assert not Path("artifacts/metrics/crct_learned_wm_conditional_mediator_v6.json").exists()
     assert not Path("artifacts/metrics/crct_learned_wm_action_delta_v6.json").exists()
+    assert not Path(
+        "artifacts/metrics/crct_learned_wm_conditional_mediator_v6.rung2000.json"
+    ).exists()
+    assert not Path(
+        "artifacts/metrics/crct_learned_wm_conditional_mediator_v6.rung5000.json"
+    ).exists()
 
 
-def test_proposed_seeds_are_fresh_and_untrained() -> None:
+def test_proposed_seeds_are_fresh() -> None:
     assert DEVELOPMENT_SEEDS == (173, 179, 181)
     assert CONFIRMATION_SEEDS == (1171, 1181, 1187)
     for seed in (43, 47, 53, 59, 79, 97, 101, 107, 109, 113, 127, 1103, 1109, 1117):
@@ -87,13 +86,44 @@ def test_proposed_seeds_are_fresh_and_untrained() -> None:
 
 
 def test_learned_execution_is_forbidden() -> None:
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    if config.get("execution_authorized") is True and config.get("status") != "DRAFT_NOT_PREREGISTERED":
-        return
     with pytest.raises(ValueError, match="not frozen|not authorized"):
         run_learned_development()
     with pytest.raises(ValueError, match="not frozen|not authorized"):
         _require_execution_authorized()
+
+
+def test_development_outcome_is_inconclusive() -> None:
+    rung800 = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_conditional_mediator_v6.rung800.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert rung800["status"] == "INCONCLUSIVE"
+    assert rung800["all_seeds_competent"] is True
+    assert rung800["all_seeds_passed"] is False
+    assert rung800["evidence_level"] == "None"
+    assert rung800["selected_rung"] == 800
+    assert rung800["shared_downstream_class"] is None
+    assert rung800["rows"][0]["status"] == "SUFFICIENCY_FAILED"
+    assert rung800["rows"][1]["status"] == "SPECIFICITY_FAILED"
+    assert rung800["rows"][2]["status"] == "SUFFICIENCY_FAILED"
+    assert all(row.get("stage_2b_ran") is False for row in rung800["rows"])
+    assert all(row.get("downstream_class") is None for row in rung800["rows"])
+    assert not Path("artifacts/metrics/crct_learned_wm_conditional_mediator_v6.json").exists()
+    v5 = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v5.rung800.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert v5["status"] == "INCONCLUSIVE"
+
+
+def test_execution_closed_after_inconclusive() -> None:
+    try:
+        _require_execution_authorized()
+    except ValueError:
+        return
+    raise AssertionError("006 execution still authorized after INCONCLUSIVE")
 
 
 def test_n_down_and_s_down_equations() -> None:
@@ -311,9 +341,6 @@ def test_claim_not_jepa_and_not_level3() -> None:
     assert "Level 3 is not authorized" in text
     assert "does not require residual-unit membership by fiat" in text
     assert "cached r2_P does not assign" in text
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    if config.get("execution_authorized") is True and config.get("status") != "DRAFT_NOT_PREREGISTERED":
-        return
     with pytest.raises(ValueError, match="not frozen|not authorized"):
         train_model(173, torch.zeros(4, 4), torch.zeros(4, 2), torch.zeros(4, 4), 1)
 
