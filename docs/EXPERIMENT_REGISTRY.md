@@ -41,9 +41,11 @@
   (gateway / sufficiency / specificity). Confirmation closed. Not a JEPA
   objective. 003 unchanged. Post-mortem (no rerun):
   `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-- `CRCT-LEARNED-WM-ACTION-DELTA-005` — `PREREGISTERED_NOT_RUN` at freeze;
-  path-identifiability successor. See
-  `docs/CRCT_LEARNED_WM_ACTION_DELTA_005_PROTOCOL.md`.
+- `CRCT-LEARNED-WM-ACTION-DELTA-005` — **`INCONCLUSIVE`**. Freeze `5f4696a`.
+  Rung 800 competent; development Stage A failed (sufficiency / specificity);
+  Stage B not status-determining; confirmation closed. Not a JEPA objective.
+  004 unchanged. See
+  `docs/CRCT_LEARNED_WM_ACTION_DELTA_005_ADJUDICATION_2026-08-27.md`.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,

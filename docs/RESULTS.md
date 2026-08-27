@@ -38,8 +38,8 @@
   shared Level-3 conjunction; confirmation closed). Mechanistic
   post-mortem (no rerun, 004 unchanged):
   `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-  Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` is
-  `DRAFT_NOT_PREREGISTERED` only (`execution_authorized: false`).
+  Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` is `INCONCLUSIVE` (freeze
+  `5f4696a`; rung 800 competent; Stage A failed; confirmation closed).
   HARD-002 remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on

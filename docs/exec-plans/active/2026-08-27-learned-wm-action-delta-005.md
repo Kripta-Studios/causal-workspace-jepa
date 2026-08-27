@@ -11,7 +11,10 @@ plants via `edge_factorial`). Do not mutate 001–004.
 3. Stage A then Stage B only if all development seeds are competent.
 4. Confirmation only if development is `PATH_MECHANISM_RECOVERY_PASSED`
    with shared class `DIRECT` or `DISTRIBUTED_F1`.
-5. Independent post-run review. Do not retune gates.
+## Closed
+
+005 ran: `INCONCLUSIVE`, evidence `None`, confirmation closed.
+Selected rung 800. Do not climb to 2000/5000. Do not retune.
 
 ## Non-actions
 

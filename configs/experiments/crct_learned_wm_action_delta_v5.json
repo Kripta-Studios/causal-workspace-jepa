@@ -1,10 +1,10 @@
 {
   "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-005",
   "registered_date": "2026-08-27",
-  "status": "PREREGISTERED_NOT_RUN",
-  "execution_authorized": true,
+  "status": "INCONCLUSIVE",
+  "execution_authorized": false,
   "confirmation": "CLOSED",
-  "selected_rung": null,
+  "selected_rung": 800,
   "parent": "CRCT-LEARNED-WM-ACTION-DELTA-004",
   "parent_status_preserved": "INCONCLUSIVE",
   "parent_003_status_preserved": "MODEL_INCOMPETENT",

@@ -66,9 +66,9 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
    `CRCT-LEARNED-WM-ACTION-DELTA-002` is `INCONCLUSIVE` (confirmation closed).
    `CRCT-LEARNED-WM-ACTION-DELTA-003` is `MODEL_INCOMPETENT` (confirmation
    closed; CRCT not run). `CRCT-LEARNED-WM-ACTION-DELTA-004` is
-   `INCONCLUSIVE` (confirmation closed). Do not mutate 001/002/003/004.
-   Do not execute `CRCT-LEARNED-WM-ACTION-DELTA-005`
-   (`DRAFT_NOT_PREREGISTERED`).
+   `INCONCLUSIVE` (confirmation closed). Do not mutate 001/002/003/004/005.
+   `CRCT-LEARNED-WM-ACTION-DELTA-005` is `INCONCLUSIVE` (confirmation
+   closed).
 5. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
    encoder-geometry caveat (Availability only). CPU `WM-LEFLOW-AMORTIZE-001` is

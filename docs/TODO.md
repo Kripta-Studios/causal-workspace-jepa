@@ -28,10 +28,10 @@
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [x] Execute 004 development ladder after freeze; confirmation stayed
   closed (`INCONCLUSIVE`).
-- [x] 004 mechanistic post-mortem (no rerun, no 005 freeze):
-  `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-  Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` remains
-  `DRAFT_NOT_PREREGISTERED`. Do not execute.
+- [x] 004 mechanistic post-mortem (no 004 rerun).
+  Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` freeze then run: rung 800
+  competent; Stage A failed; `INCONCLUSIVE`; confirmation closed. Do not
+  retune.
 - [x] Intervention-JEPA fair-baseline policy module.
 - [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
 - [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.

@@ -64,9 +64,9 @@ def test_config_is_draft_and_matches_thresholds() -> None:
     assert config["seed_97_level3_pass"] is False
     assert config["action_stem_msrs_cannot_be_level3"] is True
     assert INDEPENDENT_CONTROLS == ("dvy", "dy")
-    assert config["status"] in {"DRAFT_NOT_PREREGISTERED", "PREREGISTERED_NOT_RUN", "INCONCLUSIVE", "MODEL_INCOMPETENT", "PATH_MECHANISM_RECOVERY_PASSED", "REDUNDANT_ROUTES", "MEDIATOR_FOUND_PATH_UNRESOLVED"}
-    if config["status"] == "DRAFT_NOT_PREREGISTERED":
-        assert config["execution_authorized"] is False
+    assert config["status"] == "INCONCLUSIVE"
+    assert config["execution_authorized"] is False
+    assert config["selected_rung"] == 800
 
 
 def test_004_status_unchanged() -> None:
@@ -139,16 +139,36 @@ def test_compose_reconstructs_factual_and_does_not_use_hid_holds() -> None:
     assert torch.allclose(path_held["r1"], r1_from_zero, atol=1e-5)
 
 
-def test_execution_refuses_draft_or_closed() -> None:
-    config = json.loads(
-        Path("configs/experiments/crct_learned_wm_action_delta_v5.json").read_text(encoding="utf-8")
+def test_development_outcome_is_inconclusive() -> None:
+    rung800 = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v5.rung800.json").read_text(
+            encoding="utf-8"
+        )
     )
-    if config.get("status") == "DRAFT_NOT_PREREGISTERED" or config.get("execution_authorized") is not True:
-        try:
-            _require_execution_authorized()
-        except ValueError:
-            return
-        raise AssertionError("005 execution authorized while draft/closed")
+    assert rung800["status"] == "INCONCLUSIVE"
+    assert rung800["all_seeds_competent"] is True
+    assert rung800["all_seeds_passed"] is False
+    assert rung800["evidence_level"] == "None"
+    assert rung800["selected_rung"] == 800
+    assert rung800["rows"][0]["status"] == "SUFFICIENCY_FAILED"
+    assert rung800["rows"][1]["status"] == "SPECIFICITY_FAILED"
+    assert rung800["rows"][2]["status"] == "SPECIFICITY_FAILED"
+    assert all(row.get("stage_b_ran") is False for row in rung800["rows"])
+    assert not Path("artifacts/metrics/crct_learned_wm_action_delta_v5.json").exists()
+    v4 = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v4.rung2000.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert v4["status"] == "INCONCLUSIVE"
+
+
+def test_execution_closed_after_inconclusive() -> None:
+    try:
+        _require_execution_authorized()
+    except ValueError:
+        return
+    raise AssertionError("005 execution still authorized after INCONCLUSIVE")
 
 
 def test_climb_2000_requires_previous() -> None:
