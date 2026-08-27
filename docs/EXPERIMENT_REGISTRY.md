@@ -41,10 +41,9 @@
   (gateway / sufficiency / specificity). Confirmation closed. Not a JEPA
   objective. 003 unchanged. Post-mortem (no rerun):
   `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-- `CRCT-LEARNED-WM-ACTION-DELTA-005` — `DRAFT_NOT_PREREGISTERED`,
-  `execution_authorized: false`. Path-identifiability successor sketch only.
-  Not frozen. Not executed. See
-  `docs/research/CRCT_LEARNED_WM_ACTION_DELTA_005_DRAFT.md`.
+- `CRCT-LEARNED-WM-ACTION-DELTA-005` — `PREREGISTERED_NOT_RUN` at freeze;
+  path-identifiability successor. See
+  `docs/CRCT_LEARNED_WM_ACTION_DELTA_005_PROTOCOL.md`.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,

@@ -1,25 +1,19 @@
-# Execution plan — 2026-08-27 CRCT-LEARNED-WM-ACTION-DELTA-005 (draft)
+# Execution plan — 2026-08-27 CRCT-LEARNED-WM-ACTION-DELTA-005
 
-```text
-STATUS:                 DRAFT_NOT_PREREGISTERED
-EXECUTION_AUTHORIZED:   false
-```
+Freeze after written FREEZE_ALLOWED protocol and adversarial reviews of
+the repaired candidate (action-stem not Level 3; cached F2 not Level 3;
+plants via `edge_factorial`). Do not mutate 001–004.
 
-Do not freeze. Do not train. Do not open confirmation.
+## After freeze
 
-Parent 004 remains `INCONCLUSIVE`. Post-mortem:
-`docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-Draft protocol sketch:
-`docs/research/CRCT_LEARNED_WM_ACTION_DELTA_005_DRAFT.md`.
-
-## Intended work after a future authorization (not now)
-
-1. Independent review of a freeze candidate that repairs path-hold
-   identifiability (`I` on edges `E`), not step count.
-2. Freeze only after written FREEZE_ALLOWED.
-3. Train new disjoint development seeds only after that freeze.
+1. Train development rung 800 (seeds 109/113/127).
+2. If any seed fails full-state competence, climb only to 2000, then 5000.
+3. Stage A then Stage B only if all development seeds are competent.
+4. Confirmation only if development is `PATH_MECHANISM_RECOVERY_PASSED`
+   with shared class `DIRECT` or `DISTRIBUTED_F1`.
+5. Independent post-run review. Do not retune gates.
 
 ## Non-actions
 
-No 004 retune or 5000-step climb. No seed-97/101 promotion. No JEPA
-objective, friction, MiniPush, planning, stitching, Qwen 004, IBD-002.
+No 004 rerun/5000. No seed-97 Level 3. No JEPA, friction, MiniPush,
+planning, stitching, Qwen 004, IBD-002.
