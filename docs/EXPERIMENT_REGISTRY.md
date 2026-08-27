@@ -36,6 +36,10 @@
   `artifacts/metrics/wm_platonic_mknn_v1.untrained_posthoc.json`.
 - `WM-PLATONIC-STITCH-001` — not opened. Joint interpretation:
   `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
+- `WM-AMORTIZED-PLANNING-MINIPUSH-002` — `PREREGISTERED_NOT_RUN`. New MiniPush
+  contact-planning successor to T2; does not mutate T2. Protocol
+  `docs/WM_AMORTIZED_PLANNING_MINIPUSH_002_PROTOCOL.md`. Not LeFlow; not the
+  LeVLJEPA factorial.
 - Platonic WM / LeFlow paper-scale work remains plan only. Joint successor
   IDs still **not opened**: `WM-LEFLOW-TRANSFER-001` (planner portability
   `A→B`), `WM-CRCT-PLATONIC-COMPUTE-001` (equivalent causal computations;

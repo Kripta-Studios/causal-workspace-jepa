@@ -27,11 +27,8 @@
 - [x] Analyze T1×T2 without retuning; untrained-predictor post-hoc is not a
   gate. Stitching remains closed. See
   `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
-- [ ] Do not open `WM-LEFLOW-TRANSFER-001`. CPU T1/T2 exist; T2 is
-  `NEGATIVE_RESULT` with success at ceiling. CRCT-on-transfer stays gated
-  on a future transfer protocol beating wrong-world and adapter-only
-  controls. A harder planning substrate where shooting is not at ceiling
-  would be required first; do not execute it without a new protocol.
+- [ ] Execute `WM-AMORTIZED-PLANNING-MINIPUSH-002` only after its protocol
+  commit. Stop if development qualification fails. Do not retune T2.
 
 ## 2026-08-17 CRCT adjudication
 
