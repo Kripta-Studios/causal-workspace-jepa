@@ -1,0 +1,990 @@
+{
+  "all_seeds_passed": true,
+  "claim_boundary": "synthetic IBD mechanism-recovery test only; not a Qwen, JEPA, workspace, Platonic, or planning claim; does not alter HARD-002, IBD-001, or IBD-002",
+  "evidence_level": "Causal effect",
+  "experiment_id": "CRCT-COALITION-IBD-003",
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "rows": [
+    {
+      "cancellation": {
+        "h0": 0.18283708973412857,
+        "h1": 0.182837074879649,
+        "joint": 6.51365513442723e-16
+      },
+      "claim_boundary": "synthetic IBD mechanism-recovery test only; not a Qwen, JEPA, workspace, Platonic, or planning claim; does not alter HARD-002, IBD-001, or IBD-002",
+      "decoy_activation_energy": 180.6907501220703,
+      "decoy_target_ablation_nmse": 0.0,
+      "discovered_minimal_sets": [
+        [
+          "h2",
+          "h3",
+          "h5",
+          "h7"
+        ],
+        [
+          "h3",
+          "h4",
+          "h5",
+          "h9"
+        ]
+      ],
+      "evidence_level": "Causal effect",
+      "experiment_id": "CRCT-COALITION-IBD-003",
+      "gates": {
+        "both_class_members_found": true,
+        "cancel_members_visible": true,
+        "decoy_activation_high": true,
+        "decoy_control_fails": true,
+        "gauge_activation_moved": true,
+        "gauged_magnitude_selector_misses": true,
+        "iid_sufficient": true,
+        "magnitude_selector_misses": true,
+        "minimal": true,
+        "necessary": true,
+        "ood_sufficient": true,
+        "random_controls": true,
+        "recovered_class_member": true,
+        "rms_controls": true,
+        "specificity_decoy_on_spec": true
+      },
+      "gauge": {
+        "activation_spearman": 0.46666670982284175,
+        "baseline_h2_energy": 6.407955646514893,
+        "causal_spearman": 1.000000092477518,
+        "function_mse": 4.466103525955882e-14,
+        "gauged_magnitude_topk": [
+          "h2",
+          "h6",
+          "h3",
+          "h0"
+        ],
+        "magnitude_topk": [
+          "h6",
+          "h4",
+          "h2",
+          "h7"
+        ],
+        "uncompensated_function_mse": 3690.982177734375,
+        "uncompensated_h2_energy": 4004.9716796875,
+        "uncompensated_h2_ratio": 624.9999064624756
+      },
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "iid_sufficiency_error": 0.0007806848914976821,
+      "interventions": [
+        {
+          "combination": [
+            "h2",
+            "h3",
+            "h5",
+            "h7"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "restore_only",
+          "site": "h2",
+          "source": "validation_discovery",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h5",
+            "h4",
+            "h3",
+            "h9"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "restore_only",
+          "site": "h4",
+          "source": "h4",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h6"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "ablate",
+          "site": "h6",
+          "source": "h6",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h2"
+          ],
+          "executed_nmse": 19.56288661753993,
+          "in_support": false,
+          "magnitude": 8.0,
+          "operation": "steer",
+          "site": "h2",
+          "source": "h2",
+          "support_status": "out_of_support",
+          "target": "iid_y"
+        }
+      ],
+      "literal": {
+        "planted_count": 8.0,
+        "precision": 1.0,
+        "recall": 0.5,
+        "selected_count": 4.0,
+        "true_positive_count": 4.0
+      },
+      "matched_controls": {
+        "cancel_pair": {
+          "count": 1,
+          "errors": [
+            1.0
+          ],
+          "mean_error": 1.0,
+          "sufficient_count": 0,
+          "unique_count": 1
+        },
+        "decoy_containing": {
+          "count": 1,
+          "errors": [
+            11.569396920012787
+          ],
+          "mean_error": 11.569396920012787,
+          "sufficient_count": 0,
+          "unique_count": 1
+        },
+        "random": {
+          "count": 32,
+          "errors": [
+            0.8676884766077597,
+            12.869746178536584,
+            0.34621350402912904,
+            11.340731101833994,
+            0.7185168812247696,
+            0.32711200990615535,
+            0.14675679176515186,
+            12.018463286262458,
+            0.7492954223247379,
+            0.536015992926891,
+            11.587733764945092,
+            12.154844996476518,
+            11.918451046171288,
+            0.5827910854108809,
+            11.802319913202306,
+            0.6725645486555507,
+            0.8303735485688006,
+            0.6749021683975106,
+            0.5816456861997131,
+            0.8168130724173704,
+            0.475214409558204,
+            0.6110795403905184,
+            0.774111197069033,
+            0.7437690211610974,
+            0.454121850701785,
+            0.541016902021041,
+            11.490578338366031,
+            0.5058941980779492,
+            12.111485127100869,
+            0.7597547584839874,
+            0.3859280841167586,
+            12.813443660524042
+          ],
+          "mean_error": 4.162793017607312,
+          "plus_one_p": 0.030303030303030304,
+          "sufficient_count": 0,
+          "unique_count": 32
+        },
+        "rms_matched": {
+          "count": 8,
+          "errors": [
+            0.41297731899222456,
+            0.3859280841167586,
+            0.3214082165474149,
+            0.4094770391338294,
+            0.3444683997685078,
+            0.2850774571983026,
+            0.3162819653546002,
+            0.32711200990615535
+          ],
+          "mean_error": 0.3503413113772242,
+          "sufficient_count": 0,
+          "unique_count": 8
+        }
+      },
+      "minimality_drop_errors": {
+        "h2": 0.4067667204993006,
+        "h3": 0.15266571063236115,
+        "h5": 0.13600798636239939,
+        "h7": 0.3433093938540482
+      },
+      "necessity_delta": {
+        "h2": 0.39846188519490783,
+        "h3": 0.14597610687365417,
+        "h5": 0.13433154664349292,
+        "h7": 0.34543281913763135
+      },
+      "ood_sufficiency_error": 0.0007717189580994766,
+      "out_of_support_labeled": true,
+      "path_a_vs_h2_nmse": 0.9238681000343719,
+      "path_ab_nmse": 3.547047960346588e-14,
+      "planted_equiv_circuit": [
+        "h3",
+        "h4",
+        "h5",
+        "h9"
+      ],
+      "planted_forward_circuit": [
+        "h2",
+        "h3",
+        "h5",
+        "h7"
+      ],
+      "recovered_circuit": [
+        "h2",
+        "h3",
+        "h5",
+        "h7"
+      ],
+      "restore_equiv_error": 0.0007806847754470604,
+      "seed": 971,
+      "signed": {
+        "h0": {
+          "energy": 2.7425363063812256,
+          "mean": 0.047130078077316284,
+          "sign": 1.0
+        },
+        "h1": {
+          "energy": 2.7425363063812256,
+          "mean": -0.047130078077316284,
+          "sign": -1.0
+        },
+        "h2": {
+          "energy": 6.411775588989258,
+          "mean": -0.019786451011896133,
+          "sign": -1.0
+        },
+        "h3": {
+          "energy": 2.2768008708953857,
+          "mean": -0.04641158506274223,
+          "sign": -1.0
+        },
+        "h4": {
+          "energy": 7.459132671356201,
+          "mean": -0.05539466068148613,
+          "sign": -1.0
+        },
+        "h5": {
+          "energy": 1.919516921043396,
+          "mean": 0.12039763480424881,
+          "sign": 1.0
+        },
+        "h6": {
+          "energy": 158.06092834472656,
+          "mean": -0.1559484452009201,
+          "sign": -1.0
+        },
+        "h7": {
+          "energy": 6.22723388671875,
+          "mean": 0.02139510028064251,
+          "sign": 1.0
+        },
+        "h8": {
+          "energy": 0.012316594831645489,
+          "mean": -0.0014761233469471335,
+          "sign": -1.0
+        },
+        "h9": {
+          "energy": 5.179874897003174,
+          "mean": 0.057003334164619446,
+          "sign": 1.0
+        }
+      },
+      "specificity": {
+        "ablate_c_spec_nmse": 0.0005222006950553456,
+        "ablate_c_target_nmse": 0.99091737700788,
+        "ablate_decoy_spec_nmse": 1.0014573111104665,
+        "ablate_decoy_target_nmse": 0.0,
+        "decoy_over_c_on_spec": 1917.763267251735
+      },
+      "stage": "confirmation",
+      "status": "MECHANISM_RECOVERY_PASSED",
+      "steer_executed_nmse": 19.56288661753993,
+      "threshold_digest": "bdef4ac40eaefb8d75738c19359b3183629cacfe26bc0bc2cafbbcc7748a040a",
+      "thresholds": {
+        "cancellation_member_nmse_min": 0.0001,
+        "decoy_activation_energy_min": 1.0,
+        "decoy_target_ablation_nmse_max": 1e-06,
+        "epsilon": 0.02,
+        "gauge_activation_spearman_max": 0.95,
+        "gauge_causal_spearman_min": 0.99,
+        "gauge_function_mse_max": 1e-08,
+        "max_restore_size": 6,
+        "necessity_delta_min": 0.05,
+        "random_control_count": 32,
+        "random_control_plus_one_p_max": 0.05,
+        "rms_control_count": 8,
+        "rms_control_sufficient_max": 0,
+        "specificity_ratio_min": 2.0,
+        "uncompensated_energy_ratio_min": 10.0
+      }
+    },
+    {
+      "cancellation": {
+        "h0": 0.15384953396609177,
+        "h1": 0.15384954730192157,
+        "joint": 9.43520732134312e-16
+      },
+      "claim_boundary": "synthetic IBD mechanism-recovery test only; not a Qwen, JEPA, workspace, Platonic, or planning claim; does not alter HARD-002, IBD-001, or IBD-002",
+      "decoy_activation_energy": 104.05764770507812,
+      "decoy_target_ablation_nmse": 0.0,
+      "discovered_minimal_sets": [
+        [
+          "h2",
+          "h3",
+          "h5",
+          "h7"
+        ],
+        [
+          "h3",
+          "h4",
+          "h5",
+          "h9"
+        ]
+      ],
+      "evidence_level": "Causal effect",
+      "experiment_id": "CRCT-COALITION-IBD-003",
+      "gates": {
+        "both_class_members_found": true,
+        "cancel_members_visible": true,
+        "decoy_activation_high": true,
+        "decoy_control_fails": true,
+        "gauge_activation_moved": true,
+        "gauged_magnitude_selector_misses": true,
+        "iid_sufficient": true,
+        "magnitude_selector_misses": true,
+        "minimal": true,
+        "necessary": true,
+        "ood_sufficient": true,
+        "random_controls": true,
+        "recovered_class_member": true,
+        "rms_controls": true,
+        "specificity_decoy_on_spec": true
+      },
+      "gauge": {
+        "activation_spearman": 0.5515152025179039,
+        "baseline_h2_energy": 8.157978057861328,
+        "causal_spearman": 1.000000092477518,
+        "function_mse": 5.355669724436789e-14,
+        "gauged_magnitude_topk": [
+          "h2",
+          "h6",
+          "h3",
+          "h0"
+        ],
+        "magnitude_topk": [
+          "h6",
+          "h2",
+          "h4",
+          "h9"
+        ],
+        "uncompensated_function_mse": 4698.99560546875,
+        "uncompensated_h2_energy": 5098.73681640625,
+        "uncompensated_h2_ratio": 625.0000649968554
+      },
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "iid_sufficiency_error": 0.0011066560201736433,
+      "interventions": [
+        {
+          "combination": [
+            "h2",
+            "h3",
+            "h5",
+            "h7"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "restore_only",
+          "site": "h2",
+          "source": "validation_discovery",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h5",
+            "h4",
+            "h3",
+            "h9"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "restore_only",
+          "site": "h4",
+          "source": "h4",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h6"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "ablate",
+          "site": "h6",
+          "source": "h6",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h2"
+          ],
+          "executed_nmse": 22.359320811522583,
+          "in_support": false,
+          "magnitude": 8.0,
+          "operation": "steer",
+          "site": "h2",
+          "source": "h2",
+          "support_status": "out_of_support",
+          "target": "iid_y"
+        }
+      ],
+      "literal": {
+        "planted_count": 8.0,
+        "precision": 1.0,
+        "recall": 0.5,
+        "selected_count": 4.0,
+        "true_positive_count": 4.0
+      },
+      "matched_controls": {
+        "cancel_pair": {
+          "count": 1,
+          "errors": [
+            1.0
+          ],
+          "mean_error": 1.0,
+          "sufficient_count": 0,
+          "unique_count": 1
+        },
+        "decoy_containing": {
+          "count": 1,
+          "errors": [
+            5.836788006714857
+          ],
+          "mean_error": 5.836788006714857,
+          "sufficient_count": 0,
+          "unique_count": 1
+        },
+        "random": {
+          "count": 32,
+          "errors": [
+            6.302259249598191,
+            0.5934044186405029,
+            0.5861968293797932,
+            5.836788006714857,
+            0.47804549011574965,
+            6.510513701498254,
+            6.704292483552921,
+            0.7327885380143163,
+            6.685993164587077,
+            7.121350610167557,
+            0.6383849456618279,
+            0.5146770408753852,
+            0.7195940680095314,
+            0.19595781663660772,
+            0.395066569795199,
+            0.30398087855379863,
+            6.245522441801105,
+            6.68019709289579,
+            0.7461262881744796,
+            6.092690845059528,
+            0.5911369541711542,
+            0.6054641162158889,
+            0.7685705430723299,
+            6.804024433373928,
+            7.134503792443279,
+            0.4178001588564046,
+            0.5757533276896102,
+            0.4218362744172376,
+            6.700456885528971,
+            0.3952731151271518,
+            6.267682963584116,
+            0.8087992472190794
+          ],
+          "mean_error": 2.9867228841072384,
+          "plus_one_p": 0.030303030303030304,
+          "sufficient_count": 0,
+          "unique_count": 32
+        },
+        "rms_matched": {
+          "count": 8,
+          "errors": [
+            0.39156919508665355,
+            0.23510390478430895,
+            0.22481411186840844,
+            0.39427754208921245,
+            0.3728749221854331,
+            0.24106256691252603,
+            0.19595778996494811,
+            0.3771660454837146
+          ],
+          "mean_error": 0.30410325979690067,
+          "sufficient_count": 0,
+          "unique_count": 8
+        }
+      },
+      "minimality_drop_errors": {
+        "h2": 0.45653607688692655,
+        "h3": 0.0842336952144108,
+        "h5": 0.05653640361475668,
+        "h7": 0.3131411000139226
+      },
+      "necessity_delta": {
+        "h2": 0.4552059657026129,
+        "h3": 0.07880771061592731,
+        "h5": 0.05365972624658669,
+        "h7": 0.30831124034335894
+      },
+      "ood_sufficiency_error": 0.0012897202693842882,
+      "out_of_support_labeled": true,
+      "path_a_vs_h2_nmse": 0.9386837919784271,
+      "path_ab_nmse": 3.342705908660384e-14,
+      "planted_equiv_circuit": [
+        "h3",
+        "h4",
+        "h5",
+        "h9"
+      ],
+      "planted_forward_circuit": [
+        "h2",
+        "h3",
+        "h5",
+        "h7"
+      ],
+      "recovered_circuit": [
+        "h2",
+        "h3",
+        "h5",
+        "h7"
+      ],
+      "restore_equiv_error": 0.001106655603428962,
+      "seed": 977,
+      "signed": {
+        "h0": {
+          "energy": 2.595693826675415,
+          "mean": 0.048826914280653,
+          "sign": 1.0
+        },
+        "h1": {
+          "energy": 2.595693826675415,
+          "mean": -0.048826914280653,
+          "sign": -1.0
+        },
+        "h2": {
+          "energy": 7.9219136238098145,
+          "mean": -0.1160091981291771,
+          "sign": -1.0
+        },
+        "h3": {
+          "energy": 1.208372950553894,
+          "mean": 0.16646450757980347,
+          "sign": 1.0
+        },
+        "h4": {
+          "energy": 7.572172164916992,
+          "mean": 0.0009672914748080075,
+          "sign": 1.0
+        },
+        "h5": {
+          "energy": 0.8706550002098083,
+          "mean": 0.04836440458893776,
+          "sign": 1.0
+        },
+        "h6": {
+          "energy": 97.0708999633789,
+          "mean": 0.10556074976921082,
+          "sign": 1.0
+        },
+        "h7": {
+          "energy": 5.467288970947266,
+          "mean": -0.009179905988276005,
+          "sign": -1.0
+        },
+        "h8": {
+          "energy": 0.0176860298961401,
+          "mean": 0.011258522979915142,
+          "sign": 1.0
+        },
+        "h9": {
+          "energy": 5.817028522491455,
+          "mean": -0.12615638971328735,
+          "sign": -1.0
+        }
+      },
+      "specificity": {
+        "ablate_c_spec_nmse": 0.0005474125378934676,
+        "ablate_c_target_nmse": 0.9932838627391047,
+        "ablate_decoy_spec_nmse": 0.9967444220786472,
+        "ablate_decoy_target_nmse": 0.0,
+        "decoy_over_c_on_spec": 1820.8286312079767
+      },
+      "stage": "confirmation",
+      "status": "MECHANISM_RECOVERY_PASSED",
+      "steer_executed_nmse": 22.359320811522583,
+      "threshold_digest": "bdef4ac40eaefb8d75738c19359b3183629cacfe26bc0bc2cafbbcc7748a040a",
+      "thresholds": {
+        "cancellation_member_nmse_min": 0.0001,
+        "decoy_activation_energy_min": 1.0,
+        "decoy_target_ablation_nmse_max": 1e-06,
+        "epsilon": 0.02,
+        "gauge_activation_spearman_max": 0.95,
+        "gauge_causal_spearman_min": 0.99,
+        "gauge_function_mse_max": 1e-08,
+        "max_restore_size": 6,
+        "necessity_delta_min": 0.05,
+        "random_control_count": 32,
+        "random_control_plus_one_p_max": 0.05,
+        "rms_control_count": 8,
+        "rms_control_sufficient_max": 0,
+        "specificity_ratio_min": 2.0,
+        "uncompensated_energy_ratio_min": 10.0
+      }
+    },
+    {
+      "cancellation": {
+        "h0": 0.2832405617554565,
+        "h1": 0.2832405617554565,
+        "joint": 1.0503946209613996e-15
+      },
+      "claim_boundary": "synthetic IBD mechanism-recovery test only; not a Qwen, JEPA, workspace, Platonic, or planning claim; does not alter HARD-002, IBD-001, or IBD-002",
+      "decoy_activation_energy": 110.97383880615234,
+      "decoy_target_ablation_nmse": 0.0,
+      "discovered_minimal_sets": [
+        [
+          "h2",
+          "h3",
+          "h5",
+          "h7"
+        ],
+        [
+          "h3",
+          "h4",
+          "h5",
+          "h9"
+        ]
+      ],
+      "evidence_level": "Causal effect",
+      "experiment_id": "CRCT-COALITION-IBD-003",
+      "gates": {
+        "both_class_members_found": true,
+        "cancel_members_visible": true,
+        "decoy_activation_high": true,
+        "decoy_control_fails": true,
+        "gauge_activation_moved": true,
+        "gauged_magnitude_selector_misses": true,
+        "iid_sufficient": true,
+        "magnitude_selector_misses": true,
+        "minimal": true,
+        "necessary": true,
+        "ood_sufficient": true,
+        "random_controls": true,
+        "recovered_class_member": true,
+        "rms_controls": true,
+        "specificity_decoy_on_spec": true
+      },
+      "gauge": {
+        "activation_spearman": 0.4303030700963865,
+        "baseline_h2_energy": 5.497341156005859,
+        "causal_spearman": 1.000000092477518,
+        "function_mse": 6.507410577191383e-14,
+        "gauged_magnitude_topk": [
+          "h2",
+          "h6",
+          "h0",
+          "h3"
+        ],
+        "magnitude_topk": [
+          "h6",
+          "h4",
+          "h2",
+          "h7"
+        ],
+        "uncompensated_function_mse": 3166.46875,
+        "uncompensated_h2_energy": 3435.838134765625,
+        "uncompensated_h2_ratio": 624.9999840399141
+      },
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "iid_sufficiency_error": 0.0007786326037089398,
+      "interventions": [
+        {
+          "combination": [
+            "h2",
+            "h3",
+            "h5",
+            "h7"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "restore_only",
+          "site": "h2",
+          "source": "validation_discovery",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h5",
+            "h4",
+            "h3",
+            "h9"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "restore_only",
+          "site": "h4",
+          "source": "h4",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h6"
+          ],
+          "in_support": true,
+          "magnitude": 1.0,
+          "operation": "ablate",
+          "site": "h6",
+          "source": "h6",
+          "support_status": "in_support",
+          "target": "iid_y"
+        },
+        {
+          "combination": [
+            "h2"
+          ],
+          "executed_nmse": 21.248302796560367,
+          "in_support": false,
+          "magnitude": 8.0,
+          "operation": "steer",
+          "site": "h2",
+          "source": "h2",
+          "support_status": "out_of_support",
+          "target": "iid_y"
+        }
+      ],
+      "literal": {
+        "planted_count": 8.0,
+        "precision": 1.0,
+        "recall": 0.5,
+        "selected_count": 4.0,
+        "true_positive_count": 4.0
+      },
+      "matched_controls": {
+        "cancel_pair": {
+          "count": 1,
+          "errors": [
+            1.0
+          ],
+          "mean_error": 1.0,
+          "sufficient_count": 0,
+          "unique_count": 1
+        },
+        "decoy_containing": {
+          "count": 1,
+          "errors": [
+            9.124629693544986
+          ],
+          "mean_error": 9.124629693544986,
+          "sufficient_count": 0,
+          "unique_count": 1
+        },
+        "random": {
+          "count": 32,
+          "errors": [
+            0.7048080936164809,
+            0.8886761376852435,
+            9.726499964944072,
+            0.7452331459972599,
+            9.55449782608107,
+            0.7393991173127841,
+            0.6821991260993343,
+            9.322880748758523,
+            0.7439561623357299,
+            0.32804657082305605,
+            9.124629693544986,
+            9.094636262394076,
+            0.7782434181365833,
+            0.659469117833357,
+            0.7872775415472935,
+            8.768277303528071,
+            0.8210540791108493,
+            0.8154932008048721,
+            8.433698707384103,
+            0.7531219335465977,
+            0.5732130654197789,
+            1.1189476240355483,
+            0.7339046647254007,
+            0.7701366970574987,
+            9.140451502304513,
+            9.073429983380782,
+            0.8571223415795509,
+            0.8091012863569849,
+            0.09008868660932741,
+            0.49425613125180357,
+            9.329286505032256,
+            0.7735733064601306
+          ],
+          "mean_error": 3.35111281080306,
+          "plus_one_p": 0.030303030303030304,
+          "sufficient_count": 0,
+          "unique_count": 32
+        },
+        "rms_matched": {
+          "count": 8,
+          "errors": [
+            0.4028306834762602,
+            0.3699946001833741,
+            0.38649650147851766,
+            0.6182829530993804,
+            0.33112148729816887,
+            0.38715959264108357,
+            0.3994532403563849,
+            0.5732130654197789
+          ],
+          "mean_error": 0.4335690154941186,
+          "sufficient_count": 0,
+          "unique_count": 8
+        }
+      },
+      "minimality_drop_errors": {
+        "h2": 0.4322274491831969,
+        "h3": 0.09533652525335808,
+        "h5": 0.1097343091619948,
+        "h7": 0.3125074475041232
+      },
+      "necessity_delta": {
+        "h2": 0.43286019383815044,
+        "h3": 0.08931006340903276,
+        "h5": 0.10640419173660016,
+        "h7": 0.30555882102993587
+      },
+      "ood_sufficiency_error": 0.0007760924337589187,
+      "out_of_support_labeled": true,
+      "path_a_vs_h2_nmse": 0.9459751953364653,
+      "path_ab_nmse": 2.5212988738461884e-14,
+      "planted_equiv_circuit": [
+        "h3",
+        "h4",
+        "h5",
+        "h9"
+      ],
+      "planted_forward_circuit": [
+        "h2",
+        "h3",
+        "h5",
+        "h7"
+      ],
+      "recovered_circuit": [
+        "h2",
+        "h3",
+        "h5",
+        "h7"
+      ],
+      "restore_equiv_error": 0.0007786328975656366,
+      "seed": 983,
+      "signed": {
+        "h0": {
+          "energy": 4.153142929077148,
+          "mean": -0.02378861792385578,
+          "sign": -1.0
+        },
+        "h1": {
+          "energy": 4.153142929077148,
+          "mean": 0.02378861792385578,
+          "sign": 1.0
+        },
+        "h2": {
+          "energy": 5.736953258514404,
+          "mean": -0.021044636145234108,
+          "sign": -1.0
+        },
+        "h3": {
+          "energy": 1.2922097444534302,
+          "mean": -0.04912100359797478,
+          "sign": -1.0
+        },
+        "h4": {
+          "energy": 5.537971019744873,
+          "mean": 0.04032647982239723,
+          "sign": 1.0
+        },
+        "h5": {
+          "energy": 1.490310788154602,
+          "mean": 0.09688630700111389,
+          "sign": 1.0
+        },
+        "h6": {
+          "energy": 114.5511703491211,
+          "mean": -0.6279928088188171,
+          "sign": -1.0
+        },
+        "h7": {
+          "energy": 4.186521053314209,
+          "mean": -0.04337824508547783,
+          "sign": -1.0
+        },
+        "h8": {
+          "energy": 0.009683670476078987,
+          "mean": -0.00021377562370616943,
+          "sign": -1.0
+        },
+        "h9": {
+          "energy": 4.385504245758057,
+          "mean": -0.10474935919046402,
+          "sign": -1.0
+        }
+      },
+      "specificity": {
+        "ablate_c_spec_nmse": 0.00041019942767939134,
+        "ablate_c_target_nmse": 0.9897778868406665,
+        "ablate_decoy_spec_nmse": 0.9964621994416054,
+        "ablate_decoy_target_nmse": 0.0,
+        "decoy_over_c_on_spec": 2429.2140168962706
+      },
+      "stage": "confirmation",
+      "status": "MECHANISM_RECOVERY_PASSED",
+      "steer_executed_nmse": 21.248302796560367,
+      "threshold_digest": "bdef4ac40eaefb8d75738c19359b3183629cacfe26bc0bc2cafbbcc7748a040a",
+      "thresholds": {
+        "cancellation_member_nmse_min": 0.0001,
+        "decoy_activation_energy_min": 1.0,
+        "decoy_target_ablation_nmse_max": 1e-06,
+        "epsilon": 0.02,
+        "gauge_activation_spearman_max": 0.95,
+        "gauge_causal_spearman_min": 0.99,
+        "gauge_function_mse_max": 1e-08,
+        "max_restore_size": 6,
+        "necessity_delta_min": 0.05,
+        "random_control_count": 32,
+        "random_control_plus_one_p_max": 0.05,
+        "rms_control_count": 8,
+        "rms_control_sufficient_max": 0,
+        "specificity_ratio_min": 2.0,
+        "uncompensated_energy_ratio_min": 10.0
+      }
+    }
+  ],
+  "seeds": [
+    971,
+    977,
+    983
+  ],
+  "stage": "confirmation",
+  "status": "MECHANISM_RECOVERY_PASSED",
+  "threshold_digest": "bdef4ac40eaefb8d75738c19359b3183629cacfe26bc0bc2cafbbcc7748a040a"
+}

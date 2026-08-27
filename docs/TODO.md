@@ -10,8 +10,11 @@
 - [x] Execute confirmation on CUDA Python 3.14 after the protocol commit; do not retune 0.90.
   Result: `COMPETENCE_CONFIRMATION_PASSED` (clean 1.000, direct 0.9896).
 - [x] Coalition/equivalence IBD evaluator (`CRCT-COALITION-IBD-001`); HARD-002 seeds blocked.
-- [ ] Do not execute `CRCT-COALITION-IBD-002` (inadequate protocol; leave `PREREGISTERED_NOT_RUN`).
-- [ ] Freeze then run `CRCT-COALITION-IBD-003` once; do not retune after confirmation.
+- [x] Do not execute `CRCT-COALITION-IBD-002` (inadequate protocol; leave `PREREGISTERED_NOT_RUN`).
+- [x] Freeze then run `CRCT-COALITION-IBD-003` once; do not retune after confirmation.
+  Result: `MECHANISM_RECOVERY_PASSED`.
+- [ ] `CRCT-JEPA-ACTION-DELTA-001` remains `DRAFT_NOT_PREREGISTERED`. Do not freeze or run it
+  until an explicit authorization commit.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [ ] Execute 004 only after a later authorization commit on origin.

@@ -20,10 +20,13 @@
   the protocol scientifically inadequate (no selector, alias equivalence,
   additive oracle sums, tautological gauge). **Not executed.** See
   `docs/CRCT_COALITION_IBD_002_AUDIT_2026-08-27.md`.
-- `CRCT-COALITION-IBD-003` — interventional coalition recovery. Development
-  seeds 31/37/41; confirmation 971/977/983. `execution_authorized: true`
-  after freeze. Does not mutate IBD-002. Protocol
-  `docs/CRCT_COALITION_IBD_003_PROTOCOL.md`.
+- `CRCT-COALITION-IBD-003` — **`MECHANISM_RECOVERY_PASSED`** (synthetic IBD,
+  evidence `Causal effect`). Confirmation seeds 971/977/983. Freeze
+  `fbaec9c`. IBD-002 was not executed. See
+  `docs/CRCT_COALITION_IBD_003_ADJUDICATION_2026-08-27.md`.
+- `CRCT-JEPA-ACTION-DELTA-001` — **`DRAFT_NOT_PREREGISTERED`**.
+  `execution_authorized: false`. No runs. See
+  `docs/research/CRCT_JEPA_ACTION_DELTA_001_DRAFT.md`.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,

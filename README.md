@@ -20,7 +20,8 @@ planning success are secondary readouts, not mechanism evidence.
   (n=96). Protected splits stayed closed. V3 remains ineligible. This is
   competence only, not a circuit.
 - `CRCT-COALITION-IBD-001` implements coalition/equivalence metrics and an
-  interpretable-by-design plant. HARD-002 seeds are blocked.
+  interpretable-by-design plant. HARD-002 seeds are blocked. IBD-002 was
+  not executed. IBD-003 passed as synthetic interventional recovery.
 - Intervention-JEPA residual claims now have an explicit fair-baseline gate:
   direct-delta remains mandatory; HARD-002's residual-vs-direct-delta outcome
   is preserved.

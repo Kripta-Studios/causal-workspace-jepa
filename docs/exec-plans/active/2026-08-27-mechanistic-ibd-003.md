@@ -21,8 +21,8 @@ Protocol [IBD-002 audit](fa8fe000-1a02-4796-ae60-9e863b3f3f87) and adversarial
 
 ## Work
 
-1. Document IBD-002 defects without executing it.
-2. Preregister `CRCT-COALITION-IBD-003` (interventional recovery).
-3. Independent protocol review of 003; resolve P0/P1; freeze; then run once.
-4. Draft `CRCT-JEPA-ACTION-DELTA-001` only if 003’s frozen primary gate passes.
-5. Do not run JEPA-DELTA, 004, stitching, Reachable-003, RF, DINO-WM, LeWM.
+- [x] Document IBD-002 defects without executing it.
+- [x] Preregister `CRCT-COALITION-IBD-003` (interventional recovery).
+- [x] Independent protocol review of 003; resolve P0/P1; freeze; then run once.
+- [x] Draft `CRCT-JEPA-ACTION-DELTA-001` only if 003’s frozen primary gate passes.
+- [x] Do not run JEPA-DELTA, 004, stitching, Reachable-003, RF, DINO-WM, LeWM.

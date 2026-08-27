@@ -1,6 +1,8 @@
 # CRCT-COALITION-IBD-003 protocol
 
-Status at freeze: `PREREGISTERED_NOT_RUN`.
+Status: adjudicated `MECHANISM_RECOVERY_PASSED` (evidence_level `Causal effect`,
+synthetic IBD only) on confirmation seeds `971/977/983` after freeze commit
+`fbaec9c`. IBD-002 was not executed.
 After the freeze commit, execution of **this ID only** is authorized.
 `execution_authorized: true` applies to IBD-003 confirmation seeds listed here,
 not to IBD-002, Qwen 004, stitching, or planning tracks.

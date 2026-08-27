@@ -24,8 +24,10 @@
   applies a compensated `known_w`/`known_r` reparameterization, but IBD-001
   confirmation seeds are not re-run. Successor `CRCT-COALITION-IBD-002` is
   `PREREGISTERED_NOT_RUN` and was **not** executed (protocol inadequate).
-  Successor `CRCT-COALITION-IBD-003` is the interventional recovery control.
-  This is synthetic method evidence only. HARD-002
+  Successor `CRCT-COALITION-IBD-003` is `MECHANISM_RECOVERY_PASSED` on
+  confirmation seeds 971/977/983 (synthetic IBD; evidence Causal effect).
+  Freeze `fbaec9c` before outcomes. IBD-002 was not executed. `CRCT-JEPA-ACTION-DELTA-001`
+  is `DRAFT_NOT_PREREGISTERED` only. HARD-002
   remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on

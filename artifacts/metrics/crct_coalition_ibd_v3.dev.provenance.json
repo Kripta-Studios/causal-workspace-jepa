@@ -1,0 +1,13 @@
+{
+  "command": "python -m causal_workspace_jepa.experiments.cross_domain.crct_coalition_ibd_003 --stage development && --stage confirmation",
+  "experiment_id": "CRCT-COALITION-IBD-003",
+  "git_commit": "fbaec9ccec922ae1a4e0054055f68b3b1e402e96",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/crct_coalition_ibd_v3.dev.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 31,
+  "stage": "development",
+  "time_utc": "2026-08-27T16:55:55.548792+00:00"
+}
