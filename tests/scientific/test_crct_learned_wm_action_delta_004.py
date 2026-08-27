@@ -200,7 +200,9 @@ def test_execution_closed_after_inconclusive() -> None:
 def test_climb_requires_previous() -> None:
     try:
         run_development_rung(2000)
-    except ValueError:
+    except ValueError as exc:
+        text = str(exc)
+        assert "not authorized" in text or "previous_path" in text or "climbing" in text
         return
     raise AssertionError("rung 2000 ran without previous_path")
 
