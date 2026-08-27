@@ -1,0 +1,374 @@
+{
+  "all_seeds_competent": false,
+  "all_seeds_passed": false,
+  "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+  "evidence_level": "None",
+  "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "ibd003_rerun": false,
+  "ibd003_status_preserved": "MECHANISM_RECOVERY_PASSED",
+  "literal_overlap_jaccard": {},
+  "nomenclature": "learned WM, not JEPA objective",
+  "parent_001_status_preserved": "MODEL_INCOMPETENT",
+  "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+  "rows": [
+    {
+      "checkpoint_sha256": "e86bf7914f7039c785c2a62e8a7dcf1e338e880378b156859d486fc2a9c648fc",
+      "circuit_search_ran": false,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003057469381019473,
+            "mse": 6.365263106999919e-05,
+            "nmse": 0.020818730504759807,
+            "pred_variance": 0.002975636627525091,
+            "variance": 0.00306617165915668
+          },
+          "dvy": {
+            "energy": 0.0029710098169744015,
+            "mse": 2.1044437744421884e-05,
+            "nmse": 0.007083260925018749,
+            "pred_variance": 0.002944877138361335,
+            "variance": 0.0029662293381989002
+          },
+          "dx": {
+            "energy": 0.00021712318994104862,
+            "mse": 0.00014699643361382186,
+            "nmse": 0.6770185794236583,
+            "pred_variance": 0.00014223018661141396,
+            "variance": 0.00021078693680465221
+          },
+          "dy": {
+            "energy": 0.000200710681383498,
+            "mse": 7.914674642961472e-05,
+            "nmse": 0.3943325082853413,
+            "pred_variance": 6.836608372395858e-05,
+            "variance": 0.0001884614466689527
+          },
+          "full": {
+            "energy": 0.0016115782782435417,
+            "mse": 7.771006494294852e-05,
+            "nmse": 0.04821985130479959,
+            "pred_variance": 0.0015302496030926704,
+            "variance": 0.0016053877770900726
+          }
+        },
+        "dev_loss_mse": 7.771006494294852e-05,
+        "nmse": {
+          "dvx": 0.020818730504759807,
+          "dvy": 0.007083260925018749,
+          "dx": 0.6770185794236583,
+          "dy": 0.3943325082853413
+        },
+        "passed": false
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "parent_001_rerun": false,
+      "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "seed": 59,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003318171249702573,
+          "mse": 8.459172386210412e-05,
+          "nmse": 0.025493477429679546,
+          "pred_variance": 0.0030864679720252752,
+          "variance": 0.0033195032738149166
+        },
+        "dvy": {
+          "energy": 0.003294867230579257,
+          "mse": 2.6968826205120422e-05,
+          "nmse": 0.008185102560378174,
+          "pred_variance": 0.0032761739566922188,
+          "variance": 0.003294342663139105
+        },
+        "dx": {
+          "energy": 0.00022922747302800417,
+          "mse": 0.00013255170779302716,
+          "nmse": 0.5782540200878699,
+          "pred_variance": 0.0001557972573209554,
+          "variance": 0.00022885817452333868
+        },
+        "dy": {
+          "energy": 0.0002500179398339242,
+          "mse": 8.02854192443192e-05,
+          "nmse": 0.3211186337174414,
+          "pred_variance": 0.00010972031304845586,
+          "variance": 0.00024804568965919316
+        },
+        "full": {
+          "energy": 0.0017730708932504058,
+          "mse": 8.109941700240597e-05,
+          "nmse": 0.045739523056370274,
+          "pred_variance": 0.0016570151783525944,
+          "variance": 0.0017717943992465734
+        }
+      },
+      "train_loss_curve": [
+        0.003401216585189104,
+        0.0011275572469457984,
+        0.0005961197311989963,
+        0.0003944837662857026,
+        0.00021353500778786838,
+        0.00019404111662879586,
+        0.00010071779252029955,
+        0.00012310956662986428,
+        9.807669994188473e-05,
+        7.034566078800708e-05
+      ],
+      "train_loss_final": 7.034566078800708e-05,
+      "train_loss_fullsplit": 8.109941700240597e-05,
+      "train_steps": 200
+    },
+    {
+      "checkpoint_sha256": "03b6183841d70b6fd56abd04b5aae66274cbfa0c9dfda1c9e351a1175ba5a0d1",
+      "circuit_search_ran": false,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0034560817293822765,
+            "mse": 1.1946373888349626e-05,
+            "nmse": 0.0034566236633775623,
+            "pred_variance": 0.0034755675587803125,
+            "variance": 0.003458531806245446
+          },
+          "dvy": {
+            "energy": 0.00318278931081295,
+            "mse": 5.278617754811421e-05,
+            "nmse": 0.016584879611346793,
+            "pred_variance": 0.0029366333037614822,
+            "variance": 0.0031894829589873552
+          },
+          "dx": {
+            "energy": 0.00020653704996220767,
+            "mse": 0.00019417997100390494,
+            "nmse": 0.9401701585233069,
+            "pred_variance": 0.00015735019405838102,
+            "variance": 0.00019981851801276207
+          },
+          "dy": {
+            "energy": 0.0001974944316316396,
+            "mse": 0.0001621970150154084,
+            "nmse": 0.8212738641559939,
+            "pred_variance": 4.493113010539673e-05,
+            "variance": 0.0001971095334738493
+          },
+          "full": {
+            "energy": 0.0017607255140319467,
+            "mse": 0.00010527738049859181,
+            "nmse": 0.05979204575590744,
+            "pred_variance": 0.0016526812687516212,
+            "variance": 0.0017616149270907044
+          }
+        },
+        "dev_loss_mse": 0.00010527738049859181,
+        "nmse": {
+          "dvx": 0.0034566236633775623,
+          "dvy": 0.016584879611346793,
+          "dx": 0.9401701585233069,
+          "dy": 0.8212738641559939
+        },
+        "passed": false
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "parent_001_rerun": false,
+      "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "seed": 71,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003376626642420888,
+          "mse": 1.2580933798744809e-05,
+          "nmse": 0.0037258883291061314,
+          "pred_variance": 0.0033865489531308413,
+          "variance": 0.0033770701847970486
+        },
+        "dvy": {
+          "energy": 0.003243501763790846,
+          "mse": 5.3299278079066426e-05,
+          "nmse": 0.016432634220852973,
+          "pred_variance": 0.0029508210718631744,
+          "variance": 0.0032395110465586185
+        },
+        "dx": {
+          "energy": 0.0002531129284761846,
+          "mse": 0.00021069873764645308,
+          "nmse": 0.8324297732040887,
+          "pred_variance": 0.00015980358875822276,
+          "variance": 0.00025325416936539114
+        },
+        "dy": {
+          "energy": 0.00022477578022517264,
+          "mse": 0.00018999171152245253,
+          "nmse": 0.8452499256464614,
+          "pred_variance": 4.795335917151533e-05,
+          "variance": 0.00022466630616690964
+        },
+        "full": {
+          "energy": 0.0017745044315233827,
+          "mse": 0.00011664266639854759,
+          "nmse": 0.0657325303484375,
+          "pred_variance": 0.0016407769871875644,
+          "variance": 0.001773406402207911
+        }
+      },
+      "train_loss_curve": [
+        0.003471584990620613,
+        0.0011262486223131418,
+        0.0007033642032183707,
+        0.0004952418385073543,
+        0.0003218746278434992,
+        0.0002363850362598896,
+        0.0002514601801522076,
+        0.00018614028522279114,
+        0.0001795426505850628,
+        0.00011011450260411948
+      ],
+      "train_loss_final": 0.00011011450260411948,
+      "train_loss_fullsplit": 0.00011664266639854759,
+      "train_steps": 200
+    },
+    {
+      "checkpoint_sha256": "1d3df35ca2dc0fec83fcc1a23c88741a0c73d3328c18a7bc420ef89419da99c0",
+      "circuit_search_ran": false,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0035970110911875963,
+            "mse": 8.324671944137663e-05,
+            "nmse": 0.023143303518113903,
+            "pred_variance": 0.0036348572466522455,
+            "variance": 0.0036016216035932302
+          },
+          "dvy": {
+            "energy": 0.0031924329232424498,
+            "mse": 5.2083116315770894e-05,
+            "nmse": 0.016314553059699616,
+            "pred_variance": 0.0031111815478652716,
+            "variance": 0.00320053449831903
+          },
+          "dx": {
+            "energy": 0.00029238846036605537,
+            "mse": 0.00014871664461679757,
+            "nmse": 0.5086269288145365,
+            "pred_variance": 8.309949771501124e-05,
+            "variance": 0.00029327889205887914
+          },
+          "dy": {
+            "energy": 0.00021582406770903617,
+            "mse": 0.00016769379726611078,
+            "nmse": 0.7769930344014628,
+            "pred_variance": 3.094329440500587e-05,
+            "variance": 0.0002164733741665259
+          },
+          "full": {
+            "energy": 0.001824414124712348,
+            "mse": 0.00011293506395304576,
+            "nmse": 0.06190209910310359,
+            "pred_variance": 0.0017181469593197107,
+            "variance": 0.0018257501069456339
+          }
+        },
+        "dev_loss_mse": 0.00011293506395304576,
+        "nmse": {
+          "dvx": 0.023143303518113903,
+          "dvy": 0.016314553059699616,
+          "dx": 0.5086269288145365,
+          "dy": 0.7769930344014628
+        },
+        "passed": false
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "parent_001_rerun": false,
+      "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "seed": 73,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003223653417080641,
+          "mse": 7.624840509379283e-05,
+          "nmse": 0.023652792415520842,
+          "pred_variance": 0.003236522199586034,
+          "variance": 0.0032256199046969414
+        },
+        "dvy": {
+          "energy": 0.00347601855173707,
+          "mse": 4.712519148597494e-05,
+          "nmse": 0.013557232444120609,
+          "pred_variance": 0.0033981900196522474,
+          "variance": 0.003475669538602233
+        },
+        "dx": {
+          "energy": 0.0002549269120208919,
+          "mse": 0.00012516134302131832,
+          "nmse": 0.490969517612409,
+          "pred_variance": 8.72196105774492e-05,
+          "variance": 0.00025503759388811886
+        },
+        "dy": {
+          "energy": 0.00023069008602760732,
+          "mse": 0.0001729965879349038,
+          "nmse": 0.7499090702762182,
+          "pred_variance": 3.347458186908625e-05,
+          "variance": 0.00023058929946273565
+        },
+        "full": {
+          "energy": 0.0017963222926482558,
+          "mse": 0.00010538286005612463,
+          "nmse": 0.058665897811000456,
+          "pred_variance": 0.0016919552581384778,
+          "variance": 0.0017965772422030568
+        }
+      },
+      "train_loss_curve": [
+        0.004190169274806976,
+        0.001059452653862536,
+        0.0005203631590120494,
+        0.0002954646770376712,
+        0.00023247237550094724,
+        0.0001785290805855766,
+        0.00014604479656554759,
+        0.00012829499610234052,
+        9.796112863114104e-05,
+        0.00010336649575037882
+      ],
+      "train_loss_final": 0.00010336649575037882,
+      "train_loss_fullsplit": 0.00010538286005612463,
+      "train_steps": 200
+    }
+  ],
+  "seeds": [
+    59,
+    71,
+    73
+  ],
+  "selected_rung": null,
+  "source_digest": "4d3f9c8d558943027f1eb6e0795a6a978f3e74f8c38f2a45b873ee9a84b98305",
+  "stage": "development",
+  "status": "MODEL_INCOMPETENT",
+  "substrate": "supervised_residual_mlp_not_jepa_objective",
+  "threshold_digest": "fde0401db7a5fd46046ee848cbebc46d96bdc63040ab5417be463f7f8438fce4",
+  "train_steps": 200
+}
