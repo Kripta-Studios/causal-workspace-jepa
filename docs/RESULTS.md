@@ -30,7 +30,9 @@
   `CRCT-JEPA-ACTION-DELTA-001` is `MODEL_INCOMPETENT` (freeze `66c5b26`;
   confirmation closed; not a mechanistic negative).
   `CRCT-LEARNED-WM-ACTION-DELTA-002` is `INCONCLUSIVE` (rung 800 competent;
-  development CRCT failed; confirmation closed). HARD-002
+  development CRCT failed; confirmation closed).
+  `CRCT-LEARNED-WM-ACTION-DELTA-003` is `PREREGISTERED_NOT_RUN` (gateway vs
+  pathway; new seeds; 002 unchanged). HARD-002
   remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on

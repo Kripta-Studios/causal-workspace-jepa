@@ -1,25 +1,15 @@
-# CRCT-LEARNED-WM-ACTION-DELTA-003 — DRAFT ONLY
+# CRCT-LEARNED-WM-ACTION-DELTA-003 — DRAFT (superseded by protocol)
 
 ```text
-STATUS:                 DRAFT_NOT_PREREGISTERED
-EXECUTION_AUTHORIZED:   false
+STATUS:                 SUPERSEDED_BY_PROTOCOL
+EXECUTION_AUTHORIZED:   false until freeze commit
 PARENT:                 CRCT-LEARNED-WM-ACTION-DELTA-002 INCONCLUSIVE
 ```
 
-Do not freeze or run this file.
+This draft asked whether action-only coalitions should be allowed. That
+question is rejected. The freeze is `docs/CRCT_LEARNED_WM_ACTION_DELTA_003_PROTOCOL.md`:
 
-002 obtained competent 800-step supervised PointMass MLPs, then CRCT failed
-the frozen development conjunction (`ARCHITECTURE_CUTSET` / `SUFFICIENCY_FAILED`
-/ `SPECIFICITY_FAILED`). Confirmation stayed closed.
+  when CRCT finds a sparse action-embedding coalition, is it an information
+  gateway or part of a target-specific causal pathway for `ax → Δvx`?
 
-Seed 59 recovered `{act_2, act_0}` with strong numerical M1 necessity,
-sufficiency, specificity vs Δvy, and counterfactual gap, but 002 forbade
-action-embedding-only coalitions as an architectural cut-set.
-
-A future freeze could ask, prospectively:
-
-  Is a sparse, label-blind action-embedding coalition a legitimate causal
-  mechanism for learned `ax → Δvx`, if residual-inclusive alternatives are
-  reported and do not silently override the primary claim?
-
-Do not retune 002. Do not skip to JEPA-objective, friction, MiniPush, or Qwen.
+Do not retune 002. Do not convert seed 59 into a pass.

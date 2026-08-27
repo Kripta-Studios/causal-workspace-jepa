@@ -32,6 +32,9 @@
 - `CRCT-LEARNED-WM-ACTION-DELTA-002` — **`INCONCLUSIVE`**. Freeze `3649dd9`.
   Rung 800 competent; development CRCT did not pass (cut-set / sufficiency /
   specificity). Confirmation closed. Not a JEPA objective. 001 unchanged.
+- `CRCT-LEARNED-WM-ACTION-DELTA-003` — `PREREGISTERED_NOT_RUN`. Gateway vs
+  pathway for `ax → Δvx` on new seeds 79/83/89 and 1049/1051/1061. Does not
+  retune 002. Seed 59 is not a retrospective pass. Not a JEPA objective.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,
