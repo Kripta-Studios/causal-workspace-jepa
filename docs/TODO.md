@@ -13,8 +13,9 @@
 - [x] Do not execute `CRCT-COALITION-IBD-002` (inadequate protocol; leave `PREREGISTERED_NOT_RUN`).
 - [x] Freeze then run `CRCT-COALITION-IBD-003` once; do not retune after confirmation.
   Result: `MECHANISM_RECOVERY_PASSED`.
-- [ ] `CRCT-JEPA-ACTION-DELTA-001` remains `DRAFT_NOT_PREREGISTERED`. Do not freeze or run it
-  until an explicit authorization commit.
+- [ ] `CRCT-JEPA-ACTION-DELTA-001` is preregistered. Run development on 43/47/53
+  only after the freeze commit. Do not open confirmation unless development
+  passes. Do not retune gates.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [ ] Execute 004 only after a later authorization commit on origin.

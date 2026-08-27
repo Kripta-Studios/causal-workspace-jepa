@@ -1,0 +1,32 @@
+{
+  "experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+  "registered_date": "2026-08-27",
+  "status": "PREREGISTERED_NOT_RUN",
+  "execution_authorized": true,
+  "parent": "CRCT-COALITION-IBD-003",
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "development_model_seeds": [43, 47, 53],
+  "confirmation_model_seeds": [1013, 1019, 1021],
+  "hidden": 6,
+  "train_steps": 200,
+  "thresholds": {
+    "competence_nmse_max": 0.05,
+    "sufficiency_nmse_max": 0.05,
+    "necessity_nmse_min": 0.10,
+    "specificity_ratio_min": 2.0,
+    "max_coalition": 4,
+    "min_step_nmse": 0.02,
+    "random_control_count": 32,
+    "random_control_sufficient_max": 0,
+    "counterfactual_gap_min": 0.50,
+    "counterfactual_pairs": 64,
+    "gauge_function_mse_max": 1e-8,
+    "cancellation_member_nmse_min": 0.02
+  },
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "command_development": "python -m causal_workspace_jepa.experiments.cross_domain.crct_jepa_action_delta --stage development --output artifacts/metrics/crct_jepa_action_delta_v1.dev.json",
+  "command_confirmation": "python -m causal_workspace_jepa.experiments.cross_domain.crct_jepa_action_delta --stage confirmation --output artifacts/metrics/crct_jepa_action_delta_v1.json --require-development artifacts/metrics/crct_jepa_action_delta_v1.dev.json",
+  "output_metrics": "artifacts/metrics/crct_jepa_action_delta_v1.json",
+  "claim_boundary": "learned tiny supervised PointMass residual-MLP; not JEPA-objective/Qwen/workspace/Platonic/planning; does not alter HARD-002 or IBD-002/003"
+}

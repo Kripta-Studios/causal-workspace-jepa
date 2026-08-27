@@ -24,9 +24,11 @@
   evidence `Causal effect`). Confirmation seeds 971/977/983. Freeze
   `fbaec9c`. IBD-002 was not executed. See
   `docs/CRCT_COALITION_IBD_003_ADJUDICATION_2026-08-27.md`.
-- `CRCT-JEPA-ACTION-DELTA-001` — **`DRAFT_NOT_PREREGISTERED`**.
-  `execution_authorized: false`. No runs. See
-  `docs/research/CRCT_JEPA_ACTION_DELTA_001_DRAFT.md`.
+- `CRCT-JEPA-ACTION-DELTA-001` — **`PREREGISTERED_NOT_RUN`**.
+  Supervised residual-MLP PointMass action-Δ mechanism recovery. Freeze
+  protocol `docs/CRCT_JEPA_ACTION_DELTA_001_PROTOCOL.md`. Development seeds
+  43/47/53; confirmation 1013/1019/1021. IBD-002 not executed. HARD-002
+  unchanged. The draft file is not this freeze.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,
