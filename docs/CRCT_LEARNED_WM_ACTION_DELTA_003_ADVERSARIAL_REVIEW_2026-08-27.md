@@ -32,3 +32,10 @@ identified a target-specific causal pathway mediating `ax → Δvx`,
 distinguished from mere ax information availability by conditional
 interventions and matched controls. If that pathway is skip-dominated, say
 so; do not downgrade it for simplicity.
+
+## Later independent verdict (after freeze)
+
+Independent reviewers returned **NO-FREEZE** after `a23bbaa` /
+`5219a9f`. See
+`docs/CRCT_LEARNED_WM_ACTION_DELTA_003_INDEPENDENT_REVIEW_POST_FREEZE_2026-08-27.md`.
+This file is not rewritten to look pre-outcome.

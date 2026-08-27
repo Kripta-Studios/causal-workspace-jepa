@@ -14,6 +14,10 @@
 
 ## P0 after outcomes
 
-None that license mutating 003. A later ID may freeze a finite ladder on
-new seeds if the scientific question is still gateway vs pathway. That is
-not a repair of this ID.
+None that license mutating 003.
+
+Independent protocol and adversarial reviews requested before freeze
+returned **NO-FREEZE after adjudication**. Receipt:
+`docs/CRCT_LEARNED_WM_ACTION_DELTA_003_INDEPENDENT_REVIEW_POST_FREEZE_2026-08-27.md`.
+Those P0s apply to the unreached pass machine, not to the competence stop.
+Repair them only in a later ID.

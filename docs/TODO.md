@@ -20,6 +20,8 @@
 - [x] `CRCT-LEARNED-WM-ACTION-DELTA-003` freeze then run: `MODEL_INCOMPETENT`
   (seed 79 Δy); CRCT closed; confirmation closed. Do not retune.
 - [ ] `CRCT-LEARNED-WM-ACTION-DELTA-004` remains `DRAFT_NOT_PREREGISTERED`.
+  Independent 003 reviews returned NO-FREEZE after freeze; repair those P0s
+  in 004 before any freeze. Do not retune 003.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [ ] Execute 004 only after a later authorization commit on origin.

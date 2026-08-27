@@ -42,3 +42,10 @@ controls.
 
 JEPA; Qwen; workspace; Platonic physics; planning; MiniPush; 002 seed 59
 pass; generic mechanistic interpretability.
+
+## Later independent verdict (after freeze)
+
+Independent reviewers returned **NO-FREEZE** after `a23bbaa` /
+`5219a9f`. See
+`docs/CRCT_LEARNED_WM_ACTION_DELTA_003_INDEPENDENT_REVIEW_POST_FREEZE_2026-08-27.md`.
+This file is not rewritten to look pre-outcome.

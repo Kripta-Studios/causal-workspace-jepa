@@ -34,7 +34,10 @@
   specificity). Confirmation closed. Not a JEPA objective. 001 unchanged.
 - `CRCT-LEARNED-WM-ACTION-DELTA-003` — **`MODEL_INCOMPETENT`**. Freeze
   `a23bbaa`. Seed 79 failed Δy NMSE at 800 steps; CRCT not run;
-  confirmation closed. Not a JEPA objective. 002 unchanged.
+  confirmation closed. Not a JEPA objective. 002 unchanged. Independent
+  reviews returned NO-FREEZE after freeze; 003 was not retuned.
+- `CRCT-LEARNED-WM-ACTION-DELTA-004` — `DRAFT_NOT_PREREGISTERED`. Must repair
+  those P0s before freeze. Not authorized.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,
