@@ -6,7 +6,9 @@ EXECUTION_AUTHORIZED:   false
 PARENT:                 CRCT-LEARNED-WM-ACTION-DELTA-003 MODEL_INCOMPETENT
 ```
 
-Do not freeze or run this file.
+The freeze candidate is `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_PROTOCOL.md`.
+This draft is not the freeze. Independent reviews of the repaired candidate
+returned FREEZE_ALLOWED.
 
 ## Why 003 did not answer the question
 
@@ -25,7 +27,9 @@ before any freeze. Do not retune 003. Do not convert 002 seed 59 into a pass.
 When CRCT finds a sparse action-embedding coalition, is it an information
 gateway or part of the target-specific computation `ax → Δvx`?
 
-Action-stem MSRS are **eligible**. They are not a pass by `G_full` alone.
+Action-stem MSRS are **eligible for CRCT and path diagnostics**. They
+**cannot** be a Level-3 pass. That is the 002 seed-59 *pattern* veto, not
+a relabel of seed 59.
 
 ## Competence
 
@@ -44,18 +48,21 @@ Stop at the first fully competent rung. No extra rungs after development.
 - `G_full >= 0.50`;
 - path class is a **split**: `DIRECT` xor `DISTRIBUTED`
   (`G_skip` and `G_res` on opposite sides of 0.50);
-- gauged re-search sufficiency `<= 0.05` and gauged path class equals the
-  original class;
-- probe top-k does **not** itself meet the same sufficiency/necessity/`G_full`
-  conjunction (otherwise uniqueness is not shown).
+- MSRS is **residual-inclusive** (not ⊆ `{act_*}`);
+- gauged re-search sufficiency `<= 0.05`, gauged necessity `>= 0.10`, and
+  gauged path class equals the original class.
+
+Action-stem MSRS, even with a skip/residual split, is
+`INFORMATION_GATEWAY_ONLY`. `REDUNDANT_ROUTES` is Level 2; confirmation
+closed. Probe overlap on a residual-inclusive split is recorded.
 
 Not a path-mechanism pass:
 
 | class / condition | status |
 |---|---|
 | `INTERACTING` (both holds `< 0.50`, `G_full >= 0.50`) | `MEDIATOR_FOUND_PATH_UNRESOLVED` |
-| action-stem MSRS, high `G_full`, no split | `INFORMATION_GATEWAY_ONLY` / `H_GATEWAY` |
-| `REDUNDANT_ROUTES` | own label, not `H_DIRECT`; freeze whether it is a pass or unresolved **before** outcomes |
+| action-stem MSRS (including skip-split / seed-59 pattern) | `INFORMATION_GATEWAY_ONLY` |
+| `REDUNDANT_ROUTES` | own label, Level 2; confirmation closed |
 | mixed path classes across seeds | experiment `INCONCLUSIVE` |
 
 `H_DISTRIBUTED` only for class `DISTRIBUTED`. `H_EQUIVALENT` only if ≥2
