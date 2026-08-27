@@ -65,9 +65,12 @@ def _audit_metrics(errors: list[str]) -> int:
         if not isinstance(commit, str) or len(commit) < 7:
             errors.append(f"{provenance_path}: invalid git_commit")
         recorded_metrics = provenance.get("metrics")
-        if not isinstance(recorded_metrics, str) or (
-            Path(recorded_metrics).as_posix() != metrics_path.as_posix()
-        ):
+        recorded_posix = (
+            str(recorded_metrics).replace("\\", "/")
+            if isinstance(recorded_metrics, str)
+            else None
+        )
+        if not isinstance(recorded_posix, str) or recorded_posix != metrics_path.as_posix():
             errors.append(f"{provenance_path}: metrics path does not match {metrics_path}")
     return count
 

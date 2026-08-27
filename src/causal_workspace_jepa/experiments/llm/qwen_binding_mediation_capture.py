@@ -1015,8 +1015,7 @@ def _read_json_file(path: Path, *, label: str) -> Mapping[str, Any]:
 def _sha256_file(path: Path) -> str:
     if not path.is_file():
         raise RuntimeError(f"BLOCKED_CAPTURE_STATE: missing identity file at {path}")
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    payload = path.read_bytes()
+    if path.suffix.lower() in {".json", ".yaml", ".yml"}:
+        payload = payload.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(payload).hexdigest()

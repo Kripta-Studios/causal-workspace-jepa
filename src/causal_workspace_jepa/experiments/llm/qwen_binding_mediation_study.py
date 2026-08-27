@@ -1688,11 +1688,10 @@ def load_derivative_unit(
 
 
 def sha256_file(path: str | Path) -> str:
-    digest = hashlib.sha256()
-    with Path(path).open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    payload = Path(path).read_bytes()
+    if Path(path).suffix.lower() in {".json", ".yaml", ".yml"}:
+        payload = payload.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def sha256_json(value: Any) -> str:
