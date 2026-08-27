@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 import numpy as np
 
 from causal_workspace_jepa.common.types import LatentState
 from causal_workspace_jepa.models.tiny_jepa import TinyActionConditionedJEPA
-from causal_workspace_jepa.planning.costs import squared_goal_cost
+from causal_workspace_jepa.planning.costs import squared_goal_cost, squared_latent_goal_cost
 
 
 def _with_bias(array: np.ndarray) -> np.ndarray:
@@ -66,6 +68,8 @@ def amortized_latent_plan(
     seed: int,
     noise_std: float,
     include_delta: bool = True,
+    cost_mode: str = "decoded_xy",
+    quantize_fn: Callable[[np.ndarray], np.ndarray] | None = None,
 ) -> dict[str, np.ndarray | float | int]:
     rng = np.random.default_rng(seed)
     z0 = model.encode(observation[None, :]).tensor[0]
@@ -87,10 +91,17 @@ def amortized_latent_plan(
             include_delta=include_delta,
         )
     action_sequences = np.clip(action_sequences, -1.0, 1.0)
+    if quantize_fn is not None:
+        action_sequences = quantize_fn(action_sequences)
     start = np.repeat(z0[None, :], candidates, axis=0)
     rollout = model.predict(LatentState(start), action_sequences, return_intermediates=False)
     assert rollout.decoded_state is not None
-    costs = squared_goal_cost(rollout.decoded_state["state"][:, -1, :], goal_observation[:2])
+    if cost_mode == "latent_goal":
+        costs = squared_latent_goal_cost(rollout.predicted_latents[:, -1, :], zg)
+    elif cost_mode == "decoded_xy":
+        costs = squared_goal_cost(rollout.decoded_state["state"][:, -1, :], goal_observation[:2])
+    else:
+        raise ValueError(f"unknown cost_mode {cost_mode}")
     best = int(np.argmin(costs))
     return {
         "actions": action_sequences[best],
@@ -108,12 +119,15 @@ def action_flow_plan(
     goal_observation: np.ndarray,
     *,
     horizon: int,
+    quantize_fn: Callable[[np.ndarray], np.ndarray] | None = None,
 ) -> dict[str, np.ndarray | float | int]:
     z0 = model.encode(observation[None, :]).tensor
     zg = model.encode(goal_observation[None, :]).tensor
     features = _with_bias(np.concatenate([z0, zg], axis=-1))
     flat = features @ action_weights
     actions = np.clip(flat.reshape(horizon, model.config.action_dim), -1.0, 1.0)
+    if quantize_fn is not None:
+        actions = quantize_fn(actions)
     return {
         "actions": actions.astype(np.float32),
         "first_action": actions[0],
@@ -134,4 +148,16 @@ def fit_action_flow(
     goals = latents[:, horizon, :]
     seq = actions[:, :horizon, :].reshape(actions.shape[0], -1)
     features = _with_bias(np.concatenate([starts, goals], axis=-1))
+    return _ridge(features, seq, ridge)
+
+
+def fit_action_flow_pairs(
+    z_start: np.ndarray,
+    z_goal: np.ndarray,
+    actions: np.ndarray,
+    *,
+    ridge: float,
+) -> np.ndarray:
+    seq = actions.reshape(actions.shape[0], -1)
+    features = _with_bias(np.concatenate([z_start, z_goal], axis=-1))
     return _ridge(features, seq, ridge)

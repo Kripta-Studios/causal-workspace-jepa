@@ -33,7 +33,7 @@ interpolation in general.
 
 ## Checklist
 
-- [ ] Preregister protocol + config (no outcomes)
+- [x] Preregister protocol + config (no outcomes) — `c121498`
 - [ ] Implement + semantic tests (separate commit)
 - [ ] Development qualification seed 241; stop if fail
 - [ ] Confirmation 251/257/263 only if qualification passes
