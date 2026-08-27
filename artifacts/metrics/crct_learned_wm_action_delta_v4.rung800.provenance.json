@@ -1,0 +1,22 @@
+{
+  "command": "python -m causal_workspace_jepa.experiments.cross_domain.crct_learned_wm_action_delta_004 --stage development --output artifacts/metrics/crct_learned_wm_action_delta_v4.rung800.json --rung 800",
+  "command_stage": "development",
+  "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+  "git_commit": "20a8c2019d696951fb05025dd1a4a8ea7e678ceb",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/crct_learned_wm_action_delta_v4.rung800.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 97,
+  "seeds": [
+    97,
+    101,
+    107
+  ],
+  "source_digest": "cbb0a77c366b7f360d269d9da49a6a6a12017375f8944e58d42ef3266472da24",
+  "stage": "development",
+  "threshold_digest": "f56d3b2548719eec196c217da5da7e1b97ed3815f002f11c4940342457ad632d",
+  "time_utc": "2026-08-27T19:39:08.336489+00:00",
+  "train_steps": 800
+}

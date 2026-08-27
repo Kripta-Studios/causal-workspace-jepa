@@ -33,8 +33,9 @@
   development CRCT failed; confirmation closed).
   `CRCT-LEARNED-WM-ACTION-DELTA-003` is `MODEL_INCOMPETENT` (seed 79 Δy at
   800 steps; CRCT not run; confirmation closed).
-  `CRCT-LEARNED-WM-ACTION-DELTA-004` is `PREREGISTERED_NOT_RUN` (freeze
-  before outcomes; ladder 800/2000/5000; development seeds 97/101/107).
+  `CRCT-LEARNED-WM-ACTION-DELTA-004` is `INCONCLUSIVE` (freeze `20a8c20`;
+  rung 800 incompetent; rung 2000 competent; development CRCT failed
+  shared Level-3 conjunction; confirmation closed).
   HARD-002 remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on

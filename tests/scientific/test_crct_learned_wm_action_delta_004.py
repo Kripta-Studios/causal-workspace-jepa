@@ -45,8 +45,10 @@ def test_config_matches_frozen_thresholds() -> None:
     )
     assert config["thresholds"] == FROZEN_THRESHOLDS
     assert config["experiment_id"] == EXPERIMENT_ID
-    assert config["status"] == "PREREGISTERED_NOT_RUN"
-    assert config["execution_authorized"] is True
+    assert config["status"] == "INCONCLUSIVE"
+    assert config["execution_authorized"] is False
+    assert config["confirmation"] == "CLOSED"
+    assert config["selected_rung"] == 2000
     assert "action-stem MSRS cannot be Level 3" in config["claim_boundary"]
     assert "REDUNDANT_ROUTES is not Level 3" in config["claim_boundary"]
     assert config["interacting_is_level3_pass"] is False
@@ -187,20 +189,42 @@ def test_confirmation_rejects_003_and_inconclusive(tmp_path: Path) -> None:
     raise AssertionError("inconclusive development authorized confirmation")
 
 
-def test_execution_authorized_after_freeze() -> None:
-    _require_execution_authorized()
+def test_execution_closed_after_inconclusive() -> None:
+    try:
+        _require_execution_authorized()
+    except ValueError:
+        return
+    raise AssertionError("004 execution still authorized after INCONCLUSIVE")
 
 
 def test_climb_requires_previous() -> None:
     try:
         run_development_rung(2000)
-    except ValueError as exc:
-        assert "previous_path" in str(exc) or "require-previous" in str(exc) or "climbing" in str(exc)
+    except ValueError:
         return
     raise AssertionError("rung 2000 ran without previous_path")
 
 
-def test_003_and_002_statuses_unchanged() -> None:
+def test_development_outcome_is_inconclusive() -> None:
+    rung800 = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v4.rung800.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    rung2000 = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v4.rung2000.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert rung800["status"] == "MODEL_INCOMPETENT"
+    assert all(not row["circuit_search_ran"] for row in rung800["rows"])
+    assert rung2000["status"] == "INCONCLUSIVE"
+    assert rung2000["all_seeds_competent"] is True
+    assert rung2000["all_seeds_passed"] is False
+    assert rung2000["evidence_level"] == "None"
+    assert rung2000["rows"][0]["status"] == "INFORMATION_GATEWAY_ONLY"
+    assert rung2000["rows"][0]["action_embedding_only"] is True
+    assert not Path("artifacts/metrics/crct_learned_wm_action_delta_v4.json").exists()
     v3 = json.loads(
         Path("artifacts/metrics/crct_learned_wm_action_delta_v3.dev.json").read_text(encoding="utf-8")
     )

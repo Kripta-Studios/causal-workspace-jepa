@@ -22,10 +22,12 @@
 - [x] `CRCT-LEARNED-WM-ACTION-DELTA-004` freeze after written FREEZE_ALLOWED
   protocol and adversarial reviews of the repaired candidate. Do not retune
   001/002/003.
+- [x] Execute 004 development ladder: 800 `MODEL_INCOMPETENT`; 2000
+  competent; CRCT `INCONCLUSIVE`; confirmation closed. Do not retune.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
-- [ ] Execute 004 development ladder after this freeze; confirmation only if
-  development passes the frozen shared-class conjunction.
+- [x] Execute 004 development ladder after freeze; confirmation stayed
+  closed (`INCONCLUSIVE`).
 - [x] Intervention-JEPA fair-baseline policy module.
 - [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
 - [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.

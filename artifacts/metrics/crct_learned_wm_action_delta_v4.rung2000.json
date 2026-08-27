@@ -1,0 +1,1021 @@
+{
+  "all_seeds_competent": true,
+  "all_seeds_passed": false,
+  "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+  "evidence_level": "None",
+  "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+  "functional_convergence": false,
+  "h_equivalent": false,
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "literal_overlap_jaccard": {
+    "101_107": 0.4,
+    "97_101": 0.4,
+    "97_107": 0.5
+  },
+  "nomenclature": "learned WM, not JEPA objective",
+  "observed_shared_path_class": null,
+  "parent_001_status_preserved": "MODEL_INCOMPETENT",
+  "parent_002_status_preserved": "INCONCLUSIVE",
+  "parent_003_status_preserved": "MODEL_INCOMPETENT",
+  "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+  "physics_dependency": {
+    "dvx": {
+      "ax": "D",
+      "ay": "0",
+      "vx": "D",
+      "vy": "0"
+    },
+    "dvy": {
+      "ax": "0",
+      "ay": "D",
+      "vx": "0",
+      "vy": "D"
+    },
+    "dx": {
+      "ax": "D",
+      "ay": "0",
+      "vx": "D",
+      "vy": "0"
+    },
+    "dy": {
+      "ax": "0",
+      "ay": "D",
+      "vx": "0",
+      "vy": "D"
+    }
+  },
+  "required_shared_path_class": null,
+  "rows": [
+    {
+      "act_random_control_sufficient_count": 0,
+      "action_carrier_set": [
+        "act_0",
+        "act_3",
+        "act_1"
+      ],
+      "action_embedding_only": true,
+      "action_stem_msrs_cannot_be_level3": true,
+      "architecture_cutset_automatic_fail": false,
+      "baselines": {
+        "actgrad_topk": {
+          "causal_conjunction": false,
+          "counterfactual": 0.8116989731788635,
+          "necessity_dvx": 0.39633689018729695,
+          "sites": [
+            "b2_0",
+            "b2_2",
+            "act_0"
+          ],
+          "sufficiency_dvx": 0.37971834934300736
+        },
+        "gradient_topk": {
+          "causal_conjunction": false,
+          "counterfactual": 0.22198426723480225,
+          "necessity_dvx": 0.02629552576072419,
+          "sites": [
+            "b1_4",
+            "b2_4",
+            "b2_2"
+          ],
+          "sufficiency_dvx": 1.006185332272203
+        },
+        "magnitude_topk": {
+          "causal_conjunction": false,
+          "counterfactual": -0.5151398181915283,
+          "necessity_dvx": 0.05782777813218308,
+          "sites": [
+            "b2_0",
+            "act_2",
+            "b2_2"
+          ],
+          "sufficiency_dvx": 1.2271465819285847
+        }
+      },
+      "cancellation": {
+        "pairs": [],
+        "status": "NO_MEANINGFUL_CANCELLATION_DETECTED"
+      },
+      "checkpoint_sha256": "8a5f4c91a5d29917bbcc2dc022a9cadb2d32eaa8782f949dfd1afb2455c61a35",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003386904951184988,
+            "mse": 5.4892348089197185e-06,
+            "nmse": 0.0016207230164516963,
+            "pred_variance": 0.0034342145081609488,
+            "variance": 0.003397000953555107
+          },
+          "dvy": {
+            "energy": 0.0030846938025206327,
+            "mse": 1.1972018000960816e-05,
+            "nmse": 0.0038811041767510207,
+            "pred_variance": 0.003105028299614787,
+            "variance": 0.003059636102989316
+          },
+          "dx": {
+            "energy": 0.00021147595543880016,
+            "mse": 1.9658866676763864e-06,
+            "nmse": 0.009296029251161379,
+            "pred_variance": 0.00020932563347741961,
+            "variance": 0.0002119064301950857
+          },
+          "dy": {
+            "energy": 0.00024230778217315674,
+            "mse": 2.0833090275118593e-06,
+            "nmse": 0.008597780099456715,
+            "pred_variance": 0.0002476955996826291,
+            "variance": 0.00023959657119121403
+          },
+          "full": {
+            "energy": 0.0017313456628471613,
+            "mse": 5.377612069423776e-06,
+            "nmse": 0.003106030288937454,
+            "pred_variance": 0.0017513438360765576,
+            "variance": 0.00173002271912992
+          }
+        },
+        "dev_loss_mse": 5.377612069423776e-06,
+        "nmse": {
+          "dvx": 0.0016207230164516963,
+          "dvy": 0.0038811041767510207,
+          "dx": 0.009296029251161379,
+          "dy": 0.008597780099456715
+        },
+        "passed": true
+      },
+      "counterfactual_support": "hybrid_activation_patch_plus_path_holds",
+      "downstream_msrs": [],
+      "downstream_of_ax": [
+        "dx"
+      ],
+      "encoder_sites_excluded": [
+        "enc_0",
+        "enc_1",
+        "enc_2",
+        "enc_3",
+        "enc_4",
+        "enc_5"
+      ],
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+      "g_direct": 0.9982583522796631,
+      "g_distributed": 0.19716930389404297,
+      "g_full": 0.9915181398391724,
+      "g_residual": 0.19716930389404297,
+      "g_skip": 0.9982583522796631,
+      "g_skip_semantics": "architecture_route_test_holds_hid1_hid2_at_A_overwrites_residual_msrs",
+      "gauge_function_mse": 1.904636802888362e-15,
+      "gauge_msrs": [
+        "act_5",
+        "act_2",
+        "act_3"
+      ],
+      "gauge_necessity_dvx": 1.039733375227237,
+      "gauge_path_class": "DIRECT",
+      "gauge_sufficiency_dvx": 0.02215923330415722,
+      "independent_controls": [
+        "dvy",
+        "dy"
+      ],
+      "information_r2": {
+        "act_0": 0.8095875382423401,
+        "act_1": 0.5689573287963867,
+        "act_2": 0.7401605844497681,
+        "act_3": 0.10650700330734253,
+        "act_4": 0.06516456604003906,
+        "act_5": 0.3047029972076416,
+        "b1_0": 0.07716172933578491,
+        "b1_1": 0.004012703895568848,
+        "b1_2": 0.37328749895095825,
+        "b1_3": 0.8140818476676941,
+        "b1_4": 0.18835598230361938,
+        "b1_5": 0.05809640884399414,
+        "b2_0": 0.1485784649848938,
+        "b2_1": 0.28615057468414307,
+        "b2_2": 0.08125936985015869,
+        "b2_3": 0.10418397188186646,
+        "b2_4": 0.8158050179481506,
+        "b2_5": 0.051493823528289795
+      },
+      "intervention_support": "coordinatewise_mean_fill",
+      "level": 2,
+      "literal_jaccard_vs_gauge": 0.2,
+      "mcp": {
+        "msrs": [
+          "act_0",
+          "act_3",
+          "act_1"
+        ],
+        "path_class": "DIRECT"
+      },
+      "minimality_drop": {
+        "act_0": 0.35751823097919194,
+        "act_1": 0.1468973228585936,
+        "act_3": 0.2738672363871751
+      },
+      "msrs": [
+        "act_0",
+        "act_3",
+        "act_1"
+      ],
+      "necessity": {
+        "dvx": 1.2299420463446977,
+        "dvy": 0.3728470951794728,
+        "dx": 0.29700035713597134,
+        "dy": 0.3081303725839488
+      },
+      "parent_003_rerun": false,
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+      "path_class": "DIRECT",
+      "physics_dependency": {
+        "dvx": {
+          "ax": "D",
+          "ay": "0",
+          "vx": "D",
+          "vy": "0"
+        },
+        "dvy": {
+          "ax": "0",
+          "ay": "D",
+          "vx": "0",
+          "vy": "D"
+        },
+        "dx": {
+          "ax": "D",
+          "ay": "0",
+          "vx": "D",
+          "vy": "0"
+        },
+        "dy": {
+          "ax": "0",
+          "ay": "D",
+          "vx": "0",
+          "vy": "D"
+        }
+      },
+      "pre_prune_circuit": [
+        "act_0",
+        "act_3",
+        "act_1"
+      ],
+      "probe_topk": [
+        "b2_4",
+        "b1_3",
+        "act_0"
+      ],
+      "probe_topk_counterfactual": 0.8663604855537415,
+      "probe_topk_necessity_dvx": 0.47425787642366085,
+      "probe_topk_sufficiency_dvx": 0.24451708733065114,
+      "probe_uniqueness_failed": false,
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "rms_matched_sufficient_count": 0,
+      "searchable_sites": [
+        "act_0",
+        "act_1",
+        "act_2",
+        "act_3",
+        "act_4",
+        "act_5",
+        "b1_0",
+        "b1_1",
+        "b1_2",
+        "b1_3",
+        "b1_4",
+        "b1_5",
+        "b2_0",
+        "b2_1",
+        "b2_2",
+        "b2_3",
+        "b2_4",
+        "b2_5"
+      ],
+      "seed": 97,
+      "seed_59_retrospective_pass": false,
+      "specificity_independent": {
+        "dvy": 3.2987840384076366,
+        "dy": 3.9916287253039466
+      },
+      "specificity_vs_dx_diagnostic": 4.141214031542768,
+      "stage": "development",
+      "status": "INFORMATION_GATEWAY_ONLY",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.008301005668221683,
+        "dvy": 0.8255855179228698,
+        "dx": 0.9735280182600817,
+        "dy": 0.43494997748692055
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003325660480186343,
+          "mse": 6.297775144048501e-06,
+          "nmse": 0.0018936915483614323,
+          "pred_variance": 0.0033225249499082565,
+          "variance": 0.003327680518850684
+        },
+        "dvy": {
+          "energy": 0.0032432167790830135,
+          "mse": 1.3407438927970361e-05,
+          "nmse": 0.004133994068617633,
+          "pred_variance": 0.0032412144355475903,
+          "variance": 0.003242383012548089
+        },
+        "dx": {
+          "energy": 0.0001914712629513815,
+          "mse": 1.7449212919018464e-06,
+          "nmse": 0.009113228089715571,
+          "pred_variance": 0.00018935643311124295,
+          "variance": 0.0001895248278742656
+        },
+        "dy": {
+          "energy": 0.00024207033857237548,
+          "mse": 1.979869466595119e-06,
+          "nmse": 0.008178901546845927,
+          "pred_variance": 0.00024149008095264435,
+          "variance": 0.0002412068279227242
+        },
+        "full": {
+          "energy": 0.0017506045987829566,
+          "mse": 5.8575010370987e-06,
+          "nmse": 0.00334598746122963,
+          "pred_variance": 0.0017496540676802397,
+          "variance": 0.0017509202007204294
+        }
+      },
+      "train_loss_curve": [
+        0.00014042849943507463,
+        7.269150228239596e-05,
+        7.861555786803365e-05,
+        5.980860078125261e-05,
+        3.874864705721848e-05,
+        1.451347634429112e-05,
+        9.790865078684874e-06,
+        8.019813321880065e-06,
+        7.956535228004213e-06,
+        5.4313059081323445e-06
+      ],
+      "train_loss_final": 5.4313059081323445e-06,
+      "train_loss_fullsplit": 5.8575010370987e-06,
+      "train_steps": 2000
+    },
+    {
+      "act_random_control_sufficient_count": 0,
+      "action_carrier_set": [
+        "act_3",
+        "act_1",
+        "act_5"
+      ],
+      "action_embedding_only": false,
+      "action_stem_msrs_cannot_be_level3": true,
+      "architecture_cutset_automatic_fail": false,
+      "baselines": {
+        "actgrad_topk": {
+          "causal_conjunction": false,
+          "counterfactual": -0.32687437534332275,
+          "necessity_dvx": 0.11429505536451393,
+          "sites": [
+            "b2_3",
+            "act_4",
+            "b1_4",
+            "act_2"
+          ],
+          "sufficiency_dvx": 3.291509999307707
+        },
+        "gradient_topk": {
+          "causal_conjunction": false,
+          "counterfactual": -0.21689176559448242,
+          "necessity_dvx": 0.31089589481039825,
+          "sites": [
+            "b1_0",
+            "b2_3",
+            "b1_2",
+            "act_4"
+          ],
+          "sufficiency_dvx": 2.4934659435088875
+        },
+        "magnitude_topk": {
+          "causal_conjunction": false,
+          "counterfactual": -1.1036555767059326,
+          "necessity_dvx": 0.19594891607461187,
+          "sites": [
+            "act_2",
+            "b2_3",
+            "act_4",
+            "b2_2"
+          ],
+          "sufficiency_dvx": 3.5149878740545875
+        }
+      },
+      "cancellation": {
+        "pairs": [],
+        "status": "NO_MEANINGFUL_CANCELLATION_DETECTED"
+      },
+      "checkpoint_sha256": "6ad7146429f50b9aa9fa66b9b3d0b59772db4b005109c38a04f92d389d5bc5b8",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0034493296407163143,
+            "mse": 4.023630026495084e-06,
+            "nmse": 0.0011664962313255472,
+            "pred_variance": 0.0034530400298535824,
+            "variance": 0.0034586326219141483
+          },
+          "dvy": {
+            "energy": 0.003470953553915024,
+            "mse": 1.2074121514160652e-05,
+            "nmse": 0.003478618001252647,
+            "pred_variance": 0.003430392825976014,
+            "variance": 0.0034660061355680227
+          },
+          "dx": {
+            "energy": 0.00020624580793082714,
+            "mse": 2.2915214685781393e-06,
+            "nmse": 0.01111063294603638,
+            "pred_variance": 0.00020846788538619876,
+            "variance": 0.00020390917779877782
+          },
+          "dy": {
+            "energy": 0.00020343840878922492,
+            "mse": 6.2031349443714134e-06,
+            "nmse": 0.03049146413054309,
+            "pred_variance": 0.0002098797122016549,
+            "variance": 0.00020244660845492035
+          },
+          "full": {
+            "energy": 0.0018324920674785972,
+            "mse": 6.1481018747144844e-06,
+            "nmse": 0.003355049652779079,
+            "pred_variance": 0.0018218776676803827,
+            "variance": 0.001829720800742507
+          }
+        },
+        "dev_loss_mse": 6.1481018747144844e-06,
+        "nmse": {
+          "dvx": 0.0011664962313255472,
+          "dvy": 0.003478618001252647,
+          "dx": 0.01111063294603638,
+          "dy": 0.03049146413054309
+        },
+        "passed": true
+      },
+      "counterfactual_support": "hybrid_activation_patch_plus_path_holds",
+      "downstream_msrs": [
+        "b1_0"
+      ],
+      "downstream_of_ax": [
+        "dx"
+      ],
+      "encoder_sites_excluded": [
+        "enc_0",
+        "enc_1",
+        "enc_2",
+        "enc_3",
+        "enc_4",
+        "enc_5"
+      ],
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+      "g_direct": 0.9499021768569946,
+      "g_distributed": 0.6794929504394531,
+      "g_full": 0.8917398452758789,
+      "g_residual": 0.6794929504394531,
+      "g_skip": 0.9499021768569946,
+      "g_skip_semantics": "architecture_route_test_holds_hid1_hid2_at_A_overwrites_residual_msrs",
+      "gauge_function_mse": 2.8044257149547388e-15,
+      "gauge_msrs": [
+        "act_3",
+        "b1_2",
+        "b1_1",
+        "act_1"
+      ],
+      "gauge_necessity_dvx": 1.1217001578008667,
+      "gauge_path_class": "DISTRIBUTED",
+      "gauge_sufficiency_dvx": 0.11169294213465679,
+      "independent_controls": [
+        "dvy",
+        "dy"
+      ],
+      "information_r2": {
+        "act_0": 0.002362668514251709,
+        "act_1": 0.0008452534675598145,
+        "act_2": 0.024968385696411133,
+        "act_3": 0.6172951459884644,
+        "act_4": 0.3613097071647644,
+        "act_5": 0.6529077291488647,
+        "b1_0": 0.23001116514205933,
+        "b1_1": 0.6210896968841553,
+        "b1_2": 0.960524320602417,
+        "b1_3": 0.8762597441673279,
+        "b1_4": 0.9395480751991272,
+        "b1_5": 0.2438218593597412,
+        "b2_0": 0.47354692220687866,
+        "b2_1": 0.27853429317474365,
+        "b2_2": 0.9295946955680847,
+        "b2_3": 0.003078937530517578,
+        "b2_4": 0.10435688495635986,
+        "b2_5": 0.7453607320785522
+      },
+      "intervention_support": "coordinatewise_mean_fill",
+      "level": 0,
+      "literal_jaccard_vs_gauge": 0.3333333333333333,
+      "mcp": {
+        "msrs": [
+          "act_3",
+          "act_1",
+          "act_5",
+          "b1_0"
+        ],
+        "path_class": "REDUNDANT_ROUTES"
+      },
+      "minimality_drop": {
+        "act_1": 0.460169014153066,
+        "act_3": 0.6837314649353572,
+        "act_5": 0.2681350017415497,
+        "b1_0": 0.16418917813457312
+      },
+      "msrs": [
+        "act_3",
+        "act_1",
+        "act_5",
+        "b1_0"
+      ],
+      "necessity": {
+        "dvx": 1.8283170031499334,
+        "dvy": 0.7671201116041358,
+        "dx": 2.786143987760055,
+        "dy": 4.5205084361814665
+      },
+      "parent_003_rerun": false,
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+      "path_class": "REDUNDANT_ROUTES",
+      "physics_dependency": {
+        "dvx": {
+          "ax": "D",
+          "ay": "0",
+          "vx": "D",
+          "vy": "0"
+        },
+        "dvy": {
+          "ax": "0",
+          "ay": "D",
+          "vx": "0",
+          "vy": "D"
+        },
+        "dx": {
+          "ax": "D",
+          "ay": "0",
+          "vx": "D",
+          "vy": "0"
+        },
+        "dy": {
+          "ax": "0",
+          "ay": "D",
+          "vx": "0",
+          "vy": "D"
+        }
+      },
+      "pre_prune_circuit": [
+        "act_3",
+        "act_1",
+        "act_5",
+        "b1_0"
+      ],
+      "probe_topk": [
+        "b1_2",
+        "b1_4",
+        "b2_2",
+        "b1_3"
+      ],
+      "probe_topk_counterfactual": 0.5577705502510071,
+      "probe_topk_necessity_dvx": 0.13406852342276174,
+      "probe_topk_sufficiency_dvx": 1.0171276274684573,
+      "probe_uniqueness_failed": false,
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "rms_matched_sufficient_count": 0,
+      "searchable_sites": [
+        "act_0",
+        "act_1",
+        "act_2",
+        "act_3",
+        "act_4",
+        "act_5",
+        "b1_0",
+        "b1_1",
+        "b1_2",
+        "b1_3",
+        "b1_4",
+        "b1_5",
+        "b2_0",
+        "b2_1",
+        "b2_2",
+        "b2_3",
+        "b2_4",
+        "b2_5"
+      ],
+      "seed": 101,
+      "seed_59_retrospective_pass": false,
+      "specificity_independent": {
+        "dvy": 2.383351675302468,
+        "dy": 0.40444941735234036
+      },
+      "specificity_vs_dx_diagnostic": 0.6562177013040251,
+      "stage": "development",
+      "status": "SUFFICIENCY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.08834477329566105,
+        "dvy": 0.35857390389134364,
+        "dx": 0.38219322644096376,
+        "dy": 7.749109268678522
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003231688868254423,
+          "mse": 3.339705926919123e-06,
+          "nmse": 0.0010334243372639535,
+          "pred_variance": 0.0032215851824730635,
+          "variance": 0.0032325140200555325
+        },
+        "dvy": {
+          "energy": 0.003401602152734995,
+          "mse": 1.076758599083405e-05,
+          "nmse": 0.0031654454305235467,
+          "pred_variance": 0.003381878137588501,
+          "variance": 0.003404127899557352
+        },
+        "dx": {
+          "energy": 0.000236659892834723,
+          "mse": 2.268920070491731e-06,
+          "nmse": 0.009587260618242081,
+          "pred_variance": 0.00023688157671131194,
+          "variance": 0.00023644400062039495
+        },
+        "dy": {
+          "energy": 0.0002309451811015606,
+          "mse": 6.253262199606979e-06,
+          "nmse": 0.027076824767592968,
+          "pred_variance": 0.00023813867301214486,
+          "variance": 0.00023106382286641747
+        },
+        "full": {
+          "energy": 0.001775223994627595,
+          "mse": 5.657368546962971e-06,
+          "nmse": 0.0031868477240528563,
+          "pred_variance": 0.0017698234878480434,
+          "variance": 0.001775532029569149
+        }
+      },
+      "train_loss_curve": [
+        0.0006511510000564158,
+        7.94508378021419e-05,
+        3.806301174336113e-05,
+        2.545411916798912e-05,
+        1.5018042176961899e-05,
+        1.353132574877236e-05,
+        9.846200555330142e-06,
+        5.700326255464461e-06,
+        6.568424396391492e-06,
+        5.97917187405983e-06
+      ],
+      "train_loss_final": 5.97917187405983e-06,
+      "train_loss_fullsplit": 5.657368546962971e-06,
+      "train_steps": 2000
+    },
+    {
+      "act_random_control_sufficient_count": 1,
+      "action_carrier_set": [
+        "act_5",
+        "act_0",
+        "act_1"
+      ],
+      "action_embedding_only": true,
+      "action_stem_msrs_cannot_be_level3": true,
+      "architecture_cutset_automatic_fail": false,
+      "baselines": {
+        "actgrad_topk": {
+          "causal_conjunction": false,
+          "counterfactual": 0.8466938138008118,
+          "necessity_dvx": 0.44053758006408683,
+          "sites": [
+            "act_5",
+            "act_1",
+            "b1_4"
+          ],
+          "sufficiency_dvx": 0.18079173013872632
+        },
+        "gradient_topk": {
+          "causal_conjunction": false,
+          "counterfactual": 0.7350730895996094,
+          "necessity_dvx": 0.33409840580013034,
+          "sites": [
+            "b1_4",
+            "b2_2",
+            "act_5"
+          ],
+          "sufficiency_dvx": 0.46977511366413494
+        },
+        "magnitude_topk": {
+          "causal_conjunction": false,
+          "counterfactual": 0.37184226512908936,
+          "necessity_dvx": 0.20569675579294497,
+          "sites": [
+            "act_1",
+            "b2_3",
+            "act_3"
+          ],
+          "sufficiency_dvx": 0.899483874532731
+        }
+      },
+      "cancellation": {
+        "pairs": [],
+        "status": "NO_MEANINGFUL_CANCELLATION_DETECTED"
+      },
+      "checkpoint_sha256": "beab46b9275545635691da86fba43c62d2455e7da2657233b861e682a4675a8d",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003568673972040415,
+            "mse": 4.8822166718309745e-06,
+            "nmse": 0.0013680758483632317,
+            "pred_variance": 0.003590629668906331,
+            "variance": 0.0035607004538178444
+          },
+          "dvy": {
+            "energy": 0.0032250522635877132,
+            "mse": 3.3286746656813193e-06,
+            "nmse": 0.0010321304566947797,
+            "pred_variance": 0.0032378388568758965,
+            "variance": 0.003234794596210122
+          },
+          "dx": {
+            "energy": 0.0002276003360748291,
+            "mse": 3.5963967093266547e-06,
+            "nmse": 0.015801368184905722,
+            "pred_variance": 0.00022545951651409268,
+            "variance": 0.0002259962202515453
+          },
+          "dy": {
+            "energy": 0.00017733876302372664,
+            "mse": 3.4003107884927886e-06,
+            "nmse": 0.019174097814350106,
+            "pred_variance": 0.000180548828211613,
+            "variance": 0.00017763669893611223
+          },
+          "full": {
+            "energy": 0.0017996660899370909,
+            "mse": 3.8018995383026777e-06,
+            "nmse": 0.0021125583015433585,
+            "pred_variance": 0.0018083674367517233,
+            "variance": 0.0017996452515944839
+          }
+        },
+        "dev_loss_mse": 3.8018995383026777e-06,
+        "nmse": {
+          "dvx": 0.0013680758483632317,
+          "dvy": 0.0010321304566947797,
+          "dx": 0.015801368184905722,
+          "dy": 0.019174097814350106
+        },
+        "passed": true
+      },
+      "counterfactual_support": "hybrid_activation_patch_plus_path_holds",
+      "downstream_msrs": [],
+      "downstream_of_ax": [
+        "dx"
+      ],
+      "encoder_sites_excluded": [
+        "enc_0",
+        "enc_1",
+        "enc_2",
+        "enc_3",
+        "enc_4",
+        "enc_5"
+      ],
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+      "g_direct": 0.9964243173599243,
+      "g_distributed": -0.20252680778503418,
+      "g_full": 0.9775860905647278,
+      "g_residual": -0.20252680778503418,
+      "g_skip": 0.9964243173599243,
+      "g_skip_semantics": "architecture_route_test_holds_hid1_hid2_at_A_overwrites_residual_msrs",
+      "gauge_function_mse": 1.5099033558418603e-15,
+      "gauge_msrs": [
+        "act_0",
+        "act_1",
+        "act_2"
+      ],
+      "gauge_necessity_dvx": 0.7904098946546066,
+      "gauge_path_class": "DIRECT",
+      "gauge_sufficiency_dvx": 0.033181740926592485,
+      "independent_controls": [
+        "dvy",
+        "dy"
+      ],
+      "information_r2": {
+        "act_0": 0.5722768306732178,
+        "act_1": 0.23792141675949097,
+        "act_2": 0.8175907731056213,
+        "act_3": 3.165006637573242e-05,
+        "act_4": 0.2894057631492615,
+        "act_5": 0.5700951814651489,
+        "b1_0": 0.10441076755523682,
+        "b1_1": 0.5551204085350037,
+        "b1_2": 0.7257217168807983,
+        "b1_3": 0.06837016344070435,
+        "b1_4": 0.19721943140029907,
+        "b1_5": 0.8692917227745056,
+        "b2_0": 0.13143372535705566,
+        "b2_1": 0.016860902309417725,
+        "b2_2": 0.24426144361495972,
+        "b2_3": 0.7882547378540039,
+        "b2_4": 0.0451815128326416,
+        "b2_5": 0.7055505514144897
+      },
+      "intervention_support": "coordinatewise_mean_fill",
+      "level": 0,
+      "literal_jaccard_vs_gauge": 0.5,
+      "mcp": {
+        "msrs": [
+          "act_5",
+          "act_0",
+          "act_1"
+        ],
+        "path_class": "DIRECT"
+      },
+      "minimality_drop": {
+        "act_0": 0.15585333332729429,
+        "act_1": 0.08384344724733407,
+        "act_5": 0.5234808391323874
+      },
+      "msrs": [
+        "act_5",
+        "act_0",
+        "act_1"
+      ],
+      "necessity": {
+        "dvx": 0.7706134268972368,
+        "dvy": 0.3449682750942522,
+        "dx": 0.0566725434241518,
+        "dy": 0.3969290837117055
+      },
+      "parent_003_rerun": false,
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+      "path_class": "DIRECT",
+      "physics_dependency": {
+        "dvx": {
+          "ax": "D",
+          "ay": "0",
+          "vx": "D",
+          "vy": "0"
+        },
+        "dvy": {
+          "ax": "0",
+          "ay": "D",
+          "vx": "0",
+          "vy": "D"
+        },
+        "dx": {
+          "ax": "D",
+          "ay": "0",
+          "vx": "D",
+          "vy": "0"
+        },
+        "dy": {
+          "ax": "0",
+          "ay": "D",
+          "vx": "0",
+          "vy": "D"
+        }
+      },
+      "pre_prune_circuit": [
+        "act_5",
+        "act_0",
+        "act_1"
+      ],
+      "probe_topk": [
+        "b1_5",
+        "act_2",
+        "b2_3"
+      ],
+      "probe_topk_counterfactual": 0.014360427856445312,
+      "probe_topk_necessity_dvx": 0.0022802922291855375,
+      "probe_topk_sufficiency_dvx": 1.8959644225612187,
+      "probe_uniqueness_failed": false,
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "rms_matched_sufficient_count": 0,
+      "searchable_sites": [
+        "act_0",
+        "act_1",
+        "act_2",
+        "act_3",
+        "act_4",
+        "act_5",
+        "b1_0",
+        "b1_1",
+        "b1_2",
+        "b1_3",
+        "b1_4",
+        "b1_5",
+        "b2_0",
+        "b2_1",
+        "b2_2",
+        "b2_3",
+        "b2_4",
+        "b2_5"
+      ],
+      "seed": 107,
+      "seed_59_retrospective_pass": false,
+      "specificity_independent": {
+        "dvy": 2.233867525025859,
+        "dy": 1.9414385554497258
+      },
+      "specificity_vs_dx_diagnostic": 13.597650296542524,
+      "stage": "development",
+      "status": "SPECIFICITY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.02644447854711784,
+        "dvy": 0.31052119637417697,
+        "dx": 1.2439222734253037,
+        "dy": 3.8156318747484477
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.0033411092590540648,
+          "mse": 4.958332283422351e-06,
+          "nmse": 0.0014840377548222276,
+          "pred_variance": 0.003348307916894555,
+          "variance": 0.0033408349845558405
+        },
+        "dvy": {
+          "energy": 0.003376757027581334,
+          "mse": 3.11045664602716e-06,
+          "nmse": 0.000921137239256768,
+          "pred_variance": 0.003387442557141185,
+          "variance": 0.0033792469184845686
+        },
+        "dx": {
+          "energy": 0.0002355977485422045,
+          "mse": 3.2413190638180822e-06,
+          "nmse": 0.013757852457734497,
+          "pred_variance": 0.00023564198636449873,
+          "variance": 0.00023555771622341126
+        },
+        "dy": {
+          "energy": 0.00025009128148667514,
+          "mse": 4.343175532994792e-06,
+          "nmse": 0.017366361222896913,
+          "pred_variance": 0.0002501854905858636,
+          "variance": 0.00025016520521603525
+        },
+        "full": {
+          "energy": 0.0018008888000622392,
+          "mse": 3.913321052095853e-06,
+          "nmse": 0.0021729942748050894,
+          "pred_variance": 0.001804948435164988,
+          "variance": 0.0018007120816037059
+        }
+      },
+      "train_loss_curve": [
+        8.901926776161417e-05,
+        3.378448309376836e-05,
+        2.180637420678977e-05,
+        1.3869843314751051e-05,
+        1.1048608939745463e-05,
+        9.072975444723852e-06,
+        6.5049757722590584e-06,
+        5.811868049931945e-06,
+        4.764884579344653e-06,
+        4.370983333501499e-06
+      ],
+      "train_loss_final": 4.370983333501499e-06,
+      "train_loss_fullsplit": 3.913321052095853e-06,
+      "train_steps": 2000
+    }
+  ],
+  "seed_59_retrospective_pass": false,
+  "seeds": [
+    97,
+    101,
+    107
+  ],
+  "selected_rung": 2000,
+  "shared_path_class": null,
+  "source_digest": "cbb0a77c366b7f360d269d9da49a6a6a12017375f8944e58d42ef3266472da24",
+  "stage": "development",
+  "status": "INCONCLUSIVE",
+  "substrate": "supervised_residual_mlp_not_jepa_objective",
+  "threshold_digest": "f56d3b2548719eec196c217da5da7e1b97ed3815f002f11c4940342457ad632d",
+  "train_steps": 2000
+}

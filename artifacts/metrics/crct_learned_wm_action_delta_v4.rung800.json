@@ -1,0 +1,400 @@
+{
+  "all_seeds_competent": false,
+  "all_seeds_passed": false,
+  "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+  "evidence_level": "None",
+  "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+  "functional_convergence": false,
+  "h_equivalent": false,
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "literal_overlap_jaccard": {},
+  "nomenclature": "learned WM, not JEPA objective",
+  "observed_shared_path_class": null,
+  "parent_001_status_preserved": "MODEL_INCOMPETENT",
+  "parent_002_status_preserved": "INCONCLUSIVE",
+  "parent_003_status_preserved": "MODEL_INCOMPETENT",
+  "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+  "physics_dependency": {
+    "dvx": {
+      "ax": "D",
+      "ay": "0",
+      "vx": "D",
+      "vy": "0"
+    },
+    "dvy": {
+      "ax": "0",
+      "ay": "D",
+      "vx": "0",
+      "vy": "D"
+    },
+    "dx": {
+      "ax": "D",
+      "ay": "0",
+      "vx": "D",
+      "vy": "0"
+    },
+    "dy": {
+      "ax": "0",
+      "ay": "D",
+      "vx": "0",
+      "vy": "D"
+    }
+  },
+  "required_shared_path_class": null,
+  "rows": [
+    {
+      "checkpoint_sha256": "42d27a8b6234e2cd1b6bc2b7ca79fed844a05cd5cc27e98e88283848af9f4f0f",
+      "circuit_search_ran": false,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003386904951184988,
+            "mse": 1.8355203792452812e-05,
+            "nmse": 0.005419462328292034,
+            "pred_variance": 0.0034499759785830975,
+            "variance": 0.003397000953555107
+          },
+          "dvy": {
+            "energy": 0.0030846938025206327,
+            "mse": 4.556959174806252e-05,
+            "nmse": 0.014772808798988638,
+            "pred_variance": 0.0031252573244273663,
+            "variance": 0.003059636102989316
+          },
+          "dx": {
+            "energy": 0.00021147595543880016,
+            "mse": 5.495097866514698e-05,
+            "nmse": 0.25984504267223635,
+            "pred_variance": 0.00015747660654596984,
+            "variance": 0.0002119064301950857
+          },
+          "dy": {
+            "energy": 0.00024230778217315674,
+            "mse": 0.0001043642550939694,
+            "nmse": 0.43070946445867414,
+            "pred_variance": 0.00011199166328879073,
+            "variance": 0.00023959657119121403
+          },
+          "full": {
+            "energy": 0.0017313456628471613,
+            "mse": 5.581000732490793e-05,
+            "nmse": 0.03223504613927271,
+            "pred_variance": 0.0017118726391345263,
+            "variance": 0.00173002271912992
+          }
+        },
+        "dev_loss_mse": 5.581000732490793e-05,
+        "nmse": {
+          "dvx": 0.005419462328292034,
+          "dvy": 0.014772808798988638,
+          "dx": 0.25984504267223635,
+          "dy": 0.43070946445867414
+        },
+        "passed": false
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+      "parent_003_rerun": false,
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+      "seed": 97,
+      "seed_59_retrospective_pass": false,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003325660480186343,
+          "mse": 2.058288737316616e-05,
+          "nmse": 0.006189112657709683,
+          "pred_variance": 0.0033422312699258327,
+          "variance": 0.003327680518850684
+        },
+        "dvy": {
+          "energy": 0.0032432167790830135,
+          "mse": 4.59552466054447e-05,
+          "nmse": 0.014169649991277511,
+          "pred_variance": 0.00323750008828938,
+          "variance": 0.003242383012548089
+        },
+        "dx": {
+          "energy": 0.0001914712629513815,
+          "mse": 5.619413423119113e-05,
+          "nmse": 0.29348599557448984,
+          "pred_variance": 0.00014637743879575282,
+          "variance": 0.0001895248278742656
+        },
+        "dy": {
+          "energy": 0.00024207033857237548,
+          "mse": 0.0001119653825298883,
+          "nmse": 0.46253243247483744,
+          "pred_variance": 0.00010312679660273716,
+          "variance": 0.0002412068279227242
+        },
+        "full": {
+          "energy": 0.0017506045987829566,
+          "mse": 5.867440995643847e-05,
+          "nmse": 0.03351665475872147,
+          "pred_variance": 0.001710331067442894,
+          "variance": 0.0017509202007204294
+        }
+      },
+      "train_loss_curve": [
+        0.0006031586672179401,
+        0.00015072982932906598,
+        0.000106847430288326,
+        8.321185305248946e-05,
+        7.269150228239596e-05,
+        8.209371299017221e-05,
+        7.895372255006805e-05,
+        6.536979344673455e-05,
+        4.9643309466773644e-05,
+        5.980860078125261e-05
+      ],
+      "train_loss_final": 5.980860078125261e-05,
+      "train_loss_fullsplit": 5.867440995643847e-05,
+      "train_steps": 800
+    },
+    {
+      "checkpoint_sha256": "a28163f67f578f6d7c444c45c1f4d7d5d3a1c2f58a5c9f268fa7f10462a1a816",
+      "circuit_search_ran": false,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0034493296407163143,
+            "mse": 1.7253729311050847e-05,
+            "nmse": 0.005002052893810348,
+            "pred_variance": 0.003438975429162383,
+            "variance": 0.0034586326219141483
+          },
+          "dvy": {
+            "energy": 0.003470953553915024,
+            "mse": 3.711431418196298e-05,
+            "nmse": 0.010692829392689597,
+            "pred_variance": 0.0034742571879178286,
+            "variance": 0.0034660061355680227
+          },
+          "dx": {
+            "energy": 0.00020624580793082714,
+            "mse": 7.3435849117231555e-06,
+            "nmse": 0.03560598387622076,
+            "pred_variance": 0.00021110483794473112,
+            "variance": 0.00020390917779877782
+          },
+          "dy": {
+            "energy": 0.00020343840878922492,
+            "mse": 3.2446274417452514e-05,
+            "nmse": 0.15948942291948867,
+            "pred_variance": 0.00021387048764154315,
+            "variance": 0.00020244660845492035
+          },
+          "full": {
+            "energy": 0.0018324920674785972,
+            "mse": 2.3539474568678997e-05,
+            "nmse": 0.012845607894536728,
+            "pred_variance": 0.0018319394439458847,
+            "variance": 0.001829720800742507
+          }
+        },
+        "dev_loss_mse": 2.3539474568678997e-05,
+        "nmse": {
+          "dvx": 0.005002052893810348,
+          "dvy": 0.010692829392689597,
+          "dx": 0.03560598387622076,
+          "dy": 0.15948942291948867
+        },
+        "passed": false
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+      "parent_003_rerun": false,
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+      "seed": 101,
+      "seed_59_retrospective_pass": false,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003231688868254423,
+          "mse": 1.5634757801308297e-05,
+          "nmse": 0.004837952673876466,
+          "pred_variance": 0.0031896282453089952,
+          "variance": 0.0032325140200555325
+        },
+        "dvy": {
+          "energy": 0.003401602152734995,
+          "mse": 3.476838901406154e-05,
+          "nmse": 0.01022118033001204,
+          "pred_variance": 0.0034366121981292963,
+          "variance": 0.003404127899557352
+        },
+        "dx": {
+          "energy": 0.000236659892834723,
+          "mse": 7.332421773753595e-06,
+          "nmse": 0.03098295062135587,
+          "pred_variance": 0.00023909266747068614,
+          "variance": 0.00023644400062039495
+        },
+        "dy": {
+          "energy": 0.0002309451811015606,
+          "mse": 3.2036728953244165e-05,
+          "nmse": 0.13872005815594685,
+          "pred_variance": 0.0002471753105055541,
+          "variance": 0.00023106382286641747
+        },
+        "full": {
+          "energy": 0.001775223994627595,
+          "mse": 2.2443075067712925e-05,
+          "nmse": 0.012642390557829867,
+          "pred_variance": 0.001777828554622829,
+          "variance": 0.001775532029569149
+        }
+      },
+      "train_loss_curve": [
+        0.0012230264255777001,
+        0.000716463488060981,
+        0.000490127713419497,
+        0.00019429615349508822,
+        7.94508378021419e-05,
+        5.7302662753500044e-05,
+        3.7348916521295905e-05,
+        2.5681049010017887e-05,
+        2.32725160458358e-05,
+        2.545411916798912e-05
+      ],
+      "train_loss_final": 2.545411916798912e-05,
+      "train_loss_fullsplit": 2.2443075067712925e-05,
+      "train_steps": 800
+    },
+    {
+      "checkpoint_sha256": "d998328c7d36e49bd16da4fe4758072de54ef8ca3cc4d6031e4a17f439f77353",
+      "circuit_search_ran": false,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not reinterpret 001/002/003; seed 59 is not a retrospective pass; INTERACTING is not Level 3; action-stem MSRS cannot be Level 3; REDUNDANT_ROUTES is not Level 3; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003568673972040415,
+            "mse": 1.8115943021257408e-05,
+            "nmse": 0.005076379395593677,
+            "pred_variance": 0.003588446881622076,
+            "variance": 0.0035607004538178444
+          },
+          "dvy": {
+            "energy": 0.0032250522635877132,
+            "mse": 1.8999506210093386e-05,
+            "nmse": 0.0058912242832794785,
+            "pred_variance": 0.0032311337999999523,
+            "variance": 0.003234794596210122
+          },
+          "dx": {
+            "energy": 0.0002276003360748291,
+            "mse": 1.302229065913707e-05,
+            "nmse": 0.057215603824309284,
+            "pred_variance": 0.00023325685469899327,
+            "variance": 0.0002259962202515453
+          },
+          "dy": {
+            "energy": 0.00017733876302372664,
+            "mse": 1.054976564773824e-05,
+            "nmse": 0.05948933819013251,
+            "pred_variance": 0.00018759933300316334,
+            "variance": 0.00017763669893611223
+          },
+          "full": {
+            "energy": 0.0017996660899370909,
+            "mse": 1.5171875929809175e-05,
+            "nmse": 0.008430383844338326,
+            "pred_variance": 0.0018119546584784985,
+            "variance": 0.0017996452515944839
+          }
+        },
+        "dev_loss_mse": 1.5171875929809175e-05,
+        "nmse": {
+          "dvx": 0.005076379395593677,
+          "dvy": 0.0058912242832794785,
+          "dx": 0.057215603824309284,
+          "dy": 0.05948933819013251
+        },
+        "passed": false
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-004",
+      "parent_003_rerun": false,
+      "parent_experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-003",
+      "seed": 107,
+      "seed_59_retrospective_pass": false,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "train_channels": {
+        "dvx": {
+          "energy": 0.0033411092590540648,
+          "mse": 1.940377478604205e-05,
+          "nmse": 0.0058075846317984965,
+          "pred_variance": 0.003310789819806814,
+          "variance": 0.0033408349845558405
+        },
+        "dvy": {
+          "energy": 0.003376757027581334,
+          "mse": 1.7104272046708502e-05,
+          "nmse": 0.005065295461592556,
+          "pred_variance": 0.0033774778712540865,
+          "variance": 0.0033792469184845686
+        },
+        "dx": {
+          "energy": 0.0002355977485422045,
+          "mse": 1.1817474842246156e-05,
+          "nmse": 0.05015954063809399,
+          "pred_variance": 0.00023845517716836184,
+          "variance": 0.00023555771622341126
+        },
+        "dy": {
+          "energy": 0.00025009128148667514,
+          "mse": 1.2496780072979163e-05,
+          "nmse": 0.049968875358995635,
+          "pred_variance": 0.00025405234191566706,
+          "variance": 0.00025016520521603525
+        },
+        "full": {
+          "energy": 0.0018008888000622392,
+          "mse": 1.5205575436993968e-05,
+          "nmse": 0.008443372759311101,
+          "pred_variance": 0.001794315641745925,
+          "variance": 0.0018007120816037059
+        }
+      },
+      "train_loss_curve": [
+        0.00017122217104770243,
+        7.734438986517489e-05,
+        7.612936315126717e-05,
+        4.705541141447611e-05,
+        3.378448309376836e-05,
+        3.157073660986498e-05,
+        1.8407206880510785e-05,
+        2.059050530078821e-05,
+        1.5707930288044736e-05,
+        1.3869843314751051e-05
+      ],
+      "train_loss_final": 1.3869843314751051e-05,
+      "train_loss_fullsplit": 1.5205575436993968e-05,
+      "train_steps": 800
+    }
+  ],
+  "seed_59_retrospective_pass": false,
+  "seeds": [
+    97,
+    101,
+    107
+  ],
+  "selected_rung": null,
+  "shared_path_class": null,
+  "source_digest": "cbb0a77c366b7f360d269d9da49a6a6a12017375f8944e58d42ef3266472da24",
+  "stage": "development",
+  "status": "MODEL_INCOMPETENT",
+  "substrate": "supervised_residual_mlp_not_jepa_objective",
+  "threshold_digest": "f56d3b2548719eec196c217da5da7e1b97ed3815f002f11c4940342457ad632d",
+  "train_steps": 800
+}
