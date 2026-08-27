@@ -29,6 +29,7 @@ SOURCE_FILES = (
     "src/causal_workspace_jepa/experiments/llm/qwen_binding_competence_recovery.py",
     "src/causal_workspace_jepa/experiments/llm/qwen_binding_algebra_protocol.py",
     "tests/unit/test_qwen_binding_competence_recovery.py",
+    "tests/unit/test_qwen_competence_recovery_entrypoints.py",
 )
 
 

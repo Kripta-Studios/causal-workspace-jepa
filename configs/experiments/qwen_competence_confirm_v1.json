@@ -1,0 +1,101 @@
+{
+  "experiment_id": "QWEN-BINDING-COMPETENCE-CONFIRM-001",
+  "successor_binding_experiment_id": "LLM-QWEN-BINDING-ALGEBRA-004",
+  "successor_bridge_id": "CRCT-QWEN-BRIDGE-003",
+  "parent_development_experiment_id": "QWEN-BINDING-COMPETENCE-RECOVERY-001",
+  "parent_v3_experiment_id": "LLM-QWEN-BINDING-ALGEBRA-003",
+  "parent_protocol": "configs/experiments/qwen_binding_algebra_v3.yaml",
+  "registered_date": "2026-08-27",
+  "schema_version": "qwen_competence_confirm_config_v1",
+  "status": "PREREGISTERED_NOT_RUN",
+  "claim_boundary": "fresh confirmation of frozen qwen_chat_prefill_v1 on never-used confirmation tokens; does not rescue V3; no circuit/CRCT/workspace claim",
+  "allowed_model_forward_splits": ["confirmation"],
+  "forbidden_model_forward_splits": ["train", "validation", "test", "paraphrase", "calibration"],
+  "renderer": {
+    "id": "qwen_chat_prefill_v1",
+    "kind": "chat_prefill",
+    "source_module": "src/causal_workspace_jepa/experiments/llm/qwen_binding_competence_recovery.py",
+    "selection_split": "calibration_only_already_closed"
+  },
+  "model": {
+    "attn_implementation": "eager",
+    "dtype": "float32",
+    "local_files_only": true,
+    "name": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca"
+  },
+  "split": {
+    "name": "confirmation",
+    "count": 32,
+    "seed": 701,
+    "template": "primary"
+  },
+  "action_partition": {
+    "train_classes": ["transposition"]
+  },
+  "token_pools": {
+    "keys": {
+      "confirmation": ["maple", "quartz", "ridge", "frost"]
+    },
+    "values": {
+      "confirmation": ["teal", "ivory", "coral", "peach"]
+    }
+  },
+  "parent_token_pools": {
+    "keys": {
+      "calibration": ["alder", "beryl", "cirrus", "dahlia"],
+      "train": ["acorn", "beacon", "canyon", "domino", "elm", "fable", "galaxy", "hearth", "inlet", "juniper", "kelp", "lagoon", "meadow", "nectar", "opal", "pebble", "quill", "reef", "summit", "tundra", "umber", "vortex", "willow", "xenon"],
+      "validation": ["yarrow", "zephyr", "anvil", "brook", "cipher", "dune", "echo", "fjord"],
+      "test": ["garnet", "hazel", "islet", "jigsaw", "kernel", "lichen", "mosaic", "nickel"]
+    },
+    "values": {
+      "calibration": ["crimson", "amber", "azure", "violet"],
+      "train": ["Albany", "Beirut", "Chennai", "Dresden", "London", "Fresno", "Geneva", "Paris", "Berlin", "Madrid", "Rome", "Lyon", "Manila", "Naples", "Ottawa", "Perth", "Vienna", "Prague", "Lisbon", "Taipei", "Athens", "Venice", "Oslo", "Stockholm"],
+      "validation": ["Helsinki", "Basel", "Warsaw", "Dublin", "Essen", "Brussels", "Graz", "Munich"],
+      "test": ["Irvine", "Hamburg", "Kyoto", "Leeds", "Cologne", "Milan", "Florence", "Bristol"]
+    }
+  },
+  "token_contract": {
+    "model": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "answer_encoding": "strict spaced single token",
+    "model_outputs_or_logits_used": false,
+    "verified_utc": "2026-08-27T13:31:14Z",
+    "keys": {
+      "maple": 54380,
+      "quartz": 51155,
+      "ridge": 57833,
+      "frost": 44734
+    },
+    "values": {
+      "teal": 94607,
+      "ivory": 69816,
+      "coral": 52003,
+      "peach": 72088
+    }
+  },
+  "gates": {
+    "clean_full_vocab_accuracy_min": 0.9,
+    "direct_permuted_full_vocab_accuracy_min": 0.9,
+    "candidate_only_accuracy_is_diagnostic_only": true,
+    "if_fail": "COMPETENCE_CONFIRMATION_FAILED"
+  },
+  "execution": {
+    "batch_size": 8,
+    "device": "cuda",
+    "max_length": 128,
+    "timeout_seconds": 3600
+  },
+  "scientific_boundary": {
+    "no_prompt_search": true,
+    "no_threshold_retuning": true,
+    "no_v3_rescue": true,
+    "no_test_access": true,
+    "no_paraphrase_access": true,
+    "no_train_access": true,
+    "no_validation_access": true,
+    "no_calibration_reuse_for_confirmation": true,
+    "no_b1": true,
+    "does_not_authorize_mechanistic_phase_until_pass": true
+  }
+}
