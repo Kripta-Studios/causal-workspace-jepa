@@ -1,6 +1,9 @@
 # WM-PLATONIC-MKNN-001 protocol
 
-Status: `PREREGISTERED_NOT_RUN`.
+Status: adjudicated `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED` (Availability)
+on 2026-08-27. Frozen gates, seeds, maps, and k in this file were not
+changed after outcomes. See
+`docs/WM_PLATONIC_MKNN_001_ADJUDICATION_2026-08-27.md`.
 
 This is a CPU-scale **geometry control**, not a Platonic WM paper
 reproduction, not stitching, not CRCT, not a workspace, and not permission

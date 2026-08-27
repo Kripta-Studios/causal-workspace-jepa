@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_wm_platonic_mknn.py --untrained-posthoc --config configs/experiments/wm_platonic_mknn_v1.json",
+  "git_commit": "e29aa4188897d375996731e2f1e9220f34132b93",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/wm_platonic_mknn_v1.untrained_posthoc.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 131,
+  "status": "POSTHOC_DIAGNOSTIC",
+  "time_utc": "2026-08-27T15:09:04.277935+00:00"
+}

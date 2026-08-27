@@ -69,3 +69,8 @@ SHA-256 values are identical across seeds (maps are frozen).
 It does authorize continuing to `WM-LEFLOW-AMORTIZE-001` on integrity
 grounds: `integrity_blockers` is empty. The scientific caveats above
 remain in force.
+
+A later untrained-predictor diagnostic
+(`WM-PLATONIC-MKNN-001-UNTRAINED-POSTHOC`) does **not** change this
+adjudication. Joint interpretation:
+`docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.

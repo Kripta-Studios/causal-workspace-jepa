@@ -33,7 +33,11 @@
 - `WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. Amortized latent N=64
   matched shooting success at 1.0 but was slower on seeds 151/157/163.
   Evidence level `None`. Not a LeFlow reproduction. Paper-scale
-  Platonic/LeFlow work remains plan-only.
+  Platonic/LeFlow work remains plan-only. Interpretation:
+  `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`. A post-hoc
+  untrained-predictor diagnostic
+  (`WM-PLATONIC-MKNN-001-UNTRAINED-POSTHOC`) does not change the T1
+  adjudication.
 
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
 

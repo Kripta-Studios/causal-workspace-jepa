@@ -74,3 +74,6 @@ a post-outcome rerun.
 - Relabeling HARD-002, V3, IBD-001, or Qwen confirmation
 - Lowering the wall-clock clause or the 0.15 success floor after seeing
   outcomes
+
+Joint interpretation:
+`docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.

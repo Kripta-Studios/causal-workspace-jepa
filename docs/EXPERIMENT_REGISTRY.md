@@ -30,7 +30,12 @@
   151/157/163. Evidence level `None`. Not a LeFlow reproduction. Protocol
   `docs/WM_LEFLOW_AMORTIZE_001_PROTOCOL.md`. See
   `docs/WM_LEFLOW_AMORTIZE_001_ADJUDICATION_2026-08-27.md`.
-- `WM-PLATONIC-STITCH-001` — not opened.
+- `WM-PLATONIC-MKNN-001-UNTRAINED-POSTHOC` — `POSTHOC_DIAGNOSTIC`.
+  Untrained-predictor m-kNN on the same T1 confirmation rows. Does not
+  change parent status. Metrics
+  `artifacts/metrics/wm_platonic_mknn_v1.untrained_posthoc.json`.
+- `WM-PLATONIC-STITCH-001` — not opened. Joint interpretation:
+  `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
 - Platonic WM / LeFlow paper-scale work remains plan only. Joint successor
   IDs still **not opened**: `WM-LEFLOW-TRANSFER-001` (planner portability
   `A→B`), `WM-CRCT-PLATONIC-COMPUTE-001` (equivalent causal computations;

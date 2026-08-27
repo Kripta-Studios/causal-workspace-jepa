@@ -1,0 +1,45 @@
+{
+  "confirmatory_claims_allowed": false,
+  "does_not_change_parent_status": true,
+  "downloads_performed": [],
+  "evidence_level": "None",
+  "experiment_id": "WM-PLATONIC-MKNN-001-UNTRAINED-POSTHOC",
+  "parent_experiment_id": "WM-PLATONIC-MKNN-001",
+  "seed_rows": [
+    {
+      "confirmatory_claims_allowed": false,
+      "predictor_mknn_trained_a_vs_untrained_a": 0.29375000000000007,
+      "predictor_mknn_trained_ab": 0.8796875,
+      "predictor_mknn_untrained_ab": 0.6984375,
+      "protected_splits_executed": [],
+      "seed": 131,
+      "untrained_weight_seed_a": 10131,
+      "untrained_weight_seed_b": 10132
+    },
+    {
+      "confirmatory_claims_allowed": false,
+      "predictor_mknn_trained_a_vs_untrained_a": 0.3109375000000001,
+      "predictor_mknn_trained_ab": 0.9156250000000001,
+      "predictor_mknn_untrained_ab": 0.5390625,
+      "protected_splits_executed": [],
+      "seed": 137,
+      "untrained_weight_seed_a": 10137,
+      "untrained_weight_seed_b": 10138
+    },
+    {
+      "confirmatory_claims_allowed": false,
+      "predictor_mknn_trained_a_vs_untrained_a": 0.43437500000000007,
+      "predictor_mknn_trained_ab": 0.921875,
+      "predictor_mknn_untrained_ab": 0.6890625,
+      "protected_splits_executed": [],
+      "seed": 139,
+      "untrained_weight_seed_a": 10139,
+      "untrained_weight_seed_b": 10140
+    }
+  ],
+  "splits_accessed": [
+    "train",
+    "confirmation"
+  ],
+  "status": "POSTHOC_DIAGNOSTIC"
+}

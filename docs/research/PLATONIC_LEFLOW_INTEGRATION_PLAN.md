@@ -1,9 +1,11 @@
 # Platonic world-model geometry and LeFlow — integration plan
 
-Status: paper-scale work remains `PREREGISTERED_PLAN_ONLY`. CPU Track A IDs
-`WM-PLATONIC-MKNN-001` and `WM-LEFLOW-AMORTIZE-001` have dedicated protocols
-and are **not run** until those protocol commits exist. No DINO-WM/LeWM
-download. `WM-PLATONIC-STITCH-001` is not opened.
+Status: paper-scale work remains `PREREGISTERED_PLAN_ONLY`. CPU Track A:
+`WM-PLATONIC-MKNN-001` is `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
+(Availability, encoder-geometry caveat);
+`WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. No DINO-WM/LeWM download.
+`WM-PLATONIC-STITCH-001` is not opened. See
+`docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
 Papers are arXiv preprints (not peer-reviewed):
 
 - [2608.23720](https://arxiv.org/abs/2608.23720) Platonic Representation Hypothesis on World Models (v2, 2026-08-26)
@@ -273,10 +275,15 @@ predict direct Qwen replay. That is H-LLM-02/04 territory, not a workspace claim
 2. Keep coalition IBD as ontology control; use IBD-002 (real gauge) before
    any “platonic computation” plant.
 3. `WM-PLATONIC-MKNN-001`: two tiny JEPAs, different frozen observation maps,
-   same dynamics, m-kNN vs shuffled-action and random maps.
+   same dynamics, m-kNN vs shuffled-action and random maps. **Done** (CPU);
+   encoder geometry already aligned. Stitching not justified.
 4. `WM-LEFLOW-AMORTIZE-001`: CPU amortized planner vs existing
-   `planning/cem.py` on **one** frozen tiny JEPA.
-5. `WM-LEFLOW-TRANSFER-001`: T0–T5. This is the distinctive experiment.
+   `planning/cem.py` on **one** frozen tiny JEPA. **Done**; `NEGATIVE_RESULT`
+   (success ceiling; primary N=64 slower than shooting).
+5. **Stop before** `WM-LEFLOW-TRANSFER-001`. A later harder planning
+   substrate where shooting is not at ceiling would be required before
+   transfer. Do not open stitching, Rectified Flow, or CRCT-on-platonic from
+   these CPU results.
 6. `WM-CRCT-PLATONIC-COMPUTE-001` only if transfer survives the fail-closed
    gates.
 7. Only then, GPU-12GB LeWM/DINO-WM adapters if checkpoints are already local

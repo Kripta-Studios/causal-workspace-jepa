@@ -44,13 +44,17 @@ H=5 primary. Success = true position MSE `< 0.15`. Amortized latent N=64 must be
 - [x] Observe CI failure on `1a1340a`
 - [x] Commit CI collection/GPU gate (`807b735`)
 - [x] Preregister T1/T2 (no results) — commit `7392ab5`
-- [ ] Implement + semantic tests
 - [x] Implement + semantic tests (`e25f7b5`, provenance fix `01f93ab`)
 - [x] Execute T1
 - [x] Adjudicate T1 (`TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`; encoder caveat)
 - [x] Execute T2 if T1 adjudication is integrity-clean
 - [x] Adjudicate T2 (`NEGATIVE_RESULT`; evidence_level None)
 - [x] Review, suite, docs
-  Independent reviews: adversarial `5d22c593-7976-45ed-8e24-a78a7fb9faad`,
+  Independent reviews (implementation): adversarial `5d22c593-7976-45ed-8e24-a78a7fb9faad`,
   protocol `e852af8e-0bbf-471b-ac6e-ffa28951cef1` (not Sol High).
-  Local: 329 passed, 1 deselected; Ruff green; audit `SMOKE_VALIDATED`.
+  Independent reviews (analysis): adversarial `eea6af2f-b8ba-45ec-8594-cc5c304d2878`,
+  protocol `178e2159-c464-4f1a-8d45-8b32316dc5e7` (not Sol High). No P0/P1.
+  Local after analysis: 331 passed, 1 deselected; Ruff green; audit `SMOKE_VALIDATED`.
+- [x] Post-hoc untrained-predictor diagnostic (`e29aa41` code; separate JSON).
+  Does not change T1. Analysis:
+  `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.

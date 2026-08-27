@@ -24,9 +24,14 @@
 - [x] Execute AMORTIZE-001 only after MKNN adjudication with no P0/P1 integrity issue.
   Result: `NEGATIVE_RESULT` (success saturated; N=64 slower than shooting).
   Gates were not retuned.
-- [ ] Do not open `WM-LEFLOW-TRANSFER-001` until those CPU controls exist.
-  CRCT-on-transfer is gated on that transfer beating wrong-world and
-  adapter-only controls.
+- [x] Analyze T1×T2 without retuning; untrained-predictor post-hoc is not a
+  gate. Stitching remains closed. See
+  `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
+- [ ] Do not open `WM-LEFLOW-TRANSFER-001`. CPU T1/T2 exist; T2 is
+  `NEGATIVE_RESULT` with success at ceiling. CRCT-on-transfer stays gated
+  on a future transfer protocol beating wrong-world and adapter-only
+  controls. A harder planning substrate where shooting is not at ceiling
+  would be required first; do not execute it without a new protocol.
 
 ## 2026-08-17 CRCT adjudication
 

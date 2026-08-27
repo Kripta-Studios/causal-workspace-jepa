@@ -1,6 +1,9 @@
 # WM-LEFLOW-AMORTIZE-001 protocol
 
-Status: `PREREGISTERED_NOT_RUN`.
+Status: adjudicated `NEGATIVE_RESULT` (evidence_level `None`) on 2026-08-27.
+Frozen gates, seeds, N, H, and success floor in this file were not changed
+after outcomes. See
+`docs/WM_LEFLOW_AMORTIZE_001_ADJUDICATION_2026-08-27.md`.
 
 This is a CPU-scale **amortized planning control** on one frozen tiny JEPA.
 It is **not** a LeFlow paper reproduction, not a DINO-WM/LeWM download, not
