@@ -28,6 +28,7 @@ artifacts/**/*.pth
 artifacts/**/*.safetensors
 artifacts/metrics/*.progress.json
 artifacts/metrics/*.progress.json.tmp
+artifacts/local_scratch/
 papers/*.aux
 papers/*.bbl
 papers/*.blg

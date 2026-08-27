@@ -418,7 +418,6 @@ def _train_student(
 ) -> dict[str, float | int | str]:
     n_train = profile.train_samples
     n_val = profile.validation_samples
-    train_slice = slice(0, n_train)
     val_slice = slice(n_train, n_train + n_val)
     test_slice = slice(n_train + n_val, x.shape[0])
 
