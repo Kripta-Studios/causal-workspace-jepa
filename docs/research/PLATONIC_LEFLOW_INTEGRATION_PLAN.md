@@ -170,14 +170,16 @@ IBD-001 is only an ontology smoke, with a recorded tautological-gauge caveat.
 
 ### Proposed later IDs (not opened, not run)
 
-- `WM-PLATONIC-MKNN-001` — geometry column.
-- `WM-PLATONIC-STITCH-001` — interface column.
+- `WM-PLATONIC-MKNN-001` — geometry column. **Opened and run** as a CPU
+  control; see `docs/WM_PLATONIC_MKNN_001_ADJUDICATION_2026-08-27.md`.
+- `WM-PLATONIC-STITCH-001` — interface column. **Not opened.**
 - `WM-LEFLOW-AMORTIZE-001` — planner competence on one frozen tiny JEPA.
+  **Opened and run** as a CPU control; `NEGATIVE_RESULT`.
 - `WM-LEFLOW-TRANSFER-001` — T0–T5 on two tiny JEPAs, same dynamics,
-  different frozen observation maps. CPU first.
+  different frozen observation maps. CPU first. **Not opened.**
 - `WM-CRCT-PLATONIC-COMPUTE-001` — causal-equivalence column. Authorized only
   if `WM-LEFLOW-TRANSFER-001` beats wrong-world and adapter-only controls
-  under a protocol committed before those outcomes.
+  under a protocol committed before those outcomes. **Not opened.**
 
 Do not skip to `WM-CRCT-PLATONIC-COMPUTE-001` because the diagram is attractive.
 

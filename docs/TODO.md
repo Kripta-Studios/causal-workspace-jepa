@@ -21,7 +21,9 @@
 - [x] Execute MKNN-001 on frozen confirmation seeds; keep a negative if it fails.
   Result: `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED` with the encoder-geometry
   caveat recorded. Gates were not retuned.
-- [ ] Execute AMORTIZE-001 only after MKNN adjudication with no P0/P1 integrity issue.
+- [x] Execute AMORTIZE-001 only after MKNN adjudication with no P0/P1 integrity issue.
+  Result: `NEGATIVE_RESULT` (success saturated; N=64 slower than shooting).
+  Gates were not retuned.
 - [ ] Do not open `WM-LEFLOW-TRANSFER-001` until those CPU controls exist.
   CRCT-on-transfer is gated on that transfer beating wrong-world and
   adapter-only controls.

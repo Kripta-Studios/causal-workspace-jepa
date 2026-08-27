@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_wm_leflow_amortize.py --config configs/experiments/wm_leflow_amortize_v1.json",
+  "git_commit": "f1ac460f3321131a6f4c6bf62ad2fadeab655024",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/wm_leflow_amortize_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 151,
+  "status": "NEGATIVE_RESULT",
+  "time_utc": "2026-08-27T14:46:30.992900+00:00"
+}

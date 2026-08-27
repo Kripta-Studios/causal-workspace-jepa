@@ -10,9 +10,10 @@
 - Successor `LLM-QWEN-BINDING-ALGEBRA-004` is drafted, not authorized to run.
 - Coalition IBD evaluator distinguishes graph recall from functional equivalence on
   a planted bottleneck. HARD-002 stays negative.
-- Platonic/LeFlow paper-scale work remains plan-only. CPU protocols
-  `WM-PLATONIC-MKNN-001` and `WM-LEFLOW-AMORTIZE-001` are preregistered,
-  not run. Stitching and transfer IDs stay closed.
+- Platonic/LeFlow paper-scale work remains plan-only. CPU
+  `WM-PLATONIC-MKNN-001` passed with an encoder-geometry caveat.
+  `WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. Stitching and transfer
+  IDs stay closed.
 
 ## 2026-08-17 — CRCT synthetic falsification adjudication
 

@@ -1,0 +1,657 @@
+{
+  "all_seeds_passed": false,
+  "claim_boundary": {
+    "does_not_eliminate_replanning": true,
+    "does_not_make_cem_obsolete": true,
+    "does_not_relabel_hard002": true,
+    "evidence_level_if_pass": "Availability",
+    "h5_h10_is_not_ood": true,
+    "not_leflow": true,
+    "not_workspace": true
+  },
+  "does_not_relabel_hard002": true,
+  "downloads_performed": [],
+  "evidence_level": "None",
+  "experiment_id": "WM-LEFLOW-AMORTIZE-001",
+  "integrity_blockers": [],
+  "model_forwards_performed": [
+    "tiny_jepa_ridge_cpu"
+  ],
+  "not_a_leflow_reproduction": true,
+  "protected_splits_executed": [],
+  "seed_rows": [
+    {
+      "development_metrics_computed": false,
+      "horizons": {
+        "10": {
+          "arms": {
+            "action_flow_n1": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 2.0800003161032993e-05,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "iterative_cem": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0005029625014382569,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n1": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 0.00018032499792752787,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n64": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0005143708343287775,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "random_shooting_n64": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0001427916661972025,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            }
+          },
+          "horizon": 10,
+          "is_ood": false,
+          "is_primary": false,
+          "world_model_fingerprint": "5480688b75b862bafd93b90206f7f9edde64d40313769dc7e9859fef527c7332"
+        },
+        "5": {
+          "arms": {
+            "action_flow_n1": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 1.932083008189996e-05,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "iterative_cem": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00039562499902482767,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n1": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 0.00011601666483329609,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n64": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0002595958321762737,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "random_shooting_n64": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00012183749762092096,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            }
+          },
+          "horizon": 5,
+          "is_ood": false,
+          "is_primary": true,
+          "world_model_fingerprint": "5480688b75b862bafd93b90206f7f9edde64d40313769dc7e9859fef527c7332"
+        }
+      },
+      "inverse_dynamics_mse_no_delta": 2.1264352778604945e-10,
+      "inverse_dynamics_mse_with_delta": 1.1808901079213285e-11,
+      "inverse_dynamics_weight_shape": [
+        49,
+        2
+      ],
+      "primary_amortized_clock_s": 0.0002595958321762737,
+      "primary_amortized_success": 1.0,
+      "primary_shooting_clock_s": 0.00012183749762092096,
+      "primary_shooting_success": 1.0,
+      "protected_splits_executed": [],
+      "seed": 151,
+      "seed_passed": false,
+      "split_ids": {
+        "confirmation": [
+          3,
+          5,
+          8,
+          12,
+          13,
+          16,
+          24,
+          26,
+          30,
+          37,
+          50,
+          51,
+          57,
+          62,
+          64,
+          67,
+          68,
+          72,
+          73,
+          83,
+          86,
+          89,
+          93,
+          94
+        ],
+        "development": [
+          0,
+          20,
+          25,
+          29,
+          34,
+          45,
+          46,
+          48,
+          53,
+          55,
+          58,
+          59,
+          65,
+          85,
+          91,
+          95
+        ],
+        "train": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          9,
+          10,
+          11,
+          14,
+          15,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          27,
+          28,
+          31,
+          32,
+          33,
+          35,
+          36,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          47,
+          49,
+          52,
+          54,
+          56,
+          60,
+          61,
+          63,
+          66,
+          69,
+          70,
+          71,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          84,
+          87,
+          88,
+          90,
+          92
+        ]
+      },
+      "world_model_fingerprint": "5480688b75b862bafd93b90206f7f9edde64d40313769dc7e9859fef527c7332"
+    },
+    {
+      "development_metrics_computed": false,
+      "horizons": {
+        "10": {
+          "arms": {
+            "action_flow_n1": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 1.5525000587028142e-05,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "iterative_cem": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0005852750036865473,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n1": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 0.00019966249480300272,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n64": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.000544441667443607,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "random_shooting_n64": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00016782499854646934,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            }
+          },
+          "horizon": 10,
+          "is_ood": false,
+          "is_primary": false,
+          "world_model_fingerprint": "0a56bd2295d92869ead41cc496c54c7f2d15fe10672f4312c7682369ccc20077"
+        },
+        "5": {
+          "arms": {
+            "action_flow_n1": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 1.5237500823180502e-05,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "iterative_cem": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.000458904163679108,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n1": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 0.0001357375040242914,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n64": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00028535416883338865,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "random_shooting_n64": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00015832500139367767,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            }
+          },
+          "horizon": 5,
+          "is_ood": false,
+          "is_primary": true,
+          "world_model_fingerprint": "0a56bd2295d92869ead41cc496c54c7f2d15fe10672f4312c7682369ccc20077"
+        }
+      },
+      "inverse_dynamics_mse_no_delta": 2.3090494793986949e-10,
+      "inverse_dynamics_mse_with_delta": 1.1673972552528333e-11,
+      "inverse_dynamics_weight_shape": [
+        49,
+        2
+      ],
+      "primary_amortized_clock_s": 0.00028535416883338865,
+      "primary_amortized_success": 1.0,
+      "primary_shooting_clock_s": 0.00015832500139367767,
+      "primary_shooting_success": 1.0,
+      "protected_splits_executed": [],
+      "seed": 157,
+      "seed_passed": false,
+      "split_ids": {
+        "confirmation": [
+          3,
+          5,
+          8,
+          12,
+          13,
+          16,
+          24,
+          26,
+          30,
+          37,
+          50,
+          51,
+          57,
+          62,
+          64,
+          67,
+          68,
+          72,
+          73,
+          83,
+          86,
+          89,
+          93,
+          94
+        ],
+        "development": [
+          0,
+          20,
+          25,
+          29,
+          34,
+          45,
+          46,
+          48,
+          53,
+          55,
+          58,
+          59,
+          65,
+          85,
+          91,
+          95
+        ],
+        "train": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          9,
+          10,
+          11,
+          14,
+          15,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          27,
+          28,
+          31,
+          32,
+          33,
+          35,
+          36,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          47,
+          49,
+          52,
+          54,
+          56,
+          60,
+          61,
+          63,
+          66,
+          69,
+          70,
+          71,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          84,
+          87,
+          88,
+          90,
+          92
+        ]
+      },
+      "world_model_fingerprint": "0a56bd2295d92869ead41cc496c54c7f2d15fe10672f4312c7682369ccc20077"
+    },
+    {
+      "development_metrics_computed": false,
+      "horizons": {
+        "10": {
+          "arms": {
+            "action_flow_n1": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 1.4787498609318087e-05,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "iterative_cem": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0006238541706503989,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n1": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 0.00021609583200188354,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n64": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0005009541685770577,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "random_shooting_n64": {
+              "horizon": 10.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00027357083551275235,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            }
+          },
+          "horizon": 10,
+          "is_ood": false,
+          "is_primary": false,
+          "world_model_fingerprint": "7f35a4afdda912c3959cb98b529c5f535e9020dce594998dc49e4ddf6e042714"
+        },
+        "5": {
+          "arms": {
+            "action_flow_n1": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 2.9820833636525396e-05,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "iterative_cem": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0003879041626836018,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n1": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 1.0,
+              "mean_wall_clock_s": 0.00019094166903717755,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "latent_flow_n64": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.0003792583314255656,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            },
+            "random_shooting_n64": {
+              "horizon": 5.0,
+              "mean_candidates_evaluated": 64.0,
+              "mean_wall_clock_s": 0.00012612916301198615,
+              "n_tasks": 24.0,
+              "success_rate": 1.0
+            }
+          },
+          "horizon": 5,
+          "is_ood": false,
+          "is_primary": true,
+          "world_model_fingerprint": "7f35a4afdda912c3959cb98b529c5f535e9020dce594998dc49e4ddf6e042714"
+        }
+      },
+      "inverse_dynamics_mse_no_delta": 2.255582920440702e-08,
+      "inverse_dynamics_mse_with_delta": 4.184428498144044e-11,
+      "inverse_dynamics_weight_shape": [
+        49,
+        2
+      ],
+      "primary_amortized_clock_s": 0.0003792583314255656,
+      "primary_amortized_success": 1.0,
+      "primary_shooting_clock_s": 0.00012612916301198615,
+      "primary_shooting_success": 1.0,
+      "protected_splits_executed": [],
+      "seed": 163,
+      "seed_passed": false,
+      "split_ids": {
+        "confirmation": [
+          3,
+          5,
+          8,
+          12,
+          13,
+          16,
+          24,
+          26,
+          30,
+          37,
+          50,
+          51,
+          57,
+          62,
+          64,
+          67,
+          68,
+          72,
+          73,
+          83,
+          86,
+          89,
+          93,
+          94
+        ],
+        "development": [
+          0,
+          20,
+          25,
+          29,
+          34,
+          45,
+          46,
+          48,
+          53,
+          55,
+          58,
+          59,
+          65,
+          85,
+          91,
+          95
+        ],
+        "train": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          9,
+          10,
+          11,
+          14,
+          15,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          27,
+          28,
+          31,
+          32,
+          33,
+          35,
+          36,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          47,
+          49,
+          52,
+          54,
+          56,
+          60,
+          61,
+          63,
+          66,
+          69,
+          70,
+          71,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          84,
+          87,
+          88,
+          90,
+          92
+        ]
+      },
+      "world_model_fingerprint": "7f35a4afdda912c3959cb98b529c5f535e9020dce594998dc49e4ddf6e042714"
+    }
+  ],
+  "splits_accessed": [
+    "train",
+    "confirmation"
+  ],
+  "status": "NEGATIVE_RESULT",
+  "world_model_frozen": true
+}

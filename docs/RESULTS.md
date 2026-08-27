@@ -30,6 +30,10 @@
   seeds 131/137/139. Evidence level Availability. Encoder geometry was
   already aligned, so this is not a demonstration of learned platonic
   coordinates. Stitching was not opened.
+- `WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. Amortized latent N=64
+  matched shooting success at 1.0 but was slower on seeds 151/157/163.
+  Evidence level `None`. Not a LeFlow reproduction. Paper-scale
+  Platonic/LeFlow work remains plan-only.
 
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
 

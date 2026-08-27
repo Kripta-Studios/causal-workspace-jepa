@@ -25,11 +25,11 @@
   already above the chance floor; this is not shared coordinates, not a
   circuit, and not stitching. See
   `docs/WM_PLATONIC_MKNN_001_ADJUDICATION_2026-08-27.md`.
-- `WM-LEFLOW-AMORTIZE-001` — `PREREGISTERED_NOT_RUN`. CPU amortized
-  interpolator vs shooting/CEM on one frozen tiny JEPA. Protocol
-  `docs/WM_LEFLOW_AMORTIZE_001_PROTOCOL.md`. Confirmation seeds 151/157/163.
-  Not a LeFlow reproduction. Gated on MKNN adjudication integrity, not on
-  MKNN passing.
+- `WM-LEFLOW-AMORTIZE-001` — `NEGATIVE_RESULT`. CPU interpolator N=64
+  matched shooting success (1.0) but was slower on every confirmation seed
+  151/157/163. Evidence level `None`. Not a LeFlow reproduction. Protocol
+  `docs/WM_LEFLOW_AMORTIZE_001_PROTOCOL.md`. See
+  `docs/WM_LEFLOW_AMORTIZE_001_ADJUDICATION_2026-08-27.md`.
 - `WM-PLATONIC-STITCH-001` — not opened.
 - Platonic WM / LeFlow paper-scale work remains plan only. Joint successor
   IDs still **not opened**: `WM-LEFLOW-TRANSFER-001` (planner portability

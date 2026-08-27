@@ -48,6 +48,6 @@ H=5 primary. Success = true position MSE `< 0.15`. Amortized latent N=64 must be
 - [x] Implement + semantic tests (`e25f7b5`, provenance fix `01f93ab`)
 - [x] Execute T1
 - [x] Adjudicate T1 (`TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`; encoder caveat)
-- [ ] Execute T2 if T1 adjudication is integrity-clean
-- [ ] Adjudicate T2
+- [x] Execute T2 if T1 adjudication is integrity-clean
+- [x] Adjudicate T2 (`NEGATIVE_RESULT`; evidence_level None)
 - [ ] Review, suite, docs
