@@ -1,0 +1,2917 @@
+{
+  "claim_boundary": "synthetic IBD evaluator only; not Qwen/JEPA/workspace; does not alter HARD-002",
+  "confirmation": {
+    "all_seeds_distinguish_ontology": true,
+    "evidence_level": "Causal mediation",
+    "experiment_id": "CRCT-COALITION-IBD-001",
+    "rows": [
+      {
+        "causal_energy": {
+          "cancel_neg": 3.676656484603882,
+          "cancel_pos": 3.676656484603882,
+          "known_a": 13.410243034362793,
+          "known_b": 13.410243034362793,
+          "residual": 3.2101449966430664,
+          "unknown": 1.9088149070739746
+        },
+        "claim_boundary": "synthetic interpretable-by-design evaluator test only; not a Qwen, JEPA, or workspace claim; does not alter HARD-002",
+        "decoy_activation_energy": 106.82096099853516,
+        "decoy_causal_energy": 0.0,
+        "evidence_level": "Causal mediation",
+        "experiment_id": "CRCT-COALITION-IBD-001",
+        "gauge_energy_spearman": 1.0000001089913624,
+        "gauge_function_mse": 2.1576040650297945e-13,
+        "hard002_primary_seeds_reused": false,
+        "iid": {
+          "cancellation": [
+            {
+              "mean_product": -3.676656484603882,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.6619535890645734,
+              "with_error": 7.814287582787736e-16,
+              "without_error": 0.6619535890645741
+            },
+            "residual": {
+              "delta_error": 0.15845850045375584,
+              "with_error": 7.814287582787736e-16,
+              "without_error": 0.15845850045375662
+            },
+            "unknown": {
+              "delta_error": 0.09422251896254376,
+              "with_error": 7.814287582787736e-16,
+              "without_error": 0.09422251896254454
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.5421823263168335,
+              "energy": 3.676656484603882,
+              "mean": 0.05766557157039642,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.5421823263168335,
+              "energy": 3.676656484603882,
+              "mean": -0.05766557157039642,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 2.5165090560913086,
+              "energy": 13.410243034362793,
+              "mean": -0.00049591064453125,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 2.5165090560913086,
+              "energy": 13.410243034362793,
+              "mean": -0.00049591064453125,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 1.2368175983428955,
+              "energy": 3.2101449966430664,
+              "mean": 0.10010558366775513,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.059377908706665,
+              "energy": 1.9088149070739746,
+              "mean": 0.04036713019013405,
+              "sign": 1.0
+            }
+          },
+          "sufficiency_error": 7.814287582787736e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "matched_control": [
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "matched_control_report": {
+          "cancellation": [
+            {
+              "mean_product": -3.676656484603882,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "selected_count": 2.0,
+            "true_positive_count": 2.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "cancel_neg": {
+              "delta_error": 0.22177583548129043,
+              "with_error": 1.0,
+              "without_error": 1.2217758354812904
+            },
+            "cancel_pos": {
+              "delta_error": 0.14119715482039785,
+              "with_error": 1.0,
+              "without_error": 1.1411971548203979
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.5421823263168335,
+              "energy": 3.676656484603882,
+              "mean": 0.05766557157039642,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.5421823263168335,
+              "energy": 3.676656484603882,
+              "mean": -0.05766557157039642,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 2.5165090560913086,
+              "energy": 13.410243034362793,
+              "mean": -0.00049591064453125,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 2.5165090560913086,
+              "energy": 13.410243034362793,
+              "mean": -0.00049591064453125,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 1.2368175983428955,
+              "energy": 3.2101449966430664,
+              "mean": 0.10010558366775513,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.059377908706665,
+              "energy": 1.9088149070739746,
+              "mean": 0.04036713019013405,
+              "sign": 1.0
+            }
+          },
+          "sufficiency_error": 1.0,
+          "sufficient": false,
+          "support_labels": []
+        },
+        "ontology_distinguished": true,
+        "ood": {
+          "cancellation": [
+            {
+              "mean_product": -7.732546329498291,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.6952836573416727,
+              "with_error": 8.746207745092279e-16,
+              "without_error": 0.6952836573416736
+            },
+            "residual": {
+              "delta_error": 0.18533931957590444,
+              "with_error": 8.746207745092279e-16,
+              "without_error": 0.18533931957590533
+            },
+            "unknown": {
+              "delta_error": 0.08040822966015279,
+              "with_error": 8.746207745092279e-16,
+              "without_error": 0.08040822966015367
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.000000133111782,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 2.2268190383911133,
+              "energy": 7.732546329498291,
+              "mean": 0.0831238403916359,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 2.2268190383911133,
+              "energy": 7.732546329498291,
+              "mean": -0.0831238403916359,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 4.351407527923584,
+              "energy": 38.292362213134766,
+              "mean": -0.07302988320589066,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 4.351407527923584,
+              "energy": 38.292362213134766,
+              "mean": -0.07302988320589066,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 2.2852625846862793,
+              "energy": 10.2074613571167,
+              "mean": 0.12081877142190933,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.6219171285629272,
+              "energy": 4.428438663482666,
+              "mean": -0.0054536075331270695,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 8.746207745092279e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "planted_nodes": [
+          "known_a",
+          "known_b",
+          "unknown",
+          "residual",
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "seed": 811,
+        "selected_functional_circuit": [
+          "known_a",
+          "unknown",
+          "residual"
+        ],
+        "stage": "confirmation",
+        "status": "SMOKE_VALIDATED",
+        "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36",
+        "thresholds": {
+          "cancellation_min_member_energy": 0.0001,
+          "cancellation_sum_energy_ratio_max": 0.02,
+          "decoy_causal_energy_max": 1e-08,
+          "epsilon": 0.02,
+          "gauge_spearman_min": 0.99,
+          "matched_control_must_fail_sufficiency": true,
+          "redundancy_correlation_min": 0.99
+        }
+      },
+      {
+        "causal_energy": {
+          "cancel_neg": 2.7346954345703125,
+          "cancel_pos": 2.7346954345703125,
+          "known_a": 40.69924545288086,
+          "known_b": 40.69924545288086,
+          "residual": 3.378525733947754,
+          "unknown": 2.0936014652252197
+        },
+        "claim_boundary": "synthetic interpretable-by-design evaluator test only; not a Qwen, JEPA, or workspace claim; does not alter HARD-002",
+        "decoy_activation_energy": 112.82431030273438,
+        "decoy_causal_energy": 0.0,
+        "evidence_level": "Causal mediation",
+        "experiment_id": "CRCT-COALITION-IBD-001",
+        "gauge_energy_spearman": 1.0000001089913624,
+        "gauge_function_mse": 6.763247188852628e-13,
+        "hard002_primary_seeds_reused": false,
+        "iid": {
+          "cancellation": [
+            {
+              "mean_product": -2.7346954345703125,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.8635809915848899,
+              "with_error": 5.300057373079857e-16,
+              "without_error": 0.8635809915848904
+            },
+            "residual": {
+              "delta_error": 0.07168757958674575,
+              "with_error": 5.300057373079857e-16,
+              "without_error": 0.07168757958674628
+            },
+            "unknown": {
+              "delta_error": 0.04442330124285589,
+              "with_error": 5.300057373079857e-16,
+              "without_error": 0.044423301242856414
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000000625108496,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.2933653593063354,
+              "energy": 2.7346954345703125,
+              "mean": 0.01640244573354721,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.2933653593063354,
+              "energy": 2.7346954345703125,
+              "mean": -0.01640244573354721,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 4.520520210266113,
+              "energy": 40.69924545288086,
+              "mean": 0.07554705440998077,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 4.520520210266113,
+              "energy": 40.69924545288086,
+              "mean": 0.07554705440998077,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 1.2307909727096558,
+              "energy": 3.378525733947754,
+              "mean": 0.31669458746910095,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.1495729684829712,
+              "energy": 2.0936014652252197,
+              "mean": 0.01590810716152191,
+              "sign": 1.0
+            }
+          },
+          "sufficiency_error": 5.300057373079857e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "matched_control": [
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "matched_control_report": {
+          "cancellation": [
+            {
+              "mean_product": -2.7346954345703125,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "selected_count": 2.0,
+            "true_positive_count": 2.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "cancel_neg": {
+              "delta_error": 0.06455749850013492,
+              "with_error": 1.0,
+              "without_error": 1.064557498500135
+            },
+            "cancel_pos": {
+              "delta_error": 0.051495559006945246,
+              "with_error": 1.0,
+              "without_error": 1.0514955590069452
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000000625108496,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.2933653593063354,
+              "energy": 2.7346954345703125,
+              "mean": 0.01640244573354721,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.2933653593063354,
+              "energy": 2.7346954345703125,
+              "mean": -0.01640244573354721,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 4.520520210266113,
+              "energy": 40.69924545288086,
+              "mean": 0.07554705440998077,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 4.520520210266113,
+              "energy": 40.69924545288086,
+              "mean": 0.07554705440998077,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 1.2307909727096558,
+              "energy": 3.378525733947754,
+              "mean": 0.31669458746910095,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.1495729684829712,
+              "energy": 2.0936014652252197,
+              "mean": 0.01590810716152191,
+              "sign": 1.0
+            }
+          },
+          "sufficiency_error": 1.0,
+          "sufficient": false,
+          "support_labels": []
+        },
+        "ontology_distinguished": true,
+        "ood": {
+          "cancellation": [
+            {
+              "mean_product": -6.2376556396484375,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.8580433808130891,
+              "with_error": 5.214970359605059e-16,
+              "without_error": 0.8580433808130896
+            },
+            "residual": {
+              "delta_error": 0.11013730565055761,
+              "with_error": 5.214970359605059e-16,
+              "without_error": 0.11013730565055814
+            },
+            "unknown": {
+              "delta_error": 0.04189584486699421,
+              "with_error": 5.214970359605059e-16,
+              "without_error": 0.04189584486699473
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.9747906923294067,
+              "energy": 6.2376556396484375,
+              "mean": 0.004148160573095083,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.9747906923294067,
+              "energy": 6.2376556396484375,
+              "mean": -0.004148160573095083,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 6.871355056762695,
+              "energy": 98.7955322265625,
+              "mean": -0.43785953521728516,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 6.871355056762695,
+              "energy": 98.7955322265625,
+              "mean": -0.43785953521728516,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 2.4425413608551025,
+              "energy": 12.68126392364502,
+              "mean": 0.6493847966194153,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.7486530542373657,
+              "energy": 4.82390832901001,
+              "mean": 0.028766334056854248,
+              "sign": 1.0
+            }
+          },
+          "sufficiency_error": 5.214970359605059e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "planted_nodes": [
+          "known_a",
+          "known_b",
+          "unknown",
+          "residual",
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "seed": 823,
+        "selected_functional_circuit": [
+          "known_a",
+          "unknown",
+          "residual"
+        ],
+        "stage": "confirmation",
+        "status": "SMOKE_VALIDATED",
+        "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36",
+        "thresholds": {
+          "cancellation_min_member_energy": 0.0001,
+          "cancellation_sum_energy_ratio_max": 0.02,
+          "decoy_causal_energy_max": 1e-08,
+          "epsilon": 0.02,
+          "gauge_spearman_min": 0.99,
+          "matched_control_must_fail_sufficiency": true,
+          "redundancy_correlation_min": 0.99
+        }
+      },
+      {
+        "causal_energy": {
+          "cancel_neg": 3.314406633377075,
+          "cancel_pos": 3.314406633377075,
+          "known_a": 11.659741401672363,
+          "known_b": 11.659741401672363,
+          "residual": 3.1486480236053467,
+          "unknown": 2.178499460220337
+        },
+        "claim_boundary": "synthetic interpretable-by-design evaluator test only; not a Qwen, JEPA, or workspace claim; does not alter HARD-002",
+        "decoy_activation_energy": 131.16818237304688,
+        "decoy_causal_energy": 0.0,
+        "evidence_level": "Causal mediation",
+        "experiment_id": "CRCT-COALITION-IBD-001",
+        "gauge_energy_spearman": 1.0000001089913624,
+        "gauge_function_mse": 1.7696113400588603e-13,
+        "hard002_primary_seeds_reused": false,
+        "iid": {
+          "cancellation": [
+            {
+              "mean_product": -3.314406633377075,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.7088364787896207,
+              "with_error": 8.932871490381213e-16,
+              "without_error": 0.7088364787896216
+            },
+            "residual": {
+              "delta_error": 0.1914173019035065,
+              "with_error": 8.932871490381213e-16,
+              "without_error": 0.1914173019035074
+            },
+            "unknown": {
+              "delta_error": 0.13243863403400621,
+              "with_error": 8.932871490381213e-16,
+              "without_error": 0.1324386340340071
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000001115304034,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.4215364456176758,
+              "energy": 3.314406633377075,
+              "mean": -0.08335107564926147,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.4215364456176758,
+              "energy": 3.314406633377075,
+              "mean": 0.08335107564926147,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 2.5469000339508057,
+              "energy": 11.659741401672363,
+              "mean": 0.056995972990989685,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 2.5469000339508057,
+              "energy": 11.659741401672363,
+              "mean": 0.056995972990989685,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 1.2556382417678833,
+              "energy": 3.1486480236053467,
+              "mean": -0.09295358508825302,
+              "sign": -1.0
+            },
+            "unknown": {
+              "abs_mean": 1.1611272096633911,
+              "energy": 2.178499460220337,
+              "mean": -0.030193263664841652,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 8.932871490381213e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "matched_control": [
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "matched_control_report": {
+          "cancellation": [
+            {
+              "mean_product": -3.314406633377075,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "selected_count": 2.0,
+            "true_positive_count": 2.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "cancel_neg": {
+              "delta_error": 0.09455930371703425,
+              "with_error": 1.0,
+              "without_error": 1.0945593037170342
+            },
+            "cancel_pos": {
+              "delta_error": 0.308429073014165,
+              "with_error": 1.0,
+              "without_error": 1.308429073014165
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000001115304034,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.4215364456176758,
+              "energy": 3.314406633377075,
+              "mean": -0.08335107564926147,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.4215364456176758,
+              "energy": 3.314406633377075,
+              "mean": 0.08335107564926147,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 2.5469000339508057,
+              "energy": 11.659741401672363,
+              "mean": 0.056995972990989685,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 2.5469000339508057,
+              "energy": 11.659741401672363,
+              "mean": 0.056995972990989685,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 1.2556382417678833,
+              "energy": 3.1486480236053467,
+              "mean": -0.09295358508825302,
+              "sign": -1.0
+            },
+            "unknown": {
+              "abs_mean": 1.1611272096633911,
+              "energy": 2.178499460220337,
+              "mean": -0.030193263664841652,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 1.0,
+          "sufficient": false,
+          "support_labels": []
+        },
+        "ontology_distinguished": true,
+        "ood": {
+          "cancellation": [
+            {
+              "mean_product": -7.449636459350586,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.6596680884142625,
+              "with_error": 7.150439133343089e-16,
+              "without_error": 0.6596680884142632
+            },
+            "residual": {
+              "delta_error": 0.24903907134937817,
+              "with_error": 7.150439133343089e-16,
+              "without_error": 0.2490390713493789
+            },
+            "unknown": {
+              "delta_error": 0.12163397411623932,
+              "with_error": 7.150439133343089e-16,
+              "without_error": 0.12163397411624004
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 2.1596052646636963,
+              "energy": 7.449636459350586,
+              "mean": 0.027148962020874023,
+              "sign": 1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 2.1596052646636963,
+              "energy": 7.449636459350586,
+              "mean": -0.027148962020874023,
+              "sign": -1.0
+            },
+            "known_a": {
+              "abs_mean": 3.882591962814331,
+              "energy": 27.652055740356445,
+              "mean": -0.0003965099749621004,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 3.882591962814331,
+              "energy": 27.652055740356445,
+              "mean": -0.0003965099749621004,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 2.3349297046661377,
+              "energy": 10.439254760742188,
+              "mean": -0.21011918783187866,
+              "sign": -1.0
+            },
+            "unknown": {
+              "abs_mean": 1.7941617965698242,
+              "energy": 5.09867000579834,
+              "mean": -0.025564715266227722,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 7.150439133343089e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "planted_nodes": [
+          "known_a",
+          "known_b",
+          "unknown",
+          "residual",
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "seed": 829,
+        "selected_functional_circuit": [
+          "known_a",
+          "unknown",
+          "residual"
+        ],
+        "stage": "confirmation",
+        "status": "SMOKE_VALIDATED",
+        "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36",
+        "thresholds": {
+          "cancellation_min_member_energy": 0.0001,
+          "cancellation_sum_energy_ratio_max": 0.02,
+          "decoy_causal_energy_max": 1e-08,
+          "epsilon": 0.02,
+          "gauge_spearman_min": 0.99,
+          "matched_control_must_fail_sufficiency": true,
+          "redundancy_correlation_min": 0.99
+        }
+      }
+    ],
+    "seeds": [
+      811,
+      823,
+      829
+    ],
+    "stage": "confirmation",
+    "status": "SMOKE_VALIDATED",
+    "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36"
+  },
+  "development": {
+    "all_seeds_distinguish_ontology": true,
+    "evidence_level": "Causal mediation",
+    "experiment_id": "CRCT-COALITION-IBD-001",
+    "rows": [
+      {
+        "causal_energy": {
+          "cancel_neg": 2.56955885887146,
+          "cancel_pos": 2.56955885887146,
+          "known_a": 35.8234748840332,
+          "known_b": 35.8234748840332,
+          "residual": 2.7689507007598877,
+          "unknown": 2.7697551250457764
+        },
+        "claim_boundary": "synthetic interpretable-by-design evaluator test only; not a Qwen, JEPA, or workspace claim; does not alter HARD-002",
+        "decoy_activation_energy": 87.63538360595703,
+        "decoy_causal_energy": 0.0,
+        "evidence_level": "Causal mediation",
+        "experiment_id": "CRCT-COALITION-IBD-001",
+        "gauge_energy_spearman": 1.0000001089913624,
+        "gauge_function_mse": 4.3497518954771497e-13,
+        "hard002_primary_seeds_reused": false,
+        "iid": {
+          "cancellation": [
+            {
+              "mean_product": -2.56955885887146,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.7424058990811497,
+              "with_error": 4.1953391492925754e-16,
+              "without_error": 0.7424058990811502
+            },
+            "residual": {
+              "delta_error": 0.05738375021305499,
+              "with_error": 4.1953391492925754e-16,
+              "without_error": 0.057383750213055404
+            },
+            "unknown": {
+              "delta_error": 0.05740041122459619,
+              "with_error": 4.1953391492925754e-16,
+              "without_error": 0.057400411224596604
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000002131183887,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.268673062324524,
+              "energy": 2.56955885887146,
+              "mean": -0.0868682861328125,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.268673062324524,
+              "energy": 2.56955885887146,
+              "mean": 0.0868682861328125,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 4.680673122406006,
+              "energy": 35.8234748840332,
+              "mean": -0.09843764454126358,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 4.680673122406006,
+              "energy": 35.8234748840332,
+              "mean": -0.09843764454126358,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 1.1208857297897339,
+              "energy": 2.7689507007598877,
+              "mean": 0.1033710166811943,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.2874010801315308,
+              "energy": 2.7697551250457764,
+              "mean": -0.03086741268634796,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 4.1953391492925754e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "matched_control": [
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "matched_control_report": {
+          "cancellation": [
+            {
+              "mean_product": -2.56955885887146,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "selected_count": 2.0,
+            "true_positive_count": 2.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "cancel_neg": {
+              "delta_error": 0.1060492555630781,
+              "with_error": 1.0,
+              "without_error": 1.106049255563078
+            },
+            "cancel_pos": {
+              "delta_error": 0.00045378033806153795,
+              "with_error": 1.0,
+              "without_error": 1.0004537803380615
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000002131183887,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.268673062324524,
+              "energy": 2.56955885887146,
+              "mean": -0.0868682861328125,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.268673062324524,
+              "energy": 2.56955885887146,
+              "mean": 0.0868682861328125,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 4.680673122406006,
+              "energy": 35.8234748840332,
+              "mean": -0.09843764454126358,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 4.680673122406006,
+              "energy": 35.8234748840332,
+              "mean": -0.09843764454126358,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 1.1208857297897339,
+              "energy": 2.7689507007598877,
+              "mean": 0.1033710166811943,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.2874010801315308,
+              "energy": 2.7697551250457764,
+              "mean": -0.03086741268634796,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 1.0,
+          "sufficient": false,
+          "support_labels": []
+        },
+        "ontology_distinguished": true,
+        "ood": {
+          "cancellation": [
+            {
+              "mean_product": -6.359224796295166,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.7333501623116762,
+              "with_error": 4.667897862233843e-16,
+              "without_error": 0.7333501623116766
+            },
+            "residual": {
+              "delta_error": 0.08760546613087042,
+              "with_error": 4.667897862233843e-16,
+              "without_error": 0.08760546613087089
+            },
+            "unknown": {
+              "delta_error": 0.06485341839779978,
+              "with_error": 4.667897862233843e-16,
+              "without_error": 0.06485341839780025
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000001581751647,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.9435850381851196,
+              "energy": 6.359224796295166,
+              "mean": -0.022666476666927338,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.9435850381851196,
+              "energy": 6.359224796295166,
+              "mean": 0.022666476666927338,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 6.406046390533447,
+              "energy": 64.45355224609375,
+              "mean": 0.21907643973827362,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 6.406046390533447,
+              "energy": 64.45355224609375,
+              "mean": 0.21907643973827362,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 2.0140278339385986,
+              "energy": 7.699573040008545,
+              "mean": 0.16494619846343994,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.8719033002853394,
+              "energy": 5.699914932250977,
+              "mean": 0.07542000710964203,
+              "sign": 1.0
+            }
+          },
+          "sufficiency_error": 4.667897862233843e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "planted_nodes": [
+          "known_a",
+          "known_b",
+          "unknown",
+          "residual",
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "seed": 11,
+        "selected_functional_circuit": [
+          "known_a",
+          "unknown",
+          "residual"
+        ],
+        "stage": "development",
+        "status": "SMOKE_VALIDATED",
+        "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36",
+        "thresholds": {
+          "cancellation_min_member_energy": 0.0001,
+          "cancellation_sum_energy_ratio_max": 0.02,
+          "decoy_causal_energy_max": 1e-08,
+          "epsilon": 0.02,
+          "gauge_spearman_min": 0.99,
+          "matched_control_must_fail_sufficiency": true,
+          "redundancy_correlation_min": 0.99
+        }
+      },
+      {
+        "causal_energy": {
+          "cancel_neg": 2.540271520614624,
+          "cancel_pos": 2.540271520614624,
+          "known_a": 17.29890251159668,
+          "known_b": 17.29890251159668,
+          "residual": 5.5966033935546875,
+          "unknown": 1.7660040855407715
+        },
+        "claim_boundary": "synthetic interpretable-by-design evaluator test only; not a Qwen, JEPA, or workspace claim; does not alter HARD-002",
+        "decoy_activation_energy": 114.97342681884766,
+        "decoy_causal_energy": 0.0,
+        "evidence_level": "Causal mediation",
+        "experiment_id": "CRCT-COALITION-IBD-001",
+        "gauge_energy_spearman": 1.0000001089913624,
+        "gauge_function_mse": 2.2304636707482645e-13,
+        "hard002_primary_seeds_reused": false,
+        "iid": {
+          "cancellation": [
+            {
+              "mean_product": -2.540271520614624,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.6427029188551336,
+              "with_error": 5.551536580521904e-16,
+              "without_error": 0.6427029188551342
+            },
+            "residual": {
+              "delta_error": 0.20792956861285536,
+              "with_error": 5.551536580521904e-16,
+              "without_error": 0.20792956861285591
+            },
+            "unknown": {
+              "delta_error": 0.06561202248097847,
+              "with_error": 5.551536580521904e-16,
+              "without_error": 0.06561202248097903
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 0.9999999261545133,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.2478649616241455,
+              "energy": 2.540271520614624,
+              "mean": -0.033501919358968735,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.2478649616241455,
+              "energy": 2.540271520614624,
+              "mean": 0.033501919358968735,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 2.9710140228271484,
+              "energy": 17.29890251159668,
+              "mean": -0.09492838382720947,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 2.9710140228271484,
+              "energy": 17.29890251159668,
+              "mean": -0.09492838382720947,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 1.614148736000061,
+              "energy": 5.5966033935546875,
+              "mean": 0.08182650059461594,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.0309709310531616,
+              "energy": 1.7660040855407715,
+              "mean": -0.0005745359812863171,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 5.551536580521904e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "matched_control": [
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "matched_control_report": {
+          "cancellation": [
+            {
+              "mean_product": -2.540271520614624,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "selected_count": 2.0,
+            "true_positive_count": 2.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "cancel_neg": {
+              "delta_error": 0.1496033458281989,
+              "with_error": 1.0,
+              "without_error": 1.149603345828199
+            },
+            "cancel_pos": {
+              "delta_error": 0.039153216739940655,
+              "with_error": 1.0,
+              "without_error": 1.0391532167399407
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 0.9999999261545133,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.2478649616241455,
+              "energy": 2.540271520614624,
+              "mean": -0.033501919358968735,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.2478649616241455,
+              "energy": 2.540271520614624,
+              "mean": 0.033501919358968735,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 2.9710140228271484,
+              "energy": 17.29890251159668,
+              "mean": -0.09492838382720947,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 2.9710140228271484,
+              "energy": 17.29890251159668,
+              "mean": -0.09492838382720947,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 1.614148736000061,
+              "energy": 5.5966033935546875,
+              "mean": 0.08182650059461594,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.0309709310531616,
+              "energy": 1.7660040855407715,
+              "mean": -0.0005745359812863171,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 1.0,
+          "sufficient": false,
+          "support_labels": []
+        },
+        "ontology_distinguished": true,
+        "ood": {
+          "cancellation": [
+            {
+              "mean_product": -6.188983917236328,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.5514502588282308,
+              "with_error": 4.645208779984838e-16,
+              "without_error": 0.5514502588282313
+            },
+            "residual": {
+              "delta_error": 0.30555136598502175,
+              "with_error": 4.645208779984838e-16,
+              "without_error": 0.3055513659850222
+            },
+            "unknown": {
+              "delta_error": 0.0639155561000671,
+              "with_error": 4.645208779984838e-16,
+              "without_error": 0.06391555610006756
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 0.9999999277787227,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.9099470376968384,
+              "energy": 6.188983917236328,
+              "mean": -0.04900023341178894,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.9099470376968384,
+              "energy": 6.188983917236328,
+              "mean": 0.04900023341178894,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 4.263107776641846,
+              "energy": 35.370697021484375,
+              "mean": -0.13320741057395935,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 4.263107776641846,
+              "energy": 35.370697021484375,
+              "mean": -0.13320741057395935,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 3.2022781372070312,
+              "energy": 19.59844207763672,
+              "mean": 0.08878336101770401,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.5660239458084106,
+              "energy": 4.09962272644043,
+              "mean": -0.043627504259347916,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 4.645208779984838e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "planted_nodes": [
+          "known_a",
+          "known_b",
+          "unknown",
+          "residual",
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "seed": 13,
+        "selected_functional_circuit": [
+          "known_a",
+          "unknown",
+          "residual"
+        ],
+        "stage": "development",
+        "status": "SMOKE_VALIDATED",
+        "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36",
+        "thresholds": {
+          "cancellation_min_member_energy": 0.0001,
+          "cancellation_sum_energy_ratio_max": 0.02,
+          "decoy_causal_energy_max": 1e-08,
+          "epsilon": 0.02,
+          "gauge_spearman_min": 0.99,
+          "matched_control_must_fail_sufficiency": true,
+          "redundancy_correlation_min": 0.99
+        }
+      },
+      {
+        "causal_energy": {
+          "cancel_neg": 3.8828394412994385,
+          "cancel_pos": 3.8828394412994385,
+          "known_a": 20.02732276916504,
+          "known_b": 20.02732276916504,
+          "residual": 3.088738203048706,
+          "unknown": 1.4862375259399414
+        },
+        "claim_boundary": "synthetic interpretable-by-design evaluator test only; not a Qwen, JEPA, or workspace claim; does not alter HARD-002",
+        "decoy_activation_energy": 73.27859497070312,
+        "decoy_causal_energy": 0.0,
+        "evidence_level": "Causal mediation",
+        "experiment_id": "CRCT-COALITION-IBD-001",
+        "gauge_energy_spearman": 1.0000001089913624,
+        "gauge_function_mse": 2.4602824118258315e-13,
+        "hard002_primary_seeds_reused": false,
+        "iid": {
+          "cancellation": [
+            {
+              "mean_product": -3.8828394412994385,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.8516342768471648,
+              "with_error": 6.982972735946815e-16,
+              "without_error": 0.8516342768471654
+            },
+            "residual": {
+              "delta_error": 0.13134431924441609,
+              "with_error": 6.982972735946815e-16,
+              "without_error": 0.13134431924441678
+            },
+            "unknown": {
+              "delta_error": 0.06320019478744003,
+              "with_error": 6.982972735946815e-16,
+              "without_error": 0.06320019478744072
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000001906279545,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.5544160604476929,
+              "energy": 3.8828394412994385,
+              "mean": -0.005878492724150419,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.5544160604476929,
+              "energy": 3.8828394412994385,
+              "mean": 0.005878492724150419,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 3.217057943344116,
+              "energy": 20.02732276916504,
+              "mean": 0.019482269883155823,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 3.217057943344116,
+              "energy": 20.02732276916504,
+              "mean": 0.019482269883155823,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 1.1787891387939453,
+              "energy": 3.088738203048706,
+              "mean": 0.048856835812330246,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 0.930006742477417,
+              "energy": 1.4862375259399414,
+              "mean": -0.018976939842104912,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 6.982972735946815e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "matched_control": [
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "matched_control_report": {
+          "cancellation": [
+            {
+              "mean_product": -3.8828394412994385,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "selected_count": 2.0,
+            "true_positive_count": 2.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "cancel_neg": {
+              "delta_error": 0.1856695943991149,
+              "with_error": 1.0,
+              "without_error": 1.185669594399115
+            },
+            "cancel_pos": {
+              "delta_error": 0.14455529928332722,
+              "with_error": 1.0,
+              "without_error": 1.1445552992833272
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 1.0000001906279545,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 1.5544160604476929,
+              "energy": 3.8828394412994385,
+              "mean": -0.005878492724150419,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 1.5544160604476929,
+              "energy": 3.8828394412994385,
+              "mean": 0.005878492724150419,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 3.217057943344116,
+              "energy": 20.02732276916504,
+              "mean": 0.019482269883155823,
+              "sign": 1.0
+            },
+            "known_b": {
+              "abs_mean": 3.217057943344116,
+              "energy": 20.02732276916504,
+              "mean": 0.019482269883155823,
+              "sign": 1.0
+            },
+            "residual": {
+              "abs_mean": 1.1787891387939453,
+              "energy": 3.088738203048706,
+              "mean": 0.048856835812330246,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 0.930006742477417,
+              "energy": 1.4862375259399414,
+              "mean": -0.018976939842104912,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 1.0,
+          "sufficient": false,
+          "support_labels": []
+        },
+        "ontology_distinguished": true,
+        "ood": {
+          "cancellation": [
+            {
+              "mean_product": -9.678483963012695,
+              "members": [
+                "cancel_pos",
+                "cancel_neg"
+              ],
+              "signed": true,
+              "sum_energy_ratio": 0.0
+            }
+          ],
+          "equivalence": [
+            {
+              "equivalent": true,
+              "left": [
+                "known_a",
+                "unknown",
+                "residual"
+              ],
+              "pairwise_nmse": 0.0,
+              "right": [
+                "known_b",
+                "unknown",
+                "residual"
+              ]
+            }
+          ],
+          "literal": {
+            "planted_count": 6.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "selected_count": 3.0,
+            "true_positive_count": 3.0
+          },
+          "minimal_sets": [
+            [
+              "known_a",
+              "unknown",
+              "residual"
+            ],
+            [
+              "known_b",
+              "unknown",
+              "residual"
+            ]
+          ],
+          "necessity": {
+            "known_a": {
+              "delta_error": 0.7687875254267986,
+              "with_error": 6.786563302707851e-16,
+              "without_error": 0.7687875254267993
+            },
+            "residual": {
+              "delta_error": 0.17912832916074484,
+              "with_error": 6.786563302707851e-16,
+              "without_error": 0.1791283291607455
+            },
+            "unknown": {
+              "delta_error": 0.05721448536464796,
+              "with_error": 6.786563302707851e-16,
+              "without_error": 0.05721448536464864
+            }
+          },
+          "redundancy": [
+            {
+              "correlation": 0.9999998972855761,
+              "members": [
+                "known_a",
+                "known_b"
+              ],
+              "substitutable": true
+            }
+          ],
+          "signed": {
+            "cancel_neg": {
+              "abs_mean": 2.4497671127319336,
+              "energy": 9.678483963012695,
+              "mean": -0.07204356044530869,
+              "sign": -1.0
+            },
+            "cancel_pos": {
+              "abs_mean": 2.4497671127319336,
+              "energy": 9.678483963012695,
+              "mean": 0.07204356044530869,
+              "sign": 1.0
+            },
+            "known_a": {
+              "abs_mean": 4.9693779945373535,
+              "energy": 49.73112487792969,
+              "mean": -0.05987604334950447,
+              "sign": -1.0
+            },
+            "known_b": {
+              "abs_mean": 4.9693779945373535,
+              "energy": 49.73112487792969,
+              "mean": -0.05987604334950447,
+              "sign": -1.0
+            },
+            "residual": {
+              "abs_mean": 2.422281503677368,
+              "energy": 11.587406158447266,
+              "mean": 0.021745065227150917,
+              "sign": 1.0
+            },
+            "unknown": {
+              "abs_mean": 1.4781254529953003,
+              "energy": 3.701075792312622,
+              "mean": -0.12200739234685898,
+              "sign": -1.0
+            }
+          },
+          "sufficiency_error": 6.786563302707851e-16,
+          "sufficient": true,
+          "support_labels": [
+            {
+              "combination": [
+                "known_a"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "known_a",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "unknown"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "unknown",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "residual"
+              ],
+              "in_support": true,
+              "magnitude": 1.0,
+              "operation": "zero",
+              "site": "residual",
+              "support_status": "in_support"
+            },
+            {
+              "combination": [
+                "known_a",
+                "unknown",
+                "residual",
+                "decoy"
+              ],
+              "in_support": false,
+              "magnitude": 8.0,
+              "operation": "steer",
+              "site": "known_a",
+              "support_status": "out_of_support"
+            }
+          ]
+        },
+        "planted_nodes": [
+          "known_a",
+          "known_b",
+          "unknown",
+          "residual",
+          "cancel_pos",
+          "cancel_neg"
+        ],
+        "seed": 17,
+        "selected_functional_circuit": [
+          "known_a",
+          "unknown",
+          "residual"
+        ],
+        "stage": "development",
+        "status": "SMOKE_VALIDATED",
+        "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36",
+        "thresholds": {
+          "cancellation_min_member_energy": 0.0001,
+          "cancellation_sum_energy_ratio_max": 0.02,
+          "decoy_causal_energy_max": 1e-08,
+          "epsilon": 0.02,
+          "gauge_spearman_min": 0.99,
+          "matched_control_must_fail_sufficiency": true,
+          "redundancy_correlation_min": 0.99
+        }
+      }
+    ],
+    "seeds": [
+      11,
+      13,
+      17
+    ],
+    "stage": "development",
+    "status": "SMOKE_VALIDATED",
+    "threshold_digest": "221d891eedcbb34816e75d52b94d8734d9313ed87788bff7751d01c9bf282c36"
+  },
+  "evidence_level": "Causal mediation",
+  "experiment_id": "CRCT-COALITION-IBD-001",
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "status": "SMOKE_VALIDATED"
+}
