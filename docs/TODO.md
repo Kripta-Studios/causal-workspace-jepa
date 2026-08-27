@@ -32,6 +32,10 @@
   Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` freeze then run: rung 800
   competent; Stage A failed; `INCONCLUSIVE`; confirmation closed. Do not
   retune.
+- [x] 006 freeze-candidate protocol, instrument, and independent
+  FREEZE_ALLOWED reviews (protocol `32c96334`; adversarial `cca4ed4b`).
+- [ ] Execute `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` only on the
+  freeze commit. Do not rerun 005.
 - [x] Intervention-JEPA fair-baseline policy module.
 - [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
 - [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.

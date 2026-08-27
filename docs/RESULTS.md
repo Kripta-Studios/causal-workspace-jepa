@@ -40,6 +40,8 @@
   `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
   Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` is `INCONCLUSIVE` (freeze
   `5f4696a`; rung 800 competent; Stage A failed; confirmation closed).
+  Successor `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` is frozen
+  `PREREGISTERED_NOT_RUN` (Level 2B; not Level 3). 005 unchanged.
   HARD-002 remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on
