@@ -32,6 +32,9 @@
   Gates were not retuned. T2 was not mutated.
 - [ ] Do not open `WM-LEFLOW-TRANSFER-001`. MiniPush-002 did not make search
   useful. Rectified Flow is not justified. CRCT-on-transfer stays gated.
+- [ ] `WM-AMORTIZED-PLANNING-REACHABLE-003` remains
+  `DRAFT_NOT_PREREGISTERED`. Do not freeze, qualify, or confirm it until
+  an explicit authorization commit.
 
 ## 2026-08-17 CRCT adjudication
 

@@ -42,6 +42,9 @@
   matched shooting success on seeds 251/257/263; almost all queries were
   `horizon_insufficient`. Evidence `None`. T2 was not mutated. See
   `docs/WM_AMORTIZED_PLANNING_MINIPUSH_002_ADJUDICATION_2026-08-27.md`.
+- CPU track synthesis (no new runs):
+  `docs/WM_CPU_TRACK_SYNTHESIS_2026-08-27.md`. Successor
+  `WM-AMORTIZED-PLANNING-REACHABLE-003` is `DRAFT_NOT_PREREGISTERED` only.
 
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
 

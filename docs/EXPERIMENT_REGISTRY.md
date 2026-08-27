@@ -41,6 +41,10 @@
   Evidence `None`. Not LeFlow. Protocol
   `docs/WM_AMORTIZED_PLANNING_MINIPUSH_002_PROTOCOL.md`. See
   `docs/WM_AMORTIZED_PLANNING_MINIPUSH_002_ADJUDICATION_2026-08-27.md`.
+- `WM-AMORTIZED-PLANNING-REACHABLE-003` — **`DRAFT_NOT_PREREGISTERED`**.
+  `execution_authorized: false`. Not a freeze. No config. No runs. See
+  `docs/research/WM_AMORTIZED_PLANNING_REACHABLE_003_DRAFT.md`.
+  Track synthesis: `docs/WM_CPU_TRACK_SYNTHESIS_2026-08-27.md`.
 - Platonic WM / LeFlow paper-scale work remains plan only. Joint successor
   IDs still **not opened**: `WM-LEFLOW-TRANSFER-001` (planner portability
   `A→B`), `WM-CRCT-PLATONIC-COMPUTE-001` (equivalent causal computations;

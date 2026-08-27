@@ -3,9 +3,11 @@
 Status: paper-scale work remains `PREREGISTERED_PLAN_ONLY`. CPU Track A:
 `WM-PLATONIC-MKNN-001` is `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
 (Availability, encoder-geometry caveat);
-`WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. No DINO-WM/LeWM download.
-`WM-PLATONIC-STITCH-001` is not opened. See
-`docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
+`WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. CPU
+`WM-AMORTIZED-PLANNING-MINIPUSH-002` is `UNINFORMATIVE_SUBSTRATE`.
+`WM-AMORTIZED-PLANNING-REACHABLE-003` is `DRAFT_NOT_PREREGISTERED` (not
+authorized, no runs). No DINO-WM/LeWM download. `WM-PLATONIC-STITCH-001`
+is not opened. See `docs/WM_CPU_TRACK_SYNTHESIS_2026-08-27.md`.
 Papers are arXiv preprints (not peer-reviewed):
 
 - [2608.23720](https://arxiv.org/abs/2608.23720) Platonic Representation Hypothesis on World Models (v2, 2026-08-26)
