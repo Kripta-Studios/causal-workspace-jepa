@@ -79,7 +79,7 @@ No provenance was invented for the moved JSON files.
 - [x] Independent review of full diff (Sol-medium subagents; Codex Sol High routing UNVERIFIED)
 - [x] P1 review remediations: real gauge, committed ledger copy, Ruff pin, 004 draft, failure-path test
 - [x] Full non-protected suite after this docs/code pass (315 passed, Ruff green, audit SMOKE_VALIDATED)
-- [ ] Push remaining commits to origin/crct-stage0-001
+- [x] Push remaining commits to origin/crct-stage0-001 (`3f58ec5..214bebb`)
 
 ## Review notes
 
