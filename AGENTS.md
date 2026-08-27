@@ -61,8 +61,8 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
 4. `CRCT-COALITION-IBD-001` confirmation is smoke. `CRCT-COALITION-IBD-002`
    remains `PREREGISTERED_NOT_RUN` (not executed). `CRCT-COALITION-IBD-003`
    is `MECHANISM_RECOVERY_PASSED` (synthetic IBD).
-   `CRCT-JEPA-ACTION-DELTA-001` is preregistered (supervised residual MLP;
-   execute this ID only; confirmation closed until development passes).
+   `CRCT-JEPA-ACTION-DELTA-001` is `MODEL_INCOMPETENT` (confirmation closed).
+   Do not execute `CRCT-JEPA-ACTION-DELTA-002` until a later freeze.
 5. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
    encoder-geometry caveat (Availability only). CPU `WM-LEFLOW-AMORTIZE-001` is

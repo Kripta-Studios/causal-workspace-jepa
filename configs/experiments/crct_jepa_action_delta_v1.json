@@ -1,8 +1,9 @@
 {
   "experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
   "registered_date": "2026-08-27",
-  "status": "PREREGISTERED_NOT_RUN",
-  "execution_authorized": true,
+  "status": "MODEL_INCOMPETENT",
+  "execution_authorized": false,
+  "confirmation": "CLOSED",
   "parent": "CRCT-COALITION-IBD-003",
   "hard002_status_preserved": "NEGATIVE_RESULT",
   "ibd002_executed": false,

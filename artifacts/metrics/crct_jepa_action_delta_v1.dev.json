@@ -1,0 +1,77 @@
+{
+  "all_seeds_passed": false,
+  "claim_boundary": "learned tiny supervised PointMass residual-MLP predictor only; not a JEPA objective, not Qwen, workspace, Platonic, or planning; does not alter HARD-002, IBD-002, or IBD-003",
+  "evidence_level": "None",
+  "experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "ibd003_rerun": false,
+  "ibd003_status_preserved": "MECHANISM_RECOVERY_PASSED",
+  "literal_overlap_jaccard": {
+    "43_47": 0.0,
+    "43_53": 0.0,
+    "47_53": 0.0
+  },
+  "rows": [
+    {
+      "claim_boundary": "learned tiny supervised PointMass residual-MLP predictor only; not a JEPA objective, not Qwen, workspace, Platonic, or planning; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "dvx": 0.007040385160658766,
+        "dvy": 0.009265193436733264,
+        "dx": 0.6257818415070753,
+        "dy": 0.424082390021874
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "seed": 43,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT"
+    },
+    {
+      "claim_boundary": "learned tiny supervised PointMass residual-MLP predictor only; not a JEPA objective, not Qwen, workspace, Platonic, or planning; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "dvx": 0.04551823740073379,
+        "dvy": 0.009674273025612313,
+        "dx": 0.7823796486772456,
+        "dy": 0.7820161682862692
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "seed": 47,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT"
+    },
+    {
+      "claim_boundary": "learned tiny supervised PointMass residual-MLP predictor only; not a JEPA objective, not Qwen, workspace, Platonic, or planning; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "dvx": 0.011156875150465729,
+        "dvy": 0.01626760733976737,
+        "dx": 0.2619552174261448,
+        "dy": 0.44819717572578427
+      },
+      "evidence_level": "None",
+      "experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "seed": 53,
+      "stage": "development",
+      "status": "MODEL_INCOMPETENT"
+    }
+  ],
+  "seeds": [
+    43,
+    47,
+    53
+  ],
+  "source_digest": "8769cd2b1a7400591c5f240456a9c4072add0d7dcfef3480604eaf9b47098c59",
+  "stage": "development",
+  "status": "MODEL_INCOMPETENT",
+  "threshold_digest": "f56f72af0a28e93ecf5de8b7996f9898fc1c8ef5871308b81bf77821cb343d76"
+}
