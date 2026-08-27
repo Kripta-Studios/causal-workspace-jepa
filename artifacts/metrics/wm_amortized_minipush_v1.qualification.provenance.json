@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_wm_amortized_minipush.py --qualify --config configs/experiments/wm_amortized_minipush_v1.json",
+  "git_commit": "ccc2cdefc4674c38549dcc49a61dff243c7df211",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/wm_amortized_minipush_v1.qualification.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 241,
+  "status": "QUALIFICATION_PASSED",
+  "time_utc": "2026-08-27T15:36:46.872447+00:00"
+}
