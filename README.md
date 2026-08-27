@@ -9,10 +9,10 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
 - Calibration-only competence recovery is adjudicated from its local artifact as
   `COMPETENCE_RECOVERY_PROMPT_SELECTED` (`qwen_chat_prefill_v1`, clean `0.9375`,
   direct-permuted `0.9792`). This does not rescue V3.
-- Fresh confirmation is preregistered as `QWEN-BINDING-COMPETENCE-CONFIRM-001`
-  (split `confirmation`, seed 701, unused tokens, gates still `>= 0.90`).
-  Model-forward confirmation is not claimed until that protocol is committed
-  and executed.
+- Fresh confirmation `QWEN-BINDING-COMPETENCE-CONFIRM-001` **passed** on the
+  frozen renderer: clean full-vocab `1.000` (n=32), direct-permuted `0.9896`
+  (n=96). Protected splits stayed closed. V3 remains ineligible. This is
+  competence only, not a circuit.
 - `CRCT-COALITION-IBD-001` implements coalition/equivalence metrics and an
   interpretable-by-design plant. HARD-002 seeds are blocked.
 - Intervention-JEPA residual claims now have an explicit fair-baseline gate:

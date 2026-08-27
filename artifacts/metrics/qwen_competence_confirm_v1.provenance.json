@@ -1,0 +1,11 @@
+{
+  "command": "python scripts/run_qwen_competence_confirm.py --device cuda",
+  "git_commit": "dcff74e98ea0c530d32378e1b8d93699b76290a1",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/qwen_competence_confirm_v1.json",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.5",
+  "resource_profile": "configs/resource/gpu_12gb.yaml",
+  "seed": 701,
+  "time_utc": "2026-08-27T13:46:27.516043+00:00"
+}

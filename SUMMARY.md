@@ -5,8 +5,8 @@
 - Hygiene: unprovenanced metric JSON moved; Ruff default rules pinned; CPU CI added.
 - Competence recovery on calibration selected `qwen_chat_prefill_v1` (0.9375 / 0.9792).
   Development only. V3 remains ineligible.
-- Confirmation protocol is frozen (`QWEN-BINDING-COMPETENCE-CONFIRM-001`) and not yet
-  claimed as executed.
+- Confirmation `QWEN-BINDING-COMPETENCE-CONFIRM-001` passed (clean 1.000, direct 0.9896).
+  V3 remains ineligible. No circuit claim.
 - Coalition IBD evaluator distinguishes graph recall from functional equivalence on
   a planted bottleneck. HARD-002 stays negative.
 - Platonic representation and LeFlow papers are integrated only as a written plan.

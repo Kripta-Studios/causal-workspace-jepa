@@ -3,9 +3,9 @@
 ## 2026-08-27
 
 1. Keep HARD-002 frozen negative and V3 frozen ineligible.
-2. Execute `QWEN-BINDING-COMPETENCE-CONFIRM-001` once after protocol commit.
-   Pass → draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without
-   opening test/paraphrase. Fail → close this prompt path negative.
+2. `QWEN-BINDING-COMPETENCE-CONFIRM-001` passed. Next: draft
+   `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without opening
+   test/paraphrase and without changing V3.
 3. Use `CRCT-COALITION-IBD-001` as the ontology control for later real-model
    circuit claims. Do not collapse sufficiency into graph recall.
 4. Residual Intervention-JEPA remains ineligible unless residual power, fair

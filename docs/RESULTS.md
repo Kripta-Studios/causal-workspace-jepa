@@ -8,8 +8,10 @@
   direct-permuted full-vocab `0.979166...`; protected splits unopened. This is
   development selection, evidence level Availability. V3 stays
   `INELIGIBLE_TASK_PHASE0`.
-- `QWEN-BINDING-COMPETENCE-CONFIRM-001` is preregistered, not executed in this
-  documentation update.
+- `QWEN-BINDING-COMPETENCE-CONFIRM-001` **passed**: clean `1.000` (32),
+  direct-permuted `0.9896` (96), both `>= 0.90`. Ledger is confirmation-only.
+  V3 is unchanged. See
+  `docs/QWEN_BINDING_COMPETENCE_CONFIRM_001_ADJUDICATION_2026-08-27.md`.
 - `CRCT-COALITION-IBD-001` unit/scientific tests pass on development plants
   (`seeds 11/13/17`): literal recall of the full planted graph is incomplete
   for a minimal sufficient set, two equivalent minimal circuits exist, signed

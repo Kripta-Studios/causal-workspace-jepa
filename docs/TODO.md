@@ -7,9 +7,10 @@
 - [x] CPU CI for unit/scientific/integration, Ruff, audit, competence entrypoints.
 - [x] Adjudicate calibration-only competence recovery without rescuing V3.
 - [x] Preregister `QWEN-BINDING-COMPETENCE-CONFIRM-001` with frozen renderer and fresh tokens.
-- [ ] Execute confirmation on CUDA Python 3.14 after the protocol commit; do not retune 0.90.
+- [x] Execute confirmation on CUDA Python 3.14 after the protocol commit; do not retune 0.90.
+  Result: `COMPETENCE_CONFIRMATION_PASSED` (clean 1.000, direct 0.9896).
 - [x] Coalition/equivalence IBD evaluator (`CRCT-COALITION-IBD-001`); HARD-002 seeds blocked.
-- [ ] Commit then write coalition development/confirmation metric JSON with real provenance.
+- [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Intervention-JEPA fair-baseline policy module.
 - [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
 - [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.

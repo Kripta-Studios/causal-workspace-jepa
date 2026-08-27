@@ -5,9 +5,9 @@
 - `QWEN-BINDING-COMPETENCE-RECOVERY-001` — `COMPETENCE_RECOVERY_PROMPT_SELECTED`
   (calibration-only development). Renderer `qwen_chat_prefill_v1`. Does not
   rescue V3. See `docs/QWEN_BINDING_COMPETENCE_RECOVERY_001_ADJUDICATION_2026-08-18.md`.
-- `QWEN-BINDING-COMPETENCE-CONFIRM-001` — `PREREGISTERED_NOT_RUN`. Fresh
-  confirmation split seed 701. Config
-  `configs/experiments/qwen_competence_confirm_v1.json`.
+- `QWEN-BINDING-COMPETENCE-CONFIRM-001` — `COMPETENCE_CONFIRMATION_PASSED`.
+  Clean `1.000` / direct `0.9896` on seed 701 confirmation split. Does not
+  rescue V3. Metrics `artifacts/metrics/qwen_competence_confirm_v1.json`.
 - `CRCT-COALITION-IBD-001` — coalition/equivalence IBD successor.
   Development seeds 11/13/17; confirmation seeds 811/823/829. HARD-002
   primary seeds forbidden. HARD-002 status unchanged.
