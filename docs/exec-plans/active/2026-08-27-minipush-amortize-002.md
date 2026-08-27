@@ -34,8 +34,11 @@ interpolation in general.
 ## Checklist
 
 - [x] Preregister protocol + config (no outcomes) — `c121498`
-- [ ] Implement + semantic tests (separate commit)
-- [ ] Development qualification seed 241; stop if fail
-- [ ] Confirmation 251/257/263 only if qualification passes
-- [ ] Adjudicate without retuning
-- [ ] Independent reviews, suite, docs, push
+- [x] Implement + semantic tests (separate commit)
+- [x] Development qualification seed 241; stop if fail — passed (`1f71f05`)
+- [x] Confirmation 251/257/263 only if qualification passes
+- [x] Adjudicate without retuning — `UNINFORMATIVE_SUBSTRATE`
+- [x] Independent reviews, suite, docs, push
+  Adversarial `f158cb10-f472-4e7e-8e79-1e0846e2eb0d`, protocol
+  `c3e78d94-bcd6-471c-bc84-814e96bc144f` (not Sol High). No P0/P1.
+  Local: 339 passed, 1 deselected; Ruff green; audit `SMOKE_VALIDATED`.

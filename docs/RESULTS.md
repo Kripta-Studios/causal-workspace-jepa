@@ -38,6 +38,10 @@
   untrained-predictor diagnostic
   (`WM-PLATONIC-MKNN-001-UNTRAINED-POSTHOC`) does not change the T1
   adjudication.
+- `WM-AMORTIZED-PLANNING-MINIPUSH-002` is `UNINFORMATIVE_SUBSTRATE`. CEM
+  matched shooting success on seeds 251/257/263; almost all queries were
+  `horizon_insufficient`. Evidence `None`. T2 was not mutated. See
+  `docs/WM_AMORTIZED_PLANNING_MINIPUSH_002_ADJUDICATION_2026-08-27.md`.
 
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
 

@@ -1,6 +1,9 @@
 # WM-AMORTIZED-PLANNING-MINIPUSH-002 protocol
 
-Status: `PREREGISTERED_NOT_RUN`.
+Status: adjudicated `UNINFORMATIVE_SUBSTRATE` (evidence_level `None`) on
+2026-08-27. Frozen gates, seeds, N, H, and the 1.5 object-L2 floor in this
+file were not changed after outcomes. See
+`docs/WM_AMORTIZED_PLANNING_MINIPUSH_002_ADJUDICATION_2026-08-27.md`.
 
 This is a **new** CPU-scale amortized-planning experiment on MiniPush contact
 dynamics. It does **not** overwrite `WM-LEFLOW-AMORTIZE-001`. It is **not** a

@@ -27,8 +27,11 @@
 - [x] Analyze T1×T2 without retuning; untrained-predictor post-hoc is not a
   gate. Stitching remains closed. See
   `docs/WM_PLATONIC_LEFLOW_CPU_ANALYSIS_2026-08-27.md`.
-- [ ] Execute `WM-AMORTIZED-PLANNING-MINIPUSH-002` only after its protocol
-  commit. Stop if development qualification fails. Do not retune T2.
+- [x] Execute `WM-AMORTIZED-PLANNING-MINIPUSH-002` after its protocol
+  commit. Qualification passed; confirmation is `UNINFORMATIVE_SUBSTRATE`.
+  Gates were not retuned. T2 was not mutated.
+- [ ] Do not open `WM-LEFLOW-TRANSFER-001`. MiniPush-002 did not make search
+  useful. Rectified Flow is not justified. CRCT-on-transfer stays gated.
 
 ## 2026-08-17 CRCT adjudication
 

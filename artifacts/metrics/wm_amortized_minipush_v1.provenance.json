@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_wm_amortized_minipush.py --confirm --config configs/experiments/wm_amortized_minipush_v1.json",
+  "git_commit": "1f71f0500f05408e3dc0fd04317f84fb01e93a9a",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/wm_amortized_minipush_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 251,
+  "status": "UNINFORMATIVE_SUBSTRATE",
+  "time_utc": "2026-08-27T15:37:25.464220+00:00"
+}

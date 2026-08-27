@@ -59,7 +59,8 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
 4. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
    encoder-geometry caveat. CPU `WM-LEFLOW-AMORTIZE-001` is
-   `NEGATIVE_RESULT`. Do not execute 004, IBD-002, or stitching.
+   `NEGATIVE_RESULT`. CPU `WM-AMORTIZED-PLANNING-MINIPUSH-002` is
+   `UNINFORMATIVE_SUBSTRATE`. Do not execute 004, IBD-002, or stitching.
 
 Detailed milestone, dataset, interface, and literature requirements remain in
 `docs/agents/AGENTS_FULL.md` and the `docs/` registries.
