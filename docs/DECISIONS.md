@@ -1,5 +1,20 @@
 # Decisions
 
+## 2026-08-27
+
+- Do not fabricate provenance for local metric JSON dumps. Move them out of
+  `artifacts/metrics/` instead.
+- Do not rescue V3 from calibration-only competence recovery. Freeze
+  `qwen_chat_prefill_v1` and confirm on a new split.
+- Confirmation tokens must pass the strict spaced single-token contract;
+  rejected tokenizer-only candidates are not substituted after a model forward.
+- Coalition CRCT successor uses new seeds and a priori epsilon=0.02. HARD-002
+  is not a tuning set.
+- Learned residual Intervention-JEPA stays unprivileged relative to
+  direct-delta and strong differential baselines.
+- Platonic WM and LeFlow are measurement-design transfers, not licensed
+  claims and not downloads.
+
 ## 2026-07-26
 
 - Do not respond to the present negative results by immediately moving to a larger world model or

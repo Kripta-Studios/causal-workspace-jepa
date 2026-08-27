@@ -2,6 +2,27 @@
 
 Reproducible research codebase for action-conditioned JEPA world-model interpretability and intervention-conditioned LLM meta-modeling.
 
+## 2026-08-27 — recovery, confirmation freeze, coalition CRCT
+
+- `CRCT-STAGE0-HARD-002` remains `NEGATIVE_RESULT`. It was not rerun.
+- Qwen Binding V3 remains `INELIGIBLE_TASK_PHASE0`.
+- Calibration-only competence recovery is adjudicated from its local artifact as
+  `COMPETENCE_RECOVERY_PROMPT_SELECTED` (`qwen_chat_prefill_v1`, clean `0.9375`,
+  direct-permuted `0.9792`). This does not rescue V3.
+- Fresh confirmation is preregistered as `QWEN-BINDING-COMPETENCE-CONFIRM-001`
+  (split `confirmation`, seed 701, unused tokens, gates still `>= 0.90`).
+  Model-forward confirmation is not claimed until that protocol is committed
+  and executed.
+- `CRCT-COALITION-IBD-001` implements coalition/equivalence metrics and an
+  interpretable-by-design plant. HARD-002 seeds are blocked.
+- Intervention-JEPA residual claims now have an explicit fair-baseline gate:
+  direct-delta remains mandatory; HARD-002's residual-vs-direct-delta outcome
+  is preserved.
+- Platonic WM (arXiv:2608.23720) and LeFlow (arXiv:2608.24855) are planned only
+  in `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md`. No download or run.
+
+See `docs/exec-plans/active/2026-08-27-codex-recovery.md`.
+
 ## 2026-08-17 — Causal-Residual Circuit Tracing falsification update
 
 `CRCT-STAGE0-001` is retained as a bounded synthetic positive control. Its harder successor,

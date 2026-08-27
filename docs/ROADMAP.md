@@ -1,5 +1,20 @@
 # Roadmap
 
+## 2026-08-27
+
+1. Keep HARD-002 frozen negative and V3 frozen ineligible.
+2. Execute `QWEN-BINDING-COMPETENCE-CONFIRM-001` once after protocol commit.
+   Pass → draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without
+   opening test/paraphrase. Fail → close this prompt path negative.
+3. Use `CRCT-COALITION-IBD-001` as the ontology control for later real-model
+   circuit claims. Do not collapse sufficiency into graph recall.
+4. Residual Intervention-JEPA remains ineligible unless residual power, fair
+   baselines, and held-out direct-delta comparisons pass.
+5. Platonic m-kNN / stitching and LeFlow amortization are planned in
+   `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md` after competence and
+   hygiene, on tiny/local adapters first.
+6. Workspace remains closed.
+
 ## 2026-08-17 post-HARD-002 decision
 
 1. Freeze `CRCT-STAGE0-HARD-002` as a negative result. Do not run a larger profile or relax the

@@ -1,5 +1,19 @@
 # TODO
 
+## 2026-08-27 recovery
+
+- [x] Honest reproducibility audit (move unprovenanced metric JSON; do not fabricate sidecars).
+- [x] Ruff default-rule pin and tracked unused-import/variable fixes.
+- [x] CPU CI for unit/scientific/integration, Ruff, audit, competence entrypoints.
+- [x] Adjudicate calibration-only competence recovery without rescuing V3.
+- [x] Preregister `QWEN-BINDING-COMPETENCE-CONFIRM-001` with frozen renderer and fresh tokens.
+- [ ] Execute confirmation on CUDA Python 3.14 after the protocol commit; do not retune 0.90.
+- [x] Coalition/equivalence IBD evaluator (`CRCT-COALITION-IBD-001`); HARD-002 seeds blocked.
+- [ ] Commit then write coalition development/confirmation metric JSON with real provenance.
+- [x] Intervention-JEPA fair-baseline policy module.
+- [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
+- [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.
+
 ## 2026-08-17 CRCT adjudication
 
 - [x] Freeze `CRCT-STAGE0-001` as synthetic positive-control evidence only.

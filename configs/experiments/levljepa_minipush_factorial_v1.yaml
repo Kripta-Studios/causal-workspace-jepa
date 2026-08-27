@@ -1,0 +1,24 @@
+id: WM-LEVLJEPA-MINIPUSH-FACTORIAL-001
+status: PREREGISTERED_NOT_RUN
+registered_date: '2026-08-27'
+resource_profile: configs/resource/gpu_12gb.yaml
+claim_boundary: representation/control factorial only; not workspace, circuit, or SOTA evidence
+critical_path: false
+download_authorized: false
+encoders:
+  - current_repo_encoder
+  - frozen_levljepa_vitb
+sigreg:
+  - off
+  - on_if_technically_meaningful
+shared:
+  predictor: action_conditioned_identical
+  data_budget: equal
+  environment: MiniPush
+metrics:
+  - effective_rank
+  - object_localization_probe
+  - causal_patch_specificity
+  - planning_closed_loop
+interpretation: better dense representation is not a causal workspace
+next_action: execute only after Qwen confirmation and repository hygiene are closed

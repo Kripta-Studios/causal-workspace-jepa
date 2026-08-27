@@ -1,5 +1,22 @@
 # Results
 
+## 2026-08-27 — competence recovery freeze and coalition evaluator
+
+- `QWEN-BINDING-COMPETENCE-RECOVERY-001` is adjudicated
+  `COMPETENCE_RECOVERY_PROMPT_SELECTED` from the 2026-08-18 calibration-only
+  artifact. Renderer `qwen_chat_prefill_v1`; clean full-vocab `0.9375`;
+  direct-permuted full-vocab `0.979166...`; protected splits unopened. This is
+  development selection, evidence level Availability. V3 stays
+  `INELIGIBLE_TASK_PHASE0`.
+- `QWEN-BINDING-COMPETENCE-CONFIRM-001` is preregistered, not executed in this
+  documentation update.
+- `CRCT-COALITION-IBD-001` unit/scientific tests pass on development plants
+  (`seeds 11/13/17`): literal recall of the full planted graph is incomplete
+  for a minimal sufficient set, two equivalent minimal circuits exist, signed
+  cancellation is visible, and a matched cancel-pair control is not sufficient.
+  This is synthetic method evidence only. HARD-002 remains `NEGATIVE_RESULT`.
+- No workspace claim is reopened.
+
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
 
 The harder planted circuit-recovery benchmark completed cleanly on seeds `1009/2027/4093`.

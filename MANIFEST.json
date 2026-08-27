@@ -1,0 +1,170 @@
+{
+  "pack_version": "2026-08-20",
+  "files": [
+    {
+      "path": ".codex/agents/luna_test_worker.toml",
+      "bytes": 471,
+      "sha256": "3ab20e2af7554acdfeba022978c01c02927d713c2e054b678f690083da5d137d"
+    },
+    {
+      "path": ".codex/agents/luna_worker.toml",
+      "bytes": 572,
+      "sha256": "d759b9a6aa822e344a154de3073c82e03f76379b1983c03859fc9bbf7f6a42e8"
+    },
+    {
+      "path": ".codex/agents/sol_architect.toml",
+      "bytes": 552,
+      "sha256": "4005064b55cb6047225470591eb34b990b8d9be099cb3053d27ca0021c97f369"
+    },
+    {
+      "path": ".codex/agents/sol_reviewer.toml",
+      "bytes": 489,
+      "sha256": "577f571e511a8c636c9a6c77d0cc04d855fc3d488705f4b6f04f64a66c090641"
+    },
+    {
+      "path": ".codex/agents/sol_verifier.toml",
+      "bytes": 413,
+      "sha256": "df05ffd090a48d3ecb597068a75377feeb0ee9e4b173e82b83fce8a4f624b3d0"
+    },
+    {
+      "path": ".codex/config.toml",
+      "bytes": 1488,
+      "sha256": "407670088182a40b25f4a7460ace15d56362c8cadd662bc2185ac718efa1eb32"
+    },
+    {
+      "path": ".codex/skills/cwj-crct-coalitions/SKILL.md",
+      "bytes": 816,
+      "sha256": "6b9ff495d88de0ba3d239389683bcb0c37404de6f7adf5995db517d834ac0680"
+    },
+    {
+      "path": ".codex/skills/cwj-final-review/SKILL.md",
+      "bytes": 723,
+      "sha256": "1527b12d39e3e4b0a9b50af4301892d953518f820876a4ac82ea5bc8fa7270a6"
+    },
+    {
+      "path": ".codex/skills/cwj-orchestrate/SKILL.md",
+      "bytes": 1053,
+      "sha256": "1bfdfd1619da51ef65d5542d29ce7d0753c53cacab501a2ea18a184618d63ddf"
+    },
+    {
+      "path": ".codex/skills/cwj-qwen-confirmation/SKILL.md",
+      "bytes": 899,
+      "sha256": "8e6dc36265520744197c87dc3eb43a140bb2348daeebb37121f5a5684217a16f"
+    },
+    {
+      "path": ".codex/skills/cwj-repro-hygiene/SKILL.md",
+      "bytes": 805,
+      "sha256": "8646fefc2fcb2e4935613c489192c381a66e582115f111daf03cb7ddbb437ac2"
+    },
+    {
+      "path": ".codex/skills/cwj-scientific-integrity/SKILL.md",
+      "bytes": 905,
+      "sha256": "cc50d52675324f575b22130c45eaf5b793fe319bb95a46f3a301a5287ce685a4"
+    },
+    {
+      "path": "AGENTS_CANDIDATE.md",
+      "bytes": 1613,
+      "sha256": "e0dc9b953dbdb7b275d3e5d47c165797a35a6e392157b188339c5261bc6652ae"
+    },
+    {
+      "path": "CODEX_MASTER_PROMPT.md",
+      "bytes": 13486,
+      "sha256": "c427be4db989d9af0076b796997e0fab95dbb332c4d822e75056ee97337f4f28"
+    },
+    {
+      "path": "README_INSTALL.md",
+      "bytes": 1919,
+      "sha256": "e65dadb026fef16627c9588ef487abad832aca8d751865444ccffd45b3eb03b0"
+    },
+    {
+      "path": "docs/codex-handoff/00_INDEX.md",
+      "bytes": 871,
+      "sha256": "d7ba5377c77dab7f9f467d7b782a97095799833b8a304bfe05022a122d5c71ae"
+    },
+    {
+      "path": "docs/codex-handoff/01_REPO_STATE_SNAPSHOT.md",
+      "bytes": 2982,
+      "sha256": "7f15f58b1c4937cdb81e84ba49b539516c59c127cd06d21db783f427321669e4"
+    },
+    {
+      "path": "docs/codex-handoff/02_SCIENTIFIC_INVARIANTS.md",
+      "bytes": 2246,
+      "sha256": "a33d6cb671b020cbd4b12f64fdf7293f55517d6eca666cfc87c84f64ea032d77"
+    },
+    {
+      "path": "docs/codex-handoff/03_EXECUTION_PLAN.md",
+      "bytes": 2756,
+      "sha256": "6d90599813017b493540294cc9ff7764331c47a50fa7c2d86a17e12e308883e7"
+    },
+    {
+      "path": "docs/codex-handoff/04_ACCEPTANCE_GATES.md",
+      "bytes": 2043,
+      "sha256": "8ec3663fa7d3d512b1bf39250933bd6a9fae7f07a7990782591f129dded3729e"
+    },
+    {
+      "path": "docs/codex-handoff/05_MODEL_AND_SUBAGENT_ROUTING.md",
+      "bytes": 2520,
+      "sha256": "d9ae4356d1ccf5401133ca118c83c162e174bb920a2c12da9db85d815cbf171a"
+    },
+    {
+      "path": "docs/codex-handoff/06_MCP_AND_SKILL_POLICY.md",
+      "bytes": 1946,
+      "sha256": "b7f7df0fef2ea81aec56c1cdb12603657932cc6ac4b5b5b5f26a4d394c58f710"
+    },
+    {
+      "path": "docs/codex-handoff/07_QWEN_COMPETENCE_CONFIRMATION.md",
+      "bytes": 1943,
+      "sha256": "30f6a274f0c9ca62e8b2158a4f30259dee2b03d94c11d3b08a760425c0103f0a"
+    },
+    {
+      "path": "docs/codex-handoff/08_CRCT_COALITION_EXTENSION.md",
+      "bytes": 2271,
+      "sha256": "b1f0234765dec56f0a023b29421af06287f57d3fd2fc2e7e218728e4918b29b1"
+    },
+    {
+      "path": "docs/codex-handoff/09_INTERVENTION_JEPA_TARGET_POLICY.md",
+      "bytes": 1454,
+      "sha256": "ebc1d21411c1b1d55d34fab5c89d7ec63dfc5de69101014fad80f4ae2c6ded81"
+    },
+    {
+      "path": "docs/codex-handoff/10_CI_REPRO_HYGIENE.md",
+      "bytes": 1774,
+      "sha256": "55571ba3cd73c30244912f7dde9e7227c744e5984d5f648de1cd81141810fb9b"
+    },
+    {
+      "path": "docs/codex-handoff/11_DOCUMENTATION_SYNC.md",
+      "bytes": 1472,
+      "sha256": "aff44ede4e6d984054f1e7f6ef069d4bcdf1f1b2772193ad9759990563da9eb3"
+    },
+    {
+      "path": "docs/codex-handoff/12_SECONDARY_RESEARCH_TRACKS.md",
+      "bytes": 1228,
+      "sha256": "a28ec1bd1cb995d3983028d5c9ab1a1bfcc0b16fb29a32dffccacb922ed6547c"
+    },
+    {
+      "path": "docs/codex-handoff/13_FINAL_REVIEW_CHECKLIST.md",
+      "bytes": 1522,
+      "sha256": "925111c03fec85aa97ff1571f90c0706ddf4dfa97462a6600674a8be493fc35a"
+    },
+    {
+      "path": "docs/codex-handoff/14_DECISION_LOG_TEMPLATE.md",
+      "bytes": 384,
+      "sha256": "bab0dbaebd3816adbabd9140aaef40df06dabee3741b3442264275bc9cdc7967"
+    },
+    {
+      "path": "docs/codex-handoff/reference/USER_CODEX_AUDIT_2026-08-20.md",
+      "bytes": 12752,
+      "sha256": "1b6218e7d51f37e89766823d852743296370f2f737fcedad88eee9662be18590"
+    },
+    {
+      "path": "scripts/codex_preflight.ps1",
+      "bytes": 1007,
+      "sha256": "1092dc0ea9d16dd5883c45af2407524304b009113432102e1c28f92a226a208a"
+    },
+    {
+      "path": "scripts/inventory_untracked.ps1",
+      "bytes": 688,
+      "sha256": "acdecf0b50b575516d0eb32f2a334665be4d6d7cf5d6c55f970565163643d8e6"
+    }
+  ]
+}

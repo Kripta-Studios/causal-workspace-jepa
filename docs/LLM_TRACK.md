@@ -3,6 +3,13 @@
 Status: `COMPLETED_NEGATIVE` for the corrected Qwen nonlinear-advantage audit; the broader research
 track remains active.
 
+## 2026-08-27
+
+V3 B0 remains `INELIGIBLE_TASK_PHASE0`. Calibration-only recovery selected
+`qwen_chat_prefill_v1` but is not confirmation. The next executable Track B
+gate is `QWEN-BINDING-COMPETENCE-CONFIRM-001`. Do not open test/paraphrase.
+Do not treat candidate-only accuracy as eligibility.
+
 ## 2026-07-26 continuation decision
 
 Do not use Qwen3-4B as an automatic rescue for the 0.6B null. The capital intervention is already

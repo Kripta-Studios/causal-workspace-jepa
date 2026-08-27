@@ -2,6 +2,13 @@
 
 Status: `SMOKE_VALIDATED` for the complete bounded suite and cross-platform control-plane checks.
 
+CPU CI is `.github/workflows/cpu-ci.yml` (pytest non-GPU, Ruff E4/E7/E9/F, reproducibility
+audit, competence entrypoint syntax). It must not download Qwen weights or open protected
+splits.
+
+Unprovenanced local metric dumps belong in `artifacts/local_scratch/`, not in
+`artifacts/metrics/`.
+
 Every experiment must record:
 
 - config path and serialized config;

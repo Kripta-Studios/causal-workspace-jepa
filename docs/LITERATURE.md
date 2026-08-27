@@ -4,6 +4,16 @@ Last primary-source verification: 2026-08-17. `Deferred` means the source is reg
 experiment is outside the completed bounded suite; it does not mean the paper's claim was
 reproduced. Source claims below are motivations, not findings of this repository.
 
+## 2026-08-27 world-model addendum
+
+- *Platonic Representation Hypothesis on World Models* (arXiv:2608.23720, v2 2026-08-26) reports
+  m-kNN alignment and adapter-mediated predictor stitching across frozen visual encoders on
+  DINO-WM environments. Not peer-reviewed. Does not recover physical laws and does not compare
+  heterogeneous predictor families. Plan only: `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md`.
+- *LeFlow: Generative Latent Flow Planning for World Models* (arXiv:2608.24855, v1 2026-08-25)
+  amortizes short-horizon planning with rectified flow + inverse dynamics + frozen-WM rerank.
+  Not peer-reviewed. Long-horizon collapse is reported. Plan only; no download.
+
 ## 2026-08-17 mechanistic-interpretability addendum
 
 - *When Attribution Patching Lies: Diagnosis and a Second-Order Correction* (Zhang & Wang,

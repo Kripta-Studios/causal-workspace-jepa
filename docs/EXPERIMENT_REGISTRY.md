@@ -1,5 +1,19 @@
 # Experiment Registry
 
+## 2026-08-27
+
+- `QWEN-BINDING-COMPETENCE-RECOVERY-001` — `COMPETENCE_RECOVERY_PROMPT_SELECTED`
+  (calibration-only development). Renderer `qwen_chat_prefill_v1`. Does not
+  rescue V3. See `docs/QWEN_BINDING_COMPETENCE_RECOVERY_001_ADJUDICATION_2026-08-18.md`.
+- `QWEN-BINDING-COMPETENCE-CONFIRM-001` — `PREREGISTERED_NOT_RUN`. Fresh
+  confirmation split seed 701. Config
+  `configs/experiments/qwen_competence_confirm_v1.json`.
+- `CRCT-COALITION-IBD-001` — coalition/equivalence IBD successor.
+  Development seeds 11/13/17; confirmation seeds 811/823/829. HARD-002
+  primary seeds forbidden. HARD-002 status unchanged.
+- `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
+- Platonic WM / LeFlow — plan only, no experiment ID executed.
+
 ## 2026-08-17 CRCT adjudication
 
 - `CRCT-STAGE0-001` — `SMOKE_VALIDATED_SYNTHETIC_POSITIVE_CONTROL`. Full-profile seeds 7/13/23

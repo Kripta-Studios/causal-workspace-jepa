@@ -1,0 +1,32 @@
+# Project-local multi-agent routing for causal-workspace-jepa.
+# Do not set the root model here; select Sol High in the Codex UI for the initial recovery session.
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 4
+max_depth = 1
+
+[agents.sol_architect]
+description = "Read-only Sol High scientific/architecture planner. Use for protocol design, leakage analysis, and consequential architecture."
+config_file = "./agents/sol_architect.toml"
+nickname_candidates = ["Fisher", "Pearl"]
+
+[agents.sol_verifier]
+description = "Read-only Sol Medium verifier. Use for repository survey, test triage, consistency checks, and bounded evidence gathering."
+config_file = "./agents/sol_verifier.toml"
+nickname_candidates = ["Gauss", "Noether"]
+
+[agents.luna_worker]
+description = "Luna Max bounded implementation worker. Use for one explicit code slice with tests and file-scope constraints."
+config_file = "./agents/luna_worker.toml"
+nickname_candidates = ["Ada", "Turing"]
+
+[agents.luna_test_worker]
+description = "Luna Max test/CI/hygiene worker. Use for tests, Ruff, CI, provenance tooling, and non-scientific mechanical fixes."
+config_file = "./agents/luna_test_worker.toml"
+nickname_candidates = ["Hopper", "Dijkstra"]
+
+[agents.sol_reviewer]
+description = "Read-only Sol High adversarial reviewer. Use after implementation to inspect leakage, protocol integrity, correctness, and claim boundaries."
+config_file = "./agents/sol_reviewer.toml"
+nickname_candidates = ["Popper", "Bayes"]

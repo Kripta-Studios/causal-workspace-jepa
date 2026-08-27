@@ -1,5 +1,16 @@
 # SUMMARY
 
+## 2026-08-27 — repository recovery and next scientific gates
+
+- Hygiene: unprovenanced metric JSON moved; Ruff default rules pinned; CPU CI added.
+- Competence recovery on calibration selected `qwen_chat_prefill_v1` (0.9375 / 0.9792).
+  Development only. V3 remains ineligible.
+- Confirmation protocol is frozen (`QWEN-BINDING-COMPETENCE-CONFIRM-001`) and not yet
+  claimed as executed.
+- Coalition IBD evaluator distinguishes graph recall from functional equivalence on
+  a planted bottleneck. HARD-002 stays negative.
+- Platonic representation and LeFlow papers are integrated only as a written plan.
+
 ## 2026-08-17 — CRCT synthetic falsification adjudication
 
 - `CRCT-STAGE0-001` remains a method-validation positive control only. Its original random-control
