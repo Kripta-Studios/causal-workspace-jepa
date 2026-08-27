@@ -20,8 +20,9 @@ Reproducible research codebase for action-conditioned JEPA world-model interpret
   is preserved.
 - Platonic WM (arXiv:2608.23720) and LeFlow (arXiv:2608.24855) paper-scale
   work remains plan-only in `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md`.
-  CPU controls `WM-PLATONIC-MKNN-001` and `WM-LEFLOW-AMORTIZE-001` are
-  preregistered, not yet run. No DINO-WM/LeWM download. Stitching is not opened.
+  CPU control `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN
+  gate with an encoder-geometry caveat; `WM-LEFLOW-AMORTIZE-001` remains
+  preregistered. No DINO-WM/LeWM download. Stitching is not opened.
 - `LLM-QWEN-BINDING-ALGEBRA-004` is drafted and not executed.
 
 See `docs/exec-plans/active/2026-08-27-codex-recovery.md`.

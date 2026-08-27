@@ -19,9 +19,12 @@
 - `CRCT-COALITION-IBD-002` — `PREREGISTERED_NOT_RUN`. Real applied gauge;
   new seeds. Not executed.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
-- `WM-PLATONIC-MKNN-001` — `PREREGISTERED_NOT_RUN`. CPU PointMass m-kNN
-  geometry control. Protocol `docs/WM_PLATONIC_MKNN_001_PROTOCOL.md`.
-  Confirmation seeds 131/137/139 frozen before outcomes. Not stitching.
+- `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
+  (Availability). Confirmation seeds 131/137/139 beat shuffled-action,
+  random-map, and `2×chance` on predictor m-kNN. Encoder geometry was
+  already above the chance floor; this is not shared coordinates, not a
+  circuit, and not stitching. See
+  `docs/WM_PLATONIC_MKNN_001_ADJUDICATION_2026-08-27.md`.
 - `WM-LEFLOW-AMORTIZE-001` — `PREREGISTERED_NOT_RUN`. CPU amortized
   interpolator vs shooting/CEM on one frozen tiny JEPA. Protocol
   `docs/WM_LEFLOW_AMORTIZE_001_PROTOCOL.md`. Confirmation seeds 151/157/163.

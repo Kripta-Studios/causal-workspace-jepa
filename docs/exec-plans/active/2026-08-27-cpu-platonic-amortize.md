@@ -45,9 +45,9 @@ H=5 primary. Success = true position MSE `< 0.15`. Amortized latent N=64 must be
 - [x] Commit CI collection/GPU gate (`807b735`)
 - [x] Preregister T1/T2 (no results) — commit `7392ab5`
 - [ ] Implement + semantic tests
-- [ ] Implement + semantic tests
-- [ ] Execute T1
-- [ ] Adjudicate T1
+- [x] Implement + semantic tests (`e25f7b5`, provenance fix `01f93ab`)
+- [x] Execute T1
+- [x] Adjudicate T1 (`TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`; encoder caveat)
 - [ ] Execute T2 if T1 adjudication is integrity-clean
 - [ ] Adjudicate T2
 - [ ] Review, suite, docs

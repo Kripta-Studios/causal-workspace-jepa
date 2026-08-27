@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/run_wm_platonic_mknn.py --config configs/experiments/wm_platonic_mknn_v1.json",
+  "git_commit": "01f93abbf578ab739cd9921fe66a447462f01b81",
+  "git_dirty": false,
+  "metrics": "artifacts/metrics/wm_platonic_mknn_v1.json",
+  "platform": "Windows-10-10.0-19041",
+  "python": "3.14.2",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "seed": 131,
+  "status": "TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED",
+  "time_utc": "2026-08-27T14:45:19.676428+00:00"
+}
