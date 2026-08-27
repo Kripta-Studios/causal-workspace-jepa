@@ -1,0 +1,1044 @@
+{
+  "all_seeds_competent": true,
+  "all_seeds_passed": false,
+  "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+  "evidence_level": "None",
+  "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+  "hard002_status_preserved": "NEGATIVE_RESULT",
+  "ibd002_executed": false,
+  "ibd003_rerun": false,
+  "ibd003_status_preserved": "MECHANISM_RECOVERY_PASSED",
+  "literal_overlap_jaccard": {
+    "59_71": 0.2,
+    "59_73": 0.0,
+    "71_73": 0.16666666666666666
+  },
+  "nomenclature": "learned WM, not JEPA objective",
+  "parent_001_status_preserved": "MODEL_INCOMPETENT",
+  "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+  "rows": [
+    {
+      "action_embedding_only": true,
+      "alternate_circuit": [
+        "act_5",
+        "b2_4",
+        "b1_2",
+        "b1_5"
+      ],
+      "alternate_sufficiency_dvx": 0.40009388400004847,
+      "architecture_action_cutset": {
+        "necessity": {
+          "dvx": 1.004520416006823,
+          "dvy": 1.0070761491479507,
+          "dx": 0.16531424138448889,
+          "dy": 0.15918520370631242
+        },
+        "sites": [
+          "act_0",
+          "act_1",
+          "act_2",
+          "act_3",
+          "act_4",
+          "act_5"
+        ],
+        "specificity_dvx_over_dvy": 0.9974622245365556,
+        "sufficiency": {
+          "dvx": 0.11900570341160788,
+          "dvy": 0.5037753214433812,
+          "dx": 0.2049270661805195,
+          "dy": 1.0479453750506549
+        }
+      },
+      "baselines": {
+        "actgrad_topk": {
+          "necessity_dvx": 0.02254999046408305,
+          "sites": [
+            "b1_2",
+            "b2_4"
+          ],
+          "sufficiency_dvx": 1.0185972959691973
+        },
+        "gradient_topk": {
+          "necessity_dvx": 0.056987264395302065,
+          "sites": [
+            "b1_2",
+            "b2_0"
+          ],
+          "sufficiency_dvx": 0.9984027527264481
+        },
+        "magnitude_topk": {
+          "necessity_dvx": 0.014708960211367701,
+          "sites": [
+            "act_4",
+            "b2_2"
+          ],
+          "sufficiency_dvx": 1.0257314714386492
+        }
+      },
+      "cancellation": {
+        "pairs": [],
+        "status": "NO_MEANINGFUL_CANCELLATION_DETECTED"
+      },
+      "checkpoint_sha256": "e81f8293909111c07cefa356acb3fd05d4981d2fc8256c9da707101501b09949",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.003057469381019473,
+            "mse": 1.0213278073933907e-05,
+            "nmse": 0.003340435111905658,
+            "pred_variance": 0.0031029542442411184,
+            "variance": 0.00306617165915668
+          },
+          "dvy": {
+            "energy": 0.0029710098169744015,
+            "mse": 8.58607472764561e-06,
+            "nmse": 0.002889951651654064,
+            "pred_variance": 0.0029838071204721928,
+            "variance": 0.0029662293381989002
+          },
+          "dx": {
+            "energy": 0.00021712318994104862,
+            "mse": 6.030511485732859e-06,
+            "nmse": 0.02777460798807447,
+            "pred_variance": 0.00019506076932884753,
+            "variance": 0.00021078693680465221
+          },
+          "dy": {
+            "energy": 0.000200710681383498,
+            "mse": 4.467220151127549e-06,
+            "nmse": 0.022257012533339116,
+            "pred_variance": 0.00019076130411121994,
+            "variance": 0.0001884614466689527
+          },
+          "full": {
+            "energy": 0.0016115782782435417,
+            "mse": 7.324270882236306e-06,
+            "nmse": 0.00454478133709957,
+            "pred_variance": 0.0016156691126525402,
+            "variance": 0.0016053877770900726
+          }
+        },
+        "dev_loss_mse": 7.324270882236306e-06,
+        "nmse": {
+          "dvx": 0.003340435111905658,
+          "dvy": 0.002889951651654064,
+          "dx": 0.02777460798807447,
+          "dy": 0.022257012533339116
+        },
+        "passed": true
+      },
+      "counterfactual_gap_closed": 0.9982253313064575,
+      "counterfactual_gap_closed_ay": 0.8921915888786316,
+      "counterfactual_support": "hybrid_activation_patch",
+      "encoder_sites_excluded": [
+        "enc_0",
+        "enc_1",
+        "enc_2",
+        "enc_3",
+        "enc_4",
+        "enc_5"
+      ],
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+      "gauge_function_mse": 1.0268235253637877e-15,
+      "gauge_recovered": [
+        "act_3",
+        "act_1",
+        "act_0"
+      ],
+      "gauge_sufficiency_dvx": 0.013783921839355562,
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "intervention_support": "coordinatewise_mean_fill",
+      "literal_jaccard_vs_gauge": 0.25,
+      "minimality_drop": {
+        "act_0": 0.23495140859492442,
+        "act_2": 0.44546181798531137
+      },
+      "necessity": {
+        "dvx": 0.8953307800357487,
+        "dvy": 0.04802752176771223,
+        "dx": 1.5883933904772054,
+        "dy": 0.38561022709191667
+      },
+      "parent_001_rerun": false,
+      "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "pre_prune_circuit": [
+        "act_2",
+        "act_0"
+      ],
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "recovered_circuit": [
+        "act_2",
+        "act_0"
+      ],
+      "rms_matched_sufficient_count": 0,
+      "searchable_sites": [
+        "act_0",
+        "act_1",
+        "act_2",
+        "act_3",
+        "act_4",
+        "act_5",
+        "b1_0",
+        "b1_1",
+        "b1_2",
+        "b1_3",
+        "b1_4",
+        "b1_5",
+        "b2_0",
+        "b2_1",
+        "b2_2",
+        "b2_3",
+        "b2_4",
+        "b2_5"
+      ],
+      "secondary_targets": {
+        "dvy": {
+          "necessity": {
+            "dvx": 0.013124713574396598,
+            "dvy": 0.47366754725654253,
+            "dx": 0.23238300046873653,
+            "dy": 0.02040231319857299
+          },
+          "recovered_circuit": [
+            "act_3"
+          ],
+          "specificity_target_over_control": 36.08974356442816,
+          "sufficiency": {
+            "dvx": 1.0368884190089436,
+            "dvy": 0.04652843370973852,
+            "dx": 0.37157400642314387,
+            "dy": 0.4026023787079448
+          }
+        },
+        "dx": {
+          "necessity": {
+            "dvx": 0.3838384948334071,
+            "dvy": 0.6788515785300786,
+            "dx": 0.525089075355894,
+            "dy": 0.10399686073327931
+          },
+          "recovered_circuit": [
+            "act_2",
+            "b1_2",
+            "act_3"
+          ],
+          "specificity_target_over_control": 5.049085824836479,
+          "sufficiency": {
+            "dvx": 0.29464743411957106,
+            "dvy": 0.08536490588466604,
+            "dx": 0.04011993152013182,
+            "dy": 0.3767702804694408
+          }
+        },
+        "dy": {
+          "necessity": {
+            "dvx": 0.022366553892720107,
+            "dvy": 0.2807171328661239,
+            "dx": 0.255632251892232,
+            "dy": 2.1049751217130033
+          },
+          "recovered_circuit": [
+            "b2_2",
+            "act_3",
+            "b2_5",
+            "b2_1"
+          ],
+          "specificity_target_over_control": 8.234387899537836,
+          "sufficiency": {
+            "dvx": 1.0461827393279957,
+            "dvy": 0.026181034335518077,
+            "dx": 0.31094756712819527,
+            "dy": 0.0331741817065432
+          }
+        }
+      },
+      "seed": 59,
+      "specificity_dvx_over_dvy": 18.64203579701792,
+      "specificity_dvx_over_dy": 2.3218543418516013,
+      "specificity_matrix_necessity": {
+        "C_dvx": {
+          "dvx": 0.8953307800357487,
+          "dvy": 0.04802752176771223,
+          "dx": 1.5883933904772054,
+          "dy": 0.38561022709191667
+        },
+        "C_dvy": {
+          "dvx": 0.013124713574396598,
+          "dvy": 0.47366754725654253,
+          "dx": 0.23238300046873653,
+          "dy": 0.02040231319857299
+        },
+        "C_dx": {
+          "dvx": 0.3838384948334071,
+          "dvy": 0.6788515785300786,
+          "dx": 0.525089075355894,
+          "dy": 0.10399686073327931
+        },
+        "C_dy": {
+          "dvx": 0.022366553892720107,
+          "dvy": 0.2807171328661239,
+          "dx": 0.255632251892232,
+          "dy": 2.1049751217130033
+        }
+      },
+      "stage": "development",
+      "status": "ARCHITECTURE_CUTSET",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.03196392604764692,
+        "dvy": 1.280133569519533,
+        "dx": 0.9918434264361827,
+        "dy": 0.2946843482731427
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003318171249702573,
+          "mse": 1.2597380191436969e-05,
+          "nmse": 0.0037964828345029345,
+          "pred_variance": 0.0033140890300273895,
+          "variance": 0.0033195032738149166
+        },
+        "dvy": {
+          "energy": 0.003294867230579257,
+          "mse": 1.0047935575130396e-05,
+          "nmse": 0.0030495722200508547,
+          "pred_variance": 0.003290764056146145,
+          "variance": 0.003294342663139105
+        },
+        "dx": {
+          "energy": 0.00022922747302800417,
+          "mse": 4.972595434082905e-06,
+          "nmse": 0.021692842347371753,
+          "pred_variance": 0.00023131146735977381,
+          "variance": 0.00022885817452333868
+        },
+        "dy": {
+          "energy": 0.0002500179398339242,
+          "mse": 5.07800723426044e-06,
+          "nmse": 0.020310571463925887,
+          "pred_variance": 0.00024358474183827639,
+          "variance": 0.00024804568965919316
+        },
+        "full": {
+          "energy": 0.0017730708932504058,
+          "mse": 8.173979040293489e-06,
+          "nmse": 0.004610068932612669,
+          "pred_variance": 0.0017690614331513643,
+          "variance": 0.0017717943992465734
+        }
+      },
+      "train_loss_curve": [
+        0.0003944837662857026,
+        0.00012310956662986428,
+        7.521580846514553e-05,
+        4.582872134051286e-05,
+        2.653504088812042e-05,
+        1.6272828361252323e-05,
+        1.1300520782242529e-05,
+        6.989910616539419e-06,
+        1.0127098903467413e-05,
+        1.1168101991643198e-05
+      ],
+      "train_loss_final": 1.1168101991643198e-05,
+      "train_loss_fullsplit": 8.173979040293489e-06,
+      "train_steps": 800
+    },
+    {
+      "action_embedding_only": false,
+      "alternate_circuit": [
+        "act_0",
+        "b1_2",
+        "b1_1"
+      ],
+      "alternate_sufficiency_dvx": 0.8831293081016136,
+      "architecture_action_cutset": {
+        "necessity": {
+          "dvx": 0.997457437000121,
+          "dvy": 1.0063475873568177,
+          "dx": 0.17519364566966134,
+          "dy": 0.16272407450031398
+        },
+        "sites": [
+          "act_0",
+          "act_1",
+          "act_2",
+          "act_3",
+          "act_4",
+          "act_5"
+        ],
+        "specificity_dvx_over_dvy": 0.9911659247079364,
+        "sufficiency": {
+          "dvx": 0.34148106871438805,
+          "dvy": 0.2983827717700651,
+          "dx": 0.8655530939734866,
+          "dy": 1.394556518964019
+        }
+      },
+      "baselines": {
+        "actgrad_topk": {
+          "necessity_dvx": 0.01680570917663792,
+          "sites": [
+            "b1_2",
+            "act_5",
+            "b2_0",
+            "b2_1"
+          ],
+          "sufficiency_dvx": 1.1354817310256133
+        },
+        "gradient_topk": {
+          "necessity_dvx": 0.14856354894945767,
+          "sites": [
+            "b2_0",
+            "b1_0",
+            "b2_3",
+            "b1_5"
+          ],
+          "sufficiency_dvx": 1.0029694244585057
+        },
+        "magnitude_topk": {
+          "necessity_dvx": 0.0702061694665423,
+          "sites": [
+            "act_5",
+            "b1_2",
+            "act_4",
+            "act_3"
+          ],
+          "sufficiency_dvx": 0.8336669875601139
+        }
+      },
+      "cancellation": {
+        "pairs": [],
+        "status": "NO_MEANINGFUL_CANCELLATION_DETECTED"
+      },
+      "checkpoint_sha256": "42bc1be76128fade73a3e3256aac662050b93379ceae0d30f6e377cc5f5692ec",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0034560817293822765,
+            "mse": 5.641389634547522e-06,
+            "nmse": 0.0016323079360614071,
+            "pred_variance": 0.003482945030555129,
+            "variance": 0.003458531806245446
+          },
+          "dvy": {
+            "energy": 0.00318278931081295,
+            "mse": 5.206808509683469e-06,
+            "nmse": 0.0016359262273485337,
+            "pred_variance": 0.0031896408181637526,
+            "variance": 0.0031894829589873552
+          },
+          "dx": {
+            "energy": 0.00020653704996220767,
+            "mse": 9.701686849439284e-07,
+            "nmse": 0.00469731065259938,
+            "pred_variance": 0.0002012686600210145,
+            "variance": 0.00019981851801276207
+          },
+          "dy": {
+            "energy": 0.0001974944316316396,
+            "mse": 2.6703858111432055e-06,
+            "nmse": 0.013521322039721733,
+            "pred_variance": 0.0002026671136263758,
+            "variance": 0.0001971095334738493
+          },
+          "full": {
+            "energy": 0.0017607255140319467,
+            "mse": 3.6221881600795314e-06,
+            "nmse": 0.0020572134220881236,
+            "pred_variance": 0.0017698758747428656,
+            "variance": 0.0017616149270907044
+          }
+        },
+        "dev_loss_mse": 3.6221881600795314e-06,
+        "nmse": {
+          "dvx": 0.0016323079360614071,
+          "dvy": 0.0016359262273485337,
+          "dx": 0.00469731065259938,
+          "dy": 0.013521322039721733
+        },
+        "passed": true
+      },
+      "counterfactual_gap_closed": 0.9999812245368958,
+      "counterfactual_gap_closed_ay": 0.9789799451828003,
+      "counterfactual_support": "hybrid_activation_patch",
+      "encoder_sites_excluded": [
+        "enc_0",
+        "enc_1",
+        "enc_2",
+        "enc_3",
+        "enc_4",
+        "enc_5"
+      ],
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+      "gauge_function_mse": 8.830203066887018e-16,
+      "gauge_recovered": [
+        "act_5",
+        "b1_3",
+        "b2_4",
+        "b1_2"
+      ],
+      "gauge_sufficiency_dvx": 0.03546241374512361,
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "intervention_support": "coordinatewise_mean_fill",
+      "literal_jaccard_vs_gauge": 0.0,
+      "minimality_drop": {
+        "act_1": 0.3927186323085803,
+        "act_2": 0.37257656735389266,
+        "act_4": 0.3874764951796379,
+        "b1_0": 0.29640040274090834
+      },
+      "necessity": {
+        "dvx": 0.9927758148783906,
+        "dvy": 0.5498067534387638,
+        "dx": 0.2996235285292466,
+        "dy": 1.7306676236974756
+      },
+      "parent_001_rerun": false,
+      "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "pre_prune_circuit": [
+        "act_2",
+        "act_1",
+        "act_4",
+        "b1_0"
+      ],
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "recovered_circuit": [
+        "act_2",
+        "act_1",
+        "act_4",
+        "b1_0"
+      ],
+      "rms_matched_sufficient_count": 0,
+      "searchable_sites": [
+        "act_0",
+        "act_1",
+        "act_2",
+        "act_3",
+        "act_4",
+        "act_5",
+        "b1_0",
+        "b1_1",
+        "b1_2",
+        "b1_3",
+        "b1_4",
+        "b1_5",
+        "b2_0",
+        "b2_1",
+        "b2_2",
+        "b2_3",
+        "b2_4",
+        "b2_5"
+      ],
+      "secondary_targets": {
+        "dvy": {
+          "necessity": {
+            "dvx": 0.4632584253269526,
+            "dvy": 0.7622602347060414,
+            "dx": 0.20634664070270026,
+            "dy": 0.8818049970324774
+          },
+          "recovered_circuit": [
+            "act_4",
+            "act_1",
+            "b2_3",
+            "act_3"
+          ],
+          "specificity_target_over_control": 1.6454319943950575,
+          "sufficiency": {
+            "dvx": 0.620400564436939,
+            "dvy": 0.13030540727769152,
+            "dx": 0.056454263362851406,
+            "dy": 0.19158825380525935
+          }
+        },
+        "dx": {
+          "necessity": {
+            "dvx": 0.01028229434821508,
+            "dvy": 0.007770837972474099,
+            "dx": 0.14866766076533003,
+            "dy": 0.2355873362840189
+          },
+          "recovered_circuit": [
+            "act_0",
+            "b1_4"
+          ],
+          "specificity_target_over_control": 0.631051155424159,
+          "sufficiency": {
+            "dvx": 0.950808132132428,
+            "dvy": 1.010082683561205,
+            "dx": 0.03422694967129769,
+            "dy": 0.348586753254804
+          }
+        },
+        "dy": {
+          "necessity": {
+            "dvx": 0.287860898044763,
+            "dvy": 0.2781934992131676,
+            "dx": 0.20460693899364904,
+            "dy": 1.5164460731698077
+          },
+          "recovered_circuit": [
+            "act_1"
+          ],
+          "specificity_target_over_control": 7.411508527659846,
+          "sufficiency": {
+            "dvx": 0.8180088418816278,
+            "dvy": 0.6805575273680672,
+            "dx": 0.16178307390514016,
+            "dy": 0.08637637728634125
+          }
+        }
+      },
+      "seed": 71,
+      "specificity_dvx_over_dvy": 1.805681375627125,
+      "specificity_dvx_over_dy": 0.5736374802906291,
+      "specificity_matrix_necessity": {
+        "C_dvx": {
+          "dvx": 0.9927758148783906,
+          "dvy": 0.5498067534387638,
+          "dx": 0.2996235285292466,
+          "dy": 1.7306676236974756
+        },
+        "C_dvy": {
+          "dvx": 0.4632584253269526,
+          "dvy": 0.7622602347060414,
+          "dx": 0.20634664070270026,
+          "dy": 0.8818049970324774
+        },
+        "C_dx": {
+          "dvx": 0.01028229434821508,
+          "dvy": 0.007770837972474099,
+          "dx": 0.14866766076533003,
+          "dy": 0.2355873362840189
+        },
+        "C_dy": {
+          "dvx": 0.287860898044763,
+          "dvy": 0.2781934992131676,
+          "dx": 0.20460693899364904,
+          "dy": 1.5164460731698077
+        }
+      },
+      "stage": "development",
+      "status": "SUFFICIENCY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.1678705803977294,
+        "dvy": 0.333884315827196,
+        "dx": 0.02906248418326236,
+        "dy": 0.15230562009741738
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003376626642420888,
+          "mse": 6.172411758598173e-06,
+          "nmse": 0.0018279817143694733,
+          "pred_variance": 0.003387316595762968,
+          "variance": 0.0033770701847970486
+        },
+        "dvy": {
+          "energy": 0.003243501763790846,
+          "mse": 5.93035565543687e-06,
+          "nmse": 0.0018283805859583566,
+          "pred_variance": 0.0032217707484960556,
+          "variance": 0.0032395110465586185
+        },
+        "dx": {
+          "energy": 0.0002531129284761846,
+          "mse": 1.053463506650587e-06,
+          "nmse": 0.004162029624455581,
+          "pred_variance": 0.00025102784275077283,
+          "variance": 0.00025325416936539114
+        },
+        "dy": {
+          "energy": 0.00022477578022517264,
+          "mse": 2.6904785954684485e-06,
+          "nmse": 0.011969610750647688,
+          "pred_variance": 0.00022502431238535792,
+          "variance": 0.00022466630616690964
+        },
+        "full": {
+          "energy": 0.0017745044315233827,
+          "mse": 3.961677521147067e-06,
+          "nmse": 0.0022325543124995365,
+          "pred_variance": 0.0017707392107695341,
+          "variance": 0.001773406402207911
+        }
+      },
+      "train_loss_curve": [
+        0.0004952418385073543,
+        0.00018614028522279114,
+        9.116136789089069e-05,
+        5.2168939873808995e-05,
+        3.086826836806722e-05,
+        1.5493611499550752e-05,
+        4.952825293003116e-06,
+        3.82808138965629e-06,
+        3.3878563954203855e-06,
+        2.9517245820898097e-06
+      ],
+      "train_loss_final": 2.9517245820898097e-06,
+      "train_loss_fullsplit": 3.961677521147067e-06,
+      "train_steps": 800
+    },
+    {
+      "action_embedding_only": false,
+      "alternate_circuit": [
+        "act_3",
+        "b1_0",
+        "b1_1",
+        "act_2"
+      ],
+      "alternate_sufficiency_dvx": 0.2502073102782901,
+      "architecture_action_cutset": {
+        "necessity": {
+          "dvx": 0.9990424679357024,
+          "dvy": 0.9946959389358289,
+          "dx": 0.17378728837006674,
+          "dy": 0.15547881346973796
+        },
+        "sites": [
+          "act_0",
+          "act_1",
+          "act_2",
+          "act_3",
+          "act_4",
+          "act_5"
+        ],
+        "specificity_dvx_over_dvy": 1.004369706188329,
+        "sufficiency": {
+          "dvx": 0.12234451585804192,
+          "dvy": 1.0204617818472093,
+          "dx": 3.3831941536627816,
+          "dy": 0.34111778648989016
+        }
+      },
+      "baselines": {
+        "actgrad_topk": {
+          "necessity_dvx": 0.32755922133890014,
+          "sites": [
+            "b1_0",
+            "act_5",
+            "b2_0"
+          ],
+          "sufficiency_dvx": 0.6639268203954075
+        },
+        "gradient_topk": {
+          "necessity_dvx": 0.09708416134822961,
+          "sites": [
+            "b2_0",
+            "b1_1",
+            "b2_1"
+          ],
+          "sufficiency_dvx": 1.0009182294243513
+        },
+        "magnitude_topk": {
+          "necessity_dvx": 0.11056516591096671,
+          "sites": [
+            "act_1",
+            "b1_0",
+            "act_5"
+          ],
+          "sufficiency_dvx": 0.6556823113468505
+        }
+      },
+      "cancellation": {
+        "pairs": [],
+        "status": "NO_MEANINGFUL_CANCELLATION_DETECTED"
+      },
+      "checkpoint_sha256": "221a87075744736933c9aed0e44a3fd9e77faf547aa5e5bb8cf14182dbeabde6",
+      "circuit_search_ran": true,
+      "claim_boundary": "supervised residual-MLP PointMass world model only; not a JEPA objective; does not interpret 001's incompetent models; does not alter HARD-002, IBD-002, or IBD-003",
+      "competence": {
+        "channels": {
+          "dvx": {
+            "energy": 0.0035970110911875963,
+            "mse": 2.0705987481051125e-05,
+            "nmse": 0.005756442489649036,
+            "pred_variance": 0.003656849730759859,
+            "variance": 0.0036016216035932302
+          },
+          "dvy": {
+            "energy": 0.0031924329232424498,
+            "mse": 2.8016302167088725e-05,
+            "nmse": 0.008775846772884888,
+            "pred_variance": 0.0031350834760814905,
+            "variance": 0.00320053449831903
+          },
+          "dx": {
+            "energy": 0.00029238846036605537,
+            "mse": 9.420765309187118e-06,
+            "nmse": 0.03222003117836047,
+            "pred_variance": 0.00030613638227805495,
+            "variance": 0.00029327889205887914
+          },
+          "dy": {
+            "energy": 0.00021582406770903617,
+            "mse": 3.2094619655254064e-06,
+            "nmse": 0.014870732442371774,
+            "pred_variance": 0.00020920690440107137,
+            "variance": 0.0002164733741665259
+          },
+          "full": {
+            "energy": 0.001824414124712348,
+            "mse": 1.5338129742303863e-05,
+            "nmse": 0.008407153581274864,
+            "pred_variance": 0.0018265623366460204,
+            "variance": 0.0018257501069456339
+          }
+        },
+        "dev_loss_mse": 1.5338129742303863e-05,
+        "nmse": {
+          "dvx": 0.005756442489649036,
+          "dvy": 0.008775846772884888,
+          "dx": 0.03222003117836047,
+          "dy": 0.014870732442371774
+        },
+        "passed": true
+      },
+      "counterfactual_gap_closed": 0.8138066530227661,
+      "counterfactual_gap_closed_ay": 0.6828963756561279,
+      "counterfactual_support": "hybrid_activation_patch",
+      "encoder_sites_excluded": [
+        "enc_0",
+        "enc_1",
+        "enc_2",
+        "enc_3",
+        "enc_4",
+        "enc_5"
+      ],
+      "evidence_level": "None",
+      "experiment_id": "CRCT-LEARNED-WM-ACTION-DELTA-002",
+      "gauge_function_mse": 9.376532965118937e-16,
+      "gauge_recovered": [
+        "act_3"
+      ],
+      "gauge_sufficiency_dvx": 0.03426454178104984,
+      "hard002_primary_seeds_reused": false,
+      "ibd002_executed": false,
+      "ibd003_rerun": false,
+      "intervention_support": "coordinatewise_mean_fill",
+      "literal_jaccard_vs_gauge": 0.0,
+      "minimality_drop": {
+        "act_4": 0.6592199311394816,
+        "act_5": 0.4125222606139582,
+        "b2_0": 0.10312373337369339
+      },
+      "necessity": {
+        "dvx": 0.3390286170993492,
+        "dvy": 0.1109690938800891,
+        "dx": 0.8231681613005636,
+        "dy": 1.3179701238597799
+      },
+      "parent_001_rerun": false,
+      "parent_experiment_id": "CRCT-JEPA-ACTION-DELTA-001",
+      "pre_prune_circuit": [
+        "act_4",
+        "act_5",
+        "b2_0"
+      ],
+      "random_control_sufficient_count": 0,
+      "random_plus_one_p": 0.030303030303030304,
+      "recovered_circuit": [
+        "act_4",
+        "act_5",
+        "b2_0"
+      ],
+      "rms_matched_sufficient_count": 0,
+      "searchable_sites": [
+        "act_0",
+        "act_1",
+        "act_2",
+        "act_3",
+        "act_4",
+        "act_5",
+        "b1_0",
+        "b1_1",
+        "b1_2",
+        "b1_3",
+        "b1_4",
+        "b1_5",
+        "b2_0",
+        "b2_1",
+        "b2_2",
+        "b2_3",
+        "b2_4",
+        "b2_5"
+      ],
+      "secondary_targets": {
+        "dvy": {
+          "necessity": {
+            "dvx": 0.26907147863474734,
+            "dvy": 0.2219994487993394,
+            "dx": 0.9183721453982548,
+            "dy": 0.10795797672178825
+          },
+          "recovered_circuit": [
+            "act_5",
+            "b1_3",
+            "act_2",
+            "b2_4"
+          ],
+          "specificity_target_over_control": 0.8250575271885053,
+          "sufficiency": {
+            "dvx": 0.7442300125532759,
+            "dvy": 0.3147711889035441,
+            "dx": 3.19364376567874,
+            "dy": 0.6484581005376098
+          }
+        },
+        "dx": {
+          "necessity": {
+            "dvx": 0.3067694624984975,
+            "dvy": 0.02477714438357083,
+            "dx": 1.2156673175876473,
+            "dy": 1.4408510992814496
+          },
+          "recovered_circuit": [
+            "b1_4",
+            "act_4",
+            "b1_1"
+          ],
+          "specificity_target_over_control": 0.8437147448434463,
+          "sufficiency": {
+            "dvx": 0.4772598237649241,
+            "dvy": 1.512851919206503,
+            "dx": 0.11988107388714005,
+            "dy": 0.6824796460953779
+          }
+        },
+        "dy": {
+          "necessity": {
+            "dvx": 0.02483582468754879,
+            "dvy": 0.004361940256063709,
+            "dx": 0.6157635594744457,
+            "dy": 0.09067344154466325
+          },
+          "recovered_circuit": [
+            "act_1"
+          ],
+          "specificity_target_over_control": 0.14725366603709555,
+          "sufficiency": {
+            "dvx": 1.0639257757223197,
+            "dvy": 1.059134597119824,
+            "dx": 0.5426198208154865,
+            "dy": 0.029544331523996582
+          }
+        }
+      },
+      "seed": 73,
+      "specificity_dvx_over_dvy": 3.055162525393751,
+      "specificity_dvx_over_dy": 0.2572354342194625,
+      "specificity_matrix_necessity": {
+        "C_dvx": {
+          "dvx": 0.3390286170993492,
+          "dvy": 0.1109690938800891,
+          "dx": 0.8231681613005636,
+          "dy": 1.3179701238597799
+        },
+        "C_dvy": {
+          "dvx": 0.26907147863474734,
+          "dvy": 0.2219994487993394,
+          "dx": 0.9183721453982548,
+          "dy": 0.10795797672178825
+        },
+        "C_dx": {
+          "dvx": 0.3067694624984975,
+          "dvy": 0.02477714438357083,
+          "dx": 1.2156673175876473,
+          "dy": 1.4408510992814496
+        },
+        "C_dy": {
+          "dvx": 0.02483582468754879,
+          "dvy": 0.004361940256063709,
+          "dx": 0.6157635594744457,
+          "dy": 0.09067344154466325
+        }
+      },
+      "stage": "development",
+      "status": "SPECIFICITY_FAILED",
+      "substrate": "supervised_residual_mlp_not_jepa_objective",
+      "sufficiency": {
+        "dvx": 0.04193749736841116,
+        "dvy": 1.2541982955900155,
+        "dx": 0.1513584993127826,
+        "dy": 0.7920418209305744
+      },
+      "train_channels": {
+        "dvx": {
+          "energy": 0.003223653417080641,
+          "mse": 1.886247264337726e-05,
+          "nmse": 0.005851271896486696,
+          "pred_variance": 0.003279979107901454,
+          "variance": 0.0032256199046969414
+        },
+        "dvy": {
+          "energy": 0.00347601855173707,
+          "mse": 2.5322451620013453e-05,
+          "nmse": 0.007284901171588704,
+          "pred_variance": 0.003431715304031968,
+          "variance": 0.003475669538602233
+        },
+        "dx": {
+          "energy": 0.0002549269120208919,
+          "mse": 9.294217306887731e-06,
+          "nmse": 0.03645836068545814,
+          "pred_variance": 0.0002643181069288403,
+          "variance": 0.00025503759388811886
+        },
+        "dy": {
+          "energy": 0.00023069008602760732,
+          "mse": 2.6133961910090875e-06,
+          "nmse": 0.011328602091276412,
+          "pred_variance": 0.00022483112115878612,
+          "variance": 0.00023058929946273565
+        },
+        "full": {
+          "energy": 0.0017963222926482558,
+          "mse": 1.4023133189766668e-05,
+          "nmse": 0.007806579725230069,
+          "pred_variance": 0.0018014665693044662,
+          "variance": 0.0017965772422030568
+        }
+      },
+      "train_loss_curve": [
+        0.0002954646770376712,
+        0.00012829499610234052,
+        7.959706999827176e-05,
+        8.120358688756824e-05,
+        5.4319963965099305e-05,
+        3.482986721792258e-05,
+        3.303762059658766e-05,
+        1.870686173788272e-05,
+        1.3693195796804503e-05,
+        1.610364233783912e-05
+      ],
+      "train_loss_final": 1.610364233783912e-05,
+      "train_loss_fullsplit": 1.4023133189766668e-05,
+      "train_steps": 800
+    }
+  ],
+  "seeds": [
+    59,
+    71,
+    73
+  ],
+  "selected_rung": 800,
+  "source_digest": "4d3f9c8d558943027f1eb6e0795a6a978f3e74f8c38f2a45b873ee9a84b98305",
+  "stage": "development",
+  "status": "INCONCLUSIVE",
+  "substrate": "supervised_residual_mlp_not_jepa_objective",
+  "threshold_digest": "fde0401db7a5fd46046ee848cbebc46d96bdc63040ab5417be463f7f8438fce4",
+  "train_steps": 800
+}
