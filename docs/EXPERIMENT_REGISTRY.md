@@ -19,7 +19,19 @@
 - `CRCT-COALITION-IBD-002` — `PREREGISTERED_NOT_RUN`. Real applied gauge;
   new seeds. Not executed.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
-- Platonic WM / LeFlow — plan only, no experiment ID executed.
+- `WM-PLATONIC-MKNN-001` — `PREREGISTERED_NOT_RUN`. CPU PointMass m-kNN
+  geometry control. Protocol `docs/WM_PLATONIC_MKNN_001_PROTOCOL.md`.
+  Confirmation seeds 131/137/139 frozen before outcomes. Not stitching.
+- `WM-LEFLOW-AMORTIZE-001` — `PREREGISTERED_NOT_RUN`. CPU amortized
+  interpolator vs shooting/CEM on one frozen tiny JEPA. Protocol
+  `docs/WM_LEFLOW_AMORTIZE_001_PROTOCOL.md`. Confirmation seeds 151/157/163.
+  Not a LeFlow reproduction. Gated on MKNN adjudication integrity, not on
+  MKNN passing.
+- `WM-PLATONIC-STITCH-001` — not opened.
+- Platonic WM / LeFlow paper-scale work remains plan only. Joint successor
+  IDs still **not opened**: `WM-LEFLOW-TRANSFER-001` (planner portability
+  `A→B`), `WM-CRCT-PLATONIC-COMPUTE-001` (equivalent causal computations;
+  gated on transfer competence).
 
 ## 2026-08-17 CRCT adjudication
 

@@ -15,8 +15,11 @@
   that confirmation. IBD-002 is the prospective real-gauge successor.
 - Learned residual Intervention-JEPA stays unprivileged relative to
   direct-delta and strong differential baselines.
-- Platonic WM and LeFlow are measurement-design transfers, not licensed
-  claims and not downloads.
+- Platonic WM and LeFlow paper-scale work is not a licensed claim and not a
+  download. CPU Track A opens `WM-PLATONIC-MKNN-001` then
+  `WM-LEFLOW-AMORTIZE-001` with gates frozen before outcomes. Stitching,
+  transfer, and CRCT-on-transfer stay closed. A positive m-kNN is Availability
+  only. HARD-002 seeds stay forbidden.
 
 ## 2026-07-26
 

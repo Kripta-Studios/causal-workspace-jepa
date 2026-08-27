@@ -16,6 +16,13 @@
 - [x] Intervention-JEPA fair-baseline policy module.
 - [x] Preregister secondary LeVLJEPA MiniPush factorial; do not download.
 - [x] Write Platonic WM + LeFlow integration plan; do not run those papers' experiments yet.
+- [x] Preregister CPU `WM-PLATONIC-MKNN-001` and `WM-LEFLOW-AMORTIZE-001`
+  before seeing outcomes. Do not open stitching.
+- [ ] Execute MKNN-001 on frozen confirmation seeds; keep a negative if it fails.
+- [ ] Execute AMORTIZE-001 only after MKNN adjudication with no P0/P1 integrity issue.
+- [ ] Do not open `WM-LEFLOW-TRANSFER-001` until those CPU controls exist.
+  CRCT-on-transfer is gated on that transfer beating wrong-world and
+  adapter-only controls.
 
 ## 2026-08-17 CRCT adjudication
 

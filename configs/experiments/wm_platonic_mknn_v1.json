@@ -1,0 +1,76 @@
+{
+  "experiment_id": "WM-PLATONIC-MKNN-001",
+  "hypothesis_ids": ["H-WM-geometry-control"],
+  "registered_date": "2026-08-27",
+  "status": "PREREGISTERED_NOT_RUN",
+  "execution_authorized": true,
+  "parent_plan": "docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md",
+  "protocol": "docs/WM_PLATONIC_MKNN_001_PROTOCOL.md",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "command": "python scripts/run_wm_platonic_mknn.py --config configs/experiments/wm_platonic_mknn_v1.json",
+  "output_metrics": "artifacts/metrics/wm_platonic_mknn_v1.json",
+  "environment": {
+    "name": "PointMass2D",
+    "state_dim": 4,
+    "action_dim": 2,
+    "trajectories": 80,
+    "steps": 16,
+    "environment_base_seed": 211
+  },
+  "observation_maps": {
+    "kind": "frozen_gaussian_linear",
+    "obs_dim": 16,
+    "map_a_seed": 801,
+    "map_b_seed": 809,
+    "map_random_seed": 817,
+    "noise_seed": 223,
+    "trainable": false,
+    "learned_adapter_forbidden": true
+  },
+  "model": {
+    "family": "TinyActionConditionedJEPA",
+    "latent_dim": 16,
+    "ridge": 0.0001,
+    "encoder": "frozen_identity",
+    "predictor": "ridge_action_conditioned",
+    "matched_capacity": true,
+    "matched_training_budget": true
+  },
+  "splits": {
+    "train": 48,
+    "development": 16,
+    "confirmation": 16,
+    "split_seed": 227,
+    "adjudicating_split": "confirmation",
+    "development_is_not_a_threshold_set": true,
+    "forbidden_split_names": ["test", "paraphrase"]
+  },
+  "confirmation_seeds": [131, 137, 139],
+  "forbidden_seeds": [1009, 2027, 4093, 11, 13, 17, 811, 823, 829, 21, 23, 29, 941, 947, 953, 701, 901],
+  "mknn": {
+    "k": 5,
+    "n_eval": 128,
+    "chance": 0.03937007874015748,
+    "chance_formula": "k / (n_eval - 1)",
+    "probe_action": [0.5, 0.0],
+    "primary_metric": "predictor_mknn"
+  },
+  "gates": {
+    "predictor_mknn_must_beat_shuffled_action": true,
+    "predictor_mknn_must_beat_random_map": true,
+    "predictor_mknn_must_beat_chance_multiplier": 2.0,
+    "every_confirmation_seed": true,
+    "pass_status": "TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED",
+    "fail_status": "NEGATIVE_RESULT"
+  },
+  "claim_boundary": {
+    "evidence_level_if_pass": "Availability",
+    "not_shared_coordinates": true,
+    "not_circuit": true,
+    "not_workspace": true,
+    "not_platonic_physics": true,
+    "not_stitching": true,
+    "does_not_relabel_hard002": true
+  },
+  "stopping_rule": "one confirmation pass; no post-hoc k/map/seed/threshold search"
+}

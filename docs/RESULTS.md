@@ -26,6 +26,10 @@
   preregistered, not run. This is synthetic method evidence only. HARD-002
   remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
+- `WM-PLATONIC-MKNN-001` and `WM-LEFLOW-AMORTIZE-001` are preregistered CPU
+  controls with gates frozen before any target metric. They have not been
+  executed. Stitching is not opened. Paper-scale Platonic/LeFlow work is
+  still plan-only.
 
 ## 2026-08-17 — CRCT-STAGE0-HARD-002 (`NEGATIVE_RESULT`)
 

@@ -1,0 +1,84 @@
+{
+  "experiment_id": "WM-LEFLOW-AMORTIZE-001",
+  "hypothesis_ids": ["H-WM-02"],
+  "registered_date": "2026-08-27",
+  "status": "PREREGISTERED_NOT_RUN",
+  "execution_authorized": true,
+  "requires_prior_adjudication": "WM-PLATONIC-MKNN-001",
+  "negative_prior_is_not_a_blocker": true,
+  "parent_plan": "docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md",
+  "protocol": "docs/WM_LEFLOW_AMORTIZE_001_PROTOCOL.md",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "command": "python scripts/run_wm_leflow_amortize.py --config configs/experiments/wm_leflow_amortize_v1.json",
+  "output_metrics": "artifacts/metrics/wm_leflow_amortize_v1.json",
+  "not_a_leflow_reproduction": true,
+  "environment": {
+    "name": "PointMass2D",
+    "state_dim": 4,
+    "action_dim": 2,
+    "trajectories": 96,
+    "steps": 16,
+    "environment_base_seed": 233,
+    "native_observations": true
+  },
+  "model": {
+    "family": "TinyActionConditionedJEPA",
+    "latent_dim": 16,
+    "ridge": 0.0001,
+    "encoder": "frozen_random_projection_after_fit",
+    "world_model_frozen_during_planner_comparison": true
+  },
+  "splits": {
+    "train": 56,
+    "development": 16,
+    "confirmation": 24,
+    "split_seed": 229,
+    "adjudicating_split": "confirmation",
+    "n_tasks": 24,
+    "forbidden_split_names": ["test", "paraphrase"]
+  },
+  "confirmation_seeds": [151, 157, 163],
+  "forbidden_seeds": [1009, 2027, 4093, 11, 13, 17, 811, 823, 829, 21, 23, 29, 941, 947, 953, 701, 901, 131, 137, 139],
+  "planning": {
+    "primary_horizon": 5,
+    "diagnostic_horizons": [10],
+    "horizon_collapse_warning": "H=10 may collapse; allowed diagnostic failure; not OOD",
+    "success_position_mse_max": 0.15,
+    "shooting_candidates": 64,
+    "cem_candidates": 16,
+    "cem_iterations": 4,
+    "amortized_rerank_n": [1, 64],
+    "n1_noise_std": 0.0,
+    "n64_noise_std": 0.05,
+    "candidate_method": "latent_interpolator_plus_ridge_inverse_dynamics",
+    "action_flow_implemented": true
+  },
+  "inverse_dynamics": {
+    "ridge": 0.0001,
+    "capacity_matched": true,
+    "arm_a_features": ["z_t", "z_next", "zeros_delta"],
+    "arm_b_features": ["z_t", "z_next", "delta"],
+    "primary_amortized_arm": "B",
+    "diagnostic_only": true
+  },
+  "gates": {
+    "primary_horizon": 5,
+    "primary_arm": "latent_flow_n64",
+    "baseline": "random_shooting_n64",
+    "success_slack": 0.05,
+    "require_faster_wall_clock_than_shooting": true,
+    "every_confirmation_seed": true,
+    "pass_status": "AMORTIZED_PLANNING_COMPETENCE_PASSED",
+    "fail_status": "NEGATIVE_RESULT"
+  },
+  "claim_boundary": {
+    "evidence_level_if_pass": "Availability",
+    "not_leflow": true,
+    "not_workspace": true,
+    "does_not_eliminate_replanning": true,
+    "does_not_make_cem_obsolete": true,
+    "h5_h10_is_not_ood": true,
+    "does_not_relabel_hard002": true
+  },
+  "stopping_rule": "one confirmation pass after MKNN adjudication; no post-hoc H/N/threshold search"
+}

@@ -10,9 +10,10 @@
    circuit claims. Do not collapse sufficiency into graph recall.
 4. Residual Intervention-JEPA remains ineligible unless residual power, fair
    baselines, and held-out direct-delta comparisons pass.
-5. Platonic m-kNN / stitching and LeFlow amortization are planned in
-   `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md` after competence and
-   hygiene, on tiny/local adapters first.
+5. CPU Platonic/amortize controls are preregistered as
+   `WM-PLATONIC-MKNN-001` and `WM-LEFLOW-AMORTIZE-001`. Stitching is not
+   opened. The distinctive later experiment remains LeFlow transfer `A→B`,
+   then CRCT on equivalent planning computations — not embedding similarity.
 6. Workspace remains closed.
 
 ## 2026-08-17 post-HARD-002 decision
