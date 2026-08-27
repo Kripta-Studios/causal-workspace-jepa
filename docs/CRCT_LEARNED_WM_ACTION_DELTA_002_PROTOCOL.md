@@ -1,6 +1,7 @@
 # CRCT-LEARNED-WM-ACTION-DELTA-002 protocol
 
 Status at freeze: `PREREGISTERED_NOT_RUN`.
+Registered outcome: `INCONCLUSIVE` (confirmation closed). Thresholds unchanged.
 After the freeze commit, execution of **this ID only** is authorized.
 
 Parent: `CRCT-JEPA-ACTION-DELTA-001` (`MODEL_INCOMPETENT`, evidence `None`).

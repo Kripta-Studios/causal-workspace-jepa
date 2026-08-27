@@ -14,8 +14,8 @@ planning, JEPA-objective successor.
 
 ## Work
 
-1. Audit 001 failure from opened eval splits only.
-2. Protocol + reviews; freeze before new training.
-3. Rung 200 → 800 → 2000 until competence or final fail.
-4. Confirmation only if development mechanism recovery passed.
-5. Adjudicate; do not claim JEPA.
+1. [x] Audit 001 failure from opened eval splits only.
+2. [x] Protocol + reviews; freeze before new training (`3649dd9`).
+3. [x] Rung 200 incompetent; rung 800 competent; stop (2000 not run).
+4. [x] Confirmation stayed closed (development was not `MECHANISM_RECOVERY_PASSED`).
+5. [x] Adjudicate `INCONCLUSIVE`; do not claim JEPA.

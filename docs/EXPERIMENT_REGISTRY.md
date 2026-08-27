@@ -29,9 +29,9 @@
   above 0.05; `Δvx`/`Δvy` met the bar). Confirmation closed; no circuit search.
   Evidence `None`. Not a mechanistic negative. IBD-002 not executed. HARD-002
   unchanged. See `docs/CRCT_JEPA_ACTION_DELTA_001_ADJUDICATION_2026-08-27.md`.
-- `CRCT-LEARNED-WM-ACTION-DELTA-002` — **`PREREGISTERED_NOT_RUN`**.
-  Supervised residual-MLP successor to 001. Finite ladder 200/800/2000.
-  Seeds 59/71/73 and 1031/1033/1039. Not a JEPA objective. 001 unchanged.
+- `CRCT-LEARNED-WM-ACTION-DELTA-002` — **`INCONCLUSIVE`**. Freeze `3649dd9`.
+  Rung 800 competent; development CRCT did not pass (cut-set / sufficiency /
+  specificity). Confirmation closed. Not a JEPA objective. 001 unchanged.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,

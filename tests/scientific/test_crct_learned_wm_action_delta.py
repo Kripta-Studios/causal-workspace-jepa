@@ -42,6 +42,48 @@ def test_config_matches_frozen_thresholds() -> None:
     )
     assert config["thresholds"] == FROZEN_THRESHOLDS
     assert config["experiment_id"] == EXPERIMENT_ID
+    assert config["status"] == "INCONCLUSIVE"
+    assert config["execution_authorized"] is False
+    assert config["confirmation"] == "CLOSED"
+    assert config["substrate"] == "supervised_residual_mlp_not_jepa_objective"
+
+
+def test_confirmation_artifact_was_not_written() -> None:
+    assert not Path("artifacts/metrics/crct_learned_wm_action_delta_v2.json").exists()
+
+
+def test_rung800_development_is_inconclusive_not_a_pass() -> None:
+    payload = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v2.rung800.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert payload["experiment_id"] == EXPERIMENT_ID
+    assert payload["status"] == "INCONCLUSIVE"
+    assert payload["evidence_level"] == "None"
+    assert payload["all_seeds_competent"] is True
+    assert payload["all_seeds_passed"] is False
+    assert payload["selected_rung"] == 800
+    assert payload["stage"] == "development"
+    assert "JEPA objective" in payload["claim_boundary"]
+    statuses = {row["seed"]: row["status"] for row in payload["rows"]}
+    assert statuses[59] == "ARCHITECTURE_CUTSET"
+    assert statuses[71] == "SUFFICIENCY_FAILED"
+    assert statuses[73] == "SPECIFICITY_FAILED"
+    assert all(row["circuit_search_ran"] is True for row in payload["rows"])
+    assert all(row["competence"]["passed"] is True for row in payload["rows"])
+
+
+def test_rung200_did_not_open_circuit_search() -> None:
+    payload = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v2.rung200.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert payload["status"] == "MODEL_INCOMPETENT"
+    assert payload["all_seeds_competent"] is False
+    assert all(row["status"] == "MODEL_INCOMPETENT" for row in payload["rows"])
+    assert all(row.get("circuit_search_ran") is not True for row in payload["rows"])
 
 
 def test_claim_does_not_call_the_model_jepa() -> None:

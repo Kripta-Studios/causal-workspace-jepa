@@ -15,8 +15,9 @@
   Result: `MECHANISM_RECOVERY_PASSED`.
 - [x] `CRCT-JEPA-ACTION-DELTA-001` development: `MODEL_INCOMPETENT`. Confirmation
   closed. Do not retune this ID.
-- [ ] `CRCT-LEARNED-WM-ACTION-DELTA-002` is preregistered. Climb 200/800/2000 on
-  new seeds only. Do not drop Δx/Δy. Do not claim JEPA.
+- [x] `CRCT-LEARNED-WM-ACTION-DELTA-002` ladder: 200 incompetent; 800 competent;
+  development CRCT `INCONCLUSIVE`; confirmation closed. Do not retune.
+- [ ] `CRCT-LEARNED-WM-ACTION-DELTA-003` remains `DRAFT_NOT_PREREGISTERED`.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [ ] Execute 004 only after a later authorization commit on origin.

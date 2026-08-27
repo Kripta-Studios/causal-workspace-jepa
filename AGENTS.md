@@ -56,14 +56,15 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
 2. Confirmation passed; do not execute `LLM-QWEN-BINDING-ALGEBRA-004` until
    a later authorization commit. V3 stays ineligible.
 3. **Primary track: mechanistic interpretability.** Coalition-aware CRCT →
-   IBD validation → learned JEPA action-Δ mechanisms → contact → cross-model
+   IBD validation → learned action-Δ mechanisms (supervised WM first; a
+   JEPA-objective successor is a later ID) → contact → cross-model
    equivalence. Planning, geometry, and probes are secondary readouts.
 4. `CRCT-COALITION-IBD-001` confirmation is smoke. `CRCT-COALITION-IBD-002`
    remains `PREREGISTERED_NOT_RUN` (not executed). `CRCT-COALITION-IBD-003`
    is `MECHANISM_RECOVERY_PASSED` (synthetic IBD).
    `CRCT-JEPA-ACTION-DELTA-001` is `MODEL_INCOMPETENT` (confirmation closed).
-   `CRCT-LEARNED-WM-ACTION-DELTA-002` is the authorized supervised-WM successor
-   (not a JEPA objective). Do not execute the JEPA-named 002 draft.
+   `CRCT-LEARNED-WM-ACTION-DELTA-002` is `INCONCLUSIVE` (confirmation closed).
+   Do not execute `CRCT-LEARNED-WM-ACTION-DELTA-003` until a later freeze.
 5. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
    encoder-geometry caveat (Availability only). CPU `WM-LEFLOW-AMORTIZE-001` is
