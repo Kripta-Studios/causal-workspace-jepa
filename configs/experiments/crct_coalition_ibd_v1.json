@@ -1,0 +1,23 @@
+{
+  "experiment_id": "CRCT-COALITION-IBD-001",
+  "hypothesis_ids": ["H-CROSS-01"],
+  "registered_date": "2026-08-27",
+  "status": "PREREGISTERED_DEVELOPMENT_THEN_CONFIRMATION",
+  "parent_frozen_result": "CRCT-STAGE0-HARD-002",
+  "parent_status_preserved": "NEGATIVE_RESULT",
+  "hard002_primary_seeds_forbidden": [1009, 2027, 4093],
+  "development_seeds": [11, 13, 17],
+  "confirmation_seeds": [811, 823, 829],
+  "thresholds": {
+    "epsilon": 0.02,
+    "redundancy_correlation_min": 0.99,
+    "cancellation_sum_energy_ratio_max": 0.02,
+    "cancellation_min_member_energy": 0.0001,
+    "gauge_spearman_min": 0.99,
+    "decoy_causal_energy_max": 1e-8
+  },
+  "claim_boundary": "synthetic interpretable-by-design evaluator test; does not alter HARD-002; not a Qwen/JEPA/workspace claim",
+  "resource_profile": "configs/resource/cpu_vps.yaml",
+  "command": "python -m causal_workspace_jepa.experiments.cross_domain.crct_coalition_ibd --stage development",
+  "output_metrics": "artifacts/metrics/crct_coalition_ibd_v1.json"
+}
