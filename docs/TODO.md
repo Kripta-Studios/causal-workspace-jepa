@@ -14,8 +14,9 @@
 - [x] Freeze then run `CRCT-COALITION-IBD-003` once; do not retune after confirmation.
   Result: `MECHANISM_RECOVERY_PASSED`.
 - [x] `CRCT-JEPA-ACTION-DELTA-001` development: `MODEL_INCOMPETENT`. Confirmation
-  closed. Do not retune this ID. Draft `CRCT-JEPA-ACTION-DELTA-002` only; do not
-  freeze or run it in the same breath as 001’s failure.
+  closed. Do not retune this ID.
+- [ ] `CRCT-LEARNED-WM-ACTION-DELTA-002` is preregistered. Climb 200/800/2000 on
+  new seeds only. Do not drop Δx/Δy. Do not claim JEPA.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [ ] Execute 004 only after a later authorization commit on origin.

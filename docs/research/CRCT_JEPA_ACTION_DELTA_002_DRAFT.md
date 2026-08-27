@@ -7,7 +7,11 @@ CONFIRMATION:           CLOSED
 PARENT:                 CRCT-JEPA-ACTION-DELTA-001 MODEL_INCOMPETENT
 ```
 
-This file is **not** a freeze. Do not train, do not confirm, do not download.
+This file is **not** a freeze and was **not** executed.
+
+Successor freeze (if present): `docs/CRCT_LEARNED_WM_ACTION_DELTA_002_PROTOCOL.md`
+(`CRCT-LEARNED-WM-ACTION-DELTA-002`). The JEPA-named ID was rejected because
+001/002 substrates are supervised MLPs, not JEPA-trained predictors.
 
 `CRCT-JEPA-ACTION-DELTA-001` failed the frozen full-state competence conjunction
 at 200 Adam steps: `Δvx`/`Δvy` NMSE met `<= 0.05` on development seeds 43/47/53,

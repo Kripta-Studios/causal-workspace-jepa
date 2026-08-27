@@ -28,7 +28,8 @@
   confirmation seeds 971/977/983 (synthetic IBD; evidence Causal effect).
   Freeze `fbaec9c` before outcomes. IBD-002 was not executed.
   `CRCT-JEPA-ACTION-DELTA-001` is `MODEL_INCOMPETENT` (freeze `66c5b26`;
-  confirmation closed). HARD-002
+  confirmation closed; not a mechanistic negative).
+  `CRCT-LEARNED-WM-ACTION-DELTA-002` is `PREREGISTERED_NOT_RUN`. HARD-002
   remains `NEGATIVE_RESULT`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on

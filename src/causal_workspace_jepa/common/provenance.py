@@ -59,16 +59,25 @@ def stage_cli_command(
     stage: str,
     output: str,
     require_development: str | None = None,
+    extra_args: str = "",
 ) -> str:
     """Build a single-stage CLI string. Do not fuse development and confirmation.
 
     Confirmation may include ``--require-development`` (authorization input).
     It must not include ``--stage development`` or a fused ``&&`` second stage.
+    Optional ``extra_args`` (for example ``--rung 200``) must not add a second stage.
     """
 
     if stage not in {"development", "confirmation"}:
         raise ValueError("stage must be development or confirmation")
     command = f"python -m {module} --stage {stage} --output {output}"
+    if extra_args:
+        extra = extra_args.strip()
+        if "--stage " in extra:
+            raise ValueError("extra_args must not contain --stage")
+        if "&&" in extra:
+            raise ValueError("extra_args must not fuse commands")
+        command += f" {extra}"
     if stage == "confirmation":
         auth = require_development or "artifacts/metrics/crct_jepa_action_delta_v1.dev.json"
         command += f" --require-development {auth}"

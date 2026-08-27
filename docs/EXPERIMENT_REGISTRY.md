@@ -27,8 +27,11 @@
 - `CRCT-JEPA-ACTION-DELTA-001` — **`MODEL_INCOMPETENT`**. Freeze `66c5b26`
   before outcomes. Development seeds 43/47/53 failed full-state NMSE (`Δx`/`Δy`
   above 0.05; `Δvx`/`Δvy` met the bar). Confirmation closed; no circuit search.
-  Evidence `None`. IBD-002 not executed. HARD-002 unchanged. Draft successor
-  `CRCT-JEPA-ACTION-DELTA-002` is `DRAFT_NOT_PREREGISTERED`.
+  Evidence `None`. Not a mechanistic negative. IBD-002 not executed. HARD-002
+  unchanged. See `docs/CRCT_JEPA_ACTION_DELTA_001_ADJUDICATION_2026-08-27.md`.
+- `CRCT-LEARNED-WM-ACTION-DELTA-002` — **`PREREGISTERED_NOT_RUN`**.
+  Supervised residual-MLP successor to 001. Finite ladder 200/800/2000.
+  Seeds 59/71/73 and 1031/1033/1039. Not a JEPA objective. 001 unchanged.
 - `WM-LEVLJEPA-MINIPUSH-FACTORIAL-001` — `PREREGISTERED_NOT_RUN`, secondary.
 - `WM-PLATONIC-MKNN-001` — `TRANSITION_NEIGHBORHOOD_ALIGNMENT_PASSED`
   (Availability). Confirmation seeds 131/137/139 beat shuffled-action,
