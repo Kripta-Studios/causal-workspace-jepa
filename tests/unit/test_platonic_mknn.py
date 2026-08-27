@@ -13,12 +13,14 @@ from causal_workspace_jepa.experiments.world_model.platonic_mknn import (
     assert_protocol,
     frozen_linear_map,
     load_json_config,
+    make_untrained_predictor,
     reject_forbidden_seed,
     run_seed,
+    run_untrained_predictor_null,
     sha256_array,
     write_artifacts,
 )
-from causal_workspace_jepa.interpretability.mutual_knn import chance_reference, mutual_knn
+from causal_workspace_jepa.interpretability.mutual_knn import chance_reference, knn_indices, mutual_knn
 from causal_workspace_jepa.models.tiny_jepa import TinyActionConditionedJEPA
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -77,6 +79,9 @@ def test_mutual_knn_on_known_synthetic_geometry() -> None:
     assert mutual_knn(left, left.copy(), k=3) == 1.0
     assert mutual_knn(left, unrelated, k=3) < 0.4
     assert chance_reference(n_eval=128, k=5) == 5 / 127
+    neighbors = knn_indices(left, k=3)
+    for index, row in enumerate(neighbors):
+        assert index not in set(row.tolist())
 
 
 def test_observation_maps_are_frozen_and_trajectories_are_matched() -> None:
@@ -148,3 +153,40 @@ def test_write_artifacts_collects_provenance_before_metrics_exist(
     assert (tmp_path / "wm.json").exists()
     sidecar = json.loads((tmp_path / "wm.provenance.json").read_text(encoding="utf-8"))
     assert sidecar["git_dirty"] is False
+
+
+def test_observation_maps_are_not_updated_by_fitting() -> None:
+    matrix = frozen_linear_map(4, 16, 801)
+    before = sha256_array(matrix)
+    rng = np.random.default_rng(3)
+    states = rng.normal(size=(8, 6, 4)).astype(np.float32)
+    observations = states @ matrix
+    actions = rng.normal(size=(8, 5, 2)).astype(np.float32)
+    TinyActionConditionedJEPA.fit(
+        observations,
+        actions,
+        latent_dim=16,
+        seed=3,
+        frozen_encoder=np.eye(16, dtype=np.float32),
+    )
+    assert sha256_array(matrix) == before
+
+
+def test_untrained_predictor_null_is_posthoc_and_not_a_gate() -> None:
+    config = _tiny_config()
+    row = run_untrained_predictor_null(config, seed=3)
+    assert row["confirmatory_claims_allowed"] is False
+    assert 0.0 <= row["predictor_mknn_untrained_ab"] <= 1.0
+    assert 0.0 <= row["predictor_mknn_trained_a_vs_untrained_a"] <= 1.0
+    assert 0.0 <= row["predictor_mknn_trained_ab"] <= 1.0
+    trained = TinyActionConditionedJEPA.fit(
+        np.random.default_rng(3).normal(size=(8, 6, 16)).astype(np.float32),
+        np.random.default_rng(4).normal(size=(8, 5, 2)).astype(np.float32),
+        latent_dim=16,
+        seed=3,
+        frozen_encoder=np.eye(16, dtype=np.float32),
+    )
+    untrained = make_untrained_predictor(trained, seed=3)
+    assert not np.array_equal(trained.predictor, untrained.predictor)
+    np.testing.assert_array_equal(trained.encoder, untrained.encoder)
+    assert trained.named_activation_points() == ("encoder.latent", "predictor.input", "predictor.latent")

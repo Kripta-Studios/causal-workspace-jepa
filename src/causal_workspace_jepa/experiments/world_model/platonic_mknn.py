@@ -15,7 +15,11 @@ from causal_workspace_jepa.common.resources import require_free_disk
 from causal_workspace_jepa.data.splits import deterministic_named_split_ids
 from causal_workspace_jepa.data.synthetic.pointmass import generate_pointmass2d
 from causal_workspace_jepa.interpretability.mutual_knn import chance_reference, mutual_knn
-from causal_workspace_jepa.models.tiny_jepa import TinyActionConditionedJEPA, evaluate_latent_mse
+from causal_workspace_jepa.models.tiny_jepa import (
+    TinyActionConditionedJEPA,
+    TinyJepaConfig,
+    evaluate_latent_mse,
+)
 
 ROOT = Path(__file__).resolve().parents[4]
 FORBIDDEN_SPLIT_NAMES = ("test", "paraphrase")
@@ -253,6 +257,123 @@ def run_seed(config: Mapping[str, Any], *, seed: int) -> dict[str, Any]:
     }
 
 
+def make_untrained_predictor(
+    trained: TinyActionConditionedJEPA,
+    *,
+    seed: int,
+) -> TinyActionConditionedJEPA:
+    """Post-hoc null: same frozen encoder, random untrained predictor weights.
+
+    Weight seed is ``confirmation_seed + 10000``. This is not a T1 gate and
+    must not change the frozen adjudication.
+    """
+
+    rng = np.random.default_rng(int(seed) + 10000)
+    fan_in = int(trained.predictor.shape[0])
+    predictor = rng.normal(0.0, 1.0 / np.sqrt(fan_in), size=trained.predictor.shape).astype(np.float32)
+    return TinyActionConditionedJEPA(
+        TinyJepaConfig(**trained.config.__dict__),
+        encoder=np.array(trained.encoder, copy=True),
+        predictor=predictor,
+        decoder=np.array(trained.decoder, copy=True),
+        latent_mean=np.array(trained.latent_mean, copy=True),
+    )
+
+
+def run_untrained_predictor_null(config: Mapping[str, Any], *, seed: int) -> dict[str, Any]:
+    """Post-hoc untrained-predictor geometry on the same confirmation rows."""
+
+    assert_protocol(config)
+    reject_forbidden_seed(seed, config["forbidden_seeds"])
+    env = config["environment"]
+    maps = config["observation_maps"]
+    model_cfg = config["model"]
+    splits_cfg = config["splits"]
+    mknn_cfg = config["mknn"]
+    dataset = generate_pointmass2d(
+        trajectories=int(env["trajectories"]),
+        steps=int(env["steps"]),
+        seed=int(env["environment_base_seed"]) + int(seed),
+    )
+    split_ids = deterministic_named_split_ids(
+        dataset.states.shape[0],
+        int(splits_cfg["split_seed"]),
+        train=int(splits_cfg["train"]),
+        development=int(splits_cfg["development"]),
+        confirmation=int(splits_cfg["confirmation"]),
+    )
+    train_states = dataset.states[split_ids["train"]]
+    train_actions = dataset.actions[split_ids["train"]]
+    confirm_states = dataset.states[split_ids["confirmation"]]
+    confirm_actions = dataset.actions[split_ids["confirmation"]]
+    map_a = frozen_linear_map(int(env["state_dim"]), int(maps["obs_dim"]), int(maps["map_a_seed"]))
+    map_b = frozen_linear_map(int(env["state_dim"]), int(maps["obs_dim"]), int(maps["map_b_seed"]))
+    encoder = identity_encoder(int(maps["obs_dim"]), int(model_cfg["latent_dim"]))
+    obs_a_train = apply_map(train_states, map_a)
+    obs_b_train = apply_map(train_states, map_b)
+    obs_a_confirm = apply_map(confirm_states, map_a)
+    obs_b_confirm = apply_map(confirm_states, map_b)
+    trained_a = _fit(
+        obs_a_train,
+        train_actions,
+        latent_dim=int(model_cfg["latent_dim"]),
+        seed=int(seed),
+        ridge=float(model_cfg["ridge"]),
+        action_mode="conditioned",
+        encoder=encoder,
+    )
+    trained_b = _fit(
+        obs_b_train,
+        train_actions,
+        latent_dim=int(model_cfg["latent_dim"]),
+        seed=int(seed),
+        ridge=float(model_cfg["ridge"]),
+        action_mode="conditioned",
+        encoder=encoder,
+    )
+    untrained_a = make_untrained_predictor(trained_a, seed=int(seed))
+    untrained_b = make_untrained_predictor(trained_b, seed=int(seed) + 1)
+    if not np.array_equal(trained_a.encoder, untrained_a.encoder):
+        raise RuntimeError("untrained null must keep the frozen encoder")
+    if np.array_equal(trained_a.predictor, untrained_a.predictor):
+        raise RuntimeError("untrained null must randomize the predictor")
+    n_eval = int(mknn_cfg["n_eval"])
+    k = int(mknn_cfg["k"])
+    trans_a, act_eval = _take_eval_transitions(obs_a_confirm, confirm_actions, n_eval)
+    trans_b, act_b = _take_eval_transitions(obs_b_confirm, confirm_actions, n_eval)
+    if not np.array_equal(act_eval, act_b):
+        raise RuntimeError("paired comparisons must share confirmation action identity")
+    pred_trained_a = _predict_next(trained_a, trans_a, act_eval)
+    pred_trained_b = _predict_next(trained_b, trans_b, act_eval)
+    pred_untrained_a = _predict_next(untrained_a, trans_a, act_eval)
+    pred_untrained_b = _predict_next(untrained_b, trans_b, act_eval)
+    return {
+        "seed": int(seed),
+        "confirmatory_claims_allowed": False,
+        "predictor_mknn_trained_ab": mutual_knn(pred_trained_a, pred_trained_b, k=k),
+        "predictor_mknn_untrained_ab": mutual_knn(pred_untrained_a, pred_untrained_b, k=k),
+        "predictor_mknn_trained_a_vs_untrained_a": mutual_knn(pred_trained_a, pred_untrained_a, k=k),
+        "untrained_weight_seed_a": int(seed) + 10000,
+        "untrained_weight_seed_b": int(seed) + 10001,
+        "protected_splits_executed": [],
+    }
+
+
+def run_untrained_posthoc(config: Mapping[str, Any]) -> dict[str, Any]:
+    rows = [run_untrained_predictor_null(config, seed=int(seed)) for seed in config["confirmation_seeds"]]
+    return {
+        "experiment_id": "WM-PLATONIC-MKNN-001-UNTRAINED-POSTHOC",
+        "parent_experiment_id": "WM-PLATONIC-MKNN-001",
+        "status": "POSTHOC_DIAGNOSTIC",
+        "evidence_level": "None",
+        "confirmatory_claims_allowed": False,
+        "does_not_change_parent_status": True,
+        "seed_rows": rows,
+        "splits_accessed": ["train", "confirmation"],
+        "downloads_performed": [],
+    }
+
+
 def adjudicate(seed_rows: list[Mapping[str, Any]], config: Mapping[str, Any]) -> dict[str, Any]:
     """Apply frozen config gates. Thresholds are never derived from seed_rows."""
 
@@ -321,11 +442,27 @@ def write_artifacts(metrics: Mapping[str, Any], config: Mapping[str, Any], *, co
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default=str(ROOT / "configs/experiments/wm_platonic_mknn_v1.json"))
+    parser.add_argument(
+        "--untrained-posthoc",
+        action="store_true",
+        help="write a POSTHOC untrained-predictor diagnostic; does not overwrite T1 metrics",
+    )
     args = parser.parse_args(argv)
     if is_git_dirty():
         raise SystemExit("WM-PLATONIC-MKNN-001 requires a clean git worktree")
     config = load_json_config(args.config)
     require_free_disk(str(config["resource_profile"]))
+    if args.untrained_posthoc:
+        metrics = run_untrained_posthoc(config)
+        config = dict(config)
+        config["output_metrics"] = "artifacts/metrics/wm_platonic_mknn_v1.untrained_posthoc.json"
+        write_artifacts(
+            metrics,
+            config,
+            command=f"python scripts/run_wm_platonic_mknn.py --untrained-posthoc --config {args.config}",
+        )
+        print(json.dumps({"status": metrics["status"], "parent_unchanged": True}, indent=2))
+        return 0
     metrics = run_confirmation(config)
     write_artifacts(
         metrics,
