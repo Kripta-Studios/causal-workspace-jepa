@@ -15,6 +15,12 @@ run directory under `artifacts/reports/` remains gitignored.
 Unprovenanced local metric dumps belong in `artifacts/local_scratch/`, not in
 `artifacts/metrics/`.
 
+`CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` development provenance
+(`artifacts/metrics/crct_learned_wm_conditional_mediator_v6.rung800.provenance.json`)
+records freeze `0d3aed7` and `git_dirty: false`. The older 004 rung-2000
+sidecar records `git_dirty: true` as observed at that run; do not rewrite
+frozen dirty flags to make the audit green.
+
 Every experiment must record:
 
 - config path and serialized config;

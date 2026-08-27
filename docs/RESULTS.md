@@ -27,23 +27,25 @@
   Successor `CRCT-COALITION-IBD-003` is `MECHANISM_RECOVERY_PASSED` on
   confirmation seeds 971/977/983 (synthetic IBD; evidence Causal effect).
   Freeze `fbaec9c` before outcomes. IBD-002 was not executed.
-  `CRCT-JEPA-ACTION-DELTA-001` is `MODEL_INCOMPETENT` (freeze `66c5b26`;
-  confirmation closed; not a mechanistic negative).
-  `CRCT-LEARNED-WM-ACTION-DELTA-002` is `INCONCLUSIVE` (rung 800 competent;
-  development CRCT failed; confirmation closed).
-  `CRCT-LEARNED-WM-ACTION-DELTA-003` is `MODEL_INCOMPETENT` (seed 79 Δy at
-  800 steps; CRCT not run; confirmation closed).
-  `CRCT-LEARNED-WM-ACTION-DELTA-004` is `INCONCLUSIVE` (freeze `20a8c20`;
-  rung 800 incompetent; rung 2000 competent; development CRCT failed
-  shared Level-3 conjunction; confirmation closed). Mechanistic
-  post-mortem (no rerun, 004 unchanged):
-  `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-  Successor `CRCT-LEARNED-WM-ACTION-DELTA-005` is `INCONCLUSIVE` (freeze
-  `5f4696a`; rung 800 competent; Stage A failed; confirmation closed).
-  Successor `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` is `INCONCLUSIVE`
-  (freeze `0d3aed7`; rung 800 competent; Stage A failed; Stage 2B not
-  status-determining; confirmation closed; Level 2B only). 005 unchanged.
   HARD-002 remains `NEGATIVE_RESULT`.
+- Learned action-Δ (supervised residual PointMass; not a JEPA objective).
+  Confirmation closed on every ID; evidence `None` unless noted:
+  - `CRCT-JEPA-ACTION-DELTA-001` `MODEL_INCOMPETENT` (freeze `66c5b26`;
+    not a mechanistic negative).
+  - `CRCT-LEARNED-WM-ACTION-DELTA-002` `INCONCLUSIVE` (rung 800 competent;
+    development CRCT failed).
+  - `CRCT-LEARNED-WM-ACTION-DELTA-003` `MODEL_INCOMPETENT` (seed 79 Δy at
+    800 steps; CRCT not run).
+  - `CRCT-LEARNED-WM-ACTION-DELTA-004` `INCONCLUSIVE` (freeze `20a8c20`;
+    rung 800 incompetent; rung 2000 competent; shared Level-3 conjunction
+    failed). Post-mortem (no rerun):
+    `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
+  - `CRCT-LEARNED-WM-ACTION-DELTA-005` `INCONCLUSIVE` (freeze `5f4696a`;
+    rung 800 competent; Stage A failed; Stage B not status-determining).
+  - `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` `INCONCLUSIVE` (freeze
+    `0d3aed7`; rung 800 competent; Stage A failed; Stage 2B not
+    status-determining; Level 2B only). 005 unchanged. See
+    `docs/CRCT_LEARNED_WM_CONDITIONAL_MEDIATOR_006_ADJUDICATION_2026-08-27.md`.
 - No workspace claim is reopened.
 - `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN conjunction on
   seeds 131/137/139. Evidence level Availability. Encoder geometry was

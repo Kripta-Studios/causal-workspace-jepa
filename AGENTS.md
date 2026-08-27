@@ -50,7 +50,7 @@ GitHub `cpu-ci.yml` never downloads Qwen and excludes `@pytest.mark.gpu`.
 Run the GPU suite with `scripts/run_gpu_suite.ps1` or `.github/workflows/gpu-ci.yml`.
 Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
 
-## Current critical path (2026-08-27)
+## Current critical path (2026-08-28)
 
 1. Keep HARD-002 and V3 frozen.
 2. Confirmation passed; do not execute `LLM-QWEN-BINDING-ALGEBRA-004` until

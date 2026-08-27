@@ -19,7 +19,8 @@ Seeds 83/89 are not interpreted retrospectively.
 004 ran: `INCONCLUSIVE`, evidence `None`, confirmation closed.
 Post-mortem (no rerun):
 `docs/CRCT_LEARNED_WM_ACTION_DELTA_004_MECHANISTIC_POSTMORTEM_2026-08-27.md`.
-Do not climb to 5000. Successor 005 is draft-only and not authorized.
+Do not climb to 5000. Successor 005 later ran and is `INCONCLUSIVE`
+(do not rerun 004 or 005).
 
 ## Non-actions
 

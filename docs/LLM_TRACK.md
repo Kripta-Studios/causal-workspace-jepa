@@ -8,7 +8,8 @@ track remains active.
 V3 B0 remains `INELIGIBLE_TASK_PHASE0`. Calibration-only recovery selected
 `qwen_chat_prefill_v1` but is not confirmation. Confirmation
 `QWEN-BINDING-COMPETENCE-CONFIRM-001` passed on a fresh split. Successor
-`LLM-QWEN-BINDING-ALGEBRA-004` is drafted and not authorized. Do not open
+`LLM-QWEN-BINDING-ALGEBRA-004` is drafted and not authorized. The 2026-08-27
+learned-WM track (001–006) does not authorize Qwen 004. Do not open
 test/paraphrase. Do not treat candidate-only accuracy as eligibility.
 
 ## 2026-07-26 continuation decision

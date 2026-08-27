@@ -9,11 +9,17 @@
   V3 remains ineligible. No circuit claim.
 - Successor `LLM-QWEN-BINDING-ALGEBRA-004` is drafted, not authorized to run.
 - Coalition IBD evaluator distinguishes graph recall from functional equivalence on
-  a planted bottleneck. HARD-002 stays negative.
+  a planted bottleneck. HARD-002 stays negative. IBD-002 was not executed.
+  IBD-003 is `MECHANISM_RECOVERY_PASSED` (synthetic IBD only).
+- Learned action-Δ (supervised residual PointMass, not JEPA): 001
+  `MODEL_INCOMPETENT`; 002 `INCONCLUSIVE`; 003 `MODEL_INCOMPETENT`; 004
+  `INCONCLUSIVE`; 005 `INCONCLUSIVE`; 006 `INCONCLUSIVE`. Confirmation
+  closed on all. No learned Level-2B/3 pass. Do not rerun.
 - Platonic/LeFlow paper-scale work remains plan-only. CPU
   `WM-PLATONIC-MKNN-001` passed with an encoder-geometry caveat.
-  `WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`. Stitching and transfer
-  IDs stay closed.
+  `WM-LEFLOW-AMORTIZE-001` is `NEGATIVE_RESULT`.
+  `WM-AMORTIZED-PLANNING-MINIPUSH-002` is `UNINFORMATIVE_SUBSTRATE`.
+  Stitching and transfer IDs stay closed.
 
 ## 2026-08-17 — CRCT synthetic falsification adjudication
 

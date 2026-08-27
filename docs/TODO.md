@@ -66,11 +66,11 @@
 - [x] Execute `CRCT-STAGE0-HARD-002` on untouched primary seeds 1009/2027/4093 with
   validation-only discovery and controls frozen before IID/OOD generation.
 - [x] Retain HARD-002 as `NEGATIVE_RESULT`; do not retune its thresholds.
-- [ ] Add group/coalition-aware development metrics that distinguish full graph recall from
+- [x] Add group/coalition-aware development metrics that distinguish full graph recall from
   epsilon-functional sufficiency, necessity, redundancy-group coverage, cancellation-group
-  coverage, and equivalent circuit classes.
-- [ ] Freeze that metric/selector design on non-primary development plants before generating any
-  successor primary seeds.
+  coverage, and equivalent circuit classes. (`CRCT-COALITION-IBD-001` / IBD-003.)
+- [x] Freeze that metric/selector design on non-primary development plants before generating any
+  successor primary seeds. (IBD-003 freeze `fbaec9c`; IBD-002 not executed.)
 - [ ] Integrate exact patching plus HVP reliability and QK/head routing on already-open Qwen
   capital data as development-only plumbing.
 - [ ] Add Qwen-Scope SAE, raw component, transcoder/attribution-graph, and SWD substrate adapters

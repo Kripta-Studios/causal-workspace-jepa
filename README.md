@@ -21,7 +21,16 @@ planning success are secondary readouts, not mechanism evidence.
   competence only, not a circuit.
 - `CRCT-COALITION-IBD-001` implements coalition/equivalence metrics and an
   interpretable-by-design plant. HARD-002 seeds are blocked. IBD-002 was
-  not executed. IBD-003 passed as synthetic interventional recovery.
+  not executed. IBD-003 is `MECHANISM_RECOVERY_PASSED` (synthetic IBD only).
+- Learned action-Δ track (supervised residual PointMass; **not** a JEPA
+  objective). Confirmation closed on every ID. Do not rerun or retune:
+  `CRCT-JEPA-ACTION-DELTA-001` `MODEL_INCOMPETENT`;
+  `CRCT-LEARNED-WM-ACTION-DELTA-002` `INCONCLUSIVE`;
+  `CRCT-LEARNED-WM-ACTION-DELTA-003` `MODEL_INCOMPETENT`;
+  `CRCT-LEARNED-WM-ACTION-DELTA-004` `INCONCLUSIVE`;
+  `CRCT-LEARNED-WM-ACTION-DELTA-005` `INCONCLUSIVE` (Stage A failed);
+  `CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006` `INCONCLUSIVE` (Stage A failed;
+  Stage 2B not status-determining). No learned Level-2B or Level-3 pass.
 - Intervention-JEPA residual claims now have an explicit fair-baseline gate:
   direct-delta remains mandatory; HARD-002's residual-vs-direct-delta outcome
   is preserved.
@@ -29,7 +38,8 @@ planning success are secondary readouts, not mechanism evidence.
   work remains plan-only in `docs/research/PLATONIC_LEFLOW_INTEGRATION_PLAN.md`.
   CPU control `WM-PLATONIC-MKNN-001` passed its frozen predictor m-kNN
   gate with an encoder-geometry caveat; `WM-LEFLOW-AMORTIZE-001` is
-  `NEGATIVE_RESULT` (N=64 slower than shooting; evidence_level None).
+  `NEGATIVE_RESULT` (N=64 slower than shooting; evidence_level None);
+  `WM-AMORTIZED-PLANNING-MINIPUSH-002` is `UNINFORMATIVE_SUBSTRATE`.
   No DINO-WM/LeWM download. Stitching is not opened.
 - `LLM-QWEN-BINDING-ALGEBRA-004` is drafted and not executed.
 

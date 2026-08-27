@@ -1,11 +1,10 @@
 # CRCT-LEARNED-WM-CONDITIONAL-MEDIATOR-006 — instrument validation (2026-08-27)
 
 ```text
-STATUS:                 instrument / methodology only
-LEARNED MODELS:         none trained
-SPLITS OPENED:          none
+STATUS:                 instrument / methodology only (not a learned-model result)
 005 STATUS:             INCONCLUSIVE, evidence None, confirmation CLOSED (unchanged)
-006 STATUS:             DRAFT_NOT_PREREGISTERED, execution_authorized false
+006 LEARNED STATUS:     INCONCLUSIVE; Stage A failed; Stage 2B not
+                        status-determining; confirmation CLOSED
 ```
 
 This file is **not** a learned-model result and **not** a freeze.

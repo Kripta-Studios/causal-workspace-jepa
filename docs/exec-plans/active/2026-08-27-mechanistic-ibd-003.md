@@ -1,6 +1,7 @@
 # Execution plan — 2026-08-27 mechanistic IBD-003
 
-Continuation of `daf94b6` on `crct-stage0-001`.
+Closed. Registered outcome: **`MECHANISM_RECOVERY_PASSED`** (synthetic IBD).
+IBD-002 remains `PREREGISTERED_NOT_RUN` and was not executed.
 
 ## Intent
 
@@ -25,4 +26,6 @@ Protocol [IBD-002 audit](fa8fe000-1a02-4796-ae60-9e863b3f3f87) and adversarial
 - [x] Preregister `CRCT-COALITION-IBD-003` (interventional recovery).
 - [x] Independent protocol review of 003; resolve P0/P1; freeze; then run once.
 - [x] Draft `CRCT-JEPA-ACTION-DELTA-001` only if 003’s frozen primary gate passes.
-- [x] Do not run JEPA-DELTA, 004, stitching, Reachable-003, RF, DINO-WM, LeWM.
+- [x] JEPA-DELTA-001 later ran separately and is `MODEL_INCOMPETENT` (do not
+      rerun IBD-003 to license it).
+- [x] Do not run Qwen 004, stitching, Reachable-003, RF, DINO-WM, LeWM.

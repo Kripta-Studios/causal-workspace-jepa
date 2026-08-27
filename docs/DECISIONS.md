@@ -20,6 +20,15 @@
   `WM-LEFLOW-AMORTIZE-001` with gates frozen before outcomes. Stitching,
   transfer, and CRCT-on-transfer stay closed. A positive m-kNN is Availability
   only. HARD-002 seeds stay forbidden.
+- Do not execute IBD-002. Advance via `CRCT-COALITION-IBD-003` only. That
+  pass is synthetic IBD, not a learned-model circuit.
+- Learned action-Δ IDs 001–006 are closed (`MODEL_INCOMPETENT` /
+  `INCONCLUSIVE`). Confirmation stayed closed. Do not rerun, climb unused
+  ladder rungs, or reinterpret diagnostic downstream scores after Stage A
+  failure. Recompute/`G_V` is not the same object as mean-fill MSRS. A
+  JEPA-objective successor is not justified from this chain.
+- MiniPush-002 is `UNINFORMATIVE_SUBSTRATE`. Do not open Reachable-003 or
+  LeFlow transfer from that result.
 
 ## 2026-07-26
 

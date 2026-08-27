@@ -6,10 +6,12 @@
 
 1. Coalition-aware CRCT (HARD-002 frozen negative; do not retune).
 2. Interpretable-by-design validation: IBD-001 smoke; IBD-002 not executed;
-   IBD-003 interventional recovery successor.
-3. Learned tiny JEPA / world-model action→Δ-state mechanisms (only after IBD
-   recovery is validated).
-4. Nonlinear / contact mechanisms.
+   IBD-003 `MECHANISM_RECOVERY_PASSED` (synthetic IBD only).
+3. Learned action-Δ on a supervised residual PointMass WM: 001 and 003
+   `MODEL_INCOMPETENT`; 002/004/005/006 `INCONCLUSIVE`. No learned Level-2B
+   or Level-3 pass. Do not mutate or rerun 001–006. A JEPA-objective
+   successor is not justified.
+4. Nonlinear / contact mechanisms remain later IDs.
 5. Cross-seed / cross-model mechanistic equivalence (not m-kNN).
 
 **SECONDARY READOUTS:** planning success, behavioral performance,
@@ -26,9 +28,10 @@ claims: T1 Availability only; T2 `NEGATIVE_RESULT`; MiniPush-002
 2. `QWEN-BINDING-COMPETENCE-CONFIRM-001` passed. Next: draft
    `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without opening
    test/paraphrase and without changing V3.
-3. Use `CRCT-COALITION-IBD-003` as the interventional ontology control. IBD-001
-   remains smoke; do not execute IBD-002. Do not collapse sufficiency into
-   graph recall.
+3. Use `CRCT-COALITION-IBD-003` as the synthetic interventional ontology
+   control. IBD-001 remains smoke; do not execute IBD-002. Do not collapse
+   sufficiency into graph recall. Learned WM 001–006 are closed; do not
+   reopen them to rescue Stage A with diagnostic Stage-2B scores.
 4. Residual Intervention-JEPA remains ineligible unless residual power, fair
    baselines, and held-out direct-delta comparisons pass.
 5. CPU Platonic/amortize controls are preregistered as
