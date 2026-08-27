@@ -43,7 +43,8 @@ H=5 primary. Success = true position MSE `< 0.15`. Amortized latent N=64 must be
 - [x] Verify git/invariants
 - [x] Observe CI failure on `1a1340a`
 - [x] Commit CI collection/GPU gate (`807b735`)
-- [ ] Preregister T1/T2 (no results)
+- [x] Preregister T1/T2 (no results) — commit `7392ab5`
+- [ ] Implement + semantic tests
 - [ ] Implement + semantic tests
 - [ ] Execute T1
 - [ ] Adjudicate T1

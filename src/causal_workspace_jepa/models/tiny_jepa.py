@@ -53,6 +53,7 @@ class TinyActionConditionedJEPA:
         seed: int = 0,
         ridge: float = 1e-4,
         action_mode: str = "conditioned",
+        frozen_encoder: np.ndarray | None = None,
     ) -> "TinyActionConditionedJEPA":
         if observations.ndim != 3:
             raise ValueError("observations must have shape [trajectories, steps, observation_dim]")
@@ -61,7 +62,14 @@ class TinyActionConditionedJEPA:
         obs_dim = int(observations.shape[-1])
         action_dim = int(actions.shape[-1])
         rng = np.random.default_rng(seed)
-        encoder = rng.normal(0.0, 1.0 / np.sqrt(obs_dim), size=(obs_dim, latent_dim)).astype(np.float32)
+        if frozen_encoder is None:
+            encoder = rng.normal(0.0, 1.0 / np.sqrt(obs_dim), size=(obs_dim, latent_dim)).astype(
+                np.float32
+            )
+        else:
+            encoder = np.asarray(frozen_encoder, dtype=np.float32)
+            if encoder.shape != (obs_dim, latent_dim):
+                raise ValueError("frozen_encoder must have shape [observation_dim, latent_dim]")
         z = observations @ encoder
         z_t = z[:, :-1, :].reshape(-1, latent_dim)
         z_next = z[:, 1:, :].reshape(-1, latent_dim)

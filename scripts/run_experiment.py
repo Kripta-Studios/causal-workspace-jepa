@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 
 from causal_workspace_jepa.common.config import load_config
 from causal_workspace_jepa.experiments.llm.gpt2_medium_intervention_smoke import (
@@ -70,10 +71,42 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
     args = parser.parse_args()
-    config = load_config(args.config)
-    experiment_id = str(config.get("id", ""))
+    config_path = Path(args.config)
+    if config_path.suffix == ".json":
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        experiment_id = str(config.get("experiment_id") or config.get("id", ""))
+    else:
+        config = load_config(args.config)
+        experiment_id = str(config.get("id", ""))
     if experiment_id == "WM-T0-001":
         metrics = run_tiny_jepa_smoke(args.config)
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "WM-PLATONIC-MKNN-001":
+        from causal_workspace_jepa.experiments.world_model.platonic_mknn import (
+            load_json_config,
+            run_confirmation,
+            write_artifacts,
+        )
+
+        config = load_json_config(args.config)
+        metrics = run_confirmation(config)
+        write_artifacts(metrics, config, command=f"python scripts/run_experiment.py --config {args.config}")
+        print(json.dumps(metrics, indent=2, sort_keys=True))
+        return 0
+    if experiment_id == "WM-LEFLOW-AMORTIZE-001":
+        from causal_workspace_jepa.experiments.world_model.leflow_amortize import (
+            load_json_config,
+            run_confirmation,
+            write_artifacts,
+        )
+
+        config = load_json_config(args.config)
+        metrics = run_confirmation(
+            config,
+            mknn_metrics_path="artifacts/metrics/wm_platonic_mknn_v1.json",
+        )
+        write_artifacts(metrics, config, command=f"python scripts/run_experiment.py --config {args.config}")
         print(json.dumps(metrics, indent=2, sort_keys=True))
         return 0
     if experiment_id == "WM-T0-002":
