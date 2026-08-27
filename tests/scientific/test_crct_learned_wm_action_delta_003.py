@@ -37,7 +37,6 @@ def test_confirmation_seeds_are_not_opened_by_unit_tests() -> None:
     assert CONFIRMATION_SEEDS == (1049, 1051, 1061)
     assert TRAIN_STEPS == 800
     assert not Path("artifacts/metrics/crct_learned_wm_action_delta_v3.json").exists()
-    assert not Path("artifacts/metrics/crct_learned_wm_action_delta_v3.dev.json").exists()
 
 
 def test_config_matches_frozen_thresholds() -> None:
@@ -47,6 +46,9 @@ def test_config_matches_frozen_thresholds() -> None:
     assert config["thresholds"] == FROZEN_THRESHOLDS
     assert config["experiment_id"] == EXPERIMENT_ID
     assert config["parent_status_preserved"] == "INCONCLUSIVE"
+    assert config["status"] == "MODEL_INCOMPETENT"
+    assert config["execution_authorized"] is False
+    assert config["confirmation"] == "CLOSED"
     assert config["seed_59_retrospective_pass"] is False
     assert config["architecture_cutset_automatic_fail"] is False
     assert config["independent_controls"] == ["dvy", "dy"]
@@ -205,6 +207,28 @@ def test_confirmation_rejects_inconclusive_003(tmp_path: Path) -> None:
     except ValueError:
         return
     raise AssertionError("inconclusive development authorized confirmation")
+
+
+def test_development_stopped_at_competence() -> None:
+    payload = json.loads(
+        Path("artifacts/metrics/crct_learned_wm_action_delta_v3.dev.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert payload["experiment_id"] == EXPERIMENT_ID
+    assert payload["status"] == "MODEL_INCOMPETENT"
+    assert payload["evidence_level"] == "None"
+    assert payload["all_seeds_competent"] is False
+    assert payload["all_seeds_passed"] is False
+    assert payload["seed_59_retrospective_pass"] is False
+    by_seed = {row["seed"]: row for row in payload["rows"]}
+    assert by_seed[79]["status"] == "MODEL_INCOMPETENT"
+    assert by_seed[79]["circuit_search_ran"] is False
+    assert by_seed[79]["competence"]["nmse"]["dy"] > 0.05
+    assert by_seed[83]["status"] == "COMPETENT_NOT_INTERPRETED"
+    assert by_seed[89]["status"] == "COMPETENT_NOT_INTERPRETED"
+    assert by_seed[83]["circuit_search_ran"] is False
+    assert by_seed[89]["circuit_search_ran"] is False
 
 
 def test_002_status_is_unchanged() -> None:

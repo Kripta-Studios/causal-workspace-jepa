@@ -19,7 +19,7 @@ friction, MiniPush, planning, stitching, Qwen 004, IBD-002, HARD-002.
 
 1. [x] Audit 002; derive PointMass dependency graph; map residual/skip graph.
 2. [x] Protocol + independent reviews; resolve P0/P1.
-3. [ ] Freeze commit before any 003 training.
-4. [ ] Development on new seeds at frozen 800 steps; CRCT only if competent.
-5. [ ] Confirmation only if development is `PATH_MECHANISM_RECOVERY_PASSED`.
-6. [ ] Adjudicate; do not claim JEPA.
+3. [x] Freeze commit before any 003 training (`a23bbaa`).
+4. [x] Development at 800 steps: seed 79 incompetent; CRCT not run.
+5. [x] Confirmation stayed closed.
+6. [x] Adjudicate `MODEL_INCOMPETENT`; do not claim JEPA.

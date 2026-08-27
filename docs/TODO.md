@@ -17,8 +17,9 @@
   closed. Do not retune this ID.
 - [x] `CRCT-LEARNED-WM-ACTION-DELTA-002` ladder: 200 incompetent; 800 competent;
   development CRCT `INCONCLUSIVE`; confirmation closed. Do not retune.
-- [ ] `CRCT-LEARNED-WM-ACTION-DELTA-003` freeze then run; do not convert seed 59
-  into a pass; confirmation closed until development path recovery.
+- [x] `CRCT-LEARNED-WM-ACTION-DELTA-003` freeze then run: `MODEL_INCOMPETENT`
+  (seed 79 Δy); CRCT closed; confirmation closed. Do not retune.
+- [ ] `CRCT-LEARNED-WM-ACTION-DELTA-004` remains `DRAFT_NOT_PREREGISTERED`.
 - [x] Commit then write coalition development/confirmation metric JSON with real provenance.
 - [x] Draft `LLM-QWEN-BINDING-ALGEBRA-004` / `CRCT-QWEN-BRIDGE-003` without executing them.
 - [ ] Execute 004 only after a later authorization commit on origin.

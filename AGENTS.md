@@ -64,8 +64,9 @@ Skipped GPU tests are `SKIPPED_RESOURCE`, never `PASS`.
    is `MECHANISM_RECOVERY_PASSED` (synthetic IBD).
    `CRCT-JEPA-ACTION-DELTA-001` is `MODEL_INCOMPETENT` (confirmation closed).
    `CRCT-LEARNED-WM-ACTION-DELTA-002` is `INCONCLUSIVE` (confirmation closed).
-   `CRCT-LEARNED-WM-ACTION-DELTA-003` is the authorized gateway-vs-pathway
-   successor (not a JEPA objective). Do not retune 002.
+   `CRCT-LEARNED-WM-ACTION-DELTA-003` is `MODEL_INCOMPETENT` (confirmation
+   closed; CRCT not run). Do not execute `CRCT-LEARNED-WM-ACTION-DELTA-004`
+   until a later freeze.
 5. Platonic WM + LeFlow paper-scale work remains plan-only (no DINO-WM/LeWM
    downloads, no stitching). CPU `WM-PLATONIC-MKNN-001` passed with an
    encoder-geometry caveat (Availability only). CPU `WM-LEFLOW-AMORTIZE-001` is
